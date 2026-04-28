@@ -4,11 +4,21 @@ Open-source agent skills for accounting, taxes, and finance — used inside [Jup
 
 Each skill is a self-contained operating manual that teaches an AI agent how to handle one form, one calculation, or one workflow. Skills are written for [Claude Code](https://claude.com/claude-code), the [Anthropic Agent SDK](https://docs.claude.com/en/api/agent-sdk/overview), and any other agent runtime that loads markdown skill packages.
 
+## Repo layout
+
+```
+jupid-skills/
+├── forms/           # IRS / state forms — fill-out skills
+│   └── schedule-c/
+├── calculators/     # (planned) tax & finance calculators
+└── workflows/       # (planned) multi-step accounting flows
+```
+
 ## Skills available
 
 | Skill | Topic |
 |-------|-------|
-| [schedule-c](./schedule-c/) | IRS Schedule C (Form 1040) — Profit or Loss From Business |
+| [forms/schedule-c](./forms/schedule-c/) | IRS Schedule C (Form 1040) — Profit or Loss From Business |
 
 More skills are in progress.
 
@@ -18,7 +28,7 @@ More skills are in progress.
 
 ```bash
 mkdir -p ~/.claude/skills
-cp -r jupid-skills/schedule-c ~/.claude/skills/
+cp -r jupid-skills/forms/schedule-c ~/.claude/skills/
 ```
 
 Then in any Claude Code session, ask the kind of question the skill is built for:
@@ -37,12 +47,16 @@ Load the skill's `SKILL.md` into your system prompt; load reference and example 
 from anthropic import Anthropic
 from pathlib import Path
 
-skill = Path("jupid-skills/schedule-c/SKILL.md").read_text()
+skill = Path("jupid-skills/forms/schedule-c/SKILL.md").read_text()
 references = {
     p.stem: p.read_text()
-    for p in Path("jupid-skills/schedule-c/references").glob("*.md")
+    for p in Path("jupid-skills/forms/schedule-c/references").glob("*.md")
 }
 ```
+
+### With browser automation
+
+Form skills include a `filing.md` reference that gives an agent step-by-step instructions to actually file the completed form via the browser — IRS Free File Fillable Forms, paper assembly + mailing addresses, or third-party tax software. See [`forms/schedule-c/filing.md`](./forms/schedule-c/filing.md) for the canonical pattern.
 
 ### With other agent runtimes
 

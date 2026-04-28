@@ -158,6 +158,18 @@ State the next forms the user will need:
 - **Home office regular method on Line 30** → Form 8829 must be attached
 - **Quarterly estimated tax payments** for next year → Form 1040-ES if profit ≥ ~$5,000
 
+### Step 11 — File the return (optional, if the user wants the agent to file)
+
+If the agent has browser-automation tooling (Playwright, Puppeteer, Browserbase, etc.) and the user explicitly authorizes filing, follow [`filing.md`](./filing.md). It contains:
+
+- Decision tree to pick a filing channel (IRS Free File Fillable Forms, paid tax software, paper filing, IRS Direct File)
+- Field-by-field mapping from this skill's draft to FFFF form labels
+- Pre-flight checklist (what data the agent must have before filing)
+- Submission state machine (Submitted → Accepted → Processed → Refund/Notice)
+- Security rules — never store SSN/DOB/PIN, always require explicit consent at submission
+
+If the user only wants a draft and will file themselves, skip this step.
+
 ---
 
 ## Line-by-line guidance
@@ -388,6 +400,7 @@ Loaded on demand based on what the user's situation needs.
 - [`references/home-office.md`](./references/home-office.md) — Simplified method vs. regular method (Form 8829)
 - [`references/vehicle.md`](./references/vehicle.md) — Standard mileage vs. actual expenses, recordkeeping requirements
 - [`references/common-mistakes.md`](./references/common-mistakes.md) — Top 10 filer mistakes with examples and fixes
+- [`filing.md`](./filing.md) — Browser-automation playbook: how an agent files the completed Schedule C via IRS Free File Fillable Forms, paper, or generic tax software (loaded only when the user authorizes filing)
 
 ## Examples
 
