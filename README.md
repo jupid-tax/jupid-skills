@@ -11,7 +11,7 @@ jupid-skills/
 ├── forms/           # IRS / state forms — fill-out skills
 │   └── schedule-c/
 ├── calculators/     # (planned) tax & finance calculators
-└── workflows/       # (planned) multi-step accounting flows
+└── workflows/       # Multi-step accounting and tax research flows
 ```
 
 ## Skills available
@@ -19,6 +19,7 @@ jupid-skills/
 | Skill | Topic |
 |-------|-------|
 | [forms/schedule-c](./forms/schedule-c/) | IRS Schedule C (Form 1040) — Profit or Loss From Business |
+| [workflows/irs-evidence-research](./workflows/irs-evidence-research/) | IRS-only, citation-gated tax research workflow |
 
 More skills are in progress.
 
@@ -29,12 +30,14 @@ More skills are in progress.
 ```bash
 mkdir -p ~/.claude/skills
 cp -r jupid-skills/forms/schedule-c ~/.claude/skills/
+cp -r jupid-skills/workflows/irs-evidence-research ~/.claude/skills/
 ```
 
 Then in any Claude Code session, ask the kind of question the skill is built for:
 
 ```
 > Help me fill out Schedule C for my freelance business
+> Use official IRS sources only to research whether this filing requirement applies
 ```
 
 Claude will detect the trigger phrases declared in the skill's frontmatter and engage.
@@ -47,11 +50,27 @@ Load the skill's `SKILL.md` into your system prompt; load reference and example 
 from anthropic import Anthropic
 from pathlib import Path
 
-skill = Path("jupid-skills/forms/schedule-c/SKILL.md").read_text()
+skill = Path("jupid-skills/workflows/irs-evidence-research/SKILL.md").read_text()
 references = {
     p.stem: p.read_text()
-    for p in Path("jupid-skills/forms/schedule-c/references").glob("*.md")
+    for p in Path("jupid-skills/workflows/irs-evidence-research/references").glob("*.md")
 }
+```
+
+### With Codex
+
+Copy the skill folder into a Codex skill directory, or load the skill files in a
+repo-level `AGENTS.md` workflow. For local installation:
+
+```bash
+mkdir -p ~/.codex/skills
+cp -r jupid-skills/workflows/irs-evidence-research ~/.codex/skills/
+```
+
+Then ask Codex:
+
+```
+Use the irs-evidence-research skill. Research this question using official sources only: ...
 ```
 
 ### With browser automation
