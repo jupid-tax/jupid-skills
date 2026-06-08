@@ -25,6 +25,25 @@ More skills are in progress.
 
 ## Using a skill
 
+### Fastest path
+
+Open Codex or Claude Code and paste:
+
+```text
+Use this skill from GitHub:
+https://github.com/jupid-tax/jupid-skills/tree/main/workflows/irs-evidence-research
+
+If you can tell whether this session is Codex or Claude Code, use the matching
+runtime behavior. If you cannot tell, ask me whether I am using Codex or Claude
+Code.
+
+Research my tax question using official IRS sources only:
+[write your question here]
+```
+
+For repeated use, install the folder locally using the platform-specific
+instructions below. The GitHub link stays the same for both platforms.
+
 ### With Claude Code
 
 ```bash
