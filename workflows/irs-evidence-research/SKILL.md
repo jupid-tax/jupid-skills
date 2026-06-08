@@ -33,6 +33,48 @@ threshold, deadline, definition, exception, penalty, or filing trigger.
 
 ---
 
+## Use from GitHub
+
+Canonical public link:
+
+```text
+https://github.com/jupid-tax/jupid-skills/tree/main/workflows/irs-evidence-research
+```
+
+When a user gives this GitHub link and asks to use or install the skill, first
+determine the current runtime:
+
+- If you are running in Codex, treat this as a Codex skill.
+- If you are running in Claude Code, treat this as a Claude Code skill.
+- If the runtime is unclear, ask one short question: "Are you using Codex or
+  Claude Code?"
+
+Do not make the user choose a different GitHub link. The same repository folder
+is the source for both runtimes.
+
+For persistent local installation:
+
+```bash
+# Codex
+mkdir -p ~/.codex/skills
+cp -r workflows/irs-evidence-research ~/.codex/skills/
+
+# Claude Code
+mkdir -p ~/.claude/skills
+cp -r workflows/irs-evidence-research ~/.claude/skills/
+```
+
+For one-off use without installation, read this `SKILL.md`, then load
+`references/` or `examples/` only when needed for the user's task.
+
+After installation or loading, the user can invoke the workflow with:
+
+```text
+Use the irs-evidence-research skill. Research this question using official IRS sources only: [question]
+```
+
+---
+
 ## Core rule
 
 Every material claim must be supported by official authority or labeled
@@ -245,4 +287,3 @@ Load only the example that matches the task:
   - source does not support the requested conclusion.
 - [`examples/research-request.md`](./examples/research-request.md) - reusable
   prompt for invoking the workflow in Codex, Claude Code, or another agent.
-
