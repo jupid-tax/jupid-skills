@@ -20,6 +20,7 @@ jupid-skills/
 |-------|-------|
 | [forms/schedule-c](./forms/schedule-c/) | IRS Schedule C (Form 1040) — Profit or Loss From Business |
 | [workflows/irs-evidence-research](./workflows/irs-evidence-research/) | IRS-only, citation-gated tax research workflow |
+| [workflows/linkedin-post-analytics-coach](./workflows/linkedin-post-analytics-coach/) | LinkedIn post analytics review and next-post coaching workflow |
 
 More skills are in progress.
 
@@ -41,6 +42,16 @@ Research my tax question using official IRS sources only:
 [write your question here]
 ```
 
+For LinkedIn post analytics coaching, paste:
+
+```text
+Use this skill from GitHub:
+https://github.com/jupid-tax/jupid-skills/tree/main/workflows/linkedin-post-analytics-coach
+
+Analyze my LinkedIn post and analytics export. Tell me what worked, what did
+not work, and what exact experiment I should run in the next post.
+```
+
 For repeated use, install the folder locally using the platform-specific
 instructions below. The GitHub link stays the same for both platforms.
 
@@ -50,6 +61,7 @@ instructions below. The GitHub link stays the same for both platforms.
 mkdir -p ~/.claude/skills
 cp -r jupid-skills/forms/schedule-c ~/.claude/skills/
 cp -r jupid-skills/workflows/irs-evidence-research ~/.claude/skills/
+cp -r jupid-skills/workflows/linkedin-post-analytics-coach ~/.claude/skills/
 ```
 
 Then in any Claude Code session, ask the kind of question the skill is built for:
@@ -84,12 +96,14 @@ repo-level `AGENTS.md` workflow. For local installation:
 ```bash
 mkdir -p ~/.codex/skills
 cp -r jupid-skills/workflows/irs-evidence-research ~/.codex/skills/
+cp -r jupid-skills/workflows/linkedin-post-analytics-coach ~/.codex/skills/
 ```
 
 Then ask Codex:
 
 ```
 Use the irs-evidence-research skill. Research this question using official sources only: ...
+Use the linkedin-post-analytics-coach skill. Analyze my LinkedIn post analytics export and recommend the next experiment.
 ```
 
 ### With browser automation
