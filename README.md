@@ -21,6 +21,7 @@ jupid-skills/
 | [forms/schedule-c](./forms/schedule-c/) | IRS Schedule C (Form 1040) — Profit or Loss From Business |
 | [workflows/irs-evidence-research](./workflows/irs-evidence-research/) | IRS-only, citation-gated tax research workflow |
 | [workflows/linkedin-post-analytics-coach](./workflows/linkedin-post-analytics-coach/) | LinkedIn post analytics review and next-post coaching workflow |
+| [workflows/spreadsheet-logic-builder](./workflows/spreadsheet-logic-builder/) | Deterministic spreadsheet logic, reconciliation, and automation workflow |
 
 More skills are in progress.
 
@@ -52,6 +53,17 @@ Analyze my LinkedIn post and analytics export. Tell me what worked, what did
 not work, and what exact experiment I should run in the next post.
 ```
 
+For accountant spreadsheet automation, paste:
+
+```text
+Use this skill from GitHub:
+https://github.com/jupid-tax/jupid-skills/tree/main/workflows/spreadsheet-logic-builder
+
+Help me build deterministic spreadsheet logic for this accounting workflow.
+Ask for the missing rules first, then produce the rule spec, formulas/macro/script,
+verification checks, and local run instructions.
+```
+
 For repeated use, install the folder locally using the platform-specific
 instructions below. The GitHub link stays the same for both platforms.
 
@@ -62,6 +74,7 @@ mkdir -p ~/.claude/skills
 cp -r jupid-skills/forms/schedule-c ~/.claude/skills/
 cp -r jupid-skills/workflows/irs-evidence-research ~/.claude/skills/
 cp -r jupid-skills/workflows/linkedin-post-analytics-coach ~/.claude/skills/
+cp -r jupid-skills/workflows/spreadsheet-logic-builder ~/.claude/skills/
 ```
 
 Then in any Claude Code session, ask the kind of question the skill is built for:
@@ -97,6 +110,7 @@ repo-level `AGENTS.md` workflow. For local installation:
 mkdir -p ~/.codex/skills
 cp -r jupid-skills/workflows/irs-evidence-research ~/.codex/skills/
 cp -r jupid-skills/workflows/linkedin-post-analytics-coach ~/.codex/skills/
+cp -r jupid-skills/workflows/spreadsheet-logic-builder ~/.codex/skills/
 ```
 
 Then ask Codex:
@@ -104,6 +118,7 @@ Then ask Codex:
 ```
 Use the irs-evidence-research skill. Research this question using official sources only: ...
 Use the linkedin-post-analytics-coach skill. Analyze my LinkedIn post analytics export and recommend the next experiment.
+Use the spreadsheet-logic-builder skill. Build deterministic spreadsheet logic for this reconciliation workflow.
 ```
 
 ### With browser automation
