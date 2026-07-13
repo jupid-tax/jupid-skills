@@ -2,10 +2,22 @@
 
 Use this when guiding a business owner or accountant through a document
 cleanup. The user is often non-technical: they have a folder full of PDFs,
-scans, and photos, and they want it fixed. Keep every message short and end
-each one with exactly one question or one clear next action.
+scans, and photos, and they want it fixed.
 
-## Message 1 — locate the mess
+Ground rules:
+
+- **Speak the user's language** — all messages below are templates; translate
+  them (including folder names in proposals) into whatever language the user
+  writes in.
+- **Every gate is a menu**: 2–4 numbered options, one marked (recommended).
+  In Claude Code use the native question dialog when available; otherwise a
+  numbered list. The user answers with a number or free text; "go ahead"
+  means "recommended options, continue".
+- One decision per message (Gate 3 combines two small settings by design).
+- After any file-system change, give the absolute path and say what the user
+  will see there.
+
+## Gate 0 — locate the mess
 
 If the folder path was not given:
 
@@ -16,38 +28,91 @@ Which folder should I clean up? Drag it into the chat or paste the path.
 If the user describes several locations, do one folder per run. Suggest
 starting with the messiest.
 
-## Message 2 — propose the structure
+## Gate 1 — scope
 
-After scanning, propose the structure in one compact block and ask one
-yes/adjust question:
+After the fast top-level scan:
 
 ```text
-I scanned the folder: 148 files — mostly PDFs, 31 photos/scans, 4 duplicates.
+I scanned /Users/anna/Documents (nothing was changed): 148 loose files at the
+top level, plus 13 existing subfolders (projects, old archives).
 
-Here is the structure I suggest:
+What should I organize?
 
-01 Invoices              — bills you received and invoices you issued
-02 Receipts              — purchase receipts, expense proofs
-03 Bank & Card Statements
-04 Tax Documents
-05 Payroll
-06 Contracts & Legal
-07 Needs Review          — anything I can't read or confidently place
+1. Only the 148 loose top-level files (recommended) — existing subfolders
+   stay exactly as they are
+2. Everything, including subfolders — I'll flatten them into the new
+   structure (only pick this if those folders are NOT organized on purpose)
+3. One specific subfolder — tell me which
 
-Does this work, or do you want to rename, add, or remove folders?
-Common tweaks: split invoices into "issued" vs "received", add year
-subfolders (2024/2025), add an "Insurance" folder.
+Reply with a number, or just say "go ahead" for option 1.
+```
+
+Never scan recursively into workspace/project folders by default; if the
+user picks option 2, warn once about any subfolder that looks deliberately
+organized before including it.
+
+## Gate 2 — structure
+
+Pick the preset that matches the inventory (see `folder-taxonomy.md`) and
+show the actual tree, tailored: drop categories with no matching documents,
+renumber contiguously, mention what was dropped.
+
+```text
+Based on what I found (mostly business paperwork + some personal documents),
+here is the structure I suggest — preset 2 of these options:
+
+1. Business / accounting — 7 flat folders (invoices, receipts, statements,
+   tax, payroll, contracts, needs-review)
+2. Personal + business (recommended for this folder) — two levels:
+
+   01 Finance & Tax        — Bills & Invoices / Receipts / Bank & Card
+                             Statements / Tax Documents
+   02 Business & Legal     — Contracts & Agreements / Company & Compliance
+   03 Employment & Recruitment — Contracts & Offers / CVs & Candidates /
+                             References
+   04 Identity, Immigration & Personal — Identity Documents / Immigration /
+                             Official Correspondence
+   05 Education & Family
+   06 Health, Travel & Insurance
+   07 Needs Review         — Unreadable / Password-Protected / Ambiguous
+
+3. Multi-client — one folder per client, business taxonomy inside each
+4. Custom — describe what you want
+
+You can also just tweak option 2: rename folders, add/remove categories,
+split invoices into issued vs received, add year subfolders.
 ```
 
 Rules for this step:
 
-- Tailor the list: if the scan found no payroll documents, drop `05 Payroll`
-  and say so. If it found many of one type, offer a split.
 - Accept the user's names verbatim, including non-English folder names.
 - Do not proceed until the user has confirmed. "Looks fine" counts as
   confirmation; silence does not.
+- If issued-vs-received invoices matter, ask for the user's business name
+  here — once.
 
-## Message 3 — progress during classification
+## Gate 3 — mode and naming
+
+The one two-part message:
+
+```text
+Two quick settings before I start reading the documents:
+
+Mode:
+1. Copy (recommended for a first run) — originals stay exactly where they
+   are; verified copies go into the new folders; undo deletes only the copies
+2. Move — files are relocated into the new folders; undo puts them back
+3. Report only — I classify and build the index, but touch nothing
+
+File names:
+A. Keep original names (recommended)
+B. Standardize to "YYYY-MM-DD Counterparty Type.pdf" (original names stay in
+   the index)
+
+Say "go ahead" for 1 + A.
+```
+
+## During classification — progress, not questions
 
 For folders over ~30 files, report progress in batches so the user is not
 staring at silence:
@@ -57,46 +122,71 @@ Read 60 of 148… so far: 22 invoices, 15 receipts, 9 statements, 3 for review.
 ```
 
 Do not ask questions mid-classification unless a genuinely blocking ambiguity
-appears (e.g., the user's own company name is needed to tell issued invoices
-from received ones — ask once, early).
+appears.
 
-## Message 4 — show the plan before moving
+## Gate 4 — the plan, misfits, approval
 
 ```text
-All 148 files read. Here's the plan:
+All 148 files read. Here's the plan (nothing is applied yet):
 
 | Folder | Files |
 |--------|-------|
-| 01 Invoices | 52 |
-| 02 Receipts | 41 |
-| 03 Bank & Card Statements | 24 |
-| 04 Tax Documents | 11 |
-| 06 Contracts & Legal | 9 |
+| 01 Finance & Tax | 52 |
+| 02 Business & Legal | 24 |
+| ... | ... |
 | 07 Needs Review | 7 |
 
-Needs Review: 3 blurry photos, 2 password-protected PDFs, 2 ambiguous
-documents (details in the index).
+Needs Review: 3 unreadable scans, 2 password-protected PDFs, 2 ambiguous.
+
+I also found 3 documents that fit none of the approved folders — two concert
+tickets and a magazine article. Options:
+
+1. Add "08 Events & Tickets" and "09 Articles" for them (recommended)
+2. Leave them in 07 Needs Review/Ambiguous
+3. Decide file by file
 
 4 exact duplicates found — I'll file them together and flag them, not delete.
 
-OK to move the files?
+Approve the plan? (I'll copy the files — originals stay untouched.)
 ```
 
 Wait for confirmation, run the dry-run silently, then execute.
 
-## Message 5 — the deliverable question
-
-Exactly one question, asked after the folders are done:
+Immediately after applying, anchor the user in the file system:
 
 ```text
-Folders are done. Do you also want a spreadsheet index — one row per document
-with its category, date, amount, and where it was filed? Excel or CSV?
+Done. The folders are at /Users/anna/Documents (01–07, next to your existing
+folders). Originals are still in place; the new folders hold verified copies.
+[clickable path/link when the runtime supports it]
 ```
 
-## Message 6 — closing
+If the structure was created before files were applied (avoid this when
+possible), say explicitly: "the folders exist but are EMPTY until you approve
+the plan — that's why you don't see files in them yet."
 
-Use the Output format from `SKILL.md`: counts table, Needs Review list with
-reasons, index location, undo command. One screen, no fluff.
+## Gate 5 — the deliverable
+
+```text
+Folders are done. What do you want as the record?
+
+1. Excel index (recommended) — one row per document: category, date, amount,
+   counterparty, where it was filed, and why
+2. CSV index — same, opens anywhere
+3. Both
+4. None — folders are enough
+
+I can also add an audit log — a short Markdown report of this run (what was
+scanned, what you approved, counts, undo command). Want it?
+```
+
+The index and audit log are written in the user's language (`--lang ru` for
+Russian headers; other languages get English headers — rename afterwards if
+asked).
+
+## Closing
+
+Use the Output format from `SKILL.md`: counts table, absolute path, Needs
+Review list with reasons, index location, undo command. One screen, no fluff.
 
 ## Avoid bad behavior
 
@@ -115,9 +205,12 @@ way it was — spot-check a few before you rely on it.
 
 Do not:
 
-- move a single file before the structure is confirmed and the plan is shown;
+- touch a single file before scope, structure, mode, and plan are all
+  confirmed;
+- create the folder structure "to show it" before the plan is approved — the
+  user sees empty folders and thinks the cleanup failed;
 - hide the Needs Review pile at the bottom of a long message — it is the one
   part the user must act on;
-- ask more than one question per message;
-- rename files unless the user asked (renaming is an opt-in extra, see
-  `folder-taxonomy.md`).
+- ask open-ended questions where a menu with a recommended default works;
+- transcribe passport numbers, SSNs, or medical details into chat, manifest,
+  index, or audit log.

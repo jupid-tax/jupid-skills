@@ -1,96 +1,158 @@
 # Example Output — Full Run
 
-A compact trace of one cleanup, showing every dialogue gate.
+A compact trace of one cleanup, showing every dialogue gate. The run below is
+in English; with a Russian-speaking user every message, folder name, and the
+index would be in Russian (`--lang ru`).
 
-## 1. Scan + structure proposal (agent)
+## Gate 1 — scope (agent, after fast top-level scan)
 
 ```text
-I scanned ~/Desktop/Business Docs 2025: 87 files — 61 PDFs, 24 photos/scans,
-2 Word documents. 2 exact duplicates. 19 files need visual reading (scans
-with no text layer).
+I scanned ~/Documents (nothing was changed): 127 loose files at the top
+level — 89 PDFs, 17 Word files, 13 images, 8 spreadsheets — plus 13 existing
+subfolders and 22 non-documents (videos, audio projects).
 
-Suggested structure:
+What should I organize?
 
-01 Invoices              — bills you received and invoices you issued
-02 Receipts              — purchase receipts, expense proofs
-03 Bank & Card Statements
-04 Tax Documents
-05 Contracts & Legal
-06 Needs Review
+1. Only the 127 loose top-level files (recommended) — existing subfolders
+   stay exactly as they are
+2. Everything, including subfolders
+3. One specific subfolder — tell me which
 
-(No payroll documents found, so I dropped that folder and renumbered.)
-
-Does this work, or do you want to rename, add, or remove folders?
+Reply with a number, or say "go ahead" for option 1.
 ```
 
-## 2. User adjusts
+## Gate 2 — structure (agent)
 
 ```text
-Split invoices — I issue invoices to clients and get bills from vendors.
-My company is "Bluebird Design LLC". Add year subfolders for statements.
+This folder mixes business paperwork with personal documents (IDs, medical,
+CVs, school files), so I recommend preset 2:
+
+1. Business / accounting — 7 flat folders
+2. Personal + business (recommended):
+
+   01 Finance & Tax        — Bills & Invoices / Receipts / Bank & Card
+                             Statements / Tax Documents
+   02 Business & Legal     — Contracts & Agreements / Company & Compliance
+   03 Employment & Recruitment — Contracts & Offers / CVs & Candidates /
+                             References
+   04 Identity, Immigration & Personal — Identity Documents / Immigration /
+                             Official Correspondence
+   05 Education & Family
+   06 Health, Travel & Insurance
+   07 Needs Review         — Unreadable / Password-Protected / Ambiguous
+
+3. Multi-client — one folder per client
+4. Custom — describe what you want
+
+You can also tweak option 2: rename, add/remove, year subfolders.
 ```
 
-## 3. Plan summary (agent, after classification)
+## Gate 3 — mode and naming (agent)
 
 ```text
-All 87 files read. Here's the plan:
+Two quick settings before I start reading the documents:
+
+Mode:
+1. Copy (recommended for a first run) — originals stay where they are
+2. Move — files are relocated; undo puts them back
+3. Report only — classify and index, touch nothing
+
+File names:
+A. Keep original names (recommended)
+B. Standardize to "YYYY-MM-DD Counterparty Type.pdf"
+
+Say "go ahead" for 1 + A.
+```
+
+User: `go ahead`
+
+## Gate 4 — plan and misfits (agent, after classification)
+
+```text
+All 127 files read. Here's the plan (nothing is applied yet):
 
 | Folder | Files |
 |--------|-------|
-| 01 Sales Invoices (issued) | 18 |
-| 02 Bills (received) | 21 |
-| 03 Receipts | 22 |
-| 04 Bank & Card Statements/2024 | 6 |
-| 04 Bank & Card Statements/2025 | 12 |
-| 05 Tax Documents | 3 |
-| 06 Contracts & Legal | 2 |
-| 07 Needs Review | 3 |
+| 01 Finance & Tax | 31 |
+| 02 Business & Legal | 22 |
+| 03 Employment & Recruitment | 23 |
+| 04 Identity, Immigration & Personal | 17 |
+| 05 Education & Family | 8 |
+| 06 Health, Travel & Insurance | 20 |
+| 07 Needs Review | 6 |
 
-Needs Review: IMG_4471.jpg (too blurry to read), statement_old.pdf
-(password-protected), doc_final.pdf (no clear type — looks like a quote,
-not an invoice).
+Finance documents with verified dates get year subfolders (2024/2025).
 
-2 exact duplicates (invoice_march.pdf = invoice_march(1).pdf) — filing both
-to 02 Bills, flagged in the index.
+Needs Review: 2 unreadable photos, 1 password-protected school report,
+1 corrupt PDF that won't open, and 2 misfits — a concert ticket and a
+magazine article. For the misfits:
 
-OK to move the files?
+1. Add "08 Events & Reading" for them (recommended)
+2. Leave them in 07 Needs Review/Ambiguous
+3. Decide file by file
+
+7 exact-duplicate groups found — I'll file all copies together and flag
+them, not delete.
+
+Approve the plan? (Copy mode — originals stay untouched.)
 ```
 
-## 4. Deliverable question (agent, after moving)
+## After applying (agent)
 
 ```text
-Folders are done — 87 files moved, undo log saved.
+Done — 127 verified copies created, originals untouched.
 
-Do you also want a spreadsheet index — one row per document with its
-category, date, amount, and where it was filed? Excel or CSV?
+The folders are at /Users/anna/Documents (01–08, next to your existing
+folders). Every copy was checksum-verified against its original.
 ```
 
-## 5. Closing (agent)
+## Gate 5 — deliverable (agent)
 
 ```text
-## Done — 87 documents organized
+What do you want as the record?
+
+1. Excel index (recommended) — one row per document: category, date, amount,
+   counterparty, where it was filed, and why
+2. CSV index
+3. Both
+4. None
+
+I can also add an audit log — a short Markdown report of this run (what was
+scanned, what you approved, counts, undo command). Want it?
+```
+
+## Closing (agent)
+
+```text
+## Done — 127 documents organized (copies; originals untouched)
+
+Everything is in /Users/anna/Documents, folders 01–08.
 
 | Folder | Files |
 |--------|-------|
-| 01 Sales Invoices (issued) | 18 |
-| 02 Bills (received) | 21 |
-| 03 Receipts | 22 |
-| 04 Bank & Card Statements | 18 |
-| 05 Tax Documents | 3 |
-| 06 Contracts & Legal | 2 |
-| 07 Needs Review | 3 |
+| 01 Finance & Tax | 31 |
+| 02 Business & Legal | 22 |
+| 03 Employment & Recruitment | 23 |
+| 04 Identity, Immigration & Personal | 17 |
+| 05 Education & Family | 8 |
+| 06 Health, Travel & Insurance | 20 |
+| 07 Needs Review | 4 |
+| 08 Events & Reading | 2 |
 
-## Needs your attention
-- IMG_4471.jpg — blurry photo, could not read
-- statement_old.pdf — password-protected; if you have the password I can file it
-- doc_final.pdf — looks like a price quote, not an invoice; tell me where it goes
+## Needs your attention (07 Needs Review)
+- IMG_4471.jpg — blurry photo (Unreadable)
+- IMG_4480.jpg — blurry photo (Unreadable)
+- Year 11 Progress Report.pdf — password-protected; give me the password and
+  I'll file it
+- quote_final.pdf — corrupt file, won't open; re-download if you need it
 
 ## Index
-Document Index.xlsx — 87 rows; every row shows the basis for its
-classification. Spot-check a few before relying on it.
+Document Index.xlsx — 127 rows; every row shows the basis for its
+classification. Spot-check a few before you rely on it.
 
 ## Undo
 python3 scripts/apply-move-plan.py --undo undo-log-2026-07-13T14-02-11.json
+(removes only the verified copies created by this run)
 ```
 
 ## Sample manifest rows behind this run
@@ -99,7 +161,9 @@ python3 scripts/apply-move-plan.py --undo undo-log-2026-07-13T14-02-11.json
 [
   {
     "file": "invoice_2025_0312.pdf",
-    "category": "02 Bills (received)",
+    "category": "01 Finance & Tax/Bills & Invoices/2025",
+    "section": "01 Finance & Tax",
+    "subcategory": "Bills & Invoices",
     "doc_type": "invoice_received",
     "counterparty": "Verizon Business",
     "doc_date": "2025-03-12",
@@ -114,7 +178,9 @@ python3 scripts/apply-move-plan.py --undo undo-log-2026-07-13T14-02-11.json
   },
   {
     "file": "IMG_4471.jpg",
-    "category": "07 Needs Review",
+    "category": "07 Needs Review/Unreadable",
+    "section": "07 Needs Review",
+    "subcategory": "Unreadable",
     "doc_type": "other",
     "counterparty": null,
     "doc_date": null,
