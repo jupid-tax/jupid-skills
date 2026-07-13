@@ -14,6 +14,17 @@ with me before moving anything. At the end I want an Excel file listing every
 document and where it went.
 ```
 
+Safe trial version (copies, originals untouched):
+
+```text
+Use this skill from GitHub:
+https://github.com/jupid-tax/jupid-skills/tree/main/workflows/cleanup-documents
+
+Organize ~/Documents — but make COPIES into the new folder structure, don't
+move my originals. Only the loose top-level files; leave my existing
+subfolders alone. Walk me through the options step by step.
+```
+
 Shorter version for an installed skill:
 
 ```text

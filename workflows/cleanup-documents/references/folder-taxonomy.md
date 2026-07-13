@@ -1,8 +1,13 @@
 # Folder Taxonomy
 
-Default structure, variants, and naming rules for business-document cleanup.
+Presets, variants, and naming rules for document cleanup. Pick the preset
+from the inventory, then tailor: drop categories with no matching documents,
+renumber contiguously (no gaps), and translate folder names into the user's
+language when they write in one.
 
-## Default structure (7 folders)
+## Preset 1 — Business / accounting (flat, 7 folders)
+
+The default when the folder is business paperwork.
 
 ```text
 01 Invoices              — bills received from vendors AND invoices issued to customers
@@ -11,16 +16,78 @@ Default structure, variants, and naming rules for business-document cleanup.
 04 Tax Documents         — IRS/state forms, filed returns, notices, estimated-tax records
 05 Payroll               — paystubs, W-2, 1099-NEC issued to contractors, payroll reports
 06 Contracts & Legal     — agreements, engagement letters, leases, insurance policies, formation docs
-07 Needs Review          — unreadable, password-protected, ambiguous, or out-of-scope
+07 Needs Review          — see "Needs Review subfolders" below
 ```
 
-Numeric prefixes keep the folders in workflow order in every file manager.
-Keep them unless the user objects. When a folder is dropped or added,
-renumber so the prefixes stay contiguous — no gaps.
+## Preset 2 — Personal + business (two levels)
 
-## Common variants
+Recommended when the scan shows identity documents, medical papers, CVs,
+school files, or travel documents mixed into business paperwork — typical
+for a real personal `Documents` folder.
 
-Offer these when the inventory suggests them; never impose them.
+```text
+01 Finance & Tax
+   Bills & Invoices
+   Receipts
+   Bank & Card Statements
+   Tax Documents
+   Payroll
+02 Business & Legal
+   Contracts & Agreements
+   Company & Compliance
+   Templates & Working Documents
+03 Employment & Recruitment
+   Employment Contracts & Job Offers
+   CVs & Candidate Profiles
+   References
+04 Identity, Immigration & Personal
+   Identity Documents
+   Immigration & Residency
+   Address & Official Correspondence
+05 Education & Family
+   School Reports
+   Applications & Programmes
+06 Health, Travel & Insurance
+   Medical Documents
+   Travel Documents
+   Insurance
+07 Needs Review
+   Unreadable
+   Password-Protected
+   Ambiguous
+```
+
+Drop second-level folders that would be empty; a section with one subcategory
+collapses to a single folder.
+
+## Preset 3 — Accountant multi-client
+
+For an accountant organizing documents for multiple clients: client names on
+top, Preset 1 inside each. Detect this from the documents (multiple distinct
+bill-to businesses) and confirm before assuming.
+
+```text
+Bluebird Design LLC/
+   01 Invoices
+   ...
+Acme Consulting LLC/
+   01 Invoices
+   ...
+_Needs Review/            — cross-client: unreadable or client-unclear files
+```
+
+## Needs Review subfolders
+
+Always split Needs Review by what the user must do:
+
+```text
+Needs Review/
+   Unreadable           — blurry scans, corrupt files; user re-scans or discards
+   Password-Protected   — user supplies passwords, then re-run
+   Ambiguous            — agent explains candidates; user decides
+```
+
+## Common variants (offer when the inventory suggests them)
 
 ### Split invoices by direction
 
@@ -32,7 +99,7 @@ For users who both issue and receive many invoices:
 ```
 
 To tell direction, the agent needs the user's own business name — ask for it
-once, early in classification.
+once, at the structure gate.
 
 ### Year subfolders
 
@@ -46,35 +113,35 @@ For folders spanning multiple years (visible from document dates):
 Use the **document date**, not the file's modified date. Undated documents go
 in the category root, not into a guessed year.
 
-### Extra categories worth offering when the scan finds them
+### Misfit clusters → new categories
+
+When 2+ documents of the same kind fit no confirmed category (event tickets,
+magazine articles, personal photos), propose a dedicated folder at the plan
+gate instead of dumping them into Needs Review:
 
 | Documents found | Folder to offer |
 |-----------------|-----------------|
+| tickets, event confirmations | `Events & Tickets` |
+| articles, magazines, ebooks | `Articles & Reading` |
 | policies, claims, certificates of insurance | `Insurance` |
 | loan agreements, amortization schedules | `Loans & Financing` |
 | purchase orders, packing slips | `Purchase Orders` |
 | dividend/brokerage statements, K-1s | `Investments` |
-| utility bills kept separately from other bills | `Utilities` |
-| personal (non-business) documents mixed in | `Personal` — offer, and note they may not belong here at all |
-
-### Client-per-folder (accountants)
-
-If the user is an accountant organizing documents for multiple clients, the
-top level is client names and the taxonomy above repeats inside each client.
-Detect this from the documents (multiple distinct bill-to businesses) and ask
-before assuming.
+| personal photos (not documents) | offer to leave in place — they may belong in a photo library, not here |
 
 ## Naming rules
 
 ### Folders
 
 - Names the user chose win, verbatim, in any language.
+- Numeric prefixes keep folders in workflow order; renumber contiguously
+  when folders are dropped or added — no gaps.
 - No trailing spaces or characters illegal on Windows (`< > : " / \ | ? *`)
   even on macOS/Linux — folders may be shared or synced cross-platform.
 
 ### Files — default: keep original names
 
-Renaming is **opt-in**. Only if the user asks for it, use:
+Renaming is **opt-in** (Gate 3). Only if the user chose it, use:
 
 ```text
 YYYY-MM-DD <counterparty> <type> <amount>.<ext>
@@ -82,13 +149,14 @@ YYYY-MM-DD <counterparty> <type> <amount>.<ext>
 ```
 
 - Date = document date. Undated files keep their original name.
-- If renaming, record `original_name → new_name` in the manifest so the index
-  and undo log stay truthful.
+- If renaming, put the new name in the plan's `dest_name` and record the
+  original in the manifest so the index and undo log stay truthful.
 
 ## What is NOT a document
 
 Leave in place and list under "not documents, not touched" in the closing
 summary: applications/executables, archives the agent has not opened (`.zip`
-etc. — offer to look inside as a follow-up), code and data files, fonts,
-media libraries, and system files (`.DS_Store`, `Thumbs.db`, desktop.ini) —
-these are also excluded from the inventory entirely.
+etc. — offer to look inside as a follow-up), audio/video projects, code and
+data files, fonts, digital-signature sidecars (`.p7s`), and lock/temp files
+(`~$…`, `.tmp`). System files (`.DS_Store`, `Thumbs.db`, desktop.ini) are
+excluded from the inventory entirely.
