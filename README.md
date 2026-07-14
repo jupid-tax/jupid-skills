@@ -23,6 +23,7 @@ jupid-skills/
 | [workflows/linkedin-post-analytics-coach](./workflows/linkedin-post-analytics-coach/) | LinkedIn post analytics review and next-post coaching workflow |
 | [workflows/spreadsheet-logic-builder](./workflows/spreadsheet-logic-builder/) | Deterministic spreadsheet logic, reconciliation, and automation workflow |
 | [workflows/cleanup-documents](./workflows/cleanup-documents/) | Read a messy document folder, sort invoices/receipts/statements into folders, build an index |
+| [workflows/accounting-agent-starter-pack](./workflows/accounting-agent-starter-pack/) | Five read-only accounting agents plus three client-chasing prompts |
 
 More skills are in progress.
 
@@ -88,6 +89,7 @@ cp -r jupid-skills/workflows/irs-evidence-research ~/.claude/skills/
 cp -r jupid-skills/workflows/linkedin-post-analytics-coach ~/.claude/skills/
 cp -r jupid-skills/workflows/spreadsheet-logic-builder ~/.claude/skills/
 cp -r jupid-skills/workflows/cleanup-documents ~/.claude/skills/
+cp -r jupid-skills/workflows/accounting-agent-starter-pack ~/.claude/skills/
 ```
 
 Then in any Claude Code session, ask the kind of question the skill is built for:
@@ -125,6 +127,7 @@ cp -r jupid-skills/workflows/irs-evidence-research ~/.codex/skills/
 cp -r jupid-skills/workflows/linkedin-post-analytics-coach ~/.codex/skills/
 cp -r jupid-skills/workflows/spreadsheet-logic-builder ~/.codex/skills/
 cp -r jupid-skills/workflows/cleanup-documents ~/.codex/skills/
+cp -r jupid-skills/workflows/accounting-agent-starter-pack ~/.codex/skills/
 ```
 
 Then ask Codex:
@@ -134,6 +137,7 @@ Use the irs-evidence-research skill. Research this question using official sourc
 Use the linkedin-post-analytics-coach skill. Analyze my LinkedIn post analytics export and recommend the next experiment.
 Use the spreadsheet-logic-builder skill. Build deterministic spreadsheet logic for this reconciliation workflow.
 Use the cleanup-documents skill. Organize the documents in [folder] — propose the folder structure first.
+Use the accounting-agent-starter-pack skill. Choose the smallest read-only agent for this accounting task.
 ```
 
 ### With browser automation
