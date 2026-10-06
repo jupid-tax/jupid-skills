@@ -1,6 +1,6 @@
 # Crypto Reporting on Form 8949
 
-Cryptocurrency tax rules trip more filers than any other 8949 topic. The IRS treats crypto as **property**, not currency. Every disposition is a taxable event — including swaps, NFT trades, and using crypto to buy goods. Most US exchanges have not historically issued 1099-Bs (Form 1099-DA is phasing in for tax year 2025+), so basis tracking is on the filer. This file covers the full crypto picture.
+Cryptocurrency tax rules trip more filers than any other 8949 topic. The IRS treats crypto as **property**, not currency. Every disposition is a taxable event — including swaps, NFT trades, and using crypto to buy goods. U.S. custodial brokers issued the first Forms 1099-DA in early 2026 for 2025 sales, but those report gross proceeds and usually no basis, so basis tracking is on the filer. From the 2025 Form 8949 on, digital assets have their own boxes (G/H/I short-term, J/K/L long-term). This file covers the full crypto picture.
 
 ---
 
@@ -105,14 +105,25 @@ Historically, US crypto exchanges have issued:
 - **1099-K** for users above certain transaction thresholds (treated as gross proceeds, but doesn't affect basis tracking)
 - **1099-B** — most exchanges have not issued these, because crypto wasn't formally a covered security under §6045(g)
 
-Starting **tax year 2025**, **Form 1099-DA** ("Digital Asset Proceeds From Broker Transactions") is the new reporting form for digital asset brokers under regulations finalized in 2024. Phased adoption:
+Starting **tax year 2025**, **Form 1099-DA** ("Digital Asset Proceeds From Broker Transactions") is the new reporting form for digital asset brokers under regulations finalized in 2024 (T.D. 10000). Two stages (2025 Instructions for Form 1099-DA, pp. 1–2, 4):
 
-- 2025: gross proceeds reporting required for many crypto brokers
-- Future years: basis reporting required (date TBD by Treasury)
+- **Sales in 2025:** gross proceeds (box 1f) are mandatory. Basis, acquisition date, and short/long-term status are optional; a broker that leaves basis out enters code Y in "Applicable checkbox on Form 8949". The first forms were furnished to customers in early 2026.
+- **Sales on or after January 1, 2026:** basis is also mandatory for covered securities, meaning digital assets acquired after 2025 in a custodial account at that broker and held there until the sale. Coins bought before 2026 or transferred in are noncovered; the broker may check box 9 and leave basis blank.
 
-Until full adoption, the agent should expect crypto sales to land in **Box C or F** (no 1099-B) and require the user to upload the exchange CSV separately.
+### Which Form 8949 box (2025 form)
 
-Even when 1099-DA is issued for proceeds, the agent must verify the CSV-based basis matches what the broker reports — early-year 1099-DAs are likely to have basis errors.
+| What the user received for the sale | Short-term | Long-term |
+|-------------------------------------|------------|-----------|
+| 1099-DA with box 2 checked (basis reported to IRS) | **G** | **J** |
+| 1099-DA with box 2 not checked (basis was optional for 2025 sales) | **H** | **K** |
+| No 1099-DA and no 1099-B (self-custody, DEX, foreign exchange) | **I** | **L** |
+| 1099-B for a digital asset (some 2025 tokenized assets; limited-access regulated networks) | A or B | D or E |
+
+Never put a digital asset in Box C or F; the 2025 instructions say so directly (Instructions for Form 8949 (2025), pp. 1, 3–4). Use 1099-DA box 1f as column (d); it is already net of digital asset transaction costs. Where the 1099-DA shows no basis, enter the basis from the user's records in column (e) (Instructions for Form 8949 (2025), p. 7). Where box 2 is checked and the basis is wrong, enter the reported basis, code B, and the correction in column (g) (same instructions, pp. 8 and 11).
+
+When the 1099-DA shows code Y or a blank box 6, the broker did not determine short- or long-term status. Date each lot from the user's records; if they are missing, ask the user and stop.
+
+The agent must still verify every 1099-DA against the exchange CSV: proceeds per sale, units, and dates. Staking and other rewards are not reported on Form 1099-DA (2025 Instructions for Form 1099-DA, p. 6); they come on 1099-MISC or not at all.
 
 ---
 
@@ -120,7 +131,9 @@ Even when 1099-DA is issued for proceeds, the agent must verify the CSV-based ba
 
 **As of tax year 2025**: IRC §1091 references "stock or securities." Because crypto is treated as property (not stock or securities), §1091 does **not** apply to digital assets. Selling BTC at a loss and rebuying immediately produces an allowed loss with no wash adjustment.
 
-**Risk**: Multiple legislative proposals would extend §1091 to crypto. The agent must verify the rule's scope every January before filing season. See [`wash-sales.md`](./wash-sales.md).
+**Exception — tokenized securities**: a digital asset that is also stock or securities for tax purposes is subject to the wash sale rules (Instructions for Schedule D (2025), p. 5). Its 1099-DA reports the disallowed loss in box 1i (2025 Instructions for Form 1099-DA, p. 8). Code it W on Form 8949.
+
+**Risk**: Multiple legislative proposals would extend §1091 to crypto. One is pending as of 2026-10-06 and would reach 2026 sales if enacted. The agent must verify the rule's scope every January before filing season. See [`wash-sales.md`](./wash-sales.md).
 
 ---
 
@@ -167,7 +180,8 @@ Reconstruction from on-chain data is possible (Etherscan, BTCScan, on-chain expl
 ## What the agent must NOT do
 
 - Never assume basis = $0. Stop and ask the user. A $0 basis on a sold $50,000 BTC creates $50,000 of phantom gain.
-- Never invent a wash sale rule for crypto under current law. As of 2025, §1091 does not apply.
+- Never invent a wash sale rule for crypto under current law. As of 2025, §1091 does not apply, except to tokenized securities (digital assets that are also stock or securities).
+- Never put a digital asset in Form 8949 Box C or F. Use G–L (or A/B/D/E when the sale came on a 1099-B).
 - Never invent staking treatment for novel protocols. Surface the ambiguity to the user and recommend a crypto-savvy CPA for material amounts.
 - Never store wallet private keys or exchange API keys with write permissions. CSV exports and read-only API tokens only.
 - Never paste full wallet addresses or transaction hashes into general-purpose chat tools — these are personally identifying. Use redacted forms in any external communication.
@@ -179,7 +193,9 @@ Reconstruction from on-chain data is possible (Etherscan, BTCScan, on-chain expl
 - **Notice 2014-21** — Virtual Currency Guidance
 - **Rev. Rul. 2019-24** — Hard fork and airdrop guidance
 - **Rev. Proc. 2024-28** — Wallet-level basis tracking (effective Jan 1, 2025)
-- **Form 1099-DA Instructions** — Digital Asset Proceeds From Broker Transactions
+- **Form 1099-DA Instructions** — Digital Asset Proceeds From Broker Transactions: [2025 revision](https://www.irs.gov/pub/irs-prior/i1099da--2025.pdf) (2025 sales), [current revision](https://www.irs.gov/pub/irs-pdf/i1099da.pdf)
+- **Instructions for Form 8949 (2025)** — Boxes G–L, "Digital Assets" section, p. 3: https://www.irs.gov/pub/irs-pdf/i8949.pdf
+- **Instructions for Schedule D (2025)** — Wash Sales (tokenized securities), p. 5: https://www.irs.gov/pub/irs-pdf/i1040sd.pdf
 - **Treasury Regs §1.6045-1, §1.6045A-1** — Broker reporting rules (extended to digital asset brokers in 2024)
 - **IRS FAQs on Virtual Currency Transactions** — https://www.irs.gov/individuals/international-taxpayers/frequently-asked-questions-on-virtual-currency-transactions
 - **Jarrett v. United States** (2022) — Open question on staking rewards as income vs. created property

@@ -114,7 +114,7 @@ For stock to qualify as Qualified Small Business Stock (QSBS):
 
 1. **Issuer must be a domestic C-corp** at the time of issuance (and during substantially all of holding period)
 2. **Original issuance** — stock acquired directly from the corporation, not from a secondary buyer
-3. **Small business test** — corporation's aggregate gross assets did not exceed $50 million immediately before and after issuance
+3. **Small business test** — corporation's aggregate gross assets did not exceed $75 million ($50 million if the stock was issued on or before July 4, 2025; P.L. 119-21 raised the limit) immediately before and after issuance (Instructions for Schedule D (2025), p. 7)
 4. **Active business test** — corporation must use at least 80% of assets in qualified active business (excludes holding companies, certain service businesses, hospitality, finance)
 5. **Holding period** — stock held more than 5 years before sale
 6. **Acquisition date matters** — exclusion percentages differ:
@@ -140,14 +140,13 @@ The cap is per-issuer (per company), per-taxpayer.
 
 ### How it appears on Form 8949
 
-- Code **Q** for partial exclusion (50% or 75% windows)
-- Code **X** for full exclusion (post-September 27, 2010 acquisitions)
+- Code **Q** for every §1202 exclusion, partial (50%/60%/75%) or full (100%, post-September 27, 2010 acquisitions) (Instructions for Schedule D (2025), p. 8). Code X is a different exclusion (DC Zone / qualified community assets).
 - The excluded portion goes in column (g) as a negative adjustment
 - Column (h) = (d) − (e) + (g) — typically zero (full exclusion) or a remainder (partial)
 
 ### How it appears on Schedule D
 
-For 100% excluded gain (code X): the gain is fully eliminated on Form 8949; Schedule D never sees it. No 28% rate consideration, no NIIT, no state tax (subject to state conformity).
+For 100% excluded gain (code Q, 100% exclusion): the gain is fully eliminated on Form 8949; Schedule D never sees it. No 28% rate consideration, no NIIT, no state tax (subject to state conformity).
 
 For partially excluded gain (code Q): the included portion appears in column (h), flows to Schedule D Lines 8a/8b/9/10, and the included portion *also* flows to the 28% Rate Gain Worksheet → Line 18. The 28% rate applies to the included portion.
 
@@ -177,7 +176,7 @@ A taxpayer can have all three special-rate categories on a single return:
 - Stock sale (covered, basis reported): $50,000 long-term gain → Box D → 0/15/20%
 - Rare book collection sale: $20,000 long-term gain → Box F + code C → 28% rate
 - Rental property sale: $200,000 gain (of which $80,000 §1250) → Form 4797 → Schedule D Line 11
-- §1202 QSBS sale: $5,000,000 gain (100% excluded) → Form 8949 + code X → no Schedule D impact
+- §1202 QSBS sale: $5,000,000 gain (100% excluded) → Form 8949 + code Q → no Schedule D impact
 
 Schedule D Lines 18 and 19 will both be > 0, forcing the **Schedule D Tax Worksheet**. The QSBS gain doesn't appear on Schedule D at all (excluded). The remaining buckets are taxed:
 

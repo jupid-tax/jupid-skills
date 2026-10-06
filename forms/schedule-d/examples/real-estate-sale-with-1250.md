@@ -10,7 +10,7 @@ A landlord who sold a rental property in 2025. Demonstrates the Form 4797 → Sc
 - **Filing status:** Married Filing Jointly
 - **Tax year:** 2025
 - **Wages (combined):** $190,000
-- **Standard deduction:** $30,000 (MFJ, 2025)
+- **Standard deduction:** $31,500 (MFJ, 2025; 2025 Instructions for Form 1040, "Standard deduction amount increased")
 - **Other income:** $0
 - **Qualified dividends:** $4,200
 - **Capital gain distributions (1099-DIV Box 2a):** $1,800
@@ -103,47 +103,42 @@ Wages:                            $190,000
 LT gain (Line 16):                $434,345
 Qualified dividends:                $4,200
 AGI:                              $628,545
-Standard deduction:               ($30,000)
-Taxable income (Form 1040 Line 15): $598,545
+Standard deduction:               ($31,500)
+Taxable income (Form 1040 Line 15): $597,045
 ```
 
-**Schedule D Tax Worksheet — bucket allocation:**
+**Schedule D Tax Worksheet — 2025 line by line (Instructions for Schedule D (2025), pp. 15–16):**
 
 ```
-Step 1: Bucket amounts.
-   Ordinary income (excluding LT gain and qualified dividends):
-       $598,545 − $434,345 − $4,200 = $160,000
-
-   §1250 unrecaptured gain bucket:    $174,545  (max 25%)
-   28% rate gain bucket:                   $0
-   Remaining LT gain + qualified div: $434,345 + $4,200 − $174,545 = $264,000  (0/15/20%)
-
-Step 2: Ordinary tax on $160,000 (MFJ 2025) ≈ $26,440
-   (taxable income $90,750–$201,050 = 22% bracket portion; below $96,700 = 12%, etc.)
-
-Step 3: Layer the special-rate buckets on top.
-
-   Layer 1: 0/15/20% bucket — $264,000 stacked on top of ordinary $160,000.
-      Position: $160,000 → $424,000.
-      MFJ LTCG brackets: 0% up to $96,700, 15% to $600,050, 20% above.
-      Already past 0% bracket. Entire $264,000 in 15% bracket.
-      Tax: $264,000 × 15% = $39,600
-
-   Layer 2: §1250 unrecaptured bucket — $174,545 stacked on top of $424,000.
-      Position: $424,000 → $598,545.
-      Maximum rate 25%. Worksheet applies 25% (since ordinary bracket at this position is 35%, well above 25%).
-      Tax: $174,545 × 25% = $43,636
-
-Step 4: Total tax = $26,440 + $39,600 + $43,636 = $109,676
+Line 1:  Taxable income                                     $597,045
+Line 10: Qualified dividends + net LT gain ($4,200 + $434,345) $438,545
+Line 12: §1250 + 28% gain (smaller of line 9 or Sch D 18+19)  $174,545
+Line 13: Gain taxed at 0/15/20% (line 10 − line 12)          $264,000
+Line 14: Line 1 − line 13 (ordinary income + §1250 gain)     $333,045
+Line 18: Ordinary income only (line 1 − line 10)             $158,500
+Line 19: Smaller of line 1 or $394,600 (MFJ)                 $394,600
+Line 21: Larger of line 18 or (smaller of line 14 or 19)     $333,045
+         → the whole $174,545 §1250 gain sits below the $394,600 cap,
+           so it is taxed at ordinary rates (24% at most), not 25%.
+Line 22: Taxed at 0% (line 16 $96,700 − line 17 $96,700)          $0
+Line 30: Taxed at 15% (taxable income stays under $600,050)  $264,000
+Line 31: $264,000 × 15%                                       $39,600
+Line 39: §1250 gain left for the 25% rate                          $0
+Line 44: Tax on $333,045 (2025 Tax Computation Worksheet,
+         Section B: × 24% − $14,306)                          $65,625
+Line 45: Lines 31 + 34 + 40 + 43 + 44                        $105,225
+Line 46: Regular tax on $597,045 (× 35% − $60,905.50)        $148,060
+Line 47: Tax = smaller of line 45 or 46                      $105,225
 ```
 
-**Compare to the wrong worksheet path** — if David used the Qualified Dividends and Capital Gain Tax Worksheet (which has no 25% bucket), the §1250 portion would land in the 15% LTCG bracket:
+**Compare to the wrong worksheet path** — if David used the Qualified Dividends and Capital Gain Tax Worksheet (which has no 25% bucket and no line-19 cap), the §1250 portion would land in the 15% LTCG bracket:
 
 ```
-Wrong path: ($264,000 + $174,545) × 15% = $65,782 LTCG tax
-Total: $26,440 + $65,782 = $92,222
+Wrong path: tax on ordinary $158,500 (× 22% − $10,172) = $24,698
+            + ($264,000 + $174,545) × 15%              = $65,782
+Total:                                                   $90,480
 
-Underpayment: $109,676 − $92,222 = $17,454
+Underpayment: $105,225 − $90,480 = $14,745
 ```
 
 The IRS catches this via the Form 4797 / Schedule D crosswalk — Form 4797 reports the §1250 portion, and the IRS recomputes Schedule D using the correct rate. Notice with interest follows.
@@ -177,13 +172,13 @@ The MAGI excess is the binding constraint here, not NII — David's MAGI is high
 ## Total federal tax on the property sale
 
 ```
-Schedule D Tax Worksheet result:    $109,676 (regular tax)
-   of which on the property sale:    $83,236 (excludes ordinary on wages portion)
+Schedule D Tax Worksheet result:    $105,225 (regular tax)
+   of which on the property sale:    $80,527 (less $24,698 tax on ordinary income alone)
 NIIT:                                $14,385
-Total federal:                       $124,061 attributable to capital gain (rough allocation)
+Total federal:                       $94,912 attributable to capital gain (rough allocation)
 ```
 
-Plus state tax (varies by state). For a California filer, add roughly $434,345 × 9.3% = $40,394 state tax. Total all-in tax on the $432,545 gain: roughly $164,000 — about 38% effective rate.
+Plus state tax (varies by state). For a California filer, add roughly $434,345 × 9.3% = $40,394 state tax. Total all-in tax on the $432,545 gain: roughly $135,000 — about 31% effective rate.
 
 ---
 
@@ -202,7 +197,7 @@ Plus state tax (varies by state). For a California filer, add roughly $434,345 �
 
 ## What David should know
 
-1. **Depreciation recapture is the price of the depreciation deductions.** David got 16 years of $11,200/year depreciation deductions (about $179K of total deductions), saving roughly $40K to $50K in income tax over the holding period. The $43,636 of §1250 recapture is the deferred bill on those deductions — paid at the lower 25% capital rate, not the higher ordinary rates. This is still a net win.
+1. **Depreciation recapture is the price of the depreciation deductions.** David got 16 years of $11,200/year depreciation deductions (about $179K of total deductions), saving roughly $40K to $50K in income tax over the holding period. The $174,545 of unrecaptured §1250 gain is the deferred bill on those deductions. Here it is taxed at ordinary rates of at most 24%, because 25% is a ceiling: the Schedule D Tax Worksheet keeps §1250 gain at ordinary rates while it stays under the line 19 amount ($394,600 MFJ). This is still a net win.
 
 2. **§1031 deferral was an option.** David could have rolled the gain into another rental property within 45/180 days under IRC §1031, deferring the full tax bill until the replacement property is eventually sold. Step-up basis at death (§1014) can wipe out the deferred gain entirely if held until death.
 
@@ -219,7 +214,7 @@ Plus state tax (varies by state). For a California filer, add roughly $434,345 �
 - [x] **Schedule D** — Line 11 receives Form 4797 net §1231; Line 19 from Unrecaptured §1250 Gain Worksheet; Schedule D Tax Worksheet computes tax
 - [x] **Form 8960** — NIIT $14,385
 - [ ] **Form 1040 Line 7** — enter $434,345
-- [ ] **Form 1040 Line 16** — enter $109,676 from Schedule D Tax Worksheet
+- [ ] **Form 1040 Line 16** — enter $105,225 from Schedule D Tax Worksheet
 - [ ] **Schedule 2 Line 12** — enter $14,385 NIIT
 - [x] **State return** — flag full ordinary-rate treatment in CA / NY / NJ / etc.
 

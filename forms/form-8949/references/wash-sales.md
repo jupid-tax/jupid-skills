@@ -112,6 +112,10 @@ If the user has already done this, the loss is gone. The fix going forward is to
 
 This is a year-by-year question. Multiple proposed amendments (e.g., the Build Back Better Act in 2021, various Senate Finance Committee proposals) would extend §1091 to digital assets, but **none have been enacted as of tax year 2025**. The agent must verify the current rule before relying on this exemption — every January, check whether the rule has changed.
 
+**Exception already in force — tokenized securities.** The 2025 Schedule D instructions state that the wash sale rules generally apply to digital assets that are also stock or securities for tax purposes (Instructions for Schedule D (2025), p. 5, "Wash Sales"). Brokers report the disallowed loss for those tokens in Form 1099-DA box 1i when the sale and repurchase are in the same account with the same CUSIP (2025 Instructions for Form 1099-DA, p. 8). Apply code W to them like any security.
+
+**Pending as of 2026-10-06 — H.R. 10357, Digital Asset Tax Certainty Act.** Ordered reported by the House Ways and Means Committee on 2026-09-16, which is still the latest action on congress.gov as of 2026-10-06; it is not law. Section 301 of the committee substitute would amend §1091 to cover traded digital assets, with an effective date of "dispositions after September 14, 2026." If enacted as written it would reach 2026 returns, not 2025 returns. Check its status at https://www.congress.gov/bill/119th-congress/house-bill/10357 before relying on the crypto exemption for any 2026 sale.
+
 For now (tax year 2025):
 
 - Sell BTC at a $5,000 loss on Dec 15
@@ -121,7 +125,7 @@ For now (tax year 2025):
 
 This makes "tax-loss harvesting" much more aggressive in crypto than in equities. The IRS has expressed concern about this in commentary, which is why proposals to close the gap recur.
 
-**Likely change**: when §1091 is extended to digital assets, the change will be prospective. Existing positions held under the old rule won't be retroactively affected. But agents should set a reminder to re-verify §1091's scope every January before filing season.
+**Effective date risk**: do not assume an extension of §1091 to digital assets will start only after enactment. The pending H.R. 10357 substitute uses a date before any possible enactment (dispositions after September 14, 2026). Agents should re-verify §1091's scope every January before filing season.
 
 ---
 
@@ -170,7 +174,7 @@ For every loss transaction in the draft:
 
 4. **If no and the broker did not flag**: still ask the user about cross-account/spousal/IRA purchases. Brokers cannot see those.
 
-5. **For crypto losses**: confirm current year's §1091 scope. As of tax year 2025, crypto is exempt — no code needed. Reverify in 2026 and beyond.
+5. **For crypto losses**: confirm current year's §1091 scope. As of tax year 2025, crypto is exempt — no code needed — unless the token is a tokenized security (stock or securities for tax purposes), which takes code W. Reverify in 2026 and beyond, including the status of H.R. 10357.
 
 ---
 
@@ -178,6 +182,9 @@ For every loss transaction in the draft:
 
 - IRC §1091 — Loss from wash sales of stock or securities
 - IRS Publication 550 — Investment Income and Expenses (chapter on wash sales)
-- IRS Form 8949 Instructions — Code W discussion in Table 1
+- IRS Form 8949 Instructions (2025) — code W in the table "How To Complete Form 8949, Columns (f) and (g)", p. 10
+- [Instructions for Schedule D (2025)](https://www.irs.gov/pub/irs-pdf/i1040sd.pdf), p. 5 — wash sale rules apply to tokenized securities
+- [Instructions for Form 1099-DA (2025)](https://www.irs.gov/pub/irs-prior/i1099da--2025.pdf), p. 8 — box 1i wash sale reporting for tokenized securities
+- [H.R. 10357 (119th Congress)](https://www.congress.gov/bill/119th-congress/house-bill/10357) and the [Ways and Means committee substitute](https://waysandmeans.house.gov/wp-content/uploads/2026/09/AINS-to-HR-10357.pdf), Sec. 301(e) — pending; status checked 2026-10-06
 - Rev. Rul. 56-275 — substantially identical analysis for bonds
 - Rev. Rul. 60-195 — wash sales involving short positions

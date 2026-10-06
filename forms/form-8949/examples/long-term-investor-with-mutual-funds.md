@@ -108,20 +108,20 @@ SSN: XXX-XX-XXXX (and spouse)
 
 ```
 Total taxable income (joint) ≈ $80,000 ordinary + $33,860 LT cap gain = $113,860 (before standard deduction)
-Less 2025 MFJ standard deduction: $30,000 (estimate)
-Taxable income: $83,860
+Less 2025 MFJ standard deduction: $31,500 (2025 Instructions for Form 1040)
+Taxable income: $82,360
 
 LTCG bracket math (2025 MFJ):
   0% bracket: up to $96,700
   15% bracket: $96,701 – $600,050
 
 Patricia's $33,860 LT cap gain stacks on top of her ordinary income for bracket determination.
-Ordinary taxable income: $50,000
-Capital gain stacked on top: $33,860 → falls within $50,000 to $83,860
+Ordinary taxable income: $48,500
+Capital gain stacked on top: $33,860 → falls within $48,500 to $82,360
 Both ordinary income and capital gain are below $96,700 → most of the cap gain is in the 0% LTCG bracket.
 
 Approximate calc:
-  $96,700 LTCG 0% bracket − $50,000 ordinary = $46,700 of LTCG taxed at 0%
+  $96,700 LTCG 0% bracket − $48,500 ordinary = $48,200 of LTCG taxed at 0%
   Patricia's full $33,860 fits below that → $33,860 × 0% = $0 federal LTCG tax
 ```
 

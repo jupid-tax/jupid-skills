@@ -87,7 +87,7 @@ The agent navigates and interacts deterministically. Stable selectors are listed
    - Search "Form 8949" — or pick from the list
    - FFFF opens **one page per box**. To enter Boxes A and D, you'll create two pages. To enter Boxes A, B, D, E, you'll create four pages. The agent should iterate through every box that has at least one row in the draft.
 8. **For each Form 8949 page**:
-   - Check the corresponding box at the top (A, B, C in Part I; D, E, F in Part II) — exactly one
+   - Check the corresponding box at the top (A, B, C, G, H, or I in Part I; D, E, F, J, K, or L in Part II) — exactly one. Digital assets go only in G–L or, if reported on a 1099-B, A/B/D/E; never C or F.
    - Enter rows one at a time. FFFF reveals more rows as you fill prior ones.
    - Field-by-field mapping per row:
 
@@ -99,14 +99,14 @@ The agent navigates and interacts deterministically. Stable selectors are listed
 | (d) Proceeds | "Proceeds" | Draft column (d) |
 | (e) Cost or other basis | "Cost basis" | Draft column (e) |
 | (f) Codes | "Code(s) from instructions" — text | Draft column (f) |
-| (g) Amount of adjustment | "Amount of adjustment" — positive number | Draft column (g) |
+| (g) Amount of adjustment | "Amount of adjustment" — signed: negative for exclusions, postponed or deferred gain, and unreflected selling costs; positive for disallowed losses (see the sign rules in `references/line-by-line.md`) | Draft column (g) |
 | (h) Gain/Loss | (auto-computed) | (verify equals draft column (h)) |
 
 9. **Page totals** — FFFF auto-sums each column at the bottom of each 8949 page. Verify the sums match the draft's box totals.
 10. **Add Schedule D**:
     - Click "Add a Form / Schedule" → Schedule D
     - Schedule D imports totals from each 8949 page automatically *if* the boxes are checked correctly
-    - Verify Lines 1b, 2, 3 (short-term boxes) and Lines 8b, 9, 10 (long-term boxes) match the draft's box totals
+    - Verify Lines 1b, 2, 3 (short-term boxes) and Lines 8b, 9, 10 (long-term boxes) match the draft's box totals. On the 2025 Schedule D each line combines two boxes: 1b = A + G, 2 = B + H, 3 = C + I, 8b = D + J, 9 = E + K, 10 = F + L
     - Lines 7 (net short-term) and 15 (net long-term) compute from the box totals
     - Line 16 (net capital gain/loss) computes; it carries to Form 1040 Line 7
 11. **Capital loss carryover** — if Line 16 is a net loss exceeding the $3,000 limit:
@@ -158,7 +158,7 @@ For users with paid tax software (TurboTax, H&R Block, FreeTaxUSA, TaxSlayer, Ta
    - Crypto tax software → general software: 8949 PDF or TXF file import
 4. **Manual entry alternative**: same field mapping as Section 1 step 8.
 5. **Wash sale**: most software auto-detects within a single broker's data. Cross-broker and cross-account washes are user-supplied. The agent must surface this rule explicitly to the user — the software won't.
-6. **Crypto-specific gotcha**: software typically doesn't pull crypto exchange CSVs natively. The user must either upload the CSV or use a crypto tax tool first. Coinbase 1099-MISC (for staking) is *not* a 1099-B and won't import basis. The agent needs to upload the exchange CSV separately.
+6. **Crypto-specific gotcha**: software typically doesn't pull crypto exchange CSVs natively. The user must either upload the CSV or use a crypto tax tool first. Coinbase 1099-MISC (for staking) is *not* a 1099-B and won't import basis. A 2025 Form 1099-DA imports proceeds but may carry no basis (basis was optional for 2025 sales). The agent needs to upload the exchange CSV separately and confirm the software files the crypto rows under Boxes G–L, not C or F.
 7. After entry, the software shows a "Schedule D Summary" — verify each line against the draft. Override anything that disagrees.
 8. Continue through Form 1040 review; software computes Form 8960 (NIIT) automatically if applicable.
 9. Pay the software fee; e-file.

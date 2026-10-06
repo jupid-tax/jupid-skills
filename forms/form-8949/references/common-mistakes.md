@@ -44,13 +44,15 @@ The IRS computer cross-references every Box A and Box D entry against broker 109
 
 ---
 
-## Mistake 5 — Wrong box (A vs B vs C, or D vs E vs F)
+## Mistake 5 — Wrong box (A vs B vs C, or D vs E vs F; G–L for digital assets)
 
 **The problem**: filer puts a covered share sale in Box C ("no 1099-B received") instead of Box A. The 1099-B exists; the IRS computer expects Box A totals to match it; mismatch flags the return.
 
+The 2025 version of this mistake: a crypto sale in Box C or F. The 2025 form gives digital assets their own boxes (G/H/I short-term, J/K/L long-term) and the instructions say not to use Box C or F for them (Instructions for Form 8949 (2025), pp. 1 and 3). A sale on a proceeds-only 2025 Form 1099-DA belongs in Box H or K; a sale with no 1099-DA belongs in Box I or L.
+
 **Impact**: CP2000 or slow-walked refund. May also flag the return for desk audit.
 
-**How the skill avoids it**: in Step 3, the agent reads each 1099-B's "basis reported to IRS" / "basis not reported to IRS" / "non-1099-B" labeling and assigns the correct box. Sanity check in Step 8 confirms that Box A/D entries have a 1099-B and Box C/F entries don't.
+**How the skill avoids it**: in Step 3, the agent reads each 1099-B's "basis reported to IRS" / "basis not reported to IRS" / "non-1099-B" labeling, and each 1099-DA's box 2 and "Applicable checkbox on Form 8949" code, and assigns the correct box. Sanity check in Step 8 confirms that Box A/D entries have a 1099-B, Box G/H/J/K entries have a 1099-DA, and Box C/F entries have neither and are not digital assets.
 
 ---
 
@@ -78,7 +80,7 @@ For crypto specifically: the agent guides the user through CSV exports from exch
 
 ## Mistake 8 — Schedule D total doesn't tie to 8949 totals
 
-**The problem**: filer enters 8949 transactions correctly but transposes a digit when totaling them onto Schedule D. Or they forget to include Box C totals in Line 3. Or they miscount.
+**The problem**: filer enters 8949 transactions correctly but transposes a digit when totaling them onto Schedule D. Or they forget to include Box C totals in Line 3, or leave the Box I page out of Line 3 (each of Lines 1b, 2, 3, 8b, 9, 10 now combines two boxes). Or they miscount.
 
 **Impact**: Mismatch between 8949 page totals and Schedule D box-line entries triggers an internal-consistency error in IRS processing. Might be auto-corrected; might not.
 
@@ -132,7 +134,7 @@ For crypto specifically: the agent guides the user through CSV exports from exch
 
 The Form 1040 digital asset question reads: "At any time during [year], did you (a) receive (as a reward, award, or payment for property or services); or (b) sell, exchange, or otherwise dispose of a digital asset (or a financial interest in a digital asset)?"
 
-If the user answers "Yes" but has no Box C/F entries on 8949 and no 1099-MISC entries on Schedule 1: the agent should reconcile. The "Yes" answer is correct in many cases (receiving a small airdrop, getting paid in crypto, etc.) but each "Yes" should produce **some** corresponding tax entry somewhere. A "Yes" with nothing else is a flag.
+If the user answers "Yes" but has no Box G–L entries on 8949 and no 1099-MISC entries on Schedule 1: the agent should reconcile. The "Yes" answer is correct in many cases (receiving a small airdrop, getting paid in crypto, etc.) but each "Yes" should produce **some** corresponding tax entry somewhere. A "Yes" with nothing else is a flag.
 
 If the user answers "No" but has crypto activity in their records: the agent must correct the answer. False "No" answers are perjury (the form is signed under penalty of perjury) and trigger major penalties.
 
@@ -146,7 +148,7 @@ Before declaring an 8949 draft ready, verify:
 - [ ] Holding period is computed as (sold − acquired − 1) > 365 for long-term
 - [ ] Every loss is checked for wash sale across all accounts
 - [ ] Every 1099-B issued to the user is represented on the form
-- [ ] Each transaction is in the correct box based on 1099-B labeling
+- [ ] Each transaction is in the correct box based on 1099-B or 1099-DA labeling; no digital asset in Box C or F
 - [ ] No row has $0 basis when actual basis is positive
 - [ ] Cross-account, spousal, and IRA wash sales are surfaced
 - [ ] 8949 box totals tie to Schedule D box-line entries

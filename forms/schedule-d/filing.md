@@ -45,11 +45,11 @@ FFFF presents Schedule D as a fillable PDF. The agent must populate each line in
 
 ### Part I — Short-Term
 
-For each Box A page on Form 8949:
+For each Box A or Box G page on Form 8949:
 - Form 8949 (Part I) page is filled separately; FFFF auto-rolls totals to Schedule D Line 1b
 - Or, if no adjustments and aggregation is acceptable, fill Schedule D **Line 1a** directly with proceeds, basis, and gain/loss totals
 
-For **Line 2** (Box B), **Line 3** (Box C): fill from Form 8949 detail. FFFF rolls totals automatically if 8949 was completed first.
+For **Line 2** (Box B or Box H), **Line 3** (Box C or Box I): fill from Form 8949 detail. FFFF rolls totals automatically if 8949 was completed first.
 
 **Line 4** (other forms): manually enter short-term totals from Form 6252 (installments), Form 6781 (40% short-term portion), Form 8824 (like-kind boot recognized as ST).
 
@@ -61,7 +61,7 @@ For **Line 2** (Box B), **Line 3** (Box C): fill from Form 8949 detail. FFFF rol
 
 ### Part II — Long-Term
 
-Same pattern for Lines 8a, 8b, 9, 10.
+Same pattern for Lines 8a, 8b (Box D or J), 9 (Box E or K), 10 (Box F or L).
 
 **Line 11**: combine §1231 net gain from Form 4797 + Form 6252 long-term + Form 6781 60% portion + Form 8824 long-term portion. FFFF does not break these out; one combined total goes here.
 

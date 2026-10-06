@@ -72,11 +72,11 @@ The 10 mistakes filers make most often on Schedule D, ordered roughly by frequen
 
 **Solution:** Before selling stock in a privately-held C-corp, verify QSBS qualification with a tax advisor:
 - Stock acquired at original issuance (not from a secondary buyer)
-- Issuer was a domestic C-corp with under $50M aggregate gross assets at issuance
+- Issuer was a domestic C-corp with total gross assets of $75M or less at issuance ($50M or less if the stock was issued on or before July 4, 2025; the $75M figure comes from P.L. 119-21) (Instructions for Schedule D (2025), p. 7)
 - Issuer engaged in qualified active business
 - Held more than 5 years
 
-If qualified, report on Form 8949 with code Q (partial) or X (100%); the excluded portion goes in column (g).
+If qualified, report on Form 8949 with code Q, whether the exclusion is partial or 100%; the excluded portion goes in column (g) as a negative number (Instructions for Schedule D (2025), p. 8). Code X is for DC Zone / qualified community assets.
 
 **Citation:** IRC §1202; see [`special-rates.md`](./special-rates.md).
 
@@ -84,7 +84,7 @@ If qualified, report on Form 8949 with code Q (partial) or X (100%); the exclude
 
 ## 7. Mismatched Form 8949 box totals on Schedule D
 
-**Problem:** Filer enters Form 8949 detail correctly but transcribes wrong totals to Schedule D Lines 1b, 2, 3, 8b, 9, 10. Often a typo or skipped page.
+**Problem:** Filer enters Form 8949 detail correctly but transcribes wrong totals to Schedule D Lines 1b, 2, 3, 8b, 9, 10. Often a typo or skipped page. On the 2025 Schedule D each of these lines combines two Form 8949 boxes (1b = A + G, 2 = B + H, 3 = C + I, 8b = D + J, 9 = E + K, 10 = F + L), so a digital-asset page left out of the sum is the new way to skip a page.
 
 **Impact:** IRS computer reconciles Schedule D Line 1b column (d) against the broker's transmitted 1099-B Box 1d totals. Mismatch → CP2000 notice or rejected e-file.
 
@@ -102,7 +102,7 @@ If qualified, report on Form 8949 with code Q (partial) or X (100%); the exclude
 
 **Solution:** When the wash sale is recorded, immediately add the disallowed loss to the basis of the replacement lot in the user's records. Brokers track this within a single account but not across accounts. Cross-account washes are entirely on the user.
 
-**Citation:** IRC §1091; Pub 550 wash sale chapter; see [`forms/form-8949/references/wash-sales.md`](../form-8949/references/wash-sales.md).
+**Citation:** IRC §1091; Pub 550 wash sale chapter; see [`forms/form-8949/references/wash-sales.md`](../../form-8949/references/wash-sales.md).
 
 ---
 

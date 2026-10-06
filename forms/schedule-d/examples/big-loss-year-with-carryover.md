@@ -10,7 +10,7 @@ A retail investor whose 2025 portfolio took a big hit and ends the year with a n
 - **Filing status:** Single
 - **Tax year:** 2025
 - **Wages:** $95,000
-- **Standard deduction:** $15,000 (single, 2025)
+- **Standard deduction:** $15,750 (single, 2025; 2025 Instructions for Form 1040, "Standard deduction amount increased")
 - **Qualified dividends:** $800
 - **Capital gain distributions (1099-DIV Box 2a):** $0
 - **Prior-year capital loss carryover:** $0 (first year with loss)
@@ -21,9 +21,9 @@ A retail investor whose 2025 portfolio took a big hit and ends the year with a n
 |---------------|-------------|---------|---------|
 | Box A | TSLA — bought Mar 2025, sold Aug 2025 | ST | ($8,500) |
 | Box A | NVDA — bought Apr 2025, sold Sept 2025 | ST | ($4,200) |
-| Box C | SOL — held 8 months, sold at loss | ST | ($3,300) |
+| Box I | SOL — held 8 months, sold at loss from a self-custody wallet (no 1099-DA) | ST | ($3,300) |
 | Box D | AAPL — held 4 years, sold at gain | LT | $5,200 |
-| Box F | BTC — held 2 years, sold at loss | LT | ($14,500) |
+| Box L | BTC — held 2 years, sold at loss from a self-custody wallet (no 1099-DA) | LT | ($14,500) |
 
 ---
 
@@ -35,7 +35,7 @@ A retail investor whose 2025 portfolio took a big hit and ends the year with a n
 |------|-------------|--------------|-----------|---------|---------------|
 | 1b | Box A 8949 (TSLA + NVDA) | $40,000 | $52,700 | $0 | ($12,700) |
 | 2 | Box B 8949 | — | — | — | $0 |
-| 3 | Box C 8949 (SOL) | $4,500 | $7,800 | $0 | ($3,300) |
+| 3 | Box C + Box I 8949 (SOL, Box I) | $4,500 | $7,800 | $0 | ($3,300) |
 | 4 | Forms 6252/6781/8824 ST | — | — | — | $0 |
 | 5 | K-1 ST | — | — | — | $0 |
 | 6 | Prior-year ST carryover | — | — | — | $0 |
@@ -47,7 +47,7 @@ A retail investor whose 2025 portfolio took a big hit and ends the year with a n
 |------|-------------|--------------|-----------|---------|---------------|
 | 8b | Box D 8949 (AAPL) | $12,000 | $6,800 | $0 | $5,200 |
 | 9 | Box E 8949 | — | — | — | $0 |
-| 10 | Box F 8949 (BTC) | $25,000 | $39,500 | $0 | ($14,500) |
+| 10 | Box F + Box L 8949 (BTC, Box L) | $25,000 | $39,500 | $0 | ($14,500) |
 | 11 | Forms 4797/6252/6781/8824 LT | — | — | — | $0 |
 | 12 | K-1 LT | — | — | — | $0 |
 | 13 | 1099-DIV Box 2a | — | — | — | $0 |
@@ -111,8 +111,8 @@ Capital loss (Line 21):         ($3,000)
 Qualified dividends:                $800
 Other income:                        $0
 AGI:                            $92,800
-Standard deduction:            ($15,000)
-Taxable income:                 $77,800
+Standard deduction:            ($15,750)
+Taxable income:                 $77,050
 ```
 
 Because Schedule D Line 16 is a loss, no preferential capital gain rate applies on Schedule D activity. But Maya has $800 of qualified dividends, which still get preferential treatment.
@@ -120,21 +120,21 @@ Because Schedule D Line 16 is a loss, no preferential capital gain rate applies 
 **Qualified Dividends and Capital Gain Tax Worksheet:**
 
 ```
-Step 1: Taxable income:              $77,800
+Step 1: Taxable income:              $77,050
 Step 2: Qualified dividends:            $800 (LT gain is zero on Line 15 in this case for QD&CG calc)
 
    Note: For the worksheet, only the Line 13 capital gain distributions
    and qualified dividends matter when Line 16 is a loss. Net LT loss
    does not produce a preferential layer.
 
-Step 3: Ordinary base = $77,800 − $800 = $77,000
-Step 4: Tax on $77,000 (single 2025 tables):     $12,150 (approx)
+Step 3: Ordinary base = $77,050 − $800 = $76,250
+Step 4: Tax on $76,250 (2025 Tax Table, single, $76,250–$76,300 row):  $11,695
 
 Step 5: Preferential layer — $800 stacked on top:
-   Within 15% LTCG bracket (taxable income $77,000–$77,800 well under $533,400):
+   Within 15% LTCG bracket (taxable income $76,250–$77,050 well under $533,400):
    $800 × 15% = $120
 
-Step 6: Total federal tax = $12,150 + $120 = $12,270
+Step 6: Total federal tax = $11,695 + $120 = $11,815
 ```
 
 **NIIT — Form 8960:** MAGI $92,800 well below the $200,000 single threshold. No NIIT.
@@ -143,8 +143,8 @@ Step 6: Total federal tax = $12,150 + $120 = $12,270
 
 ## Validation checks
 
-- [x] Line 7 = ($16,000) (Box A + Box C totals)
-- [x] Line 15 = ($9,300) (Box D + Box F totals)
+- [x] Line 7 = ($16,000) (Box A + Box I totals)
+- [x] Line 15 = ($9,300) (Box D + Box L totals)
 - [x] Line 16 = Line 7 + Line 15 = ($25,300)
 - [x] Line 16 < 0 → Line 21 applies
 - [x] Line 21 = MIN(|$25,300|, $3,000) = ($3,000) — single filer
@@ -169,7 +169,7 @@ Step 6: Total federal tax = $12,150 + $120 = $12,270
 
 - [x] **Form 8949** — all entries reported, all boxes used as appropriate
 - [ ] **Form 1040 Line 7** — enter ($3,000) [from Line 21]
-- [ ] **Form 1040 Line 16** — enter $12,270 from Qualified Dividends and Capital Gain Tax Worksheet
+- [ ] **Form 1040 Line 16** — enter $11,815 from Qualified Dividends and Capital Gain Tax Worksheet
 - [x] **Capital Loss Carryover Worksheet** — saved for 2026 use
 - [x] **No Form 8960** — MAGI below threshold
 - [x] **State return** — flag NJ-style restrictions if applicable

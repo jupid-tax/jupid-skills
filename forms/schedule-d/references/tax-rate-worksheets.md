@@ -46,20 +46,20 @@ Single filer, 2025:
   Long-term capital gain:         $15,000
   Qualified dividends:             $2,000
   Total income:                  $107,000
-  Standard deduction:            ($15,000) [single 2025]
-  Taxable income (Line 15):       $92,000
+  Standard deduction:            ($15,750) [single 2025]
+  Taxable income (Line 15):       $91,250
 
-Step 1: Ordinary base = $92,000 − $15,000 − $2,000 = $75,000
-Step 2: Regular tax on $75,000 (single, 2025 tables) ≈ $11,825
-Step 3: LTCG layer — $17,000 stacked on top of $75,000:
+Step 1: Ordinary base = $91,250 − $15,000 − $2,000 = $74,250
+Step 2: Regular tax on $74,250 (2025 Tax Table, single) = $11,255
+Step 3: LTCG layer — $17,000 stacked on top of $74,250:
   - Portion within 0% bracket (cutoff $48,350): $0 (already past it)
   - Portion within 15% bracket: $17,000 × 15% = $2,550
   - Portion above $533,400: $0
-Step 4: Total tax = $11,825 + $2,550 = $14,375
+Step 4: Total tax = $11,255 + $2,550 = $13,805
 
 Compare to "wrong worksheet" path:
-  Regular tax on $92,000 ≈ $15,571
-  Difference: $1,196 overpayment if the user used regular tables
+  Regular tax on $91,250 (2025 Tax Table, single) = $14,995
+  Difference: $1,190 overpayment if the user used regular tables
 ```
 
 ---
@@ -91,8 +91,8 @@ Single filer, 2025:
     of which §1250 unrecaptured:  $30,000 (depreciation taken)
     of which §1231 capital:       $70,000 (appreciation)
   Total income:                  $180,000
-  Standard deduction:            ($15,000)
-  Taxable income:                $165,000
+  Standard deduction:            ($15,750)
+  Taxable income:                $164,250
 
 Schedule D entries:
   Line 11 (§1231 from Form 4797): $100,000
@@ -100,16 +100,21 @@ Schedule D entries:
   Line 16:                         $100,000
   Line 19 (Unrecaptured §1250):    $30,000
 
-Schedule D Tax Worksheet:
-  Bucket 1 — ordinary on $65,000 (taxable − LT gain) ≈ $9,200
-  Bucket 2 — §1250 unrecaptured: $30,000 × 25% = $7,500
+Schedule D Tax Worksheet (2025 lines):
+  Bucket 1 — ordinary rates on $94,250 (line 21 = ordinary $64,250 + §1250 $30,000;
+             the §1250 gain fits under the line 19 cap of $197,300, so it is
+             taxed at the 22% ordinary rate, below the 25% maximum):
+             2025 Tax Table, single = $15,655 (line 44)
+  Bucket 2 — §1250 unrecaptured taxed at 25% (line 39): $0
   Bucket 3 — 28% rate (none): $0
-  Bucket 4 — remaining LT $70,000 × 15% = $10,500
-  Total tax: $27,200
+  Bucket 4 — remaining LT $70,000 × 15% = $10,500 (line 31)
+  Total tax: $26,155 (line 45; smaller than $32,267 regular tax on
+             $164,250, line 46)
 
 Compare to "wrong worksheet" (Qualified Dividends and Capital Gain Tax Worksheet):
   This worksheet doesn't have a 25% bucket — it would route the
-  full $30,000 §1250 gain at 15%, saving $3,000. Filers sometimes
+  full $30,000 §1250 gain at 15%: $9,055 + $15,000 = $24,055,
+  underpaying $2,100. Filers sometimes
   *accidentally* use the wrong worksheet and underpay; the IRS
   catches it via the Form 4797 / Schedule D crosswalk.
 ```

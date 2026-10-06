@@ -148,16 +148,15 @@ If MFS, each spouse has a $1,500 limit on their own return. This is one of the r
 
 ---
 
-## How Jupid tracks carryover
+## Tracking carryover year to year
 
-Jupid's accounting layer keeps year-over-year capital loss carryover automatically:
+The carryover only survives if someone keeps the numbers:
 
-- After each filing, the prior-year Capital Loss Carryover Worksheet is saved with the user's records.
-- The next year's Schedule D import pre-populates Lines 6 and 14 with the carryforward by character.
-- Mid-year, when a user asks "What's my carryover?", Jupid reports the inventory of unused short-term and long-term losses available.
-- Year-end planning: the user can ask "If I sell MSFT for a $10,000 gain, what's my net taxable gain?" and Jupid computes the answer including absorption from the carryover.
+- After each filing, save the completed Capital Loss Carryover Worksheet with the user's tax records.
+- Next year, ask the user for that worksheet (or last year's Schedule D lines 7, 15, and 21 and taxable income) before filling Lines 6 and 14. Do not estimate a carryover.
+- For mid-year planning, recompute the remaining short-term and long-term carryover from that worksheet, then show how a proposed sale would absorb it.
 
-This is the bookkeeping piece that breaks down most often with manual prep — losing track of the prior-year carryover means permanent loss of the deduction.
+This is the piece that breaks down most often with manual prep: losing track of the prior-year carryover means permanently losing the deduction.
 
 ---
 

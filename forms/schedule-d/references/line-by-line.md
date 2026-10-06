@@ -1,6 +1,6 @@
 # Schedule D — Line-by-Line Reference
 
-This document expands every line on Schedule D (Form 1040). Pull from the linked form and instructions for the year being filed; the IRS revises line wording from year to year, but the structure has been stable since the 2018 redesign.
+This document expands every line on Schedule D (Form 1040). Pull from the linked form and instructions for the year being filed; the IRS revises line wording from year to year, but the structure has been stable since the 2018 redesign. Verified against the 2025 Schedule D and its instructions (Dec 11, 2025): the 2025 revision kept the line numbers, added Form 8949 digital-asset Boxes G–L to lines 1b, 2, 3, 8b, 9, and 10, and added Form 1099-DA to lines 1a and 8a (Instructions for Schedule D (2025), p. 1, What's New).
 
 **Companion sources:**
 - [Schedule D (Form 1040)](https://www.irs.gov/pub/irs-pdf/f1040sd.pdf)
@@ -21,30 +21,35 @@ This document expands every line on Schedule D (Form 1040). Pull from the linked
 
 Part I covers **assets held one year or less**. Net short-term gain is taxed at the user's ordinary income rate (10% – 37% brackets).
 
-### Line 1a — Totals for short-term transactions reported on Form 1099-B showing basis was reported to the IRS and for which **no adjustments are required**
+### Line 1a — Totals for all short-term transactions reported on Form 1099-B or Form 1099-DA for which basis was reported to the IRS and for which **no adjustments are required**
 
-This is the optional aggregation line. Use only if **all** of the following are true:
+This is the optional aggregation line. Use only if **all** of the following are true (Instructions for Schedule D (2025), p. 10):
 
-- The 1099-B reports basis to the IRS (this is Box A)
-- The 1099-B's basis matches the user's records (no correction needed)
-- No wash sale adjustment is required (broker-reported wash sales already on the 1099-B do require Form 8949 entry, however)
+- The 1099-B or 1099-DA reports basis to the IRS (this is Box A or Box G)
+- The 1099-B's or 1099-DA's basis matches the user's records (no correction needed)
+- No wash sale adjustment is required (broker-reported wash sales already on the 1099-B box 1g or 1099-DA box 1i do require Form 8949 entry, however)
+- The Ordinary box (1099-B box 2 / 1099-DA box 6) and the QOF box (1099-B box 3 / 1099-DA box 3b) are not checked, and the sale is not of collectibles
 - No other column (g) adjustment is needed
 
-Enter the totals from the 1099-Bs directly: column (d) proceeds total, column (e) basis total, column (h) gain/loss.
+Enter the totals from the 1099-Bs and 1099-DAs directly: column (d) proceeds total, column (e) basis total, column (h) gain/loss.
 
-If any of the conditions fails, the transaction must be reported on Form 8949 Box A and rolled to Line 1b instead.
+If any of the conditions fails, the transaction must be reported on Form 8949 Box A or Box G and rolled to Line 1b instead.
 
-### Line 1b — Totals for all short-term transactions reported on Form 8949 with Box A checked
+### Line 1b — Totals for all transactions reported on Form 8949 with Box A or Box G checked
 
-Sum of column (d), (e), (g), and (h) from every Form 8949 Part I, Box A page. The IRS computer matches Line 1b column (d) totals against the broker's transmitted 1099-B Box 1d totals; mismatches trigger automated notices.
+Sum of column (d), (e), (g), and (h) from every Form 8949 Part I, Box A page and every Box G page (digital assets on a 1099-DA with basis reported). The IRS computer matches Line 1b column (d) totals against the broker's transmitted 1099-B Box 1d totals; mismatches trigger automated notices.
 
-### Line 2 — Totals for all short-term transactions reported on Form 8949 with Box B checked
+### Line 2 — Totals for all transactions reported on Form 8949 with Box B or Box H checked
 
 Box B = short-term, basis NOT reported on 1099-B. Common causes: shares acquired before broker basis reporting (pre-2011 covered date), transferred-in lots without basis history.
 
-### Line 3 — Totals for all short-term transactions reported on Form 8949 with Box C checked
+Box H = short-term digital assets on a 1099-DA without basis reported to the IRS. Common cause: a 2025 crypto sale on a U.S. custodial exchange (basis reporting was optional for 2025 sales).
 
-Box C = short-term, no 1099-B issued. Common causes: crypto sales (most US exchanges still don't issue 1099-B, though 1099-DA is rolling out for tax year 2025+), private placements, peer-to-peer asset sales.
+### Line 3 — Totals for all transactions reported on Form 8949 with Box C or Box I checked
+
+Box C = short-term, no 1099-B or 1099-DA issued, not a digital asset. Common causes: private placements, peer-to-peer asset sales.
+
+Box I = short-term digital assets with no 1099-DA or 1099-B: self-custody wallet trades, DEX swaps, foreign exchanges. Digital assets never go in Box C on the 2025 form (Instructions for Form 8949 (2025), p. 3).
 
 ### Line 4 — Short-term gain from Form 6252 and short-term gain or (loss) from Forms 4684, 6781, and 8824
 
@@ -81,21 +86,25 @@ This is the year's net short-term result before combining with long-term. Net sh
 
 Part II covers **assets held more than one year**. Net long-term gain is taxed at the preferential 0/15/20% rate (or 25% / 28% for special asset categories).
 
-### Line 8a — Totals for long-term transactions reported on Form 1099-B showing basis was reported to the IRS and for which **no adjustments are required**
+### Line 8a — Totals for all long-term transactions reported on Form 1099-B or Form 1099-DA for which basis was reported to the IRS and for which **no adjustments are required**
 
-Same aggregation rules as Line 1a, applied to Box D (long-term, basis reported).
+Same aggregation rules as Line 1a, applied to Box D and Box J (long-term, basis reported).
 
-### Line 8b — Totals for all long-term transactions reported on Form 8949 with Box D checked
+### Line 8b — Totals for all transactions reported on Form 8949 with Box D or Box J checked
 
-Sum from Form 8949 Part II, Box D pages.
+Sum from Form 8949 Part II, Box D and Box J pages.
 
-### Line 9 — Totals for all long-term transactions reported on Form 8949 with Box E checked
+### Line 9 — Totals for all transactions reported on Form 8949 with Box E or Box K checked
 
 Box E = long-term, basis NOT reported on 1099-B. Common: mutual fund shares acquired before 2012, transferred-in long-held lots.
 
-### Line 10 — Totals for all long-term transactions reported on Form 8949 with Box F checked
+Box K = long-term digital assets on a 1099-DA without basis reported to the IRS (e.g., a 2025 sale of coins held more than a year on a U.S. custodial exchange).
 
-Box F = long-term, no 1099-B issued. Common: long-held crypto (more than one year), real estate, collectibles.
+### Line 10 — Totals for all transactions reported on Form 8949 with Box F or Box L checked
+
+Box F = long-term, no 1099-B or 1099-DA issued, not a digital asset. Common: real estate, collectibles.
+
+Box L = long-term digital assets with no 1099-DA or 1099-B (long-held coins sold from a self-custody wallet or on a DEX).
 
 ### Line 11 — Gain from Form 4797 (§1231); long-term gain from Forms 2439, 6252, 6781 and 8824
 
@@ -211,14 +220,15 @@ See [`tax-rate-worksheets.md`](./tax-rate-worksheets.md) for step-by-step on the
 
 ### Pattern: Crypto-only filer
 
-- All transactions on Form 8949 Boxes C (short) and F (long) — no 1099-B issued
-- Roll to Schedule D Lines 3 and 10
+- Sales on a 2025 Form 1099-DA without basis → Form 8949 Boxes H (short) and K (long) → Schedule D Lines 2 and 9
+- Sales with no 1099-DA (self-custody, DEX) → Boxes I (short) and L (long) → Schedule D Lines 3 and 10
+- Never Boxes C or F for digital assets on the 2025 form
 - Same downstream as above
 
 ### Pattern: Mixed retail + crypto
 
-- Boxes A/B/C and D/E/F populated
-- Lines 1b, 2, 3 (Part I); Lines 8b, 9, 10 (Part II)
+- Boxes A/B/C and D/E/F populated for securities, G/H/I and J/K/L for digital assets
+- Lines 1b, 2, 3 (Part I); Lines 8b, 9, 10 (Part II), each combining the securities box and the matching digital-asset box
 - Schedule D mathematics is straightforward; the work is upstream on Form 8949
 
 ### Pattern: Big loss year
@@ -236,7 +246,7 @@ See [`tax-rate-worksheets.md`](./tax-rate-worksheets.md) for step-by-step on the
 
 ### Pattern: §1202 QSBS exclusion
 
-- Form 8949 with code Q (partial exclusion) or X (full exclusion)
+- Form 8949 with code Q for a partial or full (100%) exclusion (Instructions for Schedule D (2025), p. 8); code X is for DC Zone / qualified community assets
 - Excluded portion in column (g) — never appears on Schedule D
 - Included portion (if any) flows through 8949 → Schedule D normally
 - Code Q amount also feeds 28% Rate Gain Worksheet → Line 18 (the included §1202 portion is taxed at 28% max if not fully excluded)
@@ -247,5 +257,6 @@ See [`tax-rate-worksheets.md`](./tax-rate-worksheets.md) for step-by-step on the
 
 - [Schedule D (Form 1040)](https://www.irs.gov/pub/irs-pdf/f1040sd.pdf)
 - [Instructions for Schedule D](https://www.irs.gov/pub/irs-pdf/i1040sd.pdf)
+- [Instructions for Form 8949 (2025)](https://www.irs.gov/pub/irs-pdf/i8949.pdf) — Boxes G–L for digital assets
 - [Publication 550](https://www.irs.gov/publications/p550) — Investment Income and Expenses
 - IRC §1(h), §1211, §1212, §1411, §1202, §1231, §1250

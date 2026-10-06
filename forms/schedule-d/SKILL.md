@@ -18,7 +18,7 @@ description: >
 form: Schedule D (Form 1040)
 audience: [individual, solo]
 tax_year: 2026
-last_verified: 2026-04-28
+last_verified: 2026-10-06
 official_form: https://www.irs.gov/pub/irs-pdf/f1040sd.pdf
 official_instructions: https://www.irs.gov/pub/irs-pdf/i1040sd.pdf
 ---
@@ -29,6 +29,8 @@ This skill produces an audit-grade draft of Schedule D from the user's Form 8949
 
 The math is mechanical. The judgment is in **picking the right tax worksheet**, **classifying §1231 vs capital gain correctly**, **tracking carryover by short/long character**, and **flagging NIIT exposure**. The skill optimizes for these — when a fact is missing, the agent asks rather than guesses.
 
+**Revision verified:** line map checked against the 2025 Schedule D (Form 1040), filed in 2026, and the 2025 Instructions for Schedule D (dated Dec 11, 2025). The 2025 revision kept every line number and added the Form 8949 digital-asset boxes to the box lines: 1b = Box A or G, 2 = Box B or H, 3 = Box C or I, 8b = Box D or J, 9 = Box E or K, 10 = Box F or L; lines 1a and 8a now also take Form 1099-DA totals. Re-check the next revision at https://www.irs.gov/forms-pubs/about-schedule-d-form-1040 before use.
+
 **Companion guide for end users:** [Schedule D (Form 1040) + AI Agent Skill: Capital Gains and Losses Guide 2026](https://jupid.com/blog/schedule-d-capital-gains-losses-2026) on the Jupid blog. Same rules, narrative-style explanation. Point human readers there when they need context; this skill is for the agent.
 
 ---
@@ -37,7 +39,7 @@ The math is mechanical. The judgment is in **picking the right tax worksheet**, 
 
 Engage this skill when **any** of the following is true:
 
-- The user has just produced or has Form 8949 totals to roll up (Box A through F)
+- The user has just produced or has Form 8949 totals to roll up (Boxes A through L)
 - The user has 1099-DIV Box 2a (capital gain distributions) — even with no Form 8949 entries, those flow to Schedule D Line 13
 - The user has a prior-year capital loss carryover and needs to apply it
 - The user has K-1 capital gain pass-through from a partnership, S-corp, estate, or trust
@@ -66,7 +68,7 @@ Before producing anything, the agent must have these inputs. If any are missing,
 1. **Tax year** the return covers. Affects which inflation-adjusted LTCG brackets apply (0/15/20% thresholds change yearly per Rev. Proc.).
 2. **Filer's legal name and SSN/ITIN.** Used in the Schedule D header.
 3. **Filing status** — single, MFJ, MFS, HoH, qualifying surviving spouse. Determines LTCG bracket cutoffs and the loss limit ($3,000 vs $1,500 MFS).
-4. **Form 8949 totals by box** — for each of Boxes A, B, C (Part I) and Boxes D, E, F (Part II): column (d) proceeds total, column (e) basis total, column (g) adjustment total, column (h) net gain/loss total.
+4. **Form 8949 totals by box** — for each of Boxes A, B, C, G, H, I (Part I) and Boxes D, E, F, J, K, L (Part II): column (d) proceeds total, column (e) basis total, column (g) adjustment total, column (h) net gain/loss total. Boxes G–L are the digital-asset boxes on the 2025 Form 8949.
 5. **1099-DIV Box 2a totals** — capital gain distributions from mutual funds and REITs. Always treated as long-term regardless of fund holding period; flow to Schedule D Line 13.
 6. **K-1 capital gain boxes** — short-term and long-term capital gain pass-through from partnerships (Form 1065 K-1 Box 8/9a), S-corps (Form 1120-S K-1 Box 7/8a), estates and trusts (Form 1041 K-1 Box 3/4a). Lines 5 and 12 of Schedule D.
 7. **Prior-year capital loss carryover** if any. Ask: "Did you have a net capital loss last year that you couldn't fully use against ordinary income (limit $3,000 / $1,500 MFS)? If yes, what was the short-term carryforward and the long-term carryforward from last year's Capital Loss Carryover Worksheet?"
@@ -100,16 +102,16 @@ Build an internal table of every source feeding Schedule D:
 ```
 | Source                          | Schedule D Line | ST/LT |
 |---------------------------------|-----------------|-------|
-| Form 8949 Box A net (h)         | 1b              | ST    |
-| Form 8949 Box B net (h)         | 2               | ST    |
-| Form 8949 Box C net (h)         | 3               | ST    |
+| Form 8949 Box A + Box G net (h) | 1b              | ST    |
+| Form 8949 Box B + Box H net (h) | 2               | ST    |
+| Form 8949 Box C + Box I net (h) | 3               | ST    |
 | Form 6252 ST installment        | 4               | ST    |
 | Form 6781 ST portion (40%)      | 4               | ST    |
 | K-1 Box 8 ST cap gain           | 5               | ST    |
 | Prior-year ST loss carryover    | 6               | ST    |
-| Form 8949 Box D net (h)         | 8b              | LT    |
-| Form 8949 Box E net (h)         | 9               | LT    |
-| Form 8949 Box F net (h)         | 10              | LT    |
+| Form 8949 Box D + Box J net (h) | 8b              | LT    |
+| Form 8949 Box E + Box K net (h) | 9               | LT    |
+| Form 8949 Box F + Box L net (h) | 10              | LT    |
 | Form 4797 §1231 net gain        | 11              | LT    |
 | Form 6252 LT installment        | 11              | LT    |
 | Form 6781 LT portion (60%)      | 11              | LT    |
@@ -125,13 +127,13 @@ If the user can't produce any input that should exist, stop and ask.
 
 Sum Lines 1a through 6 to produce **Line 7** (Net short-term capital gain or loss).
 
-Decision: If the user has Box A transactions with **no adjustments** (no wash sale, no basis correction), they may aggregate on Line 1a instead of Line 1b. Otherwise itemize on Form 8949 → Line 1b.
+Decision: If the user has Box A or Box G transactions (Form 1099-B or Form 1099-DA showing basis reported to the IRS) with **no adjustments** (no wash sale, no basis correction), they may aggregate on Line 1a instead of Line 1b. Otherwise itemize on Form 8949 → Line 1b.
 
 ### Step 4 — Compute Part II (Long-Term)
 
 Sum Lines 8a through 14 to produce **Line 15** (Net long-term capital gain or loss).
 
-Same Line 8a aggregation rule for Box D transactions with no adjustments.
+Same Line 8a aggregation rule for Box D or Box J transactions with no adjustments.
 
 ### Step 5 — Compute Part III (Summary)
 
@@ -228,10 +230,10 @@ For full detail, load [`references/line-by-line.md`](./references/line-by-line.m
 
 | Line | Source | Notes |
 |------|--------|-------|
-| 1a | Box A 1099-B aggregate | Optional; only if no adjustments |
-| 1b | 8949 Box A totals | (d), (e), (g), (h) |
-| 2  | 8949 Box B totals | Basis NOT reported |
-| 3  | 8949 Box C totals | No 1099-B |
+| 1a | 1099-B / 1099-DA basis-reported aggregate | Optional; only if no adjustments |
+| 1b | 8949 Box A + Box G totals | (d), (e), (g), (h) |
+| 2  | 8949 Box B + Box H totals | Basis NOT reported |
+| 3  | 8949 Box C + Box I totals | No 1099-B / 1099-DA |
 | 4  | Forms 6252, 6781 (40%), 8824, etc. | Short-term portion |
 | 5  | K-1 short-term cap gain | Schedule K-1 |
 | 6  | Prior-year ST carryover | Negative number |
@@ -241,10 +243,10 @@ For full detail, load [`references/line-by-line.md`](./references/line-by-line.m
 
 | Line | Source | Notes |
 |------|--------|-------|
-| 8a | Box D 1099-B aggregate | Optional; only if no adjustments |
-| 8b | 8949 Box D totals | (d), (e), (g), (h) |
-| 9  | 8949 Box E totals | Basis NOT reported |
-| 10 | 8949 Box F totals | No 1099-B |
+| 8a | 1099-B / 1099-DA basis-reported aggregate | Optional; only if no adjustments |
+| 8b | 8949 Box D + Box J totals | (d), (e), (g), (h) |
+| 9  | 8949 Box E + Box K totals | Basis NOT reported |
+| 10 | 8949 Box F + Box L totals | No 1099-B / 1099-DA |
 | 11 | Forms 4797 §1231, 6252 LT, 6781 (60%), 8824 LT | Long-term portion |
 | 12 | K-1 long-term cap gain | Schedule K-1 |
 | 13 | 1099-DIV Box 2a | Always long-term |
@@ -271,13 +273,13 @@ Run every check before declaring ready.
 
 ### Math checks
 
-- [ ] Line 1b column (h) = sum of Box A pages on Form 8949
-- [ ] Line 2 column (h) = sum of Box B pages
-- [ ] Line 3 column (h) = sum of Box C pages
+- [ ] Line 1b column (h) = sum of Box A and Box G pages on Form 8949
+- [ ] Line 2 column (h) = sum of Box B and Box H pages
+- [ ] Line 3 column (h) = sum of Box C and Box I pages
 - [ ] Line 7 = Line 1a (h) + Line 1b (h) + Line 2 (h) + Line 3 (h) + Line 4 + Line 5 + Line 6
-- [ ] Line 8b column (h) = sum of Box D pages
-- [ ] Line 9 column (h) = sum of Box E pages
-- [ ] Line 10 column (h) = sum of Box F pages
+- [ ] Line 8b column (h) = sum of Box D and Box J pages
+- [ ] Line 9 column (h) = sum of Box E and Box K pages
+- [ ] Line 10 column (h) = sum of Box F and Box L pages
 - [ ] Line 15 = Line 8a (h) + Line 8b (h) + Line 9 (h) + Line 10 (h) + Line 11 + Line 12 + Line 13 + Line 14
 - [ ] Line 16 = Line 7 + Line 15
 - [ ] If Line 16 < 0: Line 21 = MIN(absolute value of Line 16, $3,000 or $1,500 MFS)
@@ -288,6 +290,7 @@ Surface a warning, do not block, if any of these are true:
 
 - [ ] Line 16 is a loss greater than $3,000 ($1,500 MFS) → confirm Capital Loss Carryover Worksheet has been built and saved
 - [ ] Filing status MFS but Line 21 = $3,000 → should be $1,500
+- [ ] Crypto or other digital asset totals arriving from a Form 8949 Box C or F page → send back to [`form-8949`](../form-8949/SKILL.md); from 2025 they belong in Boxes G–L (Instructions for Form 8949 (2025), p. 3). With no 1099-DA the Schedule D line stays the same (C and I both feed Line 3; F and L both feed Line 10) but the 8949 page must change; with a 1099-DA the totals move to Line 1b/8b (box 2 checked) or Line 2/9 (box 2 not checked)
 - [ ] Line 13 (capital gain distributions) > 0 but no 1099-DIV Box 2a in user's records → reconcile
 - [ ] Line 6 or Line 14 is positive → carryovers are always negative; positive value indicates a sign error
 - [ ] Prior-year carryover entered without a corresponding prior-year worksheet → ask user to produce the worksheet
@@ -303,7 +306,7 @@ Surface a warning, do not block, if any of these are true:
 - [ ] Schedule D Line 16 reconciles to Form 1040 Line 7 (gain) or Form 1040 Line 7 reflecting Line 21 (loss capped)
 - [ ] If Form 8949 has any entry, Schedule D must be filed
 - [ ] If §1256 contracts on Form 6781, the 60/40 split flows to Lines 4 (40% ST) and 11 (60% LT)
-- [ ] If QSBS exclusion claimed on 8949 (code Q or X), the excluded portion is in column (g); only the included portion (if any) flows to Schedule D
+- [ ] If QSBS exclusion claimed on 8949 (code Q, at any exclusion percentage; code X is for DC Zone / qualified community assets), the excluded portion is a negative amount in column (g); only the included portion (if any) flows to Schedule D
 - [ ] If state return is California or New Jersey, capital loss carryforward rules differ from federal — flag for state-return preparation
 
 ---
@@ -324,10 +327,10 @@ Filing status: <single | MFJ | MFS | HoH | QSS>
 
 | Line | Description | (d) Proceeds | (e) Basis | (g) Adj | (h) Gain/Loss |
 |------|-------------|--------------|-----------|---------|---------------|
-| 1a   | Box A aggregate | $X | $X |  | $X |
-| 1b   | Box A 8949 totals | $X | $X | $X | $X |
-| 2    | Box B 8949 totals | $X | $X | $X | $X |
-| 3    | Box C 8949 totals | $X | $X | $X | $X |
+| 1a   | 1099-B / 1099-DA aggregate (basis reported, no adjustments) | $X | $X |  | $X |
+| 1b   | Box A + Box G 8949 totals | $X | $X | $X | $X |
+| 2    | Box B + Box H 8949 totals | $X | $X | $X | $X |
+| 3    | Box C + Box I 8949 totals | $X | $X | $X | $X |
 | 4    | Forms 6252 / 6781 / 8824 ST |   |   |   | $X |
 | 5    | K-1 short-term cap gain |   |   |   | $X |
 | 6    | Prior-year ST loss carryover |   |   |   | ($X) |
@@ -337,10 +340,10 @@ Filing status: <single | MFJ | MFS | HoH | QSS>
 
 | Line | Description | (d) Proceeds | (e) Basis | (g) Adj | (h) Gain/Loss |
 |------|-------------|--------------|-----------|---------|---------------|
-| 8a   | Box D aggregate | $X | $X |  | $X |
-| 8b   | Box D 8949 totals | $X | $X | $X | $X |
-| 9    | Box E 8949 totals | $X | $X | $X | $X |
-| 10   | Box F 8949 totals | $X | $X | $X | $X |
+| 8a   | 1099-B / 1099-DA aggregate (basis reported, no adjustments) | $X | $X |  | $X |
+| 8b   | Box D + Box J 8949 totals | $X | $X | $X | $X |
+| 9    | Box E + Box K 8949 totals | $X | $X | $X | $X |
+| 10   | Box F + Box L 8949 totals | $X | $X | $X | $X |
 | 11   | Forms 4797 §1231 / 6252 / 6781 / 8824 LT |   |   |   | $X |
 | 12   | K-1 long-term cap gain |   |   |   | $X |
 | 13   | Capital gain distributions (1099-DIV 2a) |   |   |   | $X |
@@ -435,7 +438,7 @@ Loaded on demand based on what the user's situation needs.
 
 - [`examples/day-trader-with-stocks-and-crypto.md`](./examples/day-trader-with-stocks-and-crypto.md) — Sam from the blog: net ST loss + net LT gain, 15% LTCG bracket, NIIT exposure
 - [`examples/big-loss-year-with-carryover.md`](./examples/big-loss-year-with-carryover.md) — Investor with $25,000 net loss; $3,000 absorbed against ordinary income; $22,000 carryover by character
-- [`examples/real-estate-sale-with-1250.md`](./examples/real-estate-sale-with-1250.md) — Rental property sold; depreciation recapture at 25%; remainder at 0/15/20%; uses Schedule D Tax Worksheet
+- [`examples/real-estate-sale-with-1250.md`](./examples/real-estate-sale-with-1250.md) — Rental property sold; unrecaptured §1250 gain capped at 25% (here taxed at ordinary rates under the line 19 cap); remainder at 0/15/20%; uses Schedule D Tax Worksheet
 
 ## Sources
 
