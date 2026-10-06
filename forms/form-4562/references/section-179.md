@@ -34,7 +34,7 @@ IRC §179 lets a taxpayer expense the full cost of qualifying business property 
 | 2023 | $1,160,000 | $2,890,000 | $28,900 | Rev. Proc. 2022-38 |
 | 2024 | $1,220,000 | $3,050,000 | $30,500 | Rev. Proc. 2023-34 |
 | 2025 | $2,500,000 | $4,000,000 | $31,300 | P.L. 119-21 §70306 (dollar limit and threshold, superseding Rev. Proc. 2024-40's $1,250,000 / $3,130,000); Rev. Proc. 2024-40 (SUV cap); 2025 Form 4562 instructions, Lines 1 and 3 |
-| 2026 | $2,560,000 | $4,090,000 | $32,000 | Rev. Proc. 2025-32 §3.24; Pub. 946 (2025), What's New for 2026 |
+| 2026 | $2,560,000 | $4,090,000 | $32,000 | Rev. Proc. 2025-32 §4.24; Pub. 946 (2025), What's New for 2026 |
 
 **Heavy SUV cap** applies to vehicles >6,000 lbs and ≤14,000 lbs GVWR with a cargo area under 6 ft (most large SUVs and pickup trucks fall here unless the bed is long enough). The §179 deduction is capped at the heavy-SUV figure even when the taxpayer is well under the dollar limit.
 
@@ -190,6 +190,6 @@ The agent should remind the user that the federal §179 deduction may differ fro
 - IRC §179(d)(10): recapture
 - P.L. 119-21 §70306: §179 limit $2,500,000 and threshold $4,000,000 for tax years beginning after 2024
 - Rev. Proc. 2024-40: 2025 heavy SUV cap ($31,300)
-- Rev. Proc. 2025-32 §3.24: 2026 inflation adjustments ($2,560,000 / $4,090,000 / $32,000)
+- Rev. Proc. 2025-32 §4.24: 2026 inflation adjustments ($2,560,000 / $4,090,000 / $32,000)
 - IRS Pub. 946: How to Depreciate Property (Chapter 2 covers §179 in depth)
 - Form 4562 Instructions: line-by-line for Part I

@@ -8,22 +8,22 @@ The top 10 mistakes that get Form 8919 filings either rejected by the IRS, audit
 
 **Problem:** The user files Form 8919 with reason code G but never files Form SS-8.
 
-**Impact:** Code G certifies on column (e) that SS-8 was filed. Without SS-8 on file, the IRS will:
+**Impact:** Code G states "I filed Form SS-8 with the IRS and haven't received a reply," and the form requires Form SS-8 to be filed on or before the date the return is filed. (Column (e) is a different check: whether a 1099-MISC/NEC was received.) Without SS-8 on file, the IRS can:
 
 - Disallow the 8919 treatment
 - Reassess the income as self-employment, charging full SE tax (15.3% × 0.9235 × wages)
 - Add interest from the original due date
 - Potentially add an accuracy-related penalty under IRC §6662 (20% of the underpayment)
 
-**Fix:** Always file SS-8 first, then attach Form 8919 with code G to the 1040. Keep the certified mail receipt for SS-8 as proof of filing date.
+**Fix:** File Form SS-8 (mail or fax, separately from the return) on or before the date the return is filed, then file Form 8919 with code G. Keep the fax confirmation or certified mail receipt as proof of the filing date. Even with SS-8 on file, the form warns that if the IRS doesn't agree the worker is an employee, the worker may be billed for the additional tax, penalties, and interest.
 
-**Citation:** Form 8919 instructions; IRC §6662(b)(1) (negligence or disregard of rules).
+**Citation:** 2025 Form 8919, page 1 (reason code G) and page 2 (column (c) caution); IRC §6662(b)(1) (negligence or disregard of rules).
 
 ---
 
 ## Mistake 2: Double-Reporting Misclassified Income on Schedule C
 
-**Problem:** The user puts the same 1099-NEC amount on both Form 8919 (Line 1 column f) and on Schedule C as gross receipts. Often this happens because tax software auto-imports 1099s and the user forgets to delete the duplicate.
+**Problem:** The user puts the same 1099-NEC amount on both Form 8919 (column (f) of lines 1–5) and on Schedule C as gross receipts. Often this happens because tax software auto-imports 1099s and the user forgets to delete the duplicate.
 
 **Impact:** The IRS sees double the actual income. The user overpays income tax on the duplicate, and may also owe SE tax on the duplicate via Schedule SE. The CP2000 mismatch process will eventually catch this and trigger a notice.
 
@@ -39,17 +39,17 @@ The top 10 mistakes that get Form 8919 filings either rejected by the IRS, audit
 
 **Impact:** Mismatched years create an audit flag. The IRS expects SS-8 and the 8919 for the same year to align.
 
-**Fix:** SS-8 should reference the same tax year(s) as the Form 8919 filings that rely on it. If the misclassification spans multiple years, the SS-8 can list multiple years; the 8919 for each year still cites the same SS-8.
+**Fix:** SS-8 should reference the same tax year(s) as the Form 8919 filings that rely on it. Part I, line 1 of Form SS-8 asks for all the years services were provided, so one SS-8 can cover several years for the same firm; the 8919 for each year relies on the same SS-8. A determination can only be made for years with open statutes.
 
-**Citation:** Form SS-8 instructions; Form 8919 column (d) instruction.
+**Citation:** Instructions for Form SS-8 (Rev. January 2024), "Part I, line 1" and "When To File".
 
 ---
 
-## Mistake 4: Treating Net Income as Wages on Line 1 Column (f)
+## Mistake 4: Treating Net Income as Wages in Column (f)
 
 **Problem:** The user subtracts business expenses from the 1099-NEC amount before entering it in column (f). For example, if the 1099-NEC shows $72,000 and the user spent $5,000 on supplies, they enter $67,000.
 
-**Impact:** Form 8919 treats the income as **wages**, not as net self-employment profit. Wages are not netted against expenses. Entering net income understates the wage base, which may trigger CP2000 mismatch with the 1099-NEC and underpay FICA.
+**Impact:** Form 8919 treats the income as **wages**, not as net self-employment profit. Wages are not netted against expenses. Entering net income understates wages, which may trigger a CP2000 mismatch with the 1099-NEC and underpays the tax on lines 11 and 12.
 
 **Fix:** Enter the **gross** 1099-NEC Box 1 amount in column (f). Do not subtract any expenses. (If the user wants to deduct legitimate business expenses, they need to be on Schedule C — but that means the income isn't 8919-eligible.)
 
@@ -59,18 +59,18 @@ The top 10 mistakes that get Form 8919 filings either rejected by the IRS, audit
 
 ## Mistake 5: Forgetting Form 1040 Line 1g
 
-**Problem:** The user fills out Form 8919 perfectly, routes the FICA tax to Schedule 2 Line 5, but forgets to add the wage amount to Form 1040 Line 1g.
+**Problem:** The user fills out Form 8919, routes the tax to Schedule 2 line 6, but forgets to add the wage amount to Form 1040 line 1g.
 
 **Impact:** Income tax is computed on a smaller base than the IRS expects. The IRS matches 1099-NECs to your return; not seeing the 1099 on Schedule C and not seeing it on Line 1g, the IRS issues a CP2000 adding the missing income plus tax plus interest.
 
 **Fix:** Always make **two** entries when using Form 8919:
 
-1. Wages on Form 1040 Line 1g (= Form 8919 Line 2)
-2. FICA on Schedule 2 Line 5 (= Form 8919 Line 11)
+1. Wages on Form 1040 line 1g (= Form 8919 line 6)
+2. Tax on Schedule 2 line 6 (= Form 8919 line 13)
 
-If using tax software, verify both entries are present after the 8919 interview completes.
+If using tax software, verify both entries are present after the 8919 interview completes. Schedule 2 line 5 belongs to Form 4137 (unreported tips), not Form 8919.
 
-**Citation:** Form 1040 Line 1g instruction; Schedule 2 Line 5 instruction.
+**Citation:** 2025 Form 8919 lines 6 and 13; 2025 Form 1040 line 1g ("Wages from Form 8919, line 6"); 2025 Schedule 2 line 6.
 
 ---
 
@@ -78,17 +78,17 @@ If using tax software, verify both entries are present after the 8919 interview 
 
 **Problem:** A user with significant W-2 income also files Form 8919 for misclassified work. They compute SS tax on the full 8919 wage amount without checking whether the W-2 wages already exceeded the wage base.
 
-**Impact:** Overpayment of Social Security tax. The wage base cap (e.g., $176,100 in 2025) applies to **combined** wages from W-2 + 8919. If W-2 wages alone are at the cap, no additional SS tax via 8919.
+**Impact:** Overpayment of Social Security tax. The wage base ($176,100 for 2025, $184,500 for 2026) applies to **combined** wages from W-2 + 8919. If W-2 wages alone are at the cap, no additional SS tax via 8919.
 
-**Fix:** Compute Lines 3-6 carefully:
+**Fix:** Compute lines 7–10 exactly as the form does:
 
-- Line 4 = Line 2 + W-2 Box 3 + W-2 Box 7 + RRTA
-- Line 5 = MAX(0, Line 3 − Line 4)
-- Line 6 = MIN(Line 2, Line 5)
+- Line 8 = W-2 Box 3 + W-2 Box 7 + RRTA (not more than line 7) + Form 4137 line 10. **Do not add the Form 8919 wages to line 8**; adding them double-counts and shrinks line 9.
+- Line 9 = MAX(0, Line 7 − Line 8)
+- Line 10 = MIN(Line 6, Line 9)
 
-If Line 5 = 0, no SS via 8919 (Line 7 = 0). Medicare still applies in full on Line 9.
+If line 9 = 0, no SS via 8919 (line 11 = 0). Medicare still applies in full on line 12 (line 6 × 1.45%).
 
-**Citation:** Form 8919 instructions, Lines 3-7; IRC §3121(a)(1) (SS wage base).
+**Citation:** 2025 Form 8919 lines 7–12 and page 2 "Line 8"; IRC §3121(a)(1) (SS wage base); SSA https://www.ssa.gov/oact/cola/cbb.html.
 
 ---
 
@@ -116,17 +116,17 @@ Two or three of those = self-employment, file Schedule SE.
 
 **Problem:** The user discovers in 2027 that they were misclassified in 2022, 2023, 2024, 2025, and 2026. They file Form 8919 for 2026 only and assume the prior years are out of reach.
 
-**Impact:** Lost refunds. IRC §6511 allows refund claims for **3 years from original filing date** (or 2 years from tax payment, whichever is later). Each prior year that's still open represents potential refund of the 7.65% tax difference (full SE tax minus FICA).
+**Impact:** Lost refunds. IRC §6511 allows refund claims for **3 years from original filing date** (or 2 years from tax payment, whichever is later). Each prior year that's still open represents a potential refund of the difference between the SE tax paid and the employee-share tax on Form 8919, reduced by the income tax effect of losing the half-SE-tax deduction and any QBI deduction on that income. Filing Form SS-8 does not stop the refund period from running; the SS-8 instructions tell workers to file a protective Form 1040-X to keep it open.
 
 **Fix:** When discovering misclassification:
 
 1. Calculate which years are still open under the 3-year statute
 2. File Form 1040-X with Form 8919 attached for each open year
-3. Include a copy of the SS-8 filing or determination
+3. If the SS-8 determination is still pending, file a protective claim instead: Form 1040-X marked "Protective Claim" with the statement the SS-8 instructions prescribe
 
-For Ana's $72,000 example, each prior year amendment recovers ~$4,665 in tax (the SE tax vs FICA difference). Over 3 open years that's ~$14,000.
+For Ana's $72,000 example (2026 figures), the SE tax vs. Form 8919 tax difference is $4,665 a year, but the net federal difference after the lost half-SE-tax and QBI deductions is about $2,285 a year (see `examples/ana-misclassified-accountant.md`). Each amended year is computed with that year's own rates and wage base.
 
-**Citation:** IRC §6511; Form 1040-X instructions.
+**Citation:** IRC §6511; Instructions for Form SS-8 (Rev. January 2024), "Time for filing a claim for refund" and "Protecting your statute of limitations"; Form 1040-X instructions.
 
 ---
 
@@ -166,7 +166,7 @@ Retain documentation for at least 3 years from filing the 1040 (longer if audit 
 
 The agent should flag state implications and advise consulting a state tax professional before filing.
 
-**Citation:** State-specific (varies); CA Labor Code §2775 (ABC test); IRS PMTA on state tax conformity.
+**Citation:** State-specific (varies); CA Labor Code §2775 (ABC test).
 
 ---
 
@@ -177,9 +177,9 @@ The agent should flag state implications and advise consulting a state tax profe
 | 1 | Code G without SS-8 | High | Mail SS-8 immediately |
 | 2 | Double-report on Schedule C | High | Delete from Schedule C |
 | 3 | Wrong tax year on SS-8 | Medium | Match years on form |
-| 4 | Net income on Line 1(f) | Medium | Use gross 1099 amount |
-| 5 | Forgetting 1040 Line 1g | High | Check both routings |
-| 6 | Ignoring wage base interaction | Medium | Recompute Lines 3-6 |
+| 4 | Net income in column (f) | Medium | Use gross 1099 amount |
+| 5 | Forgetting 1040 line 1g | High | Check both routings |
+| 6 | Ignoring wage base interaction | Medium | Recompute lines 7–10 |
 | 7 | 8919 for genuine SE income | Critical (fraud) | Apply common-law test |
 | 8 | Not amending prior years | Medium (lost refund) | File 1040-X within 3 years |
 | 9 | No documentation | High (audit defense) | Gather and preserve |

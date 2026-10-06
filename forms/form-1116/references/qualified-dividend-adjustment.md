@@ -1,88 +1,92 @@
-# Line 15 — Qualified Dividend / Long-Term Capital Gain Rate Adjustment
+# Qualified Dividend / Capital Gain Rate Adjustments (Lines 1a, 5, and 18)
 
-The §904(b)(2)(B) adjustment is one of the most-skipped lines on Form 1116. It prevents over-claiming the FTC when foreign-source qualified dividends or long-term capital gains are taxed at preferential US rates (0% / 15% / 20%) instead of ordinary rates.
+The §904(b)(2)(B) adjustments are among the most-skipped steps on Form 1116. They prevent over-claiming the FTC when qualified dividends or capital gains are taxed at preferential US rates (0% / 15% / 20%) instead of ordinary rates. On the 2025 form there is **no separate "adjustment line"**: foreign amounts are scaled down where they enter Part I (line 1a for gains and dividends, line 5 for losses), and worldwide amounts are scaled down on line 18 through the Worksheet for Line 18 (2025 Instructions for Form 1116, "Foreign Qualified Dividends and Capital Gains (Losses)" and "Line 18").
 
 ## Why the adjustment exists
 
 The §904 limitation fraction is:
 
 ```
-Line 19 = Foreign-source taxable income / Total taxable income
+Line 19 = Line 17 (net foreign-source taxable income) / Line 18 (taxable income)
 ```
 
-When foreign income includes QD or LTCG taxed at, say, 15% (instead of 24% ordinary), the foreign income's share of US tax is smaller than its share of taxable income. Without an adjustment, Line 19 would over-credit — the limitation would let the user claim FTC against US tax that wasn't actually owed on the foreign income.
+When foreign income includes qualified dividends or long-term gains taxed at 15% instead of up to 37%, the foreign income's share of US tax is smaller than its share of taxable income. Without an adjustment, line 19 would let the user claim credit against US tax that the foreign income never generated. The factors in the instructions convert each preferential-rate dollar into its ordinary-rate equivalent: 0.4054 ≈ 15/37 and 0.5405 ≈ 20/37.
 
-The adjustment scales down foreign-source taxable income on Line 17 to reflect the effective US tax rate on QD/LTCG.
+## When adjustments are required
 
-## When to make the adjustment
+Individuals who used the Qualified Dividends and Capital Gain Tax Worksheet (QDCGTW) and don't file Schedule D must adjust foreign qualified dividends and capital gain distributions if **both**:
 
-The user must adjust Line 15 if:
+- QDCGTW line 5 is greater than zero, and
+- QDCGTW line 23 is less than line 24.
 
-- They have foreign-source qualified dividends, **AND/OR**
-- They have foreign-source net long-term capital gains, **AND**
-- Either is taxed at a US preferential rate (0% / 15% / 20%)
+Schedule D filers have parallel tests (QDCGTW line 5 / lines 23-24, or Schedule D Tax Worksheet line 18 > 0 and line 45 < line 46). Estates and trusts use the Form 1041 worksheet tests. Foreign capital gains and losses of Schedule D filers are adjusted with Worksheet A or Worksheet B (or Pub. 514 when neither applies).
 
-There's a **de-minimis exception**: if all of the following are true, the user can skip the adjustment (per Pub 514 / Form 1116 instructions):
+## The adjustment exception (2025 amounts)
 
-- Foreign-source net QD + LTCG ≤ $20,000 (in some years; verify the current threshold in the latest Form 1116 instructions before relying)
-- Filer's tentative US tax (line 16 of 1040) ≤ approximately the 24% bracket threshold (verify current year)
-- Filer is in the 32% bracket or lower
+The filer can elect not to adjust (by simply not adjusting any item) if **both** are true:
 
-Most retail filers with modest 1099-DIV box 7 amounts ($300-$1,800) and ordinary brackets qualify for the de-minimis exception and Line 15 is 0.
+1. QDCGTW line 5 (or Schedule D Tax Worksheet line 18) doesn't exceed **$394,600** (married filing jointly or qualifying surviving spouse) or **$197,300** (single, head of household, married filing separately); and
+2. Foreign-source qualified dividends plus foreign-source capital gain distributions (Schedule D filers: foreign-source net capital gain) total **less than $20,000**.
 
-## The adjustment formula (when required)
+Rules that come with the election:
 
-Per Form 1116 instructions, the Line 15 adjustment effectively reduces foreign-source taxable income by the rate differential.
+- It is all or nothing: if the filer elects not to adjust, no foreign qualified dividend or capital gain is adjusted on line 1a, and the Worksheet for Line 18 is not completed (line 18 = plain taxable income as defined for line 18).
+- If any foreign item was adjusted on line 1a or line 5, the exception can't be used for line 18; complete the Worksheet for Line 18.
+- AMT filers: special rules in Reg. §1.904(b)-1(b)(3).
+- Ignore amounts the filer elected to include on Form 4952 line 4g; those enter line 1a unadjusted.
 
-Simplified mechanics for a filer with **foreign QD only** taxed at 15%:
+The dollar thresholds are year-specific (they track the start of the 32% bracket). Re-check them in the current Instructions for Form 1116.
+
+## How to adjust foreign amounts (line 1a and line 5)
+
+| Foreign item taxed at | Enter on line 1a |
+|-----------------------|------------------|
+| 0% rate | Nothing (leave it off line 1a) |
+| 15% rate | Amount × 0.4054 |
+| 20% rate | Amount × 0.5405 |
+| Ordinary rates (non-qualified dividends, short-term gains) | Full amount, no adjustment |
+
+Foreign capital losses go on line 5 after the Worksheet A / Worksheet B adjustments (long-term losses × 0.4054 in Worksheet B line 15). Lines 3d and 3e still use the **unadjusted** amounts.
+
+## Worksheet for Line 18 (worldwide adjustment)
+
+When required (QDCGTW line 5 > 0 and line 23 < line 24, and no exception), line 18 comes from this worksheet instead of plain taxable income:
 
 ```
-Adjustment ratio = (Highest ordinary rate) / 15% − 1
-                 = approximately 24/15 − 1 = 0.6 (for a filer in the 24% bracket)
+1.  Form 1040 line 11b − line 14 + Schedule 1-A line 37
+2.  Worldwide 28% gains                         × 0.2432 = line 3
+4.  Worldwide 25% gains                         × 0.3243 = line 5
+6.  Worldwide 20% gains and qualified dividends × 0.4595 = line 7
+8.  Worldwide 15% gains and qualified dividends × 0.5946 = line 9
+10. Worldwide 0% gains and qualified dividends  (full amount)
+11. Lines 3 + 5 + 7 + 9 + 10
+12. Line 1 − line 11 → Form 1116 line 18 (zero or less: 0)
 ```
 
-Wait — the actual mechanic in the IRS worksheet inverts this. The instructions provide a worksheet that does the following:
+For QDCGTW filers: line 6 = QDCGTW line 20, line 8 = QDCGTW line 17, line 10 = QDCGTW line 9 (lines 2-5 skipped). Schedule D Tax Worksheet filers take lines 2, 4, 6, 8, 10 from Schedule D Tax Worksheet lines 42, 39, 33, 30, 22.
 
-1. Compute "remaining" foreign QD/LTCG after de-minimis tests
-2. Multiply by an adjustment factor based on the user's bracket
-3. Subtract from foreign-source taxable income on Line 17
+**Worked example (illustrative, 2025 single, all qualified dividends taxed at 15%):**
 
-The math comes out so that the foreign QD/LTCG effectively appears in Line 17 at its **rate-equivalent** — i.e., $1,000 of foreign QD at 15% effective rate counts as ~$625 in the limitation numerator (when the user is in the 24% bracket).
-
-**Example**: filer has $10,000 foreign QD, all at 15% rate, filer is in 24% bracket.
-
-- Adjustment = $10,000 × (1 − 15/24) = $10,000 × 0.375 = $3,750
-- Line 15 = $3,750
-- Line 17 = Line 14 − $3,750
-
-The exact factors are in the Form 1116 instructions worksheet for Line 18 — verify each year. The IRS occasionally changes the bracket thresholds.
+- Case A: taxable income $150,000, of which $20,000 is qualified dividends ($12,000 foreign). QDCGTW line 5 = $130,000 (≤ $197,300) and foreign qualified dividends $12,000 (< $20,000), so both exception tests pass. If the filer elects the exception, line 1a includes the $12,000 unadjusted and line 18 is plain taxable income.
+- Case B: same filer but $33,000 of qualified dividends, $25,000 foreign. Test 2 fails ($25,000 ≥ $20,000). Line 1a gets $25,000 × 0.4054 = $10,135. Worksheet for Line 18: line 1 = $150,000; line 8 = $33,000 (QDCGTW line 17); line 9 = $33,000 × 0.5946 = $19,622; line 12 = $150,000 − $19,622 = $130,378 → Form 1116 line 18.
 
 ## Practical agent workflow
 
-1. **Ask** if the user has any foreign-source qualified dividends OR foreign-source net LTCG
-2. If yes, **ask** the total amount and verify it's reported on the 1099-DIV / 8949 / Schedule D in the qualified-rate category
-3. Check the de-minimis exception:
-   - Total foreign QD + LTCG ≤ $20,000?
-   - Filer's bracket ≤ ~32%?
-   - If both yes → Line 15 = 0; document why
-4. If the de-minimis doesn't apply, follow the Line 18 worksheet in the Form 1116 instructions step by step. Don't try to derive it; the worksheet handles edge cases.
-
-## Why this matters
-
-- If the agent skips Line 15 when required, the user's FTC is overstated. The IRS recomputes on audit and assesses tax + interest.
-- If the agent makes the adjustment when it wasn't required (e.g., filer is in 32% bracket but has only $5,000 foreign QD), the agent under-credits and the user loses some FTC. Less catastrophic but still wrong.
-- Tax software handles this correctly when the user marks foreign QD on the 1099-DIV import. Manual filers (FFFF, paper) often miss it.
+1. **Ask** if the user has any foreign-source qualified dividends, capital gain distributions, or foreign capital gains/losses, and which rate bracket (0/15/20%) applies. Get the QDCGTW or Schedule D Tax Worksheet from the return.
+2. Check the two adjustment-exception tests above. If both pass, ask the user whether to use the exception; document the choice.
+3. If the exception doesn't apply or isn't elected: adjust each foreign item on line 1a / line 5 per the table, and complete the Worksheet for Line 18.
+4. Keep lines 3d and 3e unadjusted.
 
 ## What the agent should NOT do
 
-- Do not default to Line 15 = 0 without checking the de-minimis criteria
-- Do not apply the adjustment to ordinary foreign dividends (those are taxed at ordinary rates; no rate differential)
-- Do not apply the adjustment to short-term capital gains (taxed at ordinary rates)
-- Do not apply the adjustment to foreign qualified dividends that are taxed in the US at 0% (filer in the lowest bracket; no adjustment because the US rate is below the foreign rate, no over-credit risk)
+- Do not put a separate "QD adjustment" on line 16; line 16 is for loss allocations and recaptures
+- Do not adjust ordinary (non-qualified) foreign dividends or short-term gains
+- Do not include 0%-rate foreign qualified dividends on line 1a when adjusting; leaving them off is the adjustment
+- Do not mix: adjusting some foreign items and electing the exception for others is not allowed
 
 ## Cross-reference
 
-- Form 1116 Instructions, "Worksheet for Determining the Adjustment for Foreign Source Qualified Dividends and Capital Gains" (IRS revises annually)
-- Pub 514, chapter on §904(b) adjustments
+- 2025 Instructions for Form 1116: "Foreign Qualified Dividends and Capital Gains (Losses)" (pp. 9-16) and "Line 18" with the Worksheet for Line 18 (pp. 23-24)
+- Pub. 514, "Qualified Dividends" and "Capital Gains and Losses"
 - IRC §904(b)(2)(B)
 - Reg. §1.904(b)-1

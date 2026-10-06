@@ -12,11 +12,11 @@ the package to the state service center where the 1040 goes.
 **Why it happens**: Most IRS forms are filed with the 1040. Form 3520 is
 the exception — it's a separate filing to Ogden.
 
-**Consequence**: The state service center will (eventually) forward the
-3520 to Ogden, but the timing slips. If the 1040 was timely filed but
-the forwarded 3520 arrives at Ogden after April 15, the 3520 may be
-deemed late, triggering §6677 or §6039F penalty. The IRS's position is
-that the postmark to Ogden is what counts.
+**Consequence**: Form 3520 has its own address in its instructions; sent
+elsewhere, it may be delayed or treated as not timely filed, exposing the
+user to §6677 or §6039F penalties. Only a complete Form 3520 with all
+required attachments is considered timely filed (Instructions for Form
+3520, When and Where To File).
 
 **Fix**: Mail Form 3520 separately to **Internal Revenue Service Center,
 P.O. Box 409101, Ogden, UT 84409**. Use USPS Certified Mail with Return
@@ -32,13 +32,15 @@ They file Form 3520 Part II reporting their ownership. The trust
 (foreign trustee) doesn't file Form 3520-A. User assumes the trust's
 filing is the trust's problem.
 
-**Consequence**: §6677(b) penalty equal to **5% of the gross value of
-the trust's portion attributable to the US owner**, for every year the
-3520-A is not filed. On a $1M trust, that's $50,000/year.
+**Consequence**: §6677(b) penalty equal to **the greater of $10,000 or
+5% of the gross value of the portion of the trust treated as owned by the
+US owner**, for every year the 3520-A is not filed. On a $1M trust, that's
+$50,000/year.
 
-**Fix**: When the trust doesn't file 3520-A, the US owner must file a
-**substitute 3520-A** as an attachment to their Form 3520. Mark it
-"Substitute" and sign as US owner. See [`3520-vs-3520-a.md`](./3520-vs-3520-a.md).
+**Fix**: When the trust doesn't file 3520-A, the US owner must attach a
+**substitute 3520-A** to their Form 3520 by the Form 3520 due date: check
+the "Substitute Form 3520-A" box at its top and sign as US owner with the
+owner's name and TIN on the "Title" line. See [`3520-vs-3520-a.md`](./3520-vs-3520-a.md).
 
 ---
 
@@ -61,23 +63,27 @@ trust. Read the trigger boxes at the top of page 1 carefully.
 
 ## 4. Aggregating gifts wrong for the threshold
 
-**The mistake**: User received $80,000 from grandmother, $60,000 from
-grandfather (both foreign individuals). Files only because the
-grandmother amount exceeds some assumed threshold, doesn't realize
-**aggregate** is $140,000.
+**The mistake**: User received $80,000 from grandmother and $60,000 from
+grandfather (both nonresident aliens). Treats each as under $100,000 and
+files nothing, missing that gifts from related donors are aggregated:
+$140,000.
 
-Or vice versa: user received $90,000 from grandmother and considers it
-under the $100,000 threshold, but also received $20,000 from a foreign
-estate (foreign individual donor + foreign estate same threshold), so
-aggregate $110,000 triggers Part IV.
+Or: user received $90,000 from her grandmother and $20,000 from her late
+grandfather's foreign estate. The donors are related, so the aggregate
+$110,000 triggers line 54.
 
-**Consequence**: Either over-reporting (no penalty) or under-reporting
-(5%/month penalty up to 25%).
+**Consequence**: Under-reporting costs 5% per month of the gift, up to
+25% (§6039F(c)).
 
-**Fix**: Aggregate **across all foreign individuals + foreign estates**
-for the $100,000 threshold. Aggregate **across all foreign corporations
-+ foreign partnerships** for the inflation-adjusted threshold. The two
-categories are independent.
+**Fix**: For line 54, aggregate gifts from the same donor and from
+nonresident alien individuals and foreign estates the user knows or has
+reason to know are related to each other (or acting as nominees)
+(Instructions, Line 54). For line 55, aggregate gifts from foreign
+corporations and partnerships and foreign persons related to them,
+against the year's §6039F threshold ($20,116 for 2025; $20,573 for
+2026). The two lines are tested separately. Gifts from unrelated donors
+are not added together for line 54; when in doubt about relationships,
+ASK.
 
 ---
 
@@ -113,12 +119,17 @@ interest, no fixed maturity, no documented terms), the IRS may
 recharacterize as a gift (Part IV) or a distribution (Part III). Either
 way, late-filing penalties apply.
 
-**Fix**: For a **qualified obligation** under Treas. Reg. §1.679-4(d)(1)
-(term ≤ 5 years, AFR interest, USD-denominated principal, statute of
-limitations extension agreement), the loan avoids gift/distribution
-treatment. If any condition fails, treat as gift (from individual) or
-distribution (from trust). Work with a practitioner to structure
-qualifying obligations BEFORE the loan, not after.
+**Fix**: From a **foreign trust**: a loan of cash or marketable
+securities (or uncompensated use of trust property) to a U.S. owner or
+beneficiary or a related U.S. person is reported on Part III, line 25,
+and treated as a distribution unless it is a **qualified obligation**:
+written; term of 5 years or less including renewals; all payments in USD;
+yield to maturity between 100% and 130% of the AFR; the assessment-period
+extension agreed on line 26; and its status reported each year on line 28
+(Instructions, Qualified Obligation; IRC §643(i)). From a **foreign
+individual**: a bona fide loan is not a gift; if it is really a gift, it
+counts toward line 54. Work with a practitioner to structure qualifying
+obligations BEFORE the loan, not after.
 
 ---
 
@@ -131,12 +142,14 @@ year.
 **Consequence**: Wasted effort. Possibly unnecessary disclosure of
 trustee data the user doesn't have access to.
 
-**Fix**: **Rev. Proc. 2014-55** grants automatic exemption for Canadian
-RRSPs and RRIFs from Form 3520 / 3520-A reporting. The user files only
-Form 8938 for the RRSP and reports income per the US-Canada treaty
-election on Form 1040. This is a major simplification specific to
-Canada — does NOT apply to UK SIPPs, Australian Super, or other foreign
-retirement plans.
+**Fix**: **Rev. Proc. 2014-55** exempts Canadian RRSPs, RRIFs, and other
+Canadian retirement plans within its section 3 from Form 3520 / 3520-A
+reporting (Instructions, Exceptions To Filing). Other reporting (e.g.,
+Form 8938, FBAR) is not affected. For other countries' plans, check
+whether Rev. Proc. 2020-17 (certain tax-favored foreign retirement and
+nonretirement savings trusts) or Proposed Reg. §1.6048-5 (reliance
+allowed for tax years ending after May 8, 2024) exempts the plan before
+assuming Form 3520 applies; ask a practitioner.
 
 ---
 
@@ -146,13 +159,13 @@ retirement plans.
 individuals, total $120,000. Aggregates them all into one line "Various
 foreign donors" without itemizing.
 
-**Consequence**: Form 3520 instructions require itemization of any
-donor that contributed more than $5,000 individually when the
-$100,000 aggregate threshold is exceeded.
+**Consequence**: When line 54 is "Yes," the form requires each gift or
+bequest over $5,000 to be listed on its own row.
 
-**Fix**: List each donor that gave > $5,000 individually with name,
-address, country, relationship, dates, amounts. Donors at or below
-$5,000 can be aggregated.
+**Fix**: List each gift or bequest over $5,000 with (a) date, (b)
+description of property, (c) FMV. Line 54 does not ask for the donor's
+name or address. Gifts of $5,000 or less are not listed; if none exceeds
+$5,000, write "No gifts or bequests exceed $5,000" in column (b).
 
 ---
 
@@ -166,14 +179,15 @@ that have a clear date.
 the IRS expects. For Part IV, this can move the aggregate above or
 below the threshold and change whether reporting is required.
 
-**Fix**: For one-time transfers (Part I gift, Part IV gift, Part III
-distribution received on a specific date), use the **spot rate on the
-date of the transaction**. For ongoing trust accounting (Part II
-income/expenses across the year), use the **Treasury yearly average
-rate** consistently. Document the source.
+**Fix**: Form 3520 requires USD but prescribes no rate. For one-time
+transfers (Part I transfer, Part IV gift, Part III distribution received
+on a specific date), the rate on the transaction date is the usual
+choice. For trust accounting spread across the year (substitute 3520-A
+income and expenses), a yearly average rate used consistently. Document
+the source.
 
-The Treasury yearly average rates are at:
-https://www.fiscal.treasury.gov/reports-statements/treasury-reporting-rates-exchange/
+The IRS yearly average rates are at:
+https://www.irs.gov/individuals/international-taxpayers/yearly-average-currency-exchange-rates
 
 ---
 
@@ -182,9 +196,9 @@ https://www.fiscal.treasury.gov/reports-statements/treasury-reporting-rates-exch
 **The mistake**: User has interests in two separate foreign trusts (e.g.,
 one inherited from each parent) and tries to fit both onto one Form 3520.
 
-**Consequence**: The IRS's processing system associates one trust per
-Form 3520. Combining produces ambiguous records; the IRS may treat one
-trust as unreported.
+**Consequence**: The form and instructions require "a separate Form 3520
+for each foreign trust." Combining produces an incomplete return for at
+least one trust.
 
 **Fix**: File **one Form 3520 per trust**. If the user has both Part II
 (US owner) and Part III (distribution) for the same trust, those go
@@ -195,12 +209,12 @@ each in its own envelope to Ogden.
 
 ## Less common but worth flagging
 
-### 11. Wet-ink signature missed
+### 11. Unsigned form or missing preparer block
 
-Form 3520 is paper-only. Digital signatures are NOT accepted as of 2026.
-The IRS requires an actual ink signature on the original. A scanned PDF
-with an image of a signature is not enough; the original must be wet-ink
-signed by the filer.
+The form must be signed and dated by the filer (both spouses on a joint
+Form 3520; the U.S. owner, with name and TIN on the "Title" line, on a
+substitute Form 3520-A). The instructions state "E-signatures are
+accepted." A paid preparer completes and signs the preparer block.
 
 ### 12. Filing on the IRS Free Fillable Forms platform
 
@@ -209,25 +223,27 @@ exists in PDF format and assume FFFF would accept it; it won't.
 
 ### 13. Trying to e-file via tax software
 
-Mainstream tax software (TurboTax, H&R Block, FreeTaxUSA) does not
-e-file Form 3520. Some software lets the user fill the form digitally
-and prints a paper version for mailing. The user must mail the printed,
-signed form themselves.
+The Form 3520 instructions give only the Ogden mailing address; no
+electronic filing channel is described. Software may fill the form, but
+the user mails the printed, signed form.
 
 ### 14. Not filing because there's no tax due
 
 Form 3520 is an **information return** — filing is required regardless
-of tax owed. A Part IV gift report has zero income tax effect (gifts are
-excluded under IRC §102), but the failure to file penalty is still 5%
-per month up to 25% of the gift. Filing is mandatory.
+of tax owed. A Part IV gift report has no income tax effect for a true
+gift (IRC §102), but the failure-to-report penalty is still 5% per month
+up to 25% of the gift (§6039F(c)). Filing is mandatory.
 
-### 15. Spouse files separate 3520 for joint gift
+### 15. Gift to a married couple
 
-If a foreign relative gives a $150,000 gift jointly to a US married
-couple, the gift can be reported on a single joint Form 3520 (filed by
-the spouses who jointly file Form 1040). Filing two separate 3520s,
-each reporting half, is allowed but more error-prone — easy for one
-spouse to miss the threshold determination.
+If a foreign relative gives $150,000 to a US married couple, the
+threshold is tested for each U.S. recipient. Whether each spouse received
+$75,000 (each under $100,000) or one spouse received the whole gift
+depends on the facts (whose account, to whom the gift was made). The
+instructions' Joint Returns paragraph allows a joint Form 3520 when both
+spouses are transferors, grantors, or beneficiaries of the same foreign
+trust; it does not address Part IV gifts. ASK the facts and have a CPA
+decide the reporting position.
 
 ### 16. Missing the year of receipt
 
@@ -238,17 +254,20 @@ receipt** — usually the year the user could have deposited the check
 of wire/ACH for electronic transfers). Picking the wrong year shifts the
 gift to a year that may have a different aggregate.
 
-### 17. Not appointing a US agent and getting punished by §6048(b)(2)
+### 17. No U.S. agent for the trust
 
-A US grantor of a foreign trust who does NOT appoint a US agent under
-§6048(b)(2) faces a presumption: any transfer to the trust may be
-treated as a deemed distribution of all trust accumulated income to the
-grantor, recharacterizing what would otherwise be a tax-free transfer
-into ordinary income.
+If a foreign trust with a U.S. owner has no U.S. agent, the IRS may
+redetermine the amounts the owner must take into account (IRC
+§6048(b)(2); Instructions, U.S. Agent). For a beneficiary, a statement
+from a trust without a U.S. agent must allow the IRS or the beneficiary
+to inspect the trust's books, or the beneficiary falls into the default
+method.
 
-The fix is to appoint a US agent (often a US trustee, a US attorney, or
-a US-based trust company) who agrees to accept service of process and
-respond to IRS inquiries about the trust. Documented on Line 7 of Part I.
+The fix is for the trust to appoint a U.S. agent — a U.S. person
+(a U.S. grantor or beneficiary may serve) with a binding contract to act
+for the trust on IRS requests and summonses. It counts only if the
+agent's name, address, and TIN are on Form 3520 lines 3a–3g; if line 3 is
+"No" and Part I applies, lines 15–18 must be completed.
 
 ### 18. Treating a distribution from a US-owned grantor trust as taxable
 
@@ -257,9 +276,10 @@ trust's income is already taxed annually to the US owner. A distribution
 TO the US owner from such a trust is generally **not separately
 taxable** — it's a return of already-taxed corpus.
 
-Schedule A of Part III handles this. The distribution is reported but
-no income tax flows. Filers sometimes include the distribution in
-income on Schedule 1 of Form 1040 and double-tax themselves. Don't.
+For an amount received from the portion the filer owns, Part III needs
+only lines 24 and 27. The distribution is reported but no income tax
+flows. Filers sometimes include the distribution in income on Schedule 1
+of Form 1040 and double-tax themselves. Don't.
 
 ### 19. Confusing Form 3520 with Form 709 (Gift Tax)
 

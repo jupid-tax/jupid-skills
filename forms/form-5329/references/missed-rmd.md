@@ -12,14 +12,16 @@ in the year the account owner reaches the "applicable age":
 
 - **Age 70½** — owners who reached 70½ before 2020 (pre-SECURE Act)
 - **Age 72** — owners who reached 72 in years 2020-2022 (SECURE Act)
-- **Age 73** — owners who reach 73 in 2023-2032 (SECURE 2.0 §107)
-- **Age 75** — owners who reach 73 in 2033 or later
+- **Age 73** — owners who reach 72 after 2022 and 73 before 2033 (IRC §401(a)(9)(C)(v)(I), SECURE 2.0 §107)
+- **Age 75** — owners who reach 74 after December 31, 2032 (IRC §401(a)(9)(C)(v)(II))
 
 Inherited accounts: RMDs apply differently. For deaths after 12/31/2019,
 the SECURE Act 10-year rule applies to most non-spouse beneficiaries
 (account fully distributed within 10 years); annual RMDs within the 10
 years are required for some categories of beneficiaries (per the 2024
-final regulations).
+final regulations). Pub. 590-B (2025) notes excise tax relief for certain
+missed 2024 RMDs under Notice 2024-35; check whether a missed inherited-IRA
+RMD falls in a relief year before computing Part IX.
 
 ---
 
@@ -31,9 +33,9 @@ RMD = (Account balance on December 31 of prior year) ÷ (Distribution period fac
 
 Distribution period factor comes from Pub 590-B Appendix B tables:
 
-- **Uniform Lifetime Table** — most owners. Factor at age 73 is 26.5;
-  factor at age 75 is 24.6; factor at age 80 is 20.2 (verify against
-  current Pub 590-B since the IRS updated the tables effective 2022).
+- **Uniform Lifetime Table (Table III)** — most owners. Factor at age 73
+  is 26.5; factor at age 75 is 24.6; factor at age 80 is 20.2 (Pub. 590-B
+  (2025), Appendix B).
 - **Joint Life and Last Survivor Table** — used when sole spouse
   beneficiary is more than 10 years younger than the owner
 - **Single Life Table** — beneficiaries of inherited accounts
@@ -45,11 +47,12 @@ $430,000. Distribution period factor at age 75 (Uniform Lifetime Table):
 24.6.
 
 ```
-RMD = $430,000 ÷ 24.6 = $17,479
+RMD = $430,000 ÷ 24.6 = $17,479.67 → $17,480
 ```
 
 If only $5,000 was distributed during the year, the shortfall (Form 5329
-Line 54) is $12,479.
+Line 52b − Line 53b, or 52a − 53a if fully corrected in the window) is
+$12,480.
 
 ### Aggregation rules
 
@@ -68,14 +71,16 @@ parent must take three separate RMDs (one from each "bucket").
 
 ## Reporting on Form 5329 Part IX
 
-Lines 52-55:
+Lines 52a-55 (2025 Form 5329; the a/b split was already on the 2024 form):
 
 | Line | Field | Source |
 |------|-------|--------|
-| 52 | Required minimum distribution | Computed using the applicable table |
-| 53 | Amount actually distributed | Sum of distributions during the year (any portion of the RMD that *was* taken) |
-| 54 | Shortfall | Line 52 − Line 53 |
-| 55 | Additional tax | 25% × Line 54, OR 10% (SECURE 2.0), OR 0 (waiver) |
+| 52a | RMD from plans whose full shortfall was distributed during the correction window | Computed using the applicable table |
+| 52b | RMD from all other plans | Computed using the applicable table |
+| 53a / 53b | Amount distributed during the tax year from those plans | Distributions during the year only; not distributions after the RMD deadline or during the correction window |
+| 54a | (52a − 53a) × 10% | Reduced rate |
+| 54b | (52b − 53b) × 25% | Default rate |
+| 55 | 54a + 54b | → Schedule 2 (Form 1040), line 8 |
 
 ---
 
@@ -86,40 +91,43 @@ Lines 52-55:
 The standard rate post-SECURE 2.0. Was 50% before tax years beginning
 after 12/31/2022 (SECURE 2.0 §302).
 
-### Path 2 — 10% (SECURE 2.0 corrected within 2 years)
+### Path 2 — 10% (corrected during the correction window)
 
-If the user takes the missed amount within 2 years of the end of the year
-it should have been taken (and before the IRS issues a deficiency notice
-for the missed RMD), the rate drops from 25% to 10% under IRC §4974(e),
-added by SECURE 2.0 §302.
+The rate drops from 25% to 10% under IRC §4974(e), added by SECURE 2.0
+§302, if during the correction window the user (1) receives a distribution
+of the shortfall from the plan for which the tax was imposed and (2) files
+a return reflecting the tax (2025 Instructions for Form 5329, Reduced tax
+rate). The correction window ends on the earliest of: the date a deficiency
+notice for the tax is mailed, the date the tax is assessed, or the last day
+of the second taxable year that begins after the end of the taxable year in
+which the tax is imposed.
 
-The 2-year window:
-- For a missed 2024 RMD, corrective distribution must be taken by
-  12/31/2026 to qualify for 10%
-- For a missed 2025 RMD, corrective distribution must be taken by
-  12/31/2027 to qualify for 10%
+For calendar-year filers:
+- Missed 2024 RMD: window ends no later than 12/31/2026
+- Missed 2025 RMD: window ends no later than 12/31/2027
 
-If the user takes the corrective distribution after the 2-year window,
-the rate stays at 25%.
+If the user takes the corrective distribution after the window, the rate
+stays at 25%.
 
 ### Path 3 — 0 (waiver request)
 
 If the missed RMD was due to "reasonable cause" and the user is taking
 "reasonable steps to remedy the shortfall," the user can request a
-waiver under IRC §4974(d). The IRS approves these liberally in practice
-when reasonable cause is documented.
+waiver under IRC §4974(d): the shortfall must be due to reasonable error
+and the user must be taking reasonable steps to remedy it.
 
-To request:
+To request (2025 Instructions for Form 5329, "Waiver of tax for reasonable
+cause"):
 1. Take the missed RMD as soon as possible (the corrective distribution
    itself is part of "remedying the shortfall")
-2. Compute Line 54 (the shortfall)
-3. **Write 0 on Line 55** (not the 25% or 10% calculation)
-4. **Attach a statement** to Form 5329 explaining (i) the reasonable
-   cause and (ii) the corrective steps
-
-Some practitioners write "RC" (reasonable cause) next to Line 54 on the
-form. The instructions don't require this but it flags the waiver to the
-IRS reviewer.
+2. Complete Lines 52a/52b and 53a/53b as instructed
+3. **Enter "RC" and the shortfall amount to be waived in parentheses on
+   the dotted line next to Line 54a and/or 54b.** Subtract it from the
+   shortfall and enter the result (at that line's rate) on Line 54a/54b;
+   a full waiver leaves 0
+4. Complete Line 55 and pay any tax it shows
+5. **Attach a statement** to Form 5329 explaining (i) the reasonable
+   error and (ii) the steps taken to remedy the shortfall
 
 ---
 
@@ -129,7 +137,7 @@ The statement is short, factual, and labeled clearly. Use the user's own
 words for reasonable cause; do not template a reason that isn't true.
 
 ```markdown
-# Form 5329 Line 54 — Waiver Request Statement
+# Form 5329 Lines 54a/54b — Waiver Request Statement
 
 Filer: <full legal name>
 SSN: <SSN>
@@ -176,8 +184,8 @@ I have taken / will take the following corrective actions:
 ## Request
 
 I respectfully request that the IRS waive the additional tax under
-IRC §4974(d). I have entered $0 on Line 55 of Form 5329 pending review of
-this waiver request.
+IRC §4974(d). I have entered "RC" and the waived amount next to Line
+54a/54b of Form 5329 as the instructions direct.
 
 Filer signature: _______________________
 Date: __________
@@ -187,8 +195,7 @@ Date: __________
 
 ## Approval rates and what to expect
 
-The IRS approves the vast majority of well-documented waiver requests.
-The factors that drive approval:
+The IRS does not publish approval rates. The factors that matter:
 
 1. **The missed amount has been distributed** (or will be soon) — the
    "remedy" prong of §4974(d). A waiver request without corrective
@@ -207,16 +214,18 @@ The factors that drive approval:
    by Dr. Smith's letter dated [date]" or "as shown in custodian
    correspondence dated [date]".
 
-The IRS typically responds within 60-180 days with either silent approval
-(no notice = approved; the original 0 on Line 55 stands) or a CP letter
-requesting more information or denying the waiver.
+Per the instructions, the IRS reviews the information and decides whether
+to grant the waiver; if it is not granted, the IRS notifies the user of the
+additional tax owed. No timeline is published.
 
 ---
 
 ## What if multiple RMDs were missed across multiple accounts
 
-If the user missed RMDs from more than one account, sum the shortfalls
-into Line 54. The waiver statement should identify each affected account:
+If the user missed RMDs from more than one account, total the RMDs and
+distributions on Lines 52a/53a (plans fully corrected in the window) and
+52b/53b (all others). The waiver statement should identify each affected
+account:
 
 ```markdown
 ## Account information

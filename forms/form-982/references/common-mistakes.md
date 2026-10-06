@@ -1,54 +1,48 @@
 # Common Form 982 Mistakes (Audit-Trip List)
 
-The top mistakes the IRS catches on Form 982, with citations and fixes. Use this checklist when reviewing a draft before submission.
+Common Form 982 mistakes, with citations and fixes. Use this checklist when reviewing a draft before submission. Line numbers are from Form 982 (Rev. March 2018) and its Instructions (Rev. December 2021).
 
 ---
 
-## 1. Claiming insolvency without doing Worksheet 2
+## 1. Claiming insolvency without doing the Insolvency Worksheet
 
 **The error**: User received a 1099-C, feels broke, checks Box 1b on Form 982 with the full canceled amount on Line 2.
 
-**Why wrong**: Insolvency is a TECHNICAL test under §108(d)(3): liabilities > FMV of assets immediately before discharge, including ALL assets (retirement, life insurance cash value, all real estate). Many users with substantial 401(k) balances are technically solvent.
+**Why wrong**: Insolvency is a TECHNICAL test under §108(d)(3): liabilities > FMV of assets immediately before discharge, including ALL assets (retirement accounts, pension interests, life insurance cash value, all real estate; Pub. 4681). Many users with substantial 401(k) balances are technically solvent.
 
-**Fix**: Complete Pub 4681 Worksheet 2 before checking Box 1b. If liabilities ≤ assets, do NOT claim insolvency exclusion.
-
-**Audit trigger**: The IRS routinely asks for the Worksheet 2 supporting calculation in audits of Form 982 with Box 1b. Lack of documentation → exclusion disallowed.
+**Fix**: Complete the Pub. 4681 Insolvency Worksheet before checking Box 1b. If liabilities ≤ assets (line 38 zero or less), do NOT claim insolvency exclusion. Keep the worksheet with the records; it is the support if the IRS asks.
 
 ---
 
-## 2. Forgetting retirement accounts in Worksheet 2
+## 2. Forgetting retirement accounts in the Insolvency Worksheet
 
 **The error**: User excludes 401(k) / IRA balances from "assets" because "I can't touch that money."
 
-**Why wrong**: §108(d)(3) doesn't have a "touchability" test. Retirement accounts are assets at vested FMV. Pub 4681 specifically lists them as included.
+**Why wrong**: Pub. 4681 counts exempt assets "such as your interest in a pension plan and the value of your retirement account", and its worksheet has lines 28 (retirement accounts) and 29 (pension plan). The Tax Court held that assets exempt from creditors under state law count in the §108(d)(3) test (Carlson v. Commissioner, 116 T.C. 87 (2001)).
 
-**Fix**: Include vested 401(k), IRA, and other retirement balances at FMV. Use the most recent statement date closest to the discharge date.
-
-**Audit trigger**: Tax court has consistently held that retirement accounts must be included (Carlson v. Commissioner, T.C. Memo 2012-76, among others).
+**Fix**: Include vested 401(k), IRA, and other retirement balances at FMV. Use the most recent statement date closest to the discharge date. One caveat: a pension interest that could not be cashed out, sold, assigned, or borrowed against was held not an asset in Schieber v. Commissioner, T.C. Memo. 2017-32. If the user has that kind of interest, include it by default and flag it for a CPA.
 
 ---
 
-## 3. Excluding the canceled debt from "liabilities" in Worksheet 2
+## 3. Excluding the canceled debt from "liabilities" in the Insolvency Worksheet
 
 **The error**: "The debt is being canceled, so I don't include it in my liabilities."
 
 **Why wrong**: §108(d)(3) measures insolvency IMMEDIATELY BEFORE the discharge. At that moment, the debt is still owed.
 
-**Fix**: Include the canceled debt amount in liabilities. Use Box 2 of the 1099-C.
+**Fix**: Include the canceled debt in liabilities at its balance immediately before the cancellation (Pub. 4681's repossessed-car example counts the full $8,500 loan balance). Box 2 of the 1099-C is the canceled part; the whole pre-cancellation balance is the liability.
 
-**Audit trigger**: Recomputing Worksheet 2 with the canceled debt INCLUDED often changes the insolvency conclusion.
+**Why it matters**: Recomputing the worksheet with the canceled debt INCLUDED often changes the insolvency conclusion.
 
 ---
 
-## 4. Checking multiple Box 1 exclusions
+## 4. Checking an exclusion box that the coordination rules shut off
 
-**The error**: User checks Box 1a (bankruptcy) AND Box 1b (insolvency) on the same Form 982.
+**The error**: User checks Box 1b (insolvency) or 1e (principal residence) for a debt discharged in a title 11 case, or checks 1d (QRPBI) for the whole discharge while insolvent.
 
-**Why wrong**: §108(a)(2) gives bankruptcy priority over insolvency. If the discharge occurred in a Title 11 case, Box 1a applies and Box 1b doesn't. Multiple boxes confuse the IRS and may trigger rejection.
+**Why wrong**: §108(a)(2)(A): boxes 1b–1e don't apply to a discharge in a title 11 case; use 1a. §108(a)(2)(B): farm (1c) and QRPBI (1d) apply only to the part of the discharge beyond the insolvency amount.
 
-**Fix**: Check exactly ONE box on Line 1. If multiple discharges in the same year qualify under different exclusions, file SEPARATE Forms 982 (one per exclusion).
-
-**Audit trigger**: E-file may auto-reject; paper filings draw a notice.
+**Fix**: Apply the coordination rules, then check every box that actually applies. More than one box on one Form 982 is allowed: the form says "check applicable box(es)", and Pub. 4681 examples check 1b with 1c and 1b with 1d. Do not file separate Forms 982 per exclusion; line 2 is the total.
 
 ---
 
@@ -58,21 +52,19 @@ The top mistakes the IRS catches on Form 982, with citations and fixes. Use this
 
 **Why wrong**: Cannot exclude more than was discharged. Line 2 ≤ Box 2 of 1099-C.
 
-**Fix**: Cap Line 2 at the actual canceled amount.
-
-**Audit trigger**: IRS cross-matches 1099-C Box 2 with Form 982 Line 2.
+**Fix**: Cap Line 2 at the actual canceled amount. Box 2 of the 1099-C may show only part of the canceled debt or include interest (Pub. 4681 "Amount of canceled debt"); reconcile before relying on it.
 
 ---
 
-## 6. Failing to report the non-excluded portion on Schedule 1 Line 8c
+## 6. Failing to report the non-excluded portion
 
 **The error**: User excludes $20,000 of a $30,000 1099-C under insolvency, but doesn't report the remaining $10,000 anywhere.
 
-**Why wrong**: The portion NOT excluded is ordinary income on Schedule 1 Line 8c.
+**Why wrong**: The portion NOT excluded is ordinary income: Schedule 1 Line 8c for nonbusiness debt, Schedule C Line 6 for a sole proprietorship, Schedule E Line 3 for rental real property, Schedule F Line 8 for farm debt (Pub. 4681).
 
-**Fix**: Reconcile: 1099-C Box 2 = Form 982 Line 2 + Schedule 1 Line 8c. Both must add up.
+**Fix**: Reconcile: canceled debt = Form 982 Line 2 + the income line. Both must add up.
 
-**Audit trigger**: 1099-C amount not fully accounted for → CP2000 notice for unreported income.
+**Why it matters**: A 1099-C amount that isn't accounted for on the return can lead to an IRS underreporting notice.
 
 ---
 
@@ -80,35 +72,29 @@ The top mistakes the IRS catches on Form 982, with citations and fixes. Use this
 
 **The error**: User excludes under bankruptcy or insolvency but doesn't fill in Part II of Form 982.
 
-**Why wrong**: §108(b) MANDATES attribute reduction for these exclusions. The form requires Part II to be completed.
+**Why wrong**: §108(b) MANDATES attribute reduction for these exclusions, in order (lines 6, 7, 8, 9, 10a, 12, 13 unless line 5 is elected).
 
-**Fix**: Complete Lines 4-11 totaling Line 2. Track which attributes are reduced and update next year's records.
-
-**Audit trigger**: Empty Part II with non-zero Line 2 (under Box 1a or 1b) → form rejection.
+**Fix**: Reduce every attribute the user has, in order, up to the excluded amount. The Part II total need not equal Line 2 when attributes run out (i982 Line 2). For a nonbusiness debt where basis of nondepreciable property is the only attribute, Line 10a = smallest of (a) that basis, (b) Line 2, (c) bases plus money minus liabilities immediately after the discharge; show the computation even when the answer is $0 (i982 "A nonbusiness debt"). Track which attributes are reduced and update next year's records.
 
 ---
 
-## 8. Checking §108(b)(5) election (Line 3) without depreciable property
+## 8. Confusing Line 3 with the §108(b)(5) election (Line 5)
 
-**The error**: User checks Line 3 to "preserve NOLs" but has no depreciable property.
+**The error**: User checks Line 3 "Yes" to "preserve NOLs", or enters a §108(b)(5) amount on Line 5 with no depreciable property.
 
-**Why wrong**: The §108(b)(5) election applies basis reduction to depreciable property. Without depreciable property, the election produces no effect — the default order proceeds anyway.
+**Why wrong**: Line 3 is the §1017(b)(3)(E) election to treat real property held for sale to customers as depreciable property; it is not the §108(b)(5) election and doesn't apply to QRPBI (i982 Line 3). The §108(b)(5) election is made by entering an amount on Line 5, and it is limited to the adjusted basis of depreciable property held at the start of the next year (§108(b)(5)(B)). Without depreciable property, it produces nothing.
 
-**Fix**: Don't check Line 3 unless the user has depreciable property worth reducing. The election is irrevocable.
-
-**Audit trigger**: Not always caught by the IRS, but the election can be confusing in records.
+**Fix**: Leave Line 3 at "No" unless the user is a real estate dealer who wants that election. Use Line 5 only if the user has depreciable property worth reducing. Both elections can be revoked only with IRS consent (§108(d)(9); §1017(b)(3)(E)(ii)).
 
 ---
 
-## 9. Claiming principal residence exclusion in a year it's lapsed
+## 9. Claiming principal residence exclusion after it expired
 
-**The error**: User checks Box 1e for a 2026 discharge without verifying the §108(a)(1)(E) exclusion is still in effect.
+**The error**: User checks Box 1e for a 2026 discharge.
 
-**Why wrong**: The qualified principal residence exclusion has been extended multiple times by Congress. As of last verification (2026-04-28), it was extended through tax year 2025. For 2026+, verify against the most recent legislation. If the extension has lapsed, Box 1e is unavailable.
+**Why wrong**: §108(a)(1)(E) covers only debt discharged before Jan. 1, 2026, or discharged under an arrangement entered into and evidenced in writing before Jan. 1, 2026. It was last extended through 2025 by P.L. 116-260, div. EE, §114 and had not been extended again as of 2026-10-06 (i982 Line 1e; Pub. 4681 (2025) What's New: QPRI "cannot be excluded from income for discharges completed or discharge agreements entered into after December 31, 2025").
 
-**Fix**: Before checking Box 1e, verify the exclusion is in effect for the user's tax year. Look up the latest Pub 4681 or recent legislation.
-
-**Audit trigger**: IRS systems will flag if the exclusion isn't available for the tax year.
+**Fix**: For a 2026 discharge, ask for a written arrangement dated before Jan. 1, 2026. Without one, Box 1e is unavailable; test insolvency (Box 1b). Re-check https://www.irs.gov/forms-pubs/about-form-982 for any later extension.
 
 ---
 
@@ -116,11 +102,9 @@ The top mistakes the IRS catches on Form 982, with citations and fixes. Use this
 
 **The error**: User refinanced the home, took cash out for a vacation, and now has the debt forgiven. Tries to use Box 1e.
 
-**Why wrong**: §108(h) defines "qualified principal residence indebtedness" as debt incurred to BUY, BUILD, or substantially IMPROVE the principal residence. Cash-out refinances for non-home purposes are NOT qualified.
+**Why wrong**: §108(h)(2) defines "qualified principal residence indebtedness" as acquisition indebtedness: debt incurred to BUY, BUILD, or substantially IMPROVE the principal residence and secured by it. A refinance counts only up to the old mortgage principal just before the refinancing (i982 Line 1e). Cash-out refinances for non-home purposes are NOT qualified.
 
-**Fix**: Only the qualifying portion (acquisition / improvement) of the debt qualifies. Cash-out for non-home purposes is treated under insolvency or income.
-
-**Audit trigger**: Home equity loans / refinances with cash out commonly draw scrutiny.
+**Fix**: Apply the §108(h)(4) ordering rule: the exclusion covers only the amount discharged in excess of the non-qualified part of the loan (i982 example: $1,000,000 loan, $800,000 QPRI, $300,000 discharged → $100,000 excludable; Pub. 4681 Example 3: $115,000 discharged, $110,000 cash-out → $5,000 excludable). Test the rest under insolvency; otherwise it is income.
 
 ---
 
@@ -128,27 +112,25 @@ The top mistakes the IRS catches on Form 982, with citations and fixes. Use this
 
 **The error**: User had a vacation home foreclosed and tries Box 1e.
 
-**Why wrong**: §108(h)(1) requires the property to be the user's PRINCIPAL residence (the §121 definition applies — used as primary home for 2 of last 5 years).
+**Why wrong**: The debt must be on the user's principal residence, which has the §121 meaning (§108(h)(5)): the main home, where the user ordinarily lives most of the time; only one at a time (i982 Line 1e). The §121 two-of-five-years test is the gain-exclusion test, not this definition.
 
-**Fix**: Vacation homes and rentals don't qualify. Try insolvency (Box 1b) instead. For rentals used in trade/business, QRPBI (Box 1d) may be available.
+**Fix**: Vacation homes and rentals don't qualify. Try insolvency (Box 1b) instead. For residential rental property, QRPBI (Box 1d) may be available (Pub. 4681: residential rental property generally qualifies as real property used in a trade or business unless the user also uses the dwelling as a home).
 
 ---
 
 ## 12. Forgetting to reduce home basis after Box 1e exclusion
 
-**The error**: User excludes $75K under principal residence indebtedness and forgets to track the basis reduction.
+**The error**: User excludes $75K under principal residence indebtedness in a loan modification, keeps the home, and leaves Line 10b blank.
 
-**Why wrong**: §108(h)(1) requires basis reduction in the residence by the excluded amount. This affects the §121 capital gain calculation when the home is later sold.
+**Why wrong**: §108(h)(1) requires basis reduction in the residence. If the user continues to own the home, Line 10b = the smaller of the QPRI amount on Line 2 or the home's basis (i982 Line 10b). This affects the gain calculation when the home is later sold (Pub. 523 basis adjustments). If the home was disposed of in the same transaction (short sale, foreclosure), there is no Line 10b reduction.
 
-**Fix**: After excluding under Box 1e, document the basis reduction in the user's home records:
+**Fix**: After excluding under Box 1e on a home the user still owns, enter Line 10b and document the basis reduction in the user's home records:
 ```
 Original basis:               $X
-Less §108(h) basis reduction: $Y
+Less Line 10b reduction:      $Y   (smaller of the 1e amount on line 2 or $X)
 Adjusted basis:               $X − Y
 ```
 Retain for the future home sale.
-
-**Audit trigger**: When the home is later sold, the IRS will check basis. Failure to reduce → IRS-imposed reduction + interest.
 
 ---
 
@@ -156,11 +138,9 @@ Retain for the future home sale.
 
 **The error**: User received a 1099-C, doesn't qualify for any exclusion, but files Form 982 anyway with hopes of "trying" insolvency.
 
-**Why wrong**: Filing Form 982 without a qualifying exclusion is a misrepresentation. Adds to audit risk.
+**Why wrong**: Filing Form 982 without a qualifying exclusion misstates the return.
 
-**Fix**: If no exclusion fits (user is solvent, not in bankruptcy, debt isn't on principal residence), do NOT file Form 982. Report the full 1099-C amount as ordinary income on Schedule 1 Line 8c.
-
-**Audit trigger**: IRS focuses on Form 982 filings as audit candidates.
+**Fix**: If no exclusion fits (user is solvent, not in bankruptcy, debt isn't qualified principal residence, farm, or real property business debt), do NOT file Form 982. Report the full canceled amount as ordinary income on the income line for the debt type (Schedule 1 Line 8c for nonbusiness debt).
 
 ---
 
@@ -168,40 +148,38 @@ Retain for the future home sale.
 
 **The error**: User filed for bankruptcy but the case hasn't been discharged yet (still in proceeding) — claims Box 1a anyway.
 
-**Why wrong**: §108(a)(1)(A) requires a discharge by the bankruptcy court. The petition alone doesn't qualify.
+**Why wrong**: §108(d)(2) requires that the user be under the court's jurisdiction and the discharge be granted by the court or occur under a court-approved plan. The petition alone doesn't qualify.
 
-**Fix**: Wait for the discharge order before filing Form 982. If the year of discharge differs from the year of debt cancellation, this gets complex — refer to a CPA.
-
-**Audit trigger**: IRS may request the discharge order.
+**Fix**: Confirm the discharge order or confirmed plan and its date before claiming Box 1a for that year. If the year of discharge differs from the year of debt cancellation, this gets complex — refer to a CPA (Pub. 908). Keep the discharge order with the records.
 
 ---
 
-## 15. Confusing §108 exclusion with §108(f) student loan exclusion
+## 15. Confusing §108(a) exclusions with §108(f) student loan exclusions
 
-**The error**: User has a forgiven student loan under PSLF or §108(f)(5). Files Form 982 with Box 1b checked.
+**The error**: User has a student loan forgiven under a work-requirement program (§108(f)(1)) or §108(f)(5). Files Form 982 with Box 1b checked.
 
-**Why wrong**: §108(f) student loan exclusions are AUTOMATIC — generally do NOT require Form 982. Different statutory mechanism.
+**Why wrong**: §108(f) student loan exclusions are not §108(a) exclusions and are not claimed on Form 982. Pub. 4681 treats them as "Exceptions", which apply before the exclusions and don't reduce tax attributes.
 
-**Fix**: For §108(f) discharges, simply don't include the amount in income. No Form 982 needed (verify against current Pub 4681).
-
-The temporary §108(f)(5) broad exclusion (American Rescue Plan, 2021-2025) — covered most student loan discharges. Verify current scope.
+**Fix**: For §108(f) discharges, don't include the amount in income; no Form 982. Check the discharge date:
+- After Dec. 31, 2020 and before Jan. 1, 2026: the broad ARPA §108(f)(5) exclusion covered most student loan discharges (Pub. 4681 "Special rule for student loan discharges for 2021 through 2025").
+- After Dec. 31, 2025: §108(f)(5) as rewritten by P.L. 119-21 §70119 covers only discharges on account of death or total and permanent disability (federal student loans and private education loans), and the taxpayer's SSN (valid for employment, issued before the return due date) must be on the return (Pub. 4681 (2025) What's New). Other 2026 discharges not covered by §108(f)(1) or (f)(4) are income unless a §108(a) exclusion such as insolvency applies, which does go on Form 982.
 
 ---
 
 ## Final review checklist (before declaring the form ready)
 
-- [ ] Pub 4681 Worksheet 2 completed if Box 1b
-- [ ] Retirement accounts and life insurance cash value included as assets (Box 1b)
+- [ ] Pub. 4681 Insolvency Worksheet completed if Box 1b
+- [ ] Retirement accounts, pension interests, and life insurance cash value included as assets (Box 1b; worksheet lines 28, 29, 31)
 - [ ] Canceled debt itself included in liabilities (Box 1b, "immediately before")
-- [ ] Exactly ONE box checked on Line 1
-- [ ] Line 2 ≤ Form 1099-C Box 2
-- [ ] Schedule 1 Line 8c = (1099-C Box 2) − (Form 982 Line 2)
-- [ ] Lines 4-11 total = Line 2 (if Box 1a or 1b)
-- [ ] §108(b)(5) election decision documented (Line 3)
+- [ ] Every applicable box checked on Line 1, and none the §108(a)(2) coordination rules shut off
+- [ ] Line 2 ≤ the debt actually canceled (reconciled to Form 1099-C Box 2)
+- [ ] Income line (Schedule 1 Line 8c / Schedule C Line 6 / Schedule E Line 3 / Schedule F Line 8) = canceled debt − Form 982 Line 2
+- [ ] Part II: attributes reduced in order; lines 4–13 (excl. 10b) ≤ Line 2; Line 10a smallest-of computation shown for nonbusiness debt
+- [ ] §108(b)(5) election decision documented (Line 5); Line 3 answered (usually "No")
 - [ ] Bankruptcy discharge order on file (Box 1a)
-- [ ] Principal residence exclusion verified in effect for tax year (Box 1e)
-- [ ] Acquisition indebtedness verified (Box 1e)
-- [ ] Property is principal residence per §121 test (Box 1e)
-- [ ] Home basis reduction recorded for future sale (Box 1e)
+- [ ] Discharge before 2026, or written arrangement dated before Jan. 1, 2026 (Box 1e)
+- [ ] Acquisition indebtedness verified; §108(h)(4) ordering rule applied (Box 1e)
+- [ ] Property is the main home (Box 1e)
+- [ ] Line 10b entered if the home is still owned; home basis reduction recorded for future sale (Box 1e)
 - [ ] Reduced NOL / credits / basis tracked for next year's return
-- [ ] All supporting documentation retained for at least 3 years
+- [ ] Supporting documentation retained as long as it may become material (i982 Paperwork Reduction Act notice); property and basis records until the period of limitations expires for the year the property is disposed of (irs.gov "How long should I keep records")

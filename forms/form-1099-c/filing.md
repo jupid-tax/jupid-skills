@@ -24,9 +24,11 @@ Recipient is filing on paper?
   → Schedule 1 + Form 982 attached to 1040, mailed.
     Use Section 3.
 
-Recipient is using IRS Direct File?
-  → As of early 2026, Direct File supports limited 1099-C scenarios.
-    Verify current scope; if Form 982 is unsupported, redirect to FFFF or paper.
+Recipient wants IRS Free File guided software (AGI $89,000 or less)?
+  → Start at IRS.gov/FreeFile; check the partner supports Form 982 before starting.
+    https://www.irs.gov/filing/irs-free-file-do-your-taxes-for-free
+
+IRS Direct File was not offered in the 2026 filing season; do not route users to it.
 ```
 
 ---
@@ -35,7 +37,7 @@ Recipient is using IRS Direct File?
 
 URL: https://www.irs.gov/e-file-providers/free-file-fillable-forms
 
-Same authentication and pre-flight requirements as the Schedule C filing playbook. Identity verification, prior-year AGI, etc.
+Same authentication and pre-flight requirements as the Schedule C filing playbook: an account for the current filing year, an email address and a 10-digit U.S. cell phone for SMS, prior-year AGI or self-select PIN. FFFF prepares a federal return only and, for 2025 returns, closes Oct. 15, 2026 (FFFF page). It works for any income level.
 
 ### Field-by-field mapping from the SKILL plan
 
@@ -52,6 +54,12 @@ Same authentication and pre-flight requirements as the Schedule C filing playboo
 | SKILL plan field | FFFF location |
 |------------------|---------------|
 | Reporting target = Schedule C Line 6 | Open Schedule C, add the canceled amount to Line 6 "Other income" |
+
+**Nonfarm rental real property debt — Schedule E:**
+
+| SKILL plan field | FFFF location |
+|------------------|---------------|
+| Reporting target = Schedule E Line 3 | Open Schedule E, add the canceled amount to Line 3 for that property (Pub. 4681) |
 
 **Farming business debt — Schedule F:**
 
@@ -73,18 +81,19 @@ Same authentication and pre-flight requirements as the Schedule C filing playboo
 | Box 1d checked | "Discharge of qualified real property business indebtedness" checkbox |
 | Box 1e checked | "Discharge of qualified principal residence indebtedness" checkbox |
 | Line 2 amount | "Total amount of discharged indebtedness excluded from gross income" numeric field |
-| Line 3 (only if 1d) | "Do you elect to treat all real property described in section 1221(a)(1)..." Yes/No |
-| Line 4 | Reduction of basis of depreciable property under §1017(b)(3)(F) |
+| Line 3 | §1017(b)(3)(E) election: "Do you elect to treat all real property described in section 1221(a)(1)... as if it were depreciable property?" Yes/No (not for QRPBI; consumers leave it) |
+| Line 4 | QRPBI (box 1d) applied to reduce basis of depreciable real property |
+| Line 5 | §108(b)(5) election to reduce basis of depreciable property first |
 | Line 6 | NOL reduction |
-| Line 7 | General business credit reduction |
+| Line 7 | General business credit carryover reduction |
 | Line 8 | Minimum tax credit reduction |
-| Line 9 | Capital loss carryover reduction |
-| Line 10a | Basis of property reduction (non-depreciable) |
-| Line 10b | Basis of principal residence reduction |
-| Line 11 | Passive activity loss/credit reduction |
-| Line 12 | Foreign tax credit carryover reduction |
-| Line 13 | Reserved |
-| Line 14 | §108(b)(5) election (advanced — depreciable property basis first) |
+| Line 9 | Net capital loss and carryover reduction |
+| Line 10a | Basis of nondepreciable and depreciable property (nonbusiness debt: smallest of the three amounts in the Form 982 instructions) |
+| Line 10b | Basis of principal residence (box 1e only, home still owned) |
+| Lines 11a-11c | Qualified farm indebtedness basis reductions |
+| Line 12 | Passive activity loss and credit carryover reduction |
+| Line 13 | Foreign tax credit carryover reduction |
+| Part III | Corporate consent under §1081(b) — individuals leave it blank |
 
 4. **Run FFFF's "Check Form" tool** — flags missing required fields if a box is checked but Line 2 is zero, etc.
 5. **Cross-check** every field against the SKILL plan's "Form 982 draft" section. If any disagrees, stop and recompute.
@@ -94,14 +103,13 @@ Same authentication and pre-flight requirements as the Schedule C filing playboo
 
 - Do not file Form 982 without an actual exclusion — the IRS treats unsupported Form 982 filings as audit triggers
 - Do not enter the canceled amount on both Schedule 1 Line 8c **and** Form 982 Line 2 — the amount goes on exactly one (Schedule 1 if taxable, Form 982 if excluded)
-- Do not skip attribute reduction (Lines 6-12) just because the user has no NOLs — explicitly enter zeros and document "no attributes to reduce" in the plan
+- Do not skip attribute reduction (Lines 6-13) just because the user has no NOLs — compute Line 10a for a nonbusiness debt, enter zeros where there is nothing, and document it in the plan
 
 ### Failure modes
 
 | Symptom | Likely cause | Fix |
 |---------|--------------|-----|
 | FFFF rejects "Form 982 missing Box 1 selection" | Filled Line 2 without checking 1a-1e | Check the appropriate box per SKILL plan |
-| FFFF rejects "Schedule 1 Line 8c amount disagrees with 1099-C reported by creditor" | IRS matched their copy to user's reported amount | Confirm Box 2 amount; if Form 982 exclusion is being claimed, ensure it's on Form 982 not Schedule 1 |
 | 1040 Line 8 includes canceled amount despite Form 982 | Double-reporting | Remove from Schedule 1 Line 8c if claiming full exclusion |
 | Recipient doesn't have Form 982 in their FFFF return | Wasn't added | Use "Add a Form / Schedule" to add it before submitting |
 
@@ -152,9 +160,9 @@ After filing, the return moves through:
 4. Possible outcomes specific to 1099-C:
    - **Refund issued** — if the exclusion eliminated tax that was withheld elsewhere
    - **Balance due** — if the canceled amount was taxable
-   - **CP2000 notice** — if the IRS's matching engine flags an unreported 1099-C; respond with copies of Form 982 and Pub 4681 Worksheet 2 if the exclusion was claimed
+   - **CP2000 notice** — if the IRS's matching engine flags an unreported 1099-C; respond with copies of Form 982 and the Pub. 4681 Insolvency Worksheet if the exclusion was claimed
 
-The most common 1099-C-related notice is **CP2000**. If the user receives one, follow Pub 4681 Chapter 1 response guidance — the user has 30 days to respond agreeing or disagreeing with the proposed change.
+The most common 1099-C-related notice is **CP2000**. If the user receives one, respond by the date on the notice, agreeing or disagreeing with the proposed change (https://www.irs.gov/individuals/understanding-your-cp2000-notice).
 
 ---
 

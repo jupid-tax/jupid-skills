@@ -61,12 +61,11 @@ No bankruptcy. **Does not apply.**
 
 ### 4b. Insolvency — §108(a)(1)(B)
 
-Worksheet 2 immediately before 2025-04-18:
+Pub. 4681 Insolvency Worksheet immediately before 2025-04-18:
 
 **Liabilities:**
 
-- Business credit line being canceled: $22,000 (pre-settlement balance — what was outstanding before the settlement payment)
-- Wait: Priya paid the $6,000 settlement on 2025-04-18. The "immediately before" measurement is the moment before the bank's cancellation, which is contemporaneous with her settlement payment. Use $22,000 (full pre-settlement balance) as the liability.
+- Business credit line being canceled: $22,000 (pre-settlement balance). Priya paid the $6,000 settlement on 2025-04-18, the same day as the cancellation; the "immediately before" measurement is the moment before the cancellation, so the full $22,000 is the liability.
 - Other business debt: $4,000 (vendor accounts payable)
 - Personal credit cards: $5,000
 - Auto loan: $14,000
@@ -79,7 +78,7 @@ Worksheet 2 immediately before 2025-04-18:
 - 401(k): $48,000
 - Brokerage: $22,000
 - Car (KBB): $18,000
-- Business equipment basis: $7,000
+- Business equipment (FMV): $7,000
 - **Total assets:** $115,000
 
 **Insolvency = $45,000 − $115,000 = −$70,000.** Priya is **not** insolvent. §108(a)(1)(B) does not apply.
@@ -174,7 +173,7 @@ Not applicable (no exclusion claimed).
 - Federal income tax at 24% bracket: ~$3,840
 - Additional self-employment tax (15.3% on 92.35%): ~$2,260
 - Half-SE-tax deduction on Schedule 1 Line 15: ~$1,130
-- **Net additional tax: ~$5,830** (income tax + SE tax − half-SE deduction at 24%)
+- **Net additional tax: ~$5,830** (income tax + SE tax − half-SE deduction at 24%; ignores any §199A QBI deduction effect, which a CPA should check)
 
 ## Form 982 draft
 - Not required (no exclusion claimed)
@@ -182,7 +181,7 @@ Not applicable (no exclusion claimed).
 ## Required attachments
 - None beyond what's already required for Schedule C and Schedule SE
 - Retain 1099-C, settlement letter from bank, business credit line draw history
-  showing business use of every draw — for ≥6 years
+  showing business use of every draw — for at least 3 years after filing (6 if income is understated by more than 25%)
 
 ## Validation summary
 - Math: all checks passed
@@ -197,14 +196,14 @@ Not applicable (no exclusion claimed).
   - Update half-SE deduction on Schedule 1 Line 15
   - If Priya makes quarterly estimates, increase 2025 Q4 estimate by tax owed
     on this $16,000 to avoid underpayment penalty
-  - Retain settlement letter as evidence of cancellation event for ≥6 years
+  - Retain settlement letter as evidence of cancellation event for at least 3 years after filing (6 if income is understated by more than 25%)
 
 ## Sources cited in this plan
 - IRC §61(a)(11) (canceled debt = income)
 - IRC §108(a)(1)(B) (insolvency tested as fallback — not applicable)
 - IRC §1402 (self-employment tax on Schedule C net earnings)
 - IRS Pub 4681 (Chapter 1 — business debt cancellation)
-- Schedule C Instructions (current revision) — Line 6 includes canceled business debt
+- Pub. 4681 (2025), Chapter 1 — taxable canceled debt of a nonfarm sole proprietorship goes on Schedule C, line 6
 - Schedule SE Instructions (current revision)
 ```
 

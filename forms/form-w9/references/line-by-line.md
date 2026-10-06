@@ -1,6 +1,6 @@
 # Form W-9 — Line-by-line reference
 
-Every line and box on Form W-9 (Rev. March 2024) with examples and edge cases. Loaded on demand by the SKILL when the agent needs to map a user input to a specific field.
+Every line and box on Form W-9 (Rev. March 2024), checked against the form's own instructions on 2026-10-06, with examples and edge cases. Loaded on demand by the SKILL when the agent needs to map a user input to a specific field.
 
 This reference is self-contained — the agent should be able to fill the form using only this file plus the SKILL workflow.
 
@@ -32,7 +32,7 @@ The form has no header section. The first row is Line 1.
 
 **Edge cases:**
 
-- **Recently married, name changed on Social Security card?** Use the new name on Line 1; the SSA database will be in sync once they updated it.
+- **Recently married, name changed?** If the SSA has the new name, use it. If the user changed their last name without telling the SSA, enter first name, the last name shown on the Social Security card, and the new last name (W-9 instructions, Line 1).
 - **Operating under a hyphenated last name on tax return but a single last name on driver's license?** Use the tax-return version.
 - **Sole proprietor doing business as "ABC Consulting"?** Line 1 = personal name; "ABC Consulting" goes on Line 2.
 - **Single-member LLC (Garcia Design LLC) owned by Maya Garcia?** Line 1 = "Maya Garcia"; "Garcia Design LLC" goes on Line 2.
@@ -50,7 +50,7 @@ The form has no header section. The first row is Line 1.
 |------------|---------------------|
 | Sole prop with no DBA | (blank) |
 | Sole prop with DBA "Smith Design Studio" | "Smith Design Studio" |
-| Single-member LLC (disregarded) | LLC name (e.g., "Smith Design LLC") |
+| Single-member LLC (disregarded) | LLC name (e.g., "Smith Design LLC") — the instructions say to enter the disregarded entity's name on line 2 |
 | Corporation operating under entity name only | (blank) |
 | Corporation with DBA | DBA name |
 | Partnership operating under entity name only | (blank) |
@@ -58,7 +58,7 @@ The form has no header section. The first row is Line 1.
 **Edge cases:**
 
 - **Sole prop with multiple DBAs?** List the most relevant one (the one the requestor will pay). One per W-9.
-- **LLC with the same name on Line 1 (because it's an S-corp election)?** Leave Line 2 blank or repeat the LLC name; either is acceptable per IRS instructions.
+- **LLC with the same name on Line 1 (because it's an S-corp election)?** Leave Line 2 blank; line 2 is for a business, trade, DBA, or disregarded entity name that differs from line 1.
 
 ---
 
@@ -66,13 +66,15 @@ The form has no header section. The first row is Line 1.
 
 Seven options:
 
-1. **Individual/sole proprietor or single-member LLC**
-2. **C Corporation**
-3. **S Corporation**
+1. **Individual/sole proprietor**
+2. **C corporation**
+3. **S corporation**
 4. **Partnership**
 5. **Trust/estate**
-6. **Limited liability company** — and if checked, fill the classification letter (C, S, or P)
-7. (Other — rare; see IRS instructions)
+6. **LLC** — and if checked, fill the classification letter (C, S, or P)
+7. **Other** (rare; see IRS instructions)
+
+A disregarded entity checks the box for its owner's classification (Rev. March 2024 What's New; Line 3a note). The checkbox no longer reads "or single-member LLC".
 
 ### When to check each box
 
@@ -91,18 +93,18 @@ Seven options:
 | General or limited partnership (not LLC) | Partnership | n/a |
 | Trust or estate | Trust/estate | n/a |
 
-**The most common error**: a single-member LLC owner with no corporate election checks "Limited liability company" and writes "S" or nothing. The correct box is "Individual/sole proprietor" — the SMLLC default is a disregarded entity treated as the owner for tax purposes.
+**The most common error**: a single-member LLC owner with no corporate election checks "LLC" and writes "S" or nothing. The correct box is the owner's: "Individual/sole proprietor" for an individual owner — the SMLLC default is a disregarded entity treated as the owner for tax purposes.
 
 ---
 
-## Line 3b — FATCA pass-through indicator (new in March 2024 revision)
+## Line 3b — Foreign partners, owners, or beneficiaries (new in March 2024 revision)
 
-**What this is:** A checkbox added in the March 2024 revision. Check ONLY if:
-- The filer is an LLC OR another entity disregarded for federal tax purposes, AND
-- The single owner of the entity is exempt from FATCA reporting under IRC §1471, AND
-- The owner is providing the W-9 to certify status to a flow-through entity such as a partnership / trust / estate
+**What this is:** A checkbox added in the March 2024 revision. It applies only if, on line 3a, the filer checked Partnership or Trust/estate, or LLC with "P". Check it if:
+- The filer is a partnership (including an LLC taxed as a partnership), trust, or estate, AND
+- It is giving this W-9 to a partnership, trust, or estate in which it has an ownership interest, AND
+- It has any foreign partners, owners, or beneficiaries (it must check the box if it received a Form W-8 or documentary evidence of foreign status from any of them, or a W-9 with box 3b checked)
 
-**Most filers leave Line 3b blank.** This box exists for a narrow corner case in cross-border partnership reporting. If the filer is an individual / sole prop / SMLLC owned by a US individual, do not check.
+The purpose: the receiving flow-through entity may need it for Schedules K-2 and K-3 (Form 1065). **Most filers leave Line 3b blank.** Individuals, sole props, disregarded SMLLCs, and corporations never check it.
 
 ---
 
@@ -130,31 +132,30 @@ Applies to entities exempt from backup withholding under IRC §3406. Common code
 | 12 | Middleman known in investment community as a nominee or custodian |
 | 13 | Trust exempt from tax under §664 or described in §4947 |
 
-**Sole proprietors, individuals, and single-member LLCs always leave this blank.** A sole prop is NOT exempt from backup withholding even if they are a corporation in another context.
+**Sole proprietors, individuals, and disregarded single-member LLCs leave this blank** ("Generally, individuals (including sole proprietors) are not exempt from backup withholding"). Corporations (Code 5) are not exempt for card / third-party network settlements, attorneys' fees or gross proceeds, or medical payments reportable on 1099-MISC; S corporations must not enter a code for broker transactions.
 
 ### Exemption from FATCA reporting code (A-M)
 
 Applies to certain payees with foreign account exemptions. Codes A through M correspond to specific categories defined in the FATCA regulations.
 
-**For US-only-payee filers, leave blank.** If the user maintains accounts outside the US AND is being asked for a FATCA code, they need a tax pro — out of scope for this skill.
+**For US-only-payee filers, leave blank** — the codes apply only to accounts maintained outside the United States by certain foreign financial institutions; a requester may mark the line "Not Applicable". If the user is being asked for a FATCA code for a foreign account, they need a tax pro — out of scope for this skill.
 
 ---
 
 ## Line 5 — Address (number, street, and apt. or suite no.)
 
-**What goes here:** The filer's mailing address. This is where the requestor will send the year-end 1099.
+**What goes here:** The filer's mailing address. The instructions: "This is where the requester of this Form W-9 will mail your information returns." If it differs from what the requester has on file, write "NEW" at the top of the form.
 
 **Formatting:**
 - Number + street name + apt/suite designation (e.g., "742 Evergreen Terrace, Suite 4B")
-- Use the same address the user files on their Form 1040
-- Do not abbreviate the state on this line — that goes on Line 6
-- PO Box acceptable if the filer files their tax return with a PO Box
+- An address where the user reliably receives mail; matching the tax-return address avoids confusion but is not a W-9 rule
+- City, state, and ZIP go on Line 6
 
 **Edge cases:**
 
 - **Filer moves mid-year?** Send a fresh W-9 to every active requestor with the new address.
-- **Filer has a separate business address?** Use the address on the tax return. The business address can go on Line 2 if it differs.
-- **Filer is in a different state from the LLC's state of formation?** Use the filer's tax-return address (the LLC's state of formation is not relevant to W-9).
+- **Filer has a separate business address?** Use whichever address the user wants information returns mailed to. Line 2 is for a business name, never an address.
+- **Filer is in a different state from the LLC's state of formation?** The LLC's state of formation is not relevant to the W-9 address.
 
 ---
 
@@ -184,8 +185,8 @@ The form has both options. Fill ONLY ONE — leave the other blank.
 
 | Line 3a classification | TIN |
 |------------------------|-----|
-| Individual/sole proprietor | SSN (or ITIN if no SSN) |
-| Single-member LLC (disregarded) | Owner's SSN |
+| Individual/sole proprietor | SSN (or ITIN if no SSN); a sole prop with an EIN may use either |
+| Single-member LLC (disregarded) | Owner's SSN (or the owner's own EIN) |
 | LLC taxed as S-corp / C-corp | LLC's EIN |
 | Multi-member LLC (partnership) | LLC's EIN |
 | C Corporation | Corporation's EIN |
@@ -201,7 +202,7 @@ A single-member LLC is "disregarded" for federal tax purposes — it is treated 
 - **Part I = owner's SSN**
 - **Line 2 = LLC name** (optional)
 
-Even if the LLC has applied for and received an EIN (for opening a bank account, hiring employees, etc.), the W-9 still uses the **owner's SSN** in Part I — not the LLC's EIN. This is because the IRS matches the 1099-NEC against the name on Line 1 and the TIN in Part I. If Line 1 is the owner's name and the TIN is the LLC's EIN, the matching fails.
+Even if the LLC has applied for and received an EIN (for opening a bank account, hiring employees, etc.), the W-9 uses the **owner's SSN** (or the owner's own EIN, if the owner has one) in Part I — never the disregarded LLC's EIN. This is because the IRS matches the 1099-NEC against the name on Line 1 and the TIN in Part I. If Line 1 is the owner's name and the TIN is the LLC's EIN, the matching fails.
 
 The exception is when the SMLLC has filed Form 2553 (S-corp election) or Form 8832 (C-corp election) — then the LLC IS a separate taxpayer, Line 1 = LLC name, Part I = LLC's EIN.
 
@@ -215,7 +216,7 @@ If the filer's "SSN" starts with `9`, it's actually an ITIN — that's fine for 
 
 ## Part II — Certification
 
-Three numbered statements + a signature + date.
+Four numbered statements + a signature + date.
 
 **The certification statements** (paraphrased, see IRS form for exact wording):
 
@@ -226,7 +227,9 @@ Three numbered statements + a signature + date.
 
 **Strike item 2 ONLY if** the IRS has previously notified the user that they ARE currently subject to backup withholding for under-reporting interest or dividends. This is rare — most filers do not strike anything.
 
-**Signature** — handwritten or electronic. Electronic signatures must meet IRS Pub 1345 standards: signer identity (email + IP + timestamp), intent to sign, document signed, tamper-evident audit trail. DocuSign / Adobe Sign / Gusto / HelloSign / PandaDoc all qualify.
+**Signature** — handwritten or electronic. An electronic W-9 is acceptable when the requester's system meets the Instructions for the Requester of Form W-9 (Rev. March 2024), "Electronic Submission of Forms W-9": it makes reasonably certain the submitter is the person on the form, keeps the same information as the paper form, can supply a hard copy, and ends with an electronic signature under penalties of perjury using the paper form's language. E-signature platforms and vendor portals are typical ways requesters meet this.
+
+**When a signature is required** (Form W-9, Part II "Signature requirements"): accounts for interest, dividends, brokers, and barter exchanges opened after 1983 (or backup withholding applies), and real estate transactions. For "other payments" (rents, services by a nonemployee, card / third-party network settlements, medical, attorney gross proceeds, and more), the payee must give the correct TIN but need not sign unless notified of a previously incorrect TIN.
 
 **Date** — the date the user signs. MM/DD/YYYY format.
 
@@ -240,5 +243,5 @@ These are common questions that often confuse first-time filers — none of them
 - **Bank account or routing number** — not on W-9 (that's a separate ACH authorization form)
 - **Voided check** — not required by W-9; some requestors ask separately for direct-deposit setup
 - **Driver's license / passport number** — not on W-9 (some requestors ask separately for I-9 employment verification, but I-9 only applies if the relationship is employee, not contractor)
-- **EIN if you have one but are filing as sole prop** — not on W-9; sole props use SSN even if they have an EIN
+- **Both SSN and EIN** — fill only one TIN. A sole proprietor with an EIN may enter either; the IRS encourages the SSN (chart note 3)
 - **State sales-tax permit number** — not on W-9 (that's state-level, separate)

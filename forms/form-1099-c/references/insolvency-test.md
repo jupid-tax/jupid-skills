@@ -1,8 +1,8 @@
-# Insolvency Test — Pub 4681 Worksheet 2 Walkthrough
+# Insolvency Test — Pub. 4681 Insolvency Worksheet Walkthrough
 
 The insolvency exclusion under **IRC §108(a)(1)(B)** is the most-used exclusion for consumer 1099-Cs. It allows the borrower to exclude canceled debt from income **up to the amount they were insolvent** immediately before the cancellation.
 
-The IRS's official tool for the calculation is **Worksheet 2** in [Publication 4681](https://www.irs.gov/publications/p4681). This file walks through the worksheet step by step, lists what counts on each side, and surfaces the most common errors.
+The IRS's tool for the calculation is the **Insolvency Worksheet** in [Publication 4681 (2025)](https://www.irs.gov/publications/p4681), Chapter 1 (Part I liabilities, lines 1–15; Part II assets at FMV, lines 16–37; Part III line 38, amount of insolvency). This file walks through the worksheet step by step, lists what counts on each side, and surfaces the most common errors.
 
 ---
 
@@ -45,10 +45,12 @@ Liabilities include both legally enforceable debts and contingent liabilities th
 | Other consumer debt | Past-due utilities, rent arrears |
 | **The canceled debt itself** | At face value before the creditor wrote it off — see below |
 
-**Includable per Pub 4681:**
+**Also listed on the Pub. 4681 worksheet:**
 
-- Court judgments against the borrower
-- Past-due child support and alimony arrears (debatable in case law; Pub 4681 includes them)
+- Court judgments against the borrower (line 11)
+- Accrued or past-due mortgage interest, real estate taxes, utilities, childcare costs (lines 6–9)
+- Business debts, including as a sole proprietor or partner (line 12); margin debt (line 13)
+- Anything else goes on line 14 (other liabilities); for items such as support arrears, ask whether they are legally owed at the measurement date
 
 **Not includable:**
 
@@ -82,19 +84,20 @@ FMV is what the asset would sell for in an arm's-length sale, not the original c
 |----------|------------|--------------|
 | **Retirement accounts** | Borrowers think "they're protected from creditors" → so not assets. **Wrong.** | Account balance at measurement date |
 | Cash value of life insurance | Borrowers think "it's insurance, not asset" | Cash surrender value (not face value) |
-| Pension entitlement | If vested and accessible | Present value of vested benefits |
-| HSA / FSA balances | Borrowers think "it's medical, not financial" | Account balance |
-| 529 plans | Even though designated for education | Account balance, if borrower is owner |
+| Pension interest | Borrowers think it isn't theirs yet | Value of the interest (worksheet line 29) |
+| HSA balances | Borrowers think "it's medical, not financial" | Account balance (line 36, other assets) |
+| Education accounts (529, Coverdell) | Even though designated for education | Value of the interest (worksheet line 30) |
+| Household goods, clothing, tools, books, hobby equipment | Borrowers forget them | Resale value (worksheet lines 19–24, 27) |
 
 ### Retirement accounts — the always-asked question
 
-The IRS's position, supported by **Rev. Rul. 92-53** and reflected in Pub 4681, is that retirement accounts (401(k), 403(b), 457(b), Traditional IRA, Roth IRA, SEP-IRA, SIMPLE IRA) **are** assets in the §108 insolvency test, **regardless of state-law creditor protection**.
+The Pub. 4681 Insolvency Worksheet lists "Interest in retirement accounts (IRA accounts, 401(k) accounts, and other retirement accounts)" (line 28) and "Interest in a pension plan" (line 29) as assets. So retirement accounts (401(k), 403(b), 457(b), Traditional IRA, Roth IRA, SEP-IRA, SIMPLE IRA) **are** assets in the §108 insolvency test, **regardless of state-law creditor protection**.
 
 The reasoning: insolvency under §108 is a federal income-tax concept measuring the borrower's net worth, not a creditor-protection concept. State laws that shield retirement accounts from creditors don't matter for §108. The account balance counts at face.
 
 Borrowers who exclude retirement accounts as assets typically inflate their insolvency by 5- to 6-figures. In an audit, the IRS recomputes insolvency, reduces the exclusion, and the borrower owes back tax + interest + accuracy penalty.
 
-**Document carefully:** include retirement balances at FMV in the asset column. If the user pushes back, cite Rev. Rul. 92-53 and Pub 4681.
+**Document carefully:** include retirement balances at FMV in the asset column. If the user pushes back, point to Pub. 4681 Insolvency Worksheet lines 28–29.
 
 ### Step 4 — Compute insolvency
 
@@ -118,7 +121,7 @@ If only partially covered, the excluded portion goes on Form 982 Box 1b Line 2; 
 
 ### Step 6 — Document and retain
 
-Prepare Worksheet 2 from Pub 4681 with the line items, totals, and the resulting insolvency amount. **Keep this worksheet with the borrower's tax records for at least 3 years** (the general statute) and ideally 6 years (extended limit if the IRS asserts substantial omission). The worksheet is **not** filed with the return; it's the audit defense if the IRS questions the exclusion.
+Prepare the Pub. 4681 Insolvency Worksheet with the line items, totals, and the resulting insolvency amount (line 38). **Keep this worksheet with the borrower's tax records for at least 3 years** (the general period of limitations) and 6 years if income omitted is more than 25% of the gross income shown (https://www.irs.gov/businesses/small-businesses-self-employed/how-long-should-i-keep-records). The worksheet is **not** filed with the return; it's the audit defense if the IRS questions the exclusion.
 
 ---
 
@@ -166,7 +169,7 @@ If Carlos's home FMV had been $180,000 instead of $210,000, his assets would tot
 4. **Using account balance instead of FMV for collectibles** — there's no "balance" for jewelry; use a defensible appraisal or comp sales.
 5. **Using post-cancellation balances for liabilities** — measure *immediately before* the cancellation, not after.
 6. **Mixing measurement dates with multiple 1099-Cs** — each cancellation gets its own measurement date; chronological order matters.
-7. **Forgetting to include spousal liabilities on a joint return** — for joint filers, both spouses' liabilities and both spouses' assets are included. The insolvency is measured at the household level for the joint return.
+7. **Mishandling a joint debt between spouses** — Pub. 4681 Insolvency Example 3 has each spouse (filing separately) compute insolvency for their own share of the canceled joint debt with their own assets and liabilities. For a joint return, flag the measurement method for a CPA rather than assuming household totals.
 8. **Using Zillow estimate as ceiling** — Zillow is a starting point, not an authoritative number. Use comp sales or appraisal if Zillow looks high; document the basis.
 
 ---
@@ -175,7 +178,7 @@ If Carlos's home FMV had been $180,000 instead of $210,000, his assets would tot
 
 ### Joint filers
 
-For married filing jointly, the insolvency test uses **combined** liabilities and **combined** assets. Pub 4681 explicitly treats the household as the measurement unit for joint returns. For married filing separately, each spouse runs their own test using their own liabilities and assets.
+Pub. 4681 (Insolvency, Example 3) shows spouses who file separately each running the worksheet for their own share of a joint canceled debt, using their own liabilities and assets. Pub. 4681 has no joint-return example; do not assume combined household totals without a CPA's review, and document the method used.
 
 ### Community property states
 
@@ -183,7 +186,7 @@ In community property states, the rules are more complex. Generally, community d
 
 ### Multiple cancellations in the same year
 
-Run Worksheet 2 separately for each cancellation, in chronological order. After cancellation #1, the borrower's liability stack drops by the canceled amount, so cancellation #2's insolvency calculation is smaller. Excluding the same insolvency amount twice for two separate cancellations is the most common multi-1099-C error.
+Run the Insolvency Worksheet separately for each cancellation, in chronological order. After cancellation #1, the borrower's liability stack drops by the canceled amount, so cancellation #2's insolvency calculation is smaller. Excluding the same insolvency amount twice for two separate cancellations is the most common multi-1099-C error.
 
 ### Asset values that change rapidly
 
@@ -193,9 +196,8 @@ If the borrower owns volatile assets (crypto, growth stocks), use the value on t
 
 ## Sources
 
-- [Publication 4681](https://www.irs.gov/publications/p4681) — Worksheet 2 is in Chapter 1
-- IRC §108(a)(1)(B) — insolvency exclusion
+- [Publication 4681 (2025)](https://www.irs.gov/publications/p4681) — Insolvency Worksheet in Chapter 1 (lines 1–38); Example 3 (joint debt, separate returns)
+- IRC §108(a)(1)(B) — insolvency exclusion; §108(a)(3) — limited to the amount of insolvency
 - IRC §108(d)(3) — definition of insolvency
-- Rev. Rul. 92-53 — retirement accounts as assets in insolvency test
 - Treas. Reg. §1.108-1 — implementation rules
 - Pub 555 — Community Property (for community-property-state issues)

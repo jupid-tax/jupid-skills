@@ -157,11 +157,11 @@ Filers with mixed income sometimes assume they have "two thresholds" because the
 
 - Adding a side hustle to existing W-2 income above the threshold means **every dollar of side-hustle SE income is surtaxed** at 0.9%
 - The 92.35% multiplier on Schedule SE Line 6 partially offsets the surtax (~7.65% reduction in surtax base for SE income)
-- The combined effective marginal rate on each new dollar of SE income, for a filer already above the threshold, is:
-  - 15.3% × 92.35% = ~14.13% (regular SS + Medicare via Schedule SE)
+- The payroll-type tax on each new dollar of SE income, for a filer already above the Additional Medicare Tax threshold, is:
+  - 2.9% × 92.35% = ~2.68% (regular Medicare via Schedule SE)
+  - + 12.4% × 92.35% = ~11.45% Social Security, **only** while wages plus SE earnings are under the Social Security wage base ($176,100 for 2025, $184,500 for 2026; Schedule SE lines 7–10). A filer with $230K of wages has already passed the wage base, so this piece is zero for them
   - + 0.9% × 92.35% = ~0.83% (Form 8959 surtax)
-  - + their ordinary federal income tax marginal rate (e.g., 32% for $230K single)
-  - = ~47% federal-only marginal rate on each new dollar of SE income above the threshold (before state tax)
+  - plus the filer's federal income tax marginal rate (32% for a single filer with $230K of wages in 2025), reduced by the half-SE-tax deduction and any QBI deduction. Compute it from the actual return; do not quote a single blended rate
 
 This is not a recommendation to incorporate or to defer income — it's a fact pattern the agent should be able to compute.
 

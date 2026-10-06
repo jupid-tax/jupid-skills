@@ -20,19 +20,23 @@ Is the user otherwise required to file Form 1040 for this tax year?
 
   YES → Form 5329 attaches to the 1040
         Channel options:
-        - IRS Free File Fillable Forms (FFFF) — Section 1 below
+        - IRS Free File guided software (AGI $89,000 or less for 2025
+          returns, https://www.irs.gov/filing/irs-free-file-do-your-taxes-for-free) — Section 2 pattern
+        - IRS Free File Fillable Forms (FFFF) — Section 1 below (no Part IX
+          waiver statement possible; see step 10)
         - Paid tax software (TurboTax, H&R Block, FreeTaxUSA, etc.) — Section 2
-        - IRS Direct File — Section 3 (limited Form 5329 support, verify)
         - Paper filing with 1040 — Section 4
 
   NO  → Form 5329 is filed standalone
-        - Standalone-5329 is NOT supported by IRS Free File Fillable Forms
-          (FFFF requires a 1040 as the parent)
-        - Most paid tax software also requires a 1040 to access Form 5329
-        - The reliable channel is **paper filing** — Section 5 below
-        - The user signs Form 5329 directly (signature block at the bottom
-          of the form when filed standalone) and mails it
+        - A Form 5329 filed by itself cannot be filed electronically
+          (2025 Instructions for Form 5329, "When and Where To File")
+        - The only channel is **paper filing** — Section 5 below
+        - The user completes the page 1 address, signs and dates page 3,
+          and mails it
 ```
+
+IRS Direct File was not offered in the 2026 filing season; do not route
+users to it.
 
 If the user is unsure whether they need to file a 1040, ask. The most
 common ambiguous case: a retiree whose only income is below the standard
@@ -45,7 +49,8 @@ required to file a 1040, but it can simplify the paper trail.
 
 URL: https://www.irs.gov/e-file-providers/free-file-fillable-forms
 
-**Availability**: late January through mid-October each tax year.
+**Availability**: opens in late January; for 2025 returns the program
+closes Oct. 15, 2026 (https://www.irs.gov/e-file-providers/free-file-fillable-forms).
 
 ### Pre-flight
 
@@ -80,29 +85,32 @@ Agent must have:
 | Header — Name | "Name of person who must file" | Filer name |
 | Header — SSN | "Your social security number" | Filer SSN |
 | Part I, Line 1 | "Early distributions includible in income" | Part I Line 1 |
-| Part I, Line 2 | "Early distributions included on line 1 not subject to additional tax" + exception code | Part I Line 2 + code |
+| Part I, Line 2 | "Early distributions included on line 1 that are not subject to the additional tax" + exception number | Part I Line 2 + number |
 | Part I, Line 3 | (auto-computed) | (verify Line 1 − Line 2) |
-| Part I, Line 4 | "Additional tax — multiply line 3 by 10%" | Part I Line 4 |
-| Part IV, Line 18 | "Enter your excess contributions from line 24 of your prior year 5329" | Part IV Line 18 |
-| Part IV, Line 19 | "Excess contributions for current year" | Part IV Line 19 |
-| Part IV, Line 20-23 | (distributions of excess and adjustments) | from draft |
+| Part I, Line 4 | "Additional tax — 10% of line 3" (25% part for SIMPLE first 2 years) | Part I Line 4 |
+| Part IV, Line 18 | Excess contributions from line 24 of the prior-year 5329 | Part IV Line 18 |
+| Part IV, Line 19 | Unused current-year Roth limit | Part IV Line 19 |
+| Part IV, Line 20 | Current-year Roth distributions | Part IV Line 20 |
+| Part IV, Lines 21-22 | (computed) | (verify) |
+| Part IV, Line 23 | Excess contributions for the current year | Part IV Line 23 |
 | Part IV, Line 24 | (auto-computed total excess) | (verify) |
 | Part IV, Line 25 | "Additional tax — 6%" | Part IV Line 25 |
-| Part IX, Line 52 | "Required minimum distribution" | Part IX Line 52 |
-| Part IX, Line 53 | "Amount actually distributed to you" | Part IX Line 53 |
-| Part IX, Line 54 | (auto-computed shortfall) | (verify) |
-| Part IX, Line 55 | "Additional tax — 25%" or 0 with waiver | Part IX Line 55 |
+| Part IX, Lines 52a / 52b | RMD (corrected-in-window plans / all other plans) | Part IX Lines 52a / 52b |
+| Part IX, Lines 53a / 53b | Amount distributed during the year | Part IX Lines 53a / 53b |
+| Part IX, Lines 54a / 54b | Shortfall × 10% / × 25% | (verify) |
+| Part IX, Line 55 | Line 54a + Line 54b | Part IX Line 55 |
 
-9. **For Part I exception codes**: FFFF requires the two-digit code in the
-   field next to Line 2. The instructions list the codes; reuse them
-   exactly. If multiple exceptions apply to different portions of Line 1,
-   FFFF supports multiple code entries — fill each.
+9. **For Part I exception numbers**: enter the two-digit number (01–23)
+   next to Line 2. If more than one exception applies, enter 99.
 
-10. **For Part IX waiver request**: enter 0 on Line 55 and write
-    "RC" (reasonable cause) in the margin/notes if FFFF supports it.
-    Then attach the waiver statement as a PDF attachment. FFFF supports PDF
-    attachments via "Add Attachment" — name the file
-    "Form_5329_Line_54_Waiver_Request.pdf".
+10. **For Part IX waiver request**: the instructions require "RC" and the
+    waived amount in parentheses next to Line 54a/54b plus an attached
+    explanation statement. FFFF does not allow attaching documents other
+    than the forms it offers ("Free File Fillable Forms: program
+    limitations and available forms",
+    https://www.irs.gov/e-file-providers/free-file-fillable-forms-program-limitations-and-available-forms).
+    If the waiver statement cannot be attached, use paid software that
+    supports it or file on paper (Section 4).
 
 11. **Run FFFF's "Check Form" / "Verify"** — resolve every flag.
 
@@ -122,10 +130,8 @@ Agent must have:
 16. **Capture the submission ID and screenshot.**
 
 17. **Wait 24-48 hours**, log back in, confirm acceptance. On rejection,
-    common 5329-related codes:
-    - **F5329-001 / similar**: math mismatch on a Part. Recompute.
-    - **R0000-194**: duplicate SSN. Probably already filed.
-    - **F1040-NNNN** for a 1040 issue, not 5329 itself.
+    read the full rejection message, look it up in the FFFF error search
+    tool, correct, and resubmit.
 
 ### What the agent should NOT do
 
@@ -168,16 +174,10 @@ Cash App Taxes, the flow is:
 
 ---
 
-## Section 3 — IRS Direct File
+## Section 3 — (removed)
 
-URL: https://www.irs.gov/filing/irs-direct-file
-
-**Status as of early 2026**: Direct File supports limited Form 5329
-scenarios. As of the 2025 filing season, basic Part I (early distribution
-with simple exception codes) was supported. Parts III/IV (excess
-contributions) and Part IX (missed RMD with waiver) were generally not
-supported. Verify scope before automating; if unsupported, redirect to
-FFFF, paid software, or paper.
+IRS Direct File was not offered in the 2026 filing season. Use Sections 1,
+2, 4, or 5.
 
 ---
 
@@ -263,10 +263,10 @@ After filing (any channel), the return moves through:
      usually 5329 only adds tax)
    - Balance due notice (if the user didn't pay the excise tax with the
      return)
-   - **Waiver decision** (Part IX) — the IRS sends a CP letter
-     approving or denying the waiver. Approval is the common outcome
-     when the statement was substantive. Denial triggers a balance-due
-     notice for the 25% (or 10%) tax.
+   - **Waiver decision** (Part IX) — the IRS reviews the request; if it
+     is not granted, the IRS notifies the user of the additional tax owed
+     (25% or 10%) (2025 Instructions for Form 5329, Waiver of tax for
+     reasonable cause).
    - Audit / CP2000 notice — if a Part I exception is challenged, the
      user receives a CP2000 asking for documentation
 

@@ -1,6 +1,8 @@
 # Example: High-Income MFJ with 3 Children, AGI $450,000 (Partial Phase-Out)
 
-The MAGI phase-out in action. MFJ couple with three qualifying children, MAGI $50,000 above the threshold. The CTC is reduced by $250, but most of the credit remains.
+The MAGI phase-out in action. MFJ couple with three qualifying children, MAGI $50,000 above the threshold. The CTC is reduced by $2,500, but most of the credit remains.
+
+Line numbers are from the 2025 Schedule 8812 and 2025 Form 1040.
 
 ## The filers
 
@@ -8,12 +10,13 @@ The MAGI phase-out in action. MFJ couple with three qualifying children, MAGI $5
 - **Filing status**: MFJ
 - **AGI**: $450,000
 - **MAGI**: $450,000 (no foreign income)
-- **Earned income**: $440,000 (W-2 wages: Caroline $260K + Marcus $180K)
+- **Earned income**: $440,000 (W-2 wages: Caroline $260K + Marcus $180K); the other $10,000 of AGI is taxable interest
+- **SSNs**: both spouses have SSNs valid for employment
 - **Tax year**: 2025 (filing in 2026)
 
 ## Dependents
 
-| Dependent             | Relationship | Age 12/31 | SSN by due date | Classification |
+| Dependent             | Relationship | Age 12/31 | SSN before due date | Classification |
 |-----------------------|--------------|-----------|------------------|----------------|
 | Charlotte Thornton    | Daughter     | 14        | Yes              | Qualifying child (CTC) |
 | Henry Thornton        | Son          | 11        | Yes              | Qualifying child (CTC) |
@@ -21,68 +24,68 @@ The MAGI phase-out in action. MFJ couple with three qualifying children, MAGI $5
 
 All three pass the qualifying child tests.
 
-- **N_CTC** = 3
-- **N_ODC** = 0
+- **N_CTC** = 3 (line 4)
+- **N_ODC** = 0 (line 6)
 
 ## Step 3 — Tentative credit
 
 ```
-Tentative CTC = 3 × $2,000 = $6,000
-Tentative ODC = 0 × $500 = $0
-Tentative total = $6,000
+Line 5  Tentative CTC = 3 × $2,200 = $6,600
+Line 7  Tentative ODC = 0 × $500 = $0
+Line 8  Tentative total = $6,600
 ```
 
 ## Step 4 — MAGI phase-out
 
 ```
-MAGI = $450,000
-Threshold (MFJ) = $400,000
-Excess MAGI (raw) = $50,000
-Excess (rounded UP to nearest $1,000) = $50,000  (already at exact $1,000 boundary)
-Phase-out reduction = $50,000 / $1,000 × $5 = $250
+Line 3   MAGI = $450,000
+Line 9   Threshold (MFJ) = $400,000
+Line 10  Excess = $50,000  (already a multiple of $1,000, no rounding)
+Line 11  Phase-out reduction = $50,000 × 5% = $2,500
 
-Allowed credit = $6,000 − $250 = $5,750
+Line 12  Allowed credit = $6,600 − $2,500 = $4,100
 ```
 
-The Thorntons lose $250 of credit due to the phase-out. They retain $5,750 of the $6,000 tentative.
+The Thorntons lose $2,500 of credit due to the phase-out. They retain $4,100 of the $6,600 tentative.
 
 ### What if their MAGI were $450,500?
 
 ```
 Excess (raw) = $50,500
-Excess (rounded UP) = $51,000  (round $500 up to next $1,000)
-Reduction = $51,000 / $1,000 × $5 = $255
-Allowed = $6,000 − $255 = $5,745
+Line 10 (rounded UP) = $51,000  (round $500 up to next $1,000)
+Line 11 = $51,000 × 5% = $2,550
+Line 12 = $6,600 − $2,550 = $4,050
 ```
 
-Notice: the $500 of additional MAGI rounds up to a full $1,000 of excess, costing $5 of credit. This is how the "round up" rule bites — even a tiny amount over a threshold costs $5.
+Notice: the $500 of additional MAGI rounds up to a full $1,000 of excess, costing $50 of credit. This is how the "round up" rule bites — even a tiny amount over a $1,000 step costs $50.
 
-## Step 5 — Non-refundable credit (1040 Line 19)
+## Step 5 — Non-refundable credit (1040 line 19)
 
-The Thorntons' tax computation (rough):
+The Thorntons' tax computation:
 
-- Standard deduction (MFJ 2025): $29,200
-- Taxable income: $450,000 − $29,200 = $420,800
-- Tax (MFJ 2025 brackets, computed at the high end including 32% / 35% portions): approximately $89,500
-- Other adjustments not factored here for simplicity
+- Standard deduction (MFJ 2025): $31,500
+- Taxable income: $450,000 − $31,500 = $418,500
+- Tax (2025 MFJ rates, Tax Computation Worksheet): $80,398 + 32% × ($418,500 − $394,600) = $88,046
+- No AMT: tentative minimum tax on $450,000 AMTI less the $137,000 MFJ exemption is $82,858, below the regular tax
+- Additional Medicare Tax (0.9% × ($440,000 − $250,000) = $1,710) goes on Schedule 2 line 11 → Form 1040 line 23, not line 18
 
-Pre-credit tax (Form 1040 Line 18): $89,500.
-
-```
-Non-refundable credit = min($5,750, $89,500) = $5,750
-```
-
-The full $5,750 fits within tax liability. **Form 1040 Line 19 = $5,750**.
-
-## Step 6 — Refundable ACTC (1040 Line 28)
+Pre-credit tax (Form 1040 line 18): $88,046. No Schedule 3 credits, so Credit Limit Worksheet A (line 13) = $88,046.
 
 ```
-Leftover = $5,750 − $5,750 = $0
+Line 14  Non-refundable credit = min($4,100, $88,046) = $4,100
 ```
 
-No leftover → no ACTC. **Form 1040 Line 28 = $0**.
+The full $4,100 fits within tax liability. **Form 1040 line 19 = $4,100**.
 
-(Even if there were leftover, the alternative SS-tax method would be considered because N_CTC = 3. But with $0 leftover, the question is moot.)
+## Step 6 — Refundable ACTC (1040 line 28)
+
+```
+Line 16a Leftover = $4,100 − $4,100 = $0  → stop
+```
+
+No leftover → no ACTC. **Form 1040 line 28 = $0**.
+
+(Even if there were leftover, Part II-B might apply because line 16b would be 3 × $1,700 = $5,100. But with $0 on line 16a, the form stops.)
 
 ## The completed worksheet
 
@@ -93,8 +96,10 @@ No leftover → no ACTC. **Form 1040 Line 28 = $0**.
 - Filing status: MFJ
 - Filer's MAGI: $450,000
 - Earned income: $440,000
-- Tax before credits (1040 Line 18): $89,500
-- Phase-out threshold: $400,000 (MFJ)
+- Tax before credits (1040 line 18): $88,046
+- Credit Limit Worksheet A (line 13): $88,046
+- Filer SSN valid for employment before due date: Yes (both spouses)
+- Phase-out threshold (line 9): $400,000 (MFJ)
 
 ## Dependents classified
 | Dependent             | Relationship | Age 12/31 | SSN/ITIN | Classification |
@@ -103,88 +108,84 @@ No leftover → no ACTC. **Form 1040 Line 28 = $0**.
 | Henry Thornton        | Son          | 11        | SSN      | Qualifying child (CTC) |
 | Eleanor Thornton      | Daughter     | 7         | SSN      | Qualifying child (CTC) |
 
-- N_CTC: 3
-- N_ODC: 0
+- Line 4 N_CTC: 3
+- Line 6 N_ODC: 0
 
-## Step 3 — Tentative credit
-- CTC tentative: 3 × $2,000 = $6,000
-- ODC tentative: 0 × $500 = $0
-- **Tentative total**: $6,000
+## Part I — lines 1–14
+- Line 1  AGI: $450,000
+- Line 2d: $0
+- Line 3  MAGI: $450,000
+- Line 5  CTC tentative: 3 × $2,200 = $6,600
+- Line 7  ODC tentative: 0 × $500 = $0
+- Line 8  **Tentative total**: $6,600
+- Line 9  Threshold: $400,000
+- Line 10 Excess (rounded up to next $1,000): $50,000
+- Line 11 Phase-out reduction: $50,000 × 5% = $2,500
+- Line 12 **Allowed credit**: $6,600 − $2,500 = $4,100
+- Line 13 Credit Limit Worksheet A: $88,046
+- Line 14 Non-refundable credit: min($4,100, $88,046) = $4,100 → **1040 line 19**
 
-## Step 4 — MAGI phase-out
-- MAGI: $450,000
-- Threshold: $400,000
-- Excess (raw): $50,000
-- Excess (rounded up to next $1,000): $50,000
-- Phase-out reduction: $50,000 × $5 / $1,000 = $250
-- **Allowed credit**: $6,000 − $250 = $5,750
-
-## Step 5 — Non-refundable credit (1040 Line 19)
-- Tax before credits: $89,500
-- Non-refundable credit: min($5,750, $89,500) = $5,750
-- **1040 Line 19**: $5,750
-
-## Step 6 — Refundable ACTC (1040 Line 28)
-- Leftover: $5,750 − $5,750 = $0
-- ACTC: $0 (no leftover)
-- **1040 Line 28**: $0
+## Part II-A — lines 15–27
+- Line 15 Reserved
+- Line 16a Leftover: $4,100 − $4,100 = $0 → stop
+- Line 27 ACTC: $0 → **1040 line 28**: $0
 
 ## Verification
-- Allowed credit = Non-refundable + ACTC: $5,750 = $5,750 + $0 ✓
+- Line 14 + line 27 ≤ line 12: $4,100 + $0 = $4,100 ✓
 - Each dependent classified once: ✓
-- SSN-by-due-date verified for each: ✓
-- Phase-out calculation: ($450,000 − $400,000) / $1,000 × $5 = $250 ✓
+- SSN-before-due-date verified for the filers and each child: ✓
+- Phase-out calculation: ($450,000 − $400,000) = $50,000 × 5% = $2,500 ✓
 
 ## Validation summary
 - Math: all checks passed
 - Sanity:
   - All 3 children qualify for CTC (under 17, SSN, etc.)
-  - MAGI $50K above MFJ threshold → $250 phase-out reduction
-  - Tax liability ($89,500) easily absorbs $5,750 → no ACTC
+  - MAGI $50K above MFJ threshold → $2,500 phase-out reduction
+  - Tax liability ($88,046) easily absorbs $4,100 → no ACTC
   - PATH Act delay: not applicable (no ACTC claimed)
 - Next steps:
-  - Form 1040 Line 19: $5,750
-  - Form 1040 Line 28: $0
-  - Net tax after CTC: $89,500 − $5,750 = $83,750
-  - Phase-out fully eliminates the $6,000 tentative credit at MFJ MAGI = $400,000 + ($6,000 / $5 × $1,000) = $1,600,000
-  - The Thorntons should be aware: each $1,000 of MAGI growth above $400K costs $5 of credit until full elimination at $1,600,000 MFJ MAGI
+  - Form 1040 line 19: $4,100
+  - Form 1040 line 28: $0
+  - Tax after CTC (line 22): $88,046 − $4,100 = $83,946
+  - The credit is fully phased out once line 10 reaches $132,000 ($6,600 ÷ 5%), i.e., MAGI above $531,000 (MFJ)
+  - Each additional $1,000 (or fraction) of MAGI above $400K costs $50 of credit until full elimination
 
 ## Sources cited in this draft
-- IRS Schedule 8812 (Rev. 2025)
-- IRC §24(a) — base $2,000 credit
-- IRC §24(b) — phase-out ($5 per $1,000 over threshold)
+- IRS Schedule 8812 (Form 1040) (2025)
+- IRS Instructions for Schedule 8812 (2025)
+- IRC §24(h)(2) — $2,200 credit per child
+- IRC §24(b)(1), §24(h)(3) — phase-out ($50 per $1,000 over $400,000 MFJ)
 - IRC §24(c) — qualifying child definition
-- IRC §24(h)(7) — SSN-by-due-date requirement
-- IRS Schedule 8812 Instructions (Rev. 2025) — Worksheet for phase-out
+- IRC §24(h)(7) — SSN requirement
+- Rev. Proc. 2024-40 — 2025 tax rate tables and AMT exemption
 ```
 
 ## Why each non-obvious choice
 
-**Why does the credit fully phase out at MFJ MAGI $1,600,000?** Each $1,000 of excess MAGI costs $5 of credit. With $6,000 of tentative credit, the credit is fully eliminated when:
+**Why does the credit fully phase out above MFJ MAGI $531,000?** Each $1,000 (or fraction) of excess MAGI costs $50 of credit. With $6,600 of tentative credit, the credit is fully eliminated when:
 
 ```
-Reduction = excess × $5 / $1,000
-$6,000 = excess × $5 / $1,000
-excess = $6,000 × $1,000 / $5 = $1,200,000
+Line 11 = line 10 × 5%
+$6,600  = line 10 × 5%
+line 10 = $132,000
 
-Full-phase-out point = Threshold + excess
-                     = $400,000 + $1,200,000
-                     = $1,600,000 MFJ MAGI
+MAGI = $400,000 + $132,000 = $532,000 → line 12 = $0
+Any MAGI above $531,000 rounds line 10 up to $132,000, so the credit is $0 above $531,000.
 ```
 
-For comparison: a one-child family ($2,000 tentative credit) fully phases out at threshold + $400,000 = $600K single / $800K MFJ. A two-child family fully phases out at threshold + $800,000 = $1.0M single / $1.2M MFJ. The Thornton family's full-phase-out point ($1.6M MFJ) is far above their actual MAGI; they retain $5,750 of the $6,000 tentative.
+For comparison: a one-child family ($2,200 tentative credit) loses the whole credit at $44,000 of excess (MAGI about $244,000 single / $444,000 MFJ). A two-child family ($4,400) loses it at $88,000 of excess (about $288,000 single / $488,000 MFJ). The Thorntons are $50,000 into an $132,000 phase-out band, so they keep $4,100 of the $6,600 tentative.
 
-**Why no ACTC even though tax was high?** Tax liability ($89,500) is much larger than the credit ($5,750), so the full credit is non-refundable. No leftover for ACTC. ACTC is for filers whose tax liability is too small to absorb the full CTC.
+**Why no ACTC even though tax was high?** Tax liability ($88,046) is much larger than the credit ($4,100), so the full credit is non-refundable. No leftover for ACTC. ACTC is for filers whose tax liability is too small to absorb the full CTC.
 
-**Why use the alternative SS-tax method here even with N_CTC = 3?** The alternative method is **only** considered when there's a leftover from the non-refundable computation. Here, leftover is $0, so neither method runs. If the Thorntons had a tax liability of, say, $3,000 (hypothetically), the leftover would be $5,750 − $3,000 = $2,750. Then both methods would compute, and the larger would yield the ACTC (capped at the per-child $1,700 × 3 = $5,100 or the leftover, whichever is smaller).
+**When would Part II-B matter here?** Only if there were a leftover on line 16a. If the Thorntons had a tax liability of, say, $3,000 (hypothetically), line 16a would be $4,100 − $3,000 = $1,100, line 17 = min($1,100, $5,100) = $1,100, and line 20 (15% of $437,500 = $65,625) would exceed line 17, so the form skips Part II-B and line 27 = $1,100.
 
-**Why is the standard deduction $29,200?** This is the MFJ 2025 standard deduction (Rev. Proc. 2024-40). For 2026, the inflation-adjusted figure must be verified (likely $30,000-$30,500 range, but check the latest Rev. Proc.).
+**Why is the standard deduction $31,500?** This is the MFJ 2025 standard deduction as raised by P.L. 119-21 §70102 (2025 Form 1040; Rev. Proc. 2025-32 §2.08). For 2026 it is $32,200 (Rev. Proc. 2025-32 §4.14).
 
-**Audit defense**: the Thorntons' high income makes them a more typical audit candidate. Their files should include:
+**Audit defense**: the Thorntons' files should include:
 1. Birth certificates and SSNs for all three children
 2. Proof of residency (lease, school enrollment)
 3. The Schedule 8812 worksheet showing the phase-out computation
 4. MAGI computation showing AGI = MAGI (no foreign income exclusion)
-5. The Form 1040 Line 18 tax liability computation
+5. The Form 1040 line 18 tax liability computation
 
-The phase-out reduction of $250 is a small adjustment to a high-income return; the IRS is unlikely to question the math, but the documentation should be available.
+The phase-out reduction of $2,500 follows directly from line 10; the IRS recomputes it automatically, but the documentation should be available.

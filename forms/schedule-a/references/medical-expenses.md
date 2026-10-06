@@ -1,6 +1,6 @@
 # Medical Expenses (Lines 1-4) — IRC §213 and Pub 502
 
-Medical and dental expenses are deductible only to the extent they exceed **7.5% of AGI**. The 7.5% floor has been permanent since the Further Consolidated Appropriations Act of 2020. Earlier confusion about a 10% floor (under TCJA before 2019) is no longer relevant.
+Medical and dental expenses are deductible only to the extent they exceed **7.5% of AGI** (IRC §213(a); 2025 Schedule A line 3). The 7.5% rate was made permanent by the Consolidated Appropriations Act, 2021 (P.L. 116-260, Div. EE, §101); the 10% floor that applied to most filers in 2013–2016 no longer applies.
 
 For most filers under 65 with employer health insurance and modest out-of-pocket spending, Lines 1-4 produce a $0 deduction — the 7.5% floor wipes everything out. The deduction primarily benefits filers with major medical events (long hospital stays, ongoing treatments, long-term care) or retirees with high premiums on Medicare supplements.
 
@@ -12,7 +12,7 @@ This file is the operational reference for what counts as a qualified medical ex
 
 ```
 Line 1: Total qualified medical expenses paid (out of pocket)
-Line 2: AGI from Form 1040 Line 11
+Line 2: AGI from Form 1040 line 11b (2025 form)
 Line 3: 7.5% × Line 2
 Line 4: max(0, Line 1 − Line 3)
 ```
@@ -49,30 +49,30 @@ Medical expenses are amounts paid for the **diagnosis, cure, mitigation, treatme
 ### Prescription drugs
 
 - Prescription medications and insulin
-- Over-the-counter drugs are NOT deductible unless prescribed by a doctor (for HSA/FSA, OTC was made eligible without prescription by the CARES Act 2020 — but that's HSA/FSA reimbursement, not Schedule A deduction)
+- Nonprescription medicines (other than insulin) are NOT deductible, including nicotine gum and certain nicotine patches (2025 Schedule A instructions); only drugs that require a prescription count, even if a doctor recommends an OTC product (Pub 502). For HSA/FSA, OTC items were made eligible by the CARES Act 2020 — but that's HSA/FSA reimbursement, not a Schedule A deduction
 
 ### Insurance premiums
 
-- Medicare Part B, C, D premiums
+- Medicare Part B and Part D premiums (Part A only if the person is 65+ and not entitled to social security, paying voluntarily); Medicare Advantage (Part C) plan premiums are insurance covering medical care (IRC §213(d)(1)(D))
 - Long-term care insurance premiums (subject to age-based caps below)
 - Private health insurance premiums **NOT** paid through pre-tax payroll deduction
-- Health-share / Christian health-sharing ministry contributions are NOT deductible (IRS hasn't recognized them as insurance)
+- Health care sharing ministry payments: not listed as deductible in Pub 502 or the Schedule A instructions; proposed regulations (REG-109755-19, 2020) would treat them as medical care but have not been finalized. Do not include them; refer the user to a CPA if they want to claim them
 
 **Self-employed**: Health insurance premiums for the owner go on **Schedule 1 Line 17 (above-the-line)**, NOT Schedule A. Don't double-deduct.
 
 **Pre-tax payroll premiums**: Already excluded from W-2 box 1; don't deduct again.
 
-### Long-term care insurance — age caps for 2025
+### Long-term care insurance — age caps
 
-| Age at year-end | 2025 cap |
-|------------------|----------|
-| 40 or under | $480 |
-| 41-50 | $900 |
-| 51-60 | $1,800 |
-| 61-70 | $4,810 |
-| 71+ | $6,020 |
+| Age at year-end | 2025 cap | 2026 cap |
+|------------------|----------|----------|
+| 40 or under | $480 | $500 |
+| 41-50 | $900 | $930 |
+| 51-60 | $1,800 | $1,860 |
+| 61-70 | $4,810 | $4,960 |
+| 71+ | $6,020 | $6,200 |
 
-(Source: Rev. Proc. 2024-40 §3.27. Verify 2026 figures against the IRS Rev. Proc. for that year.)
+(Sources: 2025 — Rev. Proc. 2024-40 §2.28 and the 2025 Schedule A instructions chart; 2026 — Rev. Proc. 2025-32 §4.27.)
 
 ### Capital expenses for medical purposes
 
@@ -89,7 +89,7 @@ Get a written appraisal documenting the value impact for any modification > $5,0
 
 ### Travel for medical care
 
-- Mileage at the IRS medical mileage rate (21¢/mile for 2025 per Notice 2025-5; 2026 rate verified at https://www.irs.gov/tax-professionals/standard-mileage-rates)
+- Mileage at the IRS medical mileage rate (21¢/mile for 2025 per Notice 2025-5; for 2026, 20.5¢ for January 1–June 30 and 23.5¢ for July 1–December 31, per IR-2025-128 and IR-2026-29, https://www.irs.gov/tax-professionals/standard-mileage-rates), or actual gas and oil
 - Parking and tolls
 - Bus, train, taxi, ride-share to medical appointments
 - Air travel for medical care if necessary
@@ -103,7 +103,7 @@ The user can deduct medical expenses for:
 - Self
 - Spouse (filing MFJ; for MFS only the spouse who actually paid)
 - Dependents claimed on the return
-- A person who would have been a dependent but for income or filing-status tests (special rule for elderly parents whose income exceeds the dependent threshold)
+- A person who would have been a dependent except that they had gross income of $5,200 or more (2025; $5,300 for 2026, Rev. Proc. 2025-32 §4.23) or filed a joint return, or except that the user can be claimed as someone else's dependent (2025 Schedule A instructions, "Whose medical and dental expenses can you include?")
 
 Children of divorced parents: the parent who *pays* the medical expense deducts, regardless of which parent claims the dependency. Document with canceled checks or credit card statements.
 
@@ -148,7 +148,7 @@ The Medicare portion of FICA withheld from W-2 box 6 is NOT a medical expense. I
 
 ### Medicare premiums paid by Social Security
 
-Medicare Part B premiums deducted from a Social Security check are deductible on Line 1. The amount appears on the year-end SSA-1099 statement (box 3 portion). Subtract from gross Social Security income to get net, but the premium itself is medical for Schedule A.
+Medicare Part B premiums deducted from a Social Security check are deductible on Line 1. The SSA-1099 lists them in the description of the box 3 amount. They do not reduce the benefits reported in box 5; the premium itself is the medical expense for Schedule A.
 
 ### Long-term care expenses for a chronically ill person
 
@@ -160,7 +160,7 @@ Medical expenses are deductible by the person who **paid**. If filing MFJ, joint
 
 ### Year-end timing
 
-Medical is cash-basis only. Expense paid by check on December 31 deducts in that year (when the check clears, IRS treats it as paid when mailed). Credit card charge on December 31 deducts that year (not when the credit card bill is paid).
+Medical is cash-basis only. A check is generally treated as paid on the day it is mailed or delivered, so a check mailed December 31 deducts in that year. A credit card charge on December 31 deducts that year (not when the credit card bill is paid) (Pub 502).
 
 ### Insurance-paid-then-disputed
 
@@ -192,7 +192,7 @@ Keep records for 3 years from filing date (default IRS audit window). For long-t
 6. **Self-employed deducting health insurance on Schedule A** — that goes on Schedule 1 Line 17 instead. Don't do both.
 7. **Including OTC drugs without prescription** — not deductible without prescription (Schedule A is stricter than HSA/FSA on this).
 8. **Including health-sharing ministry contributions** — not recognized by IRS as insurance.
-9. **Using business mileage rate (70¢) instead of medical rate (21¢)** — they're different for a reason.
+9. **Using the business mileage rate (70¢ for 2025; 72.5¢ / 76¢ for the two halves of 2026) instead of the medical rate (21¢ for 2025; 20.5¢ / 23.5¢ for 2026)** — they're different for a reason.
 10. **Treating commute to a job at a hospital as medical mileage** — it's not. Medical mileage is only for trips primarily for medical care.
 
 ---
@@ -202,6 +202,7 @@ Keep records for 3 years from filing date (default IRS audit window). For long-t
 - [IRC §213](https://www.law.cornell.edu/uscode/text/26/213) — Medical, dental, etc., expenses
 - [IRS Publication 502](https://www.irs.gov/publications/p502) — Medical and Dental Expenses (definitive list of qualifying expenses)
 - [IRS Notice 2025-5](https://www.irs.gov/tax-professionals/standard-mileage-rates) — 2025 medical mileage rate (21¢)
-- [Rev. Proc. 2024-40](https://www.irs.gov/pub/irs-drop/rp-24-40.pdf) — 2025 LTC insurance premium age caps (§3.27)
+- [Rev. Proc. 2024-40](https://www.irs.gov/pub/irs-drop/rp-24-40.pdf) — 2025 LTC insurance premium age caps (§2.28); [Rev. Proc. 2025-32](https://www.irs.gov/pub/irs-drop/rp-25-32.pdf) — 2026 caps (§4.27)
+- IR-2025-128 and IR-2026-29 — 2026 medical mileage rates
 - [Schedule A Instructions](https://www.irs.gov/pub/irs-pdf/i1040sca.pdf) — line 1 guidance
 - [Pub 17](https://www.irs.gov/publications/p17) — Your Federal Income Tax (chapter on medical and dental expenses)

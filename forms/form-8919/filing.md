@@ -1,6 +1,6 @@
 # Form 8919 — Filing Playbook
 
-This is the browser-automation playbook for an agent filing Form 8919 on behalf of a user who has authorized submission. Form 8919 itself is **not** filed alone — it is always an attachment to Form 1040. Form SS-8 is filed separately by mail (no e-file path exists for SS-8 as of the 2026 tax year).
+This is the browser-automation playbook for an agent filing Form 8919 on behalf of a user who has authorized submission. Form 8919 itself is **not** filed alone — it is always an attachment to Form 1040, 1040-SR, 1040-NR, or 1040-SS. Form SS-8 (code G) is filed separately by mail or fax, never with the return (Instructions for Form SS-8, Rev. January 2024).
 
 **Security baseline (apply to every step):**
 
@@ -15,8 +15,9 @@ This is the browser-automation playbook for an agent filing Form 8919 on behalf 
 ## Decision Tree: Which Filing Channel?
 
 ```
-Is the user's AGI ≤ $79,000 (2026 IRS Free File threshold; verify)?
-├── Yes → IRS Free File (guided software, free) — preferred
+Is the user's AGI $89,000 or less (IRS Free File guided software limit for the
+2026 filing season; re-check https://www.irs.gov/filing/irs-free-file-do-your-taxes-for-free)?
+├── Yes → IRS Free File (guided software, free) — confirm the partner supports Form 8919
 └── No  → Continue
     │
 Is the user comfortable filling forms directly (no guided interview)?
@@ -24,14 +25,13 @@ Is the user comfortable filling forms directly (no guided interview)?
 └── No  → Paid software (TurboTax / H&R Block / TaxAct)
     │
 Is the user willing to mail a paper return?
-├── Yes → Paper filing (slower processing, ~6-8 weeks)
+├── Yes → Paper filing (slower processing)
 └── No  → Stay on FFFF or paid software
-
-Is the user using Direct File (IRS Direct File pilot)?
-└── Verify Direct File supports Form 8919 for the tax year — historically it has
-    been limited to simple returns. As of 2026, check the current Direct File
-    scope at https://directfile.irs.gov before assuming it's available.
 ```
+
+IRS Direct File was not offered in the 2026 filing season (irs.gov/filing/irs-direct-file returns 404 as of 2026-10-06). Do not offer it as a channel.
+
+Free File Fillable Forms for 2025 returns closes **October 15, 2026** (https://www.irs.gov/e-file-providers/free-file-fillable-forms). For 2026 returns (filed in 2027), check the page for the new season's dates.
 
 ---
 
@@ -44,36 +44,36 @@ Is the user using Direct File (IRS Direct File pilot)?
 1. Navigate the agent browser to the FFFF entry page
 2. User creates account (if first time) — do not auto-fill SSN; user types it themselves
 3. From the form list, select **Form 8919**
-4. Fill the firm table (Line 1) row by row from the draft produced by SKILL.md:
-   - Field labels in FFFF: "Name of firm", "Federal ID number", "Reason code", "Date of determination", "SS-8 filed", "Total wages"
-5. Fill Lines 2-11 from the draft. FFFF does not auto-calculate — the agent must enter every line, including computed lines
+4. Fill the firm rows (lines 1–5) one by one from the draft produced by SKILL.md, matching the form's column headings: (a) name of firm, (b) federal identification number, (c) reason code, (d) date of IRS determination or correspondence, (e) Form 1099-MISC/NEC received checkbox, (f) total wages
+5. Fill lines 6–13 from the draft. Check every computed value on screen against the draft
 6. After Form 8919 is complete, navigate to **Form 1040**:
-   - Line 1g: enter the wage amount from Form 8919 Line 2
+   - Line 1g: enter the wage amount from Form 8919 line 6
 7. Navigate to **Schedule 2**:
-   - Line 5: enter the FICA amount from Form 8919 Line 11
-8. Navigate to Form 1040 Line 23 — confirm it reflects Schedule 2 total
+   - Line 6: enter the amount from Form 8919 line 13 (not line 5, which is Form 4137)
+8. Navigate to Form 1040 line 23 — confirm it reflects Schedule 2 line 21
+   - If Schedule SE is also filed: Schedule SE line 8c = Form 8919 line 10
+   - If Form 8959 is filed: Form 8959 line 3 = Form 8919 line 6
 9. Run FFFF's built-in check for errors. Resolve any flagged items
 10. Before submission, show the user a final review with:
     - All Form 8919 line values
-    - The two cross-form entries (1040 Line 1g, Schedule 2 Line 5)
+    - The two cross-form entries (1040 line 1g, Schedule 2 line 6)
     - Total tax change vs. baseline (income tax + FICA)
 11. **Pause and ask: "Type SUBMIT to file."** Do not submit on inferred consent
 12. After submission, capture the IRS confirmation number; report to user
 
-**Field-by-field map (FFFF labels → SKILL.md draft fields):**
+**Field-by-field map (form fields → SKILL.md draft fields):**
 
-| FFFF label                          | SKILL.md draft field             |
-|-------------------------------------|----------------------------------|
-| Name of firm (col a)                | Line 1 row N column (a)          |
-| Federal ID number (col b)           | Line 1 row N column (b)          |
-| Reason code (col c)                 | Line 1 row N column (c)          |
-| Date of determination (col d)       | Line 1 row N column (d)          |
-| SS-8 filed checkbox (col e)         | Line 1 row N column (e)          |
-| Total wages (col f)                 | Line 1 row N column (f)          |
-| Line 2                              | Line 2                           |
-| ... (every line through 11)         | matching SKILL.md Line N         |
-| Form 1040 Line 1g                   | Form 8919 Line 2 amount          |
-| Schedule 2 Line 5                   | Form 8919 Line 11 amount         |
+| Form field (2025 Form 8919)                  | SKILL.md draft field             |
+|----------------------------------------------|----------------------------------|
+| (a) Name of firm                             | Line N (1–5) column (a)          |
+| (b) Firm's federal identification number     | Line N column (b)                |
+| (c) Reason code                              | Line N column (c)                |
+| (d) Date of IRS determination or correspondence | Line N column (d) (codes A, C only) |
+| (e) 1099-MISC/NEC received checkbox          | Line N column (e)                |
+| (f) Total wages                              | Line N column (f)                |
+| Lines 6 through 13                           | matching SKILL.md lines 6–13     |
+| Form 1040 line 1g                            | Form 8919 line 6 amount          |
+| Schedule 2 line 6                            | Form 8919 line 13 amount         |
 
 ---
 
@@ -84,7 +84,7 @@ Each platform handles 8919 slightly differently. The common entry path:
 1. Search the platform for "Form 8919" or "uncollected Social Security tax"
 2. Answer the worker classification interview (the platform asks: "Did you receive a 1099 that you believe should have been a W-2?")
 3. Enter the firm details, reason code, and wages
-4. The platform auto-computes Lines 2-11 and routes to 1040 Line 1g and Schedule 2 Line 5
+4. The platform computes lines 6–13 and routes to 1040 line 1g and Schedule 2 line 6
 5. **Verify the auto-computed values match the SKILL.md draft** before submission. Software bugs in 8919 handling have been documented historically; trust but verify.
 
 If the software does **not** support Form 8919 (rare but possible for stripped-down free editions), the user must upgrade or switch to FFFF.
@@ -98,7 +98,7 @@ Paper Form 8919 is attached behind Form 1040 in the standard attachment order:
 ```
 Form 1040
 ├── Schedule 1 (additional income and adjustments)
-├── Schedule 2 (additional taxes — includes 8919 Line 11 on Line 5)
+├── Schedule 2 (additional taxes — includes 8919 line 13 on line 6)
 ├── Schedule 3 (additional credits and payments)
 ├── Schedule A / B / C / D / E / SE (as applicable)
 ├── Form 8919   ← attach here
@@ -111,36 +111,39 @@ Form 1040
 - Whether a payment is included
 - Whether the user is filing with foreign address
 
-**Tracking:** mail certified with return receipt. Save the green card.
+**Tracking:** mail certified with return receipt. Save the receipt.
 
-**Processing time:** 6-8 weeks typical; 12+ weeks during peak season.
+**Processing time:** paper returns take longer than e-filed returns; check the current estimate on https://www.irs.gov/refunds before quoting one.
 
 ---
 
-## Special Step: Form SS-8 (Mail Only)
+## Special Step: Form SS-8 (Mail or Fax, Code G Only)
 
-Form SS-8 is **not e-filed**. Always mail it separately to:
+Form SS-8 is **not e-filed** and never attached to the return. Mail it to:
 
 ```
-Department of the Treasury
 Internal Revenue Service
+Form SS-8 Determinations
+P.O. Box 630
 Stop 631
-Holtsville, NY 11742-0631
+Holtsville, NY 11742-0630
 ```
+
+or fax it to 855-242-4481 (Instructions for Form SS-8, Rev. January 2024, "Where To File"). Do not file Form SS-8 for a firm listed with code H.
 
 **SS-8 timing:**
 
-- File SS-8 **before** mailing/submitting the 1040 with Form 8919 — this establishes the SS-8 filing date for code G
-- The IRS sends a copy of SS-8 to the firm and gives the firm 30 days to respond
-- Determination typically issues 6-12 months after filing
-- A determination is a **letter** (not an audit). It is non-precedential to the broader tax law but is conclusive for the user's specific situation.
+- File SS-8 **on or before** the date the return with Form 8919 is filed (2025 Form 8919, reason code G)
+- The IRS acknowledges receipt and sends the firm a blank Form SS-8 to complete; the worker's information may be shared with the firm
+- The IRS says a determination may take at least six months
+- A determination is a **letter**, not an examination. It applies only to the worker (or class of workers) requesting it and is binding on the IRS if the facts and law don't change.
 
 **SS-8 mailing checklist (agent should produce this for the user):**
 
 - [ ] Form SS-8 fully completed (multi-page questionnaire)
 - [ ] All requested attachments (1099-NEC copies, contract, emails)
 - [ ] Cover letter listing all enclosures
-- [ ] Certified mail return receipt
+- [ ] Certified mail return receipt or fax confirmation
 - [ ] Copy retained in user's records
 
 ---
@@ -150,11 +153,11 @@ Holtsville, NY 11742-0631
 Before pressing Submit on Form 1040 with Form 8919 attached:
 
 - [ ] Common-law test result documented in user's records
-- [ ] All firm rows on Line 1 reflect actual 1099 amounts (gross, not net)
-- [ ] Reason code matches the user's situation
-- [ ] If code A or G: SS-8 filed (or about to be mailed)
-- [ ] Wage amount appears on Form 1040 Line 1g
-- [ ] FICA amount appears on Schedule 2 Line 5
+- [ ] All firm rows on lines 1–5 reflect actual 1099 amounts (gross, not net)
+- [ ] Reason code matches the user's documents (A: determination letter; C: IRS correspondence; G: SS-8 filed; H: W-2 + 1099 from the same firm, no SS-8)
+- [ ] If code G: SS-8 filed on or before the return date
+- [ ] Wage amount appears on Form 1040 line 1g
+- [ ] Form 8919 line 13 appears on Schedule 2 line 6
 - [ ] No double-counting on Schedule C
 - [ ] Additional Medicare check (Form 8959) added if applicable
 - [ ] User consent recorded immediately before submission
@@ -213,6 +216,7 @@ In these cases, produce the draft and tell the user: "This filing situation is c
 - [Form 8919 (PDF)](https://www.irs.gov/pub/irs-pdf/f8919.pdf)
 - [About Form 8919](https://www.irs.gov/forms-pubs/about-form-8919)
 - [Form SS-8 (PDF)](https://www.irs.gov/pub/irs-pdf/fss8.pdf) and [About Form SS-8](https://www.irs.gov/forms-pubs/about-form-ss-8)
-- [IRS Free File Fillable Forms](https://www.irs.gov/e-file-providers/free-file-fillable-forms)
-- [IRS Direct File](https://directfile.irs.gov) — verify scope per tax year
+- [Instructions for Form SS-8 (Rev. January 2024)](https://www.irs.gov/pub/irs-pdf/iss8.pdf) — where to file (mail/fax)
+- [IRS Free File](https://www.irs.gov/filing/irs-free-file-do-your-taxes-for-free) — guided software, AGI $89,000 or less (2026 filing season)
+- [IRS Free File Fillable Forms](https://www.irs.gov/e-file-providers/free-file-fillable-forms) — closes October 15, 2026 for 2025 returns
 - [Where to File Form 1040](https://www.irs.gov/filing/where-to-file-paper-tax-returns-with-or-without-a-payment)

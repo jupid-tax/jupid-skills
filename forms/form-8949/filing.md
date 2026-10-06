@@ -11,7 +11,7 @@ This file is complementary to `SKILL.md`, which produces the draft. The agent mu
 The user picks the channel. If they don't know, default to **IRS Free File Fillable Forms (FFFF)** — it's free, the field labels match the paper form, and the math auto-checks against Schedule D.
 
 ```
-User has AGI ≤ ~$84,000 and wants free guided software?
+User has AGI ≤ $89,000 (2026 filing season) and wants free guided software?
   → IRS Free File (Free File Alliance partners)
     Browser automation: provider-specific (FreeTaxUSA, Cash App Taxes, etc.)
     Skip — proprietary flows change too often for deterministic automation.
@@ -31,9 +31,8 @@ User wants to file on paper?
     Use Section 3.
 
 User wants to use IRS Direct File?
-  → Note: as of early 2026, IRS Direct File supports a narrow set of capital-gain
-    scenarios. Crypto and complex 1099-B sets typically fall out of scope.
-    Check current scope at https://www.irs.gov/filing/irs-direct-file before automating.
+  → IRS Direct File was not offered in the 2026 filing season (2025 returns).
+    Route the user to FFFF, paid software, or paper instead.
 ```
 
 ---

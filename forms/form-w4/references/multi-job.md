@@ -1,121 +1,103 @@
 # Step 2 — Multi-Job Methods Reference
 
-The biggest source of W-4 mistakes is multi-job households. Either employee has 2+ jobs, or both spouses work in MFJ. Each employer's withholding table assumes their salary is the worker's only income — so combined household income is taxed in higher brackets the W-4 doesn't see.
+The biggest source of W-4 mistakes is multi-job households. Either employee has 2+ jobs, or both spouses work in MFJ. Each employer's withholding assumes its wages are the worker's only wages — so combined household income is taxed in higher brackets the W-4 doesn't see.
 
-This reference covers the three Step 2 methods in detail.
+This reference covers the three Step 2 methods on the **2026 Form W-4** (verified 2026-10-06; re-check the 2027 form at https://www.irs.gov/forms-pubs/about-form-w-4).
 
 ## Why Step 2 Exists
 
-Withholding tables in Pub 15-T are built per-employer, not per-household. Two simple examples:
+Withholding in Pub. 15-T (2026) is computed per job. Without the Step 2 box checked, each job's computation subtracts a full-year amount ($8,600 Single/HoH, $12,900 MFJ, Worksheet 1A line 1g) and starts the STANDARD rate schedule from the bottom bracket. Two examples (annual figures from the Pub. 15-T (2026) Annual Percentage Method; tax from the 2026 rate schedules in Rev. Proc. 2025-32 with the 2026 standard deduction; computed in python):
 
 **Example A — Single person with two jobs:**
 - Job 1: $40,000/year
 - Job 2: $30,000/year
 - Combined: $70,000/year
 
-Without Step 2, Job 1 withholds as if $40K is the worker's only income (about $3,160 federal tax). Job 2 withholds as if $30K is only income (about $1,876). Total withheld: $5,036.
+Without Step 2, Job 1 withholds as if $40,000 is the worker's only income ($2,620 federal income tax). Job 2 withholds as if $30,000 is the only income ($1,420). Total withheld: $4,040.
 
-Actual 2025 federal tax on $70K (single, std deduction): about $7,156.
+2026 federal tax on $70,000 (single, $16,100 standard deduction, taxable $53,900): $6,570.
 
-Under-withholding: $2,120 → tax bill plus possible underpayment penalty.
+Under-withholding: $2,530 → tax bill plus possible underpayment penalty.
 
 **Example B — MFJ both spouses work:**
 - Marcus: $95,000
 - Jenna: $68,000
 - Combined: $163,000
 
-Without Step 2, Marcus's employer withholds for $95K MFJ (about $8,200). Jenna's for $68K MFJ (about $4,200). Total: $12,400.
+Without Step 2, Marcus's employer withholds for $95,000 MFJ ($7,040). Jenna's for $68,000 MFJ ($3,800). Total: $10,840.
 
-Actual 2025 federal tax on $163K (MFJ, std deduction): about $15,800.
+2026 federal tax on $163,000 (MFJ, $32,200 standard deduction, taxable $130,800): $18,200.
 
-Under-withholding: $3,400.
+Under-withholding: $7,360.
 
 ---
 
 ## Method (a): IRS Tax Withholding Estimator
 
-**URL:** https://www.irs.gov/individuals/tax-withholding-estimator
+**URL:** www.irs.gov/W4App (landing page https://www.irs.gov/individuals/tax-withholding-estimator)
 
-**When to use:** Always recommend first. Most precise method. Works for any combination of jobs, side income, and life events.
+**When to use:** The form calls it the most accurate option and says to use it if you or your spouse have self-employment income. Also the form's choice when the W-4 is completed after the start of the year, for part-year work, and for changes during the year (2026 Form W-4, page 1 TIP and page 2).
 
 **What you need:**
 - Most recent pay stub from each job (showing YTD wages and YTD federal withholding)
 - Spouse's most recent pay stub if MFJ
-- Estimate of any other income (side gig, interest, dividends, etc.)
+- Estimate of any other income (self-employment, interest, dividends, etc.)
 - Filing status, dependent count
 - Last year's tax return for reference (optional)
 
-**How it works:**
+**Output:** the entries for the W-4, including the extra per-pay-period amount for Step 4(c).
 
-The estimator walks through:
-1. Current pay stub data → YTD wages, YTD federal withholding, expected total annual wages
-2. Other income → other adjustments
-3. Dependents → CTC and ODC computation
-4. Standard vs itemized deduction
-5. Final calculation: projected total tax minus expected total withholding = under/over by $X
-
-**Output:**
-
-The estimator gives you exact numbers to enter on your W-4:
-- Step 3 dependent total
-- Step 4(a) other income amount
-- Step 4(c) extra per-pay-period withholding
-
-It also tells you which spouse's W-4 to update (or both) and which pay periods remain in the year.
-
-**Limitations:**
+**Limitations (agent-facing):**
 - Doesn't model state withholding (state forms are separate)
-- Treats bonuses approximately — if a big bonus is coming, redo the estimator after the bonus hits
-- Doesn't handle very large equity compensation cleanly — talk to a CPA for IPO/RSU vest situations
+- A mid-year W-4 based on the Estimator can be wrong once the next calendar year starts; Pub. 15 (2026), section 9 tells employers to remind such employees to rerun it in early January
+- Large equity compensation or bonuses: rerun after the payment; supplemental wages have their own withholding rules (Pub. 15 (2026), section 7)
 
 ---
 
 ## Method (b): Multiple Jobs Worksheet
 
-**Location:** Page 3 of Form W-4 (PDF)
+**Location:** the worksheet is on page 3 of Form W-4; the tables are on page 5.
 
-**When to use:** When the user can't or doesn't want to use the online estimator. Less precise but doesn't require internet.
+**When to use:** When the user can't or doesn't want to use the online estimator.
 
-**The worksheet has 3 tables:**
+**The page 5 tables, in order:**
 
-1. **Married Filing Jointly or Qualifying Surviving Spouse** — top half of Page 3
-2. **Single or Married Filing Separately** — middle of Page 3
-3. **Head of Household** — bottom of Page 3
+1. **Married Filing Jointly or Qualifying Surviving Spouse**
+2. **Single or Married Filing Separately**
+3. **Head of Household**
 
 Each table is a 2D matrix:
-- Rows: higher-paying job's annual wages
-- Columns: lower-paying job's annual wages
-- Cell value: additional annual federal withholding needed on the higher-paying job's W-4
+- Rows: "Higher Paying Job Annual Taxable Wage & Salary"
+- Columns: "Lower Paying Job Annual Taxable Wage & Salary", $10,000 bands from $0–9,999 to $110,000–120,000
+- Cell value: additional annual withholding for the household
 
-**Step-by-step:**
+**Step-by-step (worksheet lines):**
 
-1. Identify the household's two highest-paying jobs (if 3+ jobs, see special instructions on Page 3)
-2. Round each to the nearest $1,000
-3. Look up the row/column intersection in the right table for filing status
-4. Take that cell value (annual amount)
-5. Divide by the number of pay periods remaining in the year on the higher-paying job
-6. Enter the result on Step 4(c) of the higher-paying job's W-4
-7. Submit a W-4 with only Steps 1 and 5 to the lower-paying employer
+1. Line 1 (two jobs): find the cell at the higher-paying job's row and the lower-paying job's column; skip to line 3
+2. Line 2 (three jobs): 2a = cell for the highest job (row) and the next-highest job (column); 2b = cell for the sum of the two highest jobs (row) and the third job (column); 2c = 2a + 2b
+3. Line 3: pay periods per year for the highest-paying job (52, 26, 24, 12…)
+4. Line 4: line 1 (or 2c) ÷ line 3
+5. Enter line 4 (plus any other extra amount) in Step 4(c) of the highest-paying job's W-4
+6. The other job(s) get a W-4 with Steps 2 through 4(b) blank
 
-**Example (MFJ table excerpt):**
+**2026 MFJ table excerpt (page 5):**
 
 ```
-                    Lower-paying job annual wages
-Higher-paying      |  0-9,999  | 10K-19K  | 20K-29K  | 30K-39K  | 40K-49K  |
-─────────────────────────────────────────────────────────────────────────────
-$60,001 - $70,000  |   $890    |  $2,470  |  $3,690  |  $4,690  |  $5,690  |
-$70,001 - $80,000  |   $890    |  $2,470  |  $3,690  |  $4,690  |  $5,690  |
-$80,001 - $100,000 |   $890    |  $2,470  |  $3,690  |  $4,690  |  $5,690  |
+                     Lower Paying Job Annual Taxable Wage & Salary
+Higher Paying Job    |  $0-9,999 | 10,000-19,999 | 20,000-29,999 | 30,000-39,999 | 40,000-49,999 | 50,000-59,999 | 60,000-69,999 |
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+$60,000 - 69,999     |   $1,020  |    2,220      |    3,420      |    3,990      |    4,190      |    4,360      |    4,760      |
+$70,000 - 79,999     |   $1,020  |    2,220      |    3,420      |    3,990      |    4,190      |    4,760      |    5,760      |
+$80,000 - 99,999     |   $1,020  |    2,220      |    3,420      |    4,240      |    5,440      |    6,610      |    7,610      |
+$100,000 - 149,999   |   $1,870  |    4,070      |    6,270      |    7,840      |    9,040      |   10,210      |   11,210      |
 ```
 
-(Real Page 3 table is much larger; these numbers are illustrative.)
-
-For Marcus & Jenna ($95K + $68K, MFJ): row "$80,001-$100,000", column "$60K-$70K range" (estimated extension) ≈ $7,610. Divided by 26 biweekly = $293/check.
+For Marcus & Jenna ($95,000 + $68,000, MFJ): row "$80,000 - 99,999", column "$60,000 - 69,999" = $7,610. Divided by 26 biweekly = $292.69 → $293/check.
 
 **Limitations:**
-- The brackets in the table are coarser than real tax brackets, so it tends to over-withhold by $200-$800
-- Doesn't account for already-withheld YTD amounts (the Estimator does)
-- Doesn't handle 3-job households as cleanly
+- Bands are $10,000 wide, so the result is approximate (Example B: table $7,610 vs a computed gap of $7,360)
+- The worksheet works on full-year amounts; it doesn't account for withholding already taken this year (the Estimator does)
+- If more than one job has annual wages over $120,000 or there are more than three jobs, the form sends the user to Pub. 505 or the Estimator
 
 ---
 
@@ -123,89 +105,77 @@ For Marcus & Jenna ($95K + $68K, MFJ): row "$80,001-$100,000", column "$60K-$70K
 
 **Location:** Step 2(c) of the W-4 itself
 
-**When to use:** Only when:
-- Exactly two jobs total in the household
-- Both jobs pay roughly the same (within ~10%)
-- User wants the simplest possible setup
+**When to use:** Only when there are exactly two jobs in the household. The box must be checked on the W-4 for both jobs.
 
 **How it works:**
 
-Each spouse checks the Step 2(c) box on their own W-4. The IRS instructs employers to apply a special "two-jobs-similar-pay" withholding rate that approximates the joint-bracket math.
+"If the box is checked, the standard deduction and tax brackets will be cut in half for each job to calculate withholding" (2026 Form W-4, page 2). Payroll uses the Pub. 15-T "Form W-4, Step 2, Checkbox, Withholding Rate Schedules" and skips the Worksheet 1A line 1g subtraction.
 
-**Math behind the scenes:**
-
-When 2(c) is checked, the employer's payroll software uses a different table in Pub 15-T (the "Step 2 Multiple Jobs" version) which is calibrated for two earners with similar pay.
+**Accuracy rule (form text):** "This option is generally more accurate than Step 2(b) if pay at the lower paying job is more than half of the pay at the higher paying job. Otherwise, Step 2(b) is more accurate." With unequal pay, more tax than necessary is withheld, and the extra grows with the pay difference.
 
 **Tradeoffs:**
 
-- ✅ Simplest — just check a box
+- ✅ Simplest — check a box on each W-4
 - ✅ No online tool, no worksheet
-- ❌ Tends to over-withhold by $500-$1,500 for unequal pay (because it assumes equal pay)
-- ❌ Doesn't account for dependents claimed on Step 3 nor side income on Step 4(a)
-- ❌ Both spouses must check it; if only one does, the other still under-withholds
+- ❌ Over-withholds when one job pays much more than the other
+- ❌ Both W-4s must check it; if only one does, the household under-withholds
+- Steps 3 through 4(b) still go on only one of the two W-4s
 
 **Decision rule for 2(c):**
 
 ```
-Higher-job wages / Lower-job wages
-
-≤ 1.10  →  2(c) is reasonable
-1.10 - 1.25  →  2(c) over-withholds slightly; OK if user wants simplicity
-1.25 - 1.50  →  Use method (a) or (b) instead
-> 1.50  →  Definitely use method (a) Estimator
+Lower-job wages > 50% of higher-job wages  →  2(c) generally more accurate than 2(b)
+Lower-job wages ≤ 50% of higher-job wages  →  2(b) more accurate; (a) most accurate
+Self-employment income in the household    →  (a) Estimator (form instruction)
 ```
+
+Example B under 2(c): Marcus's job withholds $12,070 and Jenna's $6,130 (Pub. 15-T (2026) checkbox schedule, MFJ), total $18,200, equal to the projected 2026 tax. $68,000 is more than half of $95,000, so the form's rule points to 2(c) here.
 
 ---
 
 ## Special Cases
 
-### Three or more jobs
+### Three jobs
 
-The Multiple Jobs Worksheet has additional instructions on Page 3 for 3-job households:
-1. Identify highest, second-highest, and third-highest paying jobs
-2. Compute combined wages of jobs 2 and 3
-3. Use the Worksheet treating those combined wages as the "lower-paying job" amount
-4. Apply result to highest-paying job's Step 4(c)
-
-The Estimator handles 3+ jobs natively — strongly recommended over the worksheet for this case.
+Use worksheet line 2 (see Method (b)): the two highest jobs first, then their combined wages as the row against the third job. The Estimator handles any number of jobs.
 
 ### Mid-year job change
 
 If a spouse starts or stops working mid-year:
 1. Re-run the Estimator with the new situation
-2. Submit a new W-4 to the affected employer
-3. Don't try to "make up" the under-withheld amount through Step 4(c) for the rest of the year unless the gap is small (<$1,000); large gaps are easier to fix via Form 1040-ES
+2. Submit a new W-4 to the affected employer (within 10 days if the change reduces the withholding you're entitled to, Pub. 505 (2026), chapter 1)
+3. Ask whether the user prefers to close the gap through Step 4(c) for the remaining paychecks or with a Form 1040-ES payment. For the underpayment penalty, withholding is treated as paid in equal amounts on the four installment dates unless the taxpayer elects actual dates (Pub. 505 (2026), chapter 2), so late-year extra withholding still counts for the whole year
 
 ### One job, very large bonus
 
 If one job has a single large bonus (e.g., $50K signing bonus):
-1. The bonus has its own withholding rules — usually 22% supplemental rate up to $1M (IRS Reg §31.3402(g)-1)
+1. The bonus has its own withholding rules: 22% optional flat rate, and 37% mandatory on supplemental wages above $1 million for the year (Pub. 15 (2026), section 7)
 2. The Step 2 multi-job math doesn't apply — there's only one employer
-3. If the 22% supplemental rate is higher than your bracket, you'll get a refund. Lower → consider extra Step 4(c) on the regular paycheck to cover the gap
+3. If the 22% flat rate is higher than the user's top bracket, expect a refund; if lower, consider extra Step 4(c) on the regular paycheck to cover the gap
 
-### Both jobs with the same employer
+### Two positions with the same employer
 
-Example: working part-time for two divisions of the same employer. Treat as two separate jobs for Step 2 purposes — the divisions usually have separate withholding.
+If both positions are paid through one payroll and appear on one W-2, it is one job for W-4 purposes. If they are separate employers (separate W-2s), treat them as two jobs. Ask the user which applies.
 
-### Self-employed primary income + W-2 side job
+### Self-employment income + W-2 job
 
-If the user's main income is self-employment (Schedule C) and they have a small W-2 side job:
-- Don't use Step 4(c) on the W-2 to cover all SE tax — too much
-- Use Step 4(a) for the SE income and Step 4(c) for the SE tax portion
-- OR pay quarterly Form 1040-ES for SE income/tax and let the W-4 only handle the W-2
+If the user has self-employment income (Schedule C) and a W-2 job:
+- Do NOT put the self-employment income on Step 4(a); the form says not to include it there
+- Use the Estimator (Step 2(a)) and enter its result in Step 4(c), OR
+- Pay quarterly Form 1040-ES for the self-employment income tax and SE tax and let the W-4 handle only the wages
 
 ---
 
 ## Coordination: One W-4 Carries the Credits
 
-The single most important multi-job rule:
+The single most important multi-job rule (2026 Form W-4, Step 2 note):
 
-**Only complete Steps 3 and 4(a)/(b) on the HIGHEST-paying job's W-4.**
+**Complete Steps 3 through 4(b) on only ONE W-4 — most accurate on the highest-paying job's.**
 
-The lower-paying job(s) get a W-4 with only Steps 1 and 5 (just identifying info + signature). Why:
+The other job(s) leave Steps 3 through 4(b) blank. Why:
 
-- Step 3 dependent credit is annual ($4,000 for 2 kids), not per-paycheck. If both spouses claim $4,000, withholding is reduced by $8,000 — but only $4,000 of CTC actually exists.
-- Step 4(a) other income gross-up similarly is annual; double-counting under-withholds.
-- Step 4(c) extra per-pay-period CAN go on either job, but the multi-job worksheet/estimator output should always go on the higher-paying job.
+- Step 3 dependent credit is annual ($4,400 for 2 kids in 2026), not per-paycheck. If both spouses claim $4,400, withholding is reduced by $8,800 — but only $4,400 of CTC actually exists.
+- Step 4(a) other income and Step 4(b) deductions are annual too; double-counting skews withholding.
+- Step 4(c) extra per-pay-period CAN go on either job; the Multiple Jobs Worksheet result goes on the highest-paying job's W-4.
 
-The sole exception: if both jobs pay equally and you're using Step 2(c) checkbox, both W-4s have only Step 1 + 2(c) + 5.
+With the Step 2(c) checkbox, both W-4s check the box, and Steps 3 through 4(b) still appear on only one of them.

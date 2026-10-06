@@ -12,8 +12,10 @@ This file applies to the **payor side** (issuing 1099-NECs). Recipients do not f
 
 ```
 Issuing 10+ information returns total in the calendar year (any 1099 + W-2 combined)?
-  → Electronic filing is MANDATORY (IRC §6011(e)(2), TFA 2019)
-  → Use IRIS (free) or FIRE (free, requires Transmitter Control Code) or a paid service
+  → Electronic filing is MANDATORY (IRC §6011(e); T.D. 9972)
+  → Use IRIS (free) or a paid service. FIRE is retired: from filing season
+    2027 (tax year 2026 forms) IRIS is the only IRS intake system for
+    information returns (Pub. 1099 (2026), What's New)
   → Skip paper Form 1096
 
 Issuing < 10 information returns total?
@@ -32,7 +34,7 @@ Already paying for tax software or payroll service that issues 1099-NEC?
 
 URL: https://www.irs.gov/filing/e-file-information-returns
 
-IRIS is the free IRS portal for filing 1099-series forms (NEC, MISC, K, INT, DIV, B, C, R, S, G, OID, PATR, Q, SA) plus Form W-2G. Available 24/7 during filing season (typically opens early January for the prior year).
+IRIS is the free IRS portal for filing 1099-series forms (NEC, MISC, K, INT, DIV, B, C, R, S, G, OID, PATR, Q, SA) plus Form W-2G. It has a Taxpayer Portal (manual entry / CSV upload, Pub. 5717) and an Application to Application channel (XML, Pub. 5718). A2A needs an IRIS Transmitter Control Code; Pub. 1099 (2026) says TCC applications typically take 45 business days, so apply early.
 
 **Account model**: payer registers an IRIS account (one per EIN). The IRS may require ID.me identity verification for the responsible individual.
 
@@ -58,8 +60,10 @@ Agent must have:
    - **CSV upload**: agent prepares a CSV per IRIS schema (good for batches)
 6. **Manual entry path** — for each recipient, fill:
    - Recipient name, address, TIN
-   - Box 1 (Nonemployee compensation)
+   - Box 1a (Nonemployee compensation; Box 1 on 2025 forms)
+   - Boxes 1b–1d (cash tips, TTOC, overtime) — 2026 forms only, usually blank for contractors
    - Box 2 (direct sales ≥ $5,000) — checkbox
+   - Box 3 (excess golden parachute payments) — rare
    - Box 4 (Federal tax withheld)
    - Boxes 5-7 (state) — repeat for additional states
    - Account number (if used)
@@ -72,7 +76,7 @@ Agent must have:
     - `DUPLICATE-FILING` — same recipient + same year already filed → was this a correction? Use "Corrected" flag
 11. **Distribute Copy B to recipients**:
     - IRIS offers an option to e-deliver Copy B to recipients with their consent
-    - Otherwise, the payer mails Copy B (postmarked by January 31) — IRIS generates a printable Copy B PDF
+    - Otherwise, the payer mails Copy B (postmarked by January 31, or the next business day; February 1, 2027 for 2026 forms) — IRIS generates a printable Copy B PDF
 12. **State filing**: if state is in CF/SF program, IRIS can submit to states. Otherwise, agent files separately with state DOR.
 
 ### What the agent should NOT do
@@ -104,14 +108,14 @@ For payers issuing < 10 information returns total who prefer paper.
 3. **Form 1096** boxes:
    - Filer's name, address, TIN
    - Box 3: total number of forms transmitted
-   - Box 5: total amount reported (sum of Box 1 across all 1099-NECs)
+   - Box 5: total amount reported (for 1099-NEC, the box 1 and box 3 amounts per the Form 1096 instructions)
    - Box 6: form type code (form 1099-NEC has its own code: "71")
 
 ### Mailing address
 
 The IRS mailing address for paper Form 1096 + 1099-NEC Copy A varies by state. The IRS posts current addresses at:
 
-https://www.irs.gov/instructions/i1099gi
+https://www.irs.gov/pub/irs-pdf/p1099.pdf (Pub. 1099, General Instructions for Certain Information Returns — the former "General Instructions" document) and the Form 1096 instructions
 
 Look up the address by:
 1. Form type (1099-NEC)
@@ -122,7 +126,7 @@ Do not hardcode — the IRS shifts addresses periodically.
 ### Mailing best practices
 
 - Send via **USPS Certified Mail with Return Receipt** for proof of timely filing
-- Postmark by **January 31** (1099-NEC has the same IRS deadline as recipient deadline; this is unique to 1099-NEC)
+- Postmark by **January 31** (next business day if it falls on a weekend or legal holiday; 1099-NEC has the same IRS deadline as recipient deadline)
 - Keep a complete photocopy of the entire submission
 
 ### Copy B to recipient
@@ -141,7 +145,7 @@ For users with QuickBooks, Track1099, Tax1099, Gusto, Rippling, or similar:
 3. Import or enter recipients (most platforms pull from existing vendor records)
 4. Verify each recipient's W-9 status and TIN match
 5. Enter Box 1 amounts (often pulled automatically from payment records — verify against payer's GL)
-6. Software files with IRS (e-file via FIRE under platform's transmitter ID) AND distributes Copy B to recipients (mail or e-delivery)
+6. Software files with IRS (e-file under the platform's IRIS transmitter control code) AND distributes Copy B to recipients (mail or e-delivery)
 7. Pay platform fee per form (typically $2-5 per recipient)
 
 Most platforms file CF/SF states automatically. Verify state coverage in the platform's documentation before relying.
@@ -152,9 +156,9 @@ Most platforms file CF/SF states automatically. Verify state coverage in the pla
 
 If the payer withheld 24% backup withholding on any payment:
 
-1. Deposit the withheld amount with the IRS via EFTPS using deposit schedules per IRC §6302 (monthly or semi-weekly depending on payer's prior-year liability)
-2. File **Form 945** (Annual Return of Withheld Federal Income Tax) by **January 31** (or February 10 if all deposits made on time)
-3. Report total backup withholding on Form 945 Line 1
+1. Deposit the withheld amount with the IRS by EFT (EFTPS, IRS Direct Pay, or business tax account) using deposit schedules per IRC §6302 (monthly or semi-weekly depending on the Form 945 liability in the second preceding calendar year — Pub. 15 (2026), section 11)
+2. File **Form 945** (Annual Return of Withheld Federal Income Tax) by **January 31** (or February 10 if all deposits made on time); February 1, 2027 for 2026
+3. Report total backup withholding on Form 945 Line 2 (Line 1 is for pension, annuity, IRA, and gambling withholding)
 4. The Form 945 total must equal sum of Box 4 across all 1099s issued
 
 See https://www.irs.gov/forms-pubs/about-form-945 for current Form 945.
@@ -168,7 +172,7 @@ If a 1099-NEC was filed with errors:
 - **One-step correction** (wrong dollar amount, wrong recipient address): file a corrected 1099-NEC with the "Corrected" box checked, showing the correct amount. Send a corrected Copy B to the recipient.
 - **Two-step correction** (wrong TIN, wrong recipient name): file two forms — one with original (incorrect) info and $0 in Box 1 marked Corrected; then a separate new 1099-NEC with correct info.
 
-See IRS Pub. 1220 Section H for detailed correction matrices.
+See Pub. 1099 (2026), part H, for paper corrections; Pub. 5717 (IRIS Taxpayer Portal) and Pub. 5718 (IRIS A2A) for electronic corrections.
 
 ---
 
@@ -176,10 +180,10 @@ See IRS Pub. 1220 Section H for detailed correction matrices.
 
 After filing:
 
-1. **Submitted** — sent to IRS via IRIS / FIRE / paper
+1. **Submitted** — sent to IRS via IRIS / paper
 2. **Accepted** — IRS acknowledges; for IRIS, usually within minutes
 3. **Processed** — IRS posts to recipient's account; appears on recipient's IRS account transcript
-4. **Penalty notice** (if late or incorrect) — Letter CP2100 or CP2100A for TIN mismatches; CP14 for unpaid backup withholding
+4. **Notices** — Notice 972CG proposes information-return penalties (late or incorrect filing); CP2100 / CP2100A lists name/TIN mismatches that start the B-Notice process
 
 Status checks:
 

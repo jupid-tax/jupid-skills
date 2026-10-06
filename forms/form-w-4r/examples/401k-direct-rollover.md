@@ -8,7 +8,7 @@
 
 **Purpose**: Aisha is moving her retirement savings out of TechCorp's plan into an IRA where she has more investment options. She wants to preserve the full $185,000 in tax-deferred form. She has 60 days to complete a rollover but is choosing the **direct rollover** path to avoid the 20% mandatory withholding.
 
-**Key insight**: For a **direct trustee-to-trustee rollover**, **no W-4R is needed**. The funds move directly from TechCorp's 401(k) trustee to Schwab's IRA custodian without Aisha taking constructive receipt. No withholding applies because there's no taxable distribution.
+**Key insight**: For a **direct rollover**, **no W-4R is needed**. The funds move directly from TechCorp's 401(k) to Schwab's IRA custodian without Aisha taking receipt. "There is no withholding" on a direct rollover (Pub. 575 (2025), Table 1; IRC §3405(c)(2)).
 
 This example demonstrates why direct rollovers are almost always preferred over indirect rollovers for ERDs.
 
@@ -44,7 +44,9 @@ To make sure the direct rollover is truly the right path, contrast the two optio
 
 **No W-4R needed.** No withholding form is involved because the distribution is not subject to withholding.
 
-**Result**: $185,000 fully transferred to the Traditional IRA. No tax due now. No §72(t) penalty (direct rollover is not a "distribution" for §72(t) purposes).
+**Result**: $185,000 fully transferred to the Traditional IRA. No tax due now. No §72(t) additional tax: the rolled-over amount isn't included in income (Pub. 575 (2025), Table 1: "There is no 10% additional tax").
+
+**How Aisha reports it**: 2025-form line numbers (re-check on the 2026 Form 1040): $185,000 on line 5a, $0 on line 5b, and box 1 ("Rollover") checked on line 5c (Pub. 575 (2025), "How to report").
 
 ### Option B — Indirect (60-day) rollover (NOT Aisha's path)
 
@@ -54,18 +56,18 @@ To make sure the direct rollover is truly the right path, contrast the two optio
 3. Aisha receives a check for **$148,000** (the $185,000 less $37,000 withholding)
 4. To complete a tax-free rollover within 60 days, Aisha must deposit the full $185,000 into her IRA (NOT just the $148,000 she received)
 5. The $37,000 difference must come from Aisha's non-IRA cash (savings, taxable brokerage, etc.)
-6. When Aisha files her 2026 tax return, she reports the $185,000 distribution on Form 1040 Line 5a, $0 taxable on Line 5b (because rolled over within 60 days), and reclaims the $37,000 federal withholding as a tax payment
+6. When Aisha files her 2026 tax return, she reports the $185,000 distribution on Form 1040 line 5a, $0 taxable on line 5b (rolled over within 60 days), checks box 1 ("Rollover") on line 5c, and claims the $37,000 federal withholding on line 25b (2025-form line numbers; Pub. 575 (2025))
 7. TechCorp's trustee issues 1099-R with **Distribution Code 7** (normal) or **1** (early) — NOT Code G — showing:
    - Box 1 (gross distribution): $185,000
    - Box 2a (taxable amount): $185,000 (assumed taxable; recipient indicates rollover on Form 1040)
    - Box 4 (federal income tax withheld): $37,000
    - Box 7 (distribution code): 1 or 7
 
-**W-4R required.** Aisha would file W-4R with TechCorp's trustee, but she **cannot reduce below 20%** because this is an ERD. Even if she enters "0" on Line 2, the trustee applies 20% by force of law.
+**No W-4R needed unless she wants more than 20%.** This is an ERD: "You can't choose withholding at a rate of less than 20% (including '-0-')... Don't give Form W-4R to your payer unless you want more than 20% withheld" (2026 Form W-4R, page 2). The plan withholds 20% either way.
 
 **Result if successful**: $185,000 in IRA, $37,000 federal withholding refunded at tax filing (~14 months later). Net same as direct rollover but with a 14-month cash flow drag for the $37,000.
 
-**Result if Aisha fails to make whole**: Only $148,000 is rolled over. The $37,000 is treated as a taxable distribution. At 22% marginal rate, that's $8,140 federal tax + $3,700 §72(t) penalty (Aisha is 45, under 59½, no exception applies) = **$11,840 lost** to taxes and penalty.
+**Result if Aisha fails to make whole**: Only $148,000 is rolled over. The $37,000 is a taxable distribution (Pub. 575 (2025), "Rolling over more than amount received"). At an assumed 22% marginal rate, that's $8,140 federal tax + $3,700 §72(t) additional tax (Aisha is 45; she left TechCorp before the year she turns 55, so exception 01 doesn't apply, and no other exception applies) = **$11,840** in tax on money she meant to keep tax-deferred.
 
 ---
 
@@ -82,7 +84,7 @@ The math:
 | §72(t) penalty | $0 | $0 | $3,700 (10% on $37K) |
 | Time until $37,000 returned | N/A | ~14 months (refund) | Never |
 
-**Direct rollover is strictly better** unless Aisha has a specific reason to take constructive receipt (e.g., she wants to take a partial cash withdrawal of, say, $20,000 and roll the rest — but even then, she could split: direct rollover of $165,000 and cash distribution of $20,000 with W-4R electing some rate on the $20,000 portion).
+**Direct rollover is strictly better** when the goal is to keep the money tax-deferred. If Aisha also wanted cash (say $20,000), she could split: direct rollover of $165,000 and a $20,000 cash distribution, which is an ERD with 20% withheld (a W-4R only if she wants more than 20%).
 
 ---
 
@@ -129,18 +131,15 @@ participant taking constructive receipt. No W-4R is filed.
 - §72(t) early-withdrawal penalty: N/A (direct rollover not treated as distribution)
 
 ## Reminders
-- The receiving IRA at Schwab MUST be open before Fidelity issues the check —
-  otherwise the rollover may fail and become a taxable indirect rollover
+- The receiving IRA at Schwab should be open before the plan issues the payment,
+  so the plan has the receiving account details
 - The check must be payable to "Charles Schwab & Co. FBO Aisha Patel IRA" — NOT
-  payable to Aisha personally. If made payable to Aisha, it becomes an indirect
-  rollover triggering 20% withholding
-- Aisha should track timing — once the check is issued, she has 60 days to deposit
-  if anything goes wrong (e.g., Schwab can't accept the check). Direct rollovers
-  rarely fail but the 60-day clock provides a safety net
+  payable to Aisha personally. A payment to Aisha is not a direct rollover: the plan
+  must withhold 20%, and she would have 60 days to roll it over (Pub. 575 (2025))
 
 ## Sources cited in this draft
 - IRC §402(c) (eligible rollover distribution definition)
-- IRC §402(c)(1) (direct rollover provision)
+- IRC §401(a)(31) (direct rollover option)
 - IRC §3405(c)(2) (direct rollover NOT subject to 20% mandatory withholding)
 - IRC §72(t) (early withdrawal penalty — N/A to direct rollovers)
 - IRS Pub. 575 (Pension and Annuity Income)
@@ -173,9 +172,10 @@ NO W-4R FILED.
 
 If Aisha had instead chosen to:
 
-- Take a partial cash withdrawal from her 401(k) ($20K cash, $165K direct rollover) — W-4R for the $20K portion (ERD; min 20%)
-- Take all $185K as cash distribution and intend to indirectly roll over within 60 days — W-4R for $185K (ERD; min 20%; she'd need to make whole the $37K withheld)
-- Roll the 401(k) to a Roth IRA (Roth conversion) — W-4R for $185K Roth conversion (other nonperiodic in this context; 0% recommended; pay tax via Form 1040-ES)
+- Take a partial cash withdrawal from her 401(k) ($20K cash, $165K direct rollover) — 20% withheld on the $20K (ERD); W-4R only to ask for more than 20%
+- Take all $185K as a cash distribution and roll it over within 60 days — 20% ($37K) withheld (ERD); W-4R only to ask for more; she'd need $37K from other funds to roll over the full amount
+- Roll the 401(k) directly to a Roth IRA — no withholding on a direct rollover, but the pre-tax amount is taxable income for 2026 (no 10% additional tax; Pub. 575 (2025), "Rollovers to Roth IRAs"); plan the tax with Form 1040-ES. Not a W-4R case
+- Later take cash out of the new Traditional IRA — that would be an other nonperiodic payment (10% default) and a W-4R case
 
 But for a **clean direct rollover to a Traditional IRA**, no W-4R, no withholding, no complexity.
 
@@ -183,7 +183,7 @@ But for a **clean direct rollover to a Traditional IRA**, no W-4R, no withholdin
 
 ## Sources cited in this draft
 
-- IRC §401(a)(31) (qualified plan rollover requirements)
+- IRC §401(a)(31) (direct rollover option)
 - IRC §402(c) (eligible rollover distribution and direct rollover)
 - IRC §3405(c) (20% mandatory withholding on ERDs paid to participant)
 - IRC §3405(c)(2) (direct rollover not subject to mandatory withholding)

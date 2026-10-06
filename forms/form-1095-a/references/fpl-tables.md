@@ -1,8 +1,8 @@
 # Federal Poverty Line (FPL) Tables for Form 8962
 
-The IRS uses the **prior year's** FPL guidelines to compute the Premium Tax Credit. So:
-- Tax year 2025 PTC → use **2024 FPL** (released by HHS January 2024)
-- Tax year 2026 PTC → use **2025 FPL** (released by HHS January 2025)
+The IRS uses the **prior year's** FPL guidelines to compute the Premium Tax Credit (IRC §36B(d)(3)(B): the poverty line most recently published as of the first day of the open enrollment period for the coverage year). So:
+- Tax year 2025 PTC → use **2024 FPL** (HHS, 89 FR 2961, January 17, 2024; reproduced as Tables 1-1 to 1-3 in the 2025 Form 8962 instructions)
+- Tax year 2026 PTC → use **2025 FPL** (HHS, 90 FR 5917, January 17, 2025)
 
 There are three FPL tables based on residence:
 1. **48 contiguous states + DC**
@@ -49,7 +49,9 @@ There are three FPL tables based on residence:
 
 ---
 
-## 2025 FPL (used for tax year 2026 — verify against HHS publication)
+## 2025 FPL (used for tax year 2026)
+
+Source: HHS 2025 poverty guidelines, 90 FR 5917. The 2026 Form 8962 instructions had not been released on 2026-10-06; confirm against their Tables 1-1 to 1-3 before filing a 2026 return.
 
 ### 48 contiguous states + DC
 
@@ -61,17 +63,29 @@ There are three FPL tables based on residence:
 | 4 | $32,150 | $64,300 | $128,600 |
 | Each additional | +$5,500 | +$11,000 | +$22,000 |
 
-(2025 FPL rounded to common figures; verify exact values at https://aspe.hhs.gov/topics/poverty-economic-mobility/poverty-guidelines)
+### Alaska
+
+| Family size | 100% FPL |
+|-------------|----------|
+| 1 | $19,550 |
+| Each additional | +$6,880 |
+
+### Hawaii
+
+| Family size | 100% FPL |
+|-------------|----------|
+| 1 | $17,990 |
+| Each additional | +$6,330 |
 
 ---
 
 ## How to use
 
 1. Determine tax family size (filer + spouse + dependents on the return)
-2. Determine state of residence (48 states+DC vs. Alaska vs. Hawaii)
+2. Determine state of residence during the year (48 states+DC vs. Alaska vs. Hawaii); if the user lived in Alaska or Hawaii for part of the year, or joint filers lived in different states, use the higher table
 3. Look up 100% FPL for the family size in the prior-year table
 4. Enter that dollar amount on Form 8962 Line 4
-5. Compute Line 5 = Line 3 ÷ Line 4 × 100, rounded down to whole percent
+5. Compute Line 5 = Line 3 ÷ Line 4 × 100, rounded down to whole percent (401 if above 400%)
 
 **Example:** Family of 4 in Texas (48 states), tax year 2025, household income $50,000.
 - Line 4 = $31,200 (2024 FPL HH of 4)
@@ -82,4 +96,4 @@ There are three FPL tables based on residence:
 ## Source
 
 - HHS publishes annually at https://aspe.hhs.gov/topics/poverty-economic-mobility/poverty-guidelines
-- IRS reproduces in Form 8962 instructions
+- IRS reproduces the prior-year table in the Form 8962 instructions (Tables 1-1 Alaska, 1-2 Hawaii, 1-3 other 48 states and DC)

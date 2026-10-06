@@ -24,9 +24,9 @@ The Form 5500 series has a high error rate among first-time filers and small-pla
 
 **Why it happens**: The schedule requirements are scattered across the instructions, and a plan that was small last year may cross the 100-participant threshold without the administrator realizing additional schedules are now required.
 
-**Symptom**: EFAST2 may flag missing schedules during validation (some it catches, some it doesn't). DOL correspondence within 6–12 months of filing requesting the missing schedule.
+**Symptom**: EFAST2 may list missing schedules as errors in the filing status (some it catches, some it doesn't). DOL correspondence later requests the missing schedule; filings with errors are subject to rejection and penalties.
 
-**Fix**: File an amended 5500 with the missing schedule. If the missing schedule is the IQPA audit report, commission the audit and file amendment within DOL's response deadline (typically 60 days).
+**Fix**: File an amended 5500 (a complete replacement filing) with the missing schedule. If the missing item is the IQPA report, commission the audit and file the amendment by the response date in the DOL letter.
 
 **Prevention**: Use EFAST2's IFILE built-in schedule logic — IFILE prompts for schedules based on form responses. If using XML upload, double-check the schedule list against the requirements table.
 
@@ -38,15 +38,15 @@ The Form 5500 series has a high error rate among first-time filers and small-pla
 
 **Why it happens**: The administrator forgot, the auditor was delayed, the TPA missed the deadline, the sponsor's CFO changed.
 
-**Symptom**: DOL letter or IRS letter assessing penalties. DOL penalty up to $2,739/day per ERISA §502(c)(2) (verify current adjustment via 29 CFR §2575.502c-2). IRS penalty $250/day up to $150,000 per IRC §6652(e). For 5500-EZ, IRS penalties only.
+**Symptom**: DOL letter or IRS letter assessing penalties. DOL penalty up to $2,739/day per ERISA §502(c)(2) (2025 adjustment, 90 FR 1854; DOL made no 2026 adjustment, 91 FR 31358). IRS penalty $250/day up to $150,000 per IRC §6652(e). For 5500-EZ, IRS penalties only. IRS sends CP403 and CP406 delinquency notices for missing Forms 5500/5500-SF and a CP283 penalty notice for a late 5500-EZ.
 
 **Fix**: 
-- For 5500/5500-SF: Use the **DFVC Program** (Delinquent Filer Voluntary Compliance) BEFORE DOL sends a letter. DFVC penalties: $10/day capped at $750–$2,000 per filing (small plans) or $4,000 per filing (large plans), with a per-administrator cap of $1,500–$4,000.
-- For 5500-EZ: Use the IRS one-participant late-filer relief program (Rev. Proc. 2015-32) — flat $500 per delinquent return, capped at $1,500 per plan.
+- For 5500/5500-SF: Use the **DFVC Program** (Delinquent Filer Voluntary Compliance) before DOL issues a Notice of Intent to Assess a Penalty. DFVC penalty: $10/day, capped at $750 per filing and $1,500 per plan for small plans ($750 per plan if the sponsor is a 501(c)(3) organization), and $2,000 per filing and $4,000 per plan for large plans. Payment is online only (https://www.dol.gov/agencies/ebsa/employers-and-advisers/plan-administration-and-compliance/correction-programs/dfvcp).
+- For 5500-EZ: Use the IRS late filer penalty relief program (Rev. Proc. 2015-32): $500 per delinquent return, capped at $1,500 per plan, paper filing with Form 14704 and a check. Not available once a CP283 penalty notice has been issued.
 
 Once DOL or IRS has issued correspondence, voluntary-relief programs may not apply — full penalties.
 
-**Prevention**: File Form 5558 by July 31 of every calendar plan year, automatically. The 2.5-month extension is one-click and protects against unforeseen delays.
+**Prevention**: If the filing may run late, file Form 5558 by July 31 for a calendar plan year. Since January 1, 2025 it can be filed through EFAST2 or on paper (Form 5558, Rev. January 2025); approval of a timely, complete form is automatic and extends the due date to October 15.
 
 ---
 
@@ -70,9 +70,9 @@ Once DOL or IRS has issued correspondence, voluntary-relief programs may not app
 
 **Why it happens**: Restated values (e.g., audit findings, valuation adjustments), trustee reconciliation differences, fund mergers, recordkeeper transitions.
 
-**Symptom**: EFAST2 doesn't formally check this (it's inter-year), but DOL and IRS examiners catch it. Schedule H footnote may be required.
+**Symptom**: DOL and IRS examiners catch it. The instructions require beginning-of-year amounts to equal the end-of-year amounts on the prior year's return (2025 Form 5500-SF instructions, line 7; 2025 Form 5500-EZ instructions, Part III).
 
-**Fix**: Reconcile and explain. Schedule H Part I (income, expenses) requires footnotes for restatements. Provide the trustee's reconciliation. If material, consider amending the prior year.
+**Fix**: Reconcile against the trustee statements. If the prior year's ending figures were wrong, amend the prior-year return so the two years tie (Schedule H Part I holds assets and liabilities; Part II holds income and expenses).
 
 **Prevention**: Reconcile trust statements at year-end. Coordinate with trustee, recordkeeper, and IQPA auditor on year-end values. Document any restatement.
 
@@ -80,17 +80,17 @@ Once DOL or IRS has issued correspondence, voluntary-relief programs may not app
 
 ## 6. Late deferrals not reported, or reported but not corrected
 
-**The mistake**: Employee 401(k) deferrals deposited to the trust late (after the DOL's deadline for "as soon as administratively feasible," typically 7 days for small plans). Either not reported on Schedule H Line 4a (most common), or reported but no corrective action taken.
+**The mistake**: Employee 401(k) deferrals deposited to the trust late (after the earliest date they can reasonably be segregated from the employer's general assets; for plans with fewer than 100 participants, deposits within 7 business days are deemed timely under 29 CFR 2510.3-102(a)(2)). Either not reported (Form 5500-SF line 10a, Schedule H or I line 4a), or reported but no corrective action taken.
 
 **Why it happens**: Payroll-to-recordkeeper handoff is delayed, sponsor cash flow tight, processing error.
 
-**Symptom**: DOL examination targets late deferrals. Penalty on the prohibited transaction. 15% excise tax under IRC §4975 reported on Form 5330.
+**Symptom**: DOL examination targets late deferrals. The late deposit is a prohibited transaction: 15% first-tier excise tax on the amount involved under IRC §4975(a), reported on Form 5330.
 
 **Fix**: 
 1. Calculate lost earnings on the late deferrals (using DOL's online calculator or actual fund returns, whichever higher)
 2. Deposit the lost earnings into the trust
 3. File Form 5330 reporting the 15% excise tax on the lost-earnings amount
-4. Consider VFCP (Voluntary Fiduciary Correction Program) — DOL program that absolves the prohibited transaction in exchange for full correction
+4. Consider VFCP (Voluntary Fiduciary Correction Program). Applicants that satisfy VFCP and PTE 2002-51 get relief from the excise tax and do not file Form 5330 for the corrected transaction (2025 Form 5500-SF instructions, line 10a)
 
 **Prevention**: Establish written deferral-deposit policy. Audit deposit timing quarterly. For small plans, the DOL's safe harbor is 7 business days; aim for same-day or next-day deposit.
 
@@ -120,7 +120,7 @@ Once DOL or IRS has issued correspondence, voluntary-relief programs may not app
 
 **Fix**: Commission audit, file amended 5500 with Schedule H + audit. Or, if the issue is a missing fidelity bond at 100% of non-qualifying asset value, obtain the bond going forward and document.
 
-**Prevention**: Verify the small-plan audit waiver conditions every year. Maintain ERISA fidelity bond at 10% of plan assets minimum (up to $500K standard; up to $1M for plans holding employer securities). Increase to 100% of any non-qualifying assets if relying on the waiver.
+**Prevention**: Verify the small-plan audit waiver conditions every year. Maintain the ERISA fidelity bond at no less than 10% of funds handled in the preceding plan year, minimum $1,000, maximum required $500,000 ($1,000,000 for plans holding employer securities or pooled employer plans) (ERISA §412(a); 29 CFR 2580.412-11). Increase coverage to at least 100% of any non-qualifying assets if relying on the enhanced-bond prong of the waiver. A plan that meets the waiver only through the enhanced bond cannot file Form 5500-SF.
 
 ---
 
@@ -130,11 +130,11 @@ Once DOL or IRS has issued correspondence, voluntary-relief programs may not app
 
 **Why it happens**: The SAR is a separate ERISA obligation under §104(b)(3); the administrator forgets that filing 5500 doesn't fulfill it.
 
-**Symptom**: Participant complaint, DOL examination finding. Civil penalty of up to $171/day per failure (max $1,716 per plan year per affected participant), verifiable via 29 CFR §2575.502c-1.
+**Symptom**: Participant complaint, DOL examination finding.
 
 **Fix**: Distribute the SAR retroactively. Document the distribution.
 
-**Prevention**: Calendar the SAR deadline — 9 months after plan year end (calendar plan: by September 30 of the year after, or 2 months after the extended Form 5500 due date if extension was used). Templates available in DOL Field Assistance Bulletin 2009-1. Form 5500-EZ filers (one-participant plans) are NOT required to distribute SAR.
+**Prevention**: Calendar the SAR deadline: 9 months after plan year end (calendar plan: September 30 of the following year), or 2 months after the end of an IRS extension period if an extension was granted (29 CFR 2520.104b-10(c)). Model SAR content is in 29 CFR 2520.104b-10(d). Small plans relying on the audit waiver must include the waiver disclosure in the SAR. Form 5500-EZ filers (one-participant plans) are NOT required to distribute a SAR.
 
 ---
 
@@ -150,13 +150,13 @@ Specifically:
 - **Retired or separated participants with vested benefits**: former employees with account balances or vested DB benefits
 - **Beneficiaries**: receiving benefits (after participant's death)
 
-A plan with 50 active employees but 75 former employees with vested balances has 125 participants — large plan threshold.
+A 401(k) plan with 50 active employees with balances and 75 former employees who still have balances has 125 participants with account balances on the first day of the year (the count a defined contribution plan uses, Form 5500 line 6g(1) / Form 5500-SF line 5c(1)), which is over the large plan threshold.
 
 **Symptom**: Wrong audit decision, wrong variant choice, wrong Schedule H/I selection. DOL correspondence.
 
 **Fix**: Re-count. File amended return if variant or audit requirement changes.
 
-**Prevention**: Coordinate with recordkeeper or TPA on participant data. Review separated-participant list at year-end. Force-out small balances ($1,000 or less) to reduce stale participant count if plan permits.
+**Prevention**: Coordinate with recordkeeper or TPA on participant data. Review separated-participant list at year-end. If the plan document permits, involuntary cash-outs of vested balances up to $7,000 (IRC §411(a)(11)(A)) reduce the count of former employees with balances.
 
 ---
 
@@ -164,7 +164,7 @@ A plan with 50 active employees but 75 former employees with vested balances has
 
 **The mistake**: One-participant plan with year-end assets below $250,000 files anyway. Not strictly an error, but unnecessary.
 
-**Why it happens**: Owner doesn't realize the IRC §6058(a) exception (IRS Notice 2011-31 — $250,000 threshold).
+**Why it happens**: Owner doesn't realize the filing exemption for one-participant plans whose combined year-end assets do not exceed $250,000 (2025 Form 5500-EZ instructions, Who Does Not Have To File).
 
 **Symptom**: Filing accepted but the IRS files it. No harm, but no benefit either.
 
@@ -176,7 +176,7 @@ A plan with 50 active employees but 75 former employees with vested balances has
 
 ## 12. PBGC premium filing skipped (defined benefit plans only)
 
-**The mistake**: DB plan files 5500 + Schedule SB but doesn't file the PBGC premium (Form PRM) by the PBGC due date.
+**The mistake**: DB plan files 5500 + Schedule SB but doesn't make the PBGC comprehensive premium filing (through PBGC's My PAA) by the PBGC due date.
 
 **Why it happens**: Form 5500 and PBGC are different filings to different agencies.
 
@@ -184,7 +184,7 @@ A plan with 50 active employees but 75 former employees with vested balances has
 
 **Fix**: File PBGC premium with late penalty. Address per PBGC guidance.
 
-**Prevention**: Calendar PBGC due dates separately from 5500. PBGC premium due date is the 15th day of the 10th month after plan year end (calendar plan: October 15) — note this is later than 5500's July 31.
+**Prevention**: Calendar PBGC due dates separately from 5500. The premium filing is due the 15th day of the 10th calendar month that begins on or after the first day of the plan year (calendar plan: October 15 of the same year) (29 CFR 4007.11(a)). A Form 5558 extension does not extend it (Form 5558 instructions).
 
 ---
 

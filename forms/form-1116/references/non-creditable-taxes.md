@@ -1,6 +1,6 @@
 # Foreign Taxes That Do NOT Qualify for FTC
 
-Not every foreign tax the user paid can go on Form 1116 Line 8. The IRS has specific rules about what qualifies as a "creditable" foreign income tax under IRC §901 and Reg. §1.901-2. A tax that fails these tests is not creditable as FTC, though it may be deductible elsewhere or recoverable from the foreign country.
+Not every foreign tax the user paid can go on Form 1116 Line 8 (Part II). The 2025 Instructions for Form 1116 list the main exclusions under "Foreign Taxes Not Eligible for a Credit." The IRS has specific rules about what qualifies as a "creditable" foreign income tax under IRC §901 and Reg. §1.901-2. A tax that fails these tests is not creditable as FTC, though it may be deductible elsewhere or recoverable from the foreign country.
 
 ## The §901 creditability tests
 
@@ -23,7 +23,7 @@ Examples: UK VAT (20%), German Mehrwertsteuer (19%), Canadian HST/GST.
 
 ### Foreign property tax
 
-Tax on the value of property is not an income tax. **Not creditable.** Deductible on Schedule A if itemizing (subject to SALT cap), or deductible on Schedule E for rental property.
+Tax on the value of property is not an income tax. **Not creditable.** Foreign real and personal property taxes are not deductible on Schedule A (2025 Schedule A instructions, "Taxes You Can't Deduct"); property tax on a foreign rental property is a rental expense on Schedule E.
 
 ### Foreign sales tax
 
@@ -31,12 +31,12 @@ Same logic as VAT. **Not creditable.**
 
 ### Foreign social security tax (in totalization agreement countries)
 
-If the US has a Totalization Agreement with the foreign country, the user typically pays SS tax in only ONE country (per the "detached worker" rules). The tax paid abroad under such an agreement is the equivalent of US Social Security and Medicare tax — **not creditable as FTC** (it offsets US SE tax instead, via Schedule SE).
+If the US has a social security (totalization) agreement with the foreign country, the user generally pays social security tax to only one country. **No credit or deduction is allowed** for social security taxes paid or accrued to a country with which the US has such an agreement (Pub. 514, "Pension, unemployment, and disability fund payments"). The agreement prevents dual coverage; it does not create an offset on Schedule SE.
 
-Countries with US Totalization Agreements (verify current list at SSA.gov before relying):
+Countries with US social security agreements (list from the 2025 Instructions for Schedule SE; verify current list at SSA.gov before relying):
 Australia, Austria, Belgium, Brazil, Canada, Chile, Czech Republic, Denmark, Finland, France, Germany, Greece, Hungary, Iceland, Ireland, Italy, Japan, Luxembourg, Netherlands, Norway, Poland, Portugal, Slovak Republic, Slovenia, South Korea, Spain, Sweden, Switzerland, United Kingdom, Uruguay.
 
-If the user worked in a country WITHOUT a Totalization Agreement (e.g., Vietnam, Thailand, most of South America outside Brazil/Chile/Uruguay), the foreign SS-equivalent tax may or may not be creditable depending on whether it's structured as an income tax.
+If the user worked in a country WITHOUT an agreement (e.g., Vietnam, Thailand, most of South America outside Brazil/Chile/Uruguay), a foreign tax that funds retirement, unemployment, illness, or disability benefits is not treated as payment for a specific economic benefit if the amount doesn't depend on the individual's age or life expectancy (Pub. 514). It is creditable only if it also meets the net income tax requirements of Reg. §1.901-2. ASK for the foreign payslip or assessment and treat it as a CPA question if material.
 
 ### Foreign penalties and interest
 
@@ -62,11 +62,15 @@ If the user excluded wages under FEIE (Form 2555), the foreign tax allocable to 
 
 ### Refunded or refundable foreign tax
 
-Tax that was paid but refunded (or refundable) doesn't count. If a refund is received in a later year, the user must file Form 1116 for the refund year reflecting the recovery (or amend the original year). Reg. §1.905-3.
+Tax that was paid but refunded (or refundable) doesn't count. If a refund is received in a later year, that is a foreign tax redetermination: the user files an amended return (Form 1040-X) with a revised Form 1116 for the year the credit was claimed, plus Schedule C (Form 1116) with the current-year return (2025 i1116, "Foreign Tax Redeterminations"; Reg. §1.905-3).
 
 ### Withholding on income from §901(j) sanctioned countries
 
-Tax paid to a sanctioned country (Iran, North Korea, Sudan currently) is creditable only on a separate §901(j) basket Form 1116 with stricter limitation. It does NOT go in the passive or general basket.
+Tax paid to a sanctioned country (2025 Pub. 514 list: Iran, Libya with a Presidential waiver since Dec 10, 2004, North Korea, Sudan, Syria) is **not creditable at all**. The income from that country goes on a separate category e Form 1116, generally completed only through line 17. The tax may be deductible instead (2025 i1116, "Credit or Deduction").
+
+### Short holding period or related payments
+
+Foreign tax withheld on a dividend is not creditable if the stock wasn't held at least 16 days within the 31-day period that begins 15 days before the ex-dividend date (longer for certain preferred stock), or to the extent the user must make related payments on substantially similar property. The same 16-day rule applies to withholding on other income from property (IRC §901(k), §901(l); 2025 i1116, items 5-8). These taxes can be deducted instead.
 
 ## Items that ARE creditable (commonly overlooked)
 
@@ -77,7 +81,7 @@ For contrast, these typically ARE creditable:
 - Foreign self-employment income tax (income tax portion)
 - Foreign capital gains tax
 - Tax computed on a reasonable proxy of net income (some countries use turnover-based or asset-based taxes that qualify under Reg. §1.903-1)
-- Tax paid in a country WITHOUT a Totalization Agreement that includes both income and SS portions — the income portion is creditable; the SS portion is NOT creditable but may not have an offset either (the user pays both US SE tax and foreign SS tax; this is the cost of working in a non-Totalization country)
+- Tax paid in a country WITHOUT a social security agreement that includes both income and social-insurance portions — the income portion is creditable; the social-insurance portion is creditable only if it meets the Reg. §1.901-2 net income tax requirements (Pub. 514)
 
 ## What the agent should do
 
@@ -105,6 +109,7 @@ For audit defense (FTC carryforwards last 10 years; the IRS may audit any open y
 
 - VAT / GST on business purchases → Schedule C as part of the cost
 - Foreign property tax (rental) → Schedule E
-- Foreign property tax (personal residence) → Schedule A subject to $10,000 SALT cap (or post-2026 cap as applicable)
-- Foreign SS-equivalent tax (Totalization country) → no US deduction; offsets via the agreement
-- Foreign SS-equivalent tax (non-Totalization, paid on top of US SE tax) → no US offset; ask CPA about §164 deduction availability for trade/business
+- Foreign property tax (personal residence) → not deductible (2025 Schedule A instructions list foreign personal or real property taxes under "Taxes You Can't Deduct")
+- Foreign social security tax (agreement country) → no credit and no deduction (Pub. 514)
+- Foreign social security tax (non-agreement country) that fails the net income tax test → ask a CPA whether any deduction is available
+- Creditable foreign income taxes the user chooses to deduct instead → Schedule A line 6 (all-or-nothing for the year)

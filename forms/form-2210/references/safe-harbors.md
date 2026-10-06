@@ -1,18 +1,18 @@
 # Form 2210 Safe Harbors
 
-The penalty under IRC §6654 is avoided entirely if any of the safe harbors is met. The agent's first job on Form 2210 is to determine whether one applies — if yes, no penalty, no Form 2210 needed (unless the filer wants to file for documentation).
+The penalty under IRC §6654 is avoided entirely if any of the safe harbors is met. The agent's first job on Form 2210 is to determine whether one applies — if yes, no penalty, no Form 2210 needed (unless box E in Part II applies, then page 1 only).
 
 ## The four ways to escape the penalty
 
-### 1. The $1,000 de minimis exception (IRC §6654(d)(1)(A))
+### 1. The $1,000 de minimis exception (IRC §6654(e)(1))
 
-If the unpaid balance after withholding is **$1,000 or less**, no penalty.
+If the balance after withholding is **less than $1,000**, no penalty. Exactly $1,000 does not qualify.
 
 ```
-Unpaid balance = current-year total tax − current-year withholding (NOT including estimates)
+Unpaid balance = current-year tax (Form 2210 line 4) − withholding (line 6) (NOT including estimates)
 ```
 
-Note: this test uses *withholding only*, not withholding + estimates. If the unpaid balance net of withholding alone is ≤ $1,000, the de minimis applies even if the filer made no estimated tax payments.
+Note: this test uses *withholding only*, not withholding + estimates. If the balance net of withholding alone is under $1,000, the de minimis applies even if the filer made no estimated tax payments. Form 2210 also stops at line 4 if the current-year tax itself is under $1,000.
 
 Example: Filer owes $25,000 in current-year tax. W-2 withholding is $24,500. Unpaid balance = $500. No penalty. No Form 2210.
 
@@ -44,7 +44,9 @@ Required annual payment = (100% or 110%) × prior-year tax (per Line 8 of Form 2
 
 The required annual payment for safe-harbor purposes is the **smaller of Line 5 (90% current) or Line 8 (100/110% prior)**. The filer only has to meet one, but Form 2210 takes the lower threshold automatically.
 
-### 4. The first-year exception (IRC §6654(d)(1)(B) flush language)
+The prior-year amount is unavailable if the prior tax year was shorter than 12 months or no prior-year return was filed (IRC §6654(d)(1)(B) flush language); then line 9 = line 5.
+
+### 4. The no-prior-year-liability exception (IRC §6654(e)(2))
 
 If the filer:
 - Had **zero tax liability** in the prior year, AND
@@ -53,7 +55,7 @@ If the filer:
 
 then no penalty applies in the current year. No Form 2210 needed.
 
-This catches first-time filers (recent graduates, immigrants who became residents) and recently retired filers whose prior-year deductions wiped out all tax. **The prior-year tax must literally be zero**, not just small.
+This catches first-time filers (recent graduates; immigrants who were U.S. residents for the whole prior year, not those who arrived during it) and recently retired filers whose prior-year deductions wiped out all tax. **The prior-year tax must literally be zero**, not just small.
 
 ## Worked safe-harbor examples
 
@@ -65,7 +67,7 @@ W-2 withholding: $47,200
 Unpaid balance: $800
 ```
 
-De minimis applies (Line 7 ≤ $1,000). No penalty. No Form 2210.
+De minimis applies (line 7 is less than $1,000). No penalty. No Form 2210.
 
 ### Example B: Freelancer, no withholding, paid $0 estimates
 
@@ -79,7 +81,7 @@ Prior-year tax: $18,000 (single filer, prior AGI $95,000)
 Test 1 — De minimis: unpaid balance $24,000 > $1,000. Fails.
 Test 2 — 90% current: required = $21,600. Paid = $0. Fails.
 Test 3 — 100% prior (AGI ≤ $150K so 100% applies): required = $18,000. Paid = $0. Fails.
-Test 4 — First-year: prior-year tax was $18,000, not zero. Fails.
+Test 4 — No prior-year liability: prior-year tax was $18,000, not zero. Fails.
 
 Penalty applies. Form 2210 required (or let IRS compute). Required annual payment = smaller of $21,600 or $18,000 = $18,000.
 
@@ -87,7 +89,7 @@ Penalty applies. Form 2210 required (or let IRS compute). Required annual paymen
 
 Test 3 — 100% prior: required = $18,000. Paid = $18,000. Passes.
 
-No penalty (assuming each $4,500 was paid on time per the quarterly schedule). Form 2210 not needed for penalty purposes.
+No penalty (assuming each $4,500 was paid by its due date: April 15, June 15, September 15, January 15). Form 2210 not needed for penalty purposes.
 
 ### Example D: High-AGI prior year, big income jump
 
@@ -118,32 +120,33 @@ Current-year tax: $12,000 (first year of professional employment)
 Withholding: $8,000
 ```
 
-First-year exception applies. No penalty regardless of how short the withholding falls. No Form 2210.
+The §6654(e)(2) exception applies (assuming a 12-month prior year and U.S. citizenship or residence all year). No penalty regardless of how short the withholding falls. No Form 2210.
 
 The exception requires the prior year's tax to be *zero*, not just under the safe harbor amount. A prior-year tax of $1 disqualifies.
 
 ## Why filers miss the safe harbors
 
-1. **Don't track prior-year tax**: filer remembers their refund/balance-due but not the actual Line 22 figure. Form 2210 Line 8 requires the actual prior-year *tax*, not the prior-year *balance-due-or-refund*.
+1. **Don't track prior-year tax**: filer remembers their refund/balance-due but not the actual tax. Form 2210 line 8 requires the prior-year *tax* (prior Form 1040 line 22 plus the listed Schedule 2 taxes minus refundable credits), not the prior-year *balance-due-or-refund*.
 
 2. **Apply the wrong percentage**: defaulting to 100% when prior AGI was over $150K. The 110% threshold is in IRC §6654(d)(1)(C); the agent must verify prior-year AGI.
 
 3. **Forget that withholding alone often satisfies the safe harbor**: filers assume they need to make estimated payments because they have side income, when their W-2 withholding alone might already cover 100%/110% of prior-year tax.
 
-4. **Confuse the safe harbor "paid by year-end" with "paid on time"**: the safe harbor requires payments *on time per the quarterly schedule*, not just paid by Dec 31. A filer who paid $20,000 on January 14 (Q4 due date) plus $0 in Q1/Q2/Q3 may still owe penalty for the earlier-quarter underpayments even though the year-end total exceeds the required annual payment.
+4. **Confuse the safe harbor "paid by year-end" with "paid on time"**: the safe harbor requires payments *on time per the quarterly schedule*, not just paid by Dec 31. A filer who paid $20,000 on January 14 (one day before the January 15 Q4 due date) plus $0 in Q1/Q2/Q3 still owes penalty for the earlier-quarter underpayments from their due dates to January 14, even though the total exceeds the required annual payment.
 
-5. **Don't realize the de minimis applies**: filers assume any balance owed = penalty. The $1,000 cushion exists.
+5. **Don't realize the de minimis applies**: filers assume any balance owed = penalty. The test is tax minus withholding under $1,000; estimated payments don't count toward it.
 
 ## What the agent should do
 
-1. Compute all four tests in Step 3 of the workflow. The first one that passes ends the analysis (no penalty, no Form 2210).
+1. Compute all four tests in Steps 1 and 3 of the workflow. The first one that passes ends the analysis (no penalty, no Form 2210).
 2. Show the user every test and the result. This is teaching value — most filers don't know the four safe harbors exist.
 3. For next-year planning, if the current year had a penalty: recommend that withholding next year be set to at least 100%/110% of prior-year tax (whichever applies). This is the easiest way to lock in the safe harbor.
 
 ## Sources
 
-- IRC §6654(d)(1)(A) — De minimis exception
-- IRC §6654(d)(1)(B) — Prior-year safe harbor and first-year exception
+- IRC §6654(e)(1) — De minimis exception
+- IRC §6654(e)(2) — No prior-year tax liability exception
+- IRC §6654(d)(1)(B) — 90% current-year and 100% prior-year required annual payment
 - IRC §6654(d)(1)(C) — 110% safe harbor for high-AGI prior-year filers
-- [Form 2210 Instructions](https://www.irs.gov/pub/irs-pdf/i2210.pdf) — Part I, Lines 4–9
-- [Publication 505](https://www.irs.gov/pub/irs-pdf/p505.pdf) — Chapter 4, Underpayment Penalty
+- [Form 2210 Instructions](https://www.irs.gov/pub/irs-pdf/i2210.pdf) — Exceptions to the Penalty; Part I, Lines 1–9
+- [Publication 505](https://www.irs.gov/pub/irs-pdf/p505.pdf) — the 2026 edition points to the Form 2210 instructions for the penalty

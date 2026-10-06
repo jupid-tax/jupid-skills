@@ -2,6 +2,8 @@
 
 The classic two-earner MFJ trap. Without Step 2, the household under-withholds by thousands.
 
+All numbers use the 2026 Form W-4 (page 5 MFJ table), Pub. 15-T (2026) Worksheet 1A with the Annual Percentage Method schedules, and the 2026 rate schedule and standard deduction from Rev. Proc. 2025-32. Math checked in python.
+
 ## Background
 
 - Marcus Chen, age 34, software engineer
@@ -10,29 +12,26 @@ The classic two-earner MFJ trap. Without Step 2, the household under-withholds b
 - Jenna Chen, age 33, registered nurse
   - Salary: $68,000/year
   - Biweekly pay (26 checks/year)
-- Married, filing MFJ
+- Married, filing MFJ; both have SSNs valid for employment
 - No children
-- No other income
-- Standard deduction
-- Last year's tax return: balance due of $3,200 (under-withheld due to bad multi-job W-4 setup)
+- No other income, no self-employment income
+- Standard deduction; no Deductions Worksheet items (no tips, overtime, car loan interest, student loan interest, IRA, charity)
+- Prior-year return: balance due of $3,200 plus a small penalty (each W-4 was filed as if it were the only job)
+- Updating W-4s on January 9, 2026, so the worksheet's full-year amounts apply
 
 ## The Problem
 
-If Marcus and Jenna each submit a W-4 with only Steps 1 and 5 (filing status MFJ, nothing else), each employer's payroll software thinks the worker's only income is their own salary.
+If Marcus and Jenna each submit a W-4 with only Steps 1 and 5 (filing status MFJ, nothing else), each employer's payroll treats that salary as the household's only wages and applies the full MFJ amounts to each job.
 
-- Marcus's employer withholds for $95,000 MFJ → ~$8,200/year
-- Jenna's employer withholds for $68,000 MFJ → ~$4,200/year
-- Total withheld: ~$12,400
+- Marcus's employer: $95,000 − $12,900 (Worksheet 1A line 1g) = $82,100 → $2,480 + 12% × ($82,100 − $44,100) = **$7,040/year**
+- Jenna's employer: $68,000 − $12,900 = $55,100 → $2,480 + 12% × ($55,100 − $44,100) = **$3,800/year**
+- Total withheld: **$10,840**
 
-Actual 2025 federal tax on $163,000 MFJ taxable income (after $30,000 std deduction → $133,000 taxable):
-- 10% on first $23,850 = $2,385
-- 12% on $23,850 - $96,950 = $8,772
-- 22% on $96,950 - $133,000 = $7,931
-- **Total: ~$19,088**
+Projected 2026 federal tax on $163,000 of wages (MFJ):
+- Taxable income: $163,000 − $32,200 standard deduction = $130,800
+- Tax: $11,600 + 22% × ($130,800 − $100,800) = **$18,200**
 
-Under-withholding: $19,088 − $12,400 = **$6,688 shortfall**.
-
-That matches their actual experience last year ($3,200 owed) plus the underpayment penalty assessed by the IRS via Form 2210.
+Under-withholding: $18,200 − $10,840 = **$7,360 shortfall** for 2026 if nothing changes.
 
 ## Agent Conversation Flow
 
@@ -40,23 +39,27 @@ That matches their actual experience last year ($3,200 owed) plus the underpayme
 
 **Marcus:** We owed $3,200 plus a small penalty.
 
-**Agent:** That's almost certainly because both of your W-4s were set up assuming each was the only job in the household. We'll fix that with Step 2. Three options:
+**Agent:** That fits two W-4s each written as if it were the only job. We'll fix that with Step 2. Three options:
 
-(a) IRS Tax Withholding Estimator — most accurate
-(b) Multiple Jobs Worksheet on Page 3 of the W-4 — accurate enough, no internet needed
-(c) Step 2(c) checkbox on both W-4s — only if your salaries are roughly equal
+(a) IRS Tax Withholding Estimator (www.irs.gov/W4App) — the form calls it the most accurate
+(b) Multiple Jobs Worksheet (page 3 of the W-4, tables on page 5) — no internet needed; result goes in Step 4(c) of Marcus's W-4
+(c) Step 2(c) checkbox on both W-4s — only for exactly two jobs
 
-Your salaries differ ($95K vs $68K, ratio 1.4×), so I'd skip option (c). I recommend option (a). Do you have your most recent pay stubs?
+The form's rule for choosing between (b) and (c): (c) "is generally more accurate than Step 2(b) if pay at the lower paying job is more than half of the pay at the higher paying job." Jenna's $68,000 is more than half of Marcus's $95,000 ($47,500), so (c) should beat (b) for you. Which do you want?
 
-**Marcus:** Yes.
+**Marcus:** We'd rather not do the online tool. Show us (b) and (c) side by side.
 
-**Agent:** Run the IRS Tax Withholding Estimator together: https://www.irs.gov/individuals/tax-withholding-estimator. Enter both your YTD pay stubs, expected total wages, MFJ filing status, no dependents, standard deduction. The output will be a recommended Step 4(c) amount for Marcus's W-4.
+**Agent:**
 
-[After running estimator]
+| | (b) Worksheet | (c) Checkbox on both |
+|---|---|---|
+| Lookup / schedule | MFJ table, row "$80,000 - 99,999", column "$60,000 - 69,999" = $7,610 | Pub. 15-T "Form W-4, Step 2, Checkbox" MFJ schedule, no line 1g subtraction |
+| Marcus withholding | $7,040 + $293 × 26 = $14,658 | $5,800 + 22% × ($95,000 − $66,500) = $12,070 ($464.23/check) |
+| Jenna withholding | $3,800 | $5,800 + 22% × ($68,000 − $66,500) = $6,130 ($235.77/check) |
+| Household total | $18,458 | $18,200 |
+| vs projected tax $18,200 | $258 over | $0 |
 
-**Marcus:** It says I should add $134/check to Step 4(c) of my W-4. Jenna's W-4 stays simple.
-
-**Agent:** Perfect. That's $134 × 26 = $3,484 of additional annual withholding, plus your existing baseline. Combined with Jenna's normal withholding, you'll be very close to the $19,088 target.
+**Jenna:** The checkbox, then.
 
 ## Marcus's W-4 Draft (higher-paying job)
 
@@ -69,32 +72,33 @@ Your salaries differ ($95K vs $68K, ratio 1.4×), so I'd skip option (c). I reco
 1(c) ☑ Married Filing Jointly or Qualifying Surviving Spouse
 
 ## Step 2 — Multiple Jobs
-Method: (a) IRS Tax Withholding Estimator
-Step 2(c) box: ☐ Not checked (using estimator output instead)
+Method: (c) Step 2(c) checkbox
+Step 2(c) box: ☑ Checked (Jenna's W-4 checks it too)
 
 ## Step 3 — Dependents
 $0 — no children, no other dependents
 
 ## Step 4 — Other Adjustments
 4(a) Other income: $0
-4(b) Deductions: $0 (standard deduction)
-4(c) Extra withholding: $134 per pay period
+4(b) Deductions: $0 (Deductions Worksheet line 15 = $0: lines 1a–7 $0; 8a $163,000; 8b $163,000; 9 $768,700; 10 $0; 11 $32,200; 12 $0; 13 $32,200; 14 $0)
+4(c) Extra withholding: $0
+
+## Exempt from withholding: ☐ not claimed
 
 ## Step 5
 Signed: Marcus Chen
-Date: 2026-05-01
+Date: 2026-01-09
 
 ## Pay frequency: biweekly (26)
 
 ## Estimated annual federal income tax withheld:
-- Baseline ($95K MFJ table): ~$8,200
-- Step 4(c) extra: $134 × 26 = $3,484
-- Total: ~$11,684
+- Pub. 15-T checkbox schedule, MFJ: $5,800 + 22% × ($95,000 − $66,500) = $12,070
+- Per check: $464.23
 
 ## Validation summary
-- Math: $134/check × 26 = $3,484 annual addition ✓
-- Sanity: Step 3 = $0 (no dependents) ✓
-- Coordination: Jenna's W-4 has Step 2/3/4 blank — see her draft
+- Math: $12,070 ÷ 26 = $464.23 ✓
+- Sanity: Step 3 = $0 (no dependents) ✓; 2(c) appropriate (two jobs; $68,000 > ½ × $95,000) ✓
+- Coordination: Steps 3–4(b) are blank on both W-4s, so the one-W-4 rule is met; Step 2(c) checked on both ✓
 ```
 
 ## Jenna's W-4 Draft (lower-paying job)
@@ -108,59 +112,46 @@ Date: 2026-05-01
 1(c) ☑ Married Filing Jointly or Qualifying Surviving Spouse
 
 ## Step 2 — Multiple Jobs
-N/A — Marcus's W-4 handles the multi-job math via Step 4(c)
+Method: (c) Step 2(c) checkbox
+Step 2(c) box: ☑ Checked (must match Marcus's W-4)
 
 ## Step 3 — Dependents
-$0 — no dependents (and Marcus's W-4 would be the one to claim them anyway)
+$0 — no dependents (if they had any, only one of the two W-4s would carry them)
 
 ## Step 4
 4(a) $0
 4(b) $0
 4(c) $0
 
+## Exempt from withholding: ☐ not claimed
+
 ## Step 5
 Signed: Jenna Chen
-Date: 2026-05-01
+Date: 2026-01-09
 
-## Estimated annual federal income tax withheld: ~$4,200 (baseline $68K MFJ table)
+## Estimated annual federal income tax withheld: $6,130 ($235.77 per check; Pub. 15-T checkbox schedule, MFJ)
 ```
 
 ## Combined Result
 
-- Marcus withholding: $11,684
-- Jenna withholding: $4,200
-- **Combined: $15,884 vs target $19,088 = $3,204 short**
+- Marcus withholding: $12,070
+- Jenna withholding: $6,130
+- **Combined: $18,200 vs projected 2026 tax $18,200**
 
-Hmm — still short. The estimator recommended $134 but the actual gap is closer to $258/check ($6,688 / 26). Let me reconsider.
+Both salaries sit in the 22% band of the halved MFJ schedule, so the checkbox reproduces the joint tax exactly here. With a wider pay gap it over-withholds (form text: "the greater the difference in pay is between the two jobs").
 
-**Agent (revised):** I'd recommend rerunning the estimator and verifying you entered Jenna's full salary. If the estimator output is too low, the Multiple Jobs Worksheet is a sanity check.
+## Alternative Kept on File: Step 2(b)
 
-**Multiple Jobs Worksheet (Page 3, MFJ table):**
-- Higher-paying job: $95,000 → row "$80,001 - $100,000"
-- Lower-paying job: $68,000 → column "$60,001 - $70,000"
-- Cell value (illustrative): ~$7,610
+If one of them changes jobs and the pay gap widens past the half-pay test, switch to the worksheet:
 
-$7,610 / 26 = **$293/check** on Marcus's Step 4(c).
-
-That's higher than the Estimator's $134 — likely because the Estimator already accounted for some current-year withholding having occurred. Both approaches are valid; the Worksheet over-withholds slightly (better than under).
-
-**Final recommendation for Marcus's W-4:**
-
-Step 4(c): **$293** (Worksheet result) — safer, slight over-withholding.
-
-OR Step 4(c): **$258** (math from prior-year actual gap divided by pay periods) — most accurate based on last year's specific situation.
-
-## Year-End (Projected)
-
-With $293/check on Marcus's Step 4(c):
-- Marcus: $8,200 + $7,618 = $15,818
-- Jenna: $4,200
-- **Combined: $20,018 vs target $19,088 = $930 over** (small refund — acceptable)
+- Marcus's W-4: Step 2(c) unchecked; Step 4(c) = $7,610 ÷ 26 = $292.69 → **$293** per check
+- Jenna's W-4: Step 2(c) unchecked; Steps 3–4 blank
+- Projected withholding: $14,658 + $3,800 = $18,458 ($258 over the $18,200 projection, because the table uses $10,000 bands)
 
 ## Key Takeaways
 
-- Two-earner MFJ households almost always under-withhold without Step 2
-- Even an unequal-pay couple should run the Estimator (or use the Worksheet) and apply result to Step 4(c) of higher-paying job
-- The Estimator's output and the Worksheet's output may differ — Worksheet is more conservative (safer)
-- Lower-paying spouse's W-4 stays simple (Steps 1 + 5 only)
-- Re-run the Estimator each October to confirm projection against YTD reality
+- Two-earner MFJ households under-withhold without Step 2 ($7,360 here)
+- The form's half-pay rule decides between (b) and (c); compute both when the user won't use the Estimator
+- Step 2(c) must be checked on both W-4s or on neither
+- Steps 3 through 4(b) go on only one W-4
+- Recheck with the Estimator early each year, and submit new W-4s if either salary changes

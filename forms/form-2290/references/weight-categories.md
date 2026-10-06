@@ -1,6 +1,6 @@
 # Form 2290 — Weight Categories Reference
 
-The IRS uses 23 active weight categories (A through V) plus W for suspended vehicles. Each category corresponds to a 1,000-lb increment of taxable gross weight.
+The IRS uses 22 taxable weight categories (A through V) plus W for suspended vehicles (Form 2290, Rev. July 2026, page 2). Categories B through U each cover a 1,000-lb band; A is exactly 55,000 lbs and V is everything over 75,000 lbs.
 
 This reference is the input for tax computation on Line 2. For the actual tax amounts (annual, partial-period, logging), see [`tax-table.md`](./tax-table.md).
 
@@ -17,6 +17,14 @@ This reference is the input for tax computation on Line 2. For the actual tax am
 This is why a 35,000-lb truck-tractor that pulls 45,000-lb loaded trailers has a taxable gross weight of 80,000 lbs (Category V) — the trailer and load count.
 
 For trucks operated under multiple weight ratings (e.g., loaded for some hauls, empty for others), use the **highest customary** combination.
+
+State registration sets a floor (instructions "Determining Taxable Gross Weight"):
+
+- Registered in any state that requires a declared gross weight (including proportional/prorated registration): taxable gross weight can't be less than the **highest gross weight declared in any state** (for a tractor-trailer or truck-trailer, the highest combined gross weight declared).
+- Registered only in states that use gross-weight categories: taxable gross weight must fall within the highest category the vehicle is registered for in that state.
+- Registered only in states that use actual unloaded weight: use the three-part total above.
+- Ignore weights declared only for special temporary travel permits, unless the permits cover more than 60 days (or more than 2 months if monthly) in the year.
+- Buses: actual unloaded weight fully equipped for service plus 150 lbs for each passenger and driver seat.
 
 ---
 
@@ -87,7 +95,7 @@ Tax (logging)  = Tax (standard) × 0.75
 | V | $550.00 | $412.50 |
 | W | $0 | $0 |
 
-The published table on Form 2290 page 2 is the authoritative source. The amounts above match IRC §4481(a) at the time of last verification (2026-04-28). If the IRS publishes a new revision with different amounts, the published table wins.
+The published table on Form 2290 page 2 is the authoritative source. The amounts above match IRC §4481(a) and the Form 2290 (Rev. July 2026) page 2 table, verified 2026-10-06. If the IRS publishes a new revision with different amounts, the published table wins.
 
 ---
 
@@ -95,8 +103,8 @@ The published table on Form 2290 page 2 is the authoritative source. The amounts
 
 A logging vehicle qualifies for the 25% rate reduction (IRC §4483(e)) if it meets **both**:
 
-1. The vehicle is used **exclusively** for the transportation of products harvested from the forested site, OR for the transportation of the products harvested from the forested site to and from locations on the forested site
-2. The vehicle is **registered as a logging vehicle** under the laws of the state in which it is registered
+1. The vehicle is used **exclusively** for the transportation of products harvested from the forested site, OR for the transportation of the products harvested from the forested site to and from locations on the forested site (public highways may be used between forested-site locations)
+2. The vehicle is **registered** under the laws of the state where it must be registered as a highway motor vehicle used exclusively in the transportation of harvested forest products (a state statute or valid regulation is enough; no special tag or plate is required)
 
 If a vehicle is used for **both** logging and general hauling, it does not qualify for the 25% reduction. The "exclusively" standard is strict.
 
@@ -109,16 +117,16 @@ A vehicle qualifies for suspension if it is **expected to be used** on public hi
 - **5,000 miles or fewer** during the period (general rule)
 - **7,500 miles or fewer** during the period if used for agricultural purposes
 
-**Agricultural use** is defined as: the transportation of any agricultural commodity, or any item used in agricultural production, where the vehicle is registered as a "highway motor vehicle used for farming purposes" or similar agricultural designation under state law.
+**Agricultural vehicle** (IRC §4483(d)(5)): used (or expected to be used) **primarily** for farming purposes, meaning more than half of its mileage during the period, AND registered under state law as a highway motor vehicle used for farming purposes for the entire period. Farming purposes = transporting any farm commodity (agricultural or horticultural commodity, feed, seed, fertilizer, livestock, bees, poultry, fur-bearing animals, wildlife) to or from a farm, or use directly in agricultural production. Miles driven on the farm don't count toward the 7,500-mile highway limit.
 
 A suspended vehicle still:
 
 - Gets reported on Form 2290 (cannot skip the filing)
 - Gets listed on Schedule 1 with Category W
-- Receives a stamped Schedule 1 (with $0 tax shown) for DMV registration
+- Receives a stamped Schedule 1 (listing the VIN under category W) for DMV registration
 - Triggers Part II (Statement in Support of Suspension) certification
 
-If the suspended vehicle exceeds the mileage threshold during the period, the user must file an Amended Return (Box B) within the month following when the threshold was crossed and pay the full annual tax (or partial-period tax based on first use).
+If the suspended vehicle exceeds the mileage threshold during the period, the user files Form 2290 with the Amended Return box checked (month the limit was exceeded written next to it) by the last day of the month following that month, and pays the tax figured from the month the vehicle was **first used** in the period (page 2 column (1) for July first use, otherwise the partial-period table), reported on line 2.
 
 ---
 
@@ -126,12 +134,12 @@ If the suspended vehicle exceeds the mileage threshold during the period, the us
 
 When the user gives a vehicle weight, determine the correct category:
 
-1. **Ask if they have the vehicle registration handy** — it lists the gross vehicle weight rating (GVWR) and combined GVWR for tractor-trailer combinations
+1. **Ask for the state registration (including any proportional or prorated registration)** — the highest gross weight declared in any state sets the minimum taxable gross weight
 2. **Confirm the customary load** — a tractor that always runs empty has a different taxable gross weight than one that always pulls loaded trailers
 3. **Round up** — taxable gross weight of 64,500 lbs falls in Category K (64,001-65,000)
 4. **Verify against weight tickets** — if available, weigh tickets from scales confirm the actual operating weight
 
-For trucks operating in different weight configurations (e.g., logging 4 days, general hauling 1 day per week), use the **highest customary** weight unless the user qualifies for the strict logging exemption.
+For trucks operating in different weight configurations, use the **highest customary** weight. Logging status doesn't change the category; it only changes the rate, and a truck that does general hauling even 1 day a week fails the exclusive-use test.
 
 If the user is unsure, ask:
 

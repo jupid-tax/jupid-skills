@@ -16,15 +16,16 @@ Line 3: $4,300
 Line 8: $4,300
 Line 9: $4,000
 Line 11: $4,000
-Line 12: $1,000 + $4,000 = $5,000  → cap at Line 8 = $4,300
-Excess: $5,000 − $4,300 = $700
+Line 12: $4,300 − $4,000 = $300
+Line 13: smaller of $1,000 or $300 = $300
+Excess: Line 2 − Line 13 = $1,000 − $300 = $700
 ```
 
 **Impact**: 6% excise tax every year the excess remains in the HSA. Form 5329 Part VII.
 
-**Fix**: Withdraw the $700 excess plus earnings before the unextended filing deadline (April 15, with extensions allowed). Custodian has a "return of excess contribution" form. Earnings on the excess are taxable income for the year of the original excess.
+**Fix**: Withdraw the $700 excess plus earnings by the due date of the return, including extensions. Custodian has a "return of excess contribution" form. Earnings on the excess are included in other income for the year they are withdrawn (2025 Instructions for Form 8889, Line 13).
 
-**Agent action**: When `Line 2 + Line 9 > Line 8`, surface a warning. Calculate the excess. Recommend immediate withdrawal if the deadline hasn't passed.
+**Agent action**: When `Line 2 > Line 13` (or `Line 9 + Line 10 > Line 8`), surface a warning. Calculate the excess. Recommend immediate withdrawal if the deadline hasn't passed.
 
 ---
 
@@ -56,17 +57,17 @@ Right:
 
 ## Mistake 3 — Forgetting partial-year proration
 
-**Pattern**: User enrolled in HDHP mid-year (e.g., July 1) and contributes the full annual limit, claiming they were "eligible at year-end."
+**Pattern**: User enrolled in HDHP mid-year (e.g., July 1), contributes the full annual limit because they were "eligible at year-end," and does not know about the testing period. Or the user was not eligible on December 1 and still uses the full limit.
 
-**Example**: User started family HDHP on July 1, 2025. Contributed $8,550 directly. Did not explicitly invoke the last-month rule.
+**Example**: User started family HDHP on July 1, 2025 and was eligible on December 1. Contributed $8,550 directly.
 
-Without the last-month rule, Line 3 should be prorated: 6 months × ($8,550 / 12) = $4,275. The $8,550 contribution exceeds Line 3 by $4,275.
+Under the last-month rule, Line 3 = $8,550 (greater of the worksheet amount, 6 months × ($8,550 / 12) = $4,275, or the full family amount for December 1 coverage). The $4,275 above the worksheet amount depends on the last-month rule.
 
-**Impact**: Excess contribution of $4,275, subject to 6% excise tax annually. If the user does invoke the last-month rule retroactively (allowed at filing time), they become subject to a 12-month testing period — losing HSA eligibility in 2026 triggers Part III on the 2026 return.
+**Impact**: No excess contribution for 2025, but a testing period runs December 1, 2025 – December 31, 2026. Losing HSA eligibility in 2026 (other than death or disability) puts $4,275 in 2026 income plus a 10% additional tax (Part III). If the user was **not** eligible on December 1, Line 3 = $4,275 and the other $4,275 is an excess contribution.
 
-**Fix**: Either prorate (and withdraw the excess) or commit to the last-month rule and stay HSA-eligible for all of 2026.
+**Fix**: If the user expects to lose eligibility before December 31, 2026, contribute only up to the worksheet amount; otherwise stay HSA-eligible through December 31, 2026.
 
-**Agent action**: When coverage starts mid-year, ASK: "Were you HSA-eligible all 12 months of the year, or did your coverage start partway through? If partway, do you want to prorate your contribution limit, or invoke the last-month rule to allow the full limit (which requires you to remain HSA-eligible for all of next year)?"
+**Agent action**: When coverage starts mid-year, ASK: "Were you HSA-eligible on December 1? How much did you contribute for the year, and do you expect to stay HSA-eligible through December 31 of next year?"
 
 ---
 
@@ -113,11 +114,11 @@ If user is 22% bracket: $1,000 × 22% federal + $200 penalty = $420 of extra tax
 
 **Impact**: Medicare enrollment disqualifies HSA contributions starting the month of enrollment. Continuing to contribute creates excess contributions, subject to 6% excise tax annually.
 
-**Special case — retroactive Part A**: When someone takes Social Security after 65, Medicare Part A enrollment is automatic and **retroactive up to 6 months** (or back to the 65th birthday, whichever is later). This can retroactively disqualify HSA contributions made during those 6 months.
+**Special case — retroactive Part A**: When someone takes Social Security after 65, premium-free Part A starts **6 months back** from the application, but not before the month they turned 65 (medicare.gov, "When does Medicare coverage start?"). HSA contributions for those months become excess (Pub. 969 (2025), "Enrolled in Medicare").
 
-**Example**: User enrolls in Social Security at age 66. Medicare Part A auto-enrolls retroactive to age 65 birthday or 6 months back, whichever later. Any HSA contributions made during those retroactive months are now excess.
+**Example**: User enrolls in Social Security at age 66. Medicare Part A starts 6 months before the application month (the month they turned 65 at the earliest). Any HSA contributions for those retroactive months are now excess.
 
-**Fix**: Stop HSA contributions the month before Medicare enrollment (or 6 months before claiming Social Security after 65). Withdraw any excess plus earnings before the filing deadline.
+**Fix**: Stop HSA contributions the month before Medicare enrollment (or 6 months before claiming Social Security after 65). Withdraw any excess plus earnings by the due date of the return, including extensions.
 
 **Agent action**: ASK every user 64+ about Medicare enrollment status, current and planned. Surface a warning if the user took Social Security after 65 and made HSA contributions in the prior 6 months.
 
@@ -139,11 +140,11 @@ If user is 22% bracket: $1,000 × 22% federal + $200 penalty = $420 of extra tax
 
 ## Mistake 8 — MFJ family limit doubled instead of shared
 
-**Pattern**: Both spouses covered under one family HDHP. Each contributes the family limit ($8,550 in 2025) to their own HSA, totaling $17,100.
+**Pattern**: Both spouses covered under one family HDHP. Each contributes the family limit ($8,550 in 2025; $8,750 in 2026) to their own HSA, totaling $17,100 for 2025.
 
-**Impact**: The family limit is **shared, not doubled**. The combined contributions cap at $8,550 (plus catch-ups if 55+, which are individual). Excess: $8,550 over the family limit.
+**Impact**: The family limit is **shared, not doubled**. The combined contributions cap at $8,550 for 2025 (plus catch-ups if 55+, which are individual). Excess: $8,550 over the family limit.
 
-**Fix**: Allocate the family limit between spouses by agreement. Common: 100/0, 50/50. Document each spouse's allocated share on their own Line 6. Each catch-up is separate.
+**Fix**: Split the family limit between spouses: equally unless they agree otherwise (100/0 is allowed). Document each spouse's allocated share on their own Line 6. Each catch-up is separate.
 
 **Agent action**: When MFJ with two HSAs and family HDHP, ASK how the spouses agreed to split the limit. Refuse to draft until they confirm an allocation that totals to the family limit.
 
@@ -155,7 +156,7 @@ If user is 22% bracket: $1,000 × 22% federal + $200 penalty = $420 of extra tax
 
 **Impact**: The catch-up is invalid — must go into the contributor's **own** HSA. The $1,000 in Spouse B's HSA becomes an excess contribution there.
 
-**Fix**: Spouse A opens their own HSA (any custodian) and contributes the $1,000 there. If the wrong-HSA contribution already happened, withdraw the excess from Spouse B's HSA (plus earnings) before the filing deadline and re-contribute to Spouse A's HSA.
+**Fix**: Spouse A opens their own HSA (any custodian) and contributes the $1,000 there. If the wrong-HSA contribution already happened, withdraw the excess from Spouse B's HSA (plus earnings) by the due date of the return, including extensions, and contribute to Spouse A's HSA by the unextended due date if it is for the prior year.
 
 **Agent action**: When age 55+ catch-up is involved, ASK whether each catch-up went into the corresponding spouse's own HSA.
 
@@ -177,13 +178,13 @@ If user is 22% bracket: $1,000 × 22% federal + $200 penalty = $420 of extra tax
 
 Before declaring a Form 8889 draft ready, the agent runs:
 
-- [ ] `Line 2 + Line 9 ≤ Line 8`? If not, surface excess contribution
+- [ ] `Line 2 ≤ Line 13` and `Line 9 + Line 10 ≤ Line 8`? If not, surface excess contribution
 - [ ] Is the cafeteria-plan amount on Line 9 (not Line 2)?
-- [ ] If partial-year coverage, is Line 3 prorated OR has the user explicitly opted into the last-month rule?
+- [ ] If partial-year coverage, does Line 3 follow the worksheet (not eligible on December 1) or the last-month rule (eligible on December 1), and has the user been told about the testing period?
 - [ ] If last-month rule used in prior year, has the user been asked about testing-period eligibility?
 - [ ] Are all expenses on Line 15 on the qualified list?
 - [ ] Does Line 14a match 1099-SA Box 1 exactly?
 - [ ] If user is 64+, has Medicare enrollment status been confirmed?
 - [ ] If MFJ with two HSAs, is the family limit split documented?
-- [ ] If catch-up on Line 7, is it in the contributor's own HSA?
+- [ ] If catch-up on Line 7, is the user married with family coverage, and is it in the contributor's own HSA?
 - [ ] If user has W-2 Box 12 code W or any 1099-SA distribution, is Form 8889 being filed at all?

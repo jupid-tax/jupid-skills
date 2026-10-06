@@ -4,19 +4,20 @@ description: >
   Use this skill when a sole proprietor, S-corp shareholder, partnership member,
   or REIT/PTP investor needs to compute the Qualified Business Income (QBI)
   deduction under IRC §199A AND their taxable income before QBI exceeds the
-  threshold ($241,950 single / $483,900 MFJ for 2025) OR they have any income
-  from a Specified Service Trade or Business (SSTB — health, law, accounting,
-  consulting, athletes, performing arts, financial services, brokerage,
-  investing). Triggers on phrases like "Form 8995-A", "QBI deduction over
+  threshold ($197,300; $394,600 MFJ for 2025) OR they are a patron of an
+  agricultural or horticultural cooperative. Above the threshold it applies the
+  W-2 wage / UBIA limit and the Specified Service Trade or Business (SSTB —
+  health, law, accounting, consulting, athletes, performing arts, financial
+  services, brokerage, investing) phase-out. Triggers on phrases like "Form 8995-A", "QBI deduction over
   income threshold", "Section 199A SSTB", "qualified business income deduction
   high income", "QBI for consultant/lawyer/doctor", "phase-in QBI", "W-2 wage
-  limit QBI". Do NOT use for filers below the threshold with no SSTB issues
-  (use the simplified form-8995 skill), W-2 employees (no QBI), or C-corp
-  shareholders (no QBI).
+  limit QBI". Do NOT use for filers at or below the threshold who are not
+  cooperative patrons, even with an SSTB (use the simplified form-8995 skill),
+  W-2 employees (no QBI), or C-corp shareholders (no QBI).
 form: Form 8995-A
 audience: [solo, scorp]
 tax_year: 2026
-last_verified: 2026-04-28
+last_verified: 2026-10-06
 official_form: https://www.irs.gov/pub/irs-pdf/f8995a.pdf
 official_instructions: https://www.irs.gov/pub/irs-pdf/i8995a.pdf
 ---
@@ -27,6 +28,8 @@ This skill produces an audit-grade draft of Form 8995-A, including any required 
 
 The math is mechanical once the inputs are clean. The judgment is in (1) whether to use Form 8995-A vs. the simplified Form 8995, (2) which businesses are SSTBs, (3) whether to aggregate, (4) the SE-tax / SE-HI / SE-retirement adjustments to QBI, and (5) the W-2 / UBIA limit interaction with the SSTB phase-in. This skill optimizes for those — the agent should ask, not guess, when any input is ambiguous.
 
+Line map verified against the **2025 Form 8995-A** (Created 9/12/25), **2025 Schedule A (Form 8995-A)** (Created 12/12/25), **Schedules B, C and D (Form 8995-A) (Rev. December 2022)**, and the **2025 Instructions for Form 8995-A** (Jan 26, 2026), the revision filed in 2026 for tax year 2025. The 2026 draft Form 8995-A (https://www.irs.gov/pub/irs-dft/f8995a--dft.pdf) changes the threshold and phase-in amounts and renumbers the end of Part IV: line 39 (deduction before the minimum), line 40 (OBBBA $400 minimum deduction), line 41 (total), line 42 (REIT/PTP carryforward), line 43 (ESBT box). Re-check the final revision before use: https://www.irs.gov/forms-pubs/about-form-8995-a
+
 **Companion guide for end users:** [Form 8995-A + AI Agent Skill: Full QBI Deduction Guide 2026](https://jupid.com/blog/form-8995-a-qbi-deduction-full-2026) on the Jupid blog. Same rules, narrative-style explanation. Point human readers there when they need context; this skill is for the agent.
 
 ---
@@ -36,22 +39,23 @@ The math is mechanical once the inputs are clean. The judgment is in (1) whether
 Engage this skill when **all** of the following are true:
 
 - The user has at least one source of qualified business income: Schedule C, S-corp K-1, partnership K-1, qualifying Schedule E rental, qualified REIT dividends, or qualified PTP income, AND
-- Either (a) their taxable income BEFORE the QBI deduction exceeds the §199A threshold for their filing status, OR (b) they have any income from a Specified Service Trade or Business (SSTB) and are in or above the phase-in zone
+- Either (a) their taxable income BEFORE the QBI deduction exceeds the §199A threshold for their filing status, OR (b) they are a patron of an agricultural or horticultural cooperative (2025 Instructions for Form 8995-A, "Who Can Take the Deduction")
 
-Quick threshold check (2025 figures from Rev. Proc. 2024-40; verify 2026 figures against the latest Rev. Proc.):
+Quick threshold check (2025: Rev. Proc. 2024-40 §2.27; 2026: Rev. Proc. 2025-32 §4.26):
 
-- **Single / HoH / MFS**: threshold $241,950, phase-in top $291,950
-- **MFJ / QSS**: threshold $483,900, phase-in top $583,900
+- **2025, all returns other than MFJ**: threshold $197,300, phase-in top $247,300 (range $50,000)
+- **2025, MFJ**: threshold $394,600, phase-in top $494,600 (range $100,000)
+- **2026**: single/HOH $201,750 → $276,750; MFS $201,775 → $276,775; MFJ $403,500 → $553,500 (range $75,000 / $150,000 under P.L. 119-21 §70105)
 
 Do **not** engage this skill when:
 
-- Taxable income before QBI is at or below the threshold AND no SSTB issues → use the simpler `form-8995` skill (forthcoming)
+- Taxable income before QBI is at or below the threshold and the user is not a cooperative patron → use the [`form-8995`](../form-8995/SKILL.md) skill (an SSTB at or below the threshold is treated as a qualified trade or business)
 - The user is a W-2 employee with no business income → wages are not QBI; nothing to compute
 - The user is a C-corp shareholder → C-corp income is taxed at the corporate rate, not §199A
 - The user's only income is capital gains, ordinary dividends, or interest → not QBI
 - The user has only foreign-source income that doesn't rise to a US trade or business
 
-If the user's threshold position or SSTB status is ambiguous, **ask before proceeding**. The most common confusion: a consultant who thinks software development counts as "consulting" (it doesn't — software is explicitly carved out by Treas. Reg. §1.199A-5(b)(2)).
+If the user's threshold position or SSTB status is ambiguous, **ask before proceeding**. The most common confusion: a developer who calls the work "consulting". Software development is not a listed SSTB field, and consulting means advice and counsel; it does not include the performance of services other than advice and counsel (Treas. Reg. §1.199A-5(b)(2)(vii)). Ask what the client pays for: written code or advice.
 
 ---
 
@@ -63,7 +67,7 @@ Before producing anything, the agent must have these eight inputs. If any are mi
 
 2. **Filing status** — Single, HoH, MFS, MFJ, or QSS. Determines threshold and phase-in width.
 
-3. **Taxable income BEFORE the QBI deduction.** This is Form 1040 Line 11 (AGI) minus Line 12 (standard or itemized deduction). Do NOT subtract Line 13 (the deduction we're computing). Required to determine threshold position and SSTB phase-in percentage.
+3. **Taxable income BEFORE the QBI deduction.** For 2025 this is Form 1040 line 11a (AGI) minus line 12e (standard or itemized deduction) minus line 13b (Schedule 1-A deductions). Do NOT subtract line 13a (the deduction we're computing). Source: 2025 Instructions for Form 8995-A, "Taxable income before QBI deduction". Required to determine threshold position and SSTB phase-in percentage.
 
 4. **For each trade or business**:
    - Business name
@@ -71,15 +75,15 @@ Before producing anything, the agent must have these eight inputs. If any are mi
    - QBI: net of all §199A-eligible income, gain, deduction, loss, allocable to that business
    - W-2 wages paid by the business (calendar year ending in the tax year)
    - UBIA of qualified property (depreciable tangible property within its depreciable period)
-   - For S-corps: how much of K-1 box 1 is reasonable comp paid to the owner (this is NOT QBI but IS W-2 wages)
+   - For S-corps and partnerships: the Section 199A statement (S-corp box 17 code V; partnership box 20 code Z) with QBI, W-2 wages, UBIA and SSTB status. The owner's S-corp wages are not QBI but are part of the corporation's W-2 wages; K-1 box 1 is already after the corporation's wage deduction
 
-5. **Net capital gains** from Form 1040 Line 3a (qualified dividends) + Schedule D Line 16 (net LTCG). Required for Part IV Line 34 (overall cap).
+5. **Net capital gain** for Part IV Line 34: Form 1040 line 3a (qualified dividends) plus the smaller of Schedule D line 15 or 16 (nothing if either is zero or less), or Form 1040 line 7a if Schedule D isn't required (2025 i8995-A, Line 34).
 
 6. **REIT dividends and PTP income** (from 1099-DIV Box 5 and K-1 box 17/20). These are NOT subject to the W-2/UBIA limit but DO appear on Part IV.
 
-7. **Carryforward from prior years**: any §199A loss carryforward (negative QBI from prior year) or REIT/PTP loss carryforward (negative qualified REIT/PTP from prior year).
+7. **Carryforward from prior years**: QBI net loss carryforward (prior-year Schedule C (Form 8995-A) line 6, or Form 8995 line 16) and REIT/PTP loss carryforward (prior-year Form 8995-A line 40, or Form 8995 line 17).
 
-8. **For Schedule C filers**: the deductible portion of SE tax (½ SE tax), self-employed health insurance, and SE retirement contributions allocable to each business. These reduce QBI per Treas. Reg. §1.199A-3(b)(1)(vi).
+8. **Owner-level deductions attributable to each business**: the deductible portion of SE tax (½ SE tax), self-employed health insurance, and SE retirement contributions, for Schedule C filers and for partners with SE income. These reduce QBI per Treas. Reg. §1.199A-3(b)(1)(vi). Also ask about qualified tips deducted under §224 (Schedule 1-A, 2025 and later): they are not QBI and not W-2 wages for the limitation (2025 i8995-A).
 
 For aggregation (Schedule B), additionally ask:
 - Common ownership ≥50% across all businesses?
@@ -88,7 +92,7 @@ For aggregation (Schedule B), additionally ask:
 - Two of three sharing factors (same products/services, shared facilities, operating coordination)?
 
 For cooperative patrons (Schedule D), additionally ask:
-- Did the user receive Section 199A(g) information from a co-op (Form 1099-PATR Box 6)?
+- Form 1099-PATR (Rev. April 2025) box 7 (qualified payments, §199A(b)(7)) → Schedule D patron reduction; box 6 (section 199A(g) deduction) → Part IV line 38; boxes 8–9 (§199A(a) qualified items / SSTB items)
 
 ---
 
@@ -98,7 +102,7 @@ Execute these steps in order. Don't skip ahead even if the user pushes you to.
 
 ### Step 1 — Confirm Form 8995-A is the right form
 
-Compute taxable income before QBI. Compare to threshold. If under threshold AND no SSTB → redirect to the simplified `form-8995` skill. If over threshold OR any SSTB → continue.
+Compute taxable income before QBI. Compare to threshold. If at or below the threshold AND not a cooperative patron → redirect to the simplified `form-8995` skill. If over threshold OR a cooperative patron → continue.
 
 ### Step 2 — Classify each business
 
@@ -106,13 +110,13 @@ For each trade or business, decide SSTB or not using [`references/sstb-classific
 
 ### Step 3 — Compute QBI per business
 
-For Schedule C filers: QBI = Schedule C Line 31 net profit MINUS (½ SE tax allocable + SE health insurance allocable + SE retirement contribution allocable). All allocable to that specific business.
+For Schedule C filers: QBI = Schedule C Line 31 net profit MINUS (½ SE tax allocable + SE health insurance allocable + SE retirement contribution allocable + qualified tips deducted under §224). All allocable to that specific business.
 
-For S-corp K-1: QBI = K-1 Box 1 ordinary business income MINUS reasonable compensation paid to the owner (the owner's W-2 from the S-corp).
+For S-corp K-1: QBI = the QBI on the box 17 code V statement. Do NOT subtract the owner's W-2 again: the corporation already deducted it in computing box 1 and the statement's QBI (Treas. Reg. §1.199A-3(b)(2)(ii)(H)). Subtract owner-level items such as a >2% shareholder's SE health insurance deduction.
 
-For partnership K-1: QBI = K-1 Box 1 ordinary income (do NOT subtract guaranteed payments — they're already excluded from Box 1).
+For partnership K-1: QBI = the QBI on the box 20 code Z statement. Guaranteed payments (box 4) are not QBI and are already deducted in box 1. Subtract partner-level items (½ SE tax on partnership SE income, unreimbursed partnership expenses).
 
-For qualifying Schedule E rental: QBI = net rental income, only if the rental rises to a §162 trade or business OR meets the §1.199A-1(b)(14) safe harbor (250+ hours of rental services, separate books, contemporaneous records).
+For qualifying Schedule E rental: QBI = net rental income, only if the rental rises to a §162 trade or business OR meets the Rev. Proc. 2019-38 safe harbor (250+ hours of rental services, separate books, contemporaneous records, statement attached).
 
 See [`references/qbi-computation.md`](./references/qbi-computation.md) for full mechanics including state tax adjustments and trader vs. investor distinctions.
 
@@ -120,10 +124,10 @@ See [`references/qbi-computation.md`](./references/qbi-computation.md) for full 
 
 For each SSTB:
 - Below threshold → would use Form 8995 (out of scope here)
-- In phase-in zone → complete Schedule A (apply applicable percentage to QBI, W-2, UBIA before the W-2/UBIA limit)
-- Above phase-in top → SSTB QBI deduction = $0; report the SSTB in Part I but its contribution to Line 27 is zero
+- In phase-in zone → complete Schedule A: applicable percentage (line 10) times QBI, W-2 wages and UBIA; enter the results on Form 8995-A lines 2, 4 and 7 (or on Schedule C (Form 8995-A) for loss netting)
+- Above phase-in top → the SSTB's QBI, W-2 wages and UBIA are not taken into account at all (2025 i8995-A, "SSTBs excluded…")
 
-For non-SSTB businesses above threshold → no Schedule A, but the W-2/UBIA limit applies in full.
+For non-SSTB businesses: no Schedule A. In the phase-in range, the W-2/UBIA limit itself is phased in through Part III; above the phase-in top it applies in full.
 
 ### Step 5 — Decide whether to aggregate
 
@@ -131,38 +135,46 @@ If multiple non-SSTB businesses with shared ownership and operations, consider S
 
 **Aggregation is a binding multi-year election** (Treas. Reg. §1.199A-4(c)(1)). Confirm with the user.
 
-### Step 6 — Compute Part II for each business
+### Step 6 — Loss netting (Schedule C of Form 8995-A) before Part I
 
-For each business, complete Lines 2-13 of Part II:
-- L2: QBI
-- L3: 20% of QBI
-- L4: W-2 wages
-- L5: 50% × W-2
-- L6: 25% × W-2
-- L7: UBIA
-- L8: 2.5% × UBIA
+If any business has a qualified business loss this year, or there is a QBI net loss carryforward, complete Schedule C (Form 8995-A) first (2025 i8995-A). It apportions losses to the businesses with positive QBI in proportion to their QBI; column (c) feeds Part II line 2. A business whose adjusted QBI is zero or less reports zero W-2 wages and UBIA. If the total is still negative, line 6 carries forward and this year's QBI component is $0.
+
+### Step 7 — Compute Parts II and III for each business
+
+For each business (columns A–C), complete Part II:
+- L2: QBI (after Schedule A and Schedule C, if used)
+- L3: 20% of L2 (at or below the threshold, skip lines 4–12 and enter L3 on L13)
+- L4: W-2 wages (after Schedule A, if used)
+- L5: 50% × L4
+- L6: 25% × L4
+- L7: UBIA (after Schedule A, if used)
+- L8: 2.5% × L7
 - L9: L6 + L8
 - L10: greater of L5 or L9 (the W-2/UBIA limit)
 - L11: smaller of L3 or L10
-- L12: phase-in reduction from Schedule A (if applicable)
-- L13: L11 − L12 (adjusted QBI for this business)
+- L12: phased-in reduction = Part III line 26, if any
+- L13: greater of L11 or L12
+- L14: patron reduction (Schedule D line 6)
+- L15: L13 − L14
+- L16: total of all L15 amounts
 
-### Step 7 — Loss netting (Schedule C of Form 8995-A)
-
-If any business has negative QBI, complete Schedule C to net losses against positive-QBI businesses proportionally. If aggregate is still negative, the full loss carries forward; this year's QBI component is $0.
+Part III (lines 17–26) only when taxable income is above the threshold but not above the phase-in top AND line 10 < line 3: L17 = L3; L18 = L10; L19 = L17 − L18; L20 taxable income before QBI; L21 threshold; L22 = L20 − L21; L23 phase-in range; L24 = L22 ÷ L23; L25 = L19 × L24; L26 = L17 − L25 (→ L12).
 
 ### Step 8 — Complete Part IV
 
-- L27: sum of all businesses' L13 (or net result from Schedule C of Form 8995-A)
-- L28-31: REIT/PTP component (qualified REIT divs + qualified PTP income) × 20%, with prior-year loss carryforward netting
+- L27: line 16
+- L28: qualified REIT dividends and PTP income or (loss) (include Schedule A line 24 for SSTB PTPs)
+- L29: prior-year REIT/PTP loss carryforward (negative)
+- L30: L28 + L29 (if less than zero, 0); L31: 20% × L30
 - L32: L27 + L31
 - L33: taxable income before QBI deduction
-- L34: net capital gains (LTCG + qualified dividends)
-- L35: L33 − L34
-- L36: 20% × L35 (overall cap)
+- L34: net capital gain plus qualified dividends
+- L35: L33 − L34 (if zero or less, 0)
+- L36: 20% × L35 (income limitation)
 - L37: smaller of L32 or L36
-- L38-39: cooperative patron reduction (Schedule D), if applicable
-- L39: final QBI deduction → Form 1040 Line 13
+- L38: §199A(g) DPAD allocated from a cooperative (1099-PATR box 6); not more than L33 − L37
+- L39: L37 + L38 → 2025 Form 1040 line 13a
+- L40: L28 + L29 if negative (REIT/PTP loss carryforward), else 0
 
 ### Step 9 — Run validation checks
 
@@ -176,8 +188,8 @@ See **Output format** below.
 
 State the next steps:
 
-- The Line 39 result flows to **Form 1040 Line 13**
-- If any QBI loss carries forward, note the amount and the 2026 / 2027 line where it'll be reported
+- The Line 39 result flows to **Form 1040 line 13a** (2025)
+- If any QBI loss carries forward (Schedule C (Form 8995-A) line 6) or REIT/PTP loss carries forward (line 40), note the amount and the next-year line (Schedule C line 2 / Form 8995 line 3; Form 8995-A line 29 / Form 8995 line 7)
 - If aggregation was elected, note that this is binding for future years and the same aggregation must be used
 - For S-corp owners: confirm reasonable comp documentation (the wage-vs-distribution decision interacts with both QBI and SS/Medicare)
 
@@ -193,48 +205,55 @@ For the full reference, load [`references/line-by-line.md`](./references/line-by
 
 ### Part I — Trade, business, or aggregation information
 
-- **L1(a)** — Name of each business or aggregation
-- **L1(b)** — Check box if SSTB
-- **L1(c)** — EIN or SSN
+- **L1(a)** — Name of each business, or "Aggregation 1, 2, 3" for a Schedule B aggregation
+- **L1(b)** — Check if specified service (SSTB)
+- **L1(c)** — Check if aggregation
+- **L1(d)** — TIN: EIN (a disregarded single-member LLC's EIN), else SSN/ITIN; leave blank for an aggregation
+- **L1(e)** — Check if patron of an agricultural or horticultural cooperative
+
+Three rows (A, B, C) fit on the form; with four or more businesses, attach a statement with Parts I–III for the extra ones (2025 i8995-A, Line 2).
 
 ### Part II — Adjusted QBI per business
 
-(See Step 6 above for line-by-line.)
+(See Step 7 above for line-by-line.)
 
 Critical:
-- L2 (QBI) must reflect SE-tax / SE-HI / SE-retirement adjustments for Schedule C filers and reasonable-comp removal for S-corp owners
-- L4 (W-2 wages) must use the calendar year ending in the tax year, not a fiscal year
+- L2 (QBI) must reflect owner-level deductions (½ SE tax, SE health insurance, SE retirement) and come from the Section 199A statement for K-1 sources; never subtract an S-corp owner's wages from box 1 a second time
+- L4 (W-2 wages) uses Forms W-2 for the calendar year ending with or within the tax year, under one of the three methods in the instructions (unmodified box, modified box 1, tracking wages); excludes amounts deducted under §224
 - L7 (UBIA) excludes land and intangibles; only depreciable tangible property within its depreciable period
-- L10 (W-2/UBIA limit) is the GREATER of the two formulas — choose the more favorable
+- L10 (W-2/UBIA limit) is the GREATER of the two formulas
+- L13 is the GREATER of L11 or L12 (L12 comes from Part III)
 
 ### Part III — Phased-in reduction
 
-Used for SSTBs in the phase-in zone. The Schedule A computation produces the L12 reduction. See [`references/sstb-phase-in.md`](./references/sstb-phase-in.md) for the full math.
+Only when taxable income is in the phase-in range and line 10 is less than line 3. Phases in the W-2/UBIA limitation for SSTBs and non-SSTBs alike. Result (line 26) goes to line 12. See [`references/sstb-phase-in.md`](./references/sstb-phase-in.md) for the full math.
 
 ### Part IV — QBI deduction
 
-- L27: sum of all L13 from Part II
-- L28-30: REIT/PTP component (no W-2/UBIA limit applies)
-- L32: total before overall cap
-- L33-36: overall cap = 20% × (taxable income − net capital gains)
+- L27: line 16
+- L28-31: REIT/PTP component (no W-2/UBIA limit applies)
+- L32: total before the income limitation
+- L33-36: income limitation = 20% × (taxable income − net capital gain)
 - L37: smaller of L32 or L36
-- L39: final → Form 1040 Line 13
+- L38: §199A(g) DPAD from a cooperative
+- L39: L37 + L38 → Form 1040 line 13a
+- L40: REIT/PTP loss carryforward
 
-### Schedule A — SSTB phase-in
+### Schedule A — SSTB applicable percentage
 
-Lines 1-13 compute the applicable percentage and the resulting reduction. See [`references/sstb-phase-in.md`](./references/sstb-phase-in.md).
+Part I (lines 1a–13) for SSTBs other than PTPs: applicable percentage (line 10 = 100% − (line 7 ÷ line 8)) times QBI (line 11 → Form 8995-A line 2 or Schedule C), W-2 wages (line 12 → line 4) and UBIA (line 13 → line 7). Part II (lines 14–24) for SSTB PTP income (line 24 → Form 8995-A line 28). See [`references/sstb-phase-in.md`](./references/sstb-phase-in.md).
 
 ### Schedule B — Aggregation
 
-Lists the businesses being aggregated and confirms eligibility. See [`references/aggregation.md`](./references/aggregation.md).
+Description of each aggregation and the factors met, changes from the prior year, and per-business QBI, W-2 wages and UBIA with totals (line 4) that go to Schedule C or Part II. See [`references/aggregation.md`](./references/aggregation.md).
 
-### Schedule C — Loss netting
+### Schedule C — Loss netting and carryforward
 
-If any business has negative QBI, allocates the loss across positive-QBI businesses proportionally. See [`references/loss-netting.md`](./references/loss-netting.md).
+Allocates losses (and the prior-year carryforward, line 2) across positive-QBI businesses in proportion to their QBI; line 6 is the carryforward to next year. See [`references/loss-netting.md`](./references/loss-netting.md).
 
 ### Schedule D — Cooperative patrons
 
-Only for farmers and other §199A(g) DPAD patrons. Skip if not applicable.
+Patron reduction = smaller of 9% of QBI allocable to qualified payments (line 3) or 50% of W-2 wages allocable to them (line 5); line 6 → Form 8995-A line 14. Skip if not a patron.
 
 ---
 
@@ -244,37 +263,38 @@ Before declaring the form ready, run these checks. Surface any failure — don't
 
 ### Math checks
 
-- [ ] Each Part II row: L3 = 0.20 × L2; L5 = 0.50 × L4; L6 = 0.25 × L4; L8 = 0.025 × L7; L9 = L6 + L8
+- [ ] Each Part II column: L3 = 0.20 × L2; L5 = 0.50 × L4; L6 = 0.25 × L4; L8 = 0.025 × L7; L9 = L6 + L8
 - [ ] L10 = max(L5, L9)
 - [ ] L11 = min(L3, L10)
-- [ ] L13 = L11 − L12
-- [ ] If Schedule A used: L7 (Schedule A) = 1 − L6 (Schedule A)
-- [ ] L27 = sum of all Part II Line 13s (or Schedule C result)
-- [ ] L31 = 0.20 × L30
+- [ ] If Part III used: L19 = L17 − L18; L24 = L22 ÷ L23; L25 = L19 × L24; L26 = L17 − L25 = L12
+- [ ] L13 = max(L11, L12); L15 = L13 − L14 (not below 0); L16 = sum of L15
+- [ ] If Schedule A used: line 10 = 100% − (line 7 ÷ line 8); lines 11–13 = lines 2–4 × line 10, carried to Form 8995-A lines 2, 4, 7
+- [ ] L27 = L16
+- [ ] L30 = max(0, L28 + L29); L31 = 0.20 × L30
 - [ ] L32 = L27 + L31
-- [ ] L35 = L33 − L34
+- [ ] L35 = max(0, L33 − L34)
 - [ ] L36 = 0.20 × L35
-- [ ] L37 = min(L32, L36)
-- [ ] L39 ≥ 0 (deduction can never be negative)
+- [ ] L37 = min(L32, L36); L39 = L37 + L38
+- [ ] L39 ≥ 0 (deduction can never be negative); L40 = min(0, L28 + L29)
 
 ### Sanity checks
 
 Surface a warning, do not block:
 
-- [ ] Taxable income before QBI ≤ threshold AND no SSTB → user should file Form 8995, not 8995-A
-- [ ] Filer is S-corp owner AND K-1 box 1 was used as QBI without subtracting reasonable comp → ask
+- [ ] Taxable income before QBI ≤ threshold AND not a cooperative patron → user should file Form 8995, not 8995-A
+- [ ] Filer is S-corp owner AND the owner's wages were subtracted from box 1 (double subtraction) or box 1 was used instead of the code V statement QBI → ask
 - [ ] Filer is Schedule C AND QBI = Line 31 net profit (no SE-tax / SE-HI / SE-retirement reduction) → ask
 - [ ] UBIA includes any line item described as "land" → must be excluded
 - [ ] L4 W-2 wages > Schedule C Line 26 wages by more than 10% → reconciliation needed
 - [ ] L7 UBIA exceeds total depreciable basis in service per Form 4562 → ask
-- [ ] SSTB above phase-in top → confirm $0 contribution; the deduction is gone
+- [ ] SSTB above phase-in top → confirm its QBI, W-2 wages and UBIA were left out entirely
 - [ ] Net capital gains > taxable income before QBI → unusual; double-check the input
 
 ### Cross-form checks
 
-- [ ] L39 matches what's entered on Form 1040 Line 13
-- [ ] If aggregating, the same aggregation must appear on next year's Form 8995-A
-- [ ] S-corp owner's W-2 from the corp matches Form 1040 Line 1z and the Box 1 figure on the W-2
+- [ ] L39 matches what's entered on Form 1040 line 13a
+- [ ] If aggregating, the same aggregation must appear on next year's Form 8995-A (Schedule B every year)
+- [ ] S-corp owner's W-2 from the corp is included in Form 1040 line 1a and in the corporation's W-2 wages on L4
 
 ---
 
@@ -290,15 +310,15 @@ Taxpayer: <name>
 SSN/ITIN: <provided>
 Filing status: <Single | HoH | MFS | MFJ | QSS>
 Taxable income before QBI: $<amount>
-Threshold for status: $<241,950 | 483,900 | etc.>
+Threshold for status: $<197,300 | 394,600 (2025)>
 Phase-in top: $<amount>
 Position: <below threshold | in phase-in | above phase-in top>
 
 ## Part I — Trades or Businesses
-| (a) Name | (b) SSTB | (c) EIN/SSN |
-|----------|----------|--------------|
-| <name 1> | Yes/No   | <id>         |
-| <name 2> | Yes/No   | <id>         |
+| (a) Name | (b) SSTB | (c) Aggregation | (d) TIN | (e) Patron |
+|----------|----------|-----------------|---------|------------|
+| <name 1> | Yes/No   | Yes/No          | <id>    | Yes/No     |
+| <name 2> | Yes/No   | Yes/No          | <id>    | Yes/No     |
 
 ## Part II — Adjusted QBI per Business
 ### Business 1: <name>
@@ -312,21 +332,37 @@ Position: <below threshold | in phase-in | above phase-in top>
  9. L6 + L8:                  $X,XXX
 10. Greater of L5 or L9:      $X,XXX
 11. Smaller of L3 or L10:     $X,XXX
-12. Phase-in reduction (Sch A): $X,XXX
-13. Adjusted QBI:             $X,XXX
+12. Phased-in reduction (Part III L26): $X,XXX
+13. Greater of L11 or L12:    $X,XXX
+14. Patron reduction (Sch D): $X,XXX
+15. QBI component (L13 − L14): $X,XXX
+16. Total of all L15:         $X,XXX
 
-(repeat for each business)
+(repeat lines 2-15 for each business)
 
-## Schedule A — SSTB Phase-In  (or "N/A — no SSTB in phase-in zone")
- 1. Trade name:               <name>
- 2. Taxable income before QBI: $X,XXX
- 3. Threshold:                $X,XXX
- 4. Excess (L2 − L3):         $X,XXX
- 5. Phase-in range:           $50,000 | $100,000
- 6. Phase-in % (L4 / L5):     0.XXXX
- 7. Applicable % (1 − L6):    0.XXXX
- 8-12. Reduced QBI / W-2 / UBIA computation
-13. Phase-in reduction → Part II L12: $X,XXX
+## Part III — Phased-in Reduction  (or "N/A — not in phase-in range, or L10 ≥ L3")
+17. L3: $X,XXX   18. L10: $X,XXX   19. L17 − L18: $X,XXX
+20. Taxable income before QBI: $X,XXX
+21. Threshold: $X,XXX   22. L20 − L21: $X,XXX
+23. Phase-in range: $50,000 | $100,000 (2025)
+24. L22 ÷ L23: XX.XX%
+25. L19 × L24: $X,XXX
+26. L17 − L25 → L12: $X,XXX
+
+## Schedule A — SSTB  (or "N/A — no SSTB in phase-in range")
+ 1a/1b. Trade name / TIN:     <name> / <id>
+ 2. QBI:                      $X,XXX
+ 3. W-2 wages:                $X,XXX
+ 4. UBIA:                     $X,XXX
+ 5. Taxable income before QBI: $X,XXX
+ 6. Threshold:                $X,XXX
+ 7. L5 − L6:                  $X,XXX
+ 8. Phase-in range:           $50,000 | $100,000 (2025)
+ 9. L7 ÷ L8:                  0.XXXXX
+10. Applicable % (100% − L9): XX.XXX%
+11. L2 × L10 → Form 8995-A L2 (or Sch C): $X,XXX
+12. L3 × L10 → Form 8995-A L4: $X,XXX
+13. L4 × L10 → Form 8995-A L7: $X,XXX
 
 ## Schedule B — Aggregation  (or "N/A")
 List of businesses aggregated, with eligibility factors confirmed.
@@ -335,26 +371,27 @@ List of businesses aggregated, with eligibility factors confirmed.
 Allocation of negative QBI across positive-QBI businesses.
 
 ## Schedule D — Cooperative Patron  (or "N/A")
-§199A(g) DPAD computation if applicable.
+Patron reduction: smaller of 9% × QBI allocable to qualified payments or 50% × allocable W-2 wages → Part II L14.
 
 ## Part IV — QBI Deduction
-27. Total QBI component:       $X,XXX
-28. Qualified REIT/PTP income: $X,XXX
-29. Prior-year REIT/PTP loss carryforward: $X,XXX
+27. Total QBI component (L16): $X,XXX
+28. Qualified REIT/PTP income or (loss): $X,XXX
+29. Prior-year REIT/PTP loss carryforward: ($X,XXX)
 30. L28 + L29 (≥ 0):           $X,XXX
 31. 20% × L30:                 $X,XXX
 32. L27 + L31:                 $X,XXX
 33. Taxable income before QBI: $X,XXX
-34. Net capital gains:         $X,XXX
-35. L33 − L34:                 $X,XXX
+34. Net capital gain + qualified dividends: $X,XXX
+35. L33 − L34 (≥ 0):           $X,XXX
 36. 20% × L35:                 $X,XXX
 37. Smaller of L32 or L36:     $X,XXX
-38. Patron reduction:          $X,XXX (or 0)
-39. **Final QBI deduction:**   $X,XXX  → Form 1040 Line 13
+38. DPAD under §199A(g):       $X,XXX (or 0)
+39. **Total QBI deduction (L37 + L38):** $X,XXX  → Form 1040 line 13a
+40. REIT/PTP loss carryforward: ($X,XXX) or 0
 
-## Loss carryforwards to 2026
-- QBI loss carryforward:        $X,XXX (or 0)
-- REIT/PTP loss carryforward:   $X,XXX (or 0)
+## Loss carryforwards to next year
+- QBI loss carryforward (Schedule C (Form 8995-A) line 6): $X,XXX (or 0)
+- REIT/PTP loss carryforward (line 40): $X,XXX (or 0)
 
 ## Validation summary
 - Math: all checks passed | <list failures>
@@ -366,7 +403,7 @@ Allocation of negative QBI across positive-QBI businesses.
 - IRS Instructions for Form 8995-A (revision date YYYY-MM-DD)
 - IRC §199A
 - Treas. Reg. §1.199A-1 through §1.199A-6
-- Rev. Proc. 2024-40 (2025 thresholds)
+- Rev. Proc. 2024-40 §2.27 (2025 thresholds)
 - (any other authority used)
 ```
 
@@ -404,12 +441,14 @@ Authoritative sources used by this skill. Always re-verify these against the IRS
 - [Instructions for Form 8995-A (latest)](https://www.irs.gov/pub/irs-pdf/i8995a.pdf) — line-by-line IRS guidance
 - [About Form 8995-A](https://www.irs.gov/forms-pubs/about-form-8995-a) — IRS landing page with archive of past revisions
 - [Form 8995](https://www.irs.gov/pub/irs-pdf/f8995.pdf) — Simplified version (below threshold, no SSTB)
-- [Tax Topic 651 — Qualified Business Income Deduction](https://www.irs.gov/taxtopics/tc651) — IRS plain-language overview
-- [QBI FAQ](https://www.irs.gov/newsroom/qualified-business-income-deduction) — IRS Q&A on common §199A issues
+- [Qualified business income deduction](https://www.irs.gov/newsroom/qualified-business-income-deduction) — IRS overview page
+- [2026 draft Form 8995-A](https://www.irs.gov/pub/irs-dft/f8995a--dft.pdf) — 2026 thresholds and new lines 39–43 (draft, do not file)
 - IRC §199A — Qualified Business Income Deduction
 - Treas. Reg. §1.199A-1 (operational rules), §1.199A-2 (W-2 wages and UBIA), §1.199A-3 (QBI definition), §1.199A-4 (aggregation), §1.199A-5 (SSTB), §1.199A-6 (cooperatives)
-- Rev. Proc. 2024-40 — 2025 thresholds and phase-in widths
-- One Big Beautiful Bill Act of 2025 — Made §199A permanent
+- Rev. Proc. 2024-40 §2.27 — 2025 thresholds ($197,300 / $394,600 MFJ) and phase-in ($247,300 / $494,600)
+- Rev. Proc. 2025-32 §4.26 — 2026 thresholds ($201,750 / $201,775 MFS / $403,500 MFJ) and phase-in ($276,750 / $276,775 / $553,500); §2.12 — $400 minimum deduction
+- Rev. Proc. 2019-38 — rental real estate safe harbor
+- One Big Beautiful Bill Act, P.L. 119-21 — §70105 made §199A permanent, widened the phase-in range to $75,000 / $150,000 and added the §199A(i) $400 minimum deduction (tax years beginning after 2025); §70201(d) excluded §224 qualified tips from QBI (tax years beginning after 2024)
 
 ## Disclaimer
 

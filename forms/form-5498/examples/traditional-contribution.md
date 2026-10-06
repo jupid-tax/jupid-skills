@@ -9,14 +9,14 @@ canonical "no surprises" reconciliation pattern.
 - **Name**: Sandra Patel
 - **Age**: 42
 - **Filing status**: Single
-- **Tax year**: 2025 (Form 5498 received May 2026)
+- **Tax year**: 2025 (Form 5498 furnished by June 1, 2026)
 - **Account**: Traditional IRA at Schwab, opened 2017
 - **Employment**: Marketing manager, W-2 income, **not** covered by an
   employer retirement plan (her employer doesn't offer one)
 
 ## The Form 5498 received
 
-Sandra received this 5498 from Schwab in May 2026, covering 2025 tax
+Sandra received this 5498 from Schwab in late May 2026, covering 2025 tax
 year contributions:
 
 ```
@@ -62,7 +62,7 @@ Box 15a FMV of specified assets:           (blank)
 - Line 1a (W-2 wages): $96,200
 - Line 9 (total income): $96,505 (with some interest)
 - Line 10 (adjustments to income from Schedule 1): $7,000
-- Line 11 (AGI): $89,505
+- Line 11a (AGI): $89,505
 
 **Schedule 1**:
 - Line 20 (IRA deduction): $7,000
@@ -98,8 +98,10 @@ full $7,000 traditional IRA contribution regardless of MAGI.
 ### Step 5 — Verify Box 5 (FMV) for next year's RMD context
 
 Sandra is 42; not yet at RMD age. Box 11 is correctly unchecked. Box 5
-is informational for now ($54,300). When Sandra reaches 73 in 2056, the
-12/31/2055 Box 5 will drive her first-year RMD computation.
+is informational for now ($54,300). Born in 1983, she reaches 74 after
+2032, so her applicable age is 75 (IRC §401(a)(9)(C)(v)): when she turns
+75 in 2058, the 12/31/2057 Box 5 will drive her first-year RMD
+computation.
 
 ### Step 6 — Surface inconsistencies
 
@@ -145,7 +147,7 @@ None.
 
 ## Required actions
 - [x] File 5498 in 2025 tax records (no IRS filing required)
-- [ ] Check 2026 5498 when received (May 2027) for any 2026 activity
+- [ ] Check 2026 5498 when received (by May 31, 2027) for any 2026 activity
 - [ ] No RMD required (Sandra is 42)
 - [ ] Continue tracking Box 5 each year for retirement projection
 
@@ -160,8 +162,8 @@ None.
   - No further action required
 
 ## Sources cited in this reconciliation
-- IRS Form 5498, Rev. 2025
-- IRS Instructions for Form 5498, Rev. 2025
+- IRS Form 5498 (2025)
+- IRS Instructions for Forms 1099-R and 5498 (2025)
 - IRC §219 (IRA deduction); §219(g) (active-participant phaseout)
 - IRC §408 (IRA rules)
 - Notice 2024-80 — 2025 IRA limit $7,000 ($8,000 age 50+)
@@ -189,7 +191,7 @@ they report the total. The split matters only for the user's records
 and for confirming each transaction landed correctly.
 
 **Why filing in April before the 5498 arrived isn't a problem.** The
-IRS designed the 5498 May 31 deadline knowing taxpayers file before
+IRS set the 5498 May 31 deadline knowing taxpayers file before
 that date. The 5498 confirms what was claimed; if they match, no
 discrepancy. If they didn't match, Sandra would need to amend.
 
@@ -201,13 +203,15 @@ discrepancy. If they didn't match, Sandra would need to amend.
 4. The 2025 Form 1040 + Schedule 1
 5. This reconciliation report
 
-Retain all for at least 7 years after the 2025 return due date (April
-15, 2026 + 7 years = April 15, 2033).
+Retain all for at least 3 years after filing (the general IRS record
+period; she filed April 1, 2026, so through at least April 15, 2029,
+since an early return counts as filed on the due date).
 
-**What if Sandra had been covered by an employer plan?** Her 2025 MAGI
-of $89,505 would put her above the single-filer active-participant
+**What if Sandra had been covered by an employer plan?** Her MAGI for the
+IRA deduction is AGI figured without the IRA deduction (Pub. 590-A,
+Worksheet 1-1): $96,505. That is above the single-filer active-participant
 phaseout upper limit of $89,000 for 2025 (per Notice 2024-80, $79K-$89K
-phaseout). Almost no deduction would be allowed. The $7,000 contribution
+phaseout), so no deduction would be allowed. The $7,000 contribution
 would still be made, but it would be entirely nondeductible — going on
 Form 8606 Line 1 as basis instead of Schedule 1 Line 20 as a deduction.
 The 5498 Box 1 would still show $7,000 in either case.

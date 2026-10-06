@@ -2,7 +2,7 @@
 
 A complete walkthrough of a 1099-C arising from foreclosure of a borrower's principal residence, where §108(a)(1)(E) qualified principal residence indebtedness exclusion applies. This is the canonical "homeowner foreclosure" pattern.
 
-This example assumes the §108(a)(1)(E) exclusion is in effect for the tax year (verified through Dec 31, 2025; **2026 status to be re-verified before filing**).
+The §108(a)(1)(E) exclusion applies here because the debt was discharged in 2025: it covers debt discharged before Jan. 1, 2026, or under a written arrangement entered into before that date (IRC §108(a)(1)(E); Pub. 4681 (2025) What's New). A 2026 foreclosure without such an arrangement would not qualify.
 
 ---
 
@@ -70,7 +70,7 @@ No bankruptcy filed. **Does not apply.**
 
 ### 4b. Insolvency — §108(a)(1)(B)
 
-Marcus considers insolvency as a fallback in case §108(a)(1)(E) doesn't fully cover. Worksheet 2 immediately before 2025-08-22:
+Marcus considers insolvency as a fallback in case §108(a)(1)(E) doesn't fully cover (QPRI takes precedence over insolvency unless he elects box 1b, §108(a)(2)(C)). Pub. 4681 Insolvency Worksheet immediately before 2025-08-22:
 
 **Liabilities:**
 
@@ -98,7 +98,8 @@ Marcus considers insolvency as a fallback in case §108(a)(1)(E) doesn't fully c
 - Acquisition indebtedness on principal residence? Yes — original purchase + rate refinance, no cash-out.
 - Marcus's principal residence? Yes — primary home since 2018-04.
 - Within the $750,000 cap (MFJ uses full $750,000)? Yes — canceled amount is $75,000.
-- **Year-aware:** §108(a)(1)(E) is in effect for tax year 2025 (extended through 2025-12-31 by Consolidated Appropriations Act 2021). ✓
+- **Year-aware:** discharged 2025-08-22, before Jan. 1, 2026 → §108(a)(1)(E) available (Consolidated Appropriations Act, 2021 extension; not extended past 2025 as of 2026-10-06). ✓
+- Ordering rule: the whole loan is QPRI (no nonqualified part), so the full discharge is excludable.
 
 **Result:** Full $75,000 excluded under §108(a)(1)(E).
 
@@ -112,7 +113,7 @@ Principal residence exclusion fully covers $75,000.
 
 - **Form 982 Box 1e** checked
 - **Line 2** = $75,000
-- **Line 10b** (basis of principal residence reduction) = $75,000
+- **Line 10b** = no entry: the Chens no longer own the home after the foreclosure, and Line 10b applies only if the filer continues to own the residence (Form 982 instructions, Line 10b; Pub. 4681 "Reduction of Tax Attributes")
 - **No income reported on Schedule 1 Line 8c**
 
 ## Disposition analysis (separate from §108)
@@ -120,20 +121,19 @@ Principal residence exclusion fully covers $75,000.
 The foreclosure is also a sale of the home for tax purposes. For recourse debt:
 
 - Amount realized = lesser of (a) FMV at foreclosure ($310,000) or (b) outstanding loan balance ($385,000) = $310,000
-- Adjusted basis (purchase price + improvements − §108(h)(1) reduction): Marcus's basis pre-reduction was $420,000 (purchase) + $15,000 (kitchen 2021) = $435,000.
-- After §108(h)(1) reduction of $75,000: new basis = $360,000.
-- Gain/loss on sale = Amount realized ($310,000) − Adjusted basis ($360,000) = **$50,000 loss**.
+- Adjusted basis: $420,000 (purchase) + $15,000 (kitchen 2021) = $435,000. No §108(h)(1) reduction, because the home was disposed of in the same foreclosure (no Line 10b).
+- Gain/loss on sale = Amount realized ($310,000) − Adjusted basis ($435,000) = **$125,000 loss**.
 - Loss on personal residence is **not deductible** under IRC §165(c). The loss is realized economically but not for tax purposes.
 
-If Marcus's home had been sold at a gain, IRC §121 would have excluded up to $500,000 of gain (MFJ, used home as principal residence ≥2 of last 5 years). The §108(h)(1) basis reduction would have eaten into the §121 exclusion margin but not produced taxable gain on these numbers.
+If Marcus's home had been sold at a gain, IRC §121 would have excluded up to $500,000 of gain (MFJ, used home as principal residence ≥2 of last 5 years; see Pub. 523).
 
 ## Step 6 — Apply attribute reduction
 
-For §108(a)(1)(E) the only attribute reduced is the **basis of the principal residence**, on Form 982 Line 10b. Other Part II lines (NOL, business credits, etc.) are not affected by §108(h)(1).
+For §108(a)(1)(E) the only attribute reduced is the **basis of the principal residence**, on Form 982 Line 10b, and only if the filer still owns it. Other Part II lines (NOL, business credits, etc.) are not affected.
 
-- Line 10b = $75,000
+- Line 10b = no entry (home disposed of in the foreclosure)
 
-The new basis of the home ($360,000) is recorded for Marcus's records — relevant if they buy a new home or for any future tax events.
+Nothing carries forward; the basis of a home they no longer own doesn't matter for future returns.
 
 ## Step 7 — Validation checks
 
@@ -141,14 +141,14 @@ The new basis of the home ($360,000) is recorded for Marcus's records — releva
 
 - [x] Box 2 ($75,000) = lender's reported deficiency
 - [x] §108(a)(1)(E) cap ($750,000 MFJ) > $75,000 ✓
-- [x] Form 982 Line 2 ($75,000) = Line 10b ($75,000) for QPRI exclusion ✓
-- [x] No double-counting: $75,000 excluded as cancellation, separately the disposition shows $50,000 nondeductible loss
+- [x] Form 982 Line 2 = $75,000; Line 10b blank because the home is no longer owned ✓
+- [x] No double-counting: $75,000 excluded as cancellation, separately the disposition shows a $125,000 nondeductible loss
 
 **Sanity:**
 
 - [x] Acquisition indebtedness confirmed (no cash-out, no HELOC misuse)
 - [x] Principal residence confirmed (utility bills, voter registration)
-- [x] §108(a)(1)(E) in effect for 2025 ✓
+- [x] Discharged before Jan. 1, 2026 → §108(a)(1)(E) available ✓
 - [x] 1099-A received → foreclosure disposition computed separately ✓
 - [x] Recourse loan (Box 5 = Yes) → both events occur (separate disposition + cancellation)
 - [x] Insolvency tested as fallback (not insolvent — but QPRI fully covers anyway)
@@ -156,8 +156,8 @@ The new basis of the home ($360,000) is recorded for Marcus's records — releva
 **Cross-form:**
 
 - [x] Form 982 attached to 1040
-- [x] No Schedule D entry (personal residence loss is nondeductible; no entry required)
-- [x] Basis records updated to $360,000 in tax file
+- [x] Form 8949 / Schedule D: no deductible loss; the agent asks whether a Form 1099-S was received, because Pub. 523 requires reporting the sale on Form 8949 if so (only a 1099-A and 1099-C here)
+- [x] No basis carryforward (home no longer owned)
 
 ## Step 8 — Deliverable: Reporting Plan
 
@@ -186,7 +186,7 @@ The new basis of the home ($360,000) is recorded for Marcus's records — releva
   - Insolvency amount:              $0 (assets > liabilities; not insolvent)
   - Exclusion amount:               $0 (does not apply)
 - Principal residence (§108(a)(1)(E)): Applies
-  - Year-status: Verified in effect for tax year 2025
+  - Discharged before Jan. 1, 2026: Yes (2025-08-22)
   - Exclusion amount:               $75,000 (within $750,000 MFJ cap)
 - Student loan (§108(f)):          Does not apply
 - Farm / business real property:   Does not apply
@@ -201,32 +201,29 @@ The new basis of the home ($360,000) is recorded for Marcus's records — releva
   - Box 1e (principal residence):  ☑
   - Line 2 (amount excluded):      $75,000
 - Part II — attribute reduction:
-  - Line 10b (basis prin. res.):   $75,000
-  - All other lines:               $0
+  - Line 10b (basis prin. res.):   blank (home no longer owned)
+  - All other lines:               blank
 
 ## Disposition analysis (Pub 4681 Chapter 2)
 - Amount realized (recourse):      $310,000 (lower of FMV or balance)
-- Basis pre-reduction:             $435,000 (purchase $420k + improvements $15k)
-- §108(h)(1) basis reduction:      ($75,000)
-- Adjusted basis:                  $360,000
-- Loss on disposition:             $50,000
+- Adjusted basis:                  $435,000 (purchase $420k + improvements $15k; no §108(h)(1) reduction)
+- Loss on disposition:             $125,000
 - Tax treatment:                   Nondeductible (personal residence loss, IRC §165(c))
 
 ## Required attachments
 - [x] Form 982 (Box 1e checked)
-- No Schedule D entry (loss is nondeductible)
-- Worksheet 2 retained as fallback documentation (insolvency tested)
+- No Schedule D entry (loss is nondeductible; no Form 1099-S received)
+- Insolvency Worksheet retained as fallback documentation (insolvency tested)
 
 ## Validation summary
 - Math: all checks passed
 - Sanity: acquisition indebtedness confirmed; principal residence confirmed
-- Year-aware flags: §108(a)(1)(E) verified in effect for 2025; verify for 2026 if any
-  late-arriving cancellations
+- Year-aware flags: §108(a)(1)(E) available because discharged in 2025; a 2026 discharge
+  would need a pre-2026 written arrangement
 - Next steps:
   - Attach Form 982 to MFJ 1040
   - Retain HUD-1 from purchase, refinance docs, improvement receipts,
     1099-A, 1099-C, foreclosure documents
-  - Update basis records for any future home purchase analysis
   - Schedule D not needed (no deductible loss on personal residence)
 
 ## Sources cited in this plan
@@ -236,14 +233,15 @@ The new basis of the home ($360,000) is recorded for Marcus's records — releva
 - Pub 4681 (foreclosure analysis, Chapter 2)
 - Form 982 and Instructions (current revision)
 - Consolidated Appropriations Act 2021 (extension of §108(a)(1)(E) through 2025)
+- Form 982 instructions, Line 10b (basis reduction only if the home is still owned)
+- Pub 523 (reporting the sale of a main home)
 ```
 
 ## Step 9 — Handoff
 
 - Attach Form 982 to MFJ 1040
 - No Schedule 1 Line 8c entry
-- Disposition: foreclosure produces $50,000 nondeductible personal residence loss; no Schedule D entry needed
-- Update home-basis records to $360,000 (relevant if Marcus and spouse later buy a new home and want to track)
+- Disposition: foreclosure produces a $125,000 nondeductible personal residence loss; no Schedule D entry needed
 - Retain documentation: HUD-1, refinance docs, improvement receipts, 1099-A, 1099-C, foreclosure court documents
 
 ## Result
@@ -256,14 +254,14 @@ The new basis of the home ($360,000) is recorded for Marcus's records — releva
 
 **Why §108(a)(1)(E) and not insolvency?** Marcus tested insolvency first as a fallback, but he is **not** insolvent — assets exceed liabilities by $46,000. Without §108(a)(1)(E), he would have owed tax on the full $75,000. The principal residence exclusion is the entire benefit here.
 
-**Why not cash-out the basis reduction immediately?** The §108(h)(1) basis reduction is mandatory and reduces the home's basis. Since Marcus no longer owns the home (foreclosed), the reduced basis informs the disposition analysis (smaller basis = smaller loss). For personal residences this only matters if there's gain (where §121 helps); for losses, the basis reduction means a smaller nondeductible loss.
+**Why no Line 10b basis reduction?** The Form 982 instructions and Pub. 4681 call for the Line 10b reduction only if the filer continues to own the home after the discharge. The Chens lost the home in the same foreclosure, so there is nothing to reduce. If a lender had instead reduced the principal through a loan modification and they kept the home, Line 10b would reduce its basis.
 
 **Why is the loss nondeductible?** IRC §165(c) limits individual loss deductions to losses incurred in a trade or business, transactions for profit, or casualty/theft. Sale of a personal residence at a loss is none of these.
 
-**Why test insolvency at all if QPRI fully covers?** Two reasons: (1) audit defense — documenting that insolvency was tested shows complete analysis; (2) backup — if QPRI's year-status is later challenged or rules change retroactively, having the insolvency test on file is useful. For 2025 with QPRI confirmed in effect, the test is belt-and-suspenders.
+**Why test insolvency at all if QPRI fully covers?** Two reasons: (1) audit defense — documenting that insolvency was tested shows complete analysis; (2) the filer can elect insolvency (box 1b) instead of QPRI if it is better (§108(a)(2)(C)). Here he isn't insolvent, so QPRI is the path.
 
-**What if §108(a)(1)(E) had lapsed?** Insolvency would not have helped (Marcus not insolvent). Marcus would owe tax on the full $75,000 ($18,000 federal at 24%). This is exactly why year-status verification matters — extension delays can produce real tax exposure for foreclosure borrowers.
+**What if the foreclosure had happened in 2026?** §108(a)(1)(E) would not apply unless the discharge was under a written arrangement entered into before Jan. 1, 2026. Insolvency would not have helped (Marcus not insolvent). Marcus would owe tax on the full $75,000 (about $18,000 federal at 24%).
 
 **What if the loan had been nonrecourse (Box 5 = No)?** No separate cancellation income. The full $385,000 outstanding balance would be the amount realized in the disposition, producing a $50,000 nondeductible loss ($385,000 − $435,000 basis). §108 would not apply at all; Form 982 would not be needed.
 
-**What if Marcus had a HELOC for non-housing purposes?** That portion would not qualify for §108(a)(1)(E). Allocate canceled debt between QPRI (excluded) and non-QPRI (test insolvency or report as income). See Pub 4681 Worksheet 1.
+**What if Marcus had a HELOC for non-housing purposes?** That part would not be QPRI, and under the ordering rule (§108(h)(4)) the canceled amount is applied first to the nonqualified part; only the excess is excludable under §108(a)(1)(E). Test insolvency for the rest or report it as income. See Pub. 4681, QPRI Example 3.

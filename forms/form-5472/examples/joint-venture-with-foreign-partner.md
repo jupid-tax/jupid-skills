@@ -11,7 +11,7 @@ The 40% foreign ownership is enough to trigger Form 5472 — not just 50%+. Many
 - **Date incorporated**: 04/12/2023
 - **Tax year**: 2025 (filing in 2026); calendar year
 - **State of organization**: Delaware
-- **Business activity**: B2B SaaS for logistics fleet management; NAICS 511210
+- **Business activity**: B2B SaaS for logistics fleet management; Form 1120 principal business activity code 513210 (Software Publishers, Instructions for Form 1120 (2025) code list)
 - **Total assets at 12/31/2025**: $4,200,000 (book value)
 - **Total US-source gross income for 2025**: $6,800,000
 
@@ -56,8 +56,8 @@ Year-end intercompany A/P to Maple Tech at 12/31/2025: $115,000 (royalty Q4 unpa
 
 NorthCoast's related parties for 2025:
 
-1. **Maple Tech Holdings Inc.** — direct 40% foreign shareholder
-2. **Marc Tremblay** — sole shareholder of Maple Tech; under §318 / §6038A constructive ownership rules, Marc indirectly owns 40% of NorthCoast through Maple Tech. Did Marc himself transact with NorthCoast in 2025?
+1. **Maple Tech Holdings Inc.** — direct 40% foreign shareholder (Part II lines 4a–4e)
+2. **Marc Tremblay** — sole shareholder of Maple Tech; under the §318 constructive ownership rules as modified by §6038A(c)(5), Marc indirectly owns 40% of NorthCoast through Maple Tech, so he is listed in Part II lines 6a–6e as the ultimate indirect 25% foreign shareholder, with an attached explanation of the attribution. Did Marc himself transact with NorthCoast in 2025?
    - Marc serves on NorthCoast's board (uncompensated for 2025; director's fees waived per board resolution)
    - No direct loans, no direct payments → Marc as an INDIVIDUAL had zero reportable transactions with NorthCoast in 2025
    - No separate Form 5472 needed for Marc (no transactions)
@@ -70,31 +70,33 @@ If Marc's family trust had transacted with NorthCoast, a separate 5472 for the t
 
 ## Step 4 — Classify Part IV transactions
 
-Map 2025 flows to Part IV categories:
+Map 2025 flows to the Form 5472 (Rev. December 2023) lines; the received block is lines 9–22, the paid block lines 23–36:
 
-| Part IV line | Category | Received from RP | Paid to RP |
-|--------------|----------|------------------|------------|
-| 8 | Sales of stock in trade (inventory) | $0 | $0 |
-| 9 | Sales of tangible property other than inventory | $0 | $0 |
-| 10 | Platform contribution | $0 | $0 |
-| 11 | Cost-sharing arrangement | $0 | $0 |
-| 12 | Rents and royalties | $0 | $544,000 |
-| 13 | Sales of intangible property | $24,000 | $0 |
-| 14 | Use of property (equipment lease from Maple Tech) | $0 | $96,000 |
-| 15 | Commissions | $0 | $0 |
-| 16 | Amounts borrowed during year | n/a | $0 |
-| 17 | Amounts loaned during year | $0 | n/a |
-| 18 | Interest | $0 | $18,000 |
-| 19 | Premiums received/paid | $0 | $0 |
-| 20 | Other amounts (engineering services + reimbursements) | $0 | $720,000 |
+| Line | Category | Amount |
+|------|----------|--------|
+| 14 | Sales, leases, licenses, etc., of intangible property rights — received (playbooks licensed to Maple Tech) | $24,000 |
+| 17a | Amounts borrowed — beginning balance | $300,000 |
+| 17b | Amounts borrowed — ending balance | $200,000 |
+| 22 | Total received (lines 9–21) | $224,000 |
+| 27a | Rents paid (for other than intangible property rights) — equipment lease | $96,000 |
+| 28 | Purchases, leases, licenses, etc., of intangible property rights — paid (software IP and trademark royalty) | $544,000 |
+| 29 | Consideration paid for technical, managerial, engineering ... services | $720,000 |
+| 32 | Interest paid | $18,000 |
+| 36 | Total paid (lines 23–35) | $1,378,000 |
 
-**Royalties on Line 12**: $544,000 paid to Maple Tech for trademark + software IP licensed. The royalty is calculated as 8% of subscription revenue per a 2023 license agreement.
+All other lines are $0.
 
-**Equipment lease on Line 14 ("Use of property")**: $96,000 paid for the Toronto data-center hardware Maple Tech owns and leases to NorthCoast. The lease is at arm's-length monthly rates supported by a third-party comparable colocation pricing study.
+**Royalty on line 28**: $544,000 paid to Maple Tech for trademark + software IP licensed, calculated as 8% of subscription revenue per a 2023 license agreement. Line 27b ("royalties paid for other than intangible property rights") does not fit: this royalty is for intangible property rights.
 
-**Engineering services on Line 20**: $720,000 paid for Canadian engineers seconded to NorthCoast under a master services agreement. Cost-plus 8% per §1.482-9. Not a Line 14 (use of property) item — services are personal effort, not property use.
+**Equipment lease on line 27a**: $96,000 paid for the Toronto data-center hardware Maple Tech owns and leases to NorthCoast, at arm's-length monthly rates supported by a third-party comparable colocation pricing study.
 
-**Sales of intangibles (Line 13)**: $24,000 received from Maple Tech for customer-success playbooks NorthCoast developed and licensed back. Small but reportable.
+**Engineering services on line 29**: $720,000 paid for Canadian engineers seconded to NorthCoast under a master services agreement. Cost-plus 8% per §1.482-9.
+
+**License of playbooks on line 14**: $24,000 received from Maple Tech for customer-success playbooks NorthCoast developed and licensed to it. Small but reportable.
+
+**Loan on lines 17a/17b**: the outstanding balance method reports the beginning and ending balances; the $100,000 repayment has no line of its own. The form puts 17b in the amount column, so the plain reading includes it in line 22 (state this convention in the draft and confirm it with the preparer).
+
+**Interest on line 32**: NorthCoast's average annual gross receipts are under the 2025 §448(c) threshold of $31,000,000 (Rev. Proc. 2024-40 §2.31), so §163(j) does not limit the deduction and the full $18,000 is reported (Instructions for Form 5472, Line 32).
 
 ## Step 5 — Loan balance reconciliation
 
@@ -133,135 +135,135 @@ A specific TP risk to flag: **the 8% royalty + 8% cost-plus services + lease + i
 ```markdown
 # Form 5472 — DRAFT for tax year 2025
 ## (Form 5472 #1 of 1 for NorthCoast Software Inc.)
+Form revision: Form 5472 (Rev. December 2023); Instructions (Rev. December 2024)
+Tax year: beginning 01/01/2025, ending 12/31/2025
 
-## Reporting corporation identity (Part I)
-1a. Name of reporting corporation: NorthCoast Software Inc.
+## Part I — Reporting corporation
+1a. Name and address: NorthCoast Software Inc., 500 Howard St #800, San Francisco, CA 94105
 1b. EIN: 87-XXXXXXX
-1c. Address: 1209 N Orange St, Wilmington, DE 19801 (registered) / 500 Howard St #800, San Francisco, CA 94105 (operations)
-1d. Total assets (book value at year-end): $4,200,000
-1e. Principal business activity / NAICS: Software publishers, 511210
-1f. Total US-source gross income: $6,800,000
-1g. Total payments / receipts in reportable transactions: $1,402,000
-1h. Country(ies) where return also filed: None (US-only filing for NorthCoast)
-1i. Type of reporting corporation:
-    [x] Type 1 — US C-corp, 25% foreign-owned
-    [ ] Type 2 — Foreign corp engaged in US trade/business
-    [ ] Type 3 — Foreign-owned US disregarded entity
+1c. Total assets: $4,200,000 (Form 1120 Schedule L, line 15, column (d))
+1d. Principal business activity: Software publishers
+1e. Principal business activity code: 513210
+1f. Total value of gross payments on this form: $1,602,000 (line 22 $224,000 + line 36 $1,378,000; includes the line 17b balance — convention confirmed with preparer)
+1g. Total number of Forms 5472 filed: 1
+1h. Total value on all Forms 5472: $1,602,000
+1i. Consolidated filing: [ ]
+1j. Initial year: [ ] (first filed for 2023)
+1k. Number of Parts VIII: 0
+1l. Country of incorporation: United States
+1m. Date of incorporation: 04/12/2023
+1n. Country(ies) where it files an income tax return as a resident: United States
+1o. Principal country(ies) where business is conducted: United States
+2.  Foreign person owned ≥ 50% at any time: [ ] (Maple Tech 40%)
+3.  Foreign-owned U.S. DE: [ ]
 
-## Related party (Part II)
-2a. Name: Maple Tech Holdings Inc.
-2b. Address: 100 King St W, Suite 5300, Toronto, ON M5X 1C7, Canada
-2c. Country: Canada
-2d. US ID # (if any): None
-2e. Foreign ID # / reference ID: Canadian Business Number (BN) XXXXXXXXX RC0001
-2f. Principal country where business conducted: Canada
-2g. Ownership percentage: 40% direct | 0% indirect | 40% total
-2h. Principal business activity of related party: Holding company; original developer of NorthCoast software platform IP
+## Part II — 25% foreign shareholders
+Surrogate foreign corporation box: [ ]
+4a. Maple Tech Holdings Inc., 100 King St W, Suite 5300, Toronto, ON M5X 1C7, Canada
+4b(1) U.S. ID: (none)  4b(2) Reference ID: MAPLETECH01  4b(3) FTIN: Canadian Business Number XXXXXXXXX
+4c. Principal country of business: Canada  4d. Country of incorporation: Canada  4e. Tax residence: Canada
+5a–5e. None
+6a. Marc Tremblay, <home address>, Toronto, ON, Canada (ultimate indirect 25% foreign shareholder; 40% through Maple Tech — attribution statement attached)
+6b(1) U.S. ID: (none)  6b(2) Reference ID: MTREMBLAY01  6b(3) FTIN: Canadian SIN XXXXXXXXX
+6c. Principal country of business: Canada  6d. Citizenship: Canada  6e. Tax residence: Canada
+7a–7e. None
 
-## Direct vs indirect ownership (Part III)
-N/A — Maple Tech is the direct 40% shareholder. (Marc Tremblay, the ultimate individual owner of Maple Tech, has no separate transactions with NorthCoast in 2025; constructive ownership disclosed informationally but no separate 5472 required.)
+## Part III — Related party
+[x] foreign person  [ ] U.S. person
+8a. Maple Tech Holdings Inc., 100 King St W, Suite 5300, Toronto, ON M5X 1C7, Canada
+8b(1) U.S. ID: (none)  8b(2) Reference ID: MAPLETECH01  8b(3) FTIN: Canadian Business Number XXXXXXXXX
+8c. Principal business activity: Holding company  8d. Code: 551112
+8e. Relationship: [x] 25% foreign shareholder
+8f. Principal country of business: Canada  8g. Tax residence: Canada
 
 ## Part IV — Monetary transactions
-| Line | Category                                        | Received from RP | Paid to RP |
-|------|-------------------------------------------------|------------------|------------|
-| 8    | Sales of stock in trade (inventory)             | $0               | $0         |
-| 9    | Sales of tangible property                      | $0               | $0         |
-| 10   | Platform contribution                           | $0               | $0         |
-| 11   | Cost-sharing arrangement                        | $0               | $0         |
-| 12   | Rents and royalties                             | $0               | $544,000   |
-| 13   | Sales of intangible property (playbooks)        | $24,000          | $0         |
-| 14   | Use of property (equipment lease)               | $0               | $96,000    |
-| 15   | Commissions                                     | $0               | $0         |
-| 16   | Amounts borrowed during year                    | n/a              | $0         |
-| 17   | Amounts loaned during year                      | $0               | n/a        |
-| 18   | Interest                                        | $0               | $18,000    |
-| 19   | Premiums received/paid                          | $0               | $0         |
-| 20   | Other amounts (engineering services)            | $0               | $720,000   |
+Estimates used: [ ]
+| Line | Item | Amount |
+|------|------|--------|
+| 9–13b | Inventory, tangible property, platform contribution, cost sharing, rents, other royalties received | $0 |
+| 14 | Licenses of intangible property rights — received (playbooks) | $24,000 |
+| 15–16 | Services, commissions received | $0 |
+| 17a | Amounts borrowed — beginning balance | $300,000 |
+| 17b | Amounts borrowed — ending balance | $200,000 |
+| 18–21 | Interest, premiums, guarantee fees, other received | $0 |
+| 22 | Total received | $224,000 |
+| 23–26 | Inventory, tangible property, platform contribution, cost sharing paid | $0 |
+| 27a | Rents paid (equipment lease) | $96,000 |
+| 27b | Royalties paid (other than intangible property rights) | $0 |
+| 28 | Licenses of intangible property rights — paid (software IP and trademark royalty) | $544,000 |
+| 29 | Consideration paid for engineering services | $720,000 |
+| 30 | Commissions paid | $0 |
+| 31a/31b | Amounts loaned | $0 |
+| 32 | Interest paid (not limited by §163(j)) | $18,000 |
+| 33–35 | Premiums, guarantee fees, other paid | $0 |
+| 36 | Total paid | $1,378,000 |
 
-## Part V — Type 3 DE reportable transactions
-N/A — NorthCoast is Type 1, not Type 3.
+## Part V — Foreign-owned U.S. DE transactions
+Not applicable (box not checked).
 
-## Part VI — Nonmonetary / less-than-FMV transactions
-N/A for 2025 — original 2023 IP contribution at formation was reported in 2023's Form 5472. No nonmonetary transactions in 2025.
+## Part VI — Nonmonetary / less-than-full-consideration transactions
+Box not checked for 2025. (The 2023 contribution of IP for stock was reported on the 2023 Form 5472.)
 
 ## Part VII — Additional information
-- Yes/No items completed per current-year instructions
-- Key item: yes, transfer-pricing documentation (§6662(e)) maintained for all categories above
-- Marc Tremblay disclosed as ultimate individual owner of Maple Tech for constructive-ownership transparency
+37. Imports goods from a foreign related party: No (leased hardware stays in Toronto)
+39. Foreign parent in a CSA: No
+40a. §267A disallowed interest or royalty: No (confirmed with CPA)
+41a. FDII deduction: No
+42a. Loan within the 100%–130% AFR safe-haven range: No
+42b. Loan outside that range: Yes (CPA determination; arm's-length benchmark on file)
+43a. §385 covered debt instrument / related distribution or acquisition: No (confirmed with CPA)
 
-## Part VIII — Cost-sharing arrangement
-N/A — no formal CSA between NorthCoast and Maple Tech. The royalty + services structure intentionally avoids CSA mechanics (which would require platform contribution allocations under §1.482-7).
+## Part VIII — Cost sharing arrangement
+N/A (line 1k = 0). No CSA between NorthCoast and Maple Tech.
 
-## Part IX — Base Erosion Payments (BEAT)
-N/A — average annual gross receipts ($6.8M in 2025; similar prior years) are far below the §59A $500M threshold.
-
-## Loan balance reconciliation (supporting Part IV Lines 16-18)
-
-| Item | Amount |
-|------|--------|
-| Opening principal balance (1/1/2025) | $300,000 |
-| + New advances during year | $0 |
-| - Repayments during year | $100,000 |
-| Closing principal balance (12/31/2025) | $200,000 |
-| Interest paid during 2025 | $18,000 |
-| Average outstanding balance | $250,000 |
-| Implied rate | ~7.2% |
+## Part IX — Base erosion payments
+Not an applicable taxpayer under §59A (average annual gross receipts far below $500 million); lines 50–52 left blank on the CPA's instruction.
 
 ## Currency translation
-Source: USD functional currency. CAD-denominated invoices from Maple Tech translated at spot rate on invoice date per ASC 830. Intercompany loan is USD-denominated (no translation). FX gain/loss recorded in book income statement outside Form 5472 scope.
+USD functional currency. CAD invoices from Maple Tech translated at the spot rate on invoice date; schedule of exchange rates used attached (Instructions for Form 5472, Part IV). Loan is USD-denominated.
 
 ## Required attachments / coordination
-- [x] Attached to Form 1120
-- [x] Schedule M-3 reconciliation includes intercompany items
-- [x] Royalty license agreement (2023, Maple Tech ↔ NorthCoast) on file
-- [x] Master services agreement (engineering secondment) on file
-- [x] Equipment lease agreement (Toronto colo hardware) on file
-- [x] Intercompany loan agreement (2024-09-01) on file
-- [x] §6662(e) contemporaneous transfer-pricing study (2024) + 2025 update memo
-- [ ] Form 8975 (CbC report) — N/A; group revenue under €750M
-- [ ] Form 5471 — N/A (NorthCoast does not own a foreign sub)
+- [x] Part of the Form 1120 return
+- [x] Attribution statement for Marc Tremblay (Part II line 6a)
+- [x] Exchange-rate schedule
+- [x] Schedule M-1 (total assets under $10 million, so Schedule M-3 is not required — Instructions for Form 1120)
+- [x] Royalty license, master services, equipment lease, and loan agreements on file
+- [x] §6662(e) transfer-pricing documentation (2024 study + 2025 update memo)
+- [ ] Form 8975 (country-by-country report) — N/A: filed only by the U.S. ultimate parent of a U.S. MNE group with revenue of $850 million or more (Instructions for Form 8975)
+- [ ] Form 5471 — N/A (NorthCoast owns no foreign corporation)
 
 ## Filing channel
-Form 1120 with Form 5472 attached is e-filed via standard corporate e-file procedures.
+Form 5472 is part of the Form 1120 return and is e-filed with it.
 
 Due date: April 15, 2026 (15th day of 4th month after end of calendar tax year). Extendable 6 months via Form 7004 → October 15, 2026.
 
 ## Validation summary
-- Math: all checks passed
-  - Part IV totals: $24,000 received + $1,378,000 paid ✓
-  - Part I Line 1g = $1,402,000 (gross flows in both directions, summed) ✓
-  - Loan balance: $300,000 - $100,000 = $200,000 ✓
+- Math (python, /tmp/jupid-skills-work/calc/g4-5472-northcoast.py):
+  - Line 22 = $24,000 + $200,000 = $224,000 ✓
+  - Line 36 = $96,000 + $544,000 + $720,000 + $18,000 = $1,378,000 ✓
+  - Line 1f = $224,000 + $1,378,000 = $1,602,000 ✓; 1h = 1f (one form) ✓
+  - Loan: $300,000 − $100,000 = $200,000 = line 17b ✓
   - Royalty rate: $544,000 / $6,800,000 = 8.0% — matches 2023 license agreement ✓
 - Sanity:
-  - Interest rate ~7.2% — within reasonable range for arm's-length intercompany USD lending; AFR + 200bp spread documented
-  - Aggregate cross-border outflows to Maple Tech ($1,378K) ≈ 20% of US revenue — high; ensure cumulative-effect TP analysis is in documentation
-  - Sale of customer-success playbooks (intangible) on Line 13 received $24K — small, but reported correctly (no de minimis)
-  - Royalty on Line 12 (rents AND royalties) — confirm against current-year instructions whether royalties have a dedicated line or share with rents
-  - HarborCap (US 60% shareholder) correctly excluded from 5472 (US owners do not trigger 5472 reporting)
-  - Marc Tremblay as constructive 40% owner: no separate 5472 (no transactions); constructive ownership disclosed in Part VII
+  - Interest ~7.2% on the $250,000 average balance; outside the AFR safe haven, so the benchmark carries the support
+  - Aggregate paid to Maple Tech ($1,378K) ≈ 20.3% of US revenue — ensure the documentation covers the cumulative effect
+  - License of playbooks on line 14 — small, but reported (no de minimis; "$50,000 or less" is only a way to report small amounts)
+  - HarborCap (US 60% shareholder) not a 25% foreign shareholder; Marc Tremblay listed in Part II line 6a, no separate Form 5472 (no transactions with him)
 - Cross-form: Form 1120 Schedule L intercompany A/P at 12/31/2025 = $115,000 reconciles to general ledger
-- Penalty exposure if missed: $25,000 statutory minimum per §6038A(d)(1) per related party
+- Penalty exposure if missed: $25,000 per related party per year (§6038A(d)(1))
 - Next steps:
-  - Refresh §482 transfer-pricing study annually (NorthCoast is growing; rate benchmarks may shift)
-  - Confirm Q1 2026 the cumulative-effect TP analysis adequately defends 20% aggregate outflow
-  - Prepare Form 1120 + 5472 e-file package by April 15, 2026 (or extend via Form 7004)
+  - Refresh §482 transfer-pricing study annually
+  - Confirm the cumulative-effect analysis supports the ~20% aggregate outflow
+  - File Form 1120 + 5472 by April 15, 2026 (or extend via Form 7004)
 
 ## Sources cited in this draft
-- IRS Form 5472, latest revision
-- IRS Instructions for Form 5472, latest revision
-- IRS Form 1120 and instructions, latest revision
-- IRC §6038A (information returns by 25%-foreign-owned corporations)
-- IRC §6038A(d) ($25,000 statutory minimum penalty)
-- IRC §318 (constructive ownership)
-- IRC §482 (allocation of income among controlled taxpayers)
-- IRC §6662(e) (transfer-pricing penalty / contemporaneous documentation)
-- IRC §59A (BEAT — confirmed not applicable)
-- Treas. Reg. §1.482-1 through §1.482-9
-- Treas. Reg. §1.482-7 (cost-sharing arrangements — confirmed CSA not used)
-- NorthCoast / Maple Tech royalty license agreement (2023) on file
-- NorthCoast / Maple Tech master services agreement on file
-- NorthCoast / Maple Tech intercompany loan agreement (2024-09-01) on file
-- 2024 transfer-pricing study + 2025 update memo on file
+- IRS Form 5472 (Rev. December 2023) and Instructions (Rev. December 2024)
+- 2025 Form 1120 and Instructions (principal business activity codes; Schedule M-3 threshold)
+- IRC §6038A, §6038A(c)(5), §6038A(d), §318, §482, §6662(e), §163(j), §448(c), §59A
+- Rev. Proc. 2024-40 §2.31 (2025 §448(c) threshold $31,000,000)
+- Treas. Reg. §1.482-1 through §1.482-9; §1.482-2(a)(2)(iii)(B) (AFR safe haven)
+- Instructions for Form 8975 ($850 million threshold)
+- NorthCoast / Maple Tech royalty license (2023), master services agreement, loan agreement (2024-09-01), 2024 TP study + 2025 memo (on file)
 ```
 
 ## Why each non-obvious choice
@@ -270,20 +272,20 @@ Due date: April 15, 2026 (15th day of 4th month after end of calendar tax year).
 
 **Why is the 60% US shareholder (HarborCap) irrelevant for 5472?** Form 5472 is a foreign-owner information return. Only foreign 25%+ shareholders generate 5472 obligations. US shareholders, regardless of percentage, do not. HarborCap's 60% does not produce a 5472 even though it dwarfs Maple Tech's 40%.
 
-**Why is one Form 5472 sufficient even though Marc Tremblay is a constructive 40% owner?** §6038A requires a separate 5472 per related party with reportable transactions. Maple Tech (the direct shareholder) had transactions in 2025 → 5472 for Maple Tech. Marc (constructive owner via §318) had ZERO transactions with NorthCoast in 2025 → no 5472 for Marc. If Marc had received $1 of compensation, lent $1, or done any other reportable transaction, a separate 5472 for him would be required.
+**Why is one Form 5472 sufficient even though Marc Tremblay is a constructive 40% owner?** A separate 5472 is filed per related party with reportable transactions (Instructions for Form 5472, Line 1g). Maple Tech (the direct shareholder) had transactions in 2025 → 5472 for Maple Tech. Marc had no transactions with NorthCoast in 2025 → no 5472 for Marc, but he still appears in Part II lines 6a–6e as the ultimate indirect 25% foreign shareholder. If Marc had received compensation, lent money, or had any other reportable transaction, a separate 5472 naming him in Part III would be required.
 
-**Why are royalties and equipment lease on different lines?** §1.482-9 (services) vs. §1.482-3 (tangible property) vs. §1.482-4 (intangible property) are distinct transfer-pricing regimes. Form 5472 follows the same distinction — Line 12 is royalties (intangible property licensing); Line 14 is "use of property" (tangible property leasing); Line 20 is "other amounts" (catches services and reimbursements). Misclassifying services as royalties (or vice versa) creates §482 documentation problems.
+**Why are royalties, equipment lease, and services on different lines?** §1.482-9 (services) vs. §1.482-2(c) (use of tangible property) vs. §1.482-4 (intangible property) are distinct transfer-pricing regimes, and Form 5472 follows a similar split: line 28 for licenses of intangible property rights, line 27a for rents for other than intangible property rights, line 29 for technical, managerial, engineering and like services. Misclassifying services as royalties (or vice versa) creates §482 documentation problems.
 
 **Why is the cumulative TP burden a flag?** When intercompany outflows hit ~20% of revenue, the IRS focus shifts from per-transaction reasonableness to the aggregate result. Even if each individual rate is defensible, the cumulative effect can leave the US reporting corp with abnormally low margins. Documentation should explicitly defend the OVERALL pricing — typically via a transactional net margin method (TNMM / CPM) check that compares NorthCoast's net margin to comparable independent US SaaS companies.
 
-**Why no Form 8975 (CbC report)?** §6038(g) and Treas. Reg. §1.6038-4 require country-by-country reporting only for multinational groups with consolidated revenue ≥ €750M (~$850M). NorthCoast is far below; no 8975. Maple Tech's Canadian filings may have a Canadian CbC equivalent, but that is Canadian, not US.
+**Why no Form 8975 (CbC report)?** Treas. Reg. §1.6038-4 requires Form 8975 only from the U.S. ultimate parent entity of a U.S. multinational enterprise group with revenue of $850 million or more in the preceding reporting period (Instructions for Form 8975). NorthCoast is neither; no 8975.
 
-**What if the Canadian shareholder were a Canadian individual (not a holding company)?** A Canadian individual at 40% direct ownership is also a foreign related party under §6038A. The 5472 would have Marc personally as the Part II shareholder (with his Canadian SIN as foreign reference ID, no US ID). Same Part IV transactions, same $25,000 penalty for missed filing.
+**What if the Canadian shareholder were a Canadian individual (not a holding company)?** A Canadian individual at 40% direct ownership is also a 25% foreign shareholder and related party under §6038A. The 5472 would show Marc personally on Part II line 4a and in Part III, with his Canadian SIN as the FTIN on 4b(3)/8b(3), a corporation-assigned reference ID on 4b(2)/8b(2), and no U.S. ID. Same Part IV transactions, same $25,000 penalty for a missed filing.
 
-**What if the JV had been formed as an LLC taxed as a partnership instead of a C-corp?** Form 5472 would NOT apply (it's only for corporations). Instead, the partnership would file Form 8865 with respect to the foreign partner (and the foreign partner would face their own partnership filings). Different regime, different forms, similar information goal.
+**What if the JV had been formed as an LLC taxed as a partnership instead of a C-corp?** Form 5472 would not apply (it covers corporations and foreign-owned DEs). Form 8865 would not apply either: it is for U.S. persons with interests in foreign partnerships. A U.S. partnership with a foreign partner deals with §1446 withholding on effectively connected income allocable to that partner (Forms 8804, 8805, 8813) and reports to the partner on Schedule K-1 (and K-3). Different regime, different forms; route to a practitioner.
 
 **What documentation does NorthCoast retain?**
-1. Form 1120 + 5472 e-file confirmation
+1. Form 1120 (with Form 5472) e-file acknowledgment
 2. Cap table snapshot showing Maple Tech's 40% as of 12/31/2025
 3. 2023 royalty license agreement and 2025 royalty calculations
 4. Master services agreement and 2025 services billing detail
@@ -291,6 +293,6 @@ Due date: April 15, 2026 (15th day of 4th month after end of calendar tax year).
 6. Intercompany loan agreement, amortization schedule, interest calculations
 7. 2024 transfer-pricing study + 2025 update memo
 8. CAD/USD spot rates used for invoice translation
-9. Schedule M-3 reconciliation showing all intercompany items
+9. Schedule M-1 reconciliation and the general-ledger detail for all intercompany items
 
-Retain at least 6 years given §482 audit cycle and statute extensions for transfer-pricing matters.
+Keep the records as long as they may be relevant or material to the §6038A transactions, and never less than the assessment period (Treas. Reg. §1.6038A-3(g)).

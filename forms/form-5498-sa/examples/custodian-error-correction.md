@@ -9,7 +9,7 @@ David, 51, self-only HDHP. Custodian double-counted a transfer. Corrected 5498-S
 - **David**, age 51, IT consultant operating as a single-member LLC
 - Self-only HDHP via individual marketplace
 - HSA at HealthEquity since 2020
-- Catch-up contribution eligible (age 55+ rule does NOT apply yet — David is 51)
+- Not catch-up eligible (the $1,000 additional contribution starts at age 55; David is 51)
 - For tax year 2025:
   - $4,300 contribution limit (self-only)
   - David contributed exactly $4,300 in three direct ACH transfers
@@ -63,7 +63,7 @@ Form 5498-SA Box 2:                            $5,150
 Discrepancy:                                  +$850
 ```
 
-If the 5498-SA is correct, David has an **excess contribution** of $850 ($5,150 received vs. $4,300 limit). The 6% excise tax would apply unless he withdraws the excess plus earnings by the extended October 15, 2026 deadline.
+If the 5498-SA is correct, David has an **excess contribution** of $850 ($5,150 received vs. $4,300 limit). Because he filed on time without an extension, the 6% excise tax would apply unless he withdraws the excess plus earnings within 6 months of the April 15, 2026 due date (by October 15, 2026) and files an amended return marked "Filed pursuant to section 301.9100-2" (2025 Instructions for Form 8889, Line 13).
 
 But David's bank records show only $4,300 in direct contributions. Where did the extra $850 come from?
 
@@ -144,8 +144,8 @@ The original Form 8889 was correct. No Form 1040-X is needed. David files both 5
 | Box | Label                         | Value     |
 |-----|-------------------------------|-----------|
 | 1   | Archer MSA contributions      | $0        |
-| 2   | Total contributions (cal yr)  | $4,300    |
-| 3   | Prior-year contributions      | $0        |
+| 2   | Total contributions made in yr| $4,300    |
+| 3   | Made next year for this year  | $0        |
 | 4   | Rollover contributions        | $0        |
 | 5   | Year-end FMV                  | $25,550   |
 | 6   | Account type                  | HSA       |
@@ -186,4 +186,4 @@ The original Form 8889 was correct. No Form 1040-X is needed. David files both 5
 - When the custodian made the error, the fix is a **CORRECTED 5498-SA** — not a Form 1040-X
 - The CORRECTED form supersedes the original; the IRS receives the corrected version directly
 - Document the custodian ticket number, the date of the call, and the dates of both 5498-SAs in your tax records
-- Time matters: contact the custodian within 30 days of receiving an erroneous 5498-SA to ensure the correction is processed before any IRS notice goes out
+- Time matters: contact the custodian promptly after receiving an erroneous 5498-SA so the corrected form reaches the IRS before any notice goes out

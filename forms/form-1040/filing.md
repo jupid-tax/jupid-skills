@@ -2,32 +2,28 @@
 
 How an agent equipped with browser tooling (Playwright, Puppeteer, Selenium, or a hosted browser like Browserbase) can take a completed Form 1040 draft and actually file it. This file describes deterministic flows the agent can follow; it's complementary to `SKILL.md`, which produces the draft.
 
-The agent must produce a complete `SKILL.md`-format draft *first*, including every required schedule (Schedule 1, 2, 3, plus form-specific schedules), then pick a filing channel from the decision tree below, then execute the channel-specific steps.
+The agent must produce a complete `SKILL.md`-format draft *first*, including every required schedule (Schedule 1, 1-A, 2, 3, plus form-specific schedules), then pick a filing channel from the decision tree below, then execute the channel-specific steps. Line numbers below follow the 2025 Form 1040 (filed in 2026); re-check them on the next revision (https://www.irs.gov/forms-pubs/about-form-1040).
 
 ---
 
 ## Channel decision tree
 
-The user picks the channel. If they don't know, default to **IRS Free File Fillable Forms (FFFF)** — it's the canonical "fill out the form online" option directly with the IRS, free, and the field labels match the paper form 1:1.
+The user picks the channel. If they don't know, present the options below and ask. **IRS Free File Fillable Forms (FFFF)** is the IRS's own "fill out the form online" option: free, and the field labels follow the paper form.
+
+IRS Direct File was not offered in the 2026 filing season (it is not among the free options on the IRS Free File page, and https://www.irs.gov/filing/irs-direct-file returned a 404 on 2026-10-06). Do not offer it.
 
 ```
-User has AGI ≤ ~$84,000 and wants free guided software?
-  → IRS Free File (Free File Alliance partners)
-    Verify the 2026 AGI threshold at https://www.irs.gov/filing/free-file-do-your-federal-taxes-for-free
-    Browser automation: provider-specific (TaxAct Free, FreeTaxUSA, etc.)
+User has AGI of $89,000 or less and wants free guided software?
+  → IRS Free File (partner software; age and state rules vary by offer)
+    Limit for the 2026 filing season: AGI $89,000 or less (https://www.irs.gov/e-file-do-your-taxes-for-free)
+    Browser automation: provider-specific.
     Skip — proprietary flows change too often for deterministic automation.
 
 User wants to fill the form directly themselves with no software help?
-  → IRS Free File Fillable Forms (FFFF)
+  → IRS Free File Fillable Forms (FFFF), any income level
+    Closes October 15, 2026 for 2025 returns.
     Browser automation: feasible, deterministic.
     Use Section 1 below.
-
-User has a simple return (W-2 only, no Schedule C, eligible state)?
-  → IRS Direct File
-    Verify the 2026 state list and supported scenarios at https://directfile.irs.gov
-    As of early 2026, Direct File does NOT support Schedule C self-employment.
-    Eligibility check is the first decision; if unsupported, redirect to FFFF or commercial software.
-    Use Section 4 below.
 
 User has already paid for tax software (TurboTax, H&R Block, FreeTaxUSA, TaxSlayer)?
   → That software's 1040 flow
@@ -46,9 +42,9 @@ User wants to file on paper?
 
 URL: https://www.irs.gov/e-file-providers/free-file-fillable-forms
 
-**Availability**: FFFF is open from late January through mid-October each year. Outside that window, it returns a "season closed" message and the agent must fall back to paper or wait.
+**Availability**: For 2025 returns FFFF "will close Oct. 15, 2026" (IRS FFFF page, reviewed 24-Sep-2026). After it closes, fall back to paper or commercial software. It prepares a current-year federal return only (no state return) and doesn't support every form; check the IRS "Forms and program limitations" list first.
 
-**Account model**: each tax year is a separate FFFF account. Returning users from prior years cannot reuse credentials — the agent must register fresh each year.
+**Account model**: create a new account for the current filing year, even if the user used the program before. Account creation needs an email address and a 10-digit U.S. cell phone number that can receive SMS. Use a desktop or laptop browser.
 
 ### Pre-flight
 
@@ -59,7 +55,7 @@ Agent must have:
 - Spouse's name, SSN, DOB if MFJ
 - The completed Form 1040 draft from `SKILL.md`
 - All required schedules already drafted (Schedule 1, 2, 3, A/B/C/D/E as needed, SE if applicable, Forms 8995, 8812, 2441, 8863, 8889 as needed)
-- An email address the user controls (FFFF sends confirmations)
+- An email address the user controls (FFFF sends confirmations) and a U.S. cell phone that receives SMS
 - An IP address the user is willing to file from (FFFF logs the submission IP)
 - Bank routing + account numbers if expecting a refund via direct deposit (collect at submission time, do not store)
 
@@ -78,7 +74,8 @@ The agent navigates and interacts deterministically. Stable selectors are listed
 
 | 1040 line | FFFF field label | Source (in draft) |
 |-----------|------------------|-------------------|
-| Filing status | Five radio buttons | Header |
+| Filing status | Five radio buttons (+ child's name for HOH/QSS; spouse's name for MFS; NRA-spouse election box) | Header |
+| Deceased / Combat zone / §301.9100-2 boxes | Top of page 1 | Header |
 | Your first name + MI | "Your first name and middle initial" | Header |
 | Your last name | "Last name" | Header |
 | Your SSN | "Your social security number" | Header |
@@ -89,11 +86,10 @@ The agent navigates and interacts deterministically. Stable selectors are listed
 | Apt | "Apt. no." | Header |
 | City, State, ZIP | "City, town, or post office" | Header |
 | Foreign country / province / postal code | (only if foreign address) | Header |
+| Main home in U.S. | "Check here if your main home ... was in the U.S. for more than half of 2025" | Header |
 | Presidential Election | "Check here if you... want $3 to go to this fund" | Header |
-| Digital assets | "At any time during 2025, did you..." Yes/No | Header |
-| Standard deduction boxes | "Someone can claim... You as a dependent" / spouse / dual-status | Header |
-| Age/blindness | "You: born before January 2, 1961 / Blind" + spouse equivalents | Header |
-| Dependents grid | "First name", "Last name", "SSN", "Relationship", "CTC", "ODC" per row | Header dependents table |
+| Digital assets | "At any time during 2025, did you: (a) receive ... or (b) sell, exchange, or otherwise dispose of a digital asset" Yes/No | Header |
+| Dependents grid | Rows (1) first name, (2) last name, (3) SSN, (4) relationship, (5)(a)/(b) lived with you / in the U.S., (6) full-time student / disabled, (7) CTC / ODC; "more than four" box; lived-apart box | Header dependents table |
 
 7. **Fill Page 1 — Income** — field-by-field:
 
@@ -113,22 +109,30 @@ The agent navigates and interacts deterministically. Stable selectors are listed
 | 2b | "Taxable interest" | Line 2b |
 | 3a | "Qualified dividends" | Line 3a |
 | 3b | "Ordinary dividends" | Line 3b |
+| 3c | (checkboxes: child's dividends included in 3a / 3b) | Line 3c |
 | 4a | "IRA distributions" | Line 4a |
 | 4b | "Taxable amount" | Line 4b |
+| 4c | (checkboxes: Rollover / QCD / other) | Line 4c |
 | 5a | "Pensions and annuities" | Line 5a |
 | 5b | "Taxable amount" | Line 5b |
+| 5c | (checkboxes: Rollover / PSO / other) | Line 5c |
 | 6a | "Social security benefits" | Line 6a |
 | 6b | "Taxable amount" | Line 6b |
 | 6c | (checkbox if lump-sum election) | Line 6c |
-| 7 | "Capital gain or (loss)" | Line 7 |
+| 6d | (checkbox: MFS and lived apart all year) | Line 6d |
+| 7a | "Capital gain or (loss)" | Line 7a |
+| 7b | (checkboxes: Schedule D not required / includes child's gain) | Line 7b |
 | 8 | "Additional income from Schedule 1, line 10" | Line 8 |
 | 9 | (auto-computed) | (verify) |
 | 10 | "Adjustments to income from Schedule 1, line 26" | Line 10 |
-| 11 | (auto-computed = AGI) | (verify) |
-| 12 | "Standard deduction or itemized deductions" | Line 12 |
-| 13 | "Qualified business income deduction" | Line 13 |
-| 14 | (auto-computed) | (verify) |
-| 15 | (auto-computed = taxable income) | (verify) |
+| 11a | (auto-computed = AGI) | (verify) |
+| 11b | (page 2 repeat of AGI) | (verify) |
+| 12a–12d | Dependent / spouse itemizes / dual-status / born before January 2, 1961 / blind checkboxes | Lines 12a–12d |
+| 12e | "Standard deduction or itemized deductions" | Line 12e |
+| 13a | "Qualified business income deduction" | Line 13a |
+| 13b | "Additional deductions from Schedule 1-A, line 38" | Line 13b |
+| 14 | (auto-computed = 12e + 13a + 13b) | (verify) |
+| 15 | (auto-computed = taxable income, 11b − 14) | (verify) |
 
 8. **Fill Page 2 — Tax, Credits, Payments**:
 
@@ -139,26 +143,30 @@ The agent navigates and interacts deterministically. Stable selectors are listed
 | 18 | (auto-computed) | (verify) |
 | 19 | "Child tax credit or credit for other dependents" | Line 19 |
 | 20 | "Amount from Schedule 3, line 8" | Line 20 |
-| 21 | (auto-computed, floored at 0) | (verify) |
-| 22 | "Other taxes, from Schedule 2, line 21" | Line 22 |
-| 23 | (auto-computed = total tax) | (verify) |
-| 25a | "Federal income tax withheld from Form W-2" | Line 25a |
+| 21 | (auto-computed = 19 + 20) | (verify) |
+| 22 | (auto-computed = 18 − 21, floored at 0) | (verify) |
+| 23 | "Other taxes, including self-employment tax, from Schedule 2, line 21" | Line 23 |
+| 24 | (auto-computed = total tax, 22 + 23) | (verify) |
+| 25a | "Federal income tax withheld from Form(s) W-2" | Line 25a |
 | 25b | "...Form(s) 1099" | Line 25b |
 | 25c | "Other forms" | Line 25c |
-| 26 | "2025 estimated tax payments..." | Line 26 |
-| 27 | "Earned income credit (EIC)" | Line 27 |
-| 28 | "Additional child tax credit from Schedule 8812" | Line 28 |
+| 25d | (auto-computed = 25a + 25b + 25c) | (verify) |
+| 26 | "2025 estimated tax payments..." (+ former spouse's SSN if applicable) | Line 26 |
+| 27a | "Earned income credit (EIC)" | Line 27a |
+| 27b / 27c | Clergy filing Schedule SE box / "do not want to claim the EIC" box | Lines 27b, 27c |
+| 28 | "Additional child tax credit (ACTC) from Schedule 8812" (+ decline box) | Line 28 |
 | 29 | "American opportunity credit from Form 8863, line 8" | Line 29 |
+| 30 | "Refundable adoption credit from Form 8839, line 13" | Line 30 |
 | 31 | "Amount from Schedule 3, line 15" | Line 31 |
-| 32 | (auto-computed) | (verify) |
-| 33 | (auto-computed = total payments) | (verify) |
-| 34 | "If line 33 is more than line 23, subtract line 23 from line 33" | Line 34 |
+| 32 | (auto-computed = 27a + 28 + 29 + 30 + 31) | (verify) |
+| 33 | (auto-computed = total payments, 25d + 26 + 32) | (verify) |
+| 34 | "If line 33 is more than line 24, subtract line 24 from line 33" | Line 34 |
 | 35a | "Amount of line 34 you want refunded to you" | Line 35a |
 | 35b | "Routing number" | (collected at filing time) |
 | 35c | (Checking / Savings radio) | (collected at filing time) |
 | 35d | "Account number" | (collected at filing time) |
 | 36 | "Amount of line 34 you want applied to your 2026 estimated tax" | Line 36 |
-| 37 | "Subtract line 33 from line 23. This is the amount you owe" | Line 37 |
+| 37 | "Subtract line 33 from line 24. This is the amount you owe" | Line 37 |
 | 38 | "Estimated tax penalty" | Line 38 |
 
    The agent fills each labeled field from the draft. After each field, capture a screenshot for the user's records.
@@ -171,8 +179,8 @@ The agent navigates and interacts deterministically. Stable selectors are listed
 
 10. **Run FFFF's "Check Form" / "Verify" tool** — it flags math errors and missing required fields. Resolve every flag before submission. Pay special attention to:
     - Cross-form math (Schedule C Line 31 → Schedule 1 Line 3 → 1040 Line 8)
-    - SE tax flow (Schedule SE → Schedule 2 Line 4 → 1040 Line 22)
-    - QBI flow (Form 8995 Line 15 → 1040 Line 13)
+    - SE tax flow (Schedule SE → Schedule 2 Line 4 → Schedule 2 Line 21 → 1040 Line 23)
+    - QBI flow (Form 8995 Line 15 → 1040 Line 13a); Schedule 1-A Line 38 → 1040 Line 13b
     - CTC flow (Schedule 8812 Line 14 → 1040 Line 19; Line 27 → 1040 Line 28)
 
 11. **Cross-check** every auto-computed field on 1040 against the draft. If FFFF's number disagrees with the draft, **stop**; one of the two is wrong. Don't override blindly.
@@ -186,11 +194,12 @@ The agent navigates and interacts deterministically. Stable selectors are listed
 
 14. **Capture the submission ID** that FFFF displays. Save the screenshot.
 
-15. **Wait 24–48 hours**, then log back in to confirm IRS acceptance. FFFF emails an acceptance or rejection notice. On rejection, read the rejection code and fix:
-    - **R0000-194** — duplicate SSN (someone else filed using this SSN; possible identity theft)
-    - **R0000-902** — taxpayer info doesn't match SSA records (often a name mismatch)
-    - **IND-031-04** — prior-year AGI doesn't match IRS records
-    - **F1040-525** — dependent SSN already claimed on another return
+15. **Wait 24–48 hours**, then log back in to confirm IRS acceptance (FFFF page: "Allow 24 to 48 hours for an acceptance or rejection result"). Rejected means the return is not filed. Use the complete rejection message in the FFFF Error Search Tool, correct every error, and resubmit. Common categories:
+    - SSN already used on another return (possible identity theft; see https://www.irs.gov/identity-theft-central)
+    - Name/SSN doesn't match SSA records (often a name change not yet updated with SSA)
+    - Prior-year AGI or Self-Select PIN doesn't match IRS records
+    - Dependent SSN already claimed on another return
+    An accepted return does not confirm that a tax payment was withdrawn; check the payment separately.
 
 ### What the agent should NOT do
 
@@ -236,27 +245,27 @@ For users with paid tax software (TurboTax, H&R Block, FreeTaxUSA, TaxSlayer, Ta
 
 ## Section 3 — Paper filing
 
-Sometimes paper is the right answer (FFFF closed, complex return, identity-theft concerns, large estate amendments).
+Sometimes paper is the right answer (FFFF closed after October 15, 2026, a form FFFF doesn't support, a rejected e-file the user can't fix, identity-theft cases).
 
 ### Assemble the return
 
 Order matters — the IRS expects this stack from top to bottom:
 
 1. **Form 1040** (signed by all filers, in ink)
-2. **Schedule 1, 2, 3** in order if applicable
+2. **Schedules 1, 1-A, 2, 3** in order if applicable (Attachment Sequence Nos. 01, 1A, 02, 03)
 3. **Schedule A** (if itemizing)
-4. **Schedule B** (if interest + dividends > $1,500 or foreign accounts)
+4. **Schedule B** (if taxable interest or ordinary dividends over $1,500, or a foreign account/trust)
 5. **Schedule C** (if self-employed)
 6. **Schedule D + Form 8949** (if capital gains)
 7. **Schedule E** (if rentals / K-1)
-8. **Schedule SE** (if self-employment net earnings > $400)
-9. **Form 8995 / 8995-A** (if QBI deduction)
-10. **Schedule 8812** (if CTC claimed)
-11. **All other schedules and forms** in attachment-sequence order printed on each form (top-right corner)
-12. **W-2 Copy B** stapled to the front of Form 1040 (lower-left)
-13. **1099s with federal withholding** also stapled
+8. **Schedule SE** (if net earnings from self-employment are $400 or more)
+9. **Schedule 8812** (if CTC/ODC/ACTC claimed)
+10. **Form 8995 / 8995-A** (if QBI deduction)
+11. **All other schedules and forms** — the rule is to place every schedule and form behind Form 1040 in order of the "Attachment Sequence No." in its upper-right corner (the list above is that order for the common ones); supporting statements go last, in the same order as the forms they support (i1040gi 2025, "Assemble Your Return")
+12. **Forms W-2 and 2439** attached to Form 1040 (with any W-2c and the original W-2)
+13. **Forms W-2G and 1099-R** attached if tax was withheld
 
-Use a single staple in the upper-left corner. Don't paperclip. Don't double-side print. Each form printed at full size on letter paper.
+Use standard-size paper; don't cut it. Don't attach correspondence unless required.
 
 ### Mailing addresses (verify each year)
 
@@ -276,7 +285,7 @@ Do not hardcode addresses — they shift between years and are split by state.
 - Send via **USPS Certified Mail with Return Receipt** for proof of timely filing (IRC §7502 timely-mailing-as-timely-filing rule)
 - Postmark by April 15 (or extension date if Form 4868 was filed)
 - Keep a complete photocopy of the entire return for the user's records
-- If paying, attach **Form 1040-V** payment voucher with check made out to "United States Treasury", with SSN + "Form 1040" + tax year written on the check memo line. Do not staple the check to the return.
+- If paying by check, include **Form 1040-V**: check or money order payable to "United States Treasury", with name, address, daytime phone, SSN (the first SSN on a joint return), and "2025 Form 1040" on it. Don't staple or attach the payment or voucher to the return or to each other; put them loose in the envelope (2025 Form 1040-V). The IRS asks filers to consider electronic payment first (https://www.irs.gov/payments).
 
 ### Producing the printable PDF
 
@@ -289,46 +298,7 @@ If the agent has access to the IRS fillable PDFs:
 
 ---
 
-## Section 4 — IRS Direct File
-
-URL: https://directfile.irs.gov
-
-Direct File launched as a pilot in 2024 and expanded for the 2026 filing season. Verify the current state list and supported scenarios before relying on it.
-
-### Eligibility (verify for current year)
-
-As of early 2026, Direct File supports:
-- W-2 wages
-- Social Security and railroad retirement
-- Unemployment compensation
-- Interest income
-- Limited credits (CTC, EITC, Saver's, ACTC, Premium Tax Credit, Credit for Other Dependents)
-- Limited adjustments (HSA, educator expenses, student loan interest)
-- Standard deduction only (no itemized)
-
-Direct File does **NOT** support (as of early 2026):
-- Schedule C self-employment income
-- Schedule D capital gains beyond limited categories
-- Schedule E rental / passthrough income
-- Itemized deductions
-- AMT, NIIT, Additional Medicare Tax
-
-For self-employed filers, this skill's user almost always falls outside Direct File scope. Redirect to FFFF or commercial software.
-
-### Browser flow (eligible users only)
-
-1. Navigate to https://directfile.irs.gov
-2. Sign in via ID.me or Login.gov
-3. Run the eligibility check — Direct File asks structured questions and self-disqualifies the user if they fall outside scope
-4. Complete the wizard sections: Personal info → Family/dependents → Income → Deductions/credits → Review
-5. Submit electronically; signs via ID.me identity verification (no separate PIN)
-6. Receive submission confirmation
-
-The agent should not attempt Direct File if the eligibility check fails — fall back to FFFF or commercial software.
-
----
-
-## Section 5 — Submission state machine
+## Section 4 — Submission state machine
 
 After filing (any channel), the user's return moves through:
 
@@ -339,8 +309,8 @@ After filing (any channel), the user's return moves through:
 
 Status checks:
 
-- E-file: usually Accepted within 24–48 hours
-- Paper: 4–8 weeks for Acceptance acknowledgment
+- E-file: usually Accepted or Rejected within 24–48 hours
+- Paper: no acceptance acknowledgment; refund information is generally available about 4 weeks after mailing (i1040gi 2025, Refund Information)
 - Refund tracking: https://www.irs.gov/refunds (Where's My Refund tool, requires SSN + filing status + refund amount)
 - Account transcript: https://www.irs.gov/individuals/get-transcript (shows all activity once Processed)
 

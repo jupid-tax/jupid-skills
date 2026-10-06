@@ -19,21 +19,21 @@ Marcus has been hunting for a larger building. In late February 2025, he finds a
 
 Marcus structures a **reverse exchange**:
 1. Atlantic Title Holdings LLC (the EAT) acquires the Hoboken building on March 25, 2025
-2. EAT holds title with a "Qualified Exchange Accommodation Agreement" (QEAA) per Rev. Proc. 2000-37
+2. EAT holds title under a written Qualified Exchange Accommodation Agreement (QEAA) per Rev. Proc. 2000-37, as modified by Rev. Proc. 2004-51 (the agreement must be signed no later than 5 business days after the EAT takes title)
 3. Marcus has 45 days (from 03/25) to identify the property to be relinquished — he identifies his Brooklyn building on April 5
-4. Marcus has 180 days (from 03/25) to dispose of the Brooklyn property
+4. Marcus has 180 days (from 03/25) to complete the transfers, and Hoboken may not sit with the EAT for more than 180 days in total
 5. Brooklyn closes on July 18, 2025; QI receives proceeds; EAT conveys Hoboken title to Marcus on the same day in a swap
 
 Timeline:
 - **March 1, 2025** — Marcus signs Qualified Exchange Accommodation Agreement (QEAA) with Atlantic Title Holdings (the EAT) and exchange agreement with Atlantic Exchange Services (the QI). EAT will buy and hold Hoboken; QI will handle the eventual swap.
-- **March 25, 2025** — EAT closes on the Hoboken purchase. EAT pays $1,800,000 (financed by Marcus's loan, structured through EAT, plus Marcus's cash contribution). EAT holds title.
+- **March 25, 2025** — EAT closes on the Hoboken purchase. EAT pays $1,800,000: a $700,000 mortgage loan from Marcus's lender (made to the EAT, guaranteed by Marcus) plus a $1,100,000 advance from Marcus to the EAT. EAT holds title. Marcus did not own Hoboken in the 180 days before the EAT acquired it (Rev. Proc. 2004-51).
   - **EAT acquisition date**: 03/25/2025 (this starts the reverse-exchange clocks)
 - **April 5, 2025** — Marcus delivers written identification to the QI: the property to be relinquished is 220 Riverside Avenue, Brooklyn NY.
   - Identification date: 04/05/2025 (Day 11 — within reverse 45-day window ✓)
 - **June 30, 2025** — Marcus lists the Brooklyn building.
-- **July 18, 2025** — Brooklyn closes. Buyer pays $1,200,000. QI receives proceeds. Same day, EAT conveys Hoboken title to Marcus. Marcus has now "exchanged" — but for tax reporting, **Line 4 (relinquished transferred) is 07/18/2025**.
+- **July 18, 2025** — Brooklyn closes for $1,200,000: the buyer assumes the $400,000 mortgage and pays $800,000 cash to the QI. The QI pays the $800,000 to the EAT to acquire Hoboken for Marcus, the EAT uses it to repay $800,000 of Marcus's advance, and the EAT conveys Hoboken title to Marcus subject to the $700,000 mortgage. Marcus has now "exchanged" — and for tax reporting, **Line 4 (relinquished transferred) is 07/18/2025**.
   - Day count from EAT acquisition (03/25) to relinquished disposition (07/18): 115 days — within reverse 180-day window ✓
-- Marcus financed Hoboken with a $700,000 mortgage (assumed/structured through EAT, then assumed by Marcus on conveyance). Brooklyn had a $400,000 mortgage assumed by buyer. Marcus contributed $750,000 cash to the deal (used to pay Hoboken purchase price minus financing).
+- Net result: Marcus took on the $700,000 Hoboken mortgage, was relieved of the $400,000 Brooklyn mortgage, and is out $300,000 of his own cash ($1,100,000 advanced − $800,000 repaid). Sources for Hoboken: $700,000 loan + $800,000 Brooklyn equity + $300,000 Marcus cash = $1,800,000.
 
 ## Inputs structured
 
@@ -43,37 +43,36 @@ Timeline:
 | FMV of relinquished | $1,200,000 |
 | FMV of replacement (Hoboken) | $1,800,000 |
 | Cash boot received | $0 (Marcus put cash IN, not out) |
-| Cash boot paid | $750,000 (Marcus's cash contribution to Hoboken) |
+| Cash boot paid | $300,000 (Marcus's net cash into Hoboken) |
 | Debt relieved (Brooklyn mortgage assumed by buyer) | $400,000 |
 | Debt assumed (Hoboken mortgage) | $700,000 |
-| Net mortgage boot received | max(0, 400k − 700k) = **$0** (Marcus assumed more debt) |
-| Net debt assumed (going to Line 18) | 700k − 400k = $300,000 |
-| Exchange expenses paid by Marcus | $32,000 (out of pocket — EAT and QI fees, escrow, etc.) |
+| Net liabilities assumed by other party (Line 15) | max(0, 400k − (700k + 300k)) = **$0** |
+| Net amount paid (Line 18) | (700k + 300k) − 400k = $600,000 |
+| Exchange expenses paid by Marcus | $32,000 (out of pocket — EAT and QI fees, broker, escrow, etc.) |
 | Related party? | No (EAT is independent under Rev. Proc. 2000-37) |
 | Depreciation taken on Brooklyn | $380,000 (straight-line §1250) |
 
 ## The computation
 
-| Line | Computation | Value |
-|------|-------------|-------|
-| 12-14 | No non-like-kind property | $0 |
-| 15 | Cash received + non-like-kind FMV + net debt relief − exchange expenses | 0 + 0 + 0 − 0 (no boot to net against) | **$0** |
-| 16 | FMV of like-kind received (Hoboken) | $1,800,000 |
-| 17 | Line 15 + 16 | $1,800,000 |
-| 18 | Basis given up + cash paid + net debt assumed + exchange expenses out of pocket | 820,000 + 750,000 + 300,000 + 32,000 | $1,902,000 |
-| 19 | Realized gain (Line 17 − 18) | 1,800,000 − 1,902,000 | **−$102,000 (realized LOSS)** |
-| 20 | Smaller of (15, 19), ≥ 0 | $0 |
-| 21 | Ordinary recapture | $0 |
-| 22 | Recognized gain | $0 |
-| 23 | Recognized gain | $0 |
-| 24 | Deferred gain/(loss) (Line 19 − 23) | **−$102,000** (deferred loss) |
-| 25 | Basis of replacement (Line 18 − 15 + 23) | 1,902,000 − 0 + 0 | **$1,902,000** |
+| Line | Description | Computation | Value |
+|------|-------------|-------------|-------|
+| 12-14 | Other (non-like-kind) property given up | None | $0 |
+| 15 | Cash received + non-like-kind FMV + net liabilities assumed by other party − exchange expenses (not below 0) | 0 + 0 + 0 − 32,000 → floor at 0 | **$0** |
+| 16 | FMV of like-kind received (Hoboken) | — | $1,800,000 |
+| 17 | Line 15 + 16 | 0 + 1,800,000 | $1,800,000 |
+| 18 | Basis given up + net amount paid + exchange expenses not used on Line 15 | 820,000 + 600,000 + 32,000 | $1,452,000 |
+| 19 | Realized gain (Line 17 − 18) | 1,800,000 − 1,452,000 | **$348,000** |
+| 20 | Smaller of (15, 19), ≥ 0 | min(0, 348,000) | $0 |
+| 21 | Ordinary recapture | None — straight-line §1250 | $0 |
+| 22 | max(Line 20 − Line 21, 0) | 0 − 0 | $0 |
+| 23 | Recognized gain (Line 21 + 22) | 0 + 0 | $0 |
+| 24 | Deferred gain (Line 19 − 23) | 348,000 − 0 | **$348,000** |
+| 25 | Basis of replacement (Line 18 + 23 − 15) | 1,452,000 + 0 − 0 | **$1,452,000** |
+| 25a | Basis of like-kind §1250 property received | All of Line 25 (apartment building, no §1245 or intangible components; follows the IRS example in the Lines 25a–25c instructions) | $1,452,000 |
 
-Wait — Marcus actually has a **realized loss** here, not a gain. Let me check: he gave up Brooklyn (basis $820k, FMV $1,200k → built-in gain $380k) and contributed $750k cash + $300k net new debt + $32k expenses = $1,082k value, against receiving Hoboken at $1.8M FMV. Realized = 1.8M − (820k + 750k + 300k + 32k) = 1.8M − 1.902M = −$102k.
+Checks: Line 16 − Line 24 = 1,800,000 − 348,000 = 1,452,000 = Line 25. Realized gain cross-check: $1,200,000 Brooklyn value − $32,000 expenses − $820,000 basis = $348,000.
 
-This is a realized loss because the cash + new debt Marcus contributed exceeded the FMV gain he picked up. §1031 disallows recognition of loss; the loss is **deferred into the basis of replacement** (Line 25).
-
-His Hoboken basis is $1,902,000 — slightly higher than its FMV of $1,800,000. The $102k unrecognized loss carries forward; on a future sale at the same FMV, he'd have a $102k loss to recognize.
+Marcus received no cash and no net debt relief (the $400k Brooklyn mortgage is more than covered by the $700k Hoboken mortgage and his $300k cash), so Line 15 is $0 and the full $348,000 realized gain is deferred. His Hoboken basis is $1,452,000, which is $348,000 below its FMV of $1,800,000.
 
 ## The completed Form 8824 draft
 
@@ -89,8 +88,8 @@ Identifying number: ***-**-9012
 2. Description of property received: 6-unit rental at 144 Lakefront Drive, Hoboken NJ 07030
 3. Date originally acquired (Brooklyn):         05/22/2008
 4. Date you transferred property given up:      07/18/2025
-5. Date replacement identified:                 04/05/2025
-   (Note: in a reverse exchange, identification is reckoned from EAT's acquisition of replacement, 03/25/2025; Day 11)
+5. Date replacement identified:                 07/18/2025
+   (Note: the replacement was received within 45 days after Line 4, so under the Line 5 instructions it is treated as identified and the receipt date is entered. Keep the 04/05/2025 Rev. Proc. 2000-37 identification of the relinquished property, Day 11 from the EAT's 03/25/2025 acquisition, in the file.)
 6. Date you actually received replacement:      07/18/2025
    (Note: in a reverse exchange, "received" is the date EAT conveys to user; same as Line 4 here)
 7. Related-party exchange?  No
@@ -102,28 +101,33 @@ N/A
 12. FMV of OTHER property given up:            $0
 13. Adjusted basis of OTHER property:          $0
 14. Gain/(loss) on OTHER property:             $0
-15. Cash + other received + net debt relief
-    less exchange expenses:                    $0
+15. Cash + other received + net liabilities
+    assumed by other party, less exchange
+    expenses (not below 0):                    $0
+15a. Description of other property received:   None
 16. FMV of like-kind property received:        $1,800,000
 17. Add lines 15 and 16:                       $1,800,000
-18. Basis given up + cash paid ($750k) + net
-    debt assumed ($300k) + exchange expenses
-    paid out of pocket ($32k):                 $1,902,000
-19. Realized gain/(loss) (Line 17 − 18):       ($102,000)  (realized LOSS)
+18. Basis given up ($820k) + net amount paid
+    ($600k) + exchange expenses not used on
+    line 15 ($32k):                            $1,452,000
+19. Realized gain/(loss) (Line 17 − 18):       $348,000
 20. Smaller of Line 15 or 19, ≥ 0:             $0
 21. Ordinary income under recapture rules:     $0
-22. Recognized gain:                           $0
-23. Recognized gain:                           $0
-24. Deferred gain/(loss) (Line 19 − 23):       ($102,000)
-25. Basis of replacement (Line 18 − 15 + 23):  $1,902,000
+22. Line 20 − Line 21 (≥ 0):                   $0
+23. Recognized gain (Line 21 + 22):            $0
+24. Deferred gain/(loss) (Line 19 − 23):       $348,000
+25. Basis of replacement (Line 18 + 23 − 15):  $1,452,000
+25a. Basis of like-kind §1250 property:        $1,452,000
+25b. Basis of §1245/1252/1254/1255 property:   $0
+25c. Basis of like-kind intangible property:   $0
 
 ## Required attachments
 - [ ] Form 4797 — not required this year (no recognized gain or loss)
 - [ ] Schedule D — not required this year
 - [ ] State filings:
-  - NY: Marcus's Brooklyn relinquished property is NY-source. NY conforms to federal §1031, but verify with NY Department of Taxation and Finance.
+  - NY: Marcus's Brooklyn relinquished property is NY-source. Verify NY treatment with the NY Department of Taxation and Finance.
   - NJ: Hoboken replacement is NJ-source going forward.
-  - No clawback regime in NY/NJ comparable to California's Form 3840, but state recognition rules may differ on subsequent sale.
+  - This skill does not cover NY or NJ rules on out-of-state replacement property or later sales; ask a preparer who handles both states.
 - [ ] Reverse-exchange specific records to retain (not filed):
   - Qualified Exchange Accommodation Agreement (QEAA) with EAT
   - Settlement statements from EAT's acquisition (03/25/2025)
@@ -134,61 +138,66 @@ N/A
 
 ## Validation summary
 - Reverse 45-day check: identification on Day 11 ≤ 45 (from EAT acquisition 03/25) ✓
-- Reverse 180-day check: relinquished disposed on Day 115 ≤ 180 (from EAT acquisition 03/25) ✓
+- Reverse 180-day check: relinquished disposed and Hoboken conveyed on Day 115 ≤ 180 (from EAT acquisition 03/25); Hoboken held by the EAT 115 days in total ✓
+- QEAA signed 03/01/2025, before the EAT took title (deadline: 5 business days after) ✓
 - Math: all checks passed
 - Sanity warnings:
-  - Realized loss of $102,000 is NOT recognized — §1031 disallows loss recognition. The loss is deferred into the basis of replacement (Line 25 = $1,902,000 vs. FMV $1,800,000).
+  - Realized gain of $348,000 is fully deferred: no cash or net debt relief came back to Marcus. The gain is carried in Hoboken's basis (Line 25 = $1,452,000 vs. FMV $1,800,000).
   - Marcus's depreciation history of $380,000 from Brooklyn carries into Hoboken's basis. On a future sale, up to $380k could be unrecaptured §1250 gain (plus any new depreciation taken on Hoboken before sale).
-  - Reverse exchanges have stricter audit scrutiny. The QEAA must satisfy Rev. Proc. 2000-37 safe harbor: EAT must have economic substance (held title in good faith), pay/receive market-based fees, and not be a related party. Marcus should verify Atlantic Title Holdings' independence.
+  - The QEAA must satisfy the Rev. Proc. 2000-37 safe harbor: written agreement within 5 business days, 45-day identification, 180-day limits, and an EAT that holds qualified indications of ownership, is not Marcus or a disqualified person, and is subject to federal income tax (Pub. 544 (2025), "Exchange accommodation titleholder (EAT)"). Marcus should confirm Atlantic Title Holdings meets these.
   - Loan structure: the Hoboken mortgage was originally on EAT, then assumed by Marcus. Lender consent and assumption documents must be in order.
 
 ## Next steps
 - File Form 8824 with 2025 Form 1040
 - No estimated tax adjustment for the exchange (no recognized gain)
-- Set up new depreciation schedule for Hoboken: basis $1,902,000 less land allocation, residential MACRS 27.5-year SL
-- Set calendar reminder: any disposition of Hoboken before July 18, 2027 triggers reopening of the deferral (under general §1031 holding-period prudence — though no specific 2-year rule applies since this isn't a related-party exchange)
-- Retain all QEAA, EAT settlement statements, loan documents indefinitely
+- Set up Hoboken on Form 4562 under Treas. Reg. §1.168(i)-6: the carryover basis continues on Brooklyn's remaining 27.5-year schedule and the excess basis (the $600k net paid plus capitalized expenses) is treated as newly placed in service, unless Marcus elects out under §1.168(i)-6(i) on a timely filed return (2025 Instructions for Form 4562); total basis $1,452,000 less the land allocation
+- No §1031(f) 2-year rule applies (not a related-party exchange). A quick resale can undercut the "held for investment" requirement; Marcus should talk to a CPA before any sale
+- Retain all QEAA, EAT settlement statements, and loan documents until the period of limitations expires for the year Hoboken is sold
 
 ## Sources cited in this draft
-- IRS Form 8824, current revision
-- IRS Instructions for Form 8824
+- IRS Form 8824 (2025)
+- IRS Instructions for Form 8824 (2025), Lines 5, 15, 18, and "Exchanges Using a QEAA"
 - IRC §1031 (post-TCJA, real-property only)
-- IRC §1031(b) (no loss recognition)
+- IRC §1031(b) (gain recognized only to the extent of boot)
 - IRC §1031(d) (basis of replacement)
 - Rev. Proc. 2000-37 (reverse exchange safe harbor)
 - Rev. Proc. 2004-51 (modifications to Rev. Proc. 2000-37)
 - Treas. Reg. §1.1031(k)-1 (general §1031 deferred-exchange rules)
-- Pub. 544 (Sales and Other Dispositions of Assets)
+- Treas. Reg. §1.168(i)-6 (depreciation of replacement property)
+- Pub. 544 (2025) (Sales and Other Dispositions of Assets), "Like-Kind Exchanges Using Qualified Exchange Accommodation Arrangements"
 ```
 
 ## Why each non-obvious choice
 
-**Why is the EAT considered independent and not a related party?** Rev. Proc. 2000-37 specifies that an EAT can be:
-- Any person other than the taxpayer or a disqualified person
-- Subject to federal income tax (i.e., not a tax-exempt entity)
-- Hold legal title and bear economic risk of the property
-- Be paid market-based fees (typically $5,000-$25,000 depending on transaction size and complexity)
+**Why does the EAT qualify?** Under Rev. Proc. 2000-37 (as summarized in Pub. 544 (2025)) the EAT must:
+- Hold qualified indications of ownership (legal title, other beneficial ownership indications, or interests in a disregarded entity that holds title) from acquisition until transfer
+- Be someone other than the taxpayer or a disqualified person
+- Be subject to federal income tax (if a partnership or S corporation, more than 90% of its interests owned by partners or shareholders subject to federal income tax)
 
-Atlantic Title Holdings LLC is a third-party single-member LLC formed by the QI parent firm specifically to hold §1031 reverse-exchange properties for clients. It is independent of Marcus, files its own tax return, and pays/receives FMV fees.
+The safe harbor does not require the EAT to bear economic risk: the user may lend to or guarantee for the EAT, lease or manage the property, and the arrangements need not be at arm's length (Rev. Proc. 2000-37, sec. 4.03 "Permissible Agreements"; Pub. 544, "Other permissible arrangements"). That is why Marcus's $1,100,000 advance and loan guarantee do not break it.
 
-**Why is Line 5 (identification date) reckoned from EAT acquisition?** In a reverse exchange under Rev. Proc. 2000-37, the user must identify the property to be relinquished within 45 days of the EAT's acquisition of the replacement (not from the user's own actions on the relinquished side). The 180-day clock to actually dispose of relinquished also runs from EAT acquisition.
+Atlantic Title Holdings LLC is a single-member LLC owned by the exchange firm's taxable parent, formed to hold reverse-exchange properties for clients. Its owner is not Marcus or a disqualified person (exchange services alone do not make a firm Marcus's agent, Treas. Reg. §1.1031(k)-1(k)(2)).
+
+**Why does Line 5 show 07/18/2025 and not the 04/05/2025 identification?** Form 8824 line 5 asks when the property *received* was identified. The Line 5 instructions say that if the replacement was received before the end of the 45-day period after Line 4, it is treated as identified and the receipt date goes on line 5. Here the receipt date equals Line 4. The reverse-exchange identification under Rev. Proc. 2000-37 runs the other way: Marcus identified the property to be *relinquished* within 45 days of the EAT's acquisition (04/05/2025, Day 11), and the 180-day clock also runs from the EAT acquisition. Keep that notice in the file. The instructions do not address reverse exchanges directly, so confirm the Line 5 entry with the user's preparer.
 
 **Why are Line 4 and Line 6 the same date (07/18/2025)?** In the reverse-exchange swap on the closing day, the relinquished is sold AND the EAT conveys the replacement to Marcus simultaneously. The form requires both dates; in practice they're often the same.
 
-**Why is Marcus's cash contribution ($750k) on Line 18 and not netted against Line 15?** Cash paid by the user is on the "give" side (Line 18), increasing the basis component. Cash received by the user is on Line 15. They don't offset.
+**Why is Marcus's $300k net cash on Line 18 and not netted against Line 15?** Cash paid by the user is part of the "net amount paid" on Line 18, together with the $300k of extra debt he took on (2025 instructions, Line 18). Cash paid can offset debt relief, but Marcus had no net debt relief and received no cash, so Line 15 is $0 either way.
 
-**Why is the loss not recognized?** IRC §1031(b) only triggers gain recognition (to extent of boot). It does NOT allow loss recognition — losses are always deferred into basis. This is asymmetric: §1031 helps gains (by deferring) and "hurts" losses (by also deferring).
+**Why is no gain recognized?** IRC §1031(b) recognizes gain only to the extent of boot received. Marcus traded up in value and debt and took no cash out, so there is no boot and the whole $348,000 is deferred.
 
-**What if Marcus needs cash later from the deferral?** He can refinance Hoboken (cash-out refi, taking equity out as a loan, NOT a sale). Loan proceeds aren't taxable. Some practitioners refer to this as "exchange and refinance"; while technically allowed, the IRS scrutinizes refinances done close in time to the §1031 — a refi within 6-12 months may be challenged as a step-transaction designed to extract cash without recognition. Best practice: wait at least 12 months.
+**Why are the $32,000 of exchange expenses on Line 18?** The instructions reduce Line 15 by exchange expenses, but not below zero. Line 15 was already $0, so all $32,000 is "not used on line 15" and goes on Line 18, raising Hoboken's basis.
 
-**What if Marcus dies before selling Hoboken?** His heirs receive Hoboken with stepped-up basis to FMV at death. The $102k deferred loss and $380k depreciation history are wiped out. (This is the "swap till you drop" estate planning strategy.)
+**What if Marcus needs cash later from the deferral?** He can refinance Hoboken (cash-out refi, taking equity out as a loan, NOT a sale). Loan proceeds aren't taxable. There is no safe-harbor waiting period: a refinance arranged as part of the exchange can be treated as cash received, so have a CPA review the timing.
+
+**What if Marcus dies before selling Hoboken?** His heirs generally take a basis equal to FMV at death (IRC §1014). The $348k deferred gain and the $380k depreciation history are not taxed to them. (This is the "swap till you drop" estate planning strategy.)
 
 ## Audit defense
 
 Reverse exchanges face heightened IRS scrutiny because of the EAT structure. Marcus's defense:
-1. QEAA signed before EAT acquisition — proves Rev. Proc. 2000-37 safe harbor election
+1. QEAA signed before EAT acquisition (within the 5-business-day limit) — shows the Rev. Proc. 2000-37 safe harbor applies
 2. EAT's HUD-1 from 03/25/2025 — proves EAT (not Marcus) acquired Hoboken
-3. EAT pays its own taxes, has its own EIN, files its own return — proves independence
+3. Evidence that the EAT (or its owner) is subject to federal income tax and is not Marcus or a disqualified person
 4. Identification notice dated 04/05/2025 — within the 45-day window
 5. Brooklyn closing on 07/18/2025 — within the 180-day window
 6. Loan assumption documents from lender — proves clean transfer of mortgage

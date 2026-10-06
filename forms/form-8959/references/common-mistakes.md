@@ -54,9 +54,9 @@ Audit-trip patterns the agent should watch for. Each mistake includes a citation
 
 **Why it happens**: True that net at filing is zero, but the form still must be filed.
 
-**Fix**: Form 8959 must be filed any time Part I, II, or III has a non-zero entry, OR Part V Line 21 (additional Medicare tax withheld by employer) is non-zero. The reconciliation is the entire point — without Form 8959, the filer cannot claim the Line 24 withholding credit on Form 1040 Line 25c.
+**Fix**: Form 8959 must be filed if any "Who Must File" test applies: Medicare wages on any single W-2 (box 5) over $200,000; RRTA compensation on any single W-2 (box 14) over $200,000; total Medicare wages plus SE income (including the spouse's if MFJ) over the filing-status threshold; or total RRTA compensation (including the spouse's if MFJ) over the threshold. The first test catches every filer whose employer withheld the 0.9%. The reconciliation is the entire point — without Form 8959, the filer cannot claim the Line 24 withholding credit on Form 1040 Line 25c.
 
-**Citation**: Form 8959 Instructions, "Who Must File."
+**Citation**: 2025 Instructions for Form 8959, "Who Must File."
 
 ## 6. Missing the Line 24 credit on Form 1040 Line 25c
 
@@ -64,7 +64,7 @@ Audit-trip patterns the agent should watch for. Each mistake includes a citation
 
 **Why it happens**: Tax software usually handles this auto-flow, but paper filers and FFFF users sometimes miss it. Also happens when the filer pulls the form mid-process and resumes later.
 
-**Fix**: Always cross-check that Line 24 (additional Medicare tax withheld) is on Form 1040 Line 25c. If missing, the filer pays the surtax twice — once via the Box 6 employer withholding and again via Schedule 2 Line 11.
+**Fix**: Always cross-check that Line 24 (additional Medicare tax withheld) is included on Form 1040 Line 25c (W-2 box 2 income tax withholding stays on Line 25a). If missing, the filer pays the surtax twice — once via the Box 6 employer withholding and again via Schedule 2 Line 11.
 
 **Citation**: Form 8959 Instructions, Part V; Form 1040 Instructions, Line 25c.
 
@@ -94,9 +94,9 @@ Audit-trip patterns the agent should watch for. Each mistake includes a citation
 
 **Why it happens**: New filers unfamiliar with the attachment-form structure.
 
-**Fix**: Form 8959 always attaches to Form 1040 (or Form 1040-NR for nonresident filers, where applicable). It cannot be filed standalone. The IRS will reject a standalone Form 8959 submission.
+**Fix**: Form 8959 always attaches to Form 1040, 1040-SR, 1040-NR, or 1040-SS. It cannot be filed standalone: "If you are filing Form 8959, you must file one of the forms listed earlier."
 
-**Citation**: Form 8959 instructions header.
+**Citation**: 2025 Form 8959 header; 2025 Instructions for Form 8959, "Purpose of Form."
 
 ## 10. Treating mid-year filing-status change as a partial threshold
 
@@ -110,7 +110,7 @@ Audit-trip patterns the agent should watch for. Each mistake includes a citation
 
 ## 11. Computing the surtax on the SS wage base ceiling
 
-**Mistake**: Filer applies the Social Security wage base ($176,100 for 2025) as the Form 8959 threshold.
+**Mistake**: Filer applies the Social Security wage base ($176,100 for 2025; $184,500 for 2026) as the Form 8959 threshold.
 
 **Why it happens**: Confusing the SS wage base (which is inflation-adjusted and caps the 12.4% SS tax) with the Additional Medicare Tax threshold (which is statutory and uncapped).
 
@@ -124,7 +124,7 @@ Audit-trip patterns the agent should watch for. Each mistake includes a citation
 
 **Why it happens**: Throughout the year, the filer was under $200K from this employer. Q4 bonus pushes year-to-date wages over $200K, triggering the employer's obligation under IRC §3102(f).
 
-**Fix**: The employer is responsible for catching this — payroll systems should compute year-to-date wages on each payroll run and trigger the additional 0.9% withholding once the YTD total exceeds $200K. If the W-2 Box 6 reflects this correctly, Line 21 on Form 8959 will show the additional withholding. If it doesn't (employer error), the filer still owes via Line 18 and must pay at filing — separate question of whether the employer owes a payroll correction.
+**Fix**: The employer is responsible for catching this — it must begin withholding the 0.9% in the pay period in which wages for the year exceed $200,000 and continue for the rest of the calendar year (2025 Instructions for Form 8959). If the W-2 Box 6 reflects this correctly, Line 22 on Form 8959 will show the additional withholding. If it doesn't (employer error), the filer still owes via Line 18 and must pay at filing — separate question of whether the employer owes a payroll correction.
 
 **Citation**: IRC §3102(f); Treasury Reg. §31.3102-4(a).
 

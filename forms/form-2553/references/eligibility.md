@@ -1,6 +1,6 @@
 # Eligibility for S-Corporation Status (IRC §1361)
 
-The S-corp election is governed by IRC §1361(b). Every requirement must be met **at the moment of the election effective date and continuously thereafter**. Any single failure voids the election retroactive to the moment of failure, and the entity reverts to C-corp taxation (for corporations) or partnership / sole prop taxation (for LLCs).
+The S-corp election is governed by IRC §1361(b). Every requirement must be met **at the moment of the election effective date and continuously thereafter**. If a requirement fails on the effective date, the election is not valid; if it fails later, the election terminates on the date of the failure (IRC §1362(d)(2)) and the corporation is taxed as a C corporation from that date. Relief for inadvertent invalid elections or terminations exists under §1362(f) by letter ruling; refer to a CPA.
 
 This file is the eligibility checklist. Run all six categories before drafting Form 2553.
 
@@ -11,7 +11,7 @@ This file is the eligibility checklist. Run all six categories before drafting F
 ✅ **Eligible**
 
 - Domestic corporation (Inc., Corp.) — formed under U.S. state law
-- Domestic LLC — formed under U.S. state law, electing to be taxed as a corporation either via Form 8832 or via the combined-filing path of Rev. Proc. 2013-30 (Form 2553 alone)
+- Domestic LLC — formed under U.S. state law, classified as a corporation either via Form 8832 or via the deemed classification election that a timely Form 2553 makes (Reg. §301.7701-3(c)(1)(v)(C))
 
 ❌ **Ineligible**
 
@@ -21,7 +21,7 @@ This file is the eligibility checklist. Run all six categories before drafting F
 - Multi-member LLCs that haven't elected corporate taxation (taxed as partnership by default)
 - Trusts (with narrow exceptions for grantor and qualified trusts holding S-corp stock)
 
-For LLCs: you can skip Form 8832 and file Form 2553 alone. The IRS treats this as a deemed election to corporate status combined with the S-corp election (Rev. Proc. 2013-30). This is the standard path for LLCs electing S-corp.
+For LLCs: you can skip Form 8832 and file Form 2553 alone. A timely Form 2553 from an eligible entity is treated as a deemed election to be classified as a corporation (Reg. §301.7701-3(c)(1)(v)(C); Form 2553 instructions, "Purpose of Form"; Rev. Proc. 2013-30 §4.01(1)). This is the standard path for LLCs electing S-corp. A late Form 2553 from an LLC on this path needs the Part IV representations.
 
 ---
 
@@ -33,7 +33,7 @@ Even an otherwise-qualifying domestic corporation cannot elect S-corp status if 
 |-------|-------------|----------------|
 | Bank using reserve method | Banks computing bad-debt reserve under §585 | §1361(b)(2)(A) |
 | Insurance company | Subject to Subchapter L | §1361(b)(2)(B) |
-| Possessions corporation | Claiming the §936 Puerto Rico / possessions credit | §1361(b)(2)(C) |
+| Possessions corporation | A corporation to which a §936 election applies (the §936 credit has expired; the 2020 Form 2553 instructions no longer list this class) | §1361(b)(2)(C) |
 | DISC / former DISC | Domestic International Sales Corporation | §1361(b)(2)(D) |
 
 Most small business filers do not fall in any of these classes. Confirm before proceeding only if the user is in finance, insurance, or international sales.
@@ -123,9 +123,9 @@ No preferred returns, no waterfalls, no priorities.
 
 ## 6. State and entity-formation timing
 
-✅ Entity must be **legally formed** under state law before the effective date on Line F.
+✅ Entity must be **legally formed** under state law before the effective date in item E.
 
-For new entities: Line F (effective date) cannot be earlier than the date the state accepted the formation filing (Line D — date incorporated).
+For new entities: item E (effective date) cannot be earlier than the date the state accepted the formation filing (item B, date incorporated).
 
 For existing entities: the entity must have been continuously formed and in good standing.
 

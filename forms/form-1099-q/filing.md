@@ -17,11 +17,14 @@ User had a fully tax-free distribution (taxable earnings = $0)?
     Skip filing — there is nothing to enter on the return.
 
 User has a taxable earnings portion or 10% additional tax owed?
-  → Need to file Schedule 1 (Line 8z) and possibly Schedule 2 + Form 5329.
+  → Need to file Schedule 1 (Line 8z) and Form 5329 Part II (required for any
+    taxable QTP/Coverdell distribution, even if an exception makes line 8 $0);
+    Schedule 2 Line 8 if Form 5329 line 8 > $0.
     Continue below.
 
-User has AGI ≤ ~$84,000 and wants free guided software?
-  → IRS Free File (Free File Alliance partners)
+User has AGI of $89,000 or less (2026 filing season) and wants free guided software?
+  → IRS Free File (IRS partner software)
+    https://www.irs.gov/filing/irs-free-file-do-your-taxes-for-free
     Skip — proprietary flows; provider-specific.
 
 User wants to fill the form themselves directly?
@@ -35,12 +38,9 @@ User has paid tax software (TurboTax, H&R Block, FreeTaxUSA)?
 User wants to file on paper?
   → Print Form 1040 + Schedule 1 + Schedule 2 + Form 5329, sign, mail
     Use Section 3.
-
-User wants IRS Direct File?
-  → Direct File supports limited 1099-Q scenarios; check current scope
-    https://www.irs.gov/filing/irs-direct-file
-    If the user has only basic 529 distributions and is otherwise eligible, may be supported. Verify before automating.
 ```
+
+IRS Direct File was not offered in the 2026 filing season; do not offer it as a channel.
 
 ---
 
@@ -48,7 +48,7 @@ User wants IRS Direct File?
 
 URL: https://www.irs.gov/e-file-providers/free-file-fillable-forms
 
-**Availability**: Late January through mid-October each year.
+**Availability**: seasonal. For the 2026 filing season (2025 returns) the program closes Oct. 15, 2026 (irs.gov Free File Fillable Forms page). After that date, use paid software or paper.
 
 ### Pre-flight
 
@@ -82,12 +82,12 @@ The agent must have:
    - Form 5329 opens
    - For 529 plans: navigate to **Part II — Additional Tax on Certain Distributions From Education Accounts and ABLE Accounts**
    - Enter:
-     - Line 5 — distributions included in income (the taxable earnings portion)
-     - Line 6 — distributions for educational expenses (any portion exempt from additional tax under exceptions, e.g., scholarship offset)
+     - Line 5 — distributions included in income from a Coverdell ESA, a QTP, or an ABLE account (the taxable earnings portion)
+     - Line 6 — distributions included on line 5 that are not subject to the additional tax (the exception amount, e.g., scholarship offset or AOTC/LLC coordination)
      - Line 7 — Line 5 minus Line 6 (subject to 10% additional tax)
      - Line 8 — Line 7 × 10% (the additional tax)
    - Verify against the worksheet
-   - **Note**: the IRS revises Form 5329 part numbering periodically. Verify the current part covers 529/Coverdell distributions before filing. As of last verification, Part II covered education distributions; confirm against the latest [Form 5329 instructions](https://www.irs.gov/pub/irs-pdf/i5329.pdf).
+   - **Note**: verified against the 2025 Form 5329, where Part II (lines 5 to 8) covers Coverdell ESA, QTP, and ABLE distributions. For a later tax year, re-check the part and line numbers in the current [Form 5329 instructions](https://www.irs.gov/pub/irs-pdf/i5329.pdf).
 
 9. **Add Schedule 2** if Form 5329 produced additional tax:
    - Click "Add a Form / Schedule" → search "Schedule 2"
@@ -99,7 +99,7 @@ The agent must have:
     - Schedule 2 Line 21 (total other taxes) updates → flows to Form 1040 Line 23
 
 11. **Apply exceptions if any**:
-    - If the user qualifies for an exception under IRC §529(c)(6)(B), Form 5329 has exception coding. Common codes (verify against current Form 5329):
+    - If the user qualifies for an exception under IRC §530(d)(4)(B) (applied to QTPs by §529(c)(6)), Form 5329 Part II has no exception codes; the exempt amount goes on line 6. The exceptions (2025 Instructions for Form 5329, Line 6):
       - Scholarship offset (no additional tax on amount equal to scholarship)
       - Beneficiary disability or death
       - U.S. service academy attendance
@@ -139,7 +139,7 @@ The agent must have:
 |---------|--------------|-----|
 | FFFF says "Form 5329 part not found" | Part numbering may have changed | Look at current Form 5329 instructions |
 | Schedule 1 Line 8z amount doesn't flow to 1040 Line 8 | FFFF needs Schedule 1 Line 10 to populate | Verify all Line 8 sub-items are entered, not just 8z |
-| User claims exception but no exception code on Form 5329 | The exception is reported as a Line 6 reduction, not a code | Reduce Line 6 by the exception amount and keep documentation |
+| User claims exception but no exception code on Form 5329 | Part II has no codes; the exception is reported as an amount on Line 6 | Enter the exception amount on Line 6 and keep documentation |
 | Distribution was a SECURE 2.0 Roth rollover | Not entered on the return at all if all 5 conditions met | Document the conditions in records; nothing on the 1040 |
 
 ---
@@ -154,19 +154,19 @@ For users with paid software (TurboTax, H&R Block, FreeTaxUSA, TaxSlayer, TaxAct
    - "Did you receive a Form 1099-Q?" → Yes
    - It will ask for: trustee/payer name, recipient name + SSN, all four amount boxes
    - It will ask whether the recipient was the beneficiary (Box 6)
-   - It will ask whether this was a trustee-to-trustee transfer (Box 4)
+   - It will ask whether this was a trustee-to-trustee transfer or a QTP-to-Roth IRA transfer (Box 4a or 4b)
 4. Wizard asks for the user's qualified education expenses for the same year
 5. Wizard computes taxable earnings and any 10% additional tax automatically
 6. **Verify**: at the "Schedule 1" / "Other income" review, confirm the taxable amount matches the SKILL.md worksheet
 7. **Verify**: at the "Form 5329" / "Additional taxes" review, confirm the 10% additional tax matches
-8. Most software handles AAQEE adjustment automatically *if* the user enters AOTC/LLC and 1099-Q in the same session — but the agent should still cross-check
+8. Most software handles AQEE adjustment automatically *if* the user enters AOTC/LLC and 1099-Q in the same session — but the agent should still cross-check
 9. Continue through Form 1040 review; software handles SE, dependent, and credit interaction
 10. Pay software fee; e-file
 
 **Provider-specific quirks**:
 - TurboTax often asks "Did anyone use these expenses for AOTC?" mid-flow — agent must answer truthfully
 - FreeTaxUSA puts 1099-Q in the "Income" section, not "Education"
-- TaxSlayer asks for the 5329 exception code separately if applicable
+- If software asks for a Form 5329 "exception code" for a 529/Coverdell distribution, note that Part II has no codes; the exempt amount belongs on line 6
 
 If the wizard produces a number that disagrees with the worksheet, **pause**, recompute manually, and reconcile. Most disagreements come from the wizard not knowing about scholarships/AOTC the user already entered (or didn't enter yet).
 
@@ -211,12 +211,12 @@ After filing (any channel):
 
 If the user did *not* report a 1099-Q that the IRS has on file, they will likely receive a CP2000 notice 12-18 months after filing, proposing additional tax + penalties + interest. The agent should pre-empt this by ensuring every 1099-Q is reflected in the worksheet and the return — even fully qualified distributions where no number flows to the return.
 
-For fully qualified distributions, the user retains the worksheet and 1099-Q so they can respond to a future CP2000 by showing AAQEE ≥ Box 1.
+For fully qualified distributions, the user retains the worksheet and 1099-Q so they can respond to a future CP2000 by showing AQEE ≥ Box 1.
 
 Status checks:
 
 - E-file: Accepted within 24–48 hours
-- Paper: 4–8 weeks for Acceptance acknowledgment
+- Paper: no acceptance acknowledgment; refund status appears 4 weeks after filing, and a refund typically takes 6 or more weeks from the date the IRS receives the return (https://www.irs.gov/refunds)
 - Refund tracking: https://www.irs.gov/refunds
 - Account transcript: https://www.irs.gov/individuals/get-transcript
 

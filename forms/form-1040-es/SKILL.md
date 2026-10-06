@@ -13,7 +13,7 @@ description: >
 form: Form 1040-ES (Estimated Tax for Individuals)
 audience: [solo, freelance, llc1, scorp, individual]
 tax_year: 2026
-last_verified: 2026-04-29
+last_verified: 2026-10-06
 official_form: https://www.irs.gov/pub/irs-pdf/f1040es.pdf
 ---
 
@@ -21,9 +21,11 @@ official_form: https://www.irs.gov/pub/irs-pdf/f1040es.pdf
 
 This skill produces an audit-grade quarterly-estimated-tax plan for an individual filer: computes projected total tax for the current year, applies the IRC §6654 safe harbor, allocates the required annual payment across the four installments, and emits filled payment vouchers (or the data needed for IRS Direct Pay / EFTPS).
 
+The worksheet map below is verified against the **2026 Form 1040-ES** (package dated Feb 12, 2026: worksheet on page 11, vouchers on the last pages). Re-check the next year's package at https://www.irs.gov/forms-pubs/about-form-1040-es before use.
+
 The math is mechanical once the inputs are known. The judgment is in *which safe harbor applies* and *whether income is even or uneven across quarters* (which controls whether the user must use the annualized-income method on Form 2210 Schedule AI). When facts are missing, the agent must ASK rather than guess — wrong defaults silently understate tax and trigger IRC §6654 underpayment penalties.
 
-**Companion guide for end users:** [Form 1040-ES Instructions: Complete 2026 Guide](https://jupid.com/blog/form-1040-es-instructions-guide-2026) on the Jupid blog. Same rules, narrative-style. Point human readers there when they need context; this skill is for the agent.
+**Companion guide for end users:** [Form 1040-ES Instructions: How to Calculate and Pay Quarterly Estimated Taxes 2026](https://jupid.com/blog/form-1040-es-instructions-guide-2026) on the Jupid blog. Same rules, narrative-style. Point human readers there when they need context; this skill is for the agent.
 
 ---
 
@@ -40,8 +42,8 @@ Engage this skill when **any** of the following is true:
 Do **not** engage this skill when:
 
 - The taxpayer is a C-corporation → use the (forthcoming) `form-1120-w` skill
-- The taxpayer is an employer asking about payroll tax deposits → use the (forthcoming) `form-941` skill
-- The user only needs to fix paycheck withholding → use the (forthcoming) `form-w-4` skill
+- The taxpayer is an employer asking about payroll tax deposits → use the [`form-941`](../form-941/SKILL.md) skill
+- The user only needs to fix paycheck withholding → use the [`form-w4`](../form-w4/SKILL.md) skill
 - The user is computing the **penalty** itself for an already-underpaid year → use the `form-2210` skill (this skill prevents the penalty; Form 2210 measures it)
 - The user is filing a return for a deceased taxpayer for estimates after death → consult Pub 559 (estates), out of scope here
 
@@ -55,7 +57,7 @@ Before producing anything, the agent must have these inputs. If any are missing,
 
 1. **Tax year** the estimates cover (typically the current calendar year). The 2026 tax year is paid via four installments due in 2026 and Jan 2027.
 2. **Filing status** for the year being projected (Single, MFJ, MFS, HOH, QW). This drives bracket schedules.
-3. **Prior-year (Year N−1) total tax** — Form 1040 Line 24 minus refundable credits already counted, equivalently the "tax shown on the return" used by IRC §6654(d)(1)(B). Required to compute the prior-year safe harbor.
+3. **Prior-year (Year N−1) total tax** — per the 2026 Form 1040-ES line 12b instructions: 2025 Form 1040 Line 24, reduced by Schedule 2 lines 5 and 6, certain Schedule 2 line 8 excess-contribution/accumulation taxes, the Schedule 2 lines 13, 17b, 17k, and 17m taxes, and refundable credits (Form 1040 lines 27a, 28, 29, 30; Schedule 3 lines 9 and 12). Required to compute the prior-year safe harbor (IRC §6654(d)(1)(B)).
 4. **Prior-year AGI** — needed to determine whether the 110% safe harbor applies (AGI > $150,000; $75,000 for MFS). Per IRC §6654(d)(1)(C).
 5. **Current-year income projections**, broken down by category:
    - Wages with withholding (and projected federal withholding amount)
@@ -64,7 +66,7 @@ Before producing anything, the agent must have these inputs. If any are missing,
    - Rental net income (Schedule E)
    - K-1 income from S-corps / partnerships
    - Other (alimony, pension, Roth conversion, unemployment, gambling)
-6. **Current-year deduction posture** — standard deduction or itemized estimate; QBI eligibility flag for pass-through income.
+6. **Current-year deduction posture** — standard deduction (2026: $16,100 single/MFS, $32,200 MFJ/QSS, $24,150 HOH) or itemized estimate; non-itemizer cash charitable deduction (up to $1,000 / $2,000 MFJ, new for 2026); QBI eligibility flag; Schedule 1-A deductions (qualified tips, qualified overtime, car loan interest, enhanced senior deduction) — all entered on the 2026 worksheet lines 2a–2c.
 7. **Current-year credits** projected (CTC, education, foreign tax credit, etc.)
 8. **Existing withholding sources** — W-2, 1099-R pension, Social Security voluntary withholding, prior estimated payments already made this year.
 9. **Income evenness** — does the user expect income evenly across the year, or is it lumpy (e.g., Q4-only bonus, single Roth conversion in March, capital gain on a single sale)? Drives whether to use equal installments or annualized income method.
@@ -99,18 +101,18 @@ This is one of two safe harbors; lower of the two ends up controlling.
 
 ### Step 3 — Project current-year tax
 
-Use the 1040-ES worksheet (page 8 of the form PDF). Compute:
+Use the 2026 Estimated Tax Worksheet (page 11 of the 2026 Form 1040-ES PDF). Compute:
 
-1. **Estimated AGI** for the current year
-2. **Less** standard or itemized deduction (estimate)
-3. **Less** QBI deduction (20% of qualified pass-through, subject to taxable-income limits — load `references/qbi.md` if relevant)
-4. **= Taxable income**
-5. **Tax on taxable income** using current-year brackets — the agent must use the 2026 brackets published in IRS Rev. Proc. 2025-XX (verify before filing); for 2025 returns, see Rev. Proc. 2024-40
-6. **Plus** additional taxes (SE tax via Schedule SE, Additional Medicare 0.9% via Form 8959 if wages+SE > threshold, NIIT 3.8% via Form 8960 if MAGI > threshold)
-7. **Less** credits (CTC, foreign tax, education, etc.)
-8. **= Total estimated tax**
+1. **Estimated AGI** for the current year (line 1)
+2. **Less** standard or itemized deduction estimate (line 2a), QBI deduction (line 2b; 20% of qualified business income, subject to the §199A limits — 2026 threshold $201,750 / $403,500 MFJ, Rev. Proc. 2025-32 §4.26), and Schedule 1-A deductions (line 2c)
+3. **= Taxable income** (line 3)
+4. **Tax on taxable income** using the 2026 Tax Rate Schedules printed in the 2026 Form 1040-ES (Rev. Proc. 2025-32); use the qualified dividends and capital gain method in Pub. 505 if the user has those
+5. **Plus** AMT (line 5); **less** nonrefundable credits (line 7: CTC, foreign tax, education, etc.)
+6. **Plus** SE tax (line 9, from the 2026 SE Tax and Deduction Worksheet) and other taxes (line 10: Additional Medicare 0.9% via Form 8959 if wages+SE > threshold, NIIT 3.8% via Form 8960 if MAGI > threshold)
+7. **Less** refundable credits (line 11b)
+8. **= Total 2026 estimated tax** (line 11c)
 
-The required annual payment is **90% of this number** per §6654(d)(1)(B)(i).
+The required annual payment is **90% of this number** per §6654(d)(1)(B)(i) (66⅔% for qualifying farmers and fishers).
 
 ### Step 4 — Apply the safe harbor min
 
@@ -123,7 +125,7 @@ required_annual_payment = min(
 
 Pay this amount across the four installments (after subtracting expected withholding).
 
-If withholding alone covers the required annual payment, no estimated payments are needed; the user is automatically safe-harbored.
+If withholding alone covers the required annual payment (worksheet line 14a ≤ 0), no estimated payments are needed. Also none are required if line 11c minus withholding is under $1,000 (line 14b; §6654(e)(1)).
 
 ### Step 5 — Allocate across the four installments
 
@@ -132,7 +134,7 @@ If withholding alone covers the required annual payment, no estimated payments a
 - Q1: April 15, 2026 (covers Jan 1 – Mar 31)
 - Q2: June 15, 2026 (covers Apr 1 – May 31)
 - Q3: September 15, 2026 (covers Jun 1 – Aug 31)
-- Q4: January 15, 2027 (covers Sep 1 – Dec 31)
+- Q4: January 15, 2027 (covers Sep 1 – Dec 31); not required if the user files the 2026 return by February 1, 2027 and pays the full balance (2026 Form 1040-ES, Payment Due Dates; §6654(h))
 
 (Per IRC §6654(c). When a due date falls on a weekend/holiday, it shifts to the next business day; verify against the IRS calendar before filing.)
 
@@ -142,8 +144,8 @@ If withholding alone covers the required annual payment, no estimated payments a
 
 - **IRS Direct Pay** — free, ACH from checking/savings, one-time per payment. https://www.irs.gov/payments/direct-pay
 - **EFTPS** — free, requires enrollment (PIN mailed within 5–7 business days). https://www.eftps.gov
-- **Debit / credit card** — small flat fee for debit, ~1.85% for credit. https://www.irs.gov/payments
-- **Check + paper voucher** — mail Form 1040-ES voucher with check made payable to "United States Treasury". Address varies by state — see Form 1040-ES voucher instructions.
+- **Debit / credit card / digital wallet** — processor fees (as of 2026-10-06: debit $2.10–$2.15; credit 1.75%–1.85% with a $2.50 minimum; https://www.irs.gov/payments/pay-your-taxes-by-debit-or-credit-card)
+- **Check + paper voucher** — mail Form 1040-ES voucher with check made payable to "United States Treasury". Address varies by state (2026: P.O. Box 1300, Charlotte, NC 28201-1300 or P.O. Box 931100, Louisville, KY 40293-1100, by state of residence) — see "Where To File Your Estimated Tax Payment Voucher" in the 2026 Form 1040-ES.
 
 For agent-driven payments, Direct Pay is the canonical channel (no enrollment, deterministic flow). See `filing.md`.
 
@@ -173,34 +175,37 @@ If the agent has browser-automation tooling and the user explicitly authorizes p
 
 ## Line-by-line guidance
 
-Form 1040-ES has a worksheet (page 8) and four payment vouchers (pages 9–12). For full reference, load [`references/line-by-line.md`](./references/line-by-line.md). High-level summary below.
+Form 1040-ES (2026) has the Estimated Tax Worksheet on page 11 and four payment vouchers on the last pages (vouchers 4 through 1). For full reference, load [`references/line-by-line.md`](./references/line-by-line.md). High-level summary below.
 
-### 2026 Estimated Tax Worksheet (page 8 of f1040es.pdf)
+### 2026 Estimated Tax Worksheet (page 11 of f1040es.pdf)
 
 | Line | Field | Notes |
 |------|-------|-------|
-| 1 | Adjusted gross income expected | Sum of all income categories minus above-the-line adjustments |
-| 2a | Standard or itemized deduction | Use larger; standard deduction for 2026 set by Rev. Proc. — verify |
-| 2b | QBI deduction | 20% × qualified pass-through income, subject to limits (IRC §199A) |
-| 3 | Subtract Line 2 from Line 1 | Taxable income |
-| 4 | Tax (from rate schedule) | Use 2026 brackets — verify Rev. Proc. before filing |
+| 1 | Adjusted gross income expected | Sum of all income categories minus above-the-line adjustments (incl. half of SE tax from the SE worksheet line 11) |
+| 2a | Deductions | Itemized estimate, or standard deduction plus up to $1,000 ($2,000 MFJ) cash charitable contributions |
+| 2b | QBI deduction | Estimated §199A deduction |
+| 2c | Schedule 1-A deductions | Estimated Schedule 1-A line 38 (tips, overtime, car loan interest, seniors) |
+| 2d | Add 2a, 2b, 2c | |
+| 3 | Subtract line 2d from line 1 | Taxable income |
+| 4 | Tax (2026 Tax Rate Schedules) | Pub. 505 method if qualified dividends / net capital gain |
 | 5 | Alternative Minimum Tax | Form 6251 if applicable |
-| 6 | Add Lines 4 and 5 | |
-| 7 | Credits | CTC, foreign tax, education, retirement savings, etc. |
+| 6 | Add Lines 4 and 5 (+ other taxes that go on Form 1040 line 16) | |
+| 7 | Credits | Nonrefundable credits (CTC $2,200 per child for 2026, foreign tax, education, etc.); not withholding |
 | 8 | Subtract Line 7 from Line 6 | |
-| 9 | Self-employment tax | 92.35% × SE earnings × 15.3% (with SS cap on the 12.4% portion) |
-| 10 | Other taxes | NIIT, Additional Medicare, Section 965, etc. |
-| 11a | Total tax | Sum of 8 + 9 + 10 |
-| 11b | Refundable credits | Earned Income Credit, ACTC, premium tax credit |
-| 11c | Subtract 11b from 11a | |
-| 12a | 90% × Line 11c | One safe-harbor target |
+| 9 | Self-employment tax | From the 2026 SE Tax and Deduction Worksheet line 10 (92.35%; SS cap $184,500 shared with wages) |
+| 10 | Other taxes | Additional Medicare, NIIT, Schedule 2 lines 8–12, 14–17z, 19 items (with the instructions' exceptions) |
+| 11a | Add lines 8 through 10 | |
+| 11b | Refundable credits | EIC, ACTC, fuel tax credit, net PTC, refundable AOC, refundable adoption credit, §1341 credit |
+| 11c | Subtract 11b from 11a | Total 2026 estimated tax |
+| 12a | 90% × Line 11c (66⅔% farm/fish) | One safe-harbor target |
 | 12b | Prior-year tax × 100% (or 110%) | Other safe-harbor target |
 | 12c | Smaller of 12a or 12b | Required annual payment |
-| 13 | Income tax withheld + expected | Subtract from 12c |
+| 13 | Income tax withheld + expected | Incl. pension and Additional Medicare Tax withholding |
 | 14a | Subtract 13 from 12c | If ≤ $0, no estimates required |
-| 14b | Divide Line 14a by 4 | Per-quarter installment |
+| 14b | Subtract 13 from 11c | If < $1,000, no estimates required |
+| 15 | ¼ of line 14a (minus 2025 overpayment applied) | Per-quarter installment |
 
-### Payment vouchers (pages 9–12)
+### Payment vouchers (last pages of f1040es.pdf)
 
 Each voucher (4 total) has identical fields:
 
@@ -223,25 +228,25 @@ Run these checks before declaring the plan ready. Surface any failure — don't 
 
 ### Math checks
 
-- [ ] Worksheet Line 3 = Line 1 − Line 2a − Line 2b
+- [ ] Worksheet Line 2d = Line 2a + Line 2b + Line 2c; Line 3 = Line 1 − Line 2d
 - [ ] Worksheet Line 6 = Line 4 + Line 5
 - [ ] Worksheet Line 11a = Line 8 + Line 9 + Line 10
 - [ ] Worksheet Line 11c = Line 11a − Line 11b
 - [ ] Worksheet Line 12a = 0.90 × Line 11c (rounded)
 - [ ] Worksheet Line 12b correctly applies 110% if prior AGI > $150K (or $75K MFS), else 100%
 - [ ] Worksheet Line 12c = min(12a, 12b)
-- [ ] Worksheet Line 14a = Line 12c − Line 13
-- [ ] Sum of four installment amounts = Line 14a (within ±$1 rounding)
+- [ ] Worksheet Line 14a = Line 12c − Line 13; Line 14b = Line 11c − Line 13
+- [ ] Line 15 = ¼ × Line 14a; sum of four installment amounts = Line 14a (within ±$1 rounding)
 
 ### Sanity checks (warn, don't block)
 
-- [ ] Self-employment tax computed: 92.35% × net SE earnings, then 15.3% up to SS wage base, 2.9% above. (2025 SS base: $176,100 per SSA. 2026 base announced ~Oct 2025 — verify.)
+- [ ] Self-employment tax computed: 92.35% × net SE earnings, then 12.4% up to the SS wage base less W-2 SS wages, plus 2.9% on all of it. (2026 SS base: $184,500 — 2026 Form 1040-ES SE worksheet line 5; 2025: $176,100.)
 - [ ] Additional Medicare 0.9%: applies only to wages + SE earnings above filing-status threshold ($200K single, $250K MFJ, $125K MFS) per IRC §3101(b)(2). No employer match on this portion.
 - [ ] NIIT 3.8%: applies to lesser of net investment income or AGI excess over MAGI threshold ($200K single, $250K MFJ, $125K MFS) per IRC §1411.
 - [ ] If user has Roth conversion: the conversion amount is fully ordinary income in the year converted; estimated tax should cover it.
 - [ ] If user has long-term capital gain pushing income into 20% LTCG bracket: ensure preferential rate is applied (don't tax LTCG at ordinary rates).
 - [ ] If MFS spouse plans to file separately: verify $75,000 AGI threshold applied for 110% safe harbor.
-- [ ] Withholding shortfall (Line 14a) > $1,000 confirms estimated payments are required (de minimis exception under §6654(e)(1) excuses filers with < $1,000 owed).
+- [ ] Line 14b (Line 11c − withholding) of $1,000 or more AND Line 14a > 0 confirm estimated payments are required (de minimis exception under §6654(e)(1) excuses filers with < $1,000 owed).
 - [ ] No estimates required if total tax for prior year was zero AND the user was a US citizen / resident alien for the full year AND the prior tax year was 12 months (per §6654(e)(2)).
 
 ### Cross-form checks
@@ -277,6 +282,8 @@ The agent's deliverable is an **estimated-tax plan** the user can act on. Format
 | 1.  Estimated AGI | $XXX,XXX |
 | 2a. Standard / itemized deduction | $XX,XXX |
 | 2b. QBI deduction | $X,XXX |
+| 2c. Schedule 1-A deductions | $X,XXX |
+| 2d. Total deductions | $XX,XXX |
 | 3.  Taxable income | $XXX,XXX |
 | 4.  Tax (from rate schedule) | $XX,XXX |
 | 5.  AMT | $X |
@@ -292,8 +299,9 @@ The agent's deliverable is an **estimated-tax plan** the user can act on. Format
 | 12b. Prior-year × 100% (or 110%) | $XX,XXX |
 | 12c. Required annual payment (smaller) | $XX,XXX |
 | 13. Expected withholding | $X,XXX |
-| 14a. Net required estimated payments | $XX,XXX |
-| 14b. Per-quarter (÷ 4) | $X,XXX |
+| 14a. Line 12c − Line 13 | $XX,XXX |
+| 14b. Line 11c − Line 13 ($1,000 test) | $XX,XXX |
+| 15. Per-quarter (¼ of 14a) | $X,XXX |
 
 ## Installment schedule
 | Voucher | Due date | Amount | Channel |
@@ -336,7 +344,7 @@ The plan is **not** a filing — it's a forward-looking calendar with computed a
 
 Loaded on demand based on what the user's situation needs.
 
-- [`references/line-by-line.md`](./references/line-by-line.md) — Complete walkthrough of the 1040-ES worksheet (page 8) and the four vouchers (pages 9–12)
+- [`references/line-by-line.md`](./references/line-by-line.md) — Complete walkthrough of the 2026 1040-ES worksheet (page 11) and the four vouchers
 - [`references/safe-harbor-rules.md`](./references/safe-harbor-rules.md) — IRC §6654 safe harbors, 90% / 100% / 110% rules, de minimis $1,000 exception, withholding-as-paid-evenly rule
 - [`references/uneven-income.md`](./references/uneven-income.md) — Annualized income installment method (Form 2210 Schedule AI), when to use it, what changes per quarter
 - [`references/se-tax-niit-amt.md`](./references/se-tax-niit-amt.md) — Self-employment tax computation, NIIT 3.8%, Additional Medicare 0.9%, AMT — all flow into Line 9–10 of the worksheet
@@ -356,7 +364,7 @@ End-to-end worked plans. Use these as patterns when the user's situation is simi
 
 Authoritative sources used by this skill. Always re-verify against the IRS site for the tax year being filed — the IRS updates the form, brackets, wage bases, and thresholds annually.
 
-- [Form 1040-ES Instructions: Complete 2026 Guide](https://jupid.com/blog/form-1040-es-instructions-guide-2026) — Jupid's narrative companion to this skill, written for human readers
+- [Form 1040-ES Instructions: How to Calculate and Pay Quarterly Estimated Taxes 2026](https://jupid.com/blog/form-1040-es-instructions-guide-2026) — Jupid's narrative companion to this skill, written for human readers
 - [Form 1040-ES (latest)](https://www.irs.gov/pub/irs-pdf/f1040es.pdf) — combined form, worksheet, and instructions
 - [About Form 1040-ES](https://www.irs.gov/forms-pubs/about-form-1040-es) — IRS landing page with archive of past revisions
 - [Publication 505](https://www.irs.gov/pub/irs-pdf/p505.pdf) — Tax Withholding and Estimated Tax (the deep authority on §6654)
@@ -372,7 +380,8 @@ Authoritative sources used by this skill. Always re-verify against the IRS site 
 - IRC §1411 — Net Investment Income Tax (3.8%)
 - IRC §3101(b)(2) — Additional Medicare Tax (0.9%)
 - IRC §199A — Qualified Business Income deduction (20%)
-- Rev. Proc. 2024-40 — inflation adjustments for tax year 2025 (verify 2026 procedure when published)
+- Rev. Proc. 2025-32 — inflation adjustments for tax year 2026 (brackets, standard deduction, QBI thresholds, CTC); Rev. Proc. 2024-40 for 2025
+- P.L. 119-21 (One Big Beautiful Bill Act) — 2026 changes listed in the 2026 Form 1040-ES "What's New" (Schedule 1-A deductions, non-itemizer charitable deduction, QBI changes, expired energy/vehicle credits)
 
 ## Disclaimer
 

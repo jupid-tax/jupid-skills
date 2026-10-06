@@ -1,6 +1,6 @@
 # EFAST2 filing system — overview, credentials, attachments, signatures
 
-EFAST2 (ERISA Filing Acceptance System) is the DOL's electronic filing portal for Form 5500 / 5500-SF. Form 5500-EZ filers may also file electronically via EFAST2 (since plan year 2020) but the IRS still accepts paper for 5500-EZ.
+EFAST2 (ERISA Filing Acceptance System) is the DOL's electronic filing portal for Form 5500 / 5500-SF. Form 5500-EZ filers may also file electronically via EFAST2 (plan years beginning after 2019). Paper 5500-EZ is still accepted, except that for plan years beginning on or after January 1, 2025 a filer required to file at least 10 returns of any type with the IRS during the calendar year must file 5500-EZ through EFAST2 (2025 Form 5500-EZ instructions; Treas. Reg. §301.6058-2).
 
 This reference covers the credentialing and submission mechanics in depth. The skill's `filing.md` covers the browser-automation flow; this file covers the underlying system the agent and user need to understand.
 
@@ -10,7 +10,7 @@ This reference covers the credentialing and submission mechanics in depth. The s
 
 **Is**:
 - The DOL Employee Benefits Security Administration's (EBSA) electronic intake system for the Form 5500 series
-- The exclusive filing channel for Form 5500 and Form 5500-SF since plan year 2009
+- The required filing channel for Form 5500 and Form 5500-SF (both must be filed electronically, 2025 instructions)
 - A shared system feeding data to the DOL, IRS, and PBGC
 - Free to use (no filing fee charged by DOL for the filing itself)
 
@@ -25,40 +25,22 @@ URL: https://www.efast.dol.gov
 
 ## Credential types
 
-EFAST2 has **two distinct credential types** that must be set up before filing. Many filers confuse them.
+Source: EFAST2 Guide for Filers and Service Providers (Document Version 4.0, December 2, 2024), Chapters 1–3.
 
-### Filer credentials
+**Sign-in**: Since January 1, 2024, the EFAST2 website is reached only through **Login.gov** (email, password, and two-factor authentication). The old EFAST2 User ID and password no longer sign anyone in.
 
-Used by the person submitting the filing on behalf of the plan. The filer can be:
+**Registration**: After signing in with Login.gov, each person registers an EFAST2 profile and receives a **User ID** (the letter "A" plus seven digits) and a **4-digit PIN** on the confirmation page. There is no postal-mail step. Credentials belong to the individual, are not linked to a plan or EIN, cannot be transferred or shared, and can be used for multiple plans and years.
 
-- The plan administrator
-- A third-party administrator (TPA)
-- A recordkeeper (Fidelity, Empower, Guideline, Human Interest, etc.)
-- A CPA or ERISA attorney acting on behalf of the plan
+**User types** (select every one the person needs):
 
-**How to obtain**: Online registration at https://www.efast.dol.gov. Receive User ID and PIN by email within minutes. No postal-mail step.
+- **Filing Author**: creates, imports, validates, submits, and amends filings in IFILE; cannot sign unless also a Filing Signer
+- **Filing Signer**: plan administrators, employers/plan sponsors, or DFEs who sign electronically; also service providers signing under written authorization
+- **Schedule Author**: completes individual schedules in IFILE for import by a Filing Author
+- **Transmitter**: submits filings through EFAST2-approved third-party software
 
-**Storage**: The filer's User ID is associated with the filer (not the plan). One filer can submit returns for multiple plans.
+The User ID + PIN together are the electronic signature. A filing that the plan administrator does not sign is subject to rejection and civil penalties (2025 Form 5500 instructions, Signature and Date). If the plan administrator is an entity, the signature must be in the name of a person authorized to sign for it.
 
-### Signer credentials
-
-Used by the **plan administrator** (or a corporate officer of the sponsor designated as signer) to sign the filing. The signature is electronic; the signer's credentials authenticate the signature.
-
-**How to obtain**: Apply at https://www.efast.dol.gov via "Register" → choose "Signer". Receive User ID by email; receive PIN by **postal mail** (USPS) at the address provided. Allow 7–14 days.
-
-**Storage**: The signer's User ID + PIN are tied to the individual person, not the plan. The same individual can sign for multiple plans they administer.
-
-**If the plan has multiple administrators or co-signers** (some defined benefit plans require both the sponsor and the trustee to sign), each individual obtains their own signer credentials. The filing requires both signatures.
-
-### Why the two-step credential model
-
-The DOL separates filer and signer credentials so that:
-
-- TPAs can prepare filings (filer credentials) without ever having signature authority
-- Signers (plan administrators) can review and sign filings prepared by others
-- Plan sponsors can authorize a TPA to file but retain control over the signature
-
-A filing prepared by a TPA but unsigned by the plan administrator will sit in "unsigned" status in EFAST2 until the administrator completes the signature step.
+**Service provider signature option**: A service provider with written authorization may sign electronically if the filing includes a PDF of the Form 5500 (or 5500-SF) bearing the plan administrator's manual signature; that signature image is then published with the filing.
 
 ---
 
@@ -66,32 +48,19 @@ A filing prepared by a TPA but unsigned by the plan administrator will sit in "u
 
 EFAST2's primary submission interface for filers without specialized software is **IFILE** — a browser-based form-completion app inside the EFAST2 portal.
 
-IFILE features:
-
-- Form 5500 / 5500-SF / 5500-EZ templates with all schedules
-- Attachment uploads (PDF for IQPA audit reports, plan documents, etc.)
-- Real-time validation (math checks, schedule consistency, field-format checks)
-- Save and resume — partially completed filings stored on EFAST2 servers
-- Multi-user collaboration — TPA fills, plan administrator reviews and signs
+IFILE is the government's free internet-based filing application on the EFAST2 website. It handles Form 5500, 5500-SF, 5500-EZ, their schedules, PDF attachments, and Form 5558 (from January 1, 2025). A Filing Author prepares the filing; a Filing Signer signs it.
 
 IFILE is NOT a tax-preparation tool. It does not pull data from accounting systems. The user (or TPA) enters data manually or pastes from a working spreadsheet.
 
-### Validation flags in IFILE
+### Error checking
 
-IFILE validates on every save and on submission:
-
-- **Format errors** (EIN format, plan number range, percentage values 0–100) — block submission
-- **Math errors** (Schedule H rollforward not balancing, total participants ≠ active + retired + beneficiaries) — block submission
-- **Schedule inconsistencies** (large plan box checked but no Schedule H attached, insurance contract indicated but no Schedule A) — block submission
-- **Sanity warnings** (unusual participant count change, year-over-year asset drop) — warning only, do not block
-
-The user must address all blocking errors before submission. Sanity warnings can be acknowledged and submitted with explanation.
+Entries must be in the proper format or the software will not submit them. Check the return for errors before signing and submitting; IFILE and approved software both run error checks. After submission, EFAST2 should report a filing status within about 20 minutes, listing any errors or warnings; a clean filing shows "Filing Received". Filings with errors are subject to rejection and penalties; correct them with an amended filing (2025 Form 5500-SF instructions, How To File; EFAST2 Guide Chapter 5).
 
 ---
 
 ## XML upload (software-prepared filings)
 
-If the plan administrator or TPA uses a Form 5500 software product (Datair, ftwilliam.com, Relius, FT William, Pension Solutions, etc.), the software produces an EFAST2-compliant XML file. The XML is uploaded to EFAST2 instead of using IFILE.
+If the plan administrator or TPA uses EFAST2-approved third-party software (list on the EFAST2 website), the software transmits the filing to EFAST2 instead of using IFILE. The person transmitting needs the Transmitter user type.
 
 XML upload is preferred when:
 
@@ -99,7 +68,7 @@ XML upload is preferred when:
 - The TPA files for multiple plans and wants standardized output
 - The audit firm provides Schedule H data in a software-compatible format
 
-XML upload still requires filer + signer credentials and goes through the same validation as IFILE.
+Software-transmitted filings still require a Filing Signer's User ID and PIN and receive the same EFAST2 filing status checks.
 
 ---
 
@@ -112,13 +81,12 @@ Schedule H requires several attachments for large plans. Common attachments:
 | **IQPA audit report** | Large pension plan with Schedule H | PDF |
 | **Schedule of assets (held at end of year)** | Large pension plan with Schedule H | PDF |
 | **Schedule of reportable transactions** | Large pension plan with Schedule H, if reportable transactions exceed 5% of plan assets | PDF |
-| **Schedule of delinquent contributions** | Late deferrals reported on Schedule H Line 4a | PDF |
+| **Schedule of delinquent participant contributions** | Late deferrals reported on Schedule H line 4a | PDF |
 | **Plan document** | Generally NOT required as attachment; available on request from DOL | PDF (if requested) |
-| **Plan opinion letter / determination letter** | DB plans (Schedule SB) | PDF |
-| **Actuarial certification** | DB plans (Schedule SB) | PDF |
-| **Schedule SSA** | Reporting separated participants with vested benefits | Filed separately with IRS, not via EFAST2 |
+| **Schedule SB and its attachments** | Single-employer DB plans, signed by the enrolled actuary | Schedule + PDF attachments |
+| **Form 8955-SSA** (separated participants with deferred vested benefits) | Pension plans with such participants | Filed directly with the IRS; it cannot be attached to an EFAST2 filing |
 
-Attachment file size limits apply (typically 100 MB per attachment, 200 MB total per filing). Compress PDFs if the audit report is large.
+The maximum size of one filing is 300 MB (EFAST2 Guide, Chapter 4). Compress PDFs if the audit report is large. Do not include attachments that show Social Security numbers; that can cause rejection.
 
 ---
 
@@ -130,33 +98,26 @@ For plans where the **sponsor and administrator are different entities** (rare; 
 
 For **terminated plans being filed as final**, the same signature requirements apply as for an ongoing plan.
 
-For **delinquent filings under DFVC**, the signer signs as if filing on time. The DFVC penalty is paid separately (not via EFAST2).
+For **delinquent filings under DFVC**, check the DFVC box in Part I (Form 5500 line D, Form 5500-SF line C) and pay the DFVC penalty separately through the DOL's online DFVC system (not via EFAST2).
 
-### Signature timing
-
-The signer can sign:
-
-- Before submission (signer signs, then filer submits)
-- After submission (filer submits as "unsigned"; signer logs in later and signs; the filing's effective date is the date of signature)
-
-A filing not signed within 30 days of submission may be flagged. Sign promptly.
+After submitting, check the filing status. "Processing Stopped" or "Unprocessable" can mean the filing lacked a valid electronic signature and may be treated as not filed (2025 Form 5500 instructions, Signature and Date).
 
 ---
 
 ## Submission and acknowledgment
 
-After all signatures and validation pass, the filer clicks "Submit". EFAST2 processes in real time:
+After all signatures and checks pass, the filer clicks "Submit". Then:
 
-1. **Acceptance** — typically within 1–2 minutes for IFILE; a few seconds for XML
-2. **Acknowledgment ID** — generated and displayed; save this. It's the proof of filing.
-3. **Status update** — viewable in the filer's filing history
+1. **Acknowledgment ID (AckID)** — generated by EFAST2 to identify the filing; save it
+2. **Filing status** — available within about 20 minutes on the Submissions page; "Filing Received" when no errors or warnings were found
+3. **Records** — keep the signed filing and any acknowledgments (EFAST2 Guide §7.1)
 
 If EFAST2 rejects, the rejection reason is displayed (specific error codes). Common rejection reasons:
 
 - Duplicate filing for the same plan year (TPA already filed)
 - Plan number mismatch with prior year
 - Missing required schedule
-- IQPA audit report not attached when Schedule H Line 1c indicates audit performed
+- IQPA report not attached while Schedule H Part III (line 3a) reports an opinion
 - Signer credentials invalid
 
 Address the issue and resubmit. Each new submission generates a new Acknowledgment ID.
@@ -165,7 +126,7 @@ Address the issue and resubmit. Each new submission generates a new Acknowledgme
 
 ## Public disclosure
 
-Once accepted by EFAST2, the filing is publicly available within ~24 hours at https://www.efast.dol.gov/5500search. Anyone can search by:
+Nearly all Form 5500 and 5500-SF filings are posted on the Form 5500 Search page of the EFAST2 website, which needs no sign-in (EFAST2 Guide, Chapter 5). Anyone can search by:
 
 - Plan name
 - Sponsor name
@@ -173,7 +134,7 @@ Once accepted by EFAST2, the filing is publicly available within ~24 hours at ht
 - Plan number
 - Plan year
 
-Form 5500-EZ is **not** public — IRS-only (the IRS does not publish 5500-EZ data).
+Form 5500-EZ information is open to public inspection on request (IRC §6104(b)), but 5500-EZ returns, whether filed on paper or through EFAST2, are not published on the internet (2025 Form 5500-EZ instructions, Note (2); EFAST2 Guide, Chapter 5).
 
 This public-disclosure obligation is one reason large plan sponsors review filings carefully — the DOL site is the source of competitive intelligence on benefit plans.
 
@@ -192,7 +153,7 @@ To amend a previously filed 5500 / 5500-SF, file an **amended return** via EFAST
 
 Amended returns supersede the prior filing. The original Acknowledgment ID is retained in EFAST2 history.
 
-For 5500-EZ amendments, file a new paper return marked "amended" or use EFAST2 (since plan year 2020).
+For 5500-EZ amendments: if the original was filed on paper, amend on a paper Form 5500-EZ with the IRS; if it was filed electronically (as 5500-EZ, or earlier as 5500-SF), amend electronically on Form 5500-EZ, never on 5500-SF (2025 Form 5500-EZ instructions, Amended Return).
 
 ---
 
@@ -202,8 +163,8 @@ For 5500-EZ amendments, file a new paper return marked "amended" or use EFAST2 (
 
 2. **Sharing signer credentials across people** — the User ID and PIN are tied to one individual. Sharing creates audit-trail problems and may invalidate the signature.
 
-3. **Using expired credentials** — EFAST2 credentials don't formally expire but have not been used for 1+ years may need re-verification. Test login a week before filing.
+3. **Trying to sign in with the old EFAST2 User ID and password** — since January 1, 2024 sign-in is through Login.gov only; the User ID and PIN are still used to sign. Test the Login.gov sign-in a week before filing.
 
-4. **Plan administrator changes mid-year, but the new administrator hasn't gotten signer credentials** — apply early. The 7–14 day postal-mail wait can derail a filing deadline.
+4. **Plan administrator changes mid-year, but the new administrator hasn't registered as a Filing Signer** — register early; credentials are personal and cannot be handed over by the prior administrator.
 
 5. **TPA filed on behalf of plan but the sponsor doesn't have access to the EFAST2 record** — the sponsor should obtain filer credentials and add their plan to their dashboard for visibility.

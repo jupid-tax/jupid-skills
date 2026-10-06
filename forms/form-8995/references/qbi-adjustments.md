@@ -12,7 +12,9 @@ For each Schedule C source, QBI = Schedule C Line 31 minus:
 2. **Self-employed health insurance deduction** (Schedule 1 Line 17)
 3. **Self-employed retirement contributions** (Schedule 1 Line 16) — SEP, SIMPLE, solo 401(k)
 
-Authority: Treas. Reg. §1.199A-3(b)(1)(vi).
+Authority: Treas. Reg. §1.199A-3(b)(1)(vi) (these deductions are attributable to a trade or business "on a proportionate basis to the gross income received from the trade or business").
+
+4. **Qualified tips deducted under §224** (Schedule 1-A, 2025 and later) to the extent the tips were received in this trade or business. Amounts deductible under §224(a) are not QBI (IRC §199A(c)(4)(D), added by P.L. 119-21 §70201(d) for tax years beginning after 2024; 2025 Instructions for Form 8995, What's New and QBI Flow Chart question 11). Ask the user whether they claimed a tips deduction on Schedule 1-A line 5 for business tips.
 
 The reasoning: these amounts are already deducted on the filer's Form 1040 because they reduce the income from the trade or business for federal income tax purposes. §199A does not let you double-count them.
 
@@ -46,7 +48,7 @@ Allocation:
 | #1 Consulting | $40,000 | 80% | $2,826 | $3,360 | $1,200 | $7,386 | $32,614 |
 | #2 Etsy | $10,000 | 20% | $706 | $840 | $300 | $1,846 | $8,154 |
 
-Both QBI figures go on separate lines (1a and 1b) of Form 8995.
+Both QBI figures go on separate rows (1i and 1ii) of Form 8995.
 
 ---
 
@@ -64,18 +66,18 @@ In practice, a loss-making Schedule C means the QBI for that source is just the 
 
 ## When the filer has K-1 income alongside Schedule C
 
-K-1 QBI is reported separately by the partnership or S-corp and includes the entity's own §199A adjustments where applicable. The Schedule C §199A adjustments do **not** reduce K-1 QBI.
+K-1 QBI is reported separately by the partnership or S-corp and reflects the entity's own deductions. The Schedule C §199A adjustments do **not** reduce K-1 QBI. Owner-level deductions attributable to the K-1 business do: ½ SE tax on partnership self-employment income, SE health insurance and retirement contributions based on that income, unreimbursed partnership expenses (Treas. Reg. §1.199A-3(b)(1)(vi); 2025 Instructions for Form 8995, "Determining Your Qualified Business Income"). Ask which apply.
 
 Example with both:
 
 - Schedule C profit: $50,000 → ½ SE tax $3,532, SE health $4,200, SEP $1,500 → QBI = $40,768
-- Partnership K-1 (Box 20 code Z): $15,000 QBI
-- S-corp K-1 (Box 17 code V): $20,000 QBI
+- Partnership K-1 (Box 20 code Z): $15,000 QBI (limited partner, no self-employment income from it, no unreimbursed expenses)
+- S-corp K-1 (Box 17 code V): $20,000 QBI (shareholder pays no health insurance through the S corp)
 
-Form 8995 Line 1a-1c:
-- 1a: Garcia Design (Schedule C) — QBI $40,768
-- 1b: Acme LLC (partnership K-1) — QBI $15,000
-- 1c: XYZ Inc (S-corp K-1) — QBI $20,000
+Form 8995 Line 1, rows i–iii:
+- 1i: Garcia Design (Schedule C) — QBI $40,768
+- 1ii: Acme LLC (partnership K-1) — QBI $15,000
+- 1iii: XYZ Inc (S-corp K-1) — QBI $20,000
 
 Line 2 total: $75,768.
 
@@ -83,7 +85,7 @@ Line 2 total: $75,768.
 
 ## When SE health insurance has been allocated to W-2 income
 
-If the filer also has W-2 income with employer-subsidized health insurance, the SE health insurance deduction is limited to the difference between total premiums and the employer subsidy. Make sure the deduction on Schedule 1 Line 17 reflects only what the SE business funded — that's the amount that subtracts from QBI.
+If the filer (or spouse) was eligible to participate in an employer-subsidized health plan, no SE health insurance deduction is allowed for those months (IRC §162(l)(2)(B)); the deduction is figured on Form 7206 when required. Make sure the deduction on Schedule 1 Line 17 reflects only the months and premiums that qualify. That deducted amount, not gross premiums, is what subtracts from QBI.
 
 ---
 
@@ -96,7 +98,7 @@ If both spouses have Schedule Cs:
 3. SE health insurance is allocated to whichever spouse paid the premium
 4. SE retirement contributions are allocated to whichever spouse made the contribution
 
-On Form 8995, list each Schedule C separately in Lines 1a-1e with the QBI net of that spouse's adjustments.
+On Form 8995, list each Schedule C separately in rows 1i–1v with the QBI net of that spouse's adjustments.
 
 ---
 

@@ -89,17 +89,15 @@ governing documents.
 
 #### Mexican Fideicomiso
 
-A **Fideicomiso** is the Mexican equivalent of a trust, used commonly to
-hold real estate in restricted zones for foreign buyers. Generally a
-foreign trust for US tax purposes. The US person who is the beneficiary
-of the Fideicomiso files Form 3520 if the trust holds real estate, even
-though the substance feels more like an ownership arrangement.
-
-The IRS issued **Rev. Rul. 2013-14** clarifying treatment of certain
-Mexican land trusts (fideicomisos that hold real estate in the restricted
-zone for residential use); these may NOT be trusts for US tax purposes if
-the beneficiary holds the bundle of ownership rights — but the safe
-harbor is narrow. Read the ruling and confirm with the user.
+A **Fideicomiso** is a Mexican trust arrangement, commonly used by
+foreign buyers to hold residential real estate in Mexico's restricted
+zones through a Mexican bank. **Rev. Rul. 2013-14** holds that a Mexican
+land trust as described in the ruling (the bank's only duties are to hold
+and transfer legal title) is not a trust under Treas. Reg.
+§301.7701-4(a), so no Form 3520 or 3520-A is required for it (IRM
+21.7.13 and 21.8.2 restate this). A fideicomiso that does not match the
+ruling's facts may be a trust with filing requirements. Read the ruling,
+compare the user's agreement, and confirm with the user.
 
 #### Hong Kong / Singapore family office structures
 
@@ -113,22 +111,24 @@ for the founding charter and analyze the substantial decisions.
 
 #### Foreign retirement accounts
 
-Most foreign retirement accounts (UK SIPP, Australian Super, Canadian
-RRSP) are **trusts** under §7701. Without a treaty exemption, the US
-person owner files Form 3520 and 3520-A annually.
+Many foreign retirement arrangements (UK SIPP, Australian Super,
+Canadian RRSP) may be **trusts** under §7701. Before concluding that Form
+3520 / 3520-A applies, check the exemptions listed in the Instructions for
+Form 3520 (Exceptions To Filing):
 
-- **Canadian RRSP / RRIF**: Rev. Proc. 2014-55 grants automatic exemption
-  from 3520 / 3520-A (the user files only Form 8938 and reports income
-  per the US-Canada treaty election on Form 1040). This is a major
-  simplification.
-- **UK SIPP**: No equivalent exemption. Treated as foreign trust → 3520
-  required. Some practitioners argue that "tax-deferred" treatment under
-  the US-UK treaty obviates 3520 reporting; the IRS has never explicitly
-  agreed. Conservative position: file 3520 + 3520-A.
-- **Australian Super**: Similar to UK SIPP. The IRS has not issued
-  guidance carving Super out of 3520. Conservative position: file.
-- **EU pension plans**: Country-by-country analysis. Some treaties have
-  specific carveouts; many do not.
+- **Canadian RRSP / RRIF / other Canadian retirement plans** within
+  section 3 of Rev. Proc. 2014-55: exempt from 3520 / 3520-A. Other
+  reporting (Form 8938, FBAR) is not affected.
+- **Rev. Proc. 2020-17**: exempts eligible individuals' transactions with
+  certain tax-favored foreign retirement trusts and tax-favored foreign
+  nonretirement savings trusts that meet its section 5 conditions.
+- **Proposed Reg. §1.6048-5** (published May 8, 2024): exempts certain
+  tax-favored foreign trusts for pension, retirement, medical, disability,
+  or educational benefits; taxpayers may rely on it for tax years ending
+  after May 8, 2024 if they apply it in full and consistently.
+- Whether a particular UK SIPP, Australian Super fund, or EU pension plan
+  meets these conditions is plan-specific. ASK for the plan documents and
+  route to an international tax practitioner; do not assume either way.
 
 #### Foreign LLCs treated as disregarded entities
 
@@ -151,11 +151,16 @@ for the benefit of a US beneficiary, the trust is a **foreign trust** but
 the US beneficiary is **not the grantor**. Under §679, US grantor trust
 status doesn't apply (the grantor is foreign).
 
-The US beneficiary's Form 3520 obligation arises only when:
-- They receive a distribution → Part III
-- The grantor dies and the trust converts (special rules)
+The US beneficiary's Form 3520 obligation arises when:
+- They receive a distribution → Part III (lines 24, 27)
+- They or a related U.S. person receive a loan of cash or marketable
+  securities or the uncompensated use of trust property → Part III, line
+  25 (IRC §643(i))
+- The trust holds an outstanding qualified obligation of theirs → Part
+  III, line 28
+- The grantor dies and the trust's status changes (special rules)
 
-Until distribution, no 3520 is required from the US beneficiary.
+Without one of these events, no 3520 is required from the US beneficiary.
 
 ## When in doubt, ask the practitioner
 

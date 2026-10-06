@@ -9,6 +9,7 @@ The canonical "everything works as intended" pattern. A parent uses 529 funds to
 - **Plan**: New York's 529 Direct Plan (a state 529)
 - **Tax year**: 2025 (filing in 2026)
 - **Robert's filing status**: MFJ; AGI $145,000
+- **How the plan paid**: Robert paid State U's bills himself and then requested a $30,000 reimbursement payable to him. Because the plan paid the account owner (not Sophia or the school), Robert is the recipient (1099-Q instructions, Recipient's Name and TIN)
 
 ## 1099-Q received
 
@@ -16,9 +17,10 @@ The canonical "everything works as intended" pattern. A parent uses 529 funds to
 Box 1 (Gross distribution):        $30,000
 Box 2 (Earnings):                  $11,400
 Box 3 (Basis):                     $18,600
-Box 4 (Trustee-to-trustee):        Unchecked
-Box 5 (Program type):              State 529
-Box 6 (Designated beneficiary):    Unchecked (recipient is the parent, not the beneficiary)
+Box 4a/4b (Type of transfer):      Both blank
+Box 5 (Distribution is from):      5b State QTP
+Box 6 (Recipient is not the        Checked (recipient is the parent, not the beneficiary)
+       designated beneficiary):
 Recipient: Robert Carter (account owner)
 Payer: NY 529 Direct
 ```
@@ -42,7 +44,7 @@ Validation:
 - The $13,500 dorm cost is below State U's published cost-of-attendance for on-campus housing ($14,200), so the full amount is qualified
 - The MacBook is primarily used by Sophia for coursework; agent confirmed via family discussion
 
-## AAQEE Adjustment (Step 4)
+## AQEE Adjustment (Step 4)
 
 Robert reports:
 - Tax-free scholarships: $0 (Sophia received no scholarships in 2025)
@@ -51,7 +53,7 @@ Robert reports:
 - LLC claimed: $0
 
 ```
-AAQEE = $30,900 (QHEE)
+AQEE = $30,900 (QHEE)
         − $0 (scholarships)
         − $0 (employer assistance)
         − $4,000 (AOTC)
@@ -63,7 +65,7 @@ AAQEE = $30,900 (QHEE)
 
 ```
 Box 1 = $30,000
-AAQEE = $26,900
+AQEE = $26,900
 
 Non-qualified portion = $30,000 − $26,900 = $3,100
 Earnings ratio = $11,400 / $30,000 = 0.38
@@ -75,13 +77,13 @@ The Carters spent $30,000 from the 529 but only had $26,900 of expenses availabl
 
 ## Step 6 — 10% additional tax
 
-The $1,178 of earnings is taxable solely because the Carters used $4,000 of the same expenses for AOTC. IRC §529(c)(6)(B)(iii) waives the 10% additional tax in this case.
+The $1,178 of earnings is taxable solely because the Carters used $4,000 of the same expenses for AOTC. IRC §530(d)(4)(B)(v), applied to QTPs by §529(c)(6) (Pub. 970 ch. 7, Exceptions, item 5), waives the 10% additional tax in this case.
 
 ```
 10% additional tax = $0 (waived under AOTC coordination exception)
 ```
 
-Robert reports $1,178 on Schedule 1 Line 8z but Form 5329 shows the AOTC-coordination exception, so Schedule 2 Line 8 = $0.
+Robert reports $1,178 on Schedule 1 Line 8z. He still files Form 5329 because the distribution is taxable (2025 Instructions for Form 5329, Who Must File): line 5 = $1,178, line 6 = $1,178 (AOTC-coordination exception), line 7 = $0, line 8 = $0. Schedule 2 Line 8 = $0.
 
 ## The completed worksheet
 
@@ -94,9 +96,11 @@ Robert reports $1,178 on Schedule 1 Line 8z but Form 5329 shows the AOTC-coordin
 - Box 1 (Gross distribution): $30,000
 - Box 2 (Earnings): $11,400
 - Box 3 (Basis): $18,600
-- Box 4 (Trustee-to-trustee transfer): No
-- Box 5 (Program type): State 529
-- Box 6 (Designated beneficiary is recipient): No (recipient is parent, not Sophia)
+- Box 4a (Trustee-to-trustee): Blank
+- Box 4b (QTP to Roth IRA): Blank
+- Box 5 (Distribution is from): 5b State QTP
+- Box 6 (Recipient is not the designated beneficiary): Checked (recipient is parent, not Sophia)
+- Box 7: blank
 
 ## Qualified Education Expenses
 | Category                            | Amount   |
@@ -107,35 +111,36 @@ Robert reports $1,178 on Schedule 1 Line 8z but Form 5329 shows the AOTC-coordin
 | Computer, software, internet        | $1,400   |
 | **Total QHEE**                      | $30,900  |
 
-## AAQEE Adjustment
+## AQEE Adjustment
 - Tax-free scholarships:               −$0
 - Employer education assistance:       −$0
 - Expenses used for AOTC:              −$4,000
 - Expenses used for LLC:               −$0
-- **Adjusted QHEE (AAQEE)**:           $26,900
+- **Adjusted QHEE (AQEE)**:           $26,900
 
 ## Taxable amount calculation
 - Box 1:                          $30,000
-- AAQEE:                          $26,900
+- AQEE:                          $26,900
 - Non-qualified portion:          $3,100
 - Earnings ratio (Box 2 / Box 1): 0.38
 - **Taxable earnings**:           $1,178
 
 ## 10% additional tax
 - Subject to 10% additional tax: No (exception)
-- Exception applied:             AOTC coordination (IRC §529(c)(6)(B)(iii))
+- Exception applied:             AOTC coordination (IRC §530(d)(4)(B)(v) via §529(c)(6))
 - **Additional tax owed**:       $0
 
 ## Where this goes on the return
 - Schedule 1 Line 8z: $1,178 (description: "Taxable 529 distribution")
-- Schedule 2 Line 8 via Form 5329 Part II: $0 (exception applied)
+- Form 5329 Part II: line 5 $1,178, line 6 $1,178, line 7 $0, line 8 $0 (exception applied)
+- Schedule 2 Line 8: $0
 - 1040 Line 8: includes $1,178 from Schedule 1 Line 10
 - 1040 Line 23: $0 from Schedule 2
 
 ## Validation summary
 - Math: all checks passed
   - Box 1 = Box 2 + Box 3: ✓
-  - AAQEE ≤ Total QHEE: ✓
+  - AQEE ≤ Total QHEE: ✓
   - Taxable earnings ≤ Box 2: ✓
 - Sanity: no warnings raised
 - Next steps:
@@ -147,12 +152,13 @@ Robert reports $1,178 on Schedule 1 Line 8z but Form 5329 shows the AOTC-coordin
   - Robert retains 1099-Q, Form 1098-T, dorm receipt, computer receipt, and worksheet for 3+ years
 
 ## Sources cited in this draft
-- IRS Form 1099-Q (Rev. 2025)
+- IRS Form 1099-Q (Rev. April 2025) and Instructions for Form 1099-Q (Rev. April 2025)
 - IRC §529 (Qualified Tuition Programs)
-- IRC §529(c)(3)(D) — Earnings allocation
-- IRC §529(c)(6)(B)(iii) — AOTC-coordination exception to 10% additional tax
+- IRC §529(c)(3)(B) — exclusion ratio; §529(c)(3)(B)(v) — AOTC coordination
+- IRC §530(d)(4)(B)(v), applied by §529(c)(6) — AOTC-coordination exception to 10% additional tax
 - IRC §25A — American Opportunity Tax Credit
-- Pub 970 chapter 8
+- Pub. 970 (2025) chapter 7
+- 2025 Form 5329 and Instructions, Part II
 ```
 
 ## Why each non-obvious choice
@@ -163,13 +169,13 @@ Robert reports $1,178 on Schedule 1 Line 8z but Form 5329 shows the AOTC-coordin
 - Federal tax on $1,178 at 22% marginal rate: ~$259
 - Net benefit: $2,500 − $259 = $2,241
 
-Without AOTC, the entire $30,000 distribution would be tax-free (AAQEE = $30,900 ≥ Box 1), but the $2,500 credit would be lost. AOTC coordination wins by ~$2,200.
+Without AOTC, the entire $30,000 distribution would be tax-free (AQEE = $30,900 ≥ Box 1), but the $2,500 credit would be lost. AOTC coordination wins by ~$2,200.
 
-**Why is the 10% additional tax $0?** IRC §529(c)(6)(B)(iii) explicitly waives the 10% additional tax when a distribution is taxable solely because of AOTC/LLC coordination. The earnings portion is still in income (Schedule 1 Line 8z), but Form 5329 Line 6 includes the $1,178 as exempt distribution, so the additional-tax base is $0.
+**Why is the 10% additional tax $0?** IRC §530(d)(4)(B)(v), applied to QTPs by §529(c)(6), explicitly waives the 10% additional tax when a distribution is taxable solely because of AOTC/LLC coordination. The earnings portion is still in income (Schedule 1 Line 8z), but Form 5329 Line 6 includes the $1,178 as exempt distribution, so the additional-tax base is $0.
 
-**Why is the recipient Robert and not Sophia?** Robert is the account owner of the 529. The check (or direct payment to State U) was issued in his name as account owner. Box 6 (designated beneficiary = recipient) is unchecked because Sophia is the beneficiary but Robert is the recipient. So Robert reports the taxable portion on his MFJ 1040.
+**Why is the recipient Robert and not Sophia?** Robert is the account owner of the 529, and the plan paid the reimbursement to him. Had the plan paid State U directly or paid Sophia, Sophia would be the recipient (1099-Q instructions, Recipient's Name and TIN). Box 6 ("Check if the recipient is not the designated beneficiary") is checked because Sophia is the beneficiary but Robert is the recipient. So Robert reports the taxable portion on his MFJ 1040.
 
-**Why isn't transportation included in QHEE?** Sophia drove home over Thanksgiving and bought a $400 plane ticket for spring break. Per Pub 970 chapter 8, transportation is not a qualified expense for 529 (it's only qualified for Coverdell K-12, not higher education for either plan type).
+**Why isn't transportation included in QHEE?** Sophia drove home over Thanksgiving and bought a $400 plane ticket for spring break. Transportation is not on the Pub. 970 (2025) chapter 7 list of qualified expenses for a 529 (it's only qualified for Coverdell K-12 when required or provided by the school, not higher education for either plan type).
 
 **Why is the computer fully qualified?** IRC §529(e)(3)(A)(iii) (added by PATH Act 2015) qualifies "computer technology, equipment, or services" if used **primarily** by the beneficiary while enrolled. The Carters confirmed the MacBook is Sophia's, used by her for coursework. If the family said "we all share it," only the beneficiary-use portion would qualify.
 
@@ -179,4 +185,4 @@ Without AOTC, the entire $30,000 distribution would be tax-free (AAQEE = $30,900
 3. State U dorm contract substantiates room and board ($13,500), and State U's published COA proves the figure is within cap
 4. Apple Store receipt + Sophia's enrollment status substantiate the computer
 5. Sophia's enrollment record (full-time) substantiates room-and-board eligibility
-6. AOTC coordination documented in the worksheet — auditor sees the AAQEE allocation and verifies no double-dipping
+6. AOTC coordination documented in the worksheet — auditor sees the AQEE allocation and verifies no double-dipping

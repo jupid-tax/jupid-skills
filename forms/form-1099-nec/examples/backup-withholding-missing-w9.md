@@ -1,6 +1,6 @@
 # Example: Recipient with Backup Withholding from Missing W-9
 
-A complete walkthrough of a contractor who received a 1099-NEC with backup withholding in Box 4 because they never returned a valid W-9 to a client. Shows reconciliation, Form 1040 Line 25c handling, and how to prevent this going forward.
+A complete walkthrough of a contractor who received a 1099-NEC with backup withholding in Box 4 because they never returned a valid W-9 to a client. Shows reconciliation, Form 1040 Line 25b handling, and how to prevent this going forward.
 
 ## The recipient
 
@@ -19,9 +19,11 @@ RECIPIENT: Marcus Whitfield
   TIN (truncated on Copy B): XXX-XX-XXXX
   Address: 2104 Galena Ave, Denver, CO 80205
 
-Box 1 — Nonemployee compensation:        $7,500.00
+Form 1099-NEC (Rev. December 2026), calendar year 2026
+Box 1a — Nonemployee compensation:       $7,500.00
+Box 1b–1d — Cash tips / TTOC / Overtime:  (blank)
 Box 2 — Direct sales ≥ $5,000:           ☐
-Box 3 — (reserved):                       (blank)
+Box 3 — Excess golden parachute payments: (blank)
 Box 4 — Federal income tax withheld:      $1,800.00
 Box 5 — State tax withheld:               $0.00
 Box 6 — State / Payer's state no.:        CO / 91-3522XXX
@@ -57,7 +59,7 @@ This is correct behavior — the IRS expects Box 1 to be gross, with Box 4 separ
 - No special handling needed on Schedule C for the backup withholding
 
 ### Form 1040
-- The $1,800 backup withholding → **Form 1040 Line 25c** (federal income tax withheld from forms 1099)
+- The $1,800 backup withholding → **Form 1040 Line 25b** (federal income tax withheld from Form(s) 1099)
 - This is treated identically to W-2 withholding — it counts against Marcus's total federal income tax liability
 
 ### Cash flow effect
@@ -80,12 +82,12 @@ If Marcus's total 2026 federal income tax is only $1,200 (low-income year):
 ```
 Line 25 — Federal income tax withheld
   25a  W-2 forms (Box 2):              $0       (Marcus has no W-2 income)
-  25b  1099 forms:                     $1,800   (from Streamline 1099-NEC Box 4)
+  25b  Form(s) 1099:                   $1,800   (from Streamline 1099-NEC Box 4)
   25c  Other forms:                    $0
-  25 total:                            $1,800
+  25d  Total:                          $1,800
 ```
 
-(Note: Form 1040 line numbering for 2026 may shift; verify against current Form 1040 instructions. The 1099 withholding line has historically been Line 25b or 25c depending on year.)
+(Line numbers from the 2025 Form 1040; verify against the 2026 Form 1040 when it is released.)
 
 ## Validation summary
 
@@ -114,7 +116,7 @@ Line 25 — Federal income tax withheld
 
 **What if Marcus disputes the backup withholding?** He can:
 - Verify with Streamline that the withholding was applied correctly
-- File Form 4852 (Substitute for Form 1099-NEC) if he believes the 1099 is wrong
+- Ask Streamline for a corrected 1099-NEC if he believes the form is wrong, and report the correct amounts with records to support them (Form 4852 substitutes only for Forms W-2 and 1099-R, not 1099-NEC)
 - Contact the IRS for a transcript of his account to confirm the $1,800 was deposited
 
 In Marcus's case, the withholding was legitimately applied (he didn't return a W-9 in time). He just needs to claim the credit on Form 1040.
@@ -130,10 +132,10 @@ For a contractor like Marcus going forward:
 4. **Monitor bank deposits weekly** to catch withholding shortfalls early — backup withholding is visible (deposit is 24% smaller than invoice)
 
 ## Sources cited
-- IRS Form 1099-NEC, Rev. 2026
-- IRS Instructions for Forms 1099-MISC and 1099-NEC, Rev. 2026
+- IRS Form 1099-NEC, Rev. December 2026
+- IRS Instructions for Forms 1099-MISC and 1099-NEC, Rev. December 2026
 - IRC §3406 (backup withholding); §3406(c) (deposit and reporting)
 - IRC §6402 (refunds; credit for excess withholding)
 - IRS Form 945 (Annual Return of Withheld Federal Income Tax)
-- IRS Form 1040 Instructions, Line 25b ("Federal income tax withheld from forms 1099")
+- IRS Form 1040 (2025), Line 25b ("Federal income tax withheld from Form(s) 1099")
 - IRS Pub. 2108-A (TIN Matching Program)

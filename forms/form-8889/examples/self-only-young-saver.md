@@ -38,7 +38,7 @@ Line 8: Total limit:                                $4,300
 Line 9: Employer contributions (W-2 Box 12 W):      $4,300
 Line 10: Qualified HSA funding distribution:            $0
 Line 11: Line 9 + Line 10:                          $4,300
-Line 12: Line 2 + Line 11 (cap Line 8):             $4,300
+Line 12: Line 8 − Line 11:                              $0
 Line 13: HSA deduction:                                 $0
             → Schedule 1, Line 13 = $0
 ```
@@ -78,7 +78,7 @@ Skip — Maya did not use the last-month rule.
 The agent should flag the following improvements (not strictly required, but worth surfacing):
 
 1. **Keep the cafeteria plan election at the max** — the FICA savings ($329) is unique to cafeteria-plan contributions and unavailable elsewhere.
-2. **Pay the $850 of medical from cash next year, not the HSA.** Reimburse herself decades from now using saved receipts. At age 65 and 7% returns, $850 today compounds to ~$32,000 of tax-free withdrawal capacity.
+2. **Pay the $850 of medical from cash next year, not the HSA.** Reimburse herself decades from now using saved receipts. At 7% a year for the 37 years to age 65, $850 left invested grows to about $10,400 ($850 × 1.07^37).
 3. **Invest the HSA balance.** Now that she's at Fidelity, she can buy index funds with the full balance (Fidelity has a $0 cash buffer requirement, unlike most custodians). Currently her ~$3,500 net balance after the $850 distribution should be invested in a total-market index fund.
 4. **Save every medical receipt.** Even small ones. Each is a future tax-free withdrawal lottery ticket. Scan and store with date, provider, amount.
 

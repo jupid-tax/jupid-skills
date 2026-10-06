@@ -2,26 +2,29 @@
 
 Charitable contributions to qualified 501(c)(3) organizations are deductible on Schedule A subject to:
 
-1. **Substantiation rules** (acknowledgment letters for ≥ $250; Form 8283 for non-cash > $500; appraisal for non-cash > $5,000)
-2. **AGI ceilings** (60% for cash to public charity, 30% for non-cash to public charity, 30%/20% for gifts to private foundations)
+1. **Substantiation rules** (acknowledgment letters for ≥ $250; Form 8283 for non-cash > $500; appraisal for an item or group of similar items > $5,000, except publicly traded securities)
+2. **AGI ceilings** (60% for cash to public charity; 50% for ordinary-income property and 30% for capital gain property to public charity; 30%/20% for gifts to private foundations)
 3. **5-year carryforward** for contributions exceeding the AGI ceilings
-4. **NEW for tax year 2026+: 0.5% AGI floor** under IRC §170(p) added by OBBBA
+4. **NEW for tax year 2026+: 0.5% floor** on the contribution base under IRC §170(b)(1)(I), added by P.L. 119-21 §70425
+5. **NEW for tax year 2026+: non-itemizer deduction** of up to $1,000 ($2,000 joint) for cash gifts to public charities under IRC §170(p) as amended by P.L. 119-21 §70424 (not a Schedule A item)
 
 This file is the operational reference for Lines 11-14, including the new floor mechanics, substantiation rules, valuation methods for non-cash gifts, QCDs, and donor-advised funds.
 
 ---
 
-## The 0.5% AGI floor — NEW for tax year 2026+
+## The 0.5% floor — NEW for tax year 2026+
 
-OBBBA introduced a 0.5% AGI floor on itemized charitable contributions, effective tax year 2026 onward. **This floor does NOT apply to tax year 2025 returns.**
+P.L. 119-21 §70425 added IRC §170(b)(1)(I): an individual's charitable contributions are deductible only to the extent they exceed 0.5% of the **contribution base** (AGI figured without any net operating loss carryback), for taxable years beginning after December 31, 2025. **This floor does NOT apply to tax year 2025 returns** (the 2025 Schedule A and instructions have no floor).
 
-Mechanics:
+Mechanics (simplified; the statute applies the floor across contribution categories in a set order, starting with the 20%/30% categories, and the 2026 Schedule A had not been released when this file was verified):
 
 ```
-Floor          = AGI × 0.005
-Raw total      = Line 11 + Line 12 + Line 13
+Floor          = contribution base × 0.005
+Raw total      = Line 11 + Line 12 + Line 13 (after the percentage ceilings)
 Line 14 effective = max(0, Raw total − Floor)
 ```
+
+Carryover: amounts disallowed only by the floor carry forward only from a year in which a percentage ceiling is also exceeded (IRC §170(d)(1)(C)); otherwise they are lost.
 
 Examples:
 
@@ -34,9 +37,11 @@ Examples:
 | $1,000,000 | $5,000 | $40,000 | $35,000 |
 | $200,000 | $1,000 | $800 | $0 (floor wipes everything) |
 
-**Implication**: For low-charity-volume itemizers, the floor can wipe out the deduction entirely. End-of-2025 charitable giving was widely encouraged as a planning move because tax year 2025 retains full deductibility (no floor applies).
+**Implication**: For low-charity-volume itemizers, the floor can wipe out the deduction entirely. Tax year 2025 has no floor.
 
-The floor does NOT affect the 60%/30%/20% AGI ceilings — those apply at the gross-contribution level, then the floor reduces the post-ceiling deductible amount.
+### Non-itemizer charitable deduction — NEW for tax year 2026+
+
+A user who does not itemize can deduct cash contributions made during the year to public charities (IRC §170(b)(1)(A) organizations), up to $1,000 ($2,000 on a joint return). Gifts to donor-advised funds and supporting organizations don't count, and the 0.5% floor does not apply to it (IRC §170(p) as amended by P.L. 119-21 §70424). It is not entered on Schedule A; confirm where the 2026 Form 1040 reports it. Include it on the standard-deduction side of the comparison.
 
 ---
 
@@ -60,9 +65,9 @@ Cash to **private foundations**: 30% AGI ceiling.
 
 ### Volunteer mileage
 
-Volunteer mileage is at **14¢ per mile** (statutory rate, set by IRC §170(i); not indexed for inflation; unchanged for decades). Don't confuse with:
-- Business mileage (70¢ for 2025)
-- Medical mileage (21¢ for 2025)
+Volunteer mileage is at **14¢ per mile** (statutory rate, set by IRC §170(i); not indexed for inflation), or actual gas and oil. Don't confuse with:
+- Business mileage (70¢ for 2025; 72.5¢ / 76¢ for the two halves of 2026)
+- Medical mileage (21¢ for 2025; 20.5¢ / 23.5¢ for 2026)
 
 Plus parking and tolls while volunteering for charity.
 
@@ -83,8 +88,7 @@ Includes:
 For most non-cash gifts, deduct the **FMV** at the time of donation.
 
 **Used clothing and household goods**: must be in **good used condition or better** (IRC §170(f)(16) added by Pension Protection Act 2006). FMV is typically what a thrift store would sell the item for. Use:
-- Salvation Army or Goodwill valuation guides
-- ItsDeductible (TurboTax tool) or similar
+- Pub 561 (Determining the Value of Donated Property) and charity-published valuation guides
 - Photos of donated items if more than $250 in value
 
 **Appreciated long-term capital gain property** (stock, mutual funds held > 1 year): deduct FMV at date of gift, *no recognition of capital gain*. This is the most tax-efficient charity move for high-bracket donors.
@@ -93,7 +97,7 @@ For most non-cash gifts, deduct the **FMV** at the time of donation.
 
 **Ordinary-income property** (inventory of a business; self-created art): deduct **basis**.
 
-**Vehicles**: deduction generally limited to gross sale proceeds the charity receives. Form 1098-C from the charity within 30 days of donation/sale states the deductible amount. Exception: if the charity uses the vehicle in its operations or gives it to a needy person, the FMV (capped at $5,000 unless higher with appraisal) deducts.
+**Vehicles**: if the claimed deduction exceeds $500, it is generally limited to the gross proceeds the charity receives on sale, shown on Form 1098-C. Exceptions (significant use or material improvement by the charity, or transfer to a needy individual) allow FMV; FMV over $5,000 requires a qualified appraisal (IRC §170(f)(12); Form 8283 instructions). Attach Form 1098-C (or the charity's statement) to a paper return when deducting more than $500 (2025 Schedule A instructions, line 12).
 
 ### AGI ceilings for non-cash
 
@@ -114,17 +118,17 @@ For appreciated long-term capital gain property, the user can **elect to take ba
 
 Cryptocurrency held > 1 year and donated to a public charity: deduct FMV (no capital gain recognized). Held ≤ 1 year: deduct basis.
 
-For cryptocurrency donations > $5,000: **qualified appraisal required**. Crypto is NOT publicly-traded-securities for the appraisal exception (IRS clarified in CCA 202302012 / Memorandum 2023). Many large donations have been disallowed for failing this rule. Get the appraisal.
+For cryptocurrency donations > $5,000: **qualified appraisal required**. Crypto is not a publicly traded security for the appraisal exception (Chief Counsel Advice CCA 202302012, which upheld disallowance where no qualified appraisal was obtained). Get the appraisal.
 
 ### Form 8283
 
-Required if total non-cash contributions exceed $500.
-- **Section A**: items > $500 but ≤ $5,000
-- **Section B**: items > $5,000 (with qualified appraisal attached for non-publicly-traded)
+Required if the non-cash deduction exceeds $500 (before income limits; 2025 Schedule A instructions, line 12). Form 8283 (Rev. December 2025):
+- **Section A**: items (or groups of similar items) of $5,000 or less, and publicly traded securities of any amount
+- **Section B**: items (or groups) over $5,000, except publicly traded securities (qualified appraisal required; attached in certain cases)
 
 The signed Form 8283 must accompany the return (paper or e-file attachment).
 
-### Qualified appraisal — for any single non-cash item > $5,000
+### Qualified appraisal — for any item or group of similar items > $5,000
 
 A qualified appraisal must:
 - Be made no earlier than 60 days before the donation date and no later than the return's due date including extensions
@@ -172,13 +176,13 @@ Pay stub showing the deduction OR W-2 box 14 OR pledge card OR a written stateme
 
 Form 8283 (Section A or B as applicable). Records of how FMV was determined.
 
-### Non-cash > $5,000 (single item)
+### Non-cash > $5,000 (item or group of similar items)
 
 Qualified appraisal + Form 8283 Section B + signed appraiser declaration.
 
 ### Donated vehicles
 
-Form 1098-C from the charity within 30 days, attached to the return.
+Form 1098-C (or an equivalent statement) from the charity, which must be furnished within 30 days of the sale or contribution; attach it to a paper return when the deduction is over $500.
 
 ### Out-of-pocket volunteer expenses
 
@@ -188,15 +192,14 @@ Letter from the charity acknowledging the volunteer service plus receipts for ex
 
 ## QCDs — NOT on Schedule A
 
-A **Qualified Charitable Distribution** is a direct transfer from a traditional IRA (or inherited IRA) to a qualified public charity. The QCD is excluded from gross income on Form 1040 Line 4b — it does **NOT** flow to Schedule A.
+A **Qualified Charitable Distribution** is a direct transfer from a traditional IRA (or inherited IRA) to a qualified public charity. The QCD is excluded from gross income: the full distribution is on Form 1040 line 4a, the taxable amount on line 4b, and the "QCD" box on line 4c is checked (2025 Form 1040). It does **NOT** flow to Schedule A.
 
 ### Why QCDs matter
 
 - The amount is excluded from AGI, lowering AGI for purposes of:
   - Medical 7.5% floor on Schedule A
-  - SALT 0.5% floor on Schedule A (2026+)
-  - Charity 0.5% floor on Schedule A (2026+)
-  - SALT high-income phaseout above $500K MAGI
+  - Charity 0.5% floor (2026+)
+  - SALT high-income phase-down above $500K MAGI ($505K for 2026)
   - Net Investment Income Tax (NIIT) thresholds
   - Medicare IRMAA premium tiers
 - Counts toward the IRA owner's Required Minimum Distribution (RMD)
@@ -206,7 +209,7 @@ A **Qualified Charitable Distribution** is a direct transfer from a traditional 
 
 - IRA owner must be **age 70½ or older** at the time of the QCD
 - Distribution must go **directly** from the IRA custodian to a qualified public charity (no intermediate stop in the donor's account)
-- Maximum **$108,000 per person for 2025** (indexed annually; verify 2026 figure)
+- Maximum **$108,000 per person for 2025** (Notice 2024-80) and **$111,000 for 2026** (Notice 2025-67)
 - Cannot go to a donor-advised fund, supporting organization, or private foundation
 - Cannot be in exchange for benefits (e.g., raffle tickets, dinner) — strictly no quid pro quo
 
@@ -242,19 +245,21 @@ DAF rules:
 8. **Vehicle deduction at "Blue Book" instead of charity's gross proceeds** — IRC §170(f)(12) post-2004 generally limits deduction to the proceeds the charity receives.
 9. **Forgetting to carry over excess** — track 5-year carryover by ceiling category.
 10. **Tax year 2026+ deducting a small gift before the 0.5% floor wipes it out** — the floor is real; small gifts may not produce any deduction.
-11. **QCD listed on Schedule A** — wrong place. QCDs go on Form 1040 Line 4b as exclusions, not on Schedule A.
+11. **QCD listed on Schedule A** — wrong place. QCDs are excluded on Form 1040 lines 4a/4b (QCD box on line 4c), not deducted on Schedule A.
 12. **Donating short-term appreciated stock** — deducts at basis, not FMV. Hold > 1 year before donating to get FMV.
+13. **Ignoring the 2026 non-itemizer deduction** — a standard-deduction taker can deduct up to $1,000 ($2,000 joint) of cash gifts to public charities (not DAFs) for 2026+.
 
 ---
 
 ## Sources
 
 - [IRC §170](https://www.law.cornell.edu/uscode/text/26/170) — Charitable, etc., contributions and gifts
-- [IRC §170(p)](https://www.law.cornell.edu/uscode/text/26/170) — 0.5% AGI floor (added by OBBBA 2025)
+- [IRC §170(b)(1)(I), §170(d)(1)(C), §170(p)](https://www.law.cornell.edu/uscode/text/26/170) — 0.5% floor and its carryover rule, non-itemizer deduction (P.L. 119-21 §§70424–70425, tax years after 2025)
 - [IRS Publication 526](https://www.irs.gov/publications/p526) — Charitable Contributions (definitive guide)
 - [IRS Publication 561](https://www.irs.gov/publications/p561) — Determining the Value of Donated Property
 - [Form 8283](https://www.irs.gov/pub/irs-pdf/f8283.pdf) — Noncash Charitable Contributions
 - [Form 1098-C](https://www.irs.gov/pub/irs-pdf/f1098c.pdf) — Contributions of Motor Vehicles, Boats, and Airplanes
 - [Schedule A Instructions](https://www.irs.gov/pub/irs-pdf/i1040sca.pdf) — lines 11-14 guidance
 - IRS Memorandum CCA 202302012 (cryptocurrency appraisal requirement)
-- One Big Beautiful Bill Act of 2025 — IRC §170(p) 0.5% AGI floor (effective 2026+). Verify the public-law citation once enrolled.
+- [Notice 2024-80](https://www.irs.gov/pub/irs-drop/n-24-80.pdf) and [Notice 2025-67](https://www.irs.gov/pub/irs-drop/n-25-67.pdf) — QCD limits $108,000 (2025) and $111,000 (2026)
+- One Big Beautiful Bill Act, P.L. 119-21 (July 4, 2025), §70424 (non-itemizer deduction) and §70425 (0.5% floor), both effective for tax years beginning after December 31, 2025

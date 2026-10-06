@@ -2,6 +2,8 @@
 
 A single parent (Head of Household) with one qualifying child (CTC) and one elderly parent claimed as a dependent (ODC). Modest income → ACTC kicks in. Demonstrates mixed CTC + ODC + ACTC computation.
 
+Line numbers are from the 2025 Schedule 8812 and 2025 Form 1040.
+
 ## The filer
 
 - **Name**: DeShawn Williams
@@ -9,13 +11,14 @@ A single parent (Head of Household) with one qualifying child (CTC) and one elde
 - **AGI**: $42,000
 - **MAGI**: $42,000 (no foreign income)
 - **Earned income**: $42,000 (W-2 wages, no self-employment)
+- **SSN**: DeShawn has an SSN valid for employment
 - **Tax year**: 2025 (filing in 2026)
 
 ## Dependents
 
 DeShawn lives with his 6-year-old son and his 71-year-old mother (who has Alzheimer's and lives with him).
 
-| Dependent       | Relationship | Age 12/31 | SSN by due date | Classification |
+| Dependent       | Relationship | Age 12/31 | SSN before due date | Classification |
 |-----------------|--------------|-----------|------------------|----------------|
 | Marcus Williams | Son          | 6         | Yes              | Qualifying child (CTC) |
 | Linda Williams  | Mother       | 71        | Yes              | Qualifying relative (ODC) |
@@ -28,7 +31,7 @@ DeShawn lives with his 6-year-old son and his 71-year-old mother (who has Alzhei
 - Support: did not provide own support ✓
 - Joint return: never married ✓
 - Citizenship: U.S. citizen ✓
-- SSN by due date: yes ✓
+- SSN valid for employment, issued before the due date: yes ✓ (and DeShawn has one too)
 
 All seven tests pass → qualifying child.
 
@@ -36,87 +39,82 @@ All seven tests pass → qualifying child.
 
 - Not a qualifying child (parents aren't qualifying children) ✓
 - Relationship: mother (in §152(d)(2) list) ✓
-- Gross income: $9,200 Social Security only. Social Security is excluded from gross income for §152(d) purposes → effective gross income $0 < $5,200 ✓
+- Gross income: $9,200 Social Security only, none of it taxable under IRC §86 → gross income for §152(d) purposes $0 < $5,200 ✓
 - Support: DeShawn provides housing, food, medical care, etc. — clearly > 50% ✓
+- U.S. citizen with an SSN ✓
 
 Linda qualifies as Other Dependent for ODC.
 
-- **N_CTC** = 1 (Marcus)
-- **N_ODC** = 1 (Linda)
+- **N_CTC** = 1 (Marcus, line 4)
+- **N_ODC** = 1 (Linda, line 6)
 
 ## Step 3 — Tentative credit
 
 ```
-Tentative CTC = 1 × $2,000 = $2,000
-Tentative ODC = 1 × $500 = $500
-Tentative total = $2,500
+Line 5  Tentative CTC = 1 × $2,200 = $2,200
+Line 7  Tentative ODC = 1 × $500 = $500
+Line 8  Tentative total = $2,700
 ```
 
 ## Step 4 — MAGI phase-out
 
 ```
-MAGI = $42,000
-Threshold (HoH) = $200,000
-Excess = $0
-Reduction = $0
-Allowed credit = $2,500
+Line 3   MAGI = $42,000
+Line 9   Threshold (HoH) = $200,000
+Line 10  Excess = $0
+Line 11  Reduction = $0
+Line 12  Allowed credit = $2,700
 ```
 
 DeShawn's MAGI is far below threshold. Full credit available.
 
-## Step 5 — Non-refundable credit (1040 Line 19)
+## Step 5 — Non-refundable credit (1040 line 19)
 
 DeShawn's tax computation:
 
-- Standard deduction (HoH 2025): $21,900 (verify 2026)
-- Taxable income: $42,000 − $21,900 = $20,100
-- Tax (HoH 2025 brackets, computed via tax tables): ~$2,194 (10% bracket fully + small portion of 12% bracket)
+- Standard deduction (HoH 2025): $23,625 (2025 Form 1040 margin; Instructions What's New)
+- Taxable income: $42,000 − $23,625 = $18,375
+- Tax (2025 Tax Table, HoH column, row $18,350–$18,400): $1,865 (10% of $17,000 = $1,700, plus 12% of the $1,375 above $17,000 = $165)
 
-Pre-credit tax (Form 1040 Line 18): $2,194.
-
-```
-Non-refundable credit = min($2,500, $2,194) = $2,194
-```
-
-The non-refundable portion is capped at the tax liability ($2,194). **Form 1040 Line 19 = $2,194**.
-
-There's leftover credit: $2,500 − $2,194 = $306. This may be refundable as ACTC for the qualifying child (Marcus only; ODC is non-refundable).
-
-## Step 6 — Refundable ACTC (1040 Line 28)
+Pre-credit tax (Form 1040 line 18): $1,865. No Schedule 3 credits, so Credit Limit Worksheet A (line 13) = $1,865.
 
 ```
-Leftover = $2,500 − $2,194 = $306
+Line 14  Non-refundable credit = min($2,700, $1,865) = $1,865
+```
+
+The non-refundable portion is capped at the tax liability ($1,865). **Form 1040 line 19 = $1,865**.
+
+There's leftover credit: $2,700 − $1,865 = $835. This may be refundable as ACTC, limited to $1,700 per qualifying child (Marcus only; the ODC creates no per-child cap of its own).
+
+## Step 6 — Refundable ACTC (1040 line 28)
+
+```
+Line 16a Leftover = $2,700 − $1,865 = $835
+Line 16b Per-child cap = 1 × $1,700 = $1,700
+Line 17  smaller of 16a or 16b = $835
 ```
 
 Earned income method:
 
 ```
-Earned income = $42,000
-Earned income excess = $42,000 − $2,500 = $39,500
-EI method ACTC = $39,500 × 15% = $5,925
+Line 18a Earned income = $42,000
+Line 19  $42,000 − $2,500 = $39,500
+Line 20  $39,500 × 15% = $5,925
 ```
 
-Per-child cap:
+Line 16b is less than $5,100 (fewer than 3 qualifying children) and DeShawn is not a Puerto Rico resident, so Part II-B is skipped.
 
 ```
-Per-child cap = 1 × $1,700 = $1,700  (verify 2026 figure)
+Line 27  ACTC = smaller of line 17 or line 20
+              = min($835, $5,925)
+              = $835
 ```
 
-Alternative method (3+ qualifying children only): not applicable (N_CTC = 1).
+The ACTC is capped by the **leftover** ($835), not the per-child cap. Because the non-refundable credit already absorbed most of the total, only $835 remains potentially refundable.
 
-```
-ACTC = min(Leftover, EI method, Per-child cap)
-     = min($306, $5,925, $1,700)
-     = $306
-```
+**Form 1040 line 28 = $835**.
 
-The ACTC is capped by the **leftover** ($306), not the per-child cap. Because the non-refundable already absorbed most of the credit, only $306 remains potentially refundable.
-
-**Form 1040 Line 28 = $306**.
-
-Note: the **ODC** ($500 for Linda) is **never refundable**. It went into the $2,500 tentative total, but only the $2,000 CTC for Marcus contributes to refundability. In this case, the $306 leftover happens to be ≤ $2,000 (the CTC portion), so it works out — DeShawn gets $306 refundable from his CTC.
-
-If the leftover had been larger than the CTC contribution (e.g., the ODC of $500 was the only leftover), the ODC portion would be lost, not refundable.
+Note: the **ODC** ($500 for Linda) is **non-refundable by itself**. Schedule 8812 does not track which part of line 16a came from the ODC; the leftover on line 16a is simply capped by line 16b ($1,700 × number of CTC children). With no qualifying child, line 16b would be $0 and nothing would be refundable.
 
 ## The completed worksheet
 
@@ -127,8 +125,10 @@ If the leftover had been larger than the CTC contribution (e.g., the ODC of $500
 - Filing status: Head of Household
 - Filer's MAGI: $42,000
 - Earned income: $42,000
-- Tax before credits (1040 Line 18): $2,194
-- Phase-out threshold: $200,000 (HoH)
+- Tax before credits (1040 line 18): $1,865
+- Credit Limit Worksheet A (line 13): $1,865
+- Filer SSN valid for employment before due date: Yes
+- Phase-out threshold (line 9): $200,000 (HoH)
 
 ## Dependents classified
 | Dependent       | Relationship | Age 12/31 | SSN/ITIN | Classification |
@@ -136,89 +136,87 @@ If the leftover had been larger than the CTC contribution (e.g., the ODC of $500
 | Marcus Williams | Son          | 6         | SSN      | Qualifying child (CTC) |
 | Linda Williams  | Mother       | 71        | SSN      | Qualifying relative (ODC) |
 
-- N_CTC: 1
-- N_ODC: 1
+- Line 4 N_CTC: 1
+- Line 6 N_ODC: 1
 
-## Step 3 — Tentative credit
-- CTC tentative: 1 × $2,000 = $2,000
-- ODC tentative: 1 × $500 = $500
-- **Tentative total**: $2,500
+## Part I — lines 1–14
+- Line 1  AGI: $42,000
+- Line 2d: $0
+- Line 3  MAGI: $42,000
+- Line 5  CTC tentative: 1 × $2,200 = $2,200
+- Line 7  ODC tentative: 1 × $500 = $500
+- Line 8  **Tentative total**: $2,700
+- Line 9  Threshold: $200,000
+- Line 10 Excess: $0
+- Line 11 Phase-out reduction: $0
+- Line 12 **Allowed credit**: $2,700
+- Line 13 Credit Limit Worksheet A: $1,865
+- Line 14 Non-refundable credit: min($2,700, $1,865) = $1,865 → **1040 line 19**
 
-## Step 4 — MAGI phase-out
-- MAGI: $42,000
-- Threshold: $200,000
-- Excess: $0
-- Phase-out reduction: $0
-- **Allowed credit**: $2,500
-
-## Step 5 — Non-refundable credit (1040 Line 19)
-- Tax before credits: $2,194
-- Non-refundable credit: min($2,500, $2,194) = $2,194
-- **1040 Line 19**: $2,194
-
-## Step 6 — Refundable ACTC (1040 Line 28)
-- Leftover: $2,500 − $2,194 = $306
-- Earned income: $42,000
-- Earned income excess: $39,500
-- Earned income method ACTC: $5,925
-- Per-child cap (1 × $1,700): $1,700
-- Alternative SS-tax method: N/A (only 1 qualifying child)
-- ACTC = min($306, $5,925, $1,700) = $306
-- **1040 Line 28**: $306
+## Part II-A — lines 15–27
+- Line 15 Reserved
+- Line 16a Leftover: $2,700 − $1,865 = $835
+- Line 16b Per-child cap (1 × $1,700): $1,700
+- Line 17 smaller of 16a or 16b: $835
+- Line 18a Earned income: $42,000
+- Line 18b Nontaxable combat pay: $0
+- Line 19 Earned income over $2,500: $39,500
+- Line 20 15% of line 19: $5,925
+- Lines 21–26: N/A (fewer than 3 qualifying children)
+- Line 27 ACTC = min($835, $5,925) = $835 → **1040 line 28**
 
 ## Verification
-- Allowed credit = Non-refundable + ACTC: $2,500 = $2,194 + $306 ✓
+- Line 14 + line 27 ≤ line 12: $1,865 + $835 = $2,700 ✓
 - Each dependent classified once: ✓
-- SSN-by-due-date verified for Marcus: ✓
-- Linda has SSN (qualifies for ODC TIN requirement): ✓
+- SSN-before-due-date verified for DeShawn and Marcus: ✓
+- Linda has SSN (meets the ODC TIN requirement): ✓
 
 ## Validation summary
 - Math: all checks passed
 - Sanity:
   - Marcus (age 6) qualifies for CTC
-  - Linda's $9,200 Social Security excluded from §152(d) gross income → passes test
+  - Linda's $9,200 Social Security is not taxable → not gross income → passes the $5,200 test
   - DeShawn provides > 50% support of Linda (lives with him, he pays bills) → passes test
   - Earned income $42K > $2,500 threshold → ACTC available
 - Next steps:
   - DeShawn files Schedule 8812 with his HoH 1040
-  - 1040 Line 19: $2,194 (reduces tax)
-  - 1040 Line 28: $306 (refundable; adds to refund)
-  - Total credit benefit: $2,194 + $306 = $2,500 (full credit utilized)
+  - 1040 line 19: $1,865 (reduces tax to $0)
+  - 1040 line 28: $835 (refundable; adds to refund)
+  - Total credit benefit: $1,865 + $835 = $2,700 (full credit utilized)
   - PATH Act: refund will not issue before mid-February (returns claiming ACTC)
 
 ## Sources cited in this draft
-- IRS Schedule 8812 (Rev. 2025)
-- IRC §24(a) — base $2,000 credit
+- IRS Schedule 8812 (Form 1040) (2025) and Instructions (2025)
+- IRC §24(h)(2) — $2,200 credit per child
 - IRC §24(d) — Refundable ACTC
-- IRC §24(d)(1)(B) — Earned income > $2,500 requirement
+- IRC §24(d)(1)(B), §24(h)(6) — 15% of earned income over $2,500
 - IRC §24(h)(4) — Credit for Other Dependents ($500)
-- IRC §24(h)(5) — Refundable cap $1,700 (2025)
+- IRC §24(h)(5), §24(i)(1) — Refundable cap $1,700 (2025)
 - IRC §152(d) — Qualifying relative definition
-- IRC §152(f)(5) — Social Security excluded from §152(d) gross income
-- Pub 501 — Dependents
-- Rev. Proc. 2024-40 — 2025 inflation adjustments
+- IRC §86 — taxable part of Social Security benefits; Pub 501 (2025) — gross income test (taxable social security benefits count)
+- Rev. Proc. 2024-40 — 2025 inflation adjustments ($5,200 gross income limit, tax rates)
 ```
 
 ## Why each non-obvious choice
 
-**Why is Linda's Social Security excluded from her gross income?** Per IRC §152(d)(1)(B), the test is "gross income" — and Social Security benefits are not "gross income" for this purpose unless a portion is taxable. Per the Tier I + Tier II analysis under IRC §86, if Linda's only income is Social Security and her total falls below the base amount ($25,000 for single in 2025), none of her benefits are taxable, and her gross income for §152(d) is $0.
+**Why is Linda's Social Security excluded from her gross income?** Per IRC §152(d)(1)(B), the test is "gross income," and Pub 501 (2025, p.19) counts only *taxable* social security benefits. Under IRC §86, if Linda's only income is Social Security and her provisional income (half her benefits plus other income) stays under the base amount ($25,000 for a single filer), none of her benefits are taxable, and her gross income for §152(d) is $0.
 
 If Linda also had $5,000 of pension income, her gross income would be $5,000 — still below the $5,200 limit, so she'd still pass.
 
 If Linda had $6,000 of pension income, gross income = $6,000 > $5,200 → fail. She couldn't be claimed as a dependent and the ODC wouldn't apply.
 
-**Why does DeShawn get $306 refundable when his leftover is $306?** The ACTC is the smallest of three caps:
-1. Leftover from non-refundable: $306
-2. Earned income method: $5,925
-3. Per-child cap: $1,700
+**Why does DeShawn get $835 refundable when his leftover is $835?** Line 27 is the smallest of three amounts:
+1. Leftover from non-refundable (line 16a): $835
+2. Per-child cap (line 16b): $1,700
+3. Earned income method (line 20): $5,925
 
-The leftover is the binding constraint here — only $306 remains after non-refundable. If DeShawn had had higher tax liability ($2,500+), the entire CTC + ODC would be non-refundable; ACTC = $0. If DeShawn had had lower tax liability ($1,000), the non-refundable would be $1,000, leftover would be $1,500, and ACTC would be min($1,500, $5,925, $1,700) = $1,500.
+The leftover is the binding constraint here — only $835 remains after the non-refundable credit. If DeShawn had had tax liability of $2,700 or more, the entire CTC + ODC would be non-refundable; ACTC = $0. If DeShawn had had tax liability of $1,000, the non-refundable would be $1,000, leftover would be $1,700, and ACTC would be min($1,700, $1,700, $5,925) = $1,700.
 
-**Why is the ODC ($500 for Linda) not refundable?** IRC §24(h)(4) — the Credit for Other Dependents is non-refundable only. It can reduce tax liability but cannot create a refund. Only the CTC portion (per qualifying child) is refundable as ACTC.
+**Why is the ODC ($500 for Linda) not refundable?** IRC §24(d)(1) and §24(h)(5) limit the refundable amount to $1,700 per *qualifying child*; the ODC has no refundable portion of its own. It can reduce tax liability but cannot create a refund beyond the per-child cap.
 
-**What if DeShawn's tax liability were $0 (very low income)?** Non-refundable would be $0, leftover would be $2,500. ACTC = min($2,500, $5,925, $1,700) = $1,700. The $500 ODC would be lost (no tax to reduce, not refundable). DeShawn would get $1,700 refundable.
+**What if DeShawn's tax liability were $0 (very low income)?** Line 14 would be $0, line 16a would be $2,700. ACTC = min($2,700, $1,700, $5,925) = $1,700. The remaining $1,000 (the $500 ODC and $500 of the CTC) would be lost (no tax to reduce, not refundable). DeShawn would get $1,700 refundable.
 
-**What about EITC?** With 1 qualifying child and HoH filing, AGI $42K is in the phase-out range for 2025 EITC (verify 2026 figure). DeShawn might get a small EITC of perhaps $500-$1,500 — separate computation on Schedule EIC. The agent should refer DeShawn to the EITC skill (forthcoming).
+**What about EITC?** With 1 qualifying child and HoH filing, AGI $42K is in the 2025 EITC phase-out range (phase-out from $23,350 to $50,434; Rev. Proc. 2024-40 §2.06). DeShawn would get roughly $1,300–$1,400 of EITC from the EIC Table — a separate computation on Schedule EIC and Form 1040 line 27a (no skill in this repo yet).
 
 **Audit defense**:
 1. Marcus's birth certificate and SSN

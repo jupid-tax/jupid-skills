@@ -1,144 +1,112 @@
-# Example — Inventory Method Change from FIFO to LIFO
+# Example — Inventory Method Change from LIFO to FIFO
 
-A small retailer wants to switch inventory accounting from FIFO to LIFO for tax savings during a period of rising costs. Files Form 3115 with DCN 21 (automatic) and Form 970 (LIFO election).
+A small retailer that has used LIFO since 2018 wants to go back to FIFO because its lender now requires FIFO financial statements, and LIFO for tax requires LIFO in the financial statements (§472(c)). Files Form 3115 with DCN 56 (automatic consent) and a positive §481(a) adjustment.
+
+(The opposite move, **adopting** LIFO, is not a Form 3115 change: it is made on Form 970 attached to the return for the first LIFO year, Reg. §1.472-3 and the Form 970 instructions. If a user asks for FIFO → LIFO, redirect to Form 970.)
 
 ---
 
 ## Taxpayer facts
 
-- **Entity**: Granite Hardware Co. (S-corp, EIN 12-7788990)
-- **Calendar fiscal year**
+- **Entity**: Granite Hardware Co. (S-corp since formation, EIN 12-7788990)
+- **Calendar tax year**
 - **Business**: brick-and-mortar hardware retailer with 1 location
-- **Current method**: FIFO inventory accounting since founding in 2018
-- **Inventory pools**: 4 pools (Tools, Plumbing, Electrical, General Hardware)
+- **Current method**: dollar-value LIFO since founding in 2018 (Form 970 filed with the 2018 return), 4 pools (Tools, Plumbing, Electrical, General Hardware)
+- **Prior method changes**: none in the last 5 years (Form 3115 line 11a "No")
+- **Under examination**: no
 - **Beginning-of-year-of-change inventory** (January 1, 2026):
-  - Tools: $180,000 (FIFO basis)
-  - Plumbing: $95,000
-  - Electrical: $110,000
-  - General Hardware: $135,000
-  - **Total**: $520,000
 
-The owner observed inventory replacement costs rising ~6-8% per year over 2022-2025 due to industrial supply chain inflation. Management believes LIFO will produce a closer matching of current costs to current revenues, reducing reported income (and tax).
+| Pool | LIFO value (present method) | FIFO value (proposed method) |
+|------|-----------------------------|------------------------------|
+| Tools | $158,000 | $180,000 |
+| Plumbing | $86,000 | $95,000 |
+| Electrical | $97,500 | $110,000 |
+| General Hardware | $120,500 | $135,000 |
+| **Total** | **$462,000** | **$520,000** |
 
 The change is for the **2026 tax year** (year of change).
 
 ---
 
-## Why both Form 3115 AND Form 970
+## Why DCN 56 (automatic)
 
-The LIFO election is a **two-document filing**:
+Rev. Proc. 2025-23 §23.01 ("Change from the LIFO inventory method") covers a taxpayer changing from LIFO for all its LIFO inventory (or entire dollar-value pools) to a permitted method. Its DCN is **56**.
 
-1. **Form 970 — Application to Use LIFO Inventory Method** — the formal LIFO election. Filed with the tax return for the year of change.
-2. **Form 3115 — DCN 21 (or sub-DCN 22, 23, 24)** — the accounting method change application. Filed in duplicate with the year-of-change return and a copy to Ogden.
-
-A common mistake is filing only Form 970 (the election). Without Form 3115, the §481(a) implications are not addressed and the IRS may treat the change as procedurally invalid.
-
-For a first-time LIFO election (FIFO → LIFO), both forms are required.
-
----
-
-## DCN selection
-
-Inventory method changes are covered by the **DCN 21 family** in Rev. Proc. 2024-23 (or successor). Sub-DCNs cover specific direction and method:
-
-| Sub-DCN | Description |
-|---------|-------------|
-| 21 (general) | LIFO method changes |
-| 22 | Adoption of LIFO from non-LIFO (the FIFO → LIFO case here) |
-| 23 | Change between LIFO sub-methods (dollar-value vs specific-goods) |
-| 24 | Termination of LIFO (LIFO → FIFO) |
-
-For Granite (FIFO → LIFO adoption), the applicable sub-DCN is **22**. Verify the exact number against the current Rev. Proc.; the DCN 21 family has been renumbered across versions.
-
-DCN 22 is **automatic consent** — no user fee. Filed in duplicate.
+- **Automatic consent** — no user fee
+- **Filed in duplicate** — original with the 2026 Form 1120-S; signed copy to Ogden
+- **§481(a) adjustment required** (§23.01(7))
+- **Re-electing LIFO later**: not for at least 5 taxable years beginning with 2026 without IRS consent on a non-automatic Form 3115; after that, by Form 970 (§23.01(3))
+- **S corporation**: Granite has always been an S corporation, so the §1363(d) LIFO recapture rule for C corporations converting to S does not apply (ASK if the entity was ever a C corporation)
 
 ---
 
-## §481(a) — the surprising part of LIFO adoption
+## §481(a) computation
 
-For most inventory method changes, §481(a) captures the cumulative effect. **But for FIFO → LIFO adoption, §481(a) is generally ZERO**.
-
-Why: the §481(a) computation compares cumulative correct (LIFO) vs cumulative actual (FIFO). For LIFO adoption, the IRS generally treats the **opening inventory at the start of the year of change as the LIFO base layer**. There is no cumulative recomputation back to inception.
+Compare beginning inventory for the year of change under the proposed method (FIFO) with beginning inventory under the present method (LIFO), pool by pool (same approach as the Form 3115 instructions, Line 25, Example 1):
 
 ```
-LIFO base layer (Jan 1, 2026) = FIFO ending inventory at Dec 31, 2025
-                              = $520,000
-
-§481(a) = $0 (no retroactive recomputation)
+Pool              FIFO        LIFO        Difference
+Tools           $180,000    $158,000     +$22,000
+Plumbing         $95,000     $86,000      +$9,000
+Electrical      $110,000     $97,500     +$12,500
+General Hdw     $135,000    $120,500     +$14,500
+Total           $520,000    $462,000     +$58,000
 ```
 
-This is the **§472(d) base-year rule**: when adopting LIFO, the prior-method ending inventory becomes the LIFO base layer at base-year prices. There's no §481(a) catch-up because the base-year inventory IS the cumulative-effect anchor.
+Beginning inventory is $58,000 higher under FIFO: prior years' cost of goods sold under LIFO was $58,000 higher than FIFO would have allowed. The §481(a) adjustment is **+$58,000** (increase in income).
 
-### Subsequent years — LIFO reserves
+### Adjustment period
 
-After adoption, each year:
-- Compute current-year inventory at current prices (current cost)
-- Compute current-year inventory at base-year prices (using a price index)
-- The difference = LIFO reserve = additional COGS deduction (when prices rise)
+Positive and $50,000 or more → 4 tax years, ratably (Rev. Proc. 2015-13 §7.03(1)); the de minimis election is unavailable.
 
-The LIFO reserve grows over time as long as prices keep rising. This is the tax benefit of LIFO during inflationary periods.
+| Year | §481(a) included |
+|------|------------------|
+| 2026 (year of change) | $14,500 |
+| 2027 | $14,500 |
+| 2028 | $14,500 |
+| 2029 | $14,500 |
+| **Total** | **$58,000** |
 
-### Worked example for 2026 (year 1 of LIFO)
-
-Assume year-end 2026:
-- Inventory at current cost: $560,000
-- Inventory at base-year cost (using BLS Producer Price Index for hardware retailers, applied to base-year items): $530,000
-- LIFO reserve at year-end: $560,000 − $530,000 = $30,000
-- Compared to year-start LIFO reserve: $0
-- LIFO reserve change for 2026: +$30,000
-
-Under FIFO, ending inventory would have been $560,000.
-Under LIFO, ending inventory is $530,000.
-Difference: $30,000 = additional COGS deduction in 2026 = **$30,000 reduction in 2026 taxable income**.
+Each year's portion goes on Form 1120-S line 5 (Other income) with a statement giving the total adjustment, the portion included, and a description of the change (2025 Instructions for Form 1120-S). It flows to the shareholders on Schedule K-1.
 
 ---
 
-## Form 3115 — Part I
+## Form 3115 (Rev. December 2022) — identification, Part I, Part II, Part IV
 
 | Line | Field | Value |
 |------|-------|-------|
-| 1a | Name of filer | Granite Hardware Co. |
-| 1b | EIN | 12-7788990 |
-| 2 | Tax year of change | January 1, 2026 – December 31, 2026 |
-| 3 | Type of return | Form 1120-S |
-| 4 | Type of accounting method change | Inventory (FIFO → LIFO adoption) |
-| 5 | DCN | 22 (verify in current Rev. Proc.) |
-| 6 | Section 481(a) adjustment | $0 (per §472(d) base-year rule) |
-| 7 | Spread | N/A (no §481(a) to spread) |
+| Identification | Name of filer / EIN | Granite Hardware Co. / 12-7788990 |
+| Identification | Tax year of change | 01/01/2026 – 12/31/2026 |
+| Identification | Type of applicant | S corporation |
+| Identification | Type of change | Other: inventory, change from LIFO |
+| 1a | DCN | 56 |
+| 2 | Eligibility rules restrict? | No |
+| 3 | All required information provided? | Yes (includes the §23.01(5) statements) |
+| 4 | Cease business in 2026? | No |
+| 6a | Any return under examination? | No |
+| 11a | Change for same item within 5 years? | No |
+| 13 | Overall method change? | No |
+| 14a–14d | Item / present / proposed / overall method | Inventories in 4 pools / dollar-value LIFO / FIFO at cost / accrual |
+| 17 | Proposed method used for books and financial statements? | Yes (FIFO statements for the lender) |
+| 19a | Gross receipts for 2025, 2024, 2023 | Enter actual amounts (ASK) |
+| 25 | Cut-off basis? | No |
+| 26 | §481(a) adjustment | +$58,000 (computation attached) |
+| 28 | Election | None ($58,000 is not under $50,000) |
 
 ---
 
-## Form 3115 — Schedule D (inventory)
+## Form 3115 — Schedule D, Part II (inventories)
 
-Schedule D of Form 3115 is the inventory-specific schedule. Entries:
-
-| Field | Value |
-|-------|-------|
-| Old method | FIFO (first-in, first-out) |
-| New method | LIFO (dollar-value method, double-extension or link-chain — specify) |
-| LIFO sub-method | Dollar-value LIFO |
-| Index method | External index (BLS Producer Price Index for hardware retailers) — verify exact PPI table |
-| Pools | 4 pools as listed (Tools, Plumbing, Electrical, General Hardware) |
-| Base year | 2026 (year of change becomes the LIFO base year) |
-| Citation | IRC §472, §473, §474 (LIFO) |
-
----
-
-## Form 970 — Application to Use LIFO
-
-Form 970 is filed alongside the 2026 return and Form 3115. Required entries:
-
-| Section | Field | Value |
-|---------|-------|-------|
-| Part I | Type of LIFO method | Dollar-value LIFO |
-| | Sub-method | Double-extension method |
-| | Index method | External index (PPI by industry) |
-| | First year of LIFO | 2026 |
-| | Base year | 2026 (the LIFO inventory at the start of the year is the base layer) |
-| | LIFO pools | 4 pools as listed |
-| Part II | Inventory cost flow | LIFO consistently for all financial reporting (book-tax conformity required under §472(c)) |
-
-The **§472(c) book-tax conformity rule** is critical: a taxpayer using LIFO for tax must also use LIFO for **financial reporting** (audited / reviewed financial statements, lender financial reports, owner financial reports). This is a major commitment — Granite's CFO confirms the company will adopt LIFO for both books and tax.
+| Line | Field | Value |
+|------|-------|-------|
+| 1 | Inventory goods being changed | All merchandise inventory in the 4 LIFO pools |
+| 2 | Goods not being changed | None |
+| 3a | Subject to §263A? | ASK (a small business taxpayer under §263A(i) is exempt) |
+| 4a | Identification method | Present: LIFO; proposed: FIFO |
+| 4a | Valuation method | Present: cost; proposed: cost |
+| 4b | Value at end of 2025 | Present $462,000; proposed $520,000 |
+| 5a | Copies of Form 970 | Attach the 2018 Form 970 |
+| 5c | Statement required by the List of Automatic Changes | Attach the §23.01(5) statements (Rev. Proc. 2025-23; the form still says Rev. Proc. 2022-14 "or its successor") |
 
 ---
 
@@ -147,49 +115,21 @@ The **§472(c) book-tax conformity rule** is critical: a taxpayer using LIFO for
 | Task | Date | Detail |
 |------|------|--------|
 | Year of change | 2026 | Calendar tax year |
-| Form 970 prepared and signed | with 2026 return | |
-| Form 3115 prepared (in duplicate) | with 2026 return | DCN 22 |
-| Duplicate Form 3115 to Ogden | before/with return filing | Certified mail with return receipt |
-| Original Form 3115 + Form 970 attached to 1120-S 2026 | by return due date | Including extensions, latest September 15, 2027 |
-| First LIFO computation done | year-end 2026 | LIFO reserve as of Dec 31, 2026 |
-| 2026 income statement uses LIFO | book and tax | §472(c) conformity |
-
----
-
-## Going forward — annual LIFO maintenance
-
-Each year after adoption:
-1. **Compute current-year ending inventory at current cost** (standard valuation)
-2. **Compute price index** vs base year (using PPI or internal index — must be consistent year over year)
-3. **Compute base-cost equivalent inventory** = current-cost inventory ÷ current price index
-4. **Compute LIFO layers**: any incremental quantity in current year vs prior year is added at current-year prices; any decrement removes prior-year layers (LIFO liquidation — risk of reversing tax benefits)
-5. **Track LIFO reserve**: difference between FIFO-equivalent and LIFO inventory; disclosed on financial statements per ASC 330
-
-The LIFO reserve grows during inflation and shrinks during deflation or inventory liquidations.
+| Form 3115 prepared | with the 2026 return | DCN 56 |
+| Signed copy to Ogden | between 01/01/2026 and the day the return is filed | M/S 6111 by certified mail, or fax 844-249-8134 |
+| Original Form 3115 attached to 2026 Form 1120-S | by the return due date | March 15, 2027; September 15, 2027 with extension |
+| §481(a) portions | 2026–2029 returns | $14,500 each on Form 1120-S line 5 |
 
 ---
 
 ## Common errors avoided
 
-1. **Filing only Form 970 without Form 3115**: technically Form 970 is the LIFO election, but the IRS expects Form 3115 (DCN 22) to accompany. Without it, the change may be procedurally questioned.
-2. **Missing the §472(c) book-tax conformity**: a LIFO tax election requires LIFO on the books. If the lender or auditor demands FIFO, the LIFO election is invalid for tax.
-3. **Computing §481(a) catch-up**: a common error — §481(a) is generally $0 for FIFO → LIFO adoption per the §472(d) base-year rule. The opening inventory at start of year of change IS the LIFO base layer.
-4. **Wrong pool definition**: pools should be defined by natural business classification (e.g., 4 product departments here). Re-pooling later is itself a method change requiring Form 3115.
-5. **LIFO liquidation in subsequent years**: if Granite reduces inventory below base-year quantity, prior LIFO layers are "liquidated" at low historical costs, releasing low-COGS inventory and triggering income recognition. Watch for this in years when Granite reduces stock or experiences deflation.
-6. **Ignoring AMT and state implications**: LIFO is allowed for federal regular tax but is disallowed for several state tax computations (e.g., some states require FIFO for state tax). Track book-tax differences carefully.
-
----
-
-## When LIFO is a bad idea
-
-Granite should reconsider LIFO if:
-- Industry trend is **deflationary** (LIFO produces higher tax than FIFO when prices fall)
-- Inventory levels are **shrinking** (LIFO liquidation triggers reversal of prior tax benefits)
-- The business is **about to be sold** (LIFO reserves become recapture income at sale)
-- Lenders or franchisors **require GAAP-FIFO** financial reporting (§472(c) violation)
-- The taxpayer is in a **low-tax-bracket year** (deferred deduction is less valuable)
-
-For Granite with rising costs and stable inventory growth, LIFO is a reasonable choice. Re-evaluate annually.
+1. **Using Form 3115 to adopt LIFO**: adoption is on Form 970; Form 3115 is for changing **from** LIFO or within LIFO (Schedule C).
+2. **Citing an old DCN**: DCNs are reassigned between lists; DCN 21 is now removal costs and DCN 22 is UNICAP for resellers in Rev. Proc. 2025-23. The change from LIFO is DCN 56.
+3. **Skipping the §481(a) adjustment**: required for a change from LIFO (§23.01(7)).
+4. **Wrong sign**: a higher FIFO beginning inventory means an increase in income.
+5. **Planning to re-elect LIFO soon**: not for 5 taxable years without a non-automatic request.
+6. **Forgetting the signed copy to Ogden**: the automatic change is not properly filed.
 
 ---
 
@@ -197,11 +137,9 @@ For Granite with rising costs and stable inventory growth, LIFO is a reasonable 
 
 The agent delivers to Granite's owner:
 
-1. **Form 3115 draft** (Parts I, IV, Schedule D) for DCN 22
-2. **Form 970 draft** for the formal LIFO election
-3. **§481(a) attachment**: explains why §481(a) = $0 per §472(d) base-year rule
-4. **Pool structure**: 4 pools defined with the inventory categorizations
-5. **Index methodology**: external PPI source and computation steps
-6. **Filing checklist**: dual filing (Form 3115 in duplicate + Form 970 with return)
-7. **Annual maintenance plan**: year-end LIFO reserve computation, conformity confirmation, watch for LIFO liquidations
-8. **Risk flag**: §472(c) book-tax conformity is mandatory — confirm with banker / auditor before filing
+1. **Form 3115 draft** (identification, Parts I, II, IV, Schedule D Part II) for DCN 56
+2. **§481(a) attachment**: pool-by-pool computation, +$58,000
+3. **Adjustment schedule**: $14,500 in each of 2026–2029, with reminders for the next 3 returns
+4. **Attachments list**: 2018 Form 970, §23.01(5) statements, gross receipts for line 19a
+5. **Filing checklist**: original with the 2026 Form 1120-S, signed copy to Ogden
+6. **Flag**: confirm the entity was never a C corporation (§1363(d)) and whether §263A applies

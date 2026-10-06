@@ -9,14 +9,15 @@ The agent must produce a complete `SKILL.md`-format draft *first*, then pick a f
 ## Channel decision tree
 
 ```
-User has AGI ≤ ~$84,000 and wants free guided software?
+User has AGI ≤ $89,000 (2026 filing season) and wants free guided software?
   → IRS Free File (Free File Alliance partners)
-    Most partners support Form 2555. Check the partner's form list.
+    Partner support for Form 2555 varies. Check the partner's form list.
     Browser flow is provider-specific.
 
 User wants to fill the form directly?
   → IRS Free File Fillable Forms (FFFF)
-    FFFF supports Form 2555 in most years. Verify on the current form list.
+    No income limit. Check that Form 2555 is on the current FFFF form list.
+    FFFF closes for the 2026 season on October 15, 2026.
     Use Section 1.
 
 User has paid software (TurboTax, H&R Block, FreeTaxUSA, TaxSlayer)?
@@ -25,15 +26,16 @@ User has paid software (TurboTax, H&R Block, FreeTaxUSA, TaxSlayer)?
 
 User wants paper?
   → Print Form 1040 + Form 2555 + supporting schedules.
-    Filers abroad typically mail to the Austin TX service center.
+    Mail to the special Form 2555 addresses (Section 3), not the state-of-residence address.
     Use Section 3.
-
-User wants IRS Direct File?
-  → As of early 2026, IRS Direct File does NOT support Form 2555 in most scopes.
-    Verify current scope. If unsupported, redirect to FFFF or paper.
 ```
 
-**Special note**: filers physically located outside the US get an automatic 2-month filing extension to **June 15** (IRC §6081, Reg. §1.6081-5). Further extension to October 15 via Form 4868. Tax owed is still due April 15 to avoid interest, but no late-filing penalty if filed by June 15.
+IRS Direct File was not offered in the 2026 filing season; do not offer it as a channel.
+
+**Special note — deadlines** (i2555 "When To File"; Reg. §1.6081-5):
+- A filer who, on the due date, lives outside the United States and Puerto Rico and has a tax home outside the United States and Puerto Rico gets an automatic 2-month extension to **June 15, 2026** for a 2025 return. It covers filing and paying, but interest runs on unpaid tax from April 15. Attach a statement saying the filer meets both conditions.
+- Form 4868 extends filing to October 15, 2026.
+- A first-year filer who will not meet the bona fide residence or physical presence test by the due date can file **Form 2350** (2025 revision) to extend to a date after qualifying. Form 2350 can be e-filed; on paper it goes to Department of the Treasury, Internal Revenue Service Center, Austin, TX 73301-0045 (f2350 instructions; i2555). The alternative is to file without the exclusion and amend with Form 1040-X.
 
 ---
 
@@ -41,7 +43,7 @@ User wants IRS Direct File?
 
 URL: https://www.irs.gov/e-file-providers/free-file-fillable-forms
 
-**Availability**: late January through mid-October. Each tax year is a separate FFFF account.
+**Availability**: late January through October 15, 2026 for 2025 returns. Each tax year is a separate FFFF account.
 
 ### Pre-flight
 
@@ -67,71 +69,65 @@ The agent must have:
 7. **Add Form 2555**:
    - Click "Add a Form / Schedule" → search "2555"
    - Select the form (some years FFFF distinguishes Form 2555 from Form 2555-EZ; 2555-EZ was discontinued 2018, so only Form 2555)
-8. **Fill Part I (General Information)** — field-by-field map:
+8. **Fill Part I (General Information)** — field-by-field map (2025 Form 2555 line numbers):
 
-| Form 2555 line | FFFF field | Source |
-|----------------|-----------|--------|
-| 1 | "Foreign address" | Draft Line 1 |
-| 2 | "Occupation" | Draft Line 2 |
-| 3 | "Filer's US employer (if any)" | Draft Line 3 |
-| 4a | "Employer name" | Draft Line 4a |
-| 4b | "US employer address" | Draft Line 4b |
-| 4c | "Foreign employer address" | Draft Line 4c |
-| 4d | "Type" radio | Draft Line 4d |
-| 5 | "Last year FEIE claimed" | Draft Line 5 |
-| 6a | "Test used last year" radio | Draft Line 6a |
-| 6b | "Form 2555 filed for any prior year?" | Draft Line 6b |
-| 6c | "Revocation date if applicable" | Draft Line 6c (5-year lock-out) |
-| 6d | "Country of citizenship" | Draft Line 6d |
-| 7 | "Bona fide resident or physical presence test?" radio | Draft Line 7 |
-| 8a/b | "Family in foreign country?" | Draft Line 8 |
-| 9 | "Tax home address" | Draft Line 9 |
+| Form 2555 line | Field | Source |
+|----------------|-------|--------|
+| 1 | Your foreign address (including country) | Draft line 1 |
+| 2 | Your occupation | Draft line 2 |
+| 3 | Employer's name | Draft line 3 |
+| 4a | Employer's U.S. address | Draft line 4a |
+| 4b | Employer's foreign address | Draft line 4b |
+| 5a–5e | Employer is: foreign entity / U.S. company / Self / foreign affiliate of a U.S. company / Other | Draft line 5 |
+| 6a | Last year Form 2555 or 2555-EZ was filed | Draft line 6a |
+| 6b | Never filed checkbox | Draft line 6b |
+| 6c | Ever revoked either exclusion? | Draft line 6c (5-year lock-out) |
+| 6d | Type of exclusion and year of revocation | Draft line 6d |
+| 7 | Country of citizenship/nationality | Draft line 7 |
+| 8a/8b | Separate foreign residence for family (adverse conditions); city, country, days | Draft lines 8a–8b |
+| 9 | Tax home(s) and date(s) established | Draft line 9 |
 
-9. **Fill Part II (Bona Fide Residence Test)** — only if using BFR:
-   - Line 10: bona fide residence start date (must cover entire tax year)
-   - Lines 11-15: living quarters, family, statements to foreign authorities, ties
+9. **Fill Part II (Bona Fide Residence Test)** — only if using this test:
+   - Line 10: date bona fide residence began and ended (or "Continues")
+   - Line 11: kind of living quarters
+   - Lines 12a–12b: family abroad, who and when
+   - Lines 13a–13b: statement of nonresidence; required to pay foreign income tax
+   - Line 14: U.S. presence table (dates, business days, U.S. business income)
+   - Lines 15a–15e: employment terms, visa, U.S. home
 
-10. **Fill Part III (Physical Presence Test)** — only if using PPT:
-    - Line 16: 12-month qualifying period
-    - Line 17: principal country
-    - **Line 18: travel table** — FFFF provides a multi-row entry for travel periods. Each row: country, date entered, date left, full days outside US. The agent enters every row from the draft. FFFF auto-sums; verify ≥ 330.
+10. **Fill Part III (Physical Presence Test)** — only if using this test:
+    - Line 16: 12-month period (both dates)
+    - Line 17: principal country of employment
+    - **Line 18: travel table** — each row: country (including U.S.), date arrived, date left, full days present, days in U.S. on business, income earned in U.S. on business. Enter every row from the draft and confirm the full foreign days total ≥ 330.
 
-11. **Fill Part IV (Foreign Earned Income)** — Lines 19-26:
-    - Line 19: salaries/wages
-    - Line 20: allowances/reimbursements
-    - Line 21: SE compensation share
-    - Line 22: noncash income (employer-provided housing FMV, etc.)
-    - Line 23: other earned
-    - Line 24: total (auto)
-    - Lines 25-26: US employer compensation breakdown (informational)
+11. **Fill Part IV (Foreign Earned Income)** — lines 19–26:
+    - Line 19: wages, salaries, bonuses, commissions
+    - Lines 20a–20b: personal-services share of business/profession or partnership income
+    - Lines 21a–21d: noncash income (lodging, meals, car, other)
+    - Lines 22a–22g: allowances (COLA, family, education, home leave, quarters, other; total)
+    - Line 23: other foreign earned income
+    - Line 24: total; line 25: excludable §119 meals and lodging; line 26: foreign earned income
 
-12. **Fill Part V (All Filers)** — Lines 27-28:
-    - Line 27 typically = Line 24
+12. **Fill Part V** — line 27 = line 26; answer the housing question.
 
-13. **Fill Part VI (Housing Exclusion — Employees)** — only if claiming housing exclusion:
-    - Lines 28-30: housing expenses by type, paid by filer or employer
-    - Line 31: housing expense limit (30% of FEIE cap, with city adjustment)
-    - Line 32: lesser of (28 or 31)
-    - Line 33: base housing amount (16% × FEIE cap × days/365)
-    - Line 34: 32 − 33
-    - Lines 35-36: exclusion amount
+13. **Fill Part VI (Housing)** — only if claiming the housing exclusion or deduction:
+    - Line 28: qualified housing expenses
+    - Lines 29a–29b: location (only if listed in Notice 2025-16) and limit on housing expenses
+    - Line 30: smaller of 28 or 29b; line 31: qualifying days
+    - Line 32: $56.99 × days ($20,800 for 365); line 33: housing amount
+    - Lines 34–36: employer-provided amounts, ratio, housing exclusion (SE-only filers: line 36 = 0)
 
-14. **Fill Part VII (Foreign Earned Income Exclusion)**:
-    - Line 37: max exclusion (FEIE cap pro-rated)
-    - Lines 38-43: excluded amount calculation
-    - Line 45: total exclusion to Schedule 1
+14. **Fill Part VII (Foreign Earned Income Exclusion)** — lines 37–42 ($130,000; days; ratio; prorated maximum; line 27 − line 36; smaller of the two).
 
-15. **Fill Part VIII (Disallowed Deductions)**:
-    - Lines 46-50: deductions allocable to excluded income — these are NOT deductible. The agent must NOT also include them on Schedule A or Schedule C.
+15. **Fill Part VIII** — line 43 = line 36 + line 42; line 44 = deductions allocable to excluded income (the deductions stay in full on Schedule 1 / Schedule C; line 44 takes the disallowed part back out of the exclusion, i2555 line 44); line 45 = line 43 − line 44.
 
-16. **Fill Part IX (Housing Deduction — SE only)** — only if SE filer claiming housing deduction (not exclusion):
-    - Lines 51-53: housing deduction calculation; flows to Schedule 1
+16. **Fill Part IX (Housing Deduction)** — only if line 33 > line 36 and line 27 > line 43: lines 46–50; line 50 flows to Schedule 1 line 24j.
 
-17. **Verify Schedule 1** auto-populates with Line 45 (or the housing deduction from Part IX) on the appropriate line.
+17. **Verify Schedule 1**: line 8d shows Form 2555 line 45 as a negative amount; line 24j shows Form 2555 line 50 if any.
 
-18. **Verify Foreign Earned Income Tax Worksheet (in Form 1040 instructions)** is applied to compute Line 16 (tax) — FFFF should auto-compute, but the agent verifies. This is the tax-stacking rule.
+18. **Verify the Foreign Earned Income Tax Worksheet (in the Form 1040 instructions)** is applied to compute Form 1040 line 16 when line 15 is more than zero. FFFF does limited calculations; the agent computes the worksheet and checks the entry. This is the tax-stacking rule.
 
-19. **Verify Schedule SE** reflects FULL self-employment income (excluded SE income is still subject to SE tax — IRC §1402, §911 only excludes from income tax not SE tax). This is the most common trap. If the user is in a Totalization Agreement country and has Certificate of Coverage, SE tax may not apply — verify separately.
+19. **Verify Schedule SE** reflects FULL self-employment income (excluded SE income is still subject to SE tax — IRC §1402(a)(11)). This is the most common trap. If the user's SE income is covered by a social security agreement country's system, the Schedule SE instructions say not to complete Schedule SE and to attach the foreign agency's coverage statement — verify separately.
 
 20. **Run FFFF's "Check Form" / "Verify"** — resolve every flag.
 
@@ -152,7 +148,7 @@ The agent must have:
 
 - Do not submit without the user's explicit go-ahead at step 23
 - Do not bypass the qualifying-test verification (FFFF may auto-flag if travel days < 330)
-- Do not file with a bona fide residence claim that doesn't span an entire tax year
+- Do not file with a bona fide residence claim whose uninterrupted period does not yet include an entire tax year
 - Do not double-deduct housing expenses (claim exclusion on 2555 AND deduct on Schedule A — the §911 disallowance prevents this)
 - Do not skip Schedule SE for excluded SE income — SE tax applies
 - Do not store SSN, DOB, PIN, or travel details in agent logs
@@ -164,8 +160,8 @@ The agent must have:
 | "Form 2555 not yet supported" | Filing too early in the season | Wait until late January |
 | "Travel days < 330" | Math error or actual short qualification | Recompute; if real, user fails physical presence — try BFR or skip FEIE |
 | "Identity verification failed" | Wrong prior-year AGI; transcript needed | Get IRS transcript |
-| FFFF rejects "Bona fide residence start date is in tax year" | BFR requires entire tax year — can't START mid-year | Use physical presence test instead, or wait for following year |
-| "Revocation period not yet expired" | Filer revoked FEIE within last 5 years | Cannot re-elect without IRS consent (Form 3115 or PLR) |
+| Bona fide residence period does not yet include a full tax year | First-year filer; the full year ends after the due date | Use the physical presence test if it fits, or file Form 2350, or file without the exclusion and amend with Form 1040-X (i2555 "When to claim the exclusion(s)") |
+| Line 6c Yes with a revocation within the last 5 years | Filer revoked FEIE (or claimed FTC/ACTC/EIC, treated as revocation) | Cannot re-elect without IRS approval, requested as a ruling from the Associate Chief Counsel (International) (Pub. 54, "Effect of Revoking the Exclusions") |
 | Schedule SE not auto-filed | Software thinks excluded income = no SE tax | Manual override; force Schedule SE |
 
 ---
@@ -186,7 +182,7 @@ For users with paid software:
 5. **Critical override checks** in tax software:
    - Tax-stacking: most software handles automatically, but verify Form 1040 Line 16 reflects stacking
    - SE tax on excluded SE income: many software packages incorrectly zero out SE tax — manual override may be required
-   - Disallowed deductions: ensure the software didn't double-count expenses on Schedule C/A AND in Part VIII
+   - Disallowed deductions: confirm line 44 contains the Schedule C expenses and SE-tax deduction allocable to the excluded income, with the full amounts still on Schedule C / Schedule 1 (i2555 line 44)
 6. Continue to Form 1040 review.
 7. E-file.
 
@@ -205,13 +201,13 @@ Provider-specific notes:
 
 Order (top to bottom):
 
-1. **Form 1040** (signed in ink)
+1. **Form 1040** (signed in ink), with the June 15 extension statement attached if that extension is used
 2. **Schedule 1, 2, 3** in order (Schedule 1 has the FEIE adjustment)
 3. **Schedule A** if itemizing (with deductions reduced by §911 disallowance)
 4. **Schedule C / SE** if SE filer (full SE earnings, full SE tax)
-5. **Form 2555**
-6. **Form 1116** if also claiming FTC on residual income
-7. **Form 8938** if specified foreign financial assets exceed reporting threshold
+5. **Form 1116** if also claiming FTC on residual income (Attachment Sequence No. 19)
+6. **Form 2555** (Attachment Sequence No. 34)
+7. **Form 8938** if specified foreign financial assets exceed reporting threshold (Attachment Sequence No. 938)
 8. **Other schedules** in attachment-sequence order
 9. **W-2s, 1099s** with federal withholding stapled to front of 1040
 
@@ -219,8 +215,12 @@ Single staple, upper-left corner.
 
 ### Mailing addresses
 
-Filers abroad mail to a special IRS service center (typically Austin, TX). Verify each year at:
-**https://www.irs.gov/filing/where-to-file-paper-tax-returns-with-or-without-a-payment**
+A return with Form 2555 attached goes to the special international address, not the state-of-residence address (i2555 "Where To File"). For 2025 returns (2025 Instructions for Form 1040, "Where do you file?", row for "A foreign country, U.S. territory, APO/FPO, or file Form 2555 or 4563, or dual-status alien"):
+
+- Without a payment: Department of the Treasury, Internal Revenue Service, Austin, TX 73301-0215
+- With a payment: Internal Revenue Service, P.O. Box 1303, Charlotte, NC 28201-1303
+
+Re-verify each year at https://www.irs.gov/filing/international-where-to-file-form-1040-addresses-for-taxpayers-and-tax-professionals
 
 Filers can also use foreign country private delivery services authorized by the IRS (DHL, FedEx International, UPS Worldwide).
 

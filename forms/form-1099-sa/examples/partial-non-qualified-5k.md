@@ -11,7 +11,7 @@ A mixed case where the user has a partial non-QME distribution. Demonstrates the
 - **HSA custodian**: Fidelity Investments
 - **Insurance**: Family HDHP all year (covers Marcus, Lena, and 2 children)
 - **Marcus's HSA contribution in 2025**: $8,550 (the family limit per Rev. Proc. 2024-25)
-- **Lena's HSA**: separate, not relevant here
+- **Lena's HSA**: separate; Lena contributed $0 for 2025, so the shared family limit went entirely to Marcus
 - **Marcus's W-2 wages**: $95,000
 
 ## Inputs gathered
@@ -19,7 +19,7 @@ A mixed case where the user has a partial non-QME distribution. Demonstrates the
 ### 1099-SA from Fidelity
 
 ```
-PAYER: Fidelity Investments, EIN 04-3438911
+PAYER: Fidelity Investments, <payer TIN as printed on the form>
 RECIPIENT: Marcus Tate, SSN ***-**-XXXX
 
 Box 1 (Gross distribution):                $5,000
@@ -75,7 +75,7 @@ Line 14a (Total distributions):              $5,000
 Line 14b (Rollovers):                        $0
 Line 14c (14a − 14b):                        $5,000
 Line 15 (QME paid using HSA):                $4,000
-Line 16 (Taxable distributions, 14a − 15):   $1,000
+Line 16 (Taxable distributions, 14c − 15):   $1,000
 Line 17a (Exception):                        None (Marcus is 41, not disabled, not died)
 Line 17b (20% additional tax, $1,000 × 0.20):$200
 ```
@@ -119,7 +119,7 @@ Line 17b (20% additional tax, $1,000 × 0.20):$200
 14b. Rollovers:                                  $0
 14c. Subtract 14b from 14a:                      $5,000
 15.  Qualified medical expenses paid using HSA:  $4,000
-16.  Taxable HSA distributions (14a − 15):       $1,000  → Schedule 1 Line 8f
+16.  Taxable HSA distributions (14c − 15):       $1,000  → Schedule 1 Line 8f
 17a. Exception reason:                           None (Marcus is 41, not disabled, not died)
 17b. Additional 20% tax (16 × 0.20):             $200    → Schedule 2 Line 17c
 
@@ -146,13 +146,13 @@ Line 17b (20% additional tax, $1,000 × 0.20):$200
   - For 2026: Marcus should not use his HSA for non-QME items — the 42% combined cost makes it economically irrational vs. paying out of pocket from already-taxed wages
 
 ## Sources cited in this draft
-- IRS Form 1099-SA, Rev. 2025
-- IRS Instructions for Forms 1099-SA and 5498-SA, Rev. 2025
-- IRS Form 8889, Rev. 2025
+- IRS Form 1099-SA (Rev. April 2025)
+- IRS Instructions for Forms 1099-SA and 5498-SA (2025)
+- IRS Form 8889 (2025)
 - IRS Pub 502 (qualified medical expenses)
 - IRS Pub 969 (HSAs)
 - IRC §223(f)(1) (non-QME taxable as income)
-- IRC §223(f)(4) (20% additional tax) and §223(f)(4)(B) (exceptions — none apply to Marcus)
+- IRC §223(f)(4) (20% additional tax) and §223(f)(4)(B)–(C) (exceptions — none apply to Marcus)
 - IRC §223(d)(2)(A) (HSA QME definition referencing IRC §213(d))
 ```
 
@@ -169,7 +169,7 @@ Line 17b (20% additional tax, $1,000 × 0.20):$200
 
 Lena (spouse) and the two children (dependents on the joint return) all qualify.
 
-**Why does the 20% additional tax apply?** Marcus is 41, not disabled, did not die. None of the IRC §223(f)(4)(B) exceptions apply. The 20% applies on top of ordinary income tax.
+**Why does the 20% additional tax apply?** Marcus is 41, not disabled, did not die. None of the IRC §223(f)(4)(B)–(C) exceptions apply. The 20% applies on top of ordinary income tax.
 
 **Total cost calculation for the $1,000 non-QME**:
 - Federal income tax (22% marginal rate): $220
@@ -179,9 +179,9 @@ Lena (spouse) and the two children (dependents on the joint return) all qualify.
 
 This makes non-QME HSA distributions economically irrational for under-65 users. Better to pay out-of-pocket from already-taxed wages and let the HSA grow tax-free.
 
-**What if Marcus had been 65 or older?** Line 17a would mark "Age 65 or older" and Line 17b = $0. The $1,000 would still be ordinary income (Line 16), but the 20% penalty would be waived. This is the famous "HSAs become a stealth IRA at 65" feature — non-QME distributions still owe income tax but no penalty, similar to a traditional IRA at age 59½.
+**What if Marcus had been 65 or older?** For distributions made after his 65th birthday, Line 17a would be checked and Line 17b = $0. The $1,000 would still be ordinary income (Line 16), but the 20% penalty would be waived. This is the famous "HSAs become a stealth IRA at 65" feature — non-QME distributions still owe income tax but no penalty, similar to a traditional IRA at age 59½.
 
-**Should Marcus pay back the non-QME amount?** Once a distribution is taken, the IRS rules don't allow "paying it back" except through the limited rollover rule (IRC §223(f)(5)) — and only within 60 days, once per 12 months. By the time the 1099-SA arrives in January 2026 for tax year 2025 distributions, the rollover window for Feb-Oct distributions has long passed. Marcus owes the tax + penalty.
+**Should Marcus pay back the non-QME amount?** Once a distribution is taken, the IRS rules don't allow "paying it back" except through the limited rollover rule (IRC §223(f)(5)) — only within 60 days, one rollover per 1-year period — or the mistaken-distribution rule, which needs a mistake of fact due to reasonable cause (e.g., believing an expense was qualified) and a custodian that accepts the repayment (2025 Instructions for Forms 1099-SA and 5498-SA, "HSA Mistaken Distributions"). Marcus knew these purchases were not qualified, so neither applies. Marcus owes the tax + penalty.
 
 ## Audit defense
 

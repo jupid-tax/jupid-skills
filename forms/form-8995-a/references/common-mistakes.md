@@ -8,11 +8,11 @@ Eight high-frequency errors and how to avoid them.
 
 **Problem:** Tax software defaults to Form 8995 (the simplified version) and the filer doesn't notice they're above the threshold.
 
-**Impact:** The simplified form ignores the W-2/UBIA limit and the SSTB phase-in. Above the threshold, this almost always overstates the deduction. The IRS receives Schedule C / K-1 data, recomputes §199A on its end, and issues a CP2000 notice with the corrected (lower) deduction plus interest.
+**Impact:** The simplified form ignores the W-2/UBIA limit and the SSTB phase-in. Above the threshold, this usually overstates the deduction, which an examination would reverse with interest.
 
 **Citation:** IRC §199A(b)(2)(B); Treas. Reg. §1.199A-1(d)(2)(iv).
 
-**Fix:** Always check threshold position FIRST. If taxable income before QBI > $241,950 single / $483,900 MFJ for 2025, use Form 8995-A. If the user has any SSTB activity, use 8995-A regardless of income.
+**Fix:** Always check threshold position FIRST. If taxable income before QBI > $197,300 ($394,600 MFJ) for 2025, or $201,750 ($201,775 MFS, $403,500 MFJ) for 2026, use Form 8995-A. Cooperative patrons use 8995-A at any income. An SSTB at or below the threshold does not by itself require 8995-A.
 
 ---
 
@@ -24,7 +24,7 @@ Eight high-frequency errors and how to avoid them.
 
 **Citation:** Treas. Reg. §1.199A-3(b)(2)(ii)(H).
 
-**Fix:** Use box 1 directly (the corp already deducted the owner's W-2 wages as a corporate expense). The $100,000 W-2 is reported on Form 1040 Line 1a separately and counts in the corp's W-2 wages for Part II Line 4.
+**Fix:** Use the QBI on the box 17 code V statement; box 1 and that QBI are already after the corporation deducted the owner's wages. The $100,000 W-2 is reported on Form 1040 line 1a separately and counts in the corp's W-2 wages for Part II Line 4.
 
 ---
 
@@ -34,7 +34,7 @@ Eight high-frequency errors and how to avoid them.
 
 **Impact:** QBI overstated by 5-15%. Tentative deduction overstated proportionally.
 
-**Citation:** Treas. Reg. §1.199A-3(b)(1)(vi); IRS QBI FAQ #33.
+**Citation:** Treas. Reg. §1.199A-3(b)(1)(vi); 2025 Instructions for Form 8995-A, "Determining your QBI".
 
 **Fix:** QBI = Schedule C Line 31 net profit MINUS (½ SE tax + SE HI + SE retirement contributions), all allocable to that business.
 
@@ -46,9 +46,9 @@ Eight high-frequency errors and how to avoid them.
 
 **Impact:** Inflated UBIA → inflated W-2/UBIA limit → overstated deduction.
 
-**Citation:** Treas. Reg. §1.199A-2(c)(1)(iii) — only depreciable tangible property within its depreciable period; land excluded.
+**Citation:** Treas. Reg. §1.199A-2(c)(1) — qualified property is tangible property subject to depreciation under §167(a) within its depreciable period; land is not depreciable.
 
-**Fix:** UBIA = unadjusted basis of depreciable tangible property (buildings yes, land no; equipment yes, intangibles no) within its depreciable period. The depreciable period is the longer of 10 years or the MACRS recovery period.
+**Fix:** UBIA = unadjusted basis of depreciable tangible property (buildings yes, land no; equipment yes, intangibles no) within its depreciable period. The depreciable period ends on the later of 10 years after first placed in service or the last day of the last full year of the §168(c) recovery period (2025 i8995-A, "Determining your UBIA").
 
 ---
 
@@ -58,19 +58,19 @@ Eight high-frequency errors and how to avoid them.
 
 **Impact:** Overstated deduction by up to $60,000 in this example.
 
-**Citation:** IRC §199A(a)(1)(B); Treas. Reg. §1.199A-1(c)(1).
+**Citation:** IRC §199A(a)(2); Treas. Reg. §1.199A-1(c)(1), (d)(1).
 
-**Fix:** Always subtract net capital gains (LTCG from Schedule D + qualified dividends from 1040 Line 3a) on Line 34 before applying the 20% cap on Line 36.
+**Fix:** Always enter net capital gain on Line 34 before applying the 20% cap on Line 36: Form 1040 line 3a qualified dividends plus the smaller of Schedule D line 15 or 16 (or Form 1040 line 7a if Schedule D isn't required) (2025 i8995-A, Line 34).
 
 ---
 
 ## 6. Misclassifying a Business as Non-SSTB When It Is
 
-**Problem:** A solo financial planner treats their advisory practice as non-SSTB ("I'm a registered investment advisor, not really 'financial services'"). At $260,000 taxable income, they take the full deduction without Schedule A.
+**Problem:** A solo financial planner (single) treats their advisory practice as non-SSTB ("I'm a registered investment advisor, not really 'financial services'"). At $230,000 taxable income for 2025, they take the full deduction without Schedule A.
 
-**Impact:** SSTB phase-in ignored. Full $40,000+ deduction taken when only $25,000-30,000 was allowed (depending on phase-in percentage). IRS notice on CP2000.
+**Impact:** SSTB phase-in ignored. At $230,000 only 34.6% of QBI, W-2 wages, and UBIA count (100% − $32,700 ÷ $50,000), so most of the deduction claimed is not allowed. Above $247,300 none of it is.
 
-**Citation:** IRC §199A(d)(2)(A); Treas. Reg. §1.199A-5(b)(2)(ix) — financial services SSTB explicitly includes investment advisors.
+**Citation:** IRC §199A(d)(2)(A); Treas. Reg. §1.199A-5(b)(2)(ix) (financial services: financial advisors, wealth planners, retirement advisors) and (b)(2)(xi) (investing and investment management).
 
 **Fix:** Use the SSTB classification reference. When in doubt, treat as SSTB and let the Schedule A computation reduce the deduction. Better than an audit.
 
@@ -92,11 +92,11 @@ Eight high-frequency errors and how to avoid them.
 
 **Problem:** Last year's Form 8995-A had aggregate QBI of negative $50,000 (carried forward). This year, the filer doesn't enter the carryforward, so this year's Form 8995-A computes a $40,000 deduction on $200,000 of positive QBI.
 
-**Impact:** Overstated deduction by $50,000 × 20% = $10,000. IRS will catch this when reconciling year-over-year forms; CP2000 notice.
+**Impact:** Overstated deduction by $50,000 × 20% = $10,000.
 
 **Citation:** IRC §199A(c)(2); Treas. Reg. §1.199A-1(d)(2)(iii).
 
-**Fix:** Always check prior-year Form 8995-A for a QBI loss carryforward. Enter on this year's Form 8995-A as a negative-QBI business in the loss-netting computation. The carryforward continues until fully offset.
+**Fix:** Always check the prior-year Schedule C (Form 8995-A) line 6 (or Form 8995 line 16) for a QBI loss carryforward. Enter it on this year's Schedule C (Form 8995-A) line 2. The carryforward continues until fully offset.
 
 ---
 
@@ -104,7 +104,7 @@ Eight high-frequency errors and how to avoid them.
 
 Not strictly a "mistake" but a frequently missed planning opportunity:
 
-**Scenario:** S-corp owner with $400,000 expected profit. Pays $100,000 reasonable comp + $300,000 distribution. Joint taxable income before QBI: $500,000 (just above MFJ threshold).
+**Scenario:** S-corp owner with $400,000 expected profit. Pays $100,000 reasonable comp + $300,000 distribution. Joint taxable income before QBI: $500,000 (2025: above the $494,600 top of the MFJ phase-in range, so the W-2/UBIA limit applies in full).
 
 If the owner had paid $150,000 W-2 + $250,000 distribution:
 - W-2 wages of business: $150,000 (vs. $100,000) — supports W-2/UBIA limit better
@@ -112,6 +112,6 @@ If the owner had paid $150,000 W-2 + $250,000 distribution:
 - Owner's total income: same
 - W-2/UBIA limit at 50% × $150,000 = $75,000 (vs. $50,000) — bigger limit
 
-If the W-2/UBIA limit was binding, the higher reasonable comp produces a bigger §199A deduction — but the owner pays more SS/Medicare tax (15.3% × $50K extra wages = $7,650 of extra payroll tax, but with the SS wage base limit of $176,100 for 2025, only the Medicare portion of 2.9% × $50K = $1,450 typically applies for owners already maxing SS).
+If the W-2/UBIA limit was binding, the higher reasonable comp produces a bigger §199A deduction — but the owner pays more SS/Medicare tax. Here total wages ($150,000) stay under the 2025 Social Security wage base of $176,100, so the extra $50,000 costs 15.3% = $7,650 of combined payroll tax. Only for wages above the wage base does the extra cost drop to the 2.9% Medicare portion (plus 0.9% Additional Medicare Tax on wages over $200,000).
 
 The break-even depends on the binding constraint. Run both scenarios.

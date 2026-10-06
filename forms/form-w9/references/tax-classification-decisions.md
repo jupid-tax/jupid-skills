@@ -1,6 +1,6 @@
 # Form W-9 — Tax classification decision tree (Line 3a)
 
-Decision tree for picking the correct Line 3a checkbox. The most-misfiled section of W-9 is Line 3a for LLC owners — this file is the canonical reference.
+Decision tree for picking the correct Line 3a checkbox (Form W-9, Rev. March 2024: "Check the appropriate box on line 3a for the U.S. federal tax classification of the person whose name is entered on line 1"). The most-misfiled section of W-9 is Line 3a for LLC owners — this file is the canonical reference.
 
 ---
 
@@ -25,7 +25,7 @@ The filer operates as themselves, filing Schedule C with their Form 1040. May or
 
 - **Line 3a checkbox:** `Individual/sole proprietor`
 - **LLC classification letter:** n/a (do not check the LLC box)
-- **TIN (Part I):** SSN (or ITIN if applicable). Even if the filer has applied for and received an EIN as a sole proprietor, the IRS prefers the SSN here.
+- **TIN (Part I):** SSN (or ITIN if applicable). A sole proprietor who has an EIN may enter either the SSN or the EIN; the IRS encourages the SSN.
 
 Examples:
 - Freelance graphic designer with no LLC → Individual/sole proprietor + SSN
@@ -46,9 +46,9 @@ This is the default for an SMLLC unless the owner has filed Form 2553 or Form 88
 - **Line 2:** LLC name (e.g., "Garcia Design LLC")
 - **Line 3a checkbox:** `Individual/sole proprietor`
 - **LLC classification letter:** n/a (do NOT check the LLC box)
-- **TIN (Part I):** Owner's SSN (NOT the LLC's EIN, even if the LLC has one)
+- **TIN (Part I):** Owner's SSN, or the owner's own EIN if the owner has one (NOT the LLC's EIN, even if the LLC has one)
 
-The "Individual/sole proprietor or single-member LLC" checkbox on the W-9 covers both cases — they share the same line.
+Rev. March 2024 What's New: "An LLC that is a disregarded entity should check the appropriate box for the tax classification of its owner." For an individual owner that is "Individual/sole proprietor" (the box no longer says "or single-member LLC"). If the owner is a foreign person, the owner gives a Form W-8 instead of a W-9.
 
 **The trap:** owners check "Limited liability company" on Line 3a, write "S" or nothing for the classification, and put the LLC's EIN in Part I. The IRS then can't match the 1099 to the owner's SSN, sends a "B" notice to the requestor, and the requestor applies 24% backup withholding.
 
@@ -58,7 +58,7 @@ The owner has filed Form 2553 to elect S-corporation taxation for the LLC. The L
 
 - **Line 1:** LLC's legal name
 - **Line 2:** Blank (or DBA, if any)
-- **Line 3a checkbox:** `Limited liability company`
+- **Line 3a checkbox:** `LLC`
 - **LLC classification letter:** `S`
 - **TIN (Part I):** LLC's EIN (NOT the owner's SSN)
 
@@ -68,7 +68,7 @@ The owner has filed Form 8832 to elect C-corporation taxation for the LLC. Rare 
 
 - **Line 1:** LLC's legal name
 - **Line 2:** Blank (or DBA, if any)
-- **Line 3a checkbox:** `Limited liability company`
+- **Line 3a checkbox:** `LLC`
 - **LLC classification letter:** `C`
 - **TIN (Part I):** LLC's EIN
 
@@ -82,21 +82,22 @@ Default is partnership taxation; can elect S-corp or C-corp.
 
 - **Line 1:** LLC's legal name
 - **Line 2:** Blank (or DBA, if any)
-- **Line 3a checkbox:** `Limited liability company`
+- **Line 3a checkbox:** `LLC`
 - **LLC classification letter:** `P`
+- **Line 3b:** check only if the LLC has foreign partners and is giving the W-9 to a partnership, trust, or estate it owns an interest in
 - **TIN (Part I):** LLC's EIN
 
 ### Section C.2 — Multi-member LLC with S-corp election
 
 - **Line 1:** LLC's legal name
-- **Line 3a checkbox:** `Limited liability company`
+- **Line 3a checkbox:** `LLC`
 - **LLC classification letter:** `S`
 - **TIN (Part I):** LLC's EIN
 
 ### Section C.3 — Multi-member LLC with C-corp election
 
 - **Line 1:** LLC's legal name
-- **Line 3a checkbox:** `Limited liability company`
+- **Line 3a checkbox:** `LLC`
 - **LLC classification letter:** `C`
 - **TIN (Part I):** LLC's EIN
 
@@ -122,7 +123,7 @@ Filed Articles of Incorporation; no S-corp election.
 - **Line 3a checkbox:** `C Corporation`
 - **TIN (Part I):** Corporation's EIN
 
-**Note for corporations:** Most payments to a C-corp or S-corp are exempt from 1099-NEC reporting (the requestor doesn't have to file a 1099 at year-end). Exceptions: payments to attorneys (always 1099-reportable regardless of entity type) and medical/healthcare payments.
+**Note for corporations:** Most payments to a C-corp or S-corp are exempt from 1099-NEC reporting (the requestor doesn't have to file a 1099 at year-end). Exceptions: payments to attorneys (fees and gross proceeds, regardless of entity type) and medical/health-care payments (Reg. §1.6041-3(p)(1)).
 
 ---
 
@@ -144,7 +145,7 @@ Trust formed by trust instrument; estate of a deceased person.
 - **Line 3a checkbox:** `Trust/estate`
 - **TIN (Part I):** Trust's or estate's EIN
 
-For a grantor trust where the grantor is treated as the owner, Line 1 = grantor's name and TIN = grantor's SSN; check Individual/sole proprietor.
+Grantor trusts depend on the account and filing method (W-9 "What Name and Number To Give the Requester" chart): a revocable trust where the grantor is also trustee, or a grantor trust using Optional Filing Method 1, gives the grantor's name and SSN (Line 3a then follows the grantor, e.g., Individual/sole proprietor); a grantor trust filing Form 1041 or using Optional Filing Method 2 gives the trust's name and EIN. Ask which applies.
 
 ---
 
@@ -153,18 +154,18 @@ For a grantor trust where the grantor is treated as the owner, Line 1 = grantor'
 | Filer described as... | Line 3a | LLC letter | Line 1 | TIN |
 |-----------------------|---------|-----------|--------|-----|
 | Freelancer, no LLC | Individual/sole prop | n/a | Personal name | SSN |
-| Sole prop with EIN, no LLC | Individual/sole prop | n/a | Personal name | SSN |
-| SMLLC, default (disregarded) | Individual/sole prop | n/a | Owner's personal name | Owner's SSN |
-| SMLLC, S-corp election | Limited liability company | S | LLC name | LLC's EIN |
-| SMLLC, C-corp election | Limited liability company | C | LLC name | LLC's EIN |
-| Multi-member LLC, partnership default | Limited liability company | P | LLC name | LLC's EIN |
-| Multi-member LLC, S-corp | Limited liability company | S | LLC name | LLC's EIN |
-| Multi-member LLC, C-corp | Limited liability company | C | LLC name | LLC's EIN |
+| Sole prop with EIN, no LLC | Individual/sole prop | n/a | Personal name | SSN or own EIN (IRS encourages SSN) |
+| SMLLC, default (disregarded) | Individual/sole prop (owner's box) | n/a | Owner's personal name | Owner's SSN (or owner's own EIN) |
+| SMLLC, S-corp election | LLC | S | LLC name | LLC's EIN |
+| SMLLC, C-corp election | LLC | C | LLC name | LLC's EIN |
+| Multi-member LLC, partnership default | LLC | P | LLC name | LLC's EIN |
+| Multi-member LLC, S-corp | LLC | S | LLC name | LLC's EIN |
+| Multi-member LLC, C-corp | LLC | C | LLC name | LLC's EIN |
 | S-corp (Articles of Incorporation) | S Corporation | n/a | Corp name | Corp's EIN |
 | C-corp (Articles of Incorporation) | C Corporation | n/a | Corp name | Corp's EIN |
 | Partnership (not LLC) | Partnership | n/a | Partnership name | Partnership's EIN |
 | Trust or estate | Trust/estate | n/a | Trust/estate name | Trust/estate's EIN |
-| Grantor trust (grantor is owner) | Individual/sole prop | n/a | Grantor's name | Grantor's SSN |
+| Grantor trust, Optional Filing Method 1 or revocable trust with grantor as trustee | Grantor's box (e.g., Individual/sole prop) | n/a | Grantor's name | Grantor's SSN |
 
 ---
 
@@ -178,8 +179,8 @@ If the user isn't sure which box to check:
    - No, no formal entity → Individual/sole prop
 
 2. **"Have you filed Form 2553 (S-corp election) or Form 8832 (C-corp election) for the LLC?"**
-   - Yes, Form 2553 → Limited liability company + S
-   - Yes, Form 8832 → Limited liability company + C
+   - Yes, Form 2553 → LLC + S
+   - Yes, Form 8832 → LLC + C
    - No → ask Q4
 
 3. **"Did you file Form 2553 for the corporation?"**
@@ -188,6 +189,6 @@ If the user isn't sure which box to check:
 
 4. **"Is the LLC owned by one person or multiple?"**
    - One → Individual/sole proprietor (default disregarded)
-   - Multiple → Limited liability company + P (default partnership)
+   - Multiple → LLC + P (default partnership)
 
 If the user can't answer Q2 or Q3 confidently, advise them to check with their CPA or check IRS records before completing the W-9. The wrong classification leads to TIN-matching failures and backup withholding that's hard to unwind.

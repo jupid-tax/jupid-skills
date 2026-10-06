@@ -38,7 +38,7 @@ Decision tree (`references/tax-classification-decisions.md`, Section A):
 3. Is he in a partnership? **No.**
 4. Therefore: **Individual / sole proprietor.**
 
-Result: **Line 3a = "Individual/sole proprietor or single-member LLC"** (the box covers both individuals with no entity AND single-member LLCs by default — David is the first case).
+Result: **Line 3a = "Individual/sole proprietor"** (also the box a disregarded single-member LLC checks when its owner is an individual).
 
 The agent confirms back to David: "You're filling this out as Individual/sole proprietor, using your personal SSN. No LLC, no EIN — just you. Right?" David: "Right."
 
@@ -63,9 +63,9 @@ Sole proprietors / individuals are NEVER exempt from backup withholding (per `re
 2. Business name / disregarded entity name:    blank
 
 ## Tax classification (Line 3)
-3a. Federal tax classification:                Individual/sole proprietor or single-member LLC
+3a. Federal tax classification:                Individual/sole proprietor
     (If LLC) Tax classification letter:        n/a (LLC box NOT checked)
-3b. (FATCA pass-through indicator):            blank
+3b. Foreign partners, owners, or beneficiaries: blank (not a partnership, trust, or estate)
 
 ## Exemptions (Line 4) — usually blank
 Exempt payee code:                             blank
@@ -99,11 +99,11 @@ Verification of requestor legitimacy:          Existing countersigned offer lett
 
 **Why is Line 2 blank?** Line 2 is for a separate business / DBA / disregarded-entity name. David has none — he operates under his own legal name. Leaving it blank is correct. Filling it with "Freelance Technical Writing" or similar would be wrong — that's a description of his work, not a registered business name.
 
-**Why is Line 3a "Individual/sole proprietor" and not just "Individual"?** Because the W-9 form bundles the two into one checkbox: "Individual/sole proprietor or single-member LLC." A "sole proprietor" for federal tax purposes is just an individual operating a business under their own name (or DBA) without forming an entity. David's Schedule C income makes him a sole proprietor for tax purposes — even though there's no formal "sole proprietorship" filing at the state or federal level. The tax classification follows from the business activity, not from a registration.
+**Why is Line 3a "Individual/sole proprietor" and not just "Individual"?** Because the W-9 form bundles the two into one checkbox: "Individual/sole proprietor" (W-9 instructions, Line 3a: individual or sole proprietorship → Individual/sole proprietor). A "sole proprietor" for federal tax purposes is just an individual operating a business under their own name (or DBA) without forming an entity. David's Schedule C income makes him a sole proprietor for tax purposes — even though there's no formal "sole proprietorship" filing at the state or federal level. The tax classification follows from the business activity, not from a registration.
 
-**Why doesn't David need an EIN?** EINs are useful but not required for individual sole proprietors. David could apply for one (free at IRS.gov, instant issuance) for privacy reasons — to avoid sharing his SSN with every client. But even if he had one, the IRS instructions say sole proprietors should enter the **SSN** on W-9, not the EIN. So getting an EIN doesn't change Line 1 ("David Kim") or Part I (SSN). For now, David has no EIN, so there's nothing to choose between.
+**Why doesn't David need an EIN?** EINs are useful but not required for individual sole proprietors. David could apply for one (free at IRS.gov, instant issuance) for privacy reasons — to avoid sharing his SSN with every client. If he had one, the W-9 instructions let a sole proprietor enter either the SSN or the EIN (the IRS encourages the SSN). Line 1 stays "David Kim" either way. For now, David has no EIN, so there's nothing to choose between.
 
-**Why is Lines 5-6 his apartment address and not a PO Box or a coworking address?** The address on the W-9 is where Devtools will mail his year-end 1099-NEC and where the IRS expects to find him for correspondence. David files Form 1040 from his Brooklyn address — the W-9 address must match. A PO Box would be acceptable if David files his 1040 with a PO Box; he doesn't, so the apartment address is correct. A coworking address would NOT match his tax-return address and is wrong here.
+**Why is Lines 5-6 his apartment address and not a PO Box or a coworking address?** The W-9 instructions describe line 5 as where the requester will mail his information returns. David gets mail reliably at his Brooklyn apartment, which is also his tax-return address, so that is the simplest choice. A PO Box or coworking address isn't forbidden, but any address that doesn't reliably reach him risks a lost 1099.
 
 **Why is Item 2 NOT struck?** Item 2 is the certification that David is not subject to backup withholding for under-reporting interest or dividends. He has never received an IRS notice on this — so he can sign the certification as-is. Striking Item 2 only applies if the IRS has actively notified the user that they ARE subject to BUW for past under-reporting. This is rare; most filers leave it unstruck.
 
@@ -111,7 +111,7 @@ Verification of requestor legitimacy:          Existing countersigned offer lett
 - Signer identity verification (Marcus's authenticated session + David's authenticated session)
 - Tamper-evident audit trail (any post-signature modification breaks the seal)
 - Encrypted transit and storage
-- IRS Pub 1345 compliance for electronic-signature standards
+- A signature flow that meets the requester-system rules for electronic W-9s (Instructions for the Requester of Form W-9, "Electronic Submission of Forms W-9")
 
 This satisfies the secure-delivery requirement without any extra effort on David's part.
 
@@ -127,7 +127,7 @@ Almost every other W-9 scenario adds at least one of these complications:
 | State-formed corporation | `s-corp-shareholder-employee.md` — corp name on Line 1, S Corporation box, corp EIN in Part I, Code 5 exemption |
 | Partnership | `tax-classification-decisions.md` Section E — partnership name on Line 1, Partnership box, partnership EIN in Part I |
 | Trust / estate | `tax-classification-decisions.md` Section F — trust/estate name, trust/estate EIN |
-| Sole prop with EIN | TIN selection nuance — IRS prefers SSN even when filer has EIN; see `tin-selection.md` |
+| Sole prop with EIN | TIN selection nuance — either SSN or EIN allowed, IRS encourages SSN; see `../references/tin-selection.md` |
 | ITIN instead of SSN | filer is a US person but ineligible for SSN; uses ITIN (also goes in SSN boxes) |
 
 David's case has none of these. Personal name, SSN, no entity, no exemption codes. Three minutes from start to signed delivery.
@@ -136,7 +136,7 @@ David's case has none of these. Personal name, SSN, no entity, no exemption code
 
 Devtools stores David's W-9 in their vendor / contractor master record. Through 2026, Devtools tracks total payments to David Kim. At year-end:
 
-- **If total payments ≥ $2,000** (the new OBBBA threshold for tax year 2026 per IRC §6041 as amended by OBBBA Section 112201): Devtools files **Form 1099-NEC** by January 31, 2027, reporting the total in Box 1. Payee name = "David Kim", payee TIN = his SSN. David gets a copy.
+- **If total payments ≥ $2,000** (the threshold for payments made in 2026, P.L. 119-21 §70433): Devtools files **Form 1099-NEC** by February 1, 2027 (January 31 is a Sunday), reporting the total in Box 1a. Payee name = "David Kim", payee TIN = his SSN. David gets a copy.
 - **If total payments < $2,000**: No 1099-NEC required. David still owes income tax + self-employment tax on the income and must self-report on Schedule C.
 - **No backup withholding**: David's W-9 is on file with a valid name + matching TIN, certified, and Item 2 not struck. Devtools pays gross.
 
@@ -154,8 +154,8 @@ David then uses the 1099-NEC (or his own records if no 1099 issued) to file his 
 - IRS Form W-9 (Rev. March 2024)
 - IRS Instructions for Form W-9 (Rev. March 2024)
 - IRC §3406 (backup withholding, 24% rate; sole proprietors not exempt)
-- IRC §6041 (information return reporting; threshold $2,000 effective 2026 per OBBBA Section 112201)
+- IRC §6041 / §6041A (information return reporting; $2,000 for payments after Dec. 31, 2025 per P.L. 119-21 §70433)
 - IRC §6109 (TIN furnishing requirement; SSN sufficient for individuals)
 - Form 1099-NEC (year-end information return for nonemployee compensation)
-- IRS Publication 1345 (e-signature standards for tax forms)
+- IRS Instructions for the Requester of Form W-9 (Rev. March 2024), Electronic Submission of Forms W-9
 - Companion Jupid blog: [What Is a W-9 Form? Guide for Freelancers and Independent Contractors 2026](https://jupid.com/blog/what-is-a-w9-form-guide-2026)

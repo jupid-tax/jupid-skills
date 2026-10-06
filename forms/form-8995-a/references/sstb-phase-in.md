@@ -1,182 +1,181 @@
-# SSTB Phase-In Computation (Schedule A)
+# SSTB Phase-In Computation (Schedule A and Part III)
 
-When an SSTB owner's taxable income is in the phase-in zone (between the threshold and the threshold + phase-in width), the §199A deduction is REDUCED by an applicable percentage. This reference walks through the math with worked examples.
+When taxable income before the QBI deduction is in the phase-in range (between the threshold and the threshold plus the phase-in range), two separate reductions can apply:
+
+1. **Schedule A (SSTBs only):** only an applicable percentage of the SSTB's QBI, W-2 wages, and UBIA is taken into account (IRC §199A(d)(3); Treas. Reg. §1.199A-1(d)(2), referenced in §1.199A-5(a)).
+2. **Part III (any business, SSTB or not):** if the W-2/UBIA limit (line 10) is less than 20% of QBI (line 3), the limit is phased in rather than applied in full (IRC §199A(b)(3)(B)).
+
+This reference walks through both with worked examples. Sources: 2025 Form 8995-A Parts II–III, 2025 Schedule A (Form 8995-A), 2025 Instructions for Form 8995-A.
 
 ---
 
-## Phase-in zones (2025; verify 2026 figures)
+## Phase-in ranges
 
-| Filing status | Threshold | Phase-in width | Top of phase-in |
-|---------------|-----------|----------------|------------------|
-| Single / HoH / MFS | $241,950 | $50,000 | $291,950 |
-| MFJ / QSS | $483,900 | $100,000 | $583,900 |
+| Tax year | Filing status | Threshold | Phase-in range | Top of phase-in |
+|----------|---------------|-----------|----------------|------------------|
+| 2025 | All except MFJ | $197,300 | $50,000 | $247,300 |
+| 2025 | MFJ | $394,600 | $100,000 | $494,600 |
+| 2026 | Single / HOH / QSS | $201,750 | $75,000 | $276,750 |
+| 2026 | MFS | $201,775 | $75,000 | $276,775 |
+| 2026 | MFJ | $403,500 | $150,000 | $553,500 |
+
+Sources: Rev. Proc. 2024-40 §2.27; Rev. Proc. 2025-32 §4.26; P.L. 119-21 §70105 (range widened for tax years beginning after 2025).
 
 If taxable income before QBI is:
-- ≤ threshold → no phase-in; use Form 8995 (simplified)
-- In zone → Schedule A applies; partial deduction
-- ≥ top → SSTB deduction = $0
+- ≤ threshold → no limits; use Form 8995 unless a cooperative patron
+- In the range → Schedule A for SSTBs; Part III for any business with line 10 < line 3
+- > top → SSTB's QBI, W-2 wages, and UBIA are not taken into account at all; non-SSTBs take the W-2/UBIA limit in full
 
 ---
 
-## The applicable percentage formula
-
-```
-phase_in_pct = (taxable_income_before_QBI − threshold) / phase_in_width
-applicable_pct = 1 − phase_in_pct
-```
-
-`phase_in_pct` is the fraction of QBI you LOSE. `applicable_pct` is the fraction you KEEP.
-
-Compute to at least 4 decimal places per the instructions; commercial software typically uses 6.
-
----
-
-## Schedule A line walkthrough
+## Schedule A (Part I) line walkthrough
 
 | Line | Item | Formula |
 |------|------|---------|
-| 1 | Trade name | (text) |
-| 2 | Taxable income before QBI | from Form 1040 |
-| 3 | Threshold for status | from table |
-| 4 | Excess (L2 − L3) | math |
-| 5 | Phase-in range | $50K or $100K |
-| 6 | Phase-in % | L4 / L5 |
-| 7 | Applicable % | 1 − L6 |
-| 8 | Reduced QBI | original QBI × L7 |
-| 9 | Reduced W-2 wages | original W-2 × L7 |
-| 10 | Reduced UBIA | original UBIA × L7 |
-| 11 | W-2/UBIA limit on reduced amounts | max(50% × L9, 25% × L9 + 2.5% × L10) |
-| 12 | Tentative deduction on reduced amounts | min(20% × L8, L11) |
-| 13 | Phase-in reduction → Part II L12 | (Part II L11) − L12 |
+| 1a / 1b | Trade name / TIN | (text) |
+| 2 | QBI | from the business |
+| 3 | W-2 wages | from the business |
+| 4 | UBIA | from the business |
+| 5 | Taxable income before QBI | Form 1040 line 11a − 12e − 13b (2025) |
+| 6 | Threshold | from table |
+| 7 | Excess | L5 − L6 |
+| 8 | Phase-in range | $50,000 or $100,000 (2025) |
+| 9 | Ratio | L7 ÷ L8 |
+| 10 | Applicable percentage | 100% − L9 |
+| 11 | QBI × L10 | → Form 8995-A line 2 (or Schedule C (Form 8995-A)) |
+| 12 | W-2 wages × L10 | → Form 8995-A line 4 |
+| 13 | UBIA × L10 | → Form 8995-A line 7 |
+
+The instructions do not prescribe decimal places for the percentage. Keep full precision (at least 5 decimals) and state the precision in the draft.
+
+## Part III line walkthrough
+
+| Line | Formula |
+|------|---------|
+| 17 | Line 3 |
+| 18 | Line 10 |
+| 19 | L17 − L18 |
+| 20 | Taxable income before QBI |
+| 21 | Threshold |
+| 22 | L20 − L21 |
+| 23 | Phase-in range |
+| 24 | L22 ÷ L23 |
+| 25 | L19 × L24 |
+| 26 | L17 − L25 → line 12 |
+
+Then line 13 = greater of line 11 or line 12.
 
 ---
 
-## Worked Example A — Lawyer in Phase-In, Wages Don't Bind
+## Worked Example A — Lawyer in Phase-In, Wages Don't Bind (2025, single)
 
 **Inputs:**
-- Filing status: Single
-- Taxable income before QBI: $260,000
+- Taxable income before QBI: $215,350
 - Business: SSTB (law firm)
 - QBI: $200,000
 - W-2 wages paid by firm (paralegal + receptionist): $120,000
 - UBIA: $30,000 (computers, furniture)
 
 **Schedule A:**
-- L3 threshold: $241,950
-- L4 excess: $260,000 − $241,950 = $18,050
-- L5 width: $50,000
-- L6 phase-in %: 18,050 / 50,000 = 0.3610
-- L7 applicable %: 1 − 0.3610 = 0.6390
-- L8 reduced QBI: $200,000 × 0.6390 = $127,800
-- L9 reduced W-2: $120,000 × 0.6390 = $76,680
-- L10 reduced UBIA: $30,000 × 0.6390 = $19,170
-- L11 W-2/UBIA limit on reduced: max(50% × 76,680, 25% × 76,680 + 2.5% × 19,170) = max(38,340, 19,170 + 479) = max(38,340, 19,649) = $38,340
-- L12 tentative on reduced: min(20% × 127,800, 38,340) = min(25,560, 38,340) = $25,560
+- L6 threshold: $197,300
+- L7 excess: $215,350 − $197,300 = $18,050
+- L8 range: $50,000
+- L9: 18,050 / 50,000 = 0.36100
+- L10 applicable %: 63.900%
+- L11 QBI: $200,000 × 0.639 = $127,800
+- L12 W-2: $120,000 × 0.639 = $76,680
+- L13 UBIA: $30,000 × 0.639 = $19,170
 
-**Part II for the same business (without Schedule A):**
-- L2 QBI: $200,000
-- L3 20% × QBI: $40,000
-- L4 W-2: $120,000
-- L5 50% × W-2: $60,000
-- L9 25%×W2 + 2.5%×UBIA: 30,000 + 750 = $30,750
-- L10 max(L5, L9): $60,000
-- L11 min(L3, L10): $40,000
+**Part II:**
+- L2 $127,800; L3 $25,560
+- L4 $76,680; L5 $38,340; L6 $19,170
+- L7 $19,170; L8 $479; L9 $19,649
+- L10 $38,340; L11 min($25,560, $38,340) = $25,560
+- Line 10 ≥ line 3 → Part III not used; L12 $0
+- L13 = max($25,560, $0) = **$25,560**
 
-**L13 phase-in reduction (Schedule A → Part II L12):**
-L11 (Part II) − L12 (Schedule A) = $40,000 − $25,560 = **$14,440**
-
-**Adjusted QBI (Part II L13):**
-L11 − L12 = $40,000 − $14,440 = **$25,560**
-
-The deduction was reduced from a possible $40,000 to $25,560 — a $14,440 (36.1%) loss matching the phase-in percentage. Wages and UBIA were ample, so the W-2/UBIA limit didn't bind.
+The deduction from this business fell from $40,000 (20% of $200,000) to $25,560: exactly the 36.1% phase-in. Wages were ample, so the W-2/UBIA limit didn't bind.
 
 ---
 
-## Worked Example B — Solo Doctor in Phase-In, Wages Bind
+## Worked Example B — Solo Doctor in Phase-In, Wages Bind (2025, single)
 
 **Inputs:**
-- Filing status: Single
-- Taxable income before QBI: $275,000
+- Taxable income before QBI: $230,350
 - Business: SSTB (medical practice)
-- QBI: $254,684 (after SE-tax / SE-HI / SEP-IRA reductions to Schedule C profit of $300,000)
+- QBI: $254,684
 - W-2 wages paid: $80,000
 - UBIA: $50,000
 
 **Schedule A:**
-- L4 excess: $275,000 − $241,950 = $33,050
-- L6 phase-in %: 33,050 / 50,000 = 0.6610
-- L7 applicable %: 0.3390
-- L8 reduced QBI: $254,684 × 0.3390 = $86,338
-- L9 reduced W-2: $80,000 × 0.3390 = $27,120
-- L10 reduced UBIA: $50,000 × 0.3390 = $16,950
-- L11 W-2/UBIA on reduced: max(50% × 27,120, 25% × 27,120 + 2.5% × 16,950) = max(13,560, 7,204) = $13,560
-- L12 tentative: min(20% × 86,338, 13,560) = min(17,268, 13,560) = $13,560
+- L7 excess: $230,350 − $197,300 = $33,050
+- L9: 33,050 / 50,000 = 0.66100; L10 applicable %: 33.900%
+- L11 QBI: $254,684 × 0.339 = $86,338
+- L12 W-2: $80,000 × 0.339 = $27,120
+- L13 UBIA: $50,000 × 0.339 = $16,950
 
-**Part II without Schedule A:**
-- L3 20% × QBI: $254,684 × 20% = $50,937
-- L11 = min(50,937, max(40,000, 21,250)) — assume W-2/UBIA limit = $40,000 (50% × $80,000) — so L11 = $40,000
+**Part II:**
+- L2 $86,338; L3 $17,268
+- L4 $27,120; L5 $13,560; L6 $6,780
+- L7 $16,950; L8 $424; L9 $7,204
+- L10 $13,560; L11 min($17,268, $13,560) = $13,560
 
-Wait — let me recheck. With $80,000 W-2 and $50,000 UBIA:
-- 50% × $80,000 = $40,000
-- 25% × $80,000 + 2.5% × $50,000 = $20,000 + $1,250 = $21,250
-- Greater = $40,000
+**Part III** (line 10 < line 3, taxable income in range):
+- L17 $17,268; L18 $13,560; L19 $3,708
+- L22 $33,050; L23 $50,000; L24 66.100%
+- L25 $3,708 × 0.661 = $2,451
+- L26 $17,268 − $2,451 = $14,817 → L12
 
-So L11 = min($50,937, $40,000) = $40,000.
+**L13** = max($13,560, $14,817) = **$14,817**
 
-**L13 phase-in reduction:** $40,000 − $13,560 = **$26,440**
-
-**Adjusted QBI:** $40,000 − $26,440 = **$13,560**
-
-The doctor lost $26,440 of deduction. Note that BOTH the phase-in AND the W-2/UBIA limit are biting here — the wages aren't enough to support the full 20% deduction.
+Both reductions apply: Schedule A cut QBI, wages, and UBIA to 33.9%, then Part III phased in the wage limit instead of applying it in full.
 
 ---
 
-## Worked Example C — At the top of the phase-in window
+## Worked Example C — Near the Top of the Range, No Wages (2025, MFJ)
 
 **Inputs:**
-- Filing status: MFJ
-- Taxable income before QBI: $580,000
+- Taxable income before QBI: $490,700
 - Business: SSTB (consulting)
 - QBI: $200,000
-- W-2 wages: $0 (solo consultant, no employees)
+- W-2 wages: $0 (solo consultant, no employees); UBIA $0
 
 **Schedule A:**
-- L3 threshold: $483,900
-- L4 excess: $580,000 − $483,900 = $96,100
-- L5 width: $100,000
-- L6 phase-in %: 96,100 / 100,000 = 0.9610
-- L7 applicable %: 0.0390
-- L8 reduced QBI: $200,000 × 0.0390 = $7,800
-- L9 reduced W-2: $0
-- L11 W-2/UBIA on reduced: max(50% × 0, 25% × 0) = $0
-- L12 tentative: min(20% × 7,800, $0) = $0
+- L7 excess: $490,700 − $394,600 = $96,100
+- L8 range: $100,000; L9 0.96100; L10 3.900%
+- L11 QBI: $200,000 × 0.039 = $7,800; L12 $0; L13 $0
 
-**Adjusted QBI: $0.** A solo SSTB consultant with no W-2 wages is wiped out near the top of the phase-in even with significant QBI, because there are no wages to support any deduction.
+**Part II:** L2 $7,800; L3 $1,560; L10 $0; L11 $0
 
-If the consultant had paid himself and his spouse W-2 wages from an S-corp, the result would differ. This is one of the structural arguments for the S-corp election among high-income SSTB owners.
+**Part III:** L17 $1,560; L18 $0; L19 $1,560; L24 96.100%; L25 $1,499; L26 $61 → L12
+
+**L13** = max($0, $61) = **$61**
+
+A solo SSTB consultant with no W-2 wages keeps almost nothing near the top of the range, but not zero: Part III still allows the unphased remainder.
 
 ---
 
-## Worked Example D — Above the top of phase-in
+## Worked Example D — Above the Top of the Range (2025, single)
 
 **Inputs:**
-- Filing status: Single
 - Taxable income before QBI: $300,000
 - Business: SSTB (financial advisor)
 - QBI: $250,000
 
-$300,000 > $291,950 (top of single phase-in), so the SSTB QBI deduction = $0. List the business in Part I (with SSTB checked) but report zero contribution to Line 27. No Schedule A needed (it would just produce zero anyway).
+$300,000 > $247,300 (top of the 2025 range for all returns other than MFJ). The SSTB is not a qualified trade or business: no QBI, W-2 wages, or UBIA from it are taken into account (2025 i8995-A, "SSTBs excluded from your qualified trades or businesses"). No Schedule A. Its contribution to the deduction is $0.
 
 ---
 
 ## Common errors
 
-1. **Forgetting Schedule A entirely**: filing software may default to applying the W-2/UBIA limit without the SSTB phase-in. Always confirm Schedule A is generated for SSTB businesses in the zone.
+1. **Forgetting Schedule A entirely**: filing software may apply only the W-2/UBIA limit. Confirm Schedule A is generated for every SSTB in the range.
 
-2. **Using the wrong phase-in width**: $50K is single only; MFJ is $100K. MFS uses the same $50K as single.
+2. **Using the wrong phase-in range**: 2025 is $50,000 for all returns except MFJ ($100,000); 2026 is $75,000 / $150,000 MFJ.
 
-3. **Phase-in calculated on AGI instead of taxable income before QBI**: it's taxable income (AGI − standard or itemized deduction), NOT AGI directly.
+3. **Phase-in calculated on AGI instead of taxable income before QBI**: it's taxable income (2025 Form 1040 line 11a − 12e − 13b), NOT AGI.
 
-4. **Rounding too early**: the applicable percentage should retain at least 4 decimals through the computation. Software issues sometimes drop to 2 decimals and produce $1-50 errors.
+4. **Rounding the percentage early**: keep at least 5 decimals; a 2-decimal percentage can move the result by tens of dollars.
 
-5. **Applying Schedule A to non-SSTB businesses**: only SSTBs phase in. Non-SSTBs above the threshold use the W-2/UBIA limit in full but don't phase in.
+5. **Applying Schedule A to non-SSTB businesses**: only SSTBs use Schedule A. Non-SSTBs in the range still use Part III when line 10 < line 3.
+
+6. **Skipping Part III**: line 13 is the greater of line 11 or line 12, so leaving Part III blank when it applies understates the deduction (Example B: $13,560 instead of $14,817).

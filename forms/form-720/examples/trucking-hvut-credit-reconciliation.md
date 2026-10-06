@@ -1,143 +1,125 @@
-# Example — Trucking Company HVUT Credit Reconciliation on Form 720 Schedule C
+# Example — Trucking Company: HVUT Credit Routing and the 6-Month Parts Tax on Form 720
 
-A small trucking company paid the Heavy Highway Vehicle Use Tax (HVUT) on Form 2290 for the full tax period, then sold and destroyed vehicles mid-period. It claims a partial-year HVUT credit on Form 720 Schedule C, IRS No. 365.
+A small trucking company asks the agent to "claim its HVUT credit on Form 720 Schedule C" for two tractors it lost during the 2025–2026 HVUT period. The agent finds that HVUT credits are not a Form 720 item and routes them to Form 2290 / Form 8849. While collecting facts, it finds one real Form 720 liability: the 12% tax on parts and accessories installed on a new tractor within 6 months of placing it in service (IRS No. 33).
+
+**Verified against:** Form 720 (Rev. June 2026) and instructions (Rev. June 2026), Instructions for Form 2290 (Rev. July 2026) "Line 5" and Partial-Period Tax Tables, Pub. 510 (Rev. Dec. 2025) ch. 6, IRC §§4051, 4481, on 2026-10-06. Math checked in Python.
 
 ---
 
 ## Taxpayer facts
 
 - **Entity**: Ridgeline Hauling, LLC (S-corp election, EIN 33-9876543)
-- **Fleet**: 8 tractor-trailers, all over 55,000 lbs gross weight (HVUT-taxable)
-- **HVUT period**: July 1, 2025 – June 30, 2026 (the standard HVUT tax period)
-- **Form 2290 filing**: Filed August 25, 2025 for the full tax period
-- **HVUT paid**: $4,400 total ($550 per vehicle × 8 vehicles for the full year)
+- **Fleet**: 8 tractors at July 1, 2025, all in HVUT category V (taxable gross weight over 75,000 lb)
+- **HVUT period**: July 1, 2025 – June 30, 2026
+- **Form 2290**: filed August 25, 2025 for all 8 tractors, first used in July 2025; $550 per vehicle, $4,400 total
 - **Mid-period events**:
-  - **November 12, 2025**: Vehicle #3 destroyed in I-80 collision (insurance write-off, salvage value zero)
-  - **February 8, 2026**: Vehicle #7 sold to an unrelated buyer (ownership transfer registered with state DMV)
-  - **No replacement vehicles** added to the fleet during the tax period
+  - **November 12, 2025**: Tractor #3 destroyed in a collision (insurance total loss; not economical to rebuild)
+  - **February 8, 2026**: Tractor #7 sold to an unrelated buyer
+- **New tractor #9**: bought from a dealer and placed in service (delivery ticket signed) on **January 14, 2026**. The dealer reported the 12% retail tax on the tractor sale on its own Form 720.
+- **Shop work on tractor #9 on February 23, 2026** (invoice from an independent shop):
+  - Upgraded fifth wheel slider assembly (an addition, not a replacement): parts $1,640, installation $385
+  - Auxiliary power unit that heats and cools the sleeper without the main engine: $10,450 installed. The user supplied documentation that the unit is an idling reduction device as defined in i720 "Retail Tax" (affixed to the tractor and determined by the EPA to reduce idling).
+- **Other excise liabilities**: none. Ridgeline has never filed Form 720.
 
-The CFO needs to recover the unused portion of HVUT for the destroyed and sold vehicles by claiming a credit on Form 720 Schedule C, IRS No. 365.
-
----
-
-## When to use Form 720 Schedule C vs Form 8849
-
-Two paths exist for HVUT recovery on partial-year vehicles:
-
-| Path | When to use |
-|------|-------------|
-| **Form 720, Schedule C, IRS No. 365** | When the trucking company files Form 720 for OTHER reasons in the same period (e.g., owes other excise tax). Credit offsets that other liability. |
-| **Form 8849 Schedule 6** | When the trucking company has NO other Form 720 obligation. Form 8849 is a refund claim filed standalone. |
-
-Ridgeline does NOT have other Form 720 liabilities (no fuel-tax issues, no manufacturer's tax). For a pure refund without offset, Form 8849 is technically the cleaner path. But the user explicitly asked about Form 720 Schedule C, so this example assumes Ridgeline IS filing Form 720 for another reason — for instance, it has a small fuel-tax liability under §4081 from a tank farm operation, OR it wants to use Schedule C to apply the credit to a future excise liability.
-
-For this scenario, assume Ridgeline files Q1 2026 Form 720 (covering Jan-Mar 2026) for an unrelated **kerosene retail tax** of $1,200 (IRS No. 105) and uses Schedule C to credit the HVUT recovery against that liability.
+The CFO asks in March 2026, while closing Q1.
 
 ---
 
-## HVUT credit computation
+## Step 1 — HVUT credits are not a Form 720 item
 
-The HVUT credit is prorated based on the months remaining in the tax period after the disposition event. The HVUT tax period runs **July 1 to June 30**. Months are counted as the **full calendar months remaining after the disposition month**.
+Form 720 Schedule C (lines 1–15) has no Heavy Highway Vehicle Use Tax line, and IRS No. or CRN "365" doesn't exist on the June 2026 form. HVUT credits for a vehicle destroyed, stolen, or sold before June 1 and not used for the rest of the period are claimed on the **next Form 2290 filed (line 5)** or as a refund on **Form 8849 Schedule 6** (Instructions for Form 2290, Rev. July 2026, "Line 5" and "When to make a claim"). The amount on Form 2290 line 5 can't exceed that return's line 4 tax; any excess goes on Form 8849 Schedule 6.
 
-### Vehicle #3 (destroyed November 12, 2025)
+The agent hands this part to the [`form-2290`](../../form-2290/SKILL.md) skill and records a cross-check of the expected credit:
 
-- HVUT paid for full year: $550
-- Months in tax period: 12 (July 2025 – June 2026)
-- Months "used" before destruction: July, August, September, October, November = 5 months
-- Months remaining (creditable): December, January, February, March, April, May, June = 7 months
-- Credit = $550 × (7 / 12) = **$320.83**
+| Tractor | Event | Months of use (first use July 2025 through the event month) | Partial-period tax, category V (i2290 Partial-Period Tax Table) | Credit = $550 − partial-period tax |
+|---------|-------|-----|------|------|
+| #3 | Destroyed Nov 12, 2025 | 5 (Jul–Nov) | $229.17 | $320.83 |
+| #7 | Sold Feb 8, 2026 | 8 (Jul–Feb) | $366.67 | $183.33 |
+| | | | **Total** | **$504.16** |
 
-Per IRS Form 2290 instructions, the disposition month itself counts toward the "used" portion (not the remaining). So November = used.
+The month of the event counts as a month of use (i2290 "Figuring the credit": count "to the last day of the month in which it was destroyed, stolen, or sold"). For the sold tractor, the claim must include the purchaser's name and address. The new tractor #9 also needs its own Form 2290 for first use in January 2026; that too belongs to the form-2290 skill.
 
-### Vehicle #7 (sold February 8, 2026)
+---
 
-- HVUT paid for full year: $550
-- Months in tax period: 12
-- Months "used" before sale: July through February = 8 months
-- Months remaining: March, April, May, June = 4 months
-- Credit = $550 × (4 / 12) = **$183.33**
+## Step 2 — The real Form 720 liability: parts installed within 6 months (IRS No. 33)
 
-### Total HVUT credit
+IRC §4051(b) imposes a 12% tax on the price of a part or accessory and its installation when the owner, lessee, or operator of a taxable vehicle installs it within 6 months after the vehicle was first placed in service. Exceptions: replacement parts, and an aggregate price (including installation) of $1,000 or less for the vehicle during the 6-month period (§4051(b)(2); Pub. 510 ch. 6 "Separate purchase"). Idling reduction devices are exempt from this tax (i720 "Retail Tax").
+
+| Item | Price incl. installation | Taxable? |
+|------|--------------------------|----------|
+| Fifth wheel slider upgrade (addition) | $1,640 + $385 = $2,025 | Yes: not a replacement; installed Feb 23, within 6 months of Jan 14 |
+| Auxiliary power unit (idling reduction device) | $10,450 | No: exempt idling reduction device |
+
+Taxable parts for tractor #9 so far total $2,025, which is over $1,000, so the tax applies:
 
 ```
-Vehicle #3: $320.83
-Vehicle #7: $183.33
-Total:      $504.16
+Tax = 12% × $2,025 = $243.00
 ```
 
-Round to **$504** for Form 720 reporting.
+Ridgeline is the owner and primarily liable; the installing shop is secondarily liable (§4051(b)(3)). Any further non-replacement parts installed on tractor #9 before July 14, 2026 are also taxable and are reported in the quarter of installation.
+
+### Deposits and Schedule A
+
+IRS No. 33 is a Part I tax, so Schedule A is required. Ridgeline's Part I net liability for Q1 2026 is $243.00, which doesn't exceed $2,500, so no semimonthly deposit is required; the tax is paid with the return (i720 "Payment of Taxes"). The liability arose on February 23 (second month, 16th–last day): **box D**.
 
 ---
 
-## Form 720 — Schedule C, IRS No. 365
-
-Schedule C of Form 720 is the credits/claims schedule. **IRS No. 365** specifically covers HVUT credits for sold, destroyed, or stolen vehicles.
+## Form 720 — Q1 2026
 
 | Line | Field | Value |
 |------|-------|-------|
-| Schedule C, Line 5 — IRS No. 365 | Description | HVUT credit — vehicles destroyed/sold mid-period |
-| | Vehicle #3 — VIN 1HGCM82633A123456 — destroyed Nov 12, 2025 — credit | $321 |
-| | Vehicle #7 — VIN 1HGBH41JXMN654321 — sold Feb 8, 2026 — credit | $183 |
-| | **Total Schedule C Line 5 credit** | **$504** |
-
----
-
-## Form 720 — Q1 2026 full picture
-
-| Line | Field | Value |
-|------|-------|-------|
-| Quarter | 1 | Q1 2026 |
+| Quarter ending | | March 2026 |
 | Filer name | | Ridgeline Hauling, LLC |
 | EIN | | 33-9876543 |
-| Part I — IRS No. 105 (kerosene) | Tax | $1,200 |
-| Schedule C — IRS No. 365 (HVUT credit) | Credit | $504 |
-| Part III — net balance due | | $1,200 − $504 = **$696** |
+| IRS No. 33 — Retail tax, truck, trailer, semitrailer chassis and bodies, tractor | Tax (12% × $2,025) | $243.00 |
+| Part I line 1 | | $243.00 |
+| Part II line 2 | | $0 |
+| Schedule A, line 1, box D (February 16–28) | | $243.00 |
+| Schedule A, line 1(b) | | $243.00 |
+| Schedule C | | Not used (no Form 720 claims; HVUT credits go on Form 2290 / 8849) |
+| Part III line 3 | Total tax | $243.00 |
+| Lines 4–9 | | $0 |
+| Line 10 | Balance due | $243.00 |
+| Final return box | | ASK: check it only if Ridgeline expects no further Form 720 liability (e.g., no more non-replacement parts on tractor #9 before July 14, 2026, and no other new tractors) |
+
+Due date: April 30, 2026 (Thursday).
 
 ---
 
-## Documentation required (Schedule C support)
+## Documentation required
 
-For each HVUT credit claim under IRS No. 365, the following must accompany Form 720 (or be retained for IRS request):
+### Form 720 (IRS No. 33)
 
-### Vehicle #3 — destroyed
+- Dealer delivery ticket for tractor #9 showing the January 14, 2026 placed-in-service date
+- Shop invoice dated February 23, 2026 separating each part, its price, and installation charges
+- Support that the fifth wheel slider was an addition, not a replacement
+- EPA documentation for the idling reduction device
+- Running log of non-replacement parts installed on tractor #9 through July 14, 2026
 
-- Police accident report (I-80 collision, November 12, 2025)
-- Insurance settlement document showing total loss / write-off
-- Salvage disposition record (or statement of zero salvage)
-- Original Form 2290 Schedule 1 stamped copy showing the vehicle's VIN and HVUT paid
-- Calculation worksheet showing months remaining and credit math
+### Form 2290 / Form 8849 (handled by the form-2290 skill)
 
-### Vehicle #7 — sold
-
-- Bill of sale to the unrelated buyer
-- State DMV title transfer record showing date of transfer
-- Buyer's name, address, and (if known) EIN — required because the IRS may pursue the buyer for any HVUT going forward (the buyer typically files a new Form 2290 for the remaining period)
-- Original Form 2290 Schedule 1 stamped copy
-- Calculation worksheet
-
-The agent must remind Ridgeline that the buyer of Vehicle #7 has a Form 2290 obligation starting from the month following purchase. Ridgeline can be cooperative by providing copies of the original Form 2290 and the bill of sale.
+- Police report and insurance total-loss letter for tractor #3
+- Bill of sale and title transfer for tractor #7, with the buyer's name and address
+- VINs, taxable gross weight category, event dates, and the credit worksheet for each vehicle
+- The stamped Schedule 1 from the August 25, 2025 Form 2290
 
 ---
 
 ## Filing channel
 
-Ridgeline files Q1 2026 Form 720 by **April 30, 2026**.
-
-Channel: e-file via an IRS-authorized MeF provider that supports Form 720 with Schedule C. Most truck-tax-focused providers (ExpressTruckTax, J.J. Keller, TaxBandits) support combined Form 720 + Schedule C filings.
-
-Payment: $696 owed, paid via EFTPS or check with paper Form 720.
+Ridgeline files the Q1 2026 Form 720 by **April 30, 2026**, either by e-file through a provider on https://www.irs.gov/e-file-providers/720-mef-providers (optional) or on paper to Department of the Treasury, Internal Revenue Service, Ogden, UT 84201-0009. Payment: $243.00 by EFTPS, Direct Pay, electronic funds withdrawal with an e-filed return, or check with Form 720-V.
 
 ---
 
 ## Common errors avoided
 
-1. **Confusing Form 720 with Form 2290**: The original HVUT is reported on Form 2290 (annual). The credit for partial-year disposition is claimed on Form 720 Schedule C OR Form 8849 — never on Form 2290 itself.
-2. **Wrong proration**: counting the disposition month as "remaining" instead of "used" overstates the credit. Per IRS instructions, the disposition month is counted as used.
-3. **Missing VIN**: Schedule C IRS No. 365 requires the VIN of each vehicle. Without VIN, the IRS cannot match to the original Form 2290 and may deny the credit.
-4. **Claiming credit before disposition documented**: the disposition (sale, destruction, theft) must be documented and dated. Without third-party evidence (bill of sale, insurance write-off, police report), the IRS may deny.
-5. **Stolen vehicles — separate treatment**: stolen vehicles require a police report and proof the vehicle was not recovered. The proration is the same, but documentation differs.
-6. **Pickup-truck disposition**: HVUT only applies to vehicles ≥ 55,000 lbs gross weight. Pickup-truck dispositions are not Form 2290 / Form 720 issues; they have no excise-tax credit.
-7. **Filing Schedule C without other Part I or Part II liability**: if Ridgeline had ZERO other excise liability, it would use Form 8849 Schedule 6 instead. Filing a Form 720 with only a Schedule C credit (negative balance) is administratively allowed but unusual; Form 8849 is the cleaner refund path.
+1. **Claiming HVUT on Form 720 Schedule C**: there is no HVUT line. Use Form 2290 line 5 or Form 8849 Schedule 6.
+2. **Wrong proration**: the event month counts as a month of use; counting it as "remaining" overstates the credit.
+3. **Missing the §4051(b) tax**: owners who add parts to a new heavy tractor or trailer within 6 months owe 12% once the aggregate exceeds $1,000, even though the dealer already paid the retail tax on the vehicle.
+4. **Taxing the idling reduction device**: qualifying idling reduction devices are exempt; get the EPA documentation.
+5. **Skipping Schedule A because the amount is small**: Schedule A is required for any Part I liability, even under $2,500.
+6. **Forgetting future quarters**: having filed for Q1, Ridgeline must keep filing quarterly until it files a final return (i720 "Who Must File"). ASK before checking the final return box.
+7. **Assuming the tax continues forever**: the §4051 retail tax terminates on October 1, 2028 (§4051(c)).
 
 ---
 
@@ -145,8 +127,7 @@ Payment: $696 owed, paid via EFTPS or check with paper Form 720.
 
 The agent delivers to Ridgeline:
 
-1. **Q1 2026 Form 720 filing summary**: kerosene tax $1,200, HVUT credit $504, net owed $696, due April 30, 2026
-2. **HVUT credit worksheet**: per-vehicle proration math with VINs, disposition dates, and supporting documentation list
-3. **Documentation checklist**: police report (Vehicle #3), bill of sale + DMV transfer (Vehicle #7), original Form 2290 stamps
-4. **Process note**: if Ridgeline acquires replacement vehicles before June 30, 2026, they need a new Form 2290 for those vehicles (prorated for partial year)
-5. **Future-quarter reminder**: track each vehicle's status on the next Form 2290 (July 2026 filing for the 2026-2027 tax period); only the 6 surviving vehicles will be on that filing
+1. **Q1 2026 Form 720 draft**: IRS No. 33 $243.00, Schedule A box D $243.00, balance due $243.00, due April 30, 2026
+2. **Routing note**: HVUT credits (expected $504.16 total) belong on Form 2290 line 5 or Form 8849 Schedule 6; hand off to the form-2290 skill, which also covers tractor #9's own Form 2290 for January 2026 first use
+3. **Parts log**: non-replacement parts on tractor #9 through July 14, 2026
+4. **Question for the user**: will there be any more Form 720 liability (final return box)?

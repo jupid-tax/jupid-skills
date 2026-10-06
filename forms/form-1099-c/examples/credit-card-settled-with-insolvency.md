@@ -27,7 +27,7 @@ Jenna received a 1099-C in late January 2026 from Chase Card Services (her credi
 | 6 | Identifiable event code | F (by agreement) |
 | 7 | FMV of property | (blank — no foreclosure) |
 
-She has only this one 1099-C for 2025. The card was used for personal purchases; no business expenses. She did not file bankruptcy. She is not a homeowner (renter). She does not have student loans being discharged.
+She has only this one 1099-C for 2025. The card was used for personal purchases; no business expenses. She did not file bankruptcy. She is not a homeowner (renter). She does not have student loans being discharged. She bought her car used in 2021 for $17,500 (her basis); she paid the $5,000 settlement from her checking account. Her furniture and clothing would sell for very little; the agent asked and she put them at $0 resale value (Insolvency Worksheet lines 20 and 23).
 
 ## Step 1 — Confirm the 1099-C is hers
 
@@ -53,7 +53,7 @@ Jenna has not filed bankruptcy. **Does not apply.**
 
 Jenna gathers her financial position immediately before 2025-09-12.
 
-**Worksheet 2 — Liabilities (immediately before discharge)**
+**Pub. 4681 Insolvency Worksheet, Part I — Liabilities (immediately before discharge)**
 
 | Item | Amount |
 |------|--------|
@@ -62,7 +62,7 @@ Jenna gathers her financial position immediately before 2025-09-12.
 | Auto loan (Toyota Financial) | $25,000 |
 | **Total liabilities** | **$63,000** |
 
-**Worksheet 2 — Assets (immediately before discharge, at FMV)**
+**Pub. 4681 Insolvency Worksheet, Part II — Assets (immediately before discharge, at FMV)**
 
 | Item | FMV | Source |
 |------|-----|--------|
@@ -75,7 +75,7 @@ Jenna gathers her financial position immediately before 2025-09-12.
 
 Jenna is insolvent by $21,000 immediately before the cancellation. The canceled amount ($13,000) is **less than** her insolvency ($21,000), so she can exclude the **full $13,000**.
 
-**Note on retirement account inclusion:** Jenna's 401(k) is included as an asset at face value, per Rev. Rul. 92-53 and Pub 4681. She had been told by a friend that 401(k)s are "protected" so didn't count — that's wrong for §108 federal tax purposes.
+**Note on retirement account inclusion:** Jenna's 401(k) is included as an asset at its value (Pub. 4681 Insolvency Worksheet line 28, "Interest in retirement accounts"). She had been told by a friend that 401(k)s are "protected" so didn't count — that's wrong for §108 federal tax purposes.
 
 **Note on canceled-debt inclusion:** the $18,000 pre-settlement balance is in liabilities (not the post-settlement $0). §108(d)(3) measures "immediately before" the discharge.
 
@@ -109,11 +109,11 @@ Jenna's tax attributes:
 | General business credits | $0 |
 | Minimum tax credits | $0 |
 | Capital loss carryover | $0 |
-| Basis of business property | $0 |
+| Basis of property | Car $17,500 (personal-use, nondepreciable); 401(k) no basis |
 | Passive activity losses | $0 |
 | Foreign tax credit carryovers | $0 |
 
-Jenna has no tax attributes to reduce. Part II of Form 982 = all zeros. The $13,000 exclusion is permanent (not deferred via attribute reduction).
+Her only attribute is the basis of personal-use property, so Form 982 line 10a is the smallest of (a) basis of nondepreciable property $17,500, (b) line 2 $13,000, or (c) aggregate bases plus money immediately after the discharge ($17,500 + $0 cash) minus liabilities immediately after the discharge ($20,000 other cards + $25,000 auto loan = $45,000) → $0 (Form 982 instructions, "A nonbusiness debt"). Line 10a = $0; every other Part II line is $0. The $13,000 exclusion costs her nothing in attributes.
 
 ## Step 7 — Validation checks
 
@@ -123,7 +123,7 @@ Jenna has no tax attributes to reduce. Part II of Form 982 = all zeros. The $13,
 - [x] Liabilities − Assets = Insolvency: $63,000 − $42,000 = $21,000 ✓
 - [x] Excluded amount ($13,000) ≤ Insolvency ($21,000) ✓
 - [x] Form 982 Line 2 ($13,000) = sum of exclusions claimed ✓
-- [x] No basis reduction on Line 10a/b (renter, no qualifying basis) ✓
+- [x] Line 10a computed: smallest of $17,500 / $13,000 / $0 = $0; Line 10b not used (no box 1e) ✓
 
 **Sanity:**
 
@@ -137,7 +137,7 @@ Jenna has no tax attributes to reduce. Part II of Form 982 = all zeros. The $13,
 **Cross-form:**
 
 - [x] Form 982 attached to 1040 ✓
-- [x] Worksheet 2 prepared and retained (not filed, kept in records) ✓
+- [x] Insolvency Worksheet prepared and retained (not filed, kept in records) ✓
 
 ## Step 8 — Deliverable: Reporting Plan
 
@@ -187,15 +187,14 @@ Jenna has no tax attributes to reduce. Part II of Form 982 = all zeros. The $13,
   - Line 7 (general business cr.): $0
   - Line 8 (minimum tax credits):  $0
   - Line 9 (capital loss carryov.): $0
-  - Line 10a (basis non-deprec.):  $0
-  - Line 10b (basis prin. res.):   $0
-  - Line 11 (passive activity):    $0
-  - Line 12 (foreign tax credits): $0
-  - "No attributes to reduce"
+  - Line 10a (basis of property):  $0 (smallest of $17,500 / $13,000 / $0)
+  - Line 10b (basis prin. res.):   blank (no box 1e)
+  - Line 12 (passive activity):    $0
+  - Line 13 (foreign tax credits): $0
 
 ## Required attachments
 - [x] Form 982 (insolvency claimed)
-- [x] Worksheet 2 from Pub 4681 (kept in records, not filed)
+- [x] Insolvency Worksheet from Pub. 4681 (kept in records, not filed)
 
 ## Validation summary
 - Math: all checks passed
@@ -203,8 +202,8 @@ Jenna has no tax attributes to reduce. Part II of Form 982 = all zeros. The $13,
 - Year-aware flags: none (no QPRI or ARPA student loan exclusion claimed)
 - Next steps:
   - Attach Form 982 to 1040
-  - Keep Worksheet 2, KBB printout, Vanguard statement, bank statements
-    in tax records for 6 years
+  - Keep the Insolvency Worksheet, KBB printout, Vanguard statement, bank statements
+    in tax records at least 3 years after filing
   - No basis adjustments; no carryforwards
   - Schedule SE not affected (personal debt)
 
@@ -212,16 +211,15 @@ Jenna has no tax attributes to reduce. Part II of Form 982 = all zeros. The $13,
 - IRC §61(a)(11) (canceled debt = income)
 - IRC §108(a)(1)(B) (insolvency exclusion)
 - IRC §108(d)(3) (insolvency definition)
-- Rev. Rul. 92-53 (retirement accounts as §108 assets)
-- IRS Pub 4681 (Worksheet 2)
-- Form 982 and Instructions (current revision)
+- IRS Pub 4681 (2025) (Insolvency Worksheet; lines 28–29 retirement and pension interests)
+- Form 982 (Rev. March 2018) and Instructions (Rev. December 2021), "A nonbusiness debt"
 ```
 
 ## Step 9 — Handoff
 
 - Attach Form 982 to Jenna's 1040 (e-file or paper)
 - Do **not** report the $13,000 on Schedule 1 Line 8c
-- Retain Worksheet 2, KBB printout, Vanguard 401(k) statement, bank statements in tax file for 6 years
+- Retain the Insolvency Worksheet, KBB printout, Vanguard 401(k) statement, bank statements in the tax file at least 3 years after filing
 - No basis carryforward (no property basis reduced)
 - Schedule SE unchanged (personal debt, no SE tax impact)
 
@@ -233,7 +231,7 @@ Jenna has no tax attributes to reduce. Part II of Form 982 = all zeros. The $13,
 
 ## Why each non-obvious choice
 
-**Why include the 401(k) as an asset?** Rev. Rul. 92-53 and Pub 4681. State-law creditor protection doesn't matter for §108. Excluding the 401(k) would have inflated insolvency to $46,000, but in audit the IRS would correct it; the result for Jenna is the same exclusion ($13,000) because canceled < insolvency either way.
+**Why include the 401(k) as an asset?** The Pub. 4681 Insolvency Worksheet lists retirement accounts as assets (line 28). State-law creditor protection doesn't matter for §108. Excluding the 401(k) would have inflated insolvency to $46,000, but in audit the IRS would correct it; the result for Jenna is the same exclusion ($13,000) because canceled < insolvency either way.
 
 **Why include the full $18,000 (not the post-settlement $0) as a liability?** §108(d)(3) measures "immediately before" the discharge. The pre-settlement balance counts.
 
@@ -244,7 +242,7 @@ Jenna has no tax attributes to reduce. Part II of Form 982 = all zeros. The $13,
 **What if Jenna had been audited?** Her audit defense:
 
 1. 1099-C in records (matches what Chase reported)
-2. Worksheet 2 with line-item liabilities and assets
+2. Insolvency Worksheet with line-item liabilities and assets
 3. KBB printout for car FMV
 4. Vanguard statement for 401(k)
 5. Bank statements for checking + savings

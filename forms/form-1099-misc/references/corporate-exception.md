@@ -1,13 +1,17 @@
 # Corporate Exception — Box 6 (Medical) and Box 10 (Attorney) Special Rules
 
-The general rule for 1099 reporting is that payments to corporations (C-corp, S-corp) are **exempt** from 1099 reporting. This is in Reg. §1.6041-3(c).
+The general rule for 1099 reporting is that payments to corporations (C-corp, S-corp, LLC taxed as either) are **exempt** from 1099 reporting. This is in Reg. §1.6041-3(p)(1).
 
-But there are two exceptions where corporate payees ARE reportable on 1099-MISC:
+The Instructions for Forms 1099-MISC and 1099-NEC (Rev. December 2026, "Reportable payments to corporations") list four 1099-MISC boxes that ARE reportable to corporations:
 
 1. **Box 6 — Medical and health-care payments**
-2. **Box 10 — Gross proceeds paid to attorneys**
+2. **Box 8 — Substitute payments in lieu of dividends or tax-exempt interest**
+3. **Box 10 — Gross proceeds paid to attorneys**
+4. **Box 11 — Cash payments for fish purchased for resale**
 
-This file explains why, when, and how to apply each exception.
+Separately, **attorneys' fees for legal services** are reportable to corporations on **1099-NEC box 1a** ("The exemption from reporting payments made to corporations does not apply to payments for legal services").
+
+This file explains why, when, and how to apply the medical and attorney exceptions, which are the ones small businesses hit.
 
 ---
 
@@ -19,8 +23,8 @@ The IRS wants visibility into payments to medical providers and attorneys regard
 - **Attorney settlements** flow through trust accounts and can obscure who got what. Box 10 (gross proceeds) reports the entire settlement amount to the IRS, allowing the IRS to track downstream taxability to plaintiffs.
 
 Both exceptions are codified in regulations:
-- Box 6 medical exception: Reg. §1.6041-3(c) (corporate exemption) is *limited* by §6041(a)(1) and elaborated in IRS instructions. The instructions specifically state medical and health-care payments to corporations are reportable.
-- Box 10 attorney exception: **Reg. §1.6041-1(d)(2)** explicitly carves out attorneys from the general corporate exemption.
+- Reg. §1.6041-3(p)(1) exempts payments to corporations "except with respect to payments made to a corporation after December 31, 1997 for attorneys' fees, and except a corporation engaged in providing medical and health care services or engaged in the billing and collecting of payments in respect to the providing of medical and health care services." It then excludes tax-exempt (501(c)(3)) and government-owned hospitals and extended care facilities.
+- Gross proceeds paid to attorneys are reported under IRC §6045(f) and Reg. §1.6045-5, which apply whatever the attorney's entity type.
 
 ---
 
@@ -28,11 +32,11 @@ Both exceptions are codified in regulations:
 
 ### Who is a "medical or health-care provider"?
 
-Per IRS instructions for Form 1099-MISC and Pub. 535:
+Per the Instructions for Forms 1099-MISC and 1099-NEC, Box 6 ("each physician or other supplier or provider of medical or health care services"). Typical providers:
 
 - Physicians (MD, DO)
 - Dentists, orthodontists, periodontists
-- Hospitals (corporate or not — REPORTABLE)
+- Hospitals (corporate or not — REPORTABLE), except 501(c)(3) tax-exempt and government-owned hospitals and extended care facilities
 - Outpatient clinics, ambulatory surgery centers
 - Diagnostic centers, laboratories
 - Nursing homes, assisted-living facilities
@@ -40,8 +44,7 @@ Per IRS instructions for Form 1099-MISC and Pub. 535:
 - Mental-health practitioners (psychiatrists, psychologists, counselors, therapists)
 - Chiropractors
 - Acupuncturists
-- Veterinarians (for business animals)
-- Suppliers of durable medical equipment (when payment is for services + supply, not pure sale)
+- Suppliers of medical or health-care services whose charges include drugs, injections, dentures and similar items (the entire payment is reportable)
 
 ### What payments are included?
 
@@ -50,34 +53,34 @@ Payments for services rendered. Examples:
 - Hospital bill for an inpatient stay
 - Lab work invoice
 - Mental health session fee
-- Veterinary services for a guard dog (business animal)
+- Payments by a health insurer to a provider under a health, accident, or sickness program
 
 ### What payments are excluded?
 
-- **Insurance premiums** — those are paid to insurance carriers and reported separately
-- **Pharmacy / prescription** — sale of goods, not services
-- **Employee health plan contributions** — flow through payroll system, not 1099
-- **HRA / FSA reimbursements to employees** — payroll-side
-- **Pure goods sales** (e.g., buying medical equipment from a non-service vendor) — sale of goods is not 1099 reportable
+- **Insurance premiums** — not payments for medical services
+- **Payments to pharmacies for prescription drugs** — the instructions say these are not required
+- **Payments to 501(c)(3) or government-owned hospitals and extended care facilities** — Reg. §1.6041-3(p)(1)
+- **Health FSA / HRA payments** — exempt from §6041 reporting (Instructions, Box 6 caution)
+- **Pure goods sales** (e.g., buying medical equipment from a non-service vendor) — payments for merchandise are not reportable (Reg. §1.6041-3(c))
 
 ### Threshold
 
-$600 per provider per calendar year, aggregated across all payments.
+$600 per provider for 2025 payments; $2,000 for 2026 payments (P.L. 119-21 §70433), aggregated across all payments in the calendar year.
 
 ### Common scenarios
 
 **Scenario 1: Business pays a doctor for an executive's annual physical**
 - The business pays the doctor's office (a corporate professional medical group LLC taxed as S-corp)
 - $1,200 paid in the year
-- Box 6 reportable: **YES** (corporate exemption does not apply)
+- Box 6 reportable: **YES for 2025 payments** (≥ $600; corporate exemption does not apply); **No for 2026 payments** ($1,200 < $2,000)
 
 **Scenario 2: Workers' compensation payment to physical therapist**
 - Self-insured employer pays a corporate PT clinic $3,400 for treatment of an injured worker
-- Box 6 reportable: **YES**
+- Box 6 reportable: **YES** (above both years' thresholds)
 
 **Scenario 3: Pharmacy charges**
 - Same employer pays a pharmacy chain $2,800 for prescriptions reimbursed under a workers' comp plan
-- Box 6 reportable: **No** (sale of goods, not services)
+- Box 6 reportable: **No** (payments to pharmacies for prescription drugs are not required)
 
 **Scenario 4: Health insurance premium**
 - Employer pays Blue Cross $80,000 in premiums
@@ -89,7 +92,7 @@ $600 per provider per calendar year, aggregated across all payments.
 
 ### Who is an "attorney"?
 
-Any individual or entity practicing law and admitted to the bar, regardless of entity structure:
+The instructions: "The term 'attorney' includes a law firm or other provider of legal services," regardless of entity structure:
 - Solo practitioner attorney
 - Law firm partnership
 - Law firm professional corporation (PC), professional LLC (PLLC)
@@ -97,9 +100,9 @@ Any individual or entity practicing law and admitted to the bar, regardless of e
 
 ### What payments are included in Box 10?
 
-**Gross proceeds** = the entire amount of a settlement, judgment, or other payment that passed through the attorney's trust account, **before** the attorney deducts their fee.
+**Gross proceeds** = payments made to an attorney in the course of the payer's trade or business in connection with legal services, but **not for the attorney's services to the payer** — for example, a settlement paid to the claimant's attorney — **before** the attorney deducts their fee (IRC §6045(f); Reg. §1.6045-5).
 
-This is unique. The attorney is essentially a conduit; Box 10 reports the amount that landed in the conduit, not what the attorney kept.
+The attorney is essentially a conduit; Box 10 reports the amount paid to the attorney, not what the attorney kept.
 
 Example: $50,000 settlement.
 - Attorney keeps $20,000 as their fee (1/3 contingency).
@@ -108,15 +111,18 @@ Example: $50,000 settlement.
 
 ### What payments are NOT in Box 10?
 
-Box 10 is for *gross proceeds*. Payments for the attorney's *services* (their fee component) go on **1099-NEC Box 1** if the attorney is an individual / SMLLC / partnership, or are exempt if the attorney is a corporation (since 1099-NEC follows the standard corporate exemption — only Box 10 has the special anti-exemption rule).
+Box 10 is for *gross proceeds*. Fees the payer pays an attorney for legal services provided **to the payer** go on **1099-NEC box 1a** ($600 for 2025, $2,000 for 2026 payments), **including when the law firm is a corporation**.
 
-So for the same $50,000 settlement above:
-- Attorney is an SMLLC: 1099-MISC Box 10 = $50,000; 1099-NEC Box 1 = $20,000
-- Attorney is a PC (professional corporation): 1099-MISC Box 10 = $50,000; 1099-NEC = NOT issued (corporate exemption applies to 1099-NEC; only Box 10 exception is in 1099-MISC)
+When the payer pays a settlement to the claimant's attorney, the payer does **not** report the claimant's attorney's fees at all: "Generally, you are not required to report the claimant's attorney's fees" (Instructions, "Gross proceeds paid to attorneys").
+
+So for the same $50,000 settlement above, whatever the firm's entity type:
+- 1099-MISC to the attorney: Box 10 = $50,000
+- No 1099-NEC to the attorney for the $20,000 fee
+- 1099-MISC to the claimant: Box 3 = $50,000 if the damages are taxable (none if they are non-punitive personal physical injury damages)
 
 ### Threshold
 
-$600 per attorney per year.
+$600 per attorney per year, for both 2025 and 2026 payments (§6045(f) was not changed by P.L. 119-21).
 
 ### Common scenarios
 
@@ -125,10 +131,10 @@ $600 per attorney per year.
 - Attorney's contingency fee: $25,000. Disbursed to plaintiff: $50,000.
 - Liberty issues:
   - 1099-MISC to attorney, **Box 10 = $75,000** (gross proceeds)
-  - 1099-MISC to Jane, **Box 3 = $50,000** (plaintiff's portion, taxable as "Other income"; NOT excluded under §104 if not for personal physical injury)
-  - 1099-NEC to attorney, **Box 1 = $25,000** (attorney's fee for services) — only if attorney is non-corporate
+  - 1099-MISC to Jane, **Box 3 = $75,000** if the damages are taxable (the full amount, not Jane's $50,000 net; Reg. §1.6045-5(f), Example 3 and Reg. §1.6041-1(f))
+  - No 1099-NEC to the attorney for the $25,000 fee
 
-If the entire settlement was for personal physical injury, Jane's portion may be excluded from income under IRC §104(a)(2) — but Liberty still issues the 1099-MISC to the attorney for Box 10 (the gross proceeds reporting is independent of the recipient's tax treatment).
+If the entire settlement was for personal physical injury (no punitive damages), Jane's damages are excluded under IRC §104(a)(2) and Liberty files **no** return for Jane — but still issues the 1099-MISC to the attorney for Box 10 (Reg. §1.6045-5(f), Example 2).
 
 **Scenario 2: Business settles a commercial dispute, pays plaintiff directly**
 - ABC Corp pays $40,000 directly to plaintiff (no attorney trust account involved)
@@ -138,9 +144,8 @@ If the entire settlement was for personal physical injury, Jane's portion may be
 
 **Scenario 3: Business pays attorney for legal services (not settlement-related)**
 - ABC Corp pays its corporate attorney (a professional corp) $15,000 for ongoing legal work — drafting contracts, regulatory filings
-- 1099-MISC Box 10: **No** (this isn't a settlement; no "gross proceeds")
-- 1099-NEC: **No** (attorney is a corporation, exempt from 1099-NEC)
-- Net: no 1099 issued. The attorney reports the income on the corporation's return.
+- 1099-MISC Box 10: **No** (these are fees for services to ABC, not gross proceeds)
+- 1099-NEC box 1a: **YES, $15,000** — the corporate exemption does not apply to payments for legal services (above both the $600 (2025) and $2,000 (2026) thresholds)
 
 ---
 
@@ -148,11 +153,11 @@ If the entire settlement was for personal physical injury, Jane's portion may be
 
 ### Step 1: Get the W-9
 
-Always request a current W-9 (Form W-9, Request for Taxpayer Identification Number and Certification). The W-9 has Line 3 entity-type checkboxes. Save it.
+Always request a current W-9 (Form W-9, Request for Taxpayer Identification Number and Certification, Rev. March 2024). The W-9 has Line 3a entity-type checkboxes. Save it.
 
-### Step 2: Read W-9 Line 3 carefully
+### Step 2: Read W-9 Line 3a carefully
 
-| W-9 Line 3 box | Standard 1099-NEC reporting? | Box 6 (medical) reporting? | Box 10 (attorney) reporting? |
+| W-9 Line 3a box | Standard 1099-NEC reporting? | Box 6 (medical) reporting? | Box 10 (attorney) reporting? |
 |----------------|------------------------------|----------------------------|------------------------------|
 | Individual / sole prop / SMLLC | Yes | Yes (if medical provider) | Yes (if attorney) |
 | C Corp | No | **Yes** | **Yes** |
@@ -169,14 +174,18 @@ For a corporate medical provider paid $5,000:
 
 For a corporate law firm receiving $50,000 in settlement gross proceeds:
 - 1099-MISC Box 10 = $50,000 ✓
-- 1099-NEC = nothing (corporation, exempt from NEC)
+- 1099-NEC = nothing (the payer does not report the claimant's attorney's fees)
+
+For a corporate law firm paid $15,000 in fees for legal work done for the payer:
+- 1099-NEC box 1a = $15,000 ✓ (no corporate exemption for legal services)
 
 ---
 
 ## Common mistakes
 
-1. **Excluding hospital from Box 6 because hospital is a corporation** — wrong; hospitals (and any medical / health-care provider) are reportable on Box 6 regardless of entity.
-2. **Putting attorney's fee on Box 10 instead of just gross proceeds** — Box 10 is gross. The fee portion (if non-corporate) goes on 1099-NEC. If the entire $50K passed through the attorney trust, Box 10 = $50K (the full $50K), not just the $20K fee.
+1. **Excluding hospital from Box 6 because hospital is a corporation** — wrong; hospitals (and any medical / health-care provider) are reportable on Box 6 regardless of entity, unless the hospital is 501(c)(3) tax-exempt or government-owned.
+2. **Putting only the attorney's fee on Box 10** — Box 10 is gross. If $50K was paid to the claimant's attorney, Box 10 = $50K, not the $20K fee, and the payer issues no 1099-NEC for the fee.
 3. **Skipping 1099-MISC for medical because "we already 1099 nothing for our corporate vendors"** — the rule is different for medical and attorney. Don't apply the standard corporate exemption blindly.
 4. **Treating insurance premiums as Box 6** — premiums go to the insurer, not to a medical provider. Insurance premiums are not 1099-MISC reportable to the insurance carrier under standard rules.
-5. **Issuing 1099-NEC instead of 1099-MISC Box 10 for a settlement** — settlement gross proceeds go on Box 10 of 1099-MISC, not Box 1 of 1099-NEC. The fee portion may go on 1099-NEC separately, but the gross is always Box 10.
+5. **Issuing 1099-NEC instead of 1099-MISC Box 10 for a settlement** — settlement gross proceeds go on Box 10 of 1099-MISC, not box 1a of 1099-NEC.
+6. **Skipping 1099-NEC for the payer's own corporate law firm** — fees for legal services provided to the payer are reportable on 1099-NEC box 1a even when the firm is a corporation.

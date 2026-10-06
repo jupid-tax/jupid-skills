@@ -36,7 +36,7 @@ phaseouts. If fully nondeductible, the contribution is still made but
 goes on Form 8606 as basis (not Schedule 1).
 
 **Citation**: IRC §219(g) — phaseout for active participants; Notice
-2024-80 — 2025 phaseout amounts.
+2024-80 — 2025 phaseout amounts; Notice 2025-67 — 2026 phaseout amounts.
 
 ---
 
@@ -52,7 +52,9 @@ because contributions can be made up to April 15.
 
 **Fix**: No amendment needed. File the 5498 in tax records.
 
-**Citation**: Form 5498 issuance deadline May 31 (Form 5498 Instructions).
+**Citation**: Form 5498 contribution information due by May 31, or the
+next business day (June 1, 2026 for 2025 forms) (2025 Instructions for
+Forms 1099-R and 5498, "Statements to participants").
 
 ---
 
@@ -88,7 +90,8 @@ pro-rata rule requires Form 8606 Part II to compute the taxable amount.
 traditional / SEP / SIMPLE IRAs. Report taxable portion only on Line
 4b.
 
-**Citation**: Form 8606 Instructions; IRC §72(e)(8).
+**Citation**: Form 8606 Instructions (2025 Form 8606, Lines 6–11 and
+16–18); IRC §408(d)(1)–(2).
 
 ---
 
@@ -139,8 +142,10 @@ so they discard it.
 
 **Why it's wrong**: Form 5498 is issued for any IRA with year-end activity
 or balance, not just contributions. Reasons it might arrive:
-- Box 5 (FMV) reporting — issued every year there's a balance
-- Box 11 (RMD required) — flagged for the year
+- Box 5 (FMV) reporting — filed every year there's a balance (the FMV
+  statement may come by January 31 and the full form only if there were
+  contributions)
+- Box 11 (RMD required) — flagged for the following year
 
 If Box 11 is checked, the user has an RMD requirement and needs to act.
 Discarding the 5498 means missing that flag.
@@ -148,7 +153,8 @@ Discarding the 5498 means missing that flag.
 **Fix**: Read every 5498 received, even when no contribution was made.
 File in records.
 
-**Citation**: Form 5498 Instructions — "When to file."
+**Citation**: 2025 Instructions for Forms 1099-R and 5498 — "Contributions"
+and "Statements to participants."
 
 ---
 
@@ -223,19 +229,26 @@ When reviewing a user's 5498, run through this checklist:
    - SIMPLE → Box 9 populated
 
 2. **Total contributions across all 5498s ≤ annual limit?**
-   - 2025 IRA limit: $7,000 / $8,000 age 50+
-   - 2025 SEP limit: lesser of $70,000 or 25% compensation
-   - 2025 SIMPLE deferral: $16,500 / $20,000 age 50+
+   - IRA limit (Box 1 + Box 10): 2025 $7,000 / $8,000 age 50+; 2026
+     $7,500 / $8,600 age 50+
+   - SEP limit: lesser of 25% compensation or $70,000 (2025) / $72,000
+     (2026). Box 8 is calendar-year deposits, so compare by tax year
+     using the user's records
+   - SIMPLE deferral: 2025 $16,500 / $20,000 age 50+; 2026 $17,000 /
+     $21,000 age 50+ ($5,250 catch-up at ages 60-63). Box 9 also includes
+     employer contributions
 
 3. **Roth contributions consistent with MAGI eligibility?**
-   - Single 2025 phaseout: $150K-$165K
-   - MFJ 2025 phaseout: $236K-$246K
-   - MFS 2025 phaseout: $0-$10K
+   - Single/HOH phaseout: 2025 $150K-$165K; 2026 $153K-$168K
+   - MFJ phaseout: 2025 $236K-$246K; 2026 $242K-$252K
+   - MFS phaseout: $0-$10K
 
 4. **Box 2 rollover matches a corresponding 1099-R?**
 5. **Box 3 conversion matches a 1099-R AND Form 8606 Part II?**
-6. **Box 4 recharacterization round-trips between two 5498s?**
-7. **Box 11 RMD flag consistent with user's age and account type?**
+6. **Box 4 recharacterization on the destination 5498 matches a 1099-R
+   (code N or R) from the source IRA?**
+7. **Box 11 RMD flag consistent with user's age (applicable age 73 or 75)
+   and account type?**
 8. **Box 5 FMV matches the user's December 31 statement?**
 9. **Multiple custodians: have all 5498s been collected?**
 10. **Any contribution-year designation issues?**

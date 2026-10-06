@@ -11,7 +11,9 @@ The agent must produce a complete `SKILL.md`-format draft *first*, then pick a f
 Form 8959 attaches to Form 1040. The filer cannot e-file Form 8959 on its own — the channel decision is whichever channel handles the parent 1040 return.
 
 ```
-User has AGI ≤ ~$84,000 and wants free guided software?
+User has AGI of $89,000 or less and wants free guided software?
+  (IRS Free File limit for the 2026 filing season;
+   https://www.irs.gov/filing/irs-free-file-do-your-taxes-for-free)
   → IRS Free File (Free File Alliance partners)
     Browser automation: provider-specific (TaxAct Free, FreeTaxUSA, etc.)
     Skip — proprietary flows change too often for deterministic automation.
@@ -33,12 +35,9 @@ User has already paid for tax software (TurboTax, H&R Block, FreeTaxUSA)?
 User wants to file on paper?
   → Print Form 1040 + Form 8959 + Schedule 2 + supporting forms, sign, mail
     Use Section 3.
-
-User wants to use IRS Direct File?
-  → As of early 2026, IRS Direct File supports Form 8959 in scope. Verify
-    against current Direct File scope page before automating:
-    https://www.irs.gov/filing/irs-direct-file
 ```
+
+IRS Direct File was not offered in the 2026 filing season (irs.gov/filing/irs-direct-file returns 404 as of 2026-10-06). Do not offer it as a channel.
 
 ---
 
@@ -46,7 +45,7 @@ User wants to use IRS Direct File?
 
 URL: https://www.irs.gov/e-file-providers/free-file-fillable-forms
 
-**Availability**: FFFF is open from late January through mid-October each year. Outside that window it returns a "season closed" message and the agent must fall back to paper or wait.
+**Availability**: FFFF for 2025 returns closes **October 15, 2026** (https://www.irs.gov/e-file-providers/free-file-fillable-forms). Outside the season window it returns a "season closed" message and the agent must fall back to paper or wait. Check the page for the next season's opening date.
 
 **Account model**: each tax year is a separate FFFF account. Returning users from prior years cannot reuse credentials — the agent must register fresh each year.
 
@@ -102,18 +101,18 @@ The agent navigates and interacts deterministically. Stable selectors are listed
 | Line 16 | (auto-computed) | (verify) |
 | Line 17 | (auto-computed) | (verify) |
 | Line 18 | (auto-computed total) | (verify Line 18 = Line 7 + 13 + 17) |
-| Line 19 | "Medicare tax withheld from Form W-2 Box 6" | Part V Line 19 |
-| Line 20 | (auto-computed: Line 1 × 1.45%) | (verify) |
-| Line 21 | (auto-computed) | (verify) |
-| Line 22 | (auto-computed or manual depending on year) | (verify) |
+| Line 19 | "Medicare tax withheld from Form W-2 Box 6" | Part V Line 19 (box 6 + box 12 codes B, N) |
+| Line 20 | (amount from Line 1) | (verify = Line 1) |
+| Line 21 | (Line 20 × 1.45%) | (verify) |
+| Line 22 | (Line 19 − Line 21, not below zero) | (verify) |
 | Line 23 | "RRTA Additional Medicare Tax withheld" | Part V Line 23 (often blank) |
-| Line 24 | (auto-computed total withheld) | (verify Line 24) |
+| Line 24 | (Line 22 + Line 23) | (verify Line 24) |
 
 The agent fills each labeled field from the draft. After each field, capture a screenshot for the user's records.
 
 10. **Verify Schedule 2 Line 11** carries the value from Form 8959 Line 18. FFFF auto-flows it; if the auto-flow fails (rare), manually enter on Schedule 2.
 
-11. **Verify Form 1040 Line 25c** carries the value from Form 8959 Line 24. Same auto-flow rule. If Line 25c also has W-2 federal income tax withholding from Box 2, ensure both are summed correctly — Box 2 (federal income tax) is *separate* from Box 6 (Medicare), and Form 8959 Line 24 must add to Form 1040 Line 25c, not replace it.
+11. **Verify Form 1040 Line 25c** includes the value from Form 8959 Line 24. Same auto-flow rule. W-2 Box 2 federal income tax withholding belongs on Line 25a, not 25c. If Line 25c also has withholding from other forms, Form 8959 Line 24 must add to it, not replace it.
 
 12. **Run FFFF's "Check Form" / "Verify" tool** — it flags math errors and missing required fields on Form 8959 itself, on Schedule 2, and on Form 1040. Resolve every flag.
 
@@ -143,7 +142,7 @@ The agent fills each labeled field from the draft. After each field, capture a s
 | Symptom | Likely cause | Fix |
 |---------|--------------|-----|
 | Line 5 / Line 9 / Line 15 = $200,000 but filer is MFJ | Filing status not set on 1040 yet; FFFF defaults to single threshold | Complete 1040 filing status first |
-| Line 21 < 0 (negative) | W-2 Box 6 less than 1.45% of Box 5 | Reconcile with W-2 issuer; possible reporting error |
+| Line 19 < Line 21 (Line 22 floors at zero) | W-2 Box 6 less than 1.45% of Box 5 | Reconcile with W-2 issuer; possible reporting error |
 | Line 8 doesn't match Schedule SE Line 6 | Schedule SE not filled or not yet propagated | Fill Schedule SE first; refresh FFFF |
 | Line 18 not flowing to Schedule 2 Line 11 | Schedule 2 not added to return | Add Schedule 2 explicitly |
 | Line 24 not flowing to 1040 Line 25c | Field-mapping bug in current FFFF revision | Manually enter on 1040 Line 25c after verifying against draft |
@@ -183,11 +182,8 @@ Order matters — the IRS expects this stack from top to bottom:
 
 1. **Form 1040** (signed by all filers, in ink)
 2. **Schedule 1, 2, 3** in order if applicable (Schedule 2 is required when Form 8959 is filed)
-3. **Form 8959** — attached after Schedule 2 in attachment-sequence order
-4. **Schedule SE** (if the filer has SE income; required input for Form 8959 Line 8)
-5. **Form 8960** (NIIT) if also required — separate but commonly co-filed
-6. **All other schedules and forms** in attachment-sequence order printed on each form (top-right corner)
-7. **W-2 Copy B** stapled to the front of Form 1040 (lower-left)
+3. **All other schedules and forms** in the attachment sequence number printed on each form (top-right corner), for example **Schedule SE** (Sequence No. 17), then **Form 8959** (Sequence No. 71), then **Form 8960** (Sequence No. 72) if also required
+4. **W-2 Copy B** attached to the front of Form 1040
 
 Use a single staple in the upper-left corner. Don't paperclip. Don't double-side print.
 
@@ -204,7 +200,7 @@ Do not hardcode addresses — they shift between years and are split by state.
 - Send via **USPS Certified Mail with Return Receipt** for proof of timely filing (IRC §7502 timely-mailing-as-timely-filing rule)
 - Postmark by April 15 (or extension date if Form 4868 was filed)
 - Keep a complete photocopy of the entire return for the user's records
-- If paying, attach Form 1040-V payment voucher with check made out to "United States Treasury", with SSN + "Form 1040" + tax year written on the check memo line
+- If paying by check, enclose Form 1040-V with the check payable to "United States Treasury"; do not staple or attach the payment or the voucher to the return (Form 1040-V instructions)
 
 ### Producing the printable PDF
 
@@ -228,12 +224,12 @@ After filing (any channel), the user's return moves through:
 3. **Processed** — IRS has fully ingested the return
 4. **Refund issued** OR **Balance due notice** OR **Amended-return required** OR **Audit notice (CP2000, etc.)**
 
-**CP2000 risk for Form 8959**: if the filer received Additional Medicare Tax withholding (W-2 Box 6 above 1.45% of Box 5) from one employer but did not file Form 8959, the IRS will issue a CP2000 notice. The notice typically arrives 12–24 months post-filing. The agent should advise filers to retain W-2 originals for 7 years.
+**Notice risk for Form 8959**: if the filer owed Additional Medicare Tax and did not report it, the IRS can propose the missing tax by notice after matching W-2 and Schedule SE data. If the filer had Additional Medicare Tax withheld but did not file Form 8959, they lose the Line 24 credit until they amend. The agent should advise filers to keep W-2 copies with the return records.
 
 Status checks:
 
-- E-file: usually Accepted within 24–48 hours
-- Paper: 4–8 weeks for Acceptance acknowledgment
+- E-file: the provider shows Accepted or Rejected after the IRS acknowledgment
+- Paper: slower; check https://www.irs.gov/refunds for current processing estimates
 - Refund tracking: https://www.irs.gov/refunds (Where's My Refund tool, requires SSN + filing status + refund amount)
 - Account transcript: https://www.irs.gov/individuals/get-transcript
 

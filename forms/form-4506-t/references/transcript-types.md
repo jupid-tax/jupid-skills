@@ -1,6 +1,6 @@
 # IRS Transcript Types
 
-The IRS offers five transcript types (and two additional rare ones). Picking the right one matters: requesting the wrong type wastes 5-10 days and may force a re-submission.
+The IRS offers five transcript types, all at no charge. Picking the right one matters: requesting the wrong type wastes days and may force a re-submission. Availability figures below come from Form 4506-T (Rev. April 2025) and https://www.irs.gov/individuals/transcript-types-and-ways-to-order-them (checked 2026-10-06).
 
 This file explains each type, what it shows, what it doesn't, when to use it, and how it differs from related types.
 
@@ -12,11 +12,11 @@ This file explains each type, what it shows, what it doesn't, when to use it, an
 
 Most line items from the originally-filed Form 1040 series:
 - Filing status (Single, MFJ, MFS, HoH, QW)
-- Adjusted Gross Income (AGI) — line 11 of Form 1040 for 2024
+- Adjusted Gross Income (AGI) — line 11 of the 2024 Form 1040 (line 11a on the 2025 form)
 - Taxable income — line 15
 - Total tax — line 24
-- Federal income tax withheld — line 25a
-- Earned Income Credit — line 27
+- Federal income tax withheld — lines 25a–25d
+- Earned Income Credit — line 27 (line 27a on the 2025 form)
 - Total payments — line 33
 - Refund or balance due
 - Schedules attached: Schedule A (itemized), Schedule B (interest/dividends), Schedule C (self-employment), Schedule D (capital gains), Schedule E (rental/royalty), Schedule SE (self-employment tax), etc., in summary form
@@ -32,17 +32,17 @@ Most line items from the originally-filed Form 1040 series:
 
 ### When to use
 
-- **Mortgage applications** — Lenders almost always specifically request "Tax Return Transcript" for the last 1-2 years to verify income claims
-- **Student loan applications** — College financial aid offices, especially private student loans
+- **Mortgage applications** — irs.gov: a tax return transcript "usually meets the needs of lending institutions offering mortgages"
+- **Student loan applications** — private lenders; federal student aid now gets tax data directly from the IRS (FUTURE Act data exchange)
 - **Business loan / SBA applications** — Banks requesting income verification for self-employed borrowers
 - **Apartment rental applications** — Some landlords for high-end rentals
 - **Personal records** — Quick reference for "what did I make / pay last year"
 
 ### Availability
 
-Current tax year + 3 prior tax years.
+Current tax year + 3 prior tax years (on Form 4506-T: the current year and returns processed during the prior 3 processing years).
 
-For older years, use Tax Account Transcript (broader date range) or order a full Form 4506 copy of return ($43, 60-75 days).
+For older years, use Tax Account Transcript (broader date range) or order a full Form 4506 copy of return ($30 per return, up to 75 calendar days per Form 4506, April 2025).
 
 ### Comparison to actual return
 
@@ -85,11 +85,11 @@ Activity on the user's IRS tax account for the year requested:
 
 ### Availability
 
-Many years back — often 10+ years for individual accounts. Older history may be archived; call IRS for very old years.
+Online (Individual Online Account): current and nine prior tax years. Get Transcript by Mail or 800-908-9946: current and three prior. These years and older years can be requested on Form 4506-T (irs.gov transcript types page).
 
 ### Reading the codes
 
-The Account Transcript uses three-digit transaction codes (TC). Common ones:
+The Account Transcript uses three-digit transaction codes (TC). Common ones (not re-verified in this audit; confirm against the IRS Document 6209 / IRM transaction-code tables before relying on them):
 - TC 150 — Tax return filed
 - TC 290 — Additional tax assessed (audit, IRS adjustment)
 - TC 706 — Generated overpayment applied from another tax module
@@ -101,7 +101,7 @@ The Account Transcript uses three-digit transaction codes (TC). Common ones:
 - TC 971 — Notice issued
 - TC 977 — Amended/duplicate return processed
 
-The IRS's own "Transaction Codes Pocket Guide" is the canonical reference. For high-stakes interpretation, consult a CPA or enrolled agent.
+For high-stakes interpretation, consult a CPA or enrolled agent.
 
 ---
 
@@ -119,7 +119,7 @@ Combination of Tax Return Transcript (6a) + Tax Account Transcript (6b) for the 
 
 ### Availability
 
-Current tax year + 3 prior tax years. (Same as Return Transcript.)
+Current tax year + 3 prior tax years.
 
 For older years, request Account Transcript separately (since it's available for longer).
 
@@ -129,22 +129,22 @@ For older years, request Account Transcript separately (since it's available for
 
 ### What it shows
 
-A formal letter from the IRS stating they have **no record of a Form 1040** (or other specified form) filed for the requested year(s).
+A formal letter from the IRS stating it has **no record of a processed Form 1040-series return** for the requested year as of the date of the request.
 
 ### What it doesn't show
 
-It doesn't certify the user was not required to file. It only certifies the IRS hasn't received a return. If the user filed but the return was lost in the mail, the letter will say "no record" — which may misrepresent the user's compliance.
+It doesn't say whether the user was required to file (irs.gov transcript types page). If the user filed but the return was lost in the mail, the letter will say "no record" — which may misrepresent the user's compliance.
 
 ### When to use
 
-- **FAFSA** — Federal student aid forms require parents and students who didn't file taxes to provide a Verification of Non-filing Letter (older years; recent FAFSAs use IRS Data Retrieval Tool which checks automatically). The school's financial aid office specifies which year(s).
+- **FAFSA verification** — only if the school asks. Since the 2024–25 FAFSA, the IRS sends tax data to the Department of Education directly, and for IRS non-filers the 2025–26 FSA Handbook (Application and Verification Guide, Ch. 4) accepts a signed non-filing statement plus W-2s. Some schools still ask for the IRS letter; the financial aid office specifies the year.
 - **Immigration applications** — Some visa, green card, and citizenship applications require proof of non-filing for years the applicant was not present in the US (or had no US income)
 - **Court proceedings** — Divorce, child support, bankruptcy may require this for years where one party didn't file
 - **Public benefits applications** — Some state aid programs require non-filing letters for low-income years
 
 ### Availability
 
-Any year where the user did not file. Available year-round.
+Current year: only after June 15. Online: anytime for the prior three tax years. Older years: Form 4506-T (form line 7: "There are no availability restrictions on prior year requests").
 
 ### When NOT to use
 
@@ -193,15 +193,11 @@ Third-party-reported income data for the year requested:
 
 ### Availability
 
-**Last 10 years**. The IRS retains W&I data for 10 years.
+Up to **10 years** on Form 4506-T (form line 8); online, the current and nine prior tax years. Online, the transcript is limited to about 85 income documents; above that it will not generate and the user must submit Form 4506-T (irs.gov transcript types page). State or local W-2 information is not included.
 
 ### Critical timing caveat
 
-Third parties (employers, banks, brokers, etc.) report their forms to the IRS by **January 31** of the year following the tax year. The IRS processes and indexes these reports throughout spring and summer.
-
-For the **current** tax year (e.g., requesting 2025 W&I in early 2026), the data may not be available until **mid-summer** (June-July) of 2026 at earliest. If the user requests too early, the W&I transcript will be empty or incomplete.
-
-For prior years (1+ years back), the data is fully available year-round.
+irs.gov: information for the current processing year is generally available online in the first week of February, but the transcript only shows documents already filed with the IRS, so it may be incomplete early in the year; "No Record of return filed" for the current year means the data has not populated yet. The form's line 8 text is more conservative (current-year information generally not available until the year after it is filed). For prior years, the data is available year-round.
 
 ---
 
@@ -211,17 +207,17 @@ For prior years (1+ years back), the data is fully available year-round.
 |------|-----------------|
 | Mortgage / lender wants to verify last 2 years' income | Tax Return Transcript |
 | FAFSA: didn't file taxes | Verification of Non-filing |
-| FAFSA: did file taxes | (use FAFSA's IRS Data Retrieval Tool, fallback to Tax Return Transcript) |
+| FAFSA: did file taxes | Usually nothing — tax data flows from the IRS to the Department of Education with consent on the FAFSA; provide a Tax Return Transcript only if the school asks |
 | Lost W-2 / 1099, need to file | Wage and Income Transcript |
 | Disputing IRS notice / balance | Tax Account Transcript or Record of Account |
 | Replying to CP2000 | Record of Account |
 | Identity theft on tax return | Wage and Income Transcript + Account Transcript |
 | Confirming amendment processed | Account Transcript |
 | Tracking refund delay | Account Transcript (look for TC 846) |
-| Years 4+ ago | Account Transcript (more years available) |
+| Years 4+ ago | Account Transcript (up to nine prior years online; older via Form 4506-T) |
 | Years 1-3 ago | Any of: Return, Account, Record of Account |
 | Years 1-10 ago, third-party-reported income | Wage and Income |
-| Need full COPY of original return | NOT 4506-T — use Form 4506 ($43, 60-75 days) |
+| Need full COPY of original return | NOT 4506-T — use Form 4506 ($30 per return, up to 75 calendar days) |
 
 ---
 
@@ -241,12 +237,12 @@ If preparing a current return and just need numbers from last year:
 - Tax Return Transcript is enough (shows AGI, refund amount, etc.)
 
 If preparing an amended return or need to see specific schedules in detail:
-- Form 4506 full COPY is better ($43, 60-75 days)
+- Form 4506 full COPY is better ($30 per return, up to 75 calendar days)
 
 ### "FAFSA wants my parent's tax info"
 
-- If parent filed: tell parent to use FAFSA's IRS Data Retrieval Tool (built into FAFSA application form). No 4506-T needed.
-- If parent didn't file: parent needs Verification of Non-filing Letter (Line 7 of 4506-T)
+- If parent filed: the parent consents on the FAFSA and the IRS sends the tax data to the Department of Education directly (https://www.irs.gov/individuals/tax-information-for-federal-student-aid-applications). The IRS no longer accepts Form 8821 or Form 4506-C for FAFSA income verification. No 4506-T needed unless the school asks for a transcript.
+- If parent didn't file and the FAFSA is selected for verification: ask what the school wants. A signed non-filing statement plus W-2s meets the 2025–26 FSA Handbook rule for IRS non-filers; if the school still wants the IRS letter, request a Verification of Nonfiling (Line 7 of 4506-T, or online).
 
 ### "I'm a small business owner; I need my business tax transcript"
 
@@ -256,14 +252,15 @@ If preparing an amended return or need to see specific schedules in detail:
 - C-corporation: request "1120" transcript using the corporation's EIN
 - Single-member LLC (disregarded entity): falls back to the owner's 1040 transcript
 
-For business returns, the form is signed by an authorized officer (CEO, President, partner) with the title in the signature block.
+For business returns, the form is signed by an authorized person (officer, partner who was a member during the period) with the title in the signature block, and the authorization document is attached. Business transcripts available: https://www.irs.gov/businesses/get-a-business-tax-transcript.
 
 ---
 
 ## Sources
 
-- IRS Form 4506-T, current revision
+- IRS Form 4506-T (Rev. April 2025)
+- Transcript types and ways to order them: https://www.irs.gov/individuals/transcript-types-and-ways-to-order-them
 - About Form 4506-T: https://www.irs.gov/forms-pubs/about-form-4506-t
 - About Get Transcript: https://www.irs.gov/individuals/get-transcript
-- IRS Pocket Guide to Transaction Codes (internal reference for Account Transcript codes)
+- IRS Document 6209 / IRM transaction-code tables (reference for Account Transcript codes)
 - IRC §6103 — confidentiality of returns and disclosure rules

@@ -1,6 +1,8 @@
-# Example: Freelancer with Uneven Q4-Heavy Income (Schedule AI Saves Significant Penalty)
+# Example: Freelancer with Uneven Q4-Heavy Income (Schedule AI Lowers the Penalty)
 
-A complete walkthrough of Form 2210 for a freelance editor with no Q1 income, modest Q2/Q3 income, and a large Q4 payday from a delivered project. Schedule AI dramatically reduces the penalty compared to the regular method.
+A complete walkthrough of Form 2210 for a freelance editor with no Q1 income, modest Q2/Q3 income, and a large Q4 payday from a delivered project. Schedule AI lowers the penalty compared to the regular method. The saving is modest here because the low prior-year safe harbor already keeps the regular installments small.
+
+All figures use the 2025 Form 2210 and its instructions (2025 returns filed in 2026), the 2025 Form 1040 standard deduction ($15,750 single), and the 2025 Tax Table. Amounts are rounded to whole dollars except installments and penalties.
 
 ## The filer
 
@@ -8,226 +10,169 @@ A complete walkthrough of Form 2210 for a freelance editor with no Q1 income, mo
 - **Filing status**: Single
 - **Income**: 100% Schedule C (freelance video editor)
 - **Tax year**: 2025 (filing in 2026)
-- **Prior year**: $0 income (Riley was in graduate school full-time)
+- **Prior year (2024)**: $25,000 of Schedule C net profit. 2024 tax for Form 2210 line 8: $4,225 (2024 Form 1040 line 22 $693 + SE tax $3,532). 2024 AGI $23,234.
 
-Wait — that triggers the first-year exception. Let me modify.
-
-- **Prior year**: $25,000 of Schedule C income, prior-year tax $4,200, prior AGI $25,000
+Riley had tax in 2024, so the no-prior-year-liability exception (IRC §6654(e)(2)) does not apply.
 
 ## Inputs gathered
 
 ```
-Current-year Schedule C net profit by quarter:
-  Q1 (Jan–Mar):    $0
-  Q2 (Apr–May):    $5,000
-  Q3 (Jun–Aug):    $15,000
-  Q4 (Sep–Dec):    $80,000
-  Annual:          $100,000
+Current-year Schedule C net profit by period:
+  Jan–Mar:    $0
+  Apr–May:    $5,000
+  Jun–Aug:    $15,000
+  Sep–Dec:    $80,000
+  Annual:     $100,000
 
-Schedule SE Line 6 = $100,000 × 92.35% = $92,350
-SE tax = $92,350 × 15.3% = $14,130 (assuming under SS wage base; rough — exact computation has the SS / Medicare split)
+Schedule SE: $100,000 × 92.35% = $92,350 net earnings
+  SS 12.4% × $92,350 = $11,451 (under the $176,100 wage base); Medicare 2.9% = $2,678
+  SE tax = $14,130; deductible half = $7,065
 
-Federal income tax (single, $100K - $7,065 SE deduction adjustment - $15,000 standard
-                    deduction = $77,935 taxable income):
-  ≈ $11,950 (10/12/22% brackets; exact figure depends on year)
+Federal income tax:
+  AGI $100,000 − $7,065 = $92,935
+  − $15,750 standard deduction = $77,185
+  − $15,437 QBI deduction (20% × $77,185, the taxable-income limit)
+  = $61,748 taxable income → $8,494 (2025 Tax Table)
 
-Total tax (Line 22): ~$26,080
+Form 1040 line 22: $8,494; Schedule 2 line 4 (SE tax): $14,130
+Current-year tax (Form 2210 line 4): $22,624
 
 Withholding:                        $0
 Estimated tax payments:             $0
   (Riley underestimated his Q4 windfall and paid no quarterlies)
 
-Prior-year tax:                     $4,200
-Prior-year AGI:                     $25,000  → 100% safe harbor multiplier
+Prior-year tax:                     $4,225
+Prior-year AGI:                     $23,234  → 100% safe harbor multiplier
 ```
 
 ## Step 1 — Run the page 1 flowchart
 
 ```
-Test 1 — De minimis:
-  Unpaid balance = $26,080 − $0 = $26,080 > $1,000. Fails.
+Test 1 — De minimis (line 7 = line 4 − withholding):
+  $22,624 − $0 = $22,624, not less than $1,000. Fails.
 
-Test 2 — First-year exception:
-  Prior-year tax = $4,200 ≠ $0. Fails.
+Test 2 — No prior-year liability:
+  Prior-year tax = $4,225 ≠ $0. Fails.
 
 Test 3 — 90% current:
-  Required: $26,080 × 90% = $23,472. Paid: $0. Fails.
+  Required: $22,624 × 90% = $20,362. Paid: $0. Fails.
 
 Test 4 — 100% prior:
-  Required: $4,200. Paid: $0. Fails.
+  Required: $4,225. Paid: $0. Fails.
 
-Penalty owed. Required annual payment = smaller of $23,472 or $4,200 = $4,200.
+Penalty owed. Required annual payment (line 9) = smaller of $20,362 or $4,225 = $4,225.
 ```
 
-The prior-year safe harbor is the binding constraint at $4,200.
+The prior-year safe harbor is the binding constraint at $4,225.
 
 ## Regular method penalty computation
 
 ```
-Required quarterly installments (cumulative):
-  Q1: $4,200 × 25% = $1,050
-  Q2: $4,200 × 50% = $2,100
-  Q3: $4,200 × 75% = $3,150
-  Q4: $4,200 × 100% = $4,200
+Line 10, each column: $4,225 × 25% = $1,056.25
+Line 11, each column: $0
 
-Cumulative paid (withholding + estimates):
-  Q1: $0
-  Q2: $0
-  Q3: $0
-  Q4: $0
+No payments, so each column's line 17 underpayment is $1,056.25, and each stays
+unpaid until the balance is paid with the return on April 15, 2026.
 
-Underpayment per quarter (incremental):
-  Q1: $1,050 (outstanding from 4/15/2025)
-  Q2: $1,050 (outstanding from 6/16/2025)
-  Q3: $1,050 (outstanding from 9/15/2025)
-  Q4: $1,050 (outstanding from 1/15/2026)
-
-Penalty (assume 8% annual rate, days from quarter due to next-year 4/15):
-  Q1: $1,050 × 8% × (365/365) = $84
-  Q2: $1,050 × 8% × (304/365) = $70
-  Q3: $1,050 × 8% × (213/365) = $49
-  Q4: $1,050 × 8% × (90/365) = $21
-  Total ≈ $224
+Penalty (2025 worksheet rate 0.07 in every rate period):
+  (a) $1,056.25 × 0.07 × 365/365 = $73.94   (4/15/25 → 4/15/26)
+  (b) $1,056.25 × 0.07 × 304/365 = $61.58   (6/15/25 → 4/15/26)
+  (c) $1,056.25 × 0.07 × 212/365 = $42.94   (9/15/25 → 4/15/26)
+  (d) $1,056.25 × 0.07 × 90/365  = $18.23   (1/15/26 → 4/15/26)
+  Total ≈ $196.69
 ```
 
-Regular method penalty: ~$224.
+Regular method penalty: ~$197.
 
 ## Schedule AI computation
 
-Riley's income was concentrated in Q4. Schedule AI should reduce the early-quarter required installments.
+Riley's income was concentrated in Q4. Schedule AI should reduce the early-quarter required installments. Each column uses income from January 1 through the column's end date; the standard deduction is the full $15,750 in every column (line 7, not prorated); SE tax is annualized in Part II and the deductible half of each period's SE tax reduces that period's AGI.
+
+### Column (a) — January 1 through March 31, 2025
 
 ```
-Standard deduction: $15,000 (full year, not prorated)
-Self-employment tax: computed inside each column
+Line 28 net SE earnings: $0 → line 36 SE tax: $0
+Line 1 AGI: $0;  line 3 annualized (× 4): $0
+Line 13 taxable income: $0;  line 14 tax: $0
+Line 17 total tax: $0
+Line 21: $0 × 22.5% = $0
+Line 23: $0;  line 26: $1,056.25 (regular installment)
+Line 27 = smaller of 23 or 26 = $0
 ```
 
-### Column (a) — Cumulative through 3/31/2025
+### Column (b) — January 1 through May 31, 2025
 
 ```
-Cumulative AGI: $0
-Annualized: $0 × 4 = $0
-Annualized deductions: $15,000 standard
-Annualized taxable income: max($0 − $15,000, 0) = $0
-Annualized income tax: $0
-Annualized SE tax: $0 (no SE income to date)
-Annualized total tax: $0
-De-annualized tax: $0 / 4 = $0
-Q1 required cumulative installment: $0 × 22.5% = $0
+Line 28: $5,000 × 92.35% = $4,618
+Line 33: 0.2976 × $4,618 = $1,374;  line 35: 0.0696 × $4,618 = $321
+Line 36 annualized SE tax: $1,695
+Line 1 AGI: $5,000 − ($1,695 ÷ 2.4 ÷ 2 = $353) = $4,647
+Line 3 annualized (× 2.4): $11,153
+Line 13 taxable income: $11,153 − $15,750 → $0;  line 14 tax: $0
+Line 17 total tax: $0 + $1,695 = $1,695
+Line 21: $1,695 × 45% = $762.75
+Line 22: $0;  line 23: $762.75
+Line 25: $1,056.25 − $0 = $1,056.25 carried;  line 26: $1,056.25 + $1,056.25 = $2,112.50
+Line 27 = $762.75
 ```
 
-Compared to regular method's $1,050 → Schedule AI saves $1,050 of Q1 required installment.
-
-### Column (b) — Cumulative through 5/31/2025
+### Column (c) — January 1 through August 31, 2025
 
 ```
-Cumulative AGI (Q1 + Q2 partial): $5,000
-Annualized: $5,000 × 2.4 = $12,000
-Annualized AGI: $12,000
-Annualized deductions: $15,000 standard
-Annualized taxable income: max($12,000 − $15,000, 0) = $0
-Annualized income tax: $0
-Annualized SE tax: $5,000 × 92.35% × 2.4 × 15.3% ≈ $1,696 (annualized)
-                  (the annualized SE-equivalent earnings of $11,082 × 15.3%)
-De-annualized SE tax: $1,696 / 2.4 = $707
-Annualized total tax: $0 income + $1,696 SE tax = $1,696 (annualized)
-De-annualized total tax: $1,696 / 2.4 = $707
-Q2 required cumulative installment: $707 × 45% = $318
+Line 28: $20,000 × 92.35% = $18,470
+Line 33: 0.186 × $18,470 = $3,435;  line 35: 0.0435 × $18,470 = $803
+Line 36 annualized SE tax: $4,238
+Line 1 AGI: $20,000 − ($4,238 ÷ 1.5 ÷ 2 = $1,413) = $18,587
+Line 3 annualized (× 1.5): $27,881
+Line 8 standard deduction: $15,750;  line 9 QBI: 20% × $12,131 = $2,426
+Line 13 taxable income: $9,705;  line 14 tax: $973
+Line 17 total tax: $973 + $4,238 = $5,211
+Line 21: $5,211 × 67.5% = $3,517.43
+Line 22: $762.75;  line 23: $2,754.68
+Line 25: $2,112.50 − $762.75 = $1,349.75;  line 26: $1,056.25 + $1,349.75 = $2,406.00
+Line 27 = smaller of $2,754.68 or $2,406.00 = $2,406.00
 ```
 
-Compared to regular method's $2,100 → Schedule AI saves $1,782 of Q2 cumulative required installment.
-
-### Column (c) — Cumulative through 8/31/2025
+### Column (d) — January 1 through December 31, 2025
 
 ```
-Cumulative AGI: $20,000
-Annualized: $20,000 × 1.5 = $30,000
-Annualized deductions: $15,000
-Annualized taxable income: $30,000 − $15,000 = $15,000
-
-Annualized income tax (single, $15,000 taxable): ~$1,538 (10% bracket)
-Annualized SE tax: $20,000 × 92.35% × 1.5 × 15.3% ≈ $4,239
-                  (annualized SE earnings $27,705 × 15.3%)
-
-But SE deduction reduces AGI: $4,239 / 2 = $2,120 deduction
-Recompute annualized AGI: $30,000 − $2,120 = $27,880
-Annualized taxable income: $27,880 − $15,000 = $12,880
-Annualized income tax: ~$1,288
-
-Annualized total tax: $1,288 + $4,239 = $5,527
-De-annualized: $5,527 / 1.5 = $3,685
-Q3 required cumulative installment: $3,685 × 67.5% = $2,487
+Line 28: $92,350;  line 33: 0.124 × $92,350 = $11,451;  line 35: 0.029 × $92,350 = $2,678
+Line 36 annualized SE tax: $14,129
+Line 1 AGI: $92,935;  line 3: $92,935
+Line 9 QBI: $15,437;  line 13 taxable income: $61,748;  line 14 tax: $8,494
+Line 17 total tax: $22,623
+Line 21: $22,623 × 90% = $20,360.70
+Line 22: $762.75 + $2,406.00 = $3,168.75;  line 23: $17,191.95
+Line 25: $2,406.00 − $2,406.00 = $0;  line 26: $1,056.25
+Line 27 = $1,056.25
 ```
 
-Compared to regular method's $3,150 → Schedule AI saves $663 of Q3 cumulative required installment.
+Column (d) shows the gotcha: line 21 is 90% of the current-year tax ($20,360.70), far above the regular installments that the $4,225 prior-year safe harbor sets. Line 27 takes the smaller amount, so the column (d) installment stays $1,056.25.
 
-### Column (d) — Cumulative through 12/31/2025
+| Column | Line 23 (annualized) | Line 26 (regular + carried) | Line 27 (used) |
+|--------|----------------------|-----------------------------|----------------|
+| (a) | $0 | $1,056.25 | **$0** |
+| (b) | $762.75 | $2,112.50 | **$762.75** |
+| (c) | $2,754.68 | $2,406.00 | **$2,406.00** |
+| (d) | $17,191.95 | $1,056.25 | **$1,056.25** |
 
-```
-Cumulative AGI: $100,000 (full year)
-Annualized: $100,000 × 1 = $100,000
-SE tax deduction: ~$7,065
-AGI after SE deduction: $92,935
-Annualized taxable income: $92,935 − $15,000 = $77,935
-Annualized income tax: ~$11,950
-SE tax: ~$14,130
-Annualized total tax: $26,080
-De-annualized: $26,080 / 1 = $26,080
-Q4 required cumulative installment: $26,080 × 90% = $23,472
-```
+The four installments total $4,225, the same as line 9. Schedule AI moves part of the requirement to later due dates; it does not lower the annual total.
 
-Compare to regular method's $4,200 (which used the smaller prior-year safe harbor).
-
-This is the gotcha: Schedule AI uses 90% × current-year tax for column (d), NOT the prior-year safe harbor. Schedule AI's column (d) installment is $23,472, much higher than the regular method's $4,200.
-
-For the per-quarter comparison, the filer uses the lower of:
-- Schedule AI per-column installment, OR
-- Regular method's per-quarter installment (using $4,200 required annual payment)
-
-| Quarter | Schedule AI cumulative | Regular method cumulative | Smaller (used) |
-|---------|------------------------|----------------------------|----------------|
-| Q1 | $0 | $1,050 | **$0** |
-| Q2 | $318 | $2,100 | **$318** |
-| Q3 | $2,487 | $3,150 | **$2,487** |
-| Q4 | $23,472 | $4,200 | **$4,200** |
-
-## Penalty under Schedule AI (mixed quarters)
+## Penalty under Schedule AI
 
 ```
-Q1 underpayment = max($0 − $0, 0) = $0
-Q2 underpayment = max($318 − $0, 0) = $318
-Q3 underpayment = max($2,487 − $0, 0) = $2,487  (but the relevant figure is incremental: $2,487 − $318 = $2,169)
-Q4 underpayment = max($4,200 − $0, 0) = $4,200  (incremental: $4,200 − $2,487 = $1,713)
+Part III line 10 (from Schedule AI line 27): $0 / $762.75 / $2,406.00 / $1,056.25
+Line 11: $0 in every column, so line 17 equals line 10 in each column.
 
-Penalty (assume 8% annual rate):
-  Q1: $0
-  Q2: $318 × 8% × (304/365) = $21
-  Q3: $2,169 × 8% × (213/365) = $101  (incremental Q3 underpayment of $2,169)
-       [Note: cumulative Q3 underpayment is $2,487, of which $318 was already accruing
-        from Q2; only the incremental $2,169 starts accruing from Q3]
-  Q4: $1,713 × 8% × (90/365) = $34
-  Total ≈ $156
+Penalty (0.07, each underpayment unpaid until April 15, 2026):
+  (a) $0
+  (b) $762.75 × 0.07 × 304/365   = $44.47
+  (c) $2,406.00 × 0.07 × 212/365 = $97.82
+  (d) $1,056.25 × 0.07 × 90/365  = $18.23
+  Total ≈ $160.52
 ```
 
-But wait — the cumulative-vs-incremental distinction matters here. Form 2210's actual worksheet computes the penalty on the *cumulative* underpayment outstanding from each due date, with payments allocated forward. Let me redo:
-
-```
-Q1: cumulative underpayment $0 outstanding 365 days → $0 penalty
-Q2: cumulative underpayment $318 outstanding 304 days × 8% = $21
-Q3: cumulative underpayment $2,487 outstanding 213 days × 8% = $116
-    But $318 of that was already accruing from Q2. So:
-    - Q2 portion ($318) continues from Q2; total days from 6/15 to 4/15 = 304 days, $21
-    - New Q3 portion ($2,169) accrues from 9/15: 213 days × 8% = $101
-Q4: cumulative underpayment $4,200 outstanding 90 days
-    - Q2 portion ($318) continues; from 6/15 to 4/15 = 304 days = $21
-    - Q3 portion ($2,169) continues; from 9/15 to 4/15 = 213 days = $101
-    - New Q4 portion ($1,713) accrues from 1/15: 90 days × 8% = $34
-
-Total penalty ≈ $21 + $101 + $34 = $156
-```
-
-(The exact math depends on the worksheet structure in the current Form 2210 instructions; this is illustrative. Verify with actual current-year worksheet.)
-
-**Schedule AI penalty: ~$156** vs. **regular method: ~$224**. Schedule AI saves ~$68.
+**Schedule AI penalty: ~$161** vs. **regular method: ~$197**. Schedule AI saves ~$36.
 
 ## The completed Form 2210 draft
 
@@ -236,89 +181,88 @@ Total penalty ≈ $21 + $101 + $34 = $156
 
 ## Filing decision
 - [x] File Form 2210 with Schedule AI (annualized income installment method)
-  Reason: Q4-concentrated income; Schedule AI saves ~$68 vs. regular method.
+  Reason: Q4-concentrated income; Schedule AI saves ~$36 vs. regular method.
 
 ## Header
 Name(s) shown on return:    Riley Andersen
-Your SSN:                   XXX-XX-XXXX
+Identifying number:         XXX-XX-XXXX
 Filing status:              Single
-Prior-year AGI:             $25,000  → safe-harbor multiplier: 100%
+Prior-year AGI:             $23,234  → safe-harbor multiplier: 100%
 
 ## Part I — Required Annual Payment
-1. Current-year total tax:                          $26,080
-4. Subtotal (after worksheet):                      $26,080
-5. Line 4 × 90%:                                    $23,472
-6. Current-year withholding:                        $0
-7. Line 5 − Line 6:                                 $23,472  (> $1,000)
-8. Prior-year tax × 100%:                           $4,200
-9. Required annual payment (smaller of 5 or 8):     $4,200
+1. Form 1040 line 22:                               $8,494
+2. Other taxes (Schedule 2 line 4, SE tax):         $14,130
+3. (Refundable credits):                            $0
+4. Current-year tax:                                $22,624
+5. Line 4 × 90%:                                    $20,362
+6. Withholding:                                     $0
+7. Line 4 − Line 6:                                 $22,624  (not less than $1,000)
+8. Prior-year tax × 100%:                           $4,225
+9. Required annual payment (smaller of 5 or 8):     $4,225
 
-## Part II — Waivers
-- [x] No waiver
-(Box for Schedule AI checked separately per Part III instructions)
+## Part II — Reasons for Filing
+- [x] Box C: annualized income installment method
+- [ ] Boxes A, B, D, E
 
-## Schedule AI — Annualized Income Installment Method
+## Schedule AI — Annualized Income Installment Method (Part I summary)
 
-| Quarter | Cumulative AGI | Factor | Annualized AGI | Annualized total tax | De-annualized | Cumulative % | Required cumulative installment |
-|---------|----------------|--------|----------------|---------------------|---------------|--------------|-------------------------------|
-| (a) Q1  | $0             | 4      | $0             | $0                  | $0            | 22.5%        | $0                            |
-| (b) Q2  | $5,000         | 2.4    | $12,000        | $1,696              | $707          | 45%          | $318                          |
-| (c) Q3  | $20,000        | 1.5    | $30,000        | $5,527              | $3,685        | 67.5%        | $2,487                        |
-| (d) Q4  | $100,000       | 1      | $100,000       | $26,080             | $26,080       | 90%          | $23,472                       |
+| Line | (a) | (b) | (c) | (d) |
+|------|-----|-----|-----|-----|
+| 1 AGI for the period | $0 | $4,647 | $18,587 | $92,935 |
+| 3 Annualized income | $0 | $11,153 | $27,881 | $92,935 |
+| 8 Standard deduction | $15,750 | $15,750 | $15,750 | $15,750 |
+| 9 QBI deduction | $0 | $0 | $2,426 | $15,437 |
+| 13 Taxable income | $0 | $0 | $9,705 | $61,748 |
+| 14 Tax | $0 | $0 | $973 | $8,494 |
+| 15 SE tax (Part II line 36) | $0 | $1,695 | $4,238 | $14,129 |
+| 17 Total tax | $0 | $1,695 | $5,211 | $22,623 |
+| 21 × 22.5% / 45% / 67.5% / 90% | $0 | $762.75 | $3,517.43 | $20,360.70 |
+| 23 | $0 | $762.75 | $2,754.68 | $17,191.95 |
+| 26 | $1,056.25 | $2,112.50 | $2,406.00 | $1,056.25 |
+| 27 → Part III line 10 | $0 | $762.75 | $2,406.00 | $1,056.25 |
 
-## Comparison: Schedule AI vs. Regular method (smaller per quarter applies)
+## Part III — Underpayment and penalty
 
-| Quarter | Schedule AI | Regular method | Smaller (applied) | Underpayment |
-|---------|-------------|----------------|-------------------|--------------|
-| Q1      | $0          | $1,050         | $0                | $0           |
-| Q2      | $318        | $2,100         | $318              | $318         |
-| Q3      | $2,487      | $3,150         | $2,487            | $2,487       |
-| Q4      | $23,472     | $4,200         | $4,200            | $4,200       |
-
-## Penalty computation
-
-| Underpayment portion | Source | Days outstanding | Rate | Penalty |
-|----------------------|--------|------------------|------|---------|
-| $318 (Q2)            | new Q2 | 304 (6/15→4/15)  | 8%   | $21     |
-| $2,169 (Q3 incremental) | new Q3 | 213 (9/15→4/15) | 8%   | $101    |
-| $1,713 (Q4 incremental) | new Q4 | 90 (1/15→4/15)  | 8%   | $34     |
-| **Total**            |        |                  |      | **~$156** |
-
-(Exact penalty depends on current-year rate table; verify against Form 2210 instructions.)
+| Column | Line 10 | Line 11 | Line 17 | Paid on | Days | Rate | Penalty |
+|--------|---------|---------|---------|---------|------|------|---------|
+| (a) 4/15/25 | $0 | $0 | $0 | — | — | 7% | $0 |
+| (b) 6/15/25 | $762.75 | $0 | $762.75 | 4/15/26 | 304 | 7% | $44.47 |
+| (c) 9/15/25 | $2,406.00 | $0 | $2,406.00 | 4/15/26 | 212 | 7% | $97.82 |
+| (d) 1/15/26 | $1,056.25 | $0 | $1,056.25 | 4/15/26 | 90 | 7% | $18.23 |
+| **Line 19** | | | | | | | **$160.52** |
 
 ## Validation summary
-- Math: all checks passed (using illustrative 8% rate; verify against current Form 2210 rate table)
+- Math: all checks passed (2025 worksheet rate 0.07 in every rate period)
 - Sanity:
-  - Income materially back-loaded: Schedule AI is appropriate (Q4 = 80% of annual income)
-  - Prior-year safe harbor $4,200 caps Q4 cumulative requirement at $4,200 — Schedule AI's column (d) of $23,472 doesn't apply because the regular method's $4,200 is smaller
-  - Penalty ~$156 with Schedule AI vs. ~$224 with regular method (savings ~$68)
-- Filing decision: file Form 2210 with Schedule AI
-- Penalty: ~$156
+  - Income materially back-loaded: Schedule AI is appropriate (Sep–Dec = 80% of annual income)
+  - Column (d) line 21 ($20,360.70) exceeds line 26 ($1,056.25), so line 27 keeps the regular amount
+  - Penalty ~$161 with Schedule AI vs. ~$197 with regular method (savings ~$36)
+- Filing decision: file Form 2210 with Schedule AI (box C)
+- Penalty: ~$161
 - Next steps:
-  - Form 1040 Line 38: $156 (rounded to whole dollar)
-  - For 2026: file quarterly estimates. With prior-year tax now $26,080, prior-year safe harbor next year requires either $26,080 × 100% (assuming AGI ≤ $150K) = $26,080 across four quarters or $6,520/quarter. Recommend Riley start Form 1040-ES quarterly payments at $6,520 each.
-  - Alternative if Riley expects 2026 income similar to 2025: 90% × $26,080 = $23,472 / 4 = $5,868 per quarter
+  - Form 1040 line 38: $161 (rounded to whole dollar), added to the balance due on line 37
+  - For 2026: 100% of 2025 tax ($22,624; 2025 AGI $92,935 ≤ $150,000) = $5,656 per quarter on Form 1040-ES locks in the prior-year safe harbor. If 2026 income will be lower, figure 90% of projected 2026 tax on the 2026 Form 1040-ES worksheet instead.
 
 ## Sources cited in this draft
-- IRS Form 2210, Rev. 2025
-- IRS Instructions for Form 2210, Rev. 2025
+- IRS Form 2210 (2025), including Schedule AI
+- IRS Instructions for Form 2210 (2025, Feb 17, 2026), penalty worksheet and Table 2
 - IRC §6654(d)(2) — Annualized income installment method
 - IRC §6654(d)(1)(B) — 100% prior-year safe harbor (applied because prior AGI ≤ $150K)
-- IRC §6621 — Penalty rate (8% used illustratively; verify against current Form 2210 rate table)
+- IRC §6621 — Penalty rate (7% for all 2025 rate periods)
 - IRC §6654(g)(1) — Withholding allocated equally across quarters (not relevant here; withholding = $0)
-- Schedule AI worksheet, current-year Form 2210 instructions
+- 2025 Form 1040 (standard deduction), 2025 Schedule SE
 ```
 
 ## Why each non-obvious choice
 
-**Why does Schedule AI's column (d) show $23,472 but the actual Q4 required installment is only $4,200?** Schedule AI computes the *cumulative* required installment for each column based on annualized current-year tax × cumulative percentage. Column (d) uses 90% × current-year total tax = $23,472. But the filer's required *annual* payment (Form 2210 Line 9) was capped at $4,200 by the prior-year safe harbor. The per-quarter rule is "smaller of Schedule AI cumulative or regular method cumulative" — so for Q4, the regular method's $4,200 caps the requirement.
+**Why does Schedule AI's column (d) show $20,360.70 on line 21 but the actual column (d) installment is only $1,056.25?** Line 21 is the annualized tax × 90% for the whole year. But the filer's required *annual* payment (Form 2210 line 9) was capped at $4,225 by the prior-year safe harbor, and line 24 puts 25% of that ($1,056.25) into each column's regular installment. Line 27 takes the smaller of the annualized amount (line 23) and the regular amount plus carried savings (line 26), so for column (d) the regular amount controls.
 
-**Why does Schedule AI help here?** Riley earned $0 in Q1, so Schedule AI's Q1 required installment is $0 (vs. regular method's $1,050). The savings from Q1 dwarfed by Q2/Q3 savings. The cumulative effect: Schedule AI removes the early-quarter penalty accrual that would otherwise apply against the $1,050 Q1 installment that Riley couldn't have paid (had no income to pay from).
+**Why does Schedule AI help here?** Riley earned $0 in Q1, so Schedule AI's column (a) installment is $0 (vs. regular method's $1,056.25). Columns (a) and (b) push $1,349.75 of the requirement to the September 15 column, where it accrues for 212 days instead of 365 or 304. The saving is limited because the regular installments are small to begin with.
 
-**Why doesn't the prior-year safe harbor save Riley entirely?** The prior-year safe harbor only saves the filer if they actually pre-paid the required annual amount. Riley paid $0 in withholding and $0 in estimates. So even though the required annual payment is only $4,200, Riley owes penalty on the unpaid quarterly installments.
+**Why doesn't the prior-year safe harbor save Riley entirely?** The prior-year safe harbor only saves the filer if they actually pre-paid the required annual amount. Riley paid $0 in withholding and $0 in estimates. So even though the required annual payment is only $4,225, Riley owes penalty on the unpaid installments.
 
-**What about the first-year exception?** Doesn't apply because Riley had $4,200 of prior-year tax. The exception requires literally zero.
+**What about the no-prior-year-liability exception?** Doesn't apply because Riley had $4,225 of prior-year tax. The exception requires literally zero.
 
-**What's the planning recommendation for 2026?** Riley should file quarterly Form 1040-ES estimates of $6,520 each (covering 100% of 2025's tax, locking in the prior-year safe harbor). If 2026 income drops back down, he can reduce mid-year. The key is getting *something* paid in each quarter to avoid the same penalty pattern.
+**What's the planning recommendation for 2026?** Riley should pay quarterly Form 1040-ES estimates of $5,656 each (100% of 2025's tax, locking in the prior-year safe harbor). If 2026 income drops back down, he can reduce mid-year using the 90% current-year figure, at the cost of certainty. The key is getting *something* paid in each quarter to avoid the same penalty pattern.
 
-**What audit defense does Riley have?** Schedule C with full income/expense documentation (invoices, bank statements showing the Q4 deposit, etc.); Schedule SE flowing correctly; Schedule AI requires quarter-by-quarter income documentation, which Riley has from his accounting records. The $156 penalty appears on Form 1040 Line 38; Riley pays it with the return.
+**What audit defense does Riley have?** Schedule C with full income/expense documentation (invoices, bank statements showing the Q4 deposit, etc.); Schedule SE flowing correctly; Schedule AI requires income documentation for each period, which Riley has from his accounting records. The $161 penalty appears on Form 1040 line 38; Riley pays it with the return.

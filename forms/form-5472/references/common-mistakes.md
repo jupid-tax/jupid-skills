@@ -22,11 +22,16 @@ DE that's been operating 4 years without filing, that's $100,000.
 Penalties apply per related party — most foreign-owned DEs have one
 foreign owner = one penalty per year.
 
-**Fix**: File pro-forma 1120 + Form 5472 for every open year (typically
-the 6 most recent years; the IRS can go back further if there's
-fraud). Attach a reasonable cause statement to each year's filing
-explaining the discovery. The IRS may abate some or all penalties if
-the user acts promptly upon discovery.
+**Fix**: File pro-forma 1120 + Form 5472 for every missed year that
+had reportable transactions. Missed years do not age out: the
+assessment period for a §6038A failure does not end until 3 years
+after the information is furnished (IRC §6501(c)(8)). Attach a
+reasonable cause statement to each year's filing explaining the
+discovery. Per the IRS "Delinquent international information return
+submission procedures" page, penalties may be assessed without
+considering the attached statement, and the user may have to respond
+to IRS correspondence with the reasonable cause facts again. A CPA
+decides the remediation path.
 
 ---
 
@@ -59,11 +64,12 @@ all corporate returns are e-fileable.
 **Consequence**: E-file rejection, or the software refuses to start.
 Some software lets the user fill the 1120 but then errors at submission.
 
-**Fix**: Type 3 DE filings are paper only. Print the package, sign,
-fax to 855-887-7737 OR mail to the Ogden address (verify against
-current Form 5472 instructions). Type 1 (US C-corp with 1120) and
-Type 2 (foreign corp with 1120-F) ARE e-fileable through most major
-tax software.
+**Fix**: A foreign-owned DE "cannot file Form 5472 electronically"
+(Instructions for Form 5472, Rev. December 2024). Print the package,
+sign, fax to 855-887-7737 (300 DPI or higher) OR mail to Internal
+Revenue Service, 1973 Rulon White Blvd, M/S 6112 Attn: PIN Unit,
+Ogden, UT 84201. Type 1 (US C-corp with 1120) and Type 2 (foreign
+corp with 1120-F) ARE e-fileable through most major tax software.
 
 ---
 
@@ -81,9 +87,10 @@ reportable transaction for Form 5472 purposes.
 **Consequence**: IRS notice questioning the $0 filing; possible
 $25,000 penalty if the IRS deems the filing materially incomplete.
 
-**Fix**: Always report the formation contribution in Part V of the
-Year 1 Form 5472 as "Capital contribution received from foreign owner".
-Include the amount and date.
+**Fix**: Always check Part V of the Year 1 Form 5472 and describe the
+formation contribution in the attached statement ("Capital
+contribution received from foreign owner"), with the amount and date
+(Treas. Reg. §1.6038A-2(b)(3)(xi)).
 
 ---
 
@@ -108,39 +115,45 @@ escalate; civil fraud penalty (75%) possible.
 - Services performed by owner for the DE without billing
 - Loans between owner and DE
 - Reimbursements
-- Even small flows ($500 contribution) are reportable
+- Even small flows ($500 contribution) are reportable (the "$50,000 or
+  less" entry in the instructions is a way to report small amounts,
+  not an exemption)
 
 If the only activity is third-party (e.g., the LLC sold goods to
 unrelated US customers and used the funds to buy inventory from
 unrelated suppliers), there may be no related-party transactions in a
-given year — but every year has the formation contribution to report
-in Year 1, and most years have at least some owner contribution or
-distribution.
+given year, and then no Form 5472 is required for that year
+(Instructions for Form 5472, Exceptions from filing, item 1). Year 1
+has the formation contribution to report, and most years have at least
+some owner contribution, owner-paid fee, or distribution.
 
 ---
 
 ## 6. Wrong related party identified
 
 **The mistake**: User has a complex ownership structure (e.g., DE is
-owned by a foreign trust, which is owned by a foreign corporation).
-They file 5472 listing the trust as the related party but not the
-ultimate foreign individual.
+owned by a foreign holding company, which is owned by a foreign
+individual). They list only the holding company in Part II and leave
+the ultimate foreign individual off.
 
 **Why it happens**: The form asks for "25% foreign shareholder" and
 the user picks the most immediate level.
 
-**Consequence**: The IRS expects the **ultimate** 25%+ foreign owner
-to be identified, plus all intermediate owners. Missing the ultimate
-results in incomplete filing; missing intermediate is also incomplete.
+**Consequence**: Part II asks for both the direct 25% foreign
+shareholders (lines 4–5) and the ultimate indirect 25% foreign
+shareholders (lines 6–7). Leaving the ultimate owner off makes the
+form incomplete, and a substantially incomplete Form 5472 counts as a
+failure to file.
 
-**Fix**: For any chain of ownership, file separate Form 5472s for:
-- The direct owner (Part II identifies them)
-- Each intermediate (Part II identifies them in turn)
-- The ultimate beneficial owner (Part II identifies the human
-  individual at the top)
+**Fix**: On every Form 5472 for the reporting corporation:
+- Lines 4a–4e (and 5a–5e): the direct 25% foreign shareholder(s)
+- Lines 6a–6e (and 7a–7e): the ultimate indirect 25% foreign
+  shareholder(s), with an attached explanation of the attribution
+  (Instructions for Form 5472, Lines 6a–6e and 7a–7e)
+- Part III: the related party this particular form covers
 
-For each, Part III names the next level up (or "Same as Part II" if
-direct).
+File a separate Form 5472 for each related party with which there were
+reportable transactions, not one per level of the chain.
 
 ---
 
@@ -156,10 +169,12 @@ addresses; user assumes the same applies to Form 5472.
 timing slips. If the forwarded filing arrives at Ogden after April 15,
 the IRS may treat as late and impose $25,000 penalty.
 
-**Fix**: Pro-forma 1120 + 5472 goes to the specific Ogden address in
-Form 5472 instructions, OR is faxed to the dedicated number
-(855-887-7737, verify against current instructions). Do NOT send to
-state service center; do NOT bundle with 1040.
+**Fix**: Pro-forma 1120 + 5472 goes to the dedicated address in the
+Form 5472 instructions (Internal Revenue Service, 1973 Rulon White
+Blvd, M/S 6112 Attn: PIN Unit, Ogden, UT 84201), OR is faxed to
+855-887-7737. "These filers do not use the mailing address provided in
+the Instructions for Form 1120." Do NOT send to the regular service
+center; do NOT bundle with 1040 or 1040-NR.
 
 ---
 
@@ -169,13 +184,11 @@ state service center; do NOT bundle with 1040.
 and sold $1M of inventory to foreign parent. User reports "$4M net" on
 the inventory line.
 
-**Consequence**: Form 5472 instructions explicitly require gross flows
-in each direction. Reporting net misstates the line and may trigger
-inquiry.
+**Consequence**: Form 5472 has separate lines for sales and purchases
+(line 9 sales of stock in trade, line 23 purchases of stock in trade).
+Reporting net misstates both lines and may trigger inquiry.
 
-**Fix**: Report $1M in "amounts received from related party" column
-and $5M in "amounts paid to related party" column on the inventory
-sales line. Don't net.
+**Fix**: Report $1M on line 9 and $5M on line 23. Don't net.
 
 ---
 
@@ -206,10 +219,9 @@ late without attaching a reasonable cause statement.
 **Why it happens**: User hopes the IRS won't notice or won't penalize.
 
 **Consequence**: IRS does notice (the filing is logged with date
-stamp). $25,000 penalty assessed automatically. Without an
-already-attached reasonable cause statement, the user has to
-respond to the penalty notice within 30 days, slowing the
-abatement process.
+stamp). $25,000 penalty may be assessed. Without an already-attached
+reasonable cause statement, the user has to respond to the penalty
+notice by the deadline it gives, slowing the abatement process.
 
 **Fix**: Attach a written reasonable cause statement to any late
 filing. Cover:
@@ -218,8 +230,10 @@ filing. Cover:
 - Specific facts and circumstances justifying the late filing
 - Affirmation under penalty of perjury
 
-The First-Time Abate program does NOT apply to §6038A penalties.
-Reasonable cause is the only path.
+The First-Time Abate program generally does NOT apply: IRM
+20.1.1.3.3.2.1 lists Form 5472 among returns where FTA relief is not
+applicable (pointing to IRM 20.1.9 for an exception). Reasonable cause
+(§6038A(d)(3); Treas. Reg. §1.6038A-4(b)) is the normal path.
 
 ---
 
@@ -244,8 +258,10 @@ filing applies regardless of office presence; it's about ownership
 structure, not US ECI.
 
 Whether the DE has US ECI (and thus the foreign owner has 1040-NR or
-1120-F filing duty) is a separate question. The 5472 filing duty is
-universal for foreign-owned DEs.
+1120-F filing duty) is a separate question. The 5472 filing duty
+applies to every foreign-owned DE in each year it has a reportable
+transaction with a related party, wherever its business is
+conducted.
 
 ### 14. Filing 5472 instead of 5471
 
@@ -264,19 +280,24 @@ If a foreign trust owns 100% of a US LLC, the LLC is a foreign-owned US
 DE under §301.7701-2(c)(2)(vi). The trust is the foreign owner. Form
 5472 + pro-forma 1120 required, with the trust identified in Part II.
 
-The trust separately may have Form 3520-A obligations if it has US
-beneficiaries. Coordinate with the [`form-3520`](../../form-3520/) skill.
+Separately, a foreign trust treated as owned by a US person files Form
+3520-A, and US persons who receive distributions from a foreign trust
+report them on Form 3520. Coordinate with the
+[`form-3520`](../../form-3520/) skill.
 
 ### 16. Calendar vs fiscal year confusion
 
 A US C-corp can have a fiscal year. Form 5472 follows the C-corp's tax
-year, not the calendar year. Foreign-owned DEs default to calendar year
-unless an election was made on Form 1128.
+year, not the calendar year. A foreign-owned DE uses the tax year its
+owner uses for US tax filing requirements or, if the owner has none,
+the calendar year (Instructions for Form 5472, When and Where To
+File).
 
 ### 17. Reporting amounts in foreign currency
 
-Form 5472 amounts must be in USD. Translate per ASC 830 or per the
-Treasury yearly average rate. Document the source. Reporting in EUR or
+Form 5472 amounts must be in USD, with a schedule showing the exchange
+rates used attached (Instructions for Form 5472, Part IV). Document the
+source. Reporting in EUR or
 GBP is wrong even if the underlying transactions were in those
 currencies.
 
@@ -289,14 +310,18 @@ document why penalties shouldn't apply.
 
 ### 19. Reusing same reference ID for different related parties
 
-The reference ID number on Line 2c is unique per related party. Reusing
-the same ID for two different parties confuses IRS systems. Generate a
-unique ID for each related party (often the foreign tax ID + a suffix,
-or a sequential number).
+The reference ID number (lines 4b(2)–7b(2) and 8b(2)) is unique per
+foreign person and must be used consistently from year to year; a
+retired reference ID cannot be reused for another person. It must be
+alphanumeric, with no spaces or special characters, up to 50
+characters (Instructions for Form 5472, Reference ID number).
 
 ### 20. Incomplete Part VII attestations
 
-Part VII has Yes/No questions about the relationship and US tax
-positions. Skipping these or marking everything "No" without thinking
-triggers IRS review. Read each question against the user's facts and
-answer truthfully.
+Part VII (lines 37–43) must be completed by all reporting
+corporations: imports and customs value, CSA participation, §267A
+disallowed interest or royalties, FDII amounts, loans inside or outside
+the AFR safe-haven range, and §385 covered debt (lines 43a–43b are not
+completed by a foreign-owned DE). Skipping these or marking everything
+"No" without thinking can make the form incomplete. Ask each question
+against the user's facts.

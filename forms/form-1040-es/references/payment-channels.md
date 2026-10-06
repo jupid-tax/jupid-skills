@@ -50,12 +50,14 @@ URL: https://www.eftps.gov
 
 ## 3. Pay by Card (debit or credit)
 
-The IRS authorizes third-party processors to accept card payments. As of early 2026 the authorized processors are listed at https://www.irs.gov/payments/pay-your-taxes-by-debit-or-credit-card. Verify the current list each year — it changes.
+The IRS authorizes third-party processors to accept card and digital-wallet payments, listed at https://www.irs.gov/payments/pay-your-taxes-by-debit-or-credit-card. Verify the current list each year — it changes.
 
 | Processor | Debit fee | Credit fee | Notes |
 |-----------|-----------|------------|-------|
-| Pay1040 | $2.50 flat | 1.75% | Lowest credit fee at time of writing |
-| ACI Payments | $2.20 flat | 1.85% | |
+| Pay1040 (Link2Gov) | $2.15 | 1.75% ($2.50 minimum) | PayPal, Click-to-pay |
+| ACI Payments | $2.10 | 1.85% ($2.50 minimum) | PayPal, Venmo, Click-to-Pay |
+
+(Fees per the IRS card-payment page as of 2026-10-06.)
 
 (Both fees and processors change. Always verify current values.)
 
@@ -79,13 +81,13 @@ The IRS authorizes third-party processors to accept card payments. As of early 2
 
 When all electronic options fail or the user prefers paper:
 
-1. Print the appropriate voucher from page 9–12 of the latest f1040es.pdf
+1. Print the appropriate voucher from the last pages of the latest f1040es.pdf (vouchers 4 through 1)
 2. Fill in: filer name, SSN, spouse name + SSN if MFJ, address, payment amount
 3. Write a check payable to "United States Treasury"
 4. Memo line: "2026 Form 1040-ES" + filer's SSN
 5. Mail to the IRS address listed on the voucher's instructions (varies by state)
 
-**Mailing addresses**: re-verify each year from the official PDF — the IRS shifts addresses between processing centers. Do NOT hardcode.
+**Mailing addresses**: for 2026, P.O. Box 1300, Charlotte, NC 28201-1300 or P.O. Box 931100, Louisville, KY 40293-1100 depending on state of residence (P.O. Box 1303, Charlotte, NC 28201-1303 for foreign / territory / APO-FPO filers) — 2026 Form 1040-ES, "Where To File Your Estimated Tax Payment Voucher". Re-verify each year from the official PDF; the IRS shifts addresses between processing centers. Only the USPS delivers to P.O. boxes.
 
 **Best practices**:
 - USPS Certified Mail with Return Receipt for proof under IRC §7502 (timely mailing = timely filing)

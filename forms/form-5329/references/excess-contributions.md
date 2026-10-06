@@ -15,9 +15,9 @@ mechanics of computing the 6% tax on the form.
 ### Traditional IRA (Part III)
 
 Limit per filer per year is the lesser of:
-- The contribution dollar limit for the year (verify against most recent
-  IRS notice — Notice 2024-80 set the 2025 limit at $7,000 ($8,000 if
-  age 50+); 2026 limits announced fall 2025)
+- The contribution dollar limit for the year: $7,000 for 2025 ($8,000 if
+  age 50+, Notice 2024-80); $7,500 for 2026 ($8,600 if age 50+, catch-up
+  $1,100, Notice 2025-67)
 - The user's earned income for the year (compensation; for spouse, can use
   the working spouse's income)
 
@@ -37,9 +37,11 @@ modified adjusted gross income (MAGI). For 2025 (per Notice 2024-80):
 - Single / HoH: phaseout $150,000 - $165,000 MAGI; no contribution above
   $165,000
 - MFJ: phaseout $236,000 - $246,000 MAGI; no contribution above $246,000
-- MFS: phaseout $0 - $10,000 MAGI
+- MFS who lived with the spouse at any time in the year: phaseout $0 -
+  $10,000 MAGI (MFS who did not live with the spouse use the single range)
 
-Verify 2026 phaseouts before filing.
+For 2026 (Notice 2025-67): single / HoH $153,000 - $168,000; MFJ
+$242,000 - $252,000; MFS (lived with spouse) $0 - $10,000.
 
 Common causes:
 - User contributed early in the year, then their MAGI rose past the
@@ -59,12 +61,13 @@ Limits depend on HDHP coverage type. For 2025 (Rev. Proc. 2024-25):
 - Family: $8,550
 - Age 55+ catch-up: additional $1,000
 
-For 2026 — verify against Rev. Proc. 2025-XX (issued spring 2025).
+For 2026 (Rev. Proc. 2025-19): self-only $4,400; family $8,750; age 55+
+catch-up still $1,000.
 
 ### ABLE (Part VIII)
 
-Federal annual gift tax exclusion ($18,000 for 2024, $19,000 for 2025;
-verify 2026), plus an ABLE-to-Work additional contribution if the
+Federal annual gift tax exclusion ($18,000 for 2024, $19,000 for 2025 and
+2026 per Rev. Procs. 2024-40 and 2025-32), plus an ABLE-to-Work additional contribution if the
 beneficiary is employed and not contributing to a 401(k)/403(b)/457(b).
 
 ---
@@ -82,14 +85,21 @@ The cleanest correction. The user contacts the custodian and requests a
 
 **Effects**:
 - No 6% excise tax for the year
-- The earnings (NIA) are taxable in the year of contribution
-- If user is under 59½, the earnings are subject to Part I 10% additional
-  tax
+- IRAs: the earnings (NIA) are taxable for the year the excess
+  contribution was made (Pub. 590-A (2025)). HSAs: the earnings are other
+  income for the year withdrawn (2025 Instructions for Form 8889, Line 13)
+- If user is under 59½, the IRA earnings go on Part I Line 1 **and** on
+  Line 2 with exception 21, so no 10% additional tax for corrective
+  distributions made on or after December 29, 2022 (2025 Instructions for
+  Form 5329, Lines 15 and 23; Pub. 590-B (2025), Reminders)
 - For Roth IRAs: the principal portion comes out tax-free; only the
   earnings portion is taxed
 
 **Deadline**: the user's tax filing deadline including extensions (October
-15 for most filers).
+15 for most filers). A user who filed on time without withdrawing can still
+withdraw within 6 months of the due date excluding extensions and file an
+amended return marked "Filed pursuant to section 301.9100-2" (2025
+Instructions for Form 5329, Lines 15 and 23).
 
 ### Option 2 — Recharacterization (Roth → traditional or vice versa)
 
@@ -122,8 +132,9 @@ When the alternatives are worse:
 - The user expects to be back below MAGI next year and the excess is small
 - The earnings would push the user into a higher tax bracket if returned
 
-The 6% is the lesser of (excess) or (6% of account value 12/31). For a
-$5,000 excess in an account worth $50,000 at year-end, the tax is $300.
+The 6% applies to the lesser of the excess or the account value on 12/31.
+For a $5,000 excess in an account worth $50,000 at year-end, the tax is
+$300.
 
 ---
 
@@ -179,11 +190,11 @@ the earnings withdrawal triggers other costs.
 1. **High-earner who contributed $7,000 to a Roth in January, got a
    year-end bonus pushing MAGI over the phaseout, and didn't realize
    until preparing the return.** Standard correction: withdraw excess +
-   NIA before April 15 (or extension). The agent should check Roth
+   NIA by the due date of the return including extensions. The agent should check Roth
    eligibility *every* year for users whose income is volatile.
 
 2. **Couple filing MFS who each contributed to a Roth.** MFS Roth
-   phaseout is $0-$10,000. If MAGI > $10,000 and either spouse contributed
+   phaseout is $0-$10,000 if they lived together at any time in the year. If MAGI > $10,000 and either spouse contributed
    to Roth, that contribution is fully ineligible. Almost always the
    biggest "I didn't know" excess case.
 

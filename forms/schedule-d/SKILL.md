@@ -213,7 +213,7 @@ State the next forms the user will need:
 
 ### Step 12 — File the return (optional)
 
-If the user authorizes filing, follow [`filing.md`](./filing.md) for the browser-automation playbook covering FFFF, IRS Direct File, paid software, and paper-filing options.
+If the user authorizes filing, follow [`filing.md`](./filing.md) for the browser-automation playbook covering FFFF, paid software, and paper-filing options.
 
 ---
 
@@ -432,7 +432,7 @@ Loaded on demand based on what the user's situation needs.
 - [`references/niit.md`](./references/niit.md) — IRC §1411: 3.8% NIIT computation on Form 8960, MAGI thresholds, what counts as net investment income
 - [`references/special-rates.md`](./references/special-rates.md) — 28% collectibles rate, 25% §1250 unrecaptured gain, §1202 QSBS exclusion mechanics
 - [`references/common-mistakes.md`](./references/common-mistakes.md) — 8-10 mistakes filers make and how the skill avoids them
-- [`filing.md`](./filing.md) — Browser-automation playbook for filing Schedule D + Form 8949 via FFFF, IRS Direct File, paid software, or paper
+- [`filing.md`](./filing.md) — Browser-automation playbook for filing Schedule D + Form 8949 via FFFF, paid software, or paper
 
 ## Examples
 

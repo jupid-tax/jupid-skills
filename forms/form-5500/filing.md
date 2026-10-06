@@ -4,7 +4,7 @@ How an agent equipped with browser tooling (Playwright, Puppeteer, Selenium, Bro
 
 The agent must produce a complete `SKILL.md`-format draft *first*, then pick a filing channel from the decision tree, then execute channel-specific steps.
 
-**Key difference from individual / employer tax forms**: Form 5500 / 5500-SF is filed with the **DOL via EFAST2** (Employee Benefits Security Administration's electronic filing system), not with the IRS. The data is shared among DOL, IRS, and PBGC. Form 5500-EZ is filed with the **IRS** — paper or, since plan year 2020, optional electronic filing via the IRS portal.
+**Key difference from individual / employer tax forms**: Form 5500 / 5500-SF is filed with the **DOL via EFAST2** (Employee Benefits Security Administration's electronic filing system), not with the IRS. The data is shared among DOL, IRS, and PBGC. Form 5500-EZ is filed with the **IRS** on paper, or electronically through EFAST2 (plan years beginning after 2019). For plan years beginning on or after January 1, 2025, EFAST2 is mandatory for a filer required to file at least 10 returns of any type with the IRS during the calendar year (2025 Form 5500-EZ instructions; Treas. Reg. §301.6058-2).
 
 ---
 
@@ -13,15 +13,17 @@ The agent must produce a complete `SKILL.md`-format draft *first*, then pick a f
 ```
 Form variant?
   → Form 5500 (full) or 5500-SF
-    Channel: EFAST2 (electronic only — paper rejected for 5500/5500-SF since 2010)
+    Channel: EFAST2 only (both forms must be filed electronically, 2025 instructions)
     Use Section 1 below.
 
-  → Form 5500-EZ (one-participant plan)
-    Channel options:
-      a) Paper-mail to IRS Ogden — traditional, reliable
-      b) Electronic via EFAST2 (5500-EZ option launched 2021)
-    User picks; default to paper for first-time filers (less credentialing overhead).
-    Use Section 2 (paper) or Section 3 (5500-EZ via EFAST2).
+  → Form 5500-EZ (one-participant plan or foreign plan)
+    Ask: how many returns of any type (W-2s, 1099s, income, employment, excise tax returns)
+         must the filer file with the IRS in the calendar year that includes the first day of the plan year?
+      10 or more → EFAST2 required (a paper return is treated as not filed). Use Section 3.
+      Fewer than 10 → user picks:
+        a) Paper to the IRS in Ogden. Use Section 2.
+        b) EFAST2. Use Section 3.
+    Late return under the IRS Late Filer Penalty Relief Program (Rev. Proc. 2015-32) → paper only, Section 6.
 
 Is the filer represented by a TPA (third-party administrator) or recordkeeper?
   → TPA files via EFAST2 with their own credentials
@@ -35,7 +37,7 @@ Is the filer represented by a TPA (third-party administrator) or recordkeeper?
 
 URL: https://www.efast.dol.gov
 
-EFAST2 (ERISA Filing Acceptance System) is the DOL's electronic filing portal. It's been the **only** way to file 5500 / 5500-SF since plan year 2009.
+EFAST2 (ERISA Filing Acceptance System) is the DOL's electronic filing portal and the required channel for Form 5500 and Form 5500-SF.
 
 ### Pre-flight
 
@@ -51,24 +53,23 @@ Agent must have:
 
 ### EFAST2 credential setup
 
-EFAST2 has two credential types:
+Sign-in to EFAST2 is through Login.gov (email, password, two-factor authentication). After the Login.gov sign-in, each person registers an EFAST2 profile, picks user types, and receives a User ID and a 4-digit PIN on the confirmation page; there is no postal-mail step (EFAST2 Guide for Filers and Service Providers, v4.0, Dec. 2, 2024).
 
-1. **Signer credentials** — the plan administrator (or designated signer) needs these to sign the filing. Apply at https://www.efast.dol.gov via the "Register" button. Receive a "User ID" and "PIN" by email + postal mail.
-2. **Filer credentials** — the person submitting the form. Often same as signer, or could be a TPA / agent.
+1. **Filing Signer** — the plan administrator (or employer/plan sponsor, or an authorized service provider under the written-authorization option). User ID + PIN are the electronic signature.
+2. **Filing Author** — the person who prepares and submits the filing in IFILE. Often the same person as the signer, or a TPA.
+3. **Transmitter** — needed only when submitting through third-party software.
 
-If credentials don't exist:
-- Apply for signer credentials **at least 2 weeks before filing**. The PIN is mailed via USPS to verify identity.
-- Filer credentials are issued faster (online).
+If credentials don't exist, the user registers personally; the agent never registers on the user's behalf and never handles the user's Login.gov second factor.
 
 ### Browser flow
 
-The agent navigates and interacts deterministically. EFAST2 has a browser-based form-completion tool (called **IFILE**) and supports XML upload for software-prepared filings.
+The agent navigates and interacts deterministically. EFAST2 has a free browser-based filing application (**IFILE**); filings prepared in EFAST2-approved third-party software are transmitted from that software. Screen and tab names below are descriptive; follow the labels IFILE actually shows.
 
 #### Option A — IFILE (browser form completion)
 
 1. **Navigate** to https://www.efast.dol.gov
-2. **Sign in** with filer credentials
-3. **Click** "IFILE" → **Start a new filing**
+2. **Sign in** with Login.gov (the user completes the sign-in and second factor)
+3. **Open** IFILE → **Start a new filing**
 4. **Pick the plan year** and **form type** (5500 or 5500-SF)
 5. **Pick the filing type**: First, Amended, Final, Short year
 6. **Fill the form** — IFILE has tabs for each schedule. Fill from the draft:
@@ -87,35 +88,33 @@ The agent navigates and interacts deterministically. EFAST2 has a browser-based 
 | DB actuarial | "Schedule SB" or "Schedule MB" | If DB plan |
 
 7. **Attach IQPA audit report** (large plans) — upload PDF. Required for Schedule H.
-8. **Attach plan opinion letter** (defined benefit only) — required for Schedule SB.
+8. **Attach Schedule SB** (single-employer defined benefit plans) completed and signed by the enrolled actuary, with its attachments.
 9. **Run "Validate"** in IFILE — checks for missing fields, math errors, schedule consistency. Resolve every flag.
 10. **Add signers** — enter the signing official's signer credentials (User ID + PIN). The signer can sign now or later via their own login.
 11. **Submit**:
     - Click "Submit"
     - Confirmation receipt displayed (Acknowledgment ID — save this)
 
-12. **Wait for processing**: EFAST2 processes filings in real time. Acceptance status appears within minutes. Failures show specific error codes.
+12. **Check the filing status**: EFAST2 should show a status within about 20 minutes. "Filing Received" means no errors or warnings were found; otherwise the status lists them. "Processing Stopped" or "Unprocessable" can mean the signature was invalid and the filing may be treated as not filed (2025 Form 5500 instructions, Signature and Date).
 
-#### Option B — XML upload (software-prepared)
+#### Option B — EFAST2-approved third-party software
 
-If the user has software (Datair, ftwilliam.com, Relius, FT William, etc.) that produces an EFAST2-format XML file:
+If the user or TPA uses EFAST2-approved third-party software:
 
-1. **Navigate** to https://www.efast.dol.gov
-2. **Sign in** with filer credentials
-3. **Click** "Upload" → "EFAST2-Compliant Filing"
-4. **Browse** to the XML file, upload
-5. **Validate** server-side — EFAST2 checks the XML against its schema
-6. **Sign** via signer credentials
-7. **Submit**
+1. **Prepare** the filing in the software from the draft
+2. **Run** the software's error check
+3. **Sign** — the Filing Signer enters their EFAST2 User ID and PIN in the software
+4. **Transmit** — the software submits to EFAST2 (the transmitting person needs the Transmitter user type if the software requires it)
+5. **Check status** in the software or on the EFAST2 Submissions page
 
-XML upload is faster for large plans with complex Schedule H / Schedule of Assets. Ask the user if they have such a file ready before defaulting to IFILE.
+Software is common for large plans with a long Schedule H and Schedule of Assets. Ask the user whether a TPA or software is already in use before defaulting to IFILE.
 
 ### What the agent should NOT do
 
 - Do not submit without the user's explicit go-ahead at step 11 / step 7
 - Do not bypass IFILE validation even if it looks like a false positive (DOL parses heavily)
 - Do not store the user's signer User ID + PIN together in any log
-- Do not file 5500 / 5500-SF on paper — paper is rejected since 2010 (only 5500-EZ accepts paper)
+- Do not file 5500 / 5500-SF on paper; both must be filed electronically (only 5500-EZ has a paper option)
 - Do not retry on a duplicate-filing error — file an amended return instead
 
 ### Failure modes
@@ -125,9 +124,8 @@ XML upload is faster for large plans with complex Schedule H / Schedule of Asset
 | "Filing already exists for this plan year" | Duplicate (TPA already filed) | File **amended** filing instead |
 | "Plan number mismatch with prior year" | Plan number changed | DOL sends letter; verify plan number with prior 5500 |
 | "Schedule H attachment missing" | Forgot IQPA report | Re-open filing, attach PDF, resubmit |
-| "Signer credentials invalid" | Wrong PIN | Reset via EFAST2 (takes 1–2 weeks for re-mailing) |
-| "Plan participant count anomaly" | Year-over-year participant count change > X% | Provide explanation in Schedule H comments or attached PDF |
-| "Late deferrals reported but no Form 5330 filed" | DOL hot button | File Form 5330 separately to pay 15% excise tax |
+| "Signer credentials invalid" | Wrong PIN | Signer signs in with Login.gov and checks or changes the PIN under Your Account → Profile & PIN |
+| Late deferrals reported (5500-SF line 10a / Schedule H or I line 4a) | Deposits missed the 29 CFR 2510.3-102 deadline | File Form 5330 with the IRS for the 15% excise tax unless VFCP + PTE 2002-51 relief applies |
 
 ---
 
@@ -137,9 +135,9 @@ Form 5500-EZ can be paper-mailed to the IRS Ogden Service Center.
 
 ### Assemble the return
 
-1. Print Form 5500-EZ from https://www.irs.gov/pub/irs-pdf/f5500ez.pdf — most recent revision matching the plan year
-2. Sign in ink (plan administrator)
-3. Single-side print, full-size letter
+1. Print Form 5500-EZ from https://www.irs.gov/pub/irs-pdf/f5500ez.pdf — the revision matching the plan year (2025 form for plan years beginning in 2025)
+2. Sign and date (employer or plan administrator); blue or black ink if completing by hand
+3. One-sided pages, no notes, arrows, or glue (2025 Form 5500-EZ instructions, Filing Tips)
 
 ### Mailing address
 
@@ -148,7 +146,15 @@ Per current Form 5500-EZ instructions:
 ```
 Department of the Treasury
 Internal Revenue Service
-Ogden, UT 84201-0027
+Ogden, UT 84201-0020
+```
+
+Private delivery service (IRS-designated PDS only):
+
+```
+Internal Revenue Submission Processing Center
+1973 Rulon White Blvd.
+Ogden, UT 84201
 ```
 
 Verify each year against https://www.irs.gov/pub/irs-pdf/i5500ez.pdf — addresses occasionally update.
@@ -158,24 +164,24 @@ Verify each year against https://www.irs.gov/pub/irs-pdf/i5500ez.pdf — address
 - USPS Certified Mail with Return Receipt
 - Postmark by **last day of 7th month after plan year end** (calendar plan = July 31). If extension via Form 5558 was filed timely, postmark by extended date (October 15 for calendar plan).
 - Keep a complete photocopy
-- IRS confirmation: a CP216F notice is sometimes sent acknowledging receipt; otherwise no confirmation. Check IRS account transcript via Form 4506-T 6-12 weeks later.
+- The IRS does not send a receipt for a paper 5500-EZ. Keep the certified-mail or PDS proof of mailing. (CP216F is the notice approving a Form 5558 extension, not a receipt for the return.)
 
 ### Producing the printable PDF
 
 1. Download latest Form 5500-EZ revision from https://www.irs.gov/pub/irs-pdf/f5500ez.pdf
 2. Open in fillable PDF tool
-3. Map draft values to PDF field names (`f1_3`, `f2_5`, etc. — stable on IRS forms)
+3. Map draft values to the PDF's field names; read them from the current PDF each year, since field names can change between revisions
 4. Save as flattened PDF for printing
 
 ---
 
 ## Section 3 — EFAST2 for Form 5500-EZ (electronic option)
 
-Since plan year 2020, the IRS allows 5500-EZ filers to **optionally** file electronically via EFAST2. The data flows from EFAST2 to the IRS.
+For plan years beginning after 2019, a one-participant plan or foreign plan can file Form 5500-EZ electronically through EFAST2 instead of on paper; for plan years beginning on or after January 1, 2025 it must, if the filer is required to file 10 or more returns of any type with the IRS during the calendar year (2025 Form 5500-EZ instructions).
 
-Same browser flow as Section 1 (IFILE), with form-type "5500-EZ" selected. Filer credentials still required.
+Same browser flow as Section 1 (IFILE), with form-type "5500-EZ" selected. The signer needs an EFAST2 User ID and PIN (Login.gov sign-in). Do not file Schedule SB or MB electronically with a 5500-EZ; keep them in the plan records.
 
-Practical: most 5500-EZ filers (solo 401(k) sponsors) stick with paper because EFAST2 credentialing has overhead and 5500-EZ is simple. The IRS accepts both. If filing recurrently, electronic is more convenient long-term.
+A delinquent 5500-EZ submitted under the Late Filer Penalty Relief Program cannot go through EFAST2 (Section 6).
 
 ---
 
@@ -204,24 +210,26 @@ Common recordkeeper portals (subject to change):
 After filing (any channel):
 
 1. **Submitted** — sent to EFAST2 / IRS Ogden
-2. **Accepted** — DOL acknowledges receipt and basic validation passed (EFAST2: minutes; paper 5500-EZ: 6-12 weeks)
-3. **Processed** — fully ingested
+2. **Filing status** — EFAST2: about 20 minutes, "Filing Received" or a list of errors/warnings; paper 5500-EZ: no receipt is sent
+3. **Processed** — the filing may still get further review by DOL, IRS, or PBGC
 4. **Notice issued** OR **No further action**
 
-Possible notices:
+Possible notices (irs.gov notice pages):
 
-- **CP403 / CP406** (IRS, for 5500-EZ) — late filing penalty notice
-- **DOL letter** for missing schedules, participant count anomaly, late deferrals, or audit issues
-- **PBGC notice** (defined benefit only) — premium reconciliation
+- **CP216F** (IRS) — Form 5558 extension approved
+- **CP403 / CP406** (IRS) — first and second delinquency notices for a missing Form 5500 or 5500-SF
+- **CP283** (IRS) — penalty charged for a late or incomplete Form 5500-EZ
+- **DOL letter** for missing schedules, late deferrals, or audit issues
+- **PBGC notice** (defined benefit only) — premium issues
 
 Status checks:
 
-- EFAST2: filing status visible in user's filing history at efast.dol.gov
-- 5500-EZ paper: IRS account transcript via Form 4506-T (allow 6-12 weeks)
-- DOL: 1-866-444-EBSA (3272)
-- PBGC: 1-800-400-7242
+- EFAST2: Submissions page after signing in, or the EFAST2 Help Desk automated line, 1-866-GO-EFAST (1-866-463-3278)
+- IRS employee plans help line: 877-829-5500 (also for Form 5558 receipt questions)
+- EBSA: 1-866-444-EBSA (3272)
+- PBGC coverage questions: 1-800-736-2444
 
-The agent should set a follow-up reminder 7 days after submission (EFAST2) or 12 weeks (paper 5500-EZ) to check status.
+The agent should set a follow-up reminder for the day after an EFAST2 submission to confirm "Filing Received".
 
 ---
 
@@ -229,16 +237,24 @@ The agent should set a follow-up reminder 7 days after submission (EFAST2) or 12
 
 If the user is filing late and DOL has not yet sent a notice, they can use DFVC to dramatically reduce penalties:
 
-- DFVC penalty: $10/day, capped at $750 per filing, $1,500 per plan administrator (for plans < 100 participants); $2,000 / $4,000 for large plans
-- Without DFVC: up to $2,739/day per ERISA §502(c)(2) (verify current adjustment via 29 CFR §2575.502c-2)
+- DFVC penalty: $10/day; small plans capped at $750 per filing and $1,500 per plan ($750 per plan if the sponsor is a 501(c)(3) organization); large plans capped at $2,000 per filing and $4,000 per plan
+- Not available after DOL issues a Notice of Intent to Assess a Penalty, for amended filings, or for 5500-EZ / one-participant plans
+- Without DFVC: up to $2,739/day per ERISA §502(c)(2) (2025 adjustment; DOL made no 2026 adjustment, 91 FR 31358)
 
 DFVC requires:
-1. File the late 5500 via EFAST2 (or 5500-EZ paper) AND
-2. Submit DFVC penalty payment via the DOL's online payment system at https://www.dol.gov/agencies/ebsa/employers-and-advisers/plan-administration-and-compliance/reporting-and-filing/form-5500/dfvc-online-payment
+1. File each late Form 5500 or 5500-SF via EFAST2 with the DFVC box checked (Form 5500 line D, Form 5500-SF line C) AND
+2. Pay through the DOL's online DFVC calculator and payment system at https://www.askebsa.dol.gov/dfvcepay/ (DOL no longer accepts paper submissions or payments)
 
-For 5500-EZ specifically, DFVC does NOT apply (DFVC is a DOL program; 5500-EZ is IRS-only). Instead, IRS has a **Late Filer Penalty Relief Program for One-Participant Plans** (Rev. Proc. 2015-32) — flat $500 per delinquent return, capped at $1,500 per plan.
+Source: https://www.dol.gov/agencies/ebsa/employers-and-advisers/plan-administration-and-compliance/correction-programs/dfvcp
 
-See [`references/dfvc-and-penalties.md`](./references/dfvc-and-penalties.md) for full DFVC mechanics.
+For 5500-EZ, DFVC does NOT apply. Use the IRS **Late Filer Penalty Relief Program** (Rev. Proc. 2015-32):
+- $500 per delinquent return, maximum $1,500 per submission for one plan; check payable to the United States Treasury
+- Paper Form 5500-EZ only (not EFAST2); check box D on the 2025 form, or for older years print "Delinquent Return Submitted under Rev. Proc. 2015-32, Eligible for Penalty Relief" in red in the top margin
+- Form 14704 attached to the front of the oldest delinquent return
+- Mail to: Internal Revenue Service, 1973 North Rulon White Blvd., Ogden, UT 84404-0020
+- Not available once a CP283 penalty notice has been issued for that return
+
+See [`references/common-mistakes.md`](./references/common-mistakes.md) (mistake 3) for the penalty context.
 
 ---
 
@@ -252,4 +268,4 @@ These are non-negotiable:
 4. **Always capture submission confirmations** as screenshots stored under the user's account, not the agent's.
 5. **If anything looks wrong** (math disagreement, unexpected screen, MFA failures, validation errors), **stop and surface the issue**. Don't retry blindly.
 6. **Pre-submission diff**: show the user a side-by-side of the draft vs. what's about to be submitted. Get explicit OK before clicking submit.
-7. **Audit report attachments**: handle with care — IQPA reports may contain participant SSNs in detail tables. Verify the attached PDF before submission; redact SSNs if not required by Schedule H instructions (most participant data goes in summary form, not list form).
+7. **Audit report attachments**: handle with care. Filings and attachments are published on the internet; an attachment showing a Social Security number, or any part of one, can cause rejection (2025 Form 5500 and 5500-SF instructions). Check every PDF before submission and redact SSNs.

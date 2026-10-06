@@ -39,7 +39,7 @@ Line 8: Total limit:                                $8,550
 Line 9: Employer contributions (W-2 Box 12 W):          $0
 Line 10: Qualified HSA funding distribution:            $0
 Line 11: Line 9 + Line 10:                              $0
-Line 12: Line 2 + Line 11 (cap Line 8):             $8,550
+Line 12: Line 8 − Line 11:                          $8,550
 Line 13: HSA deduction:                             $8,550
             → Schedule 1, Line 13
 ```
@@ -64,7 +64,7 @@ Skip — Daniel did not use the last-month rule in a prior year.
 
 ### Reasoning
 
-- **Why all $8,550 on Daniel**: Daniel and Lisa agreed Daniel would fund 100% of the family limit, so Lisa's allocated share of Line 6 is $0 and she doesn't file. Form 8889 instructions require each spouse with an HSA to file separately; Lisa has no HSA contributions or distributions, so she has no Form 8889 obligation.
+- **Why all $8,550 on Daniel**: Daniel and Lisa agreed Daniel would fund 100% of the family limit (the instructions allow any agreed allocation, including nothing to one spouse; without an agreement it is split equally), so Lisa's allocated share of Line 6 is $0 and she doesn't file. Form 8889 instructions require each spouse with an HSA to file separately; Lisa has no HSA contributions or distributions, so she has no Form 8889 obligation.
 - **Why Line 9 = $0**: Daniel contributed via bank transfer, not through his employer's cafeteria plan. The full $8,550 is direct (Line 2), so Line 13 captures the full deduction.
 - **Why no distribution**: Daniel and Lisa pay current medical from cash and let the HSA balance compound. They've started the receipt pile for tax-free reimbursement decades from now.
 
@@ -113,7 +113,7 @@ Line 8: Total limit:                                $4,275
 Line 9: Employer contributions (W-2 Box 12 W):          $0
 Line 10: Qualified HSA funding distribution:            $0
 Line 11: Line 9 + Line 10:                              $0
-Line 12: Line 2 + Line 11 (cap Line 8):             $4,275
+Line 12: Line 8 − Line 11:                          $4,275
 Line 13: HSA deduction:                             $4,275
             → Schedule 1, Line 13
 ```

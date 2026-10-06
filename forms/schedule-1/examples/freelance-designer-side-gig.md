@@ -1,12 +1,12 @@
 # Example: Freelance Designer with Side-Gig Etsy Income
 
-The canonical "knowledge-worker freelancer with a side gig" pattern. Combines Schedule C net profit with above-the-line adjustments — student loan interest, SE health insurance, SEP-IRA, half SE tax. Mirrors the worked example in the [Jupid blog companion](https://jupid.com/blog/schedule-1-additional-income-adjustments-2026).
+The canonical "knowledge-worker freelancer with a side gig" pattern. Combines Schedule C net profit with above-the-line adjustments — student loan interest, SE health insurance, SEP-IRA, half SE tax. Same inputs as the Nora example in the [Jupid blog companion](https://jupid.com/blog/schedule-1-additional-income-adjustments-2026), which uses 2026 figures; this file computes tax year 2025 (2025 Schedule 1, filed in 2026). Math checked in Python.
 
 ## The filer
 
 - **Name**: Maya Lopez
 - **Status**: Single, no dependents
-- **Tax year**: 2026 (filing in 2027)
+- **Tax year**: 2025 (filing in 2026)
 - **Primary work**: Freelance graphic design (sole proprietor)
 - **Side activity**: Digital prints on Etsy
 - **Both activities reported on a single Schedule C** (same business: design services + design product sales — same NAICS code, same EIN)
@@ -17,11 +17,11 @@ The canonical "knowledge-worker freelancer with a side gig" pattern. Combines Sc
 
 | Item | Amount |
 |------|--------|
-| Schedule C Line 1 (gross receipts: $45,300 design 1099s + $3,200 Etsy 1099-K) | $48,500 |
+| Schedule C Line 1 (gross receipts: $45,300 design 1099-NECs + $3,200 Etsy sales) | $48,500 |
 | Schedule C Line 28 (total expenses) | $8,500 |
 | **Schedule C Line 31 (net profit)** | **$40,000** |
 
-The Etsy 1099-K is a **trade or business** 1099-K, so it goes on Schedule C — **not** on the 1099-K reconciliation row above Part I and not on Line 8.
+Etsy did not issue a 1099-K: for 2025 a platform must issue one only when payments exceed $20,000 and transactions exceed 200 (2025 Form 1040 instructions, What's New). The $3,200 is still **trade or business** income, so it goes on Schedule C — **not** on the 1099-K reconciliation row above Part I and not on Line 8.
 
 ### Schedule SE (already completed by `schedule-se` skill)
 
@@ -35,7 +35,7 @@ The Etsy 1099-K is a **trade or business** 1099-K, so it goes on Schedule C — 
 
 Walked through with Maya:
 
-- **Line 1 (state refund)**: Maya took the standard deduction in 2025. Line 1 = $0.
+- **Line 1 (state refund)**: Maya took the standard deduction for 2024. Line 1 = $0.
 - **Line 2a (alimony received)**: No. Line 2a = $0.
 - **Line 3 (Schedule C)**: $40,000.
 - **Line 4 (other gains)**: No business asset sales. Line 4 = $0.
@@ -48,23 +48,23 @@ Walked through with Maya:
 
 - **Line 11 (educator)**: Not a K-12 teacher. $0.
 - **Line 12 (reservist/artist)**: No. $0.
-- **Line 13 (HSA)**: Maya is on a marketplace ACA plan that is NOT an HDHP. Not eligible. $0.
+- **Line 13 (HSA)**: Maya has an individual plan bought directly from an insurer (off the Marketplace) that is NOT an HDHP. Not eligible. $0.
 - **Line 14 (Armed Forces moving)**: No. $0.
 - **Line 15 (half SE tax)**: $2,826 (from Schedule SE).
-- **Line 16 (SEP-IRA)**: Maya contributed $1,500 to a SEP-IRA. Cap check: 20% of $40,000 (simplified) = $8,000. $1,500 is well under. ✓
-- **Line 17 (SE health insurance)**: Maya paid $4,200 in marketplace ACA premiums. Eligibility check: Maya was not eligible for any employer plan (single, no spouse, not employed). ✓ Cap check: $4,200 < $40,000 SE income. ✓
+- **Line 16 (SEP-IRA)**: Maya contributed $1,500 to a SEP-IRA. Cap check (Pub 560 worksheet): 20% × ($40,000 − $2,826) = $7,435. $1,500 is well under. ✓
+- **Line 17 (SE health insurance)**: Maya paid $4,200 in premiums for that off-Marketplace plan, so no premium tax credit is involved and the Line 17 worksheet applies (Marketplace coverage with advance PTC would send her to Pub 974). Eligibility check: Maya was not eligible for any employer plan (single, no spouse, not employed). ✓ Cap check: $4,200 < $35,674 ($40,000 − Line 15 $2,826 − Line 16 $1,500). ✓
 - **Line 18 (early withdrawal)**: No. $0.
 - **Line 19a (alimony paid)**: No. $0.
 - **Line 20 (Traditional IRA)**: Maya didn't contribute (chose SEP-IRA instead). $0.
-- **Line 21 (student loan interest)**: Maya paid $700 of student loan interest (1098-E Box 1). Cap check: $700 < $2,500. ✓ Phaseout check: Maya's MAGI is well below the $80,000 single phaseout. ✓
+- **Line 21 (student loan interest)**: Maya paid $700 of student loan interest (1098-E Box 1). Cap check: $700 < $2,500. ✓ Phaseout check: Maya's MAGI is well below the $85,000 single phaseout start for 2025. ✓
 - **Line 22**: Blank.
 - **Line 23 (Archer MSA)**: No. $0.
-- **Line 24 (other)**: All sub-lines $0.
+- **Line 24 (other)**: All sub-lines $0; 24z left blank.
 
 ## The completed Schedule 1 draft
 
 ```markdown
-# Schedule 1 — DRAFT for tax year 2026
+# Schedule 1 — DRAFT for tax year 2025
 
 ## Header
 Name(s): Maya Lopez
@@ -128,7 +128,7 @@ SSN: XXX-XX-XXXX
     24b. Personal property rental expenses:   $0
     24c. Olympic/Paralympic offset:           $0
     ... (all other sub-lines):                $0
-    24z. Other (list):                        $0
+    24z. Other adjustments:                   (blank — 2025 instructions)
 25. Total other adjustments (sum 24a-24z):    $0
 26. ADJUSTMENTS TO INCOME (= Form 1040 Line 10): $9,226
 
@@ -144,33 +144,34 @@ SSN: XXX-XX-XXXX
 - Math: Line 9 = sum of 8a-8z = $0. Line 10 = $0 + $0 + $40,000 + $0 + $0 + $0 + $0 + $0 = $40,000. ✓
         Line 25 = $0. Line 26 = $0+$0+$0+$0+$2,826+$1,500+$4,200+$0+$0+$0+$700+$0+$0 = $9,226. ✓
 - Sanity:
-  - Line 3 ($40,000) > $400 → Schedule SE attached ✓
-  - Line 17 ($4,200) ≤ Line 3 ($40,000) → IRC §162(l) cap satisfied ✓
+  - Net SE earnings ($36,940) ≥ $400 → Schedule SE attached ✓
+  - Line 17 ($4,200) ≤ $35,674 (Line 3 − Lines 15 and 16) → IRC §162(l) cap satisfied ✓
   - Line 17: Maya not eligible for any employer plan → eligibility satisfied ✓
   - Line 21 ($700) ≤ $2,500 cap → ✓
-  - Line 21: MAGI well below $80,000 single phaseout → no reduction ✓
-  - Line 1 = $0: confirmed Maya took standard deduction in 2025 ✓
+  - Line 21: MAGI well below the $85,000 single phaseout start (2025) → no reduction ✓
+  - Line 1 = $0: confirmed Maya took standard deduction for 2024 ✓
 - Next steps:
   - Schedule 1 Line 10 ($40,000) → Form 1040 Line 8
   - Schedule 1 Line 26 ($9,226) → Form 1040 Line 10
-  - Form 1040 AGI = $40,000 − $9,226 = $30,774
-  - Apply standard deduction (~$15,700 single, 2026 estimate — verify) and QBI deduction (~$3,073 estimate)
+  - Form 1040 line 11a AGI = $40,000 − $9,226 = $30,774
+  - Form 1040 line 12e standard deduction $15,750 (2025 single) and line 13a QBI deduction $3,005 (Form 8995)
 
 ## Sources cited in this draft
-- IRS Schedule 1 (Form 1040), 2025 revision (carry-forward to 2026)
-- IRS Form 1040 General Instructions
+- IRS Schedule 1 (Form 1040), 2025 revision, filed in 2026
+- IRS Form 1040 General Instructions (2025)
+- IRS Publication 560 (2025)
 - IRC §61, §62, §162(l), §164(f), §221, §223
-- Rev. Proc. 2024-40 (2025 inflation adjustments — 2026 figures pending)
-- Notice 2024-80 (2025 retirement plan limits — 2026 pending)
+- Rev. Proc. 2024-40 (2025 inflation adjustments)
+- Notice 2024-80 (2025 retirement plan limits)
 ```
 
 ## Why each non-obvious choice
 
-**Why is the Etsy 1099-K not on Line 8 or the 1099-K reconciliation row?** The Etsy activity is a regular, profit-motive trade or business (Maya sells consistently, prices for profit, treats it like a side business). It belongs on **Schedule C**. The $3,200 1099-K shows up in Schedule C Line 1 alongside the $45,300 of design 1099-NECs. After expenses, the net flows once to Schedule 1 Line 3.
+**Why are the Etsy sales not on Line 8 or the 1099-K reconciliation row?** The Etsy activity is a regular, profit-motive trade or business (Maya sells consistently, prices for profit, treats it like a side business). It belongs on **Schedule C** whether or not a 1099-K arrives. The $3,200 shows up in Schedule C Line 1 alongside the $45,300 of design 1099-NECs. After expenses, the net flows once to Schedule 1 Line 3.
 
-**Why is Line 13 (HSA) zero when Maya has marketplace health insurance?** HSAs require a qualifying **High-Deductible Health Plan**. Maya's marketplace ACA plan is a standard plan (deductible too low to qualify). She cannot contribute to an HSA, so Line 13 = $0. The premiums she paid go on Line 17 (SE health insurance), not Line 13.
+**Why is Line 13 (HSA) zero when Maya has individual health insurance?** HSAs require a qualifying **High-Deductible Health Plan**. Maya's plan is a standard plan (deductible too low to qualify). She cannot contribute to an HSA, so Line 13 = $0. The premiums she paid go on Line 17 (SE health insurance), not Line 13.
 
-**Why SEP-IRA only $1,500 when the cap is much higher?** Maya's effective SEP-IRA cap is ~20% of net SE earnings ≈ $8,000. She chose to contribute $1,500 — her actual contribution drives the deduction, not the cap. The cap is a ceiling, not a target.
+**Why SEP-IRA only $1,500 when the cap is much higher?** Maya's effective SEP-IRA cap is 20% of (net profit − Line 15) ≈ $7,435. She chose to contribute $1,500 — her actual contribution drives the deduction, not the cap. The cap is a ceiling, not a target.
 
 **Why is the half-SE-tax (Line 15) deductible but not the full SE tax?** IRC §164(f) allows the deduction of the "employer-equivalent" half of FICA — mirroring how an employer deducts payroll tax for a W-2 employee. The other half is the "employee" portion and is not deductible.
 
@@ -181,10 +182,10 @@ SSN: XXX-XX-XXXX
 ## What if Maya were audited
 
 Defense by line:
-- Line 3: cross-check 1099-NECs + Etsy 1099-K against Schedule C Line 1; expense substantiation per the Schedule C audit defense file
+- Line 3: cross-check 1099-NECs + Etsy sales records against Schedule C Line 1; expense substantiation per the Schedule C audit defense file
 - Line 15: Schedule SE attached; calculation matches
 - Line 16: SEP-IRA contribution confirmation from custodian (Vanguard, Fidelity, etc.)
-- Line 17: marketplace 1095-A showing premiums paid; documentation that Maya was self-employed and not eligible for any employer plan during the year
+- Line 17: insurer premium statements; documentation that Maya was self-employed and not eligible for any employer plan during the year
 - Line 21: 1098-E from servicer showing $700 interest
 
 The four documents are easy to retrieve and self-evident — this is a clean return.
@@ -192,16 +193,18 @@ The four documents are easy to retrieve and self-evident — this is a clean ret
 ## Maya's tax outcome
 
 ```
-Form 1040 Line 8  (additional income from Sch 1 L10):       $40,000
-Form 1040 Line 9  (total income, no W-2 / interest / etc.): $40,000
-Form 1040 Line 10 (adjustments from Sch 1 L26):              $9,226
-Form 1040 Line 11 (AGI):                                    $30,774
-Form 1040 Line 12 (standard deduction, 2026 single est.):   $15,700
-Form 1040 Line 13 (QBI deduction, 20% of QBI estimate):      $3,073
-Form 1040 Line 15 (taxable income):                         $12,001
-Federal income tax (single, 10-12% brackets):               ~$1,200
+Form 1040 Line 8   (additional income from Sch 1 L10):      $40,000
+Form 1040 Line 9   (total income, no W-2 / interest / etc.): $40,000
+Form 1040 Line 10  (adjustments from Sch 1 L26):             $9,226
+Form 1040 Line 11a (AGI):                                   $30,774
+Form 1040 Line 12e (standard deduction, 2025 single):       $15,750
+Form 1040 Line 13a (QBI deduction):                          $3,005
+  (lesser of 20% × QBI $31,474 = $6,295 and
+   20% × ($30,774 − $15,750) = $3,005)
+Form 1040 Line 15  (taxable income):                        $12,019
+Federal income tax (2025 single, 10%/12% brackets):         ~$1,204
 Plus SE tax (full, not just half):                           $5,652
-Total federal tax owed:                                     ~$6,852
+Total federal tax owed:                                     ~$6,856
 ```
 
-Without the four Schedule 1 adjustments, AGI would have been $40,000, taxable income ~$21,200, federal income tax ~$2,400 (plus the $5,652 SE tax). The adjustments saved Maya roughly **$1,200** in federal income tax, plus better positioning for any state credits keyed to AGI.
+Use the 2025 Tax Table for the exact line 16 figure. Without the four Schedule 1 adjustments (same QBI), AGI would have been $40,000, the QBI deduction $4,850, taxable income $19,400, and federal income tax about $2,090 (plus the $5,652 SE tax). The adjustments saved Maya roughly **$886** in federal income tax, plus better positioning for any state credits keyed to AGI.

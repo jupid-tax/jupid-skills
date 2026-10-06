@@ -14,7 +14,7 @@ A taxpayer avoids the §6654 penalty if total payments (withholding + timely est
 
 `0.90 × current_year_total_tax`
 
-The "total tax" is Form 1040 Line 24 minus refundable credits (per IRS Pub. 505 definition).
+The "total tax" is the projected 2026 total from worksheet line 11c: income tax after nonrefundable credits, plus SE tax and other taxes, minus refundable credits.
 
 This harbor is intuitive but requires the taxpayer to project current-year tax accurately. For lumpy income (S-corp K-1 in Q4, capital gain in Q3, Roth conversion in Q1), the projection is hard.
 
@@ -75,7 +75,7 @@ W-2 withholding is treated as paid evenly across the year, regardless of when it
 
 The "quarters" are unequal (3, 2, 3, 4 months). This is intentional under §6654(c).
 
-When a due date falls on a weekend or DC/federal holiday, it shifts to the next business day per IRC §7503. The agent must verify the exact date each year — Patriot's Day (April 19 in MA/ME) and Emancipation Day (April 16 in DC) shift Tax Day occasionally.
+When a due date falls on a weekend or DC/federal holiday, it shifts to the next business day per IRC §7503. The agent must verify the exact date each year — Emancipation Day (April 16, a DC legal holiday) can shift an April due date. For 2026 the dates are April 15, June 15, September 15, 2026, and January 15, 2027 (2026 Form 1040-ES).
 
 ---
 
@@ -118,8 +118,10 @@ For prospective planning, the agent flags the annualized option if the user repo
 
 If at least 2/3 of gross income is from farming or fishing in the current OR prior year, the taxpayer may either:
 
-1. Pay one installment by **January 15** equal to the full required annual payment (66.67% of current-year tax — note: 66.67%, not 90% — is the safe harbor for farmers/fishers per §6654(i)(2)), OR
-2. File the return and pay the entire balance by **March 1** of the following year — no estimates required.
+1. Pay one installment by **January 15** equal to the full required annual payment (66⅔% of current-year tax — not 90% — is the current-year safe harbor for farmers/fishers per §6654(i)), OR
+2. File the return and pay the entire balance by **March 1** of the following year (March 1, 2027 for 2026) — no estimates required.
+
+The 110% high-income rule does not apply to them (2026 Form 1040-ES, Special Rules).
 
 This rule is narrow but critical for the few filers it applies to.
 
@@ -163,10 +165,12 @@ def required_annual_payment(prior_tax, prior_agi, filing_status, current_tax):
     return min(safe_harbor_A, safe_harbor_B)
 
 
-def per_installment(required, withholding, method="equal"):
-    net = required - withholding
-    if net <= 1000:
-        return 0  # de minimis
+def per_installment(required, withholding, current_tax, method="equal"):
+    net = required - withholding            # worksheet line 14a
+    if net <= 0:
+        return 0                            # withholding covers the requirement
+    if current_tax - withholding < 1000:    # worksheet line 14b, §6654(e)(1)
+        return 0                            # de minimis
     if method == "equal":
         return [net / 4] * 4
     elif method == "annualized":

@@ -13,7 +13,8 @@ rolled the 401(k) to a traditional IRA, then took a $30,000 distribution.
 They claimed code 01 (separation after 55) on Form 5329 Line 2.
 
 **Why it's wrong**: Code 01 applies only to distributions from qualified
-plans (401(k), 403(b), governmental 457(b)). Once rolled to an IRA, the
+employer plans (401(k), 403(b)), never IRAs (2025 Instructions for Form
+5329, Line 2). Once rolled to an IRA, the
 account is no longer a qualified plan and the rule of 55 doesn't apply.
 The distribution is subject to the full 10% under §72(t).
 
@@ -36,31 +37,36 @@ rules of §408A. Regular Roth contributions come out first, tax-free and
 penalty-free regardless of age or 5-year rule. The user's $15,000 was
 entirely basis. Form 5329 isn't required at all.
 
-**Fix**: Apply Roth ordering rules before computing Line 1. If basis
-covers the distribution, Line 1 = 0 and Form 5329 isn't filed.
+**Fix**: Apply Roth ordering rules (Form 8606 Part III) before computing
+Line 1. If basis covers the distribution, Form 8606 line 25c = 0, Line 1 =
+0 and Form 5329 isn't filed; Form 8606 Part III is still filed for the
+nonqualified distribution.
 
 **Citation**: IRC §408A; IRS Pub 590-B Roth IRA distribution ordering
 rules.
 
 ---
 
-## 3. Conflating "code 2" on a 1099-R with no penalty owed
+## 3. Filing Part I when the 1099-R already shows the exception, or skipping it when it doesn't
 
-**The mistake**: User's 1099-R shows code 2 in Box 7 ("early distribution,
-exception applies"). They assume the custodian has already handled the
-exception and don't file Form 5329 at all.
+**The mistake**: User's 1099-R shows code 1 in Box 7 but the user
+qualifies for an exception, and they skip Form 5329; or the user files
+Part I for a code 2, 3, or 4 distribution the custodian already coded
+correctly.
 
-**Why it's wrong**: Code 2 means the *custodian* believed an exception
-applied (e.g., disability, SoSEPP setup). The IRS still requires the user
-to claim the exception on Form 5329 Part I, Line 2 with the appropriate
-exception code. If the user doesn't, the IRS may assess the 10% based on
-gross distribution without the exception.
+**Why it's wrong**: Form 5329 Part I is required when a distribution is
+subject to the 10% tax and box 7 does not show the exception, or the
+exception does not cover the whole distribution. When box 7 correctly shows
+an exception for the full amount, Form 5329 is not required. When box 7 is
+code 1 and the user owes the 10% on the full amount, the tax can go
+straight on Schedule 2 (Form 1040), line 8 without Form 5329 (2025
+Instructions for Form 5329, "Who Must File").
 
-**Fix**: Always file Form 5329 Part I when there's any early
-distribution, even when Box 7 is code 2. Claim the exception with the
-correct code on Line 2.
+**Fix**: Check that the box 7 code matches the facts. File Part I with the
+right exception number on Line 2 when the code is 1, J, or S and an
+exception applies (number 12 only if the user was 59½ or older).
 
-**Citation**: Instructions for Form 5329, Part I.
+**Citation**: 2025 Instructions for Form 5329, "Who Must File" and Line 2.
 
 ---
 
@@ -72,11 +78,11 @@ Part I Line 4 as $10,000 × 10% = $1,000.
 
 **Why it's wrong**: For SIMPLE IRA distributions taken within 2 years of
 the date the user first participated in the SIMPLE plan, the rate is **25%**,
-not 10%. Form 5329 Part I has a separate computation for this case.
+not 10% (Form 5329 Line 4 caution; 1099-R box 7 code S).
 
 **Fix**: Identify the SIMPLE-plan first-participation date and check
-whether 2 years have elapsed. If not, the rate is 25%, computed as a
-separate amount on Part I.
+whether 2 years have elapsed. If not, include 25% of that amount on Line 4
+instead of 10% ($10,000 × 25% = $2,500 here).
 
 **Citation**: IRC §72(t)(6); IRS Pub 590-B.
 
@@ -98,8 +104,8 @@ income tax on the conversion. Plan conversion timing more carefully in
 future years (consider a smaller conversion or one closer to year-end
 when income picture is clearer).
 
-**Citation**: IRC §408A(d)(6) as amended by TCJA §13611; IRS Notice
-2018-74.
+**Citation**: IRC §408A(d)(6)(B)(iii) as amended by TCJA §13611; Pub.
+590-A (Recharacterizations).
 
 ---
 
@@ -131,14 +137,14 @@ pre-2023 rate). They panic, take excessive corrective action, or seek
 expensive professional intervention.
 
 **Why it's wrong**: SECURE 2.0 §302 dropped the rate from 50% to 25%
-effective for tax years beginning after 12/31/2022. And it can drop to
-10% if the user takes the missed distribution within 2 years. And it can
-drop to 0 with a reasonable-cause waiver — which the IRS approves
-liberally in practice.
+effective for tax years beginning after 12/31/2022. And it drops to 10% if
+the user takes the missed distribution and files during the correction
+window. And it can drop to 0 with a reasonable-cause waiver under
+§4974(d).
 
-**Fix**: Compute the 25% (or 10% with SECURE 2.0 reduction). Most users
-should request a waiver; it's a short statement and approval is the
-common outcome. See [`missed-rmd.md`](./missed-rmd.md).
+**Fix**: Compute the tax on Lines 54a/54b (10% / 25%). If the shortfall was
+due to reasonable error, request a waiver with "RC" next to Line 54a/54b
+and a short statement. See [`missed-rmd.md`](./missed-rmd.md).
 
 **Citation**: SECURE 2.0 Act §302; IRC §4974(d), §4974(e).
 
@@ -169,10 +175,13 @@ Then file the return.
 Roth IRA. They had MAGI of $40,000. They didn't think Roth phaseout was a
 concern at $40K MAGI.
 
-**Why it's wrong**: For MFS filers, the Roth IRA phaseout is **$0 to
-$10,000 MAGI** (yes, ten thousand, not the $150K+ for single filers). Any
-MFS filer with MAGI above $10,000 is fully phased out of Roth
-contributions. The wife's $7,000 contribution is entirely excess.
+**Why it's wrong**: For MFS filers who lived with their spouse at any time
+during the year, the Roth IRA phaseout is **$0 to $10,000 MAGI** (yes, ten
+thousand, not the $150K+ for single filers; 2025 Instructions for Form
+5329, Line 19). Such a filer with MAGI above $10,000 is fully phased out of
+Roth contributions. The wife's $7,000 contribution is entirely excess. (MFS
+filers who did not live with their spouse at any time in the year use the
+single range.)
 
 **Fix**: MFS filers should not contribute to Roth IRAs unless their MAGI
 is genuinely below $10,000 (rare). The wife should withdraw the $7,000 +
@@ -195,12 +204,12 @@ signature block at the bottom of the form that *is* required. Without it
 the IRS treats the filing as incomplete, may not process the return, and
 the underlying tax remains assessed.
 
-**Fix**: When filing standalone, sign the bottom of Form 5329 in ink.
-When attaching to a 1040, leave the standalone signature block blank
-(the 1040 signature covers the attachment).
+**Fix**: When filing standalone, include the address on page 1 and sign
+and date page 3 of Form 5329 in ink; a standalone Form 5329 cannot be filed
+electronically. When attaching to a 1040, leave the standalone signature
+block blank (the 1040 signature covers the attachment).
 
-**Citation**: Instructions for Form 5329 — "Filing Form 5329 by itself"
-section.
+**Citation**: 2025 Instructions for Form 5329, "When and Where To File".
 
 ---
 
@@ -224,8 +233,8 @@ When reviewing a Form 5329 (CPA review, prior-year amend, etc.), check:
 
 1. Is there a 1099-R with code 1 or 2 *and* no Form 5329 Part I? → Possible
    missed filing.
-2. Is there a 1099-R with code 2 and Form 5329 Part I Line 2 = 0? → User
-   didn't claim the exception code.
+2. Is there a 1099-R with code 1 and an exception the user qualifies for,
+   but no Form 5329 Line 2 amount? → User didn't claim the exception.
 3. Did the user contribute to a Roth and the prior-year MAGI was at the
    phaseout? → Check Part IV.
 4. Did the user turn 73, 74, 75, etc. and take *no* distribution? →

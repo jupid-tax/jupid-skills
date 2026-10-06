@@ -4,25 +4,29 @@ description: >
   Use this skill when a business needs to file IRS Form 720, the Quarterly
   Federal Excise Tax Return. Triggers on phrases like "Form 720", "PCORI fee",
   "federal excise tax return", "quarterly excise tax", "sport fishing
-  manufacturer tax", "self-insured health plan tax", "indoor tanning tax",
-  "fuel tax credit", "ozone-depleting chemicals tax", "Schedule A excise",
-  "Schedule C excise". Do NOT use for: state excise tax (state DOR forms);
-  state sales/use tax; Heavy Highway Vehicle Use Tax (Form 2290 — different);
-  ACA employer mandate reporting (Form 1094-C / 1095-C); air-transport tax
-  filed only by airlines under separate sub-procedures.
+  manufacturer tax", "arrow shaft tax", "self-insured health plan fee",
+  "indoor tanning tax", "remittance transfer tax", "ozone-depleting chemicals
+  tax", "Schedule A excise", "Schedule C excise". Do NOT use for: state excise
+  tax (state DOR forms); state sales/use tax; Heavy Highway Vehicle Use Tax or
+  HVUT credits for sold, destroyed, or stolen vehicles (use the form-2290
+  skill; refunds go on Form 8849 Schedule 6); alcohol, tobacco, or firearms
+  excise (TTB forms); wagering taxes (Forms 730 and 11-C); ACA employer
+  reporting (Forms 1094-C / 1095-C).
 form: Form 720 (Quarterly Federal Excise Tax Return)
-audience: [scorp, ccorp]
+audience: [scorp, ccorp, partnership, llcm, llc1]
 tax_year: 2026
-last_verified: 2026-04-29
+last_verified: 2026-10-06
 official_form: https://www.irs.gov/pub/irs-pdf/f720.pdf
 official_instructions: https://www.irs.gov/pub/irs-pdf/i720.pdf
 ---
 
 # Form 720 — Quarterly Federal Excise Tax Return
 
-This skill produces an audit-grade draft of Form 720 covering the federal excise taxes a business is liable for in a given quarter. Most filers only owe one or two specific taxes (PCORI fee for self-insured health plans being the most common), so the skill spends 80% of its time on the handful of common categories and provides pointers for the rest.
+This skill produces an audit-grade draft of Form 720 covering the federal excise taxes a business is liable for in a given quarter. Most filers only owe one or two specific taxes (the PCORI fee for self-insured health plans being the most common), so the skill spends most of its time on the handful of common categories and provides pointers for the rest.
 
-The math is per-line mechanical. The judgment is in **identifying which IRS Numbers (the 100+ line items in Parts I and II) apply to the filer's business** and **distinguishing Form 720 obligations from adjacent forms (Form 2290, Form 11-C, state excise)**. When liability is unclear, the agent must ASK rather than guess — wrongly omitting an excise tax produces compounding penalties under §6651.
+The math is per-line mechanical. The judgment is in **identifying which IRS Nos. (about 60 preprinted tax lines in Parts I and II) apply to the filer's business**, **whether the tax sits in Part I (Schedule A and semimonthly deposits) or Part II (paid with the return)**, and **distinguishing Form 720 obligations from adjacent forms (Form 2290, Form 8849, Form 4136, TTB forms, state excise)**. When liability is unclear, the agent must ASK rather than guess. Omitting an excise tax produces compounding penalties under §6651 and §6656.
+
+**Revision verified:** the line map in this skill was verified on 2026-10-06 against Form 720 (Rev. June 2026) and the Instructions for Form 720 (Rev. June 2026), the revisions posted on irs.gov on that date. Form 720 is not annual: before using this skill for a later quarter, check https://www.irs.gov/forms-pubs/about-form-720 for a newer revision and re-check every IRS No., rate, and CRN.
 
 ---
 
@@ -31,23 +35,25 @@ The math is per-line mechanical. The judgment is in **identifying which IRS Numb
 Engage this skill when **any** of the following is true:
 
 - The user explicitly mentions Form 720, "quarterly excise tax", "Schedule A excise", "Schedule C excise"
-- The user has a **self-insured group health plan** and asks about the **PCORI fee** (Patient-Centered Outcomes Research Institute fee under IRC §4375/§4376)
-- The user manufactures, produces, or imports **sport fishing equipment, archery equipment, fishing tackle boxes, fishing rods**, or other items subject to manufacturer's excise tax (IRC §4161)
-- The user operates **indoor tanning services** (IRC §5000B — verify status; the tax has been subject to repeal proposals)
-- The user has **fuel tax** issues: gasoline, diesel, kerosene, alternative fuels, blender's credits (IRC §4081, §4041, §6426)
-- The user imports **ozone-depleting chemicals (ODC)** (IRC §4681)
-- The user is a **foreign insurance issuer** subject to §4371 excise tax on policies covering US risks
-- The user operates **passenger ships** or charges **air transportation** tickets (limited applicability)
-- The user has **HVUT (Form 2290) credits** to reconcile on Form 720 — note: HVUT itself is reported on Form 2290, not Form 720, but credits/refunds may flow
+- The user has a **self-insured group health plan or HRA** and asks about the **PCORI fee** (patient-centered outcomes research fee under IRC §4375/§4376, IRS No. 133)
+- The user manufactures, produces, or imports **sport fishing equipment, fishing rods and poles, electric outboard motors, fishing tackle boxes, bows, quivers, broadheads, points, or arrow shafts** (IRC §4161; IRS Nos. 41, 110, 42, 114, 44, 106)
+- The user operates **indoor tanning services** (IRC §5000B; IRS No. 140, still on the Rev. June 2026 form)
+- The user has **fuel tax** liability as a position holder, enterer, blender, or retailer of alternative fuel (IRC §4081, §4041; IRS Nos. 60, 62, 35, 69, 77, 79, 112–124) or wants a Schedule C claim alongside a Part I or II liability
+- The user makes or imports **ozone-depleting chemicals (ODCs)**, taxable chemicals, or petroleum subject to Superfund taxes (Form 6627; IRS Nos. 98, 19, 20, 54, 17, 53, 16)
+- The user **pays premiums to a foreign insurer** for coverage of U.S. risks (IRC §4371; IRS No. 30)
+- The user is a **remittance transfer provider** collecting the 1% tax on cash-funded remittances after 2025 (IRC §4475; IRS No. 155)
+- The user operates **passenger ships**, collects **air transportation** or **local telephone** taxes, sells **heavy trucks, trailers, or tractors** at retail, or makes **taxable tires, coal, vaccines**, or imports a **gas guzzler** (IRS Nos. 29, 26, 27, 28, 22, 33, 108/109/113, 36–39, 97, 40)
 
 Do **not** engage this skill when:
 
-- The user owes **state** excise tax (different forms; varies by state — gasoline tax, alcohol tax, tobacco tax at state level)
-- The user owes **Heavy Highway Vehicle Use Tax** for tractor-trailers ≥ 55,000 lbs gross weight → use the `form-2290` skill (separate skill, separate filing schedule, payable annually not quarterly)
+- The user owes **state** excise tax (different forms; varies by state: gasoline tax, alcohol tax, tobacco tax at state level)
+- The user owes **Heavy Highway Vehicle Use Tax** for vehicles with taxable gross weight of 55,000 pounds or more, or wants a **credit or refund of HVUT** for a vehicle sold, destroyed, or stolen → use the [`form-2290`](../form-2290/SKILL.md) skill. HVUT credits go on the next Form 2290 (line 5) or on Form 8849 Schedule 6, never on Form 720 Schedule C (Instructions for Form 2290, Rev. July 2026, "Line 5")
+- The user only wants a **refund of fuel tax** with no Form 720 liability to report → Form 8849 or Form 4136 (Form 720 Schedule C may be used only if the filer reports a liability in Part I or II; i720 "Schedule C. Claims")
+- The user owes **alcohol, tobacco, or firearms** excise → TTB forms, not Form 720
 - The user is filing **occupational tax on wagering** → use Form 11-C
 - The user is filing **wagering excise** → use Form 730
-- The user is reporting the **ACA employer mandate** (1094-C / 1095-C) — that's not Form 720
-- The user is a small business asking about general sales tax — sales tax is state, not federal
+- The user is reporting the **ACA employer mandate** (1094-C / 1095-C), which is not Form 720
+- The user is a small business asking about general sales tax: sales tax is state, not federal
 
 If the user is unsure which excise taxes apply to their industry, the agent walks the IRS Number list (see `references/irs-number-catalog.md`) and asks targeted yes/no questions.
 
@@ -57,8 +63,8 @@ If the user is unsure which excise taxes apply to their industry, the agent walk
 
 Before producing anything, the agent must have these inputs. If any are missing, **ask for them explicitly** and stop until you get an answer.
 
-1. **Filing entity name and EIN.** Form 720 is filed by businesses, not individuals. Sole proprietors with excise liability still use their EIN if assigned, otherwise their SSN — but most excise filers are entities with EINs.
-2. **Quarter being filed.** Form 720 is quarterly:
+1. **Filing entity name and EIN.** Form 720 requires an EIN. The only exception is a one-time gas guzzler filing (IRS No. 40) by an individual, who may enter an SSN or ITIN (i720 "Gas guzzler tax (IRS No. 40)", step 3). Single-owner disregarded entities and QSubs file under their own EIN, not the owner's (i720 "Disregarded entities and qualified subchapter S subsidiaries").
+2. **Quarter being filed.** Form 720 is quarterly (i720 "When To File"; a due date on a weekend or legal holiday moves to the next business day):
    - Q1 = Jan, Feb, Mar; due **April 30**
    - Q2 = Apr, May, Jun; due **July 31**
    - Q3 = Jul, Aug, Sep; due **October 31**
@@ -67,23 +73,25 @@ Before producing anything, the agent must have these inputs. If any are missing,
 3. **Business address** — street, city, state, ZIP. Used in the Form 720 header.
 4. **Final return flag** — is this the last Form 720 the entity will file? (Triggers a "Final return" checkbox.)
 5. **Address change flag** — has the address changed since the last filing?
-6. **Excise tax categories** — which IRS Numbers apply? See `references/irs-number-catalog.md`. Common ones:
-   - **133** — PCORI fee (annual, on Q2 form)
-   - **41/42** — Sport fishing equipment (manufacturer's tax)
-   - **44** — Archery equipment
-   - **140** — Indoor tanning services (status unclear in 2026 — verify before filing)
-   - **104** — Foreign insurance
-   - **125** — Ozone-depleting chemicals (ODC) tax
-   - **62/79** — Gasoline / Diesel manufacturer
+6. **Excise tax categories** — which IRS Nos. apply? See `references/irs-number-catalog.md`. Common ones:
+   - **133** — PCORI fee (Part II; annual, on the Q2 form)
+   - **41 / 110 / 42 / 114** — Sport fishing equipment, fishing rods and poles, electric outboard motors, tackle boxes (Part II)
+   - **44 / 106** — Bows, quivers, broadheads, and points; arrow shafts (Part II)
+   - **140** — Indoor tanning services (Part II)
+   - **30** — Policies issued by foreign insurers (Part I)
+   - **98 / 19 / 20** — Ozone-depleting chemicals, ODC imported products, ODC floor stocks (Form 6627)
+   - **60 / 62 / 35** — Diesel, gasoline, kerosene (Part I)
+   - **33** — Retail tax on heavy trucks, trailers, and tractors (Part I)
+   - **155** — Remittance transfers (Part I)
 7. **For PCORI specifically** — the agent needs:
-   - Plan year ending date (determines applicable rate)
+   - Plan year ending date (determines the applicable rate row on line 133)
    - Average number of covered lives during the plan year
-   - Method used to count covered lives (actual count, snapshot, Form 5500, NAIC) — IRC Reg. §46.4376-1(c)(2)
-8. **For fuel taxes** — the agent needs gallons by category and use; coordinate with Schedule C credits.
-9. **For sport fishing / archery** — the agent needs total sales price (or constructive sale price for related-party transfers) and category of equipment.
-10. **Prior credits / overpayments** carried from previous quarters (Schedule C of Form 720).
+   - Counting method. Self-insured plan sponsors: actual count, snapshot, or Form 5500 method (Treas. Reg. §46.4376-1(c)(2)). Insurers: actual count, snapshot, member months, or state form method (i720 "Specified health insurance policies")
+8. **For fuel taxes** — the agent needs gallons by IRS No. and event (removal at the terminal rack or another taxable event), and for Schedule C claims the type of use and CRN.
+9. **For sport fishing / archery** — the agent needs the sale price of each article (or constructive sale price for related-party sales, §4216(b)), the category, and for rods and poles the per-article price (the tax is capped at $10 per rod or pole, §4161(a)(1)(B)); for arrow shafts, the shaft count.
+10. **Prior overpayments** applied from the previous Form 720 (Part III line 6) and any Form 720-X amount included in it (line 7).
 
-For first-time filers, ask whether the entity has previously filed Form 720; if not, an EIN is required and a registration may be needed for certain fuel-related activities (Form 637 — separate registration).
+For first-time filers, ask whether the entity has previously filed Form 720; if not, an EIN is required and a registration may be needed for fuel activities, tax-free sales, and ultimate vendor claims (Form 637, Application for Registration; i720 "Information for Claims on Lines 7–11").
 
 ---
 
@@ -94,7 +102,8 @@ Execute these steps in order.
 ### Step 1 — Confirm Form 720 is the right form
 
 Walk through the anti-trigger list. If the user describes:
-- Tractor-trailer use → Form 2290
+- Heavy highway vehicle use, or an HVUT credit for a sold, destroyed, or stolen vehicle → Form 2290 / Form 8849 Schedule 6 ([`form-2290`](../form-2290/SKILL.md))
+- Alcohol, tobacco, firearms → TTB
 - Wagering / gambling business → Form 11-C / 730
 - State excise → state DOR
 - ACA reporting → Forms 1094-C / 1095-C
@@ -106,55 +115,64 @@ Walk through the anti-trigger list. If the user describes:
 
 Open `references/irs-number-catalog.md`. Walk the categories with the user. Most filers only have 1–2 IRS Numbers. The most common pattern is a single PCORI-fee filing on the Q2 form.
 
-The IRS Number is a 2-3 digit code identifying each excise tax. It appears in column (b) of Part I/Part II of Form 720. Each line on the form corresponds to one IRS Number.
+The IRS No. is a 2- or 3-digit code preprinted in the left column of Parts I and II of Form 720 (and repeated in the right column). Each tax line corresponds to one IRS No.; some lines have sub-rows, such as 60(a)–(c) for diesel and 133(a)–(d) for PCORI rate bands. Record for each applicable IRS No. whether it sits in Part I or Part II: that decides Schedule A and deposits (Steps 4 and 8).
 
 ### Step 3 — Compute the tax for each applicable IRS Number
 
 Use `references/line-by-line.md` for the canonical computation per category. Common patterns:
 
-- **PCORI (133)**: `covered_lives × applicable_rate`. Rate set by IRS notice each year. For plan years ending Oct 1, 2024 – Sep 30, 2025: $3.22/covered life (Notice 2024-83). For plan years ending Oct 1, 2025 – Sep 30, 2026: verify against IRS notice issued late 2025/early 2026.
-- **Sport fishing equipment (41)**: 10% of sales price (3% for tackle boxes, electric outboard motors). IRC §4161(a).
-- **Archery equipment (44)**: 11% of sales price for bows of draw weight ≥ 30 lbs and arrows; quivers, broadheads, and arrow shafts taxed separately. IRC §4161(b).
-- **Indoor tanning (140)**: 10% of amount paid for indoor tanning services. IRC §5000B. (Status note: subject to repeal proposals — verify still in effect for the quarter being filed.)
-- **Fuel taxes (62, 79, etc.)**: rate per gallon × taxable gallons. Rates change with statute; check Pub. 510.
+- **PCORI (133)**: `average covered lives × applicable rate`, entered on the row for the plan year's end date. Plan years ending Oct 1, 2024 – Sep 30, 2025: **$3.47** (Notice 2024-83; rows 133(a) and 133(c)). Plan years ending Oct 1, 2025 – Sep 30, 2026: **$3.84** (Notice 2025-61; rows 133(b) and 133(d)). The fee ends for plan years ending after Sep 30, 2029 (§4375(e), §4376(e)).
+- **Sport fishing equipment (41)**: 10% of sale price, §4161(a)(1)(A). **Fishing rods and poles (110)**: 10% capped at $10 per article, §4161(a)(1)(B). **Electric outboard motors (42)** and **fishing tackle boxes (114)**: 3%, §4161(a)(2)–(3).
+- **Bows, quivers, broadheads, and points (44)**: 11% of sale price, bows with a peak draw weight of 30 pounds or more, §4161(b)(1). **Arrow shafts (106)**: per shaft, inflation-adjusted: $0.63 for 2025 (Rev. Proc. 2024-40 §2.44), $0.65 for 2026 (Rev. Proc. 2025-32 §4.43).
+- **Indoor tanning (140)**: 10% of the amount paid, collected by the provider, §5000B.
+- **Fuel taxes (60, 62, 35, etc.)**: taxable gallons × the rate printed on Form 720 (e.g., diesel $.244, gasoline $.184). Alternative fuels use gasoline or diesel gallon equivalents (i720 "Alternative fuel").
+- **Remittance transfers (155)**: 1% of cash-funded remittance transfers made after Dec 31, 2025, collected by the provider, §4475.
 
-### Step 4 — Complete Schedule A (excise tax liability per semi-monthly period)
+### Step 4 — Complete Schedule A (Part I liability per semimonthly period)
 
-Schedule A reports the **dates of liability** within the quarter for **most non-PCORI** environmental and fuel taxes. The IRS uses Schedule A to verify deposit timing (deposits required twice monthly for filers above thresholds).
+Schedule A records the net tax liability for **Part I taxes only**, by semimonthly period (boxes A–F, plus G for the special September rule; boxes M–S for communications and air transportation taxes under the alternative method). Complete it whenever Part I shows a liability, even if the net liability is under $2,500. Do not complete it for Part II taxes or for a one-time gas guzzler filing (Form 720 Schedule A note; i720 "Schedule A. Excise Tax Liability").
 
-PCORI does NOT require Schedule A.
+PCORI, sport fishing, archery, and indoor tanning are Part II taxes: no Schedule A.
 
-### Step 5 — Complete Schedule C (claims, including HVUT credit)
+### Step 5 — Complete Schedule C (claims) only if a Part I or II liability is reported
 
-Schedule C reports refundable claims:
-- Fuel used for nontaxable purposes (off-highway, farming, exempt entities)
-- HVUT credits (Form 2290 prorated refunds)
-- Biodiesel and alternative fuel credits
-- Section 6426 alternative fuel mixture credit
+Schedule C (lines 1–15) claims credits for fuel used or sold for nontaxable uses, ultimate vendor and credit card issuer claims, exported fuel, tire credits, and certain manufacturers tax credits. The total goes to Part III line 4. Rules:
+- Use Schedule C only if the filer reports a liability in Part I or II; otherwise use Form 8849 or Form 4136 (i720 "Schedule C. Claims").
+- Lines 12 and 13 are "Reserved for future use": the biodiesel/renewable diesel mixture credit and the alternative fuel and alternative fuel mixture credits expired for fuel sold or used after Dec 31, 2024, and OBBBA ended the SAF mixture credit after Sep 30, 2025 (Pub. 510, Rev. Dec. 2025, "What's New" and "Reminders").
+- There is no HVUT line on Schedule C. HVUT credits belong on Form 2290 line 5 or Form 8849 Schedule 6.
+- Claims on lines 1–6 and 14b–14d must total at least $750 for the quarter (or aggregate quarters of the income tax year); otherwise they become annual claims on Form 4136 (i720 "Claim requirements for lines 1–6 and lines 14b–14d").
 
-If the user has a HVUT credit from a sold-mid-year tractor (Form 2290 prorated), the credit appears here.
+### Step 6 — Complete Schedule T (two-party exchanges) only for taxable fuel registrants
 
-### Step 6 — Complete Schedule T (terminals — large fuel filers only)
+Schedule T reports gallons of diesel, kerosene, gasoline, and aviation gasoline received or delivered in a two-party exchange within a terminal, where both parties are taxable fuel registrants and the receiving person is liable for the rack removal tax (i720 "Schedule T. Two-Party Exchange Information Reporting"). Most Form 720 filers leave it blank.
 
-Schedule T applies to terminal operators in the position-holding distribution chain. Most Form 720 filers will not use Schedule T.
-
-### Step 7 — Compute total tax (Part III)
+### Step 7 — Compute Part III
 
 ```
-Part III Line 3 = sum of Part I + Part II totals (excise tax owed)
-Part III Line 4 = Schedule C credits / claims
-Part III Line 5 = Part III Line 3 − Line 4 (net tax)
-Part III Line 6 = Deposits made during the quarter (semi-monthly EFTPS deposits)
-Part III Line 7 = Overpayment from prior quarter (if any)
-Part III Line 10 = Balance due (Line 5 − Line 6 − Line 7) if positive
-Part III Line 11 = Overpayment if Line 6 + Line 7 > Line 5
+Line 3  = Part I line 1 + Part II line 2            (total tax)
+Line 4  = Schedule C line 15                        (claims)
+Line 5  = deposits made for the quarter (check the box if the safe harbor rule was used)
+Line 6  = overpayment from previous quarters (prior Form 720 line 11 applied + Form 720-X line 5b)
+Line 7  = the Form 720-X amount included on line 6, if any
+Line 8  = line 5 + line 6
+Line 9  = line 4 + line 8
+Line 10 = line 3 − line 9 if line 3 > line 9       (balance due; not payable if under $1.00)
+Line 11a = line 9 − line 3 if line 9 > line 3      (overpayment; 11b apply to next return or refund; 11c–11e direct deposit)
 ```
+
+Source: Form 720 (Rev. June 2026) page 3; i720 "Part III".
 
 ### Step 8 — Verify deposit requirements
 
-Form 720 has a semi-monthly deposit requirement for taxpayers with > $2,500 in liability per quarter for certain categories (gasoline, alcohol, tobacco — see Pub. 510). PCORI-only filers and small-volume filers can pay with the return.
+Semimonthly deposits by electronic funds transfer are generally required. No deposit is required, and the tax is paid with the return, when (i720 "Payment of Taxes"):
+- the net liability for **Part I** taxes for the quarter does not exceed $2,500;
+- the tax is the gas guzzler tax on a one-time filing;
+- the tax is the PCORI fee on the Q2 return;
+- the tax is a **Part II** tax other than the ODC floor stocks tax.
 
-If deposits were required and not made on time, a §6656 deposit penalty applies in addition to any §6651 late-filing penalty. Surface this in the validation summary.
+Regular method deposits are due by the 14th day after each semimonthly period (generally the 29th for the 1st–15th, the 14th of the next month for the 16th–last day), with a special additional September deposit (in 2026, liability for Sept. 16–26 due Sept. 29). Each deposit must be at least 95% of the period's net liability unless the safe harbor (1/6 of the lookback quarter's net liability) applies. Load `references/line-by-line.md` for the full rules.
+
+If deposits were required and not made on time, the §6656 failure-to-deposit penalty (2%, 5%, 10%, or 15%) applies in addition to any §6651 penalties. The IRS granted limited deposit penalty relief for remittance transfer tax deposits for Q1–Q3 2026 (Notice 2025-55). Surface this in the validation summary.
 
 ### Step 9 — Run validation checks
 
@@ -168,15 +186,15 @@ See **Output format** below.
 
 State the next steps:
 
-- **Mandatory e-file via authorized provider** for many filers (IRS prefers electronic Form 720). See `filing.md` for channel decision.
-- **Pay any balance due** via EFTPS (electronic), required for most business federal tax payments per Treasury Reg. §31.6302-1.
-- **Set up calendar reminders** for the next quarterly deadline.
-- **For PCORI**: this is the only excise tax for many filers; reminder for next year (Q2 / July 31).
-- **Form 637 registration** required if the user enters a category needing IRS pre-approval (alternative fuel mixers, etc.) — coordinate with `references/registrations.md`.
+- **Filing channel:** e-filing Form 720 is optional; paper is still accepted (IRS Form 720 e-file FAQ). See `filing.md`.
+- **Pay any balance due** (line 10) by EFTPS, IRS Direct Pay, electronic funds withdrawal when e-filing, or check or money order with Form 720-V. Deposits themselves must be made by electronic funds transfer (i720 "Electronic deposit requirement").
+- **Set up calendar reminders** for the next quarterly deadline and, for Part I taxes, the semimonthly deposit dates.
+- **For PCORI**: this is the only excise tax for many filers; if Form 720 is filed only for PCORI, no Q1, Q3, or Q4 return is required (i720 "How To File"). Remind the user of next year's Q2 / July 31 filing.
+- **Form 637 registration** is required for some activities (tax-free sales, ultimate vendor and credit card issuer claims on Schedule C lines 7–11 and 14e). See the Form 637 instructions.
 
 ### Step 12 — File (optional)
 
-If the agent has IRS-authorized e-file tooling and the user explicitly authorizes filing, follow [`filing.md`](./filing.md). Form 720 e-filing is done through IRS-authorized e-file providers (not Direct File, not FFFF) — the list of providers is at https://www.irs.gov/e-file-providers/modernized-e-file-mef-forms.
+If the agent has IRS-authorized e-file tooling and the user explicitly authorizes filing, follow [`filing.md`](./filing.md). Form 720 e-filing goes through an IRS-approved 720 Modernized e-File (MeF) provider; the IRS has no free direct e-file portal for Form 720. The provider list is at https://www.irs.gov/e-file-providers/720-mef-providers.
 
 ---
 
@@ -186,53 +204,61 @@ For the full reference, load [`references/line-by-line.md`](./references/line-by
 
 ### Header
 
-- Quarter (Q1/Q2/Q3/Q4) and year
-- Name, address, EIN
+- Quarter ending (month and year)
+- Name, address (P.O. box only if the post office does not deliver to the street address), EIN
 - Final return checkbox
 - Address change checkbox
 
-### Part I — Excise taxes paid by the filer
+### Part I — Environmental, communications and air, fuel, retail, ship passenger, other, foreign insurance, and manufacturers taxes
 
-Multiple categories, each with a numbered IRS Number and a line. Examples:
+Each IRS No. has its own line. Selected lines (full map in `references/line-by-line.md`; rates from Form 720 Rev. June 2026 and i720):
 
 | IRS No. | Category | Tax base | Rate |
 |---------|----------|----------|------|
-| 22 | Air transportation of persons | Amount paid | 7.5% + segment fee |
-| 26 | Air transportation of property | Amount paid | 6.25% |
-| 28 | Use of international air travel facilities | Per passenger | $22.20 (2025; verify 2026) |
-| 29 | Transportation by water | Per passenger | $5.00 |
-| 41 | Sport fishing equipment | Sales price | 10% |
-| 42 | Fishing tackle boxes | Sales price | 3% |
-| 44 | Archery equipment (bows ≥30# draw, arrows) | Sales price | 11% / per arrow |
-| 62 | Gasoline | Per gallon | $0.184 (varies — verify Pub. 510) |
-| 79 | Diesel | Per gallon | $0.244 (varies) |
-| 104 | Foreign insurance | Premium | 1% / 4% / 1% by type |
-| 125 | Ozone-depleting chemicals | Per pound | varies by chemical |
-| 140 | Indoor tanning services | Amount paid | 10% (verify status) |
+| 22 | Local telephone service and teletypewriter exchange service | Amount paid | 3% |
+| 26 | Transportation of persons by air | Amount paid + per segment | 7.5% + $5.30 per domestic segment (2026; $5.20 in 2025) |
+| 28 | Transportation of property by air | Amount paid | 6.25% |
+| 27 | Use of international air travel facilities | Per person | $23.40 (2026; $22.90 in 2025); Alaska/Hawaii departures $11.70 (2026; $11.40 in 2025) |
+| 60 | Diesel (a) rack removal, (b) other events, (c) biodiesel mixture | Per gallon | $.244 |
+| 62 | Gasoline (a) rack removal, (b) other events | Per gallon | $.184 |
+| 35 | Kerosene (a) rack removal, (b) other events | Per gallon | $.244 |
+| 33 | Retail tax: truck, trailer, and semitrailer chassis and bodies, and tractor | Sale price | 12% |
+| 29 | Transportation by water | Per passenger | $3 |
+| 155 | Remittance transfers (after 2025) | Amount of transfer | 1% |
+| 30 | Policies issued by foreign insurers | Premiums paid | 4% casualty/indemnity bonds; 1% life, sickness, accident, annuity; 1% reinsurance |
+| 98 | Ozone-depleting chemicals (Form 6627) | Pounds | Form 6627 rates |
 
-### Part II — Other excise taxes (Patient-Centered fees, special taxes)
+IRS Nos. 18 and 21 (oil spill liability taxes) expired after 2025; leave them blank unless Congress extends them (i720 "What's New").
+
+### Part II — PCOR fee, sport fishing and archery, indoor tanning, and other taxes
 
 | IRS No. | Category | Notes |
 |---------|----------|-------|
-| 133 | PCORI fee | Annual, on Q2 form (July 31). $3.22/covered life for plan years ending Oct 1, 2024 – Sep 30, 2025 (verify next year). |
-| 64 | Inland waterways fuel tax | Per gallon |
-| 51 | LUST tax (Leaking Underground Storage Tank) | Per gallon |
+| 133 | PCOR fee | Annual, on the Q2 form (July 31). Rows (a)/(c): $3.47 for plan years ending Oct 1, 2024 – Sep 30, 2025. Rows (b)/(d): $3.84 for plan years ending Oct 1, 2025 – Sep 30, 2026. |
+| 41 / 110 / 42 / 114 | Sport fishing equipment / rods and poles / electric outboard motors / tackle boxes | 10% / 10% capped at $10 per article / 3% / 3% |
+| 44 / 106 | Bows, quivers, broadheads, and points / arrow shafts | 11% / $0.65 per shaft (2026) |
+| 140 | Indoor tanning services | 10% of amount paid |
+| 64 / 125 | Inland waterways fuel use tax / LUST tax on inland waterways fuel use | $.29 / $.001 per gallon |
+| 51 / 117 | Section 40 fuels / biodiesel sold as but not used as fuel | Recapture at the credit rate |
+| 20 | ODC floor stocks tax (Form 6627) | Reported on the return due July 31 |
+| 150 | Repurchase of corporate stock (Form 7208) | Form 7208 Part V line 11 |
+| 142 | Sales of designated drugs during statutory periods | §5000D |
 
 ### Part III — Totals and balance due
 
-Summary of Parts I and II, deposits, claims, and net tax.
+Lines 3–11 (see Step 7): total tax, claims, deposits, overpayment carried in, balance due or overpayment.
 
-### Schedule A — Excise tax liability by semi-monthly period
+### Schedule A — Part I net liability by semimonthly period
 
-For applicable categories, report the date liability was incurred. Used by IRS to verify deposit timing.
+Regular method: boxes A–F (1st–15th and 16th–last day of each month), G for the special September rule. Alternative method (IRS Nos. 22, 26, 28, 27): boxes M–R, S.
 
 ### Schedule C — Claims
 
-Refundable credits for nontaxable fuel use, alternative fuel mixtures, HVUT, etc. Each claim has a specific IRS Number and required CRN (Claim Reference Number).
+Lines 1–11 (nontaxable use of fuels and ultimate vendor sales), lines 12–13 reserved, line 14 other claims (14a §4051(d) tire credit CRN 366, 14f–14h tire credits, 14i–14k other manufacturers tax claims), line 15 total. Every claim needs the rate, gallons or count, amount, and CRN (credit reference number) printed on the form, plus the "Month your income tax year ends" and "Period of claim" entries.
 
-### Schedule T — Terminal operations
+### Schedule T — Two-party exchange information reporting
 
-For licensed terminal operators in the fuel distribution chain.
+Gallons received and delivered in two-party exchanges within a terminal, for IRS Nos. 60(a), 35(a)/69/77/111, 62(a), and 14.
 
 ---
 
@@ -242,31 +268,33 @@ Run these checks before declaring the form ready. Surface any failure — don't 
 
 ### Math checks
 
-- [ ] Each IRS Number's tax = (base × rate) per the published rate for the year
-- [ ] Part I subtotal = sum of all Part I IRS Numbers' tax columns
-- [ ] Part II subtotal = sum of all Part II IRS Numbers' tax columns
-- [ ] Part III Line 3 = Part I total + Part II total
-- [ ] Part III Line 5 = Part III Line 3 − Part III Line 4
-- [ ] Part III Line 10 (balance due) or Line 11 (overpayment) computed correctly
-- [ ] Schedule A semi-monthly entries sum to Part I/II liabilities for tracked categories
-- [ ] Schedule C claims have correct CRNs and supporting documentation reference
+- [ ] Each IRS No.'s tax = base × the rate printed on the current Form 720 (or Form 6627 / 6197 / 7208 for attached-form taxes)
+- [ ] Part I line 1 = sum of all Part I tax entries
+- [ ] Part II line 2 = sum of all Part II tax entries
+- [ ] Part III line 3 = line 1 + line 2
+- [ ] Line 8 = line 5 + line 6; line 9 = line 4 + line 8
+- [ ] Exactly one of line 10 (line 3 − line 9) or line 11a (line 9 − line 3) is positive
+- [ ] Schedule A boxes sum to the Part I net liability for the quarter (Part II taxes are not on Schedule A)
+- [ ] Schedule C line 15 = sum of lines 1–14 and equals Part III line 4; each claim uses the rate and CRN printed on the form
 
 ### Sanity checks (warn, don't block)
 
-- [ ] PCORI rate matches the IRS notice for the relevant plan-year-ending range (verify each year)
-- [ ] PCORI is filed on the **Q2 form (July 31)** — if user is filing Q1/Q3/Q4 and only PCORI applies, that's wrong; redirect to Q2 form.
-- [ ] Indoor tanning IRS No. 140 — verify the tax is still in effect; subject to repeal proposals.
-- [ ] Sport fishing 10% rate covers most equipment; tackle boxes and electric outboard motors are 3% — confirm classification.
-- [ ] Archery: bows < 30 lbs draw weight are NOT subject to §4161(b); confirm bow specs.
-- [ ] Fuel tax rates: verify against Pub. 510 for the quarter being filed; rates can change mid-year by statute.
-- [ ] Deposits required for liability > $2,500/quarter for fuel/alcohol/tobacco categories — if user didn't deposit, surface §6656 risk.
-- [ ] First-time filer: confirm EIN is on file with the IRS; if not, file Form SS-4 first.
+- [ ] PCORI amount is on the 133 row matching the plan year end ($3.47 for plan years ending Oct 1, 2024 – Sep 30, 2025; $3.84 for Oct 1, 2025 – Sep 30, 2026)
+- [ ] PCORI is filed on the **Q2 form (July 31)**. If the user is filing Q1/Q3/Q4 and only PCORI applies, redirect to the Q2 form; filers with other quarterly taxes leave line 133 blank on Q1, Q3, Q4 returns.
+- [ ] Fishing rods and poles are on IRS No. 110 (not 41) with the $10 per-article cap; electric outboard motors (42) and tackle boxes (114) are 3%.
+- [ ] Bows with a peak draw weight under 30 pounds are not taxable under §4161(b)(1); confirm bow specs.
+- [ ] Arrow shafts use the per-shaft rate for the calendar year of sale ($0.63 in 2025, $0.65 in 2026), not a percentage.
+- [ ] Fuel tax rates match the rates printed on the Form 720 revision for the quarter being filed.
+- [ ] Part I net liability over $2,500 for the quarter and no deposits made → surface §6656 risk.
+- [ ] No entries on IRS Nos. 18 or 21 (expired after 2025) and no Schedule C lines 12–13 (reserved).
+- [ ] First-time filer: confirm the EIN is active; if there is none, apply first (IRS.gov/EIN or Form SS-4).
 
 ### Cross-form checks
 
-- [ ] If user has Schedule C HVUT claim, ensure they previously filed Form 2290 and the credit corresponds to a sold/destroyed/stolen vehicle.
-- [ ] If user has fuel-related excise + Schedule C alternative fuel mixture credits → confirm Form 637 registration is current.
-- [ ] If Form 720 reports inland waterways fuel tax (IRS No. 64) → user should verify Pub. 510 for current rate ($0.29 + LUST in 2025; verify 2026).
+- [ ] No HVUT credit on Schedule C. Route HVUT credits to Form 2290 line 5 or Form 8849 Schedule 6.
+- [ ] Ultimate vendor or credit card issuer claims (Schedule C lines 7–11, 14e) carry a current Form 637 registration number.
+- [ ] Taxes figured on Form 6627 (IRS Nos. 16, 17, 19, 20, 53, 54, 98), Form 6197 (40), or Form 7208 (150) have the form attached.
+- [ ] Inland waterways fuel (IRS No. 64, $.29) also carries the LUST tax on IRS No. 125 ($.001) when the fuel was not already subject to LUST tax (i720 "Other Part II Taxes").
 
 ---
 
@@ -292,57 +320,62 @@ Address change: [ ] Yes  [x] No
 | ...     | ...      | ...    | ... | ... |
 | **Subtotal Part I** | | | | $X,XXX |
 
-## Part II — Other excise taxes (PCORI, LUST, etc.)
+## Part II — PCOR fee and other Part II taxes
 | IRS No. | Category | Base | Rate | Tax |
 |---------|----------|------|------|-----|
-| 133     | PCORI fee | <covered lives> | $X.XX | $X,XXX |
+| 133(d)  | PCOR fee, self-insured plan, plan year ending Oct 1, 2025 – Sep 30, 2026 | <avg covered lives> | $3.84 | $X,XXX.XX |
 | ...     | ...       | ...              | ...    | ...    |
-| **Subtotal Part II** | | | | $X,XXX |
+| **Line 2 (total Part II)** | | | | $X,XXX |
 
 ## Part III — Totals
-3.  Total tax (Part I + Part II): $X,XXX
-4.  Total claims (Schedule C):    $X,XXX
-5.  Net tax (Line 3 − Line 4):    $X,XXX
-6.  Total deposits this quarter:  $X,XXX
-7.  Overpayment from prior quarter: $X,XXX
-8.  Balance due / overpayment:    $X,XXX
+3.   Total tax (line 1 + line 2):            $X,XXX
+4.   Claims (Schedule C line 15):            $X,XXX
+5.   Deposits made for the quarter:          $X,XXX   [ ] safe harbor box
+6.   Overpayment from previous quarters:     $X,XXX
+7.   Form 720-X amount included on line 6:   $X,XXX
+8.   Line 5 + line 6:                        $X,XXX
+9.   Line 4 + line 8:                        $X,XXX
+10.  Balance due (line 3 − line 9):          $X,XXX
+11a. Overpayment (line 9 − line 3):          $X,XXX   11b [ ] apply to next return [ ] refund
 
-## Schedule A — Excise tax liability by semi-monthly period
-[Only for applicable IRS Numbers — typically not used for PCORI-only filers]
+## Schedule A — Part I net liability by semimonthly period
+[Only when Part I shows a liability. Never for Part II taxes or a one-time gas guzzler filing.]
 
-| Date range | IRS No. | Liability |
-|------------|---------|-----------|
-| MM/01-15   | ...     | $X,XXX    |
-| MM/16-end  | ...     | $X,XXX    |
-| ...        | ...     | ...       |
+| Month | 1st–15th | 16th–last day |
+|-------|----------|---------------|
+| First month  | A: $X,XXX | B: $X,XXX |
+| Second month | C: $X,XXX | D: $X,XXX |
+| Third month  | E: $X,XXX | F: $X,XXX |
+| Special September rule (Q3 only) | G: $X,XXX | |
 
-## Schedule C — Claims (if any)
-| CRN | Type of claim | Period | Amount |
-|-----|---------------|--------|--------|
-| 360 | Nontaxable use of gasoline | <period> | $X,XXX |
-| ... | ...                        | ...      | ...    |
+## Schedule C — Claims (only if Part I or II shows a liability)
+Month your income tax year ends: MM
+| Line | Type of use / claim | Period of claim | Rate | Gallons or count | Amount | CRN |
+|------|---------------------|-----------------|------|------------------|--------|-----|
+| 3d   | Undyed diesel used on a farm (type of use 1) | MM/DD/YYYY–MM/DD/YYYY | $.243 | X,XXX | $X,XXX | 360 |
+| 15   | Total claims | | | | $X,XXX | |
 
-## Schedule T — Terminal operations (if applicable)
-[Only for licensed terminal operators]
+## Schedule T — Two-party exchanges (only for taxable fuel registrants)
 
 ## Required attachments / next steps
-- [ ] EFTPS deposit required (if liability > $2,500 for tracked categories)
-- [ ] Form 637 registration current (for alternative fuel claims)
-- [ ] Form 8453-EX (e-file signature) if filing electronically through MeF
-- [ ] Pay any balance due via EFTPS by the quarter's due date
+- [ ] Semimonthly EFT deposits required if Part I net liability for the quarter exceeds $2,500
+- [ ] Form 6627 / 6197 / 7208 attached for IRS Nos. computed on those forms
+- [ ] Form 637 registration number entered for ultimate vendor or credit card issuer claims
+- [ ] Form 8453-EX if filing electronically and the provider requires it
+- [ ] Pay line 10 by the due date: EFTPS, Direct Pay, EFW (e-file), or check with Form 720-V
 
 ## Validation summary
 - Math: all checks passed | <list failures>
 - Sanity: <list warnings>
 - Year-aware notes:
-  - PCORI rate verified against Notice YYYY-XX (or flagged TBD)
-  - Fuel tax rates verified against Pub. 510 (or flagged TBD)
-  - Indoor tanning tax status verified (or flagged TBD)
+  - Form 720 and instructions revision used (Rev. MM-YYYY)
+  - PCORI rate and row verified against the notice for the plan year end (Notice 2024-83: $3.47; Notice 2025-61: $3.84)
+  - Inflation-adjusted rates (arrow shafts, air transportation) verified against the Rev. Proc. for the calendar year
 
 ## Sources cited in this draft
-- IRS Form 720 (revision date YYYY-MM)
-- IRS Instructions for Form 720 (revision date YYYY-MM)
-- IRC §§4161, 4371, 4375-4377, 4661, 4671, 4681, 4701, 5000B (as applicable)
+- IRS Form 720 (Rev. MM-YYYY)
+- IRS Instructions for Form 720 (Rev. MM-YYYY)
+- IRC sections for each IRS No. reported (e.g., §§4161, 4371, 4375–4377, 4475, 5000B)
 - Notice YYYY-XX (PCORI rate, if applicable)
 - IRS Pub. 510 (Excise Taxes)
 ```
@@ -361,15 +394,15 @@ Loaded on demand based on the user's category.
 - [`references/fuel-taxes.md`](./references/fuel-taxes.md) — Gasoline, diesel, kerosene, alternative fuels — rates and Schedule C claim mechanics
 - [`references/sport-fishing-archery.md`](./references/sport-fishing-archery.md) — Manufacturer's tax computation under §4161; sales price, constructive sale price, exemptions
 - [`references/common-mistakes.md`](./references/common-mistakes.md) — Top filer mistakes that trigger §6651/§6656 penalties on Form 720
-- [`filing.md`](./filing.md) — Browser-automation playbook: Form 720 e-file via IRS-authorized providers, paper backup
+- [`filing.md`](./filing.md) — Filing channels: Form 720 e-file via an IRS-approved MeF provider, paper to Ogden, payment options
 
 ## Examples
 
 End-to-end worked Form 720s. Use these as patterns when the user's situation is similar.
 
-- [`examples/small-employer-pcori.md`](./examples/small-employer-pcori.md) — Small business with self-insured health plan computing PCORI fee for Q2 filing
-- [`examples/sport-fishing-importer.md`](./examples/sport-fishing-importer.md) — Sport fishing equipment importer reporting §4161 manufacturer's tax with Schedule A
-- [`examples/trucking-hvut-credit.md`](./examples/trucking-hvut-credit.md) — Trucking company reconciling a Form 2290 HVUT credit on Schedule C of Form 720
+- [`examples/pcori-fee-self-insured-health.md`](./examples/pcori-fee-self-insured-health.md) — Small business with a self-insured health plan computing the PCORI fee for the Q2 2026 return
+- [`examples/sport-fishing-equipment-importer.md`](./examples/sport-fishing-equipment-importer.md) — Fishing rod importer reporting §4161 tax on IRS No. 110 (Part II, no Schedule A, no deposits)
+- [`examples/trucking-hvut-credit-reconciliation.md`](./examples/trucking-hvut-credit-reconciliation.md) — Trucking company: HVUT credits routed to Form 2290 / Form 8849, and the §4051(b) tax on parts installed within 6 months reported on IRS No. 33
 
 ## Sources
 
@@ -379,18 +412,26 @@ Authoritative sources used by this skill. Always re-verify against the IRS site 
 - [Instructions for Form 720 (latest)](https://www.irs.gov/pub/irs-pdf/i720.pdf) — line-by-line IRS guidance
 - [About Form 720](https://www.irs.gov/forms-pubs/about-form-720) — IRS landing page with archive of past revisions
 - [Publication 510](https://www.irs.gov/pub/irs-pdf/p510.pdf) — Excise Taxes (the deep authority)
-- [Notice 2024-83](https://www.irs.gov/pub/irs-drop/n-24-83.pdf) — PCORI fee rate $3.22 for plan years ending Oct 1, 2024 – Sep 30, 2025 (verify successor notice for 2025-2026)
-- IRC Subtitle D (Miscellaneous Excise Taxes) — chapters 31–36 cover Form 720 categories
-- IRC §4161 — sport fishing and archery equipment manufacturer's tax
-- IRC §4371 — foreign insurance excise tax
-- IRC §4375 / §4376 — PCORI fee
-- IRC §4661 / §4671 — chemical excise (Superfund)
+- [Notice 2024-83](https://www.irs.gov/irb/2024-49_IRB#NOT-2024-83) — PCOR fee $3.47 for policy and plan years ending Oct 1, 2024 – Sep 30, 2025
+- [Notice 2025-61](https://www.irs.gov/irb/2025-45_IRB#NOT-2025-61) — PCOR fee $3.84 for policy and plan years ending Oct 1, 2025 – Sep 30, 2026 (a new notice sets each later year's amount; re-check before July 31)
+- [Rev. Proc. 2024-40](https://www.irs.gov/pub/irs-drop/rp-24-40.pdf) §§2.44–2.45 and [Rev. Proc. 2025-32](https://www.irs.gov/irb/2025-45_IRB#REV-PROC-2025-32) §§4.43–4.44 — arrow shaft and air transportation amounts for 2025 and 2026
+- [Notice 2025-55](https://www.irs.gov/pub/irs-drop/n-25-55.pdf) — remittance transfer tax deposit penalty relief, Q1–Q3 2026
+- [Form 720 e-file FAQ](https://www.irs.gov/e-file-providers/frequently-asked-questions-form-720-quarterly-federal-excise-tax-return-e-file) — e-filing Form 720 is optional
+- [Instructions for Form 2290 (Rev. July 2026)](https://www.irs.gov/pub/irs-pdf/i2290.pdf), "Line 5" — where HVUT credits go
+- Treas. Reg. §46.4376-1 — self-insured plan counting methods; Treas. Reg. §§40.6302(c)-1 to -3 — deposit rules
+- IRC Subtitle D (Miscellaneous Excise Taxes), chapters 31–36 and 49
+- IRC §4051 — retail tax on heavy trucks, trailers, tractors; §4051(b) parts installed within 6 months; terminates Oct 1, 2028 (§4051(c))
+- IRC §4161 / §4162 — sport fishing and archery manufacturers tax
+- IRC §4371 — tax on policies issued by foreign insurers
+- IRC §4375 / §4376 / §4377 — PCOR fee (ends for policy and plan years ending after Sep 30, 2029)
+- IRC §4475 — remittance transfer tax (P.L. 119-21, transfers after Dec 31, 2025)
+- IRC §4611 / §4661 / §4671 — Superfund petroleum and chemical taxes
 - IRC §4681 — ozone-depleting chemicals
-- IRC §4701 — small issue bond tax
-- IRC §5000B — indoor tanning services tax (verify status)
-- IRC §6651 — late-filing penalty
+- IRC §4701 — tax on obligations not in registered form (IRS No. 31)
+- IRC §5000B — indoor tanning services tax
+- IRC §6651 — failure to file and failure to pay penalties
 - IRC §6656 — failure to deposit penalty
-- IRC §7503 — timely-mailing-as-timely-filing rule
+- IRC §7502 / §7503 — timely mailing; weekend and holiday due dates
 
 ## Disclaimer
 

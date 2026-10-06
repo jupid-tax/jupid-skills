@@ -2,7 +2,7 @@
 
 Filers with QBI from a partnership (Form 1065) or S-corp (Form 1120-S) receive a Schedule K-1 with Section 199A information reported separately from total entity income.
 
-This reference covers how to read those statements, what to put in Form 8995 Lines 1a-1e column (iii), and common pitfalls.
+This reference covers how to read those statements, what to put in Form 8995 line 1 (rows i–v) column (c), and common pitfalls. Box/code references verified against the 2025 Schedules K-1 (Form 1065, Form 1120-S, Form 1041) and the 2025 Partner's and Shareholder's Instructions.
 
 ---
 
@@ -27,9 +27,9 @@ For each trade or business of the partnership, the statement should report:
 
 For Form 8995 (simplified), only the **QBI amount** matters at low income levels — W-2 wages and UBIA are only relevant above the threshold (Form 8995-A).
 
-### What to put on Form 8995 Line 1 column (iii)
+### What to put on Form 8995 Line 1 column (c)
 
-The QBI amount from the Section 199A statement. **Not** the total partnership distributive share, **not** Box 1 ordinary business income.
+The QBI amount from the Section 199A statement, less any partner-level deductions attributable to this partnership (½ SE tax on its self-employment income, SE health insurance and retirement contributions based on that income, unreimbursed partnership expenses, interest on debt used to acquire the interest; Treas. Reg. §1.199A-3(b)(1)(vi), 2025 Instructions for Form 8995). Ask which apply. **Not** the total partnership distributive share, **not** Box 1 ordinary business income.
 
 Example:
 
@@ -44,23 +44,23 @@ SSTB: No
 ```
 
 Form 8995:
-- Line 1b (i): "Acme Marketing LLC"
-- Line 1b (ii): partnership EIN (from K-1 header)
-- Line 1b (iii): $15,000
+- Row 1ii, column (a): "Acme Marketing LLC"
+- Row 1ii, column (b): partnership EIN (from K-1 header)
+- Row 1ii, column (c): $15,000 (no partner-level deductions in this example)
 
 ### When the partnership has multiple trades or businesses
 
-A partnership may operate multiple trades or businesses. The Section 199A statement reports each separately. Each separate trade or business gets its own row in Lines 1a-1e on Form 8995.
+A partnership may operate multiple trades or businesses. The Section 199A statement reports each separately. Each separate trade or business gets its own row (1i–1v) on Form 8995.
 
 Exception: if the partnership made an aggregation election under Treas. Reg. §1.199A-4 and reported the aggregated amount, treat it as a single row.
 
 ### Guaranteed payments
 
-Guaranteed payments to partners (Box 4 of K-1) are **not** QBI. They are treated as compensation for services and excluded from §199A. The partnership should reduce QBI by guaranteed payments before reporting QBI on the Section 199A statement — verify by spot-checking that the QBI in the statement is less than Box 1 ordinary business income by at least the amount of guaranteed payments.
+Guaranteed payments to the partner (Box 4a services, Box 4b capital) are **not** QBI for the recipient (IRC §199A(c)(4)(B)). Do not add Box 4 to the statement's QBI. The partnership deducts guaranteed payments in computing ordinary business income, so Box 1 is already after that deduction; the statement's QBI reflects it too.
 
-### Section 707(c) payments
+### Section 707(a) payments
 
-Section 707(c) payments (deductible payments to partners for use of capital or services) are also not QBI. Same treatment as guaranteed payments — the partnership should net these out before reporting QBI.
+Payments to a partner for services other than in the capacity of a partner (section 707(a)) are also not QBI (IRC §199A(c)(4)(C); 2025 Instructions for Form 8995). Do not add them to QBI.
 
 ---
 
@@ -76,9 +76,9 @@ Like partnership K-1, Box 17 typically just shows "STMT" with the detail in an a
 
 Same fields as partnership Section 199A statement: shareholder's QBI, W-2 wages, UBIA, SSTB status, §199A REIT dividends, §199A PTP income.
 
-### What to put on Form 8995 Line 1 column (iii)
+### What to put on Form 8995 Line 1 column (c)
 
-The QBI amount from the Section 199A statement. **Not** Box 1 ordinary business income.
+The QBI amount from the Section 199A statement. **Not** Box 1 ordinary business income. If the shareholder owns more than 2% and deducts SE health insurance on Schedule 1 line 17 based on wages from this S corporation, subtract that deduction (Treas. Reg. §1.199A-3(b)(1)(vi)); ask.
 
 Example:
 
@@ -93,9 +93,9 @@ SSTB: No
 ```
 
 Form 8995:
-- Line 1c (i): "XYZ Consulting Inc."
-- Line 1c (ii): S-corp EIN
-- Line 1c (iii): $20,000
+- Row 1iii, column (a): "XYZ Consulting Inc."
+- Row 1iii, column (b): S-corp EIN
+- Row 1iii, column (c): $20,000
 
 ### Reasonable compensation reduces QBI
 
@@ -123,7 +123,7 @@ The QBI amount from the Section 199A statement, with the trust/estate name and E
 
 ### Pitfall 1: Using K-1 Box 1 instead of the Section 199A QBI
 
-Box 1 (partnership ordinary income / S-corp ordinary income) often includes guaranteed payments, interest, dividends, and other items that don't qualify for §199A. The Section 199A statement strips these out. **Always use the statement's QBI figure, not Box 1.**
+Box 1 (partnership ordinary income / S-corp ordinary income) is not the QBI figure. QBI can differ because of separately stated items that also count (for example the section 179 deduction in partnership Box 12 / S-corp Box 11, or ordinary section 1231 items) and items from non-qualifying activities. **Always use the statement's QBI figure, not Box 1.**
 
 ### Pitfall 2: K-1 has no Section 199A statement
 
@@ -135,7 +135,7 @@ Below the threshold, SSTB status doesn't matter — every QBI source qualifies f
 
 ### Pitfall 4: Negative QBI on K-1
 
-If the K-1 reports a QBI loss (negative QBI), enter it as a negative number in Column (iii) of Form 8995. It will reduce the total QBI on Line 2. If the total Line 2 is negative, enter 0 on Line 2 and carry the loss to next year's Line 3.
+If the K-1 reports a QBI loss (negative QBI), enter it as a negative number in column (c) of Form 8995. It reduces the total on Line 2 (which can be negative). Line 4 is floored at 0, and line 16 carries the net loss to next year's Line 3.
 
 ### Pitfall 5: K-1 reports QBI from multiple sources but only one row was provided
 

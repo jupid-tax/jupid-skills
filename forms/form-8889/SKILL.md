@@ -3,11 +3,11 @@ name: form-8889
 description: |
   Use this skill when a taxpayer with an HSA needs to file Form 8889 (Health Savings Accounts) with their Form 1040 for tax year 2026. Triggers: "fill out Form 8889", "claim HSA deduction", "report HSA contributions on tax return", "HSA distribution tax", "I have an HSA, what tax form".
 
-  Do NOT use for: FSA (no separate form, employer reports), 401(k) (no special form), Medicare savings account (Archer MSA — Form 8853).
+  Do NOT use for: FSA (no separate form, employer reports), 401(k) (no special form), Archer MSA or Medicare Advantage MSA (Form 8853), the 6% excise tax on excess HSA contributions (use form-5329), or checking a custodian's Form 1099-SA / 5498-SA on its own (use form-1099-sa / form-5498-sa).
 form: Form 8889
 audience: [individual, solo, freelance, llc1]
 tax_year: 2026
-last_verified: 2026-04-28
+last_verified: 2026-10-06
 official_form: https://www.irs.gov/pub/irs-pdf/f8889.pdf
 official_instructions: https://www.irs.gov/pub/irs-pdf/i8889.pdf
 ---
@@ -18,7 +18,9 @@ This skill produces an audit-grade draft of Form 8889 from the user's HSA contri
 
 The math is mechanical. The judgment is in *eligibility month-by-month*, *which contributions belong on Line 2 vs. Line 9*, and *whether a distribution is qualified*. This skill optimizes for the latter — the agent should ask, not guess.
 
-**Companion guide for end users:** [Form 8889 (2026): HSA Contribution & Distribution Reporting Guide](https://jupid.com/blog/form-8889-hsa-2026) on the Jupid blog. Same rules, narrative-style explanation. Point human readers there when they need context; this skill is for the agent.
+**Companion guide for end users:** [Form 8889 + AI Agent Skill: HSA Contributions Guide 2026](https://jupid.com/blog/form-8889-hsa-2026) on the Jupid blog. Same rules, narrative-style explanation. Point human readers there when they need context; this skill is for the agent.
+
+**Form revision.** The line map was verified against the 2025 Form 8889 (created 3/28/25) and the 2025 Instructions for Form 8889 (Nov 25, 2025), filed in 2026. Re-check the next revision at https://www.irs.gov/forms-pubs/about-form-8889 before using this skill for a 2026 return.
 
 ---
 
@@ -49,14 +51,14 @@ Before producing anything, the agent must have these inputs. If any are missing,
 
 1. **Tax year** the return covers. Form 8889 for tax year 2025 is filed in 2026; for 2026, in 2027. Contribution limits and HDHP minimums depend on this year.
 2. **Filer's legal name and SSN/ITIN.** Used in the Form 8889 header. Each spouse files a separate Form 8889 if both have HSAs — do not combine.
-3. **HDHP coverage type for each month** — self-only, family, or none. Coverage status on the **first day of each month** determines that month's contribution allowance.
+3. **HDHP coverage type for each month** — self-only, family, or none. Coverage status on the **first day of each month** determines that month's contribution allowance. For months beginning after December 31, 2025, a bronze or catastrophic plan available as individual coverage through a Marketplace counts as an HDHP even if it misses the deductible and out-of-pocket figures (IRC §223(c)(2)(H), added by P.L. 119-21 §71307; Notice 2026-5 Q&A-4). For 2026 and later, ASK whether the user's plan is a Marketplace bronze or catastrophic plan before testing it against the HDHP minimums.
 4. **HSA contributions made directly** (outside payroll) — from bank statements or HSA custodian's year-end statement.
 5. **Employer HSA contributions** — from W-2 Box 12, code W. Includes cafeteria-plan (Section 125) contributions, which are technically employer contributions for tax purposes.
 6. **1099-SA distributions** — total distributions from the HSA in the tax year (Box 1) and distribution code (Box 3).
 7. **Qualified medical expenses paid from the HSA** — itemized list with dates, amounts, and brief description (doctor visit, prescription, dental, etc.). Each item must be on the IRC §213(d) / Pub 502 list (see [`references/qualified-medical-expenses.md`](./references/qualified-medical-expenses.md)).
 8. **Age** — relevant for the catch-up contribution (55+) and the 20% penalty exception (65+).
-9. **Medicare enrollment status and effective date** — Medicare enrollment (any part) disqualifies HSA contributions starting that month. Part A enrollment can be **retroactive up to 6 months** when claiming Social Security after 65 — ASK about this if the user is 65+ or recently took Social Security.
-10. **Other disqualifying coverage** — general-purpose FSA on the user or spouse, TRICARE, second non-HDHP plan via spouse's employer, dependent status on someone else's return.
+9. **Medicare enrollment status and effective date** — Medicare enrollment (any part) disqualifies HSA contributions starting that month, including periods of retroactive coverage (Pub. 969 (2025), "Enrolled in Medicare"). Premium-free Part A taken after 65 starts **6 months back** from the sign-up or Social Security application, but not before the month the person turned 65 (https://www.medicare.gov/basics/get-started-with-medicare/sign-up/when-does-medicare-coverage-start) — ASK about this if the user is 65+ or recently took Social Security.
+10. **Other disqualifying coverage** — general-purpose FSA on the user or spouse, TRICARE, second non-HDHP plan via spouse's employer, dependent status on someone else's return. Not disqualifying: telehealth and other remote care coverage (IRC §223(c)(1)(B), plan years beginning after 2024), and, for months beginning after December 31, 2025, a direct primary care arrangement whose fees total no more than $150 a month ($300 if it covers more than one person) (IRC §223(c)(1)(E); Notice 2026-5).
 
 Additionally ask, when relevant:
 
@@ -82,12 +84,12 @@ A month counts as HSA-eligible only if **all four** are true on the first day of
 
 ### Step 3 — Compute the contribution limit (Line 3)
 
-If eligible all 12 months: full annual limit (self-only or family per Step 1). For partial-year eligibility, two options:
+If eligible all 12 months with the same coverage: full annual limit (self-only or family per Step 1). If the user is 55+ at year-end and unmarried, or married with self-only coverage all year, add the $1,000 additional contribution on Line 3 (married with family coverage: it goes on Line 7 instead). Otherwise:
 
-- **Proration**: sum of monthly allowances. Self-only month = annual limit ÷ 12. Family month = family annual limit ÷ 12. Mixed months take the coverage on the first of that month.
-- **Last-month rule**: if HSA-eligible on December 1 and the user opts in, full annual limit allowed regardless of partial-year coverage. **Triggers a 12-month testing period in the next calendar year** — if eligibility breaks during testing, Part III applies and the over-contribution is taxable + 10% additional tax in the year of failure.
+- **Not eligible on December 1**: Line 3 = Line 3 Limitation Chart and Worksheet total ÷ 12. Each month takes the coverage on the first day of that month ($4,300 self-only / $8,550 family for 2025; $5,300 / $9,550 if 55+, the $9,550 figure only if unmarried).
+- **Eligible on December 1 (last-month rule)**: the user is treated as eligible for the whole year with the December 1 coverage. Line 3 = the greater of the worksheet result or the full amount for the December 1 coverage (2025 Instructions for Form 8889, Line 3 rules 2–5). **This starts a testing period from December 1 through December 31 of the next year** — if eligibility breaks during testing (other than death or disability), the contributions that exceed the worksheet amount are included in income in the year of failure plus a 10% additional tax (Part III).
 
-If partial-year, **ASK before defaulting to last-month rule**. Most filers don't realize the testing-period exposure. See [`references/contribution-limits.md`](./references/contribution-limits.md) for worked examples.
+If partial-year, **ASK how much the user contributed above the worksheet amount** and whether they expect to stay HSA-eligible through December 31 of next year. Only the part above the worksheet amount is exposed to the testing period. See [`references/contribution-limits.md`](./references/contribution-limits.md) for worked examples.
 
 ### Step 4 — Collect contributions and split between Line 2 and Line 9
 
@@ -101,34 +103,34 @@ If a contribution was made between January 1 and April 15 of the *next* year, AS
 ### Step 5 — Compute Part I deduction (Lines 1–13)
 
 ```
-Line 1  : Coverage type (self-only / family) on December 1
+Line 1  : Self-only / Family (plan in effect longer; Family if family coverage on Dec 1)
 Line 2  : Direct contributions from user
 Line 3  : Annual contribution limit (from Step 3)
 Line 4  : Archer MSA contributions (almost always $0)
-Line 5  : Line 3 − Line 4
-Line 6  : Line 5 (or allocated share if MFJ with split family limit)
-Line 7  : Catch-up ($1,000 if age 55+, into the user's own HSA only)
-Line 8  : Line 6 + Line 7  (full annual limit including catch-up)
-Line 9  : Employer contributions (W-2 Box 12 code W)
+Line 5  : Line 3 − Line 4 (not less than 0)
+Line 6  : Line 5 (or allocated share if spouses have separate HSAs and family coverage)
+Line 7  : Additional contribution — only if 55+, married, and family coverage
+Line 8  : Line 6 + Line 7
+Line 9  : Employer contributions (W-2 Box 12 code W, incl. cafeteria plan)
 Line 10 : Qualified HSA funding distribution (one-time IRA-to-HSA)
 Line 11 : Line 9 + Line 10
-Line 12 : Line 2 + Line 11  (capped at Line 8)
-Line 13 : Smaller of Line 2 or (Line 8 − Line 11)  ← HSA deduction
+Line 12 : Line 8 − Line 11 (not less than 0)
+Line 13 : Smaller of Line 2 or Line 12  ← HSA deduction
 ```
 
 Line 13 flows to **Schedule 1, Line 13** (HSA deduction). Above-the-line, no itemizing required.
 
-If Line 2 + Line 9 > Line 8, the user has an **excess contribution**. They must withdraw the excess plus earnings by the unextended tax-filing deadline or owe a **6% excise tax every year** the excess remains. File Form 5329 to compute. See [`references/common-mistakes.md`](./references/common-mistakes.md).
+If Line 2 > Line 13, the difference is an **excess contribution** (excess employer contributions are measured against Line 8 separately). The user can withdraw the excess plus earnings by the due date of the return, including extensions, and report the earnings as other income for the year of withdrawal; otherwise a **6% excise tax applies for every year** the excess remains. File Form 5329 Part VII to compute. See [`references/common-mistakes.md`](./references/common-mistakes.md).
 
 ### Step 6 — Compute Part II distributions (Lines 14a–17b)
 
 ```
 Line 14a : Total distributions from 1099-SA Box 1
-Line 14b : Excess contribution returns + rollovers + mistaken distributions
+Line 14b : Rollovers to another HSA + excess contributions (and earnings) withdrawn by the due date incl. extensions
 Line 14c : Line 14a − Line 14b
 Line 15  : Qualified medical expenses paid from HSA
 Line 16  : Line 14c − Line 15  (taxable portion)
-Line 17a : Exceptions box (death, disability, age 65+)
+Line 17a : Exceptions box (distribution after death, disability, or age 65)
 Line 17b : Line 16 × 20%  (additional tax, unless 17a applies)
 ```
 
@@ -136,17 +138,19 @@ Every dollar on 1099-SA Box 1 must appear on Line 14a. Failing to report trigger
 
 Line 16 flows to **Schedule 1, Line 8f** (Other income). Line 17b flows to **Schedule 2, Line 17c** (additional tax on HSA distributions).
 
-The 20% penalty does NOT apply if the distribution was due to: death (paid to beneficiary), disability per IRC §72(m)(7), or the account holder reaching age 65. After 65, non-qualified distributions are taxed as ordinary income but no 20% penalty.
+The 20% penalty does NOT apply to distributions made after the account beneficiary dies, becomes disabled per IRC §72(m)(7), or turns age 65 (IRC §223(f)(4)(B)–(C)). After 65, non-qualified distributions are taxed as ordinary income but no 20% penalty.
+
+A mistaken distribution the user repaid does not go on Line 14b: the custodian leaves it off Form 1099-SA or corrects the form (Instructions for Forms 1099-SA and 5498-SA, "HSA Mistaken Distributions").
 
 For the qualified-expense determination, see [`references/qualified-medical-expenses.md`](./references/qualified-medical-expenses.md).
 
 ### Step 7 — Compute Part III if applicable (Lines 18–21)
 
-Only complete Part III if:
-1. The user used the last-month rule in a **prior** year, AND
-2. They failed to remain HSA-eligible for the full 12-month testing period in the year after.
+Only complete Part III if the user failed to stay an eligible individual (other than because of death or disability) during a testing period that started with either:
+1. The last-month rule in a **prior** year (testing period December 1 through December 31 of the following year), or
+2. A qualified HSA funding distribution (testing period from the month of the transfer through the last day of the 12th month after it).
 
-If both apply, the prior-year over-contribution becomes taxable income this year, plus a 10% additional tax (separate from the 20% non-qualified-distribution penalty). The form walks through the computation on Lines 18–21.
+If either applies, Line 18 = contributions above what the Line 3 worksheet would have allowed without the last-month rule, Line 19 = the qualified HSA funding distribution, Line 20 = Line 18 + Line 19 (income), Line 21 = Line 20 × 10% (separate from the 20% non-qualified-distribution tax).
 
 If the user was HSA-eligible all of the testing period, skip Part III entirely.
 
@@ -167,13 +171,14 @@ State the next forms the user will need:
 - **Line 13 > 0** → Schedule 1, Line 13 (HSA deduction)
 - **Line 16 > 0** → Schedule 1, Line 8f (taxable HSA distribution as other income)
 - **Line 17b > 0** → Schedule 2, Line 17c (20% additional tax)
+- **Line 20 > 0** → Schedule 1, Line 8f; **Line 21 > 0** → Schedule 2, Line 17d (10% additional tax)
 - **Excess contributions not withdrawn by deadline** → Form 5329 (6% excise tax)
 - **Married filing jointly with two HSAs** → second Form 8889 for the spouse
 - **Form 8889 must be attached to Form 1040** in attachment-sequence order
 
 ### Step 11 — File the return (optional)
 
-If the agent has browser-automation tooling and the user authorizes filing, follow [`filing.md`](./filing.md). It contains the FFFF / paid software / paper / Direct File decision tree, field-by-field mapping, pre-flight checklist, submission state machine, and security rules.
+If the agent has browser-automation tooling and the user authorizes filing, follow [`filing.md`](./filing.md). It contains the Free File / FFFF / paid software / paper decision tree, field-by-field mapping, pre-flight checklist, submission state machine, and security rules.
 
 If the user only wants a draft, skip this step.
 
@@ -190,24 +195,24 @@ For the full reference, load [`references/line-by-line.md`](./references/line-by
 
 ### Part I — Contributions
 
-- **Line 1** — Self-only or Family box. The box reflects coverage on the **first day of the last month** (December 1) or the test for the contribution-limit math. If coverage type changed mid-year, see [`references/contribution-limits.md`](./references/contribution-limits.md).
-- **Line 2** — Direct contributions only. Exclude Line 9 amounts.
-- **Line 3** — Annual limit (full year or prorated). For 2025: $4,300 self-only / $8,550 family. For 2026: TBD — verify Rev. Proc. before filing.
+- **Line 1** — Self-only or Family box. If the user had both during the year, check the plan in effect for the longer period; if they had family coverage on the first day of the last month (December 1), check Family. Spouses where either has family coverage are both treated as family. If coverage type changed mid-year, see [`references/contribution-limits.md`](./references/contribution-limits.md).
+- **Line 2** — Direct contributions only, including those made by April 15, 2026 for 2025. Exclude Line 9 amounts, rollovers, and Line 10.
+- **Line 3** — Annual limit (full year or worksheet). For 2025: $4,300 self-only / $8,550 family (Rev. Proc. 2024-25). For 2026: $4,400 / $8,750 (Rev. Proc. 2025-19). Add $1,000 here if 55+ and unmarried or self-only all year.
 - **Line 4** — Archer MSA, almost always $0.
 - **Line 5** = Line 3 − Line 4
 - **Line 6** = Line 5 (or split share if MFJ family-coverage spouses agreed to split)
-- **Line 7** — $1,000 catch-up if age 55+. Each spouse age 55+ gets their own catch-up, but it must go into their **own** HSA, not the spouse's.
+- **Line 7** — Additional contribution only if the user was 55+ at year-end, married, and the user or spouse had family coverage: $1,000 × eligible months ÷ 12. Each spouse age 55+ gets their own, but it must go into their **own** HSA, not the spouse's.
 - **Line 8** = Line 6 + Line 7
 - **Line 9** — Employer contributions from W-2 Box 12 code W
 - **Line 10** — One-time qualified HSA funding distribution from IRA. Niche.
 - **Line 11** = Line 9 + Line 10
-- **Line 12** = Line 2 + Line 11, capped at Line 8
-- **Line 13** = Smaller of Line 2 or (Line 8 − Line 11). **HSA deduction → Schedule 1 Line 13.**
+- **Line 12** = Line 8 − Line 11; if zero or less, enter -0-
+- **Line 13** = Smaller of Line 2 or Line 12. **HSA deduction → Schedule 1 Line 13.**
 
 ### Part II — Distributions
 
 - **Line 14a** — From 1099-SA Box 1
-- **Line 14b** — Excess returns, rollovers, mistaken distributions returned
+- **Line 14b** — Rollovers to another HSA, plus excess contributions and their earnings withdrawn by the due date including extensions
 - **Line 14c** = Line 14a − Line 14b
 - **Line 15** — Qualified medical expenses paid from HSA in this year
 - **Line 16** = Line 14c − Line 15. **Flows to Schedule 1, Line 8f.**
@@ -216,12 +221,12 @@ For the full reference, load [`references/line-by-line.md`](./references/line-by
 
 ### Part III — Failure to maintain HDHP coverage
 
-- **Line 18** — Last-month-rule contributions from prior year that should not have been allowed
-- **Line 19** — Months of failure
-- **Line 20** — Computed taxable amount
-- **Line 21** — Line 20 × 10% additional tax
+- **Line 18** — Last-month rule: amount contributed minus the amount the Line 3 worksheet allows for that year without the rule
+- **Line 19** — Qualified HSA funding distribution whose testing period failed
+- **Line 20** — Line 18 + Line 19. **Flows to Schedule 1, Line 8f.**
+- **Line 21** — Line 20 × 10% additional tax. **Flows to Schedule 2, Line 17d.**
 
-Only complete if last-month rule used in prior year and testing-period eligibility broke this year.
+Only complete if a last-month-rule or funding-distribution testing period failed this year.
 
 ---
 
@@ -234,8 +239,8 @@ Before declaring the form ready, run these checks. Surface anything that fails �
 - [ ] Line 5 = Line 3 − Line 4
 - [ ] Line 8 = Line 6 + Line 7
 - [ ] Line 11 = Line 9 + Line 10
-- [ ] Line 12 = min(Line 2 + Line 11, Line 8)
-- [ ] Line 13 = min(Line 2, Line 8 − Line 11), but not less than 0
+- [ ] Line 12 = max(0, Line 8 − Line 11)
+- [ ] Line 13 = min(Line 2, Line 12)
 - [ ] Line 14c = Line 14a − Line 14b
 - [ ] Line 16 = Line 14c − Line 15, but not less than 0
 - [ ] Line 17b = Line 16 × 0.20, unless 17a exception applies
@@ -245,23 +250,25 @@ Before declaring the form ready, run these checks. Surface anything that fails �
 
 Surface a warning if any of these are true:
 
-- [ ] Line 2 + Line 9 > Line 8 → excess contribution; user must withdraw or pay 6% excise tax annually (Form 5329)
-- [ ] Line 7 (catch-up) entered but user is under 55 → not allowed
+- [ ] Line 2 > Line 13, or Line 9 + Line 10 > Line 8 → excess contribution; user must withdraw or pay 6% excise tax annually (Form 5329)
+- [ ] Line 7 entered but user is under 55, unmarried, or had no family coverage → the additional amount belongs on Line 3 (or nowhere)
 - [ ] Line 7 entered into a spouse's HSA → catch-up must go into the user's own HSA
-- [ ] Coverage type changed mid-year but Line 3 = full annual limit without last-month rule opt-in → ask user to confirm
+- [ ] Coverage type changed mid-year and Line 3 = full annual limit → confirm the user had that coverage on December 1 and knows about the testing period
 - [ ] Last-month rule invoked but user not HSA-eligible on December 1 → not allowed
+- [ ] Plan treated as HDHP only because it is a Marketplace bronze/catastrophic plan → allowed for months from January 2026 only
 - [ ] Line 9 looks like a cafeteria-plan contribution but user also reports same amount on Line 2 → double-counting; remove from Line 2
 - [ ] User is 65+ and contributed to HSA → confirm Medicare enrollment status; Medicare disqualifies contributions retroactively
 - [ ] Line 14a = 0 but user mentioned receiving 1099-SA → 1099-SA must be reported; cross-check
 - [ ] Line 15 includes a non-qualified expense (gym, vitamins, cosmetic, individual-market premiums for under-65) → recategorize to Line 16
 - [ ] User has both HSA contributions and a general-purpose FSA → ineligible for HSA contribution months when FSA active
-- [ ] MFJ family-HDHP with both spouses claiming full $8,550 → family limit is shared, not doubled
+- [ ] MFJ family-HDHP with both spouses claiming the full family limit ($8,550 for 2025, $8,750 for 2026) → family limit is shared, not doubled
 
 ### Cross-form checks
 
 - [ ] If Line 13 > 0, Schedule 1 Line 13 must reflect the deduction
 - [ ] If Line 16 > 0, Schedule 1 Line 8f must reflect the taxable amount
 - [ ] If Line 17b > 0, Schedule 2 Line 17c must reflect the 20% tax
+- [ ] If Line 21 > 0, Schedule 2 Line 17d must reflect the 10% tax
 - [ ] If excess contribution: Form 5329 Part VII (excess HSA contributions)
 - [ ] If MFJ with two HSAs: two separate Form 8889s, one per spouse, each with own SSN
 
@@ -280,18 +287,18 @@ SSN: <filer SSN>
 Coverage indicator (Line 1): Self-only | Family
 
 ## Part I — HSA Contributions
- 1. Coverage on Dec 1:                 Self-only | Family
+ 1. HDHP coverage box:                 Self-only | Family
  2. HSA contributions (direct):        $X,XXX
  3. Contribution limit:                $X,XXX
  4. Archer MSA contributions:          $0
  5. Line 3 − Line 4:                   $X,XXX
  6. Line 5 (or allocated share):       $X,XXX
- 7. Catch-up (age 55+):                $X,XXX
- 8. Total limit (Line 6 + Line 7):     $X,XXX
+ 7. Additional contribution (55+, married, family): $X,XXX
+ 8. Line 6 + Line 7:                   $X,XXX
  9. Employer contributions (W-2 12 W): $X,XXX
 10. Qualified HSA funding distribution: $X,XXX
 11. Line 9 + Line 10:                  $X,XXX
-12. Line 2 + Line 11 (cap Line 8):     $X,XXX
+12. Line 8 − Line 11 (not < 0):        $X,XXX
 13. HSA deduction (Schedule 1 L13):    $X,XXX
 
 ## Part II — HSA Distributions
@@ -306,11 +313,11 @@ Coverage indicator (Line 1): Self-only | Family
        → Schedule 2, Line 17c
 
 ## Part III — Failure to Maintain HDHP Coverage
-   (Skip unless last-month rule used in prior year AND testing-period eligibility broke)
-18. Prior-year LMR contributions:      $X,XXX
-19. Months of failure:                 X
-20. Taxable amount:                    $X,XXX
-21. Additional 10% tax:                $X,XXX
+   (Skip unless a last-month-rule or funding-distribution testing period failed)
+18. Last-month rule excess:            $X,XXX
+19. Qualified HSA funding distribution: $X,XXX
+20. Total income (→ Schedule 1, 8f):   $X,XXX
+21. Additional 10% tax (→ Schedule 2, 17d): $X,XXX
 
 ## Eligibility table (working — not transcribed to form)
 | Month     | HDHP coverage | Other coverage | Medicare | Dependent | Eligible? |
@@ -333,7 +340,7 @@ Coverage indicator (Line 1): Self-only | Family
 - IRS Instructions for Form 8889 (revision date YYYY-MM)
 - IRC §223 (Health Savings Accounts)
 - IRC §213(d) (medical care definition)
-- Rev. Proc. 2024-25 (2025 limits) — verify next Rev. Proc. for 2026
+- Rev. Proc. 2024-25 (2025 limits) / Rev. Proc. 2025-19 (2026 limits)
 - IRS Publication 969, Publication 502
 ```
 
@@ -351,7 +358,7 @@ Loaded on demand based on what the user's situation needs.
 - [`references/qualified-medical-expenses.md`](./references/qualified-medical-expenses.md) — Per Pub 502 (doctor, prescription, dental, vision, mental health, long-term care, COBRA, post-65 Medicare A/B/D)
 - [`references/triple-tax-advantage.md`](./references/triple-tax-advantage.md) — Strategy: contribute, invest, save receipts, withdraw later
 - [`references/common-mistakes.md`](./references/common-mistakes.md) — Top filer mistakes with examples and fixes
-- [`filing.md`](./filing.md) — Browser-automation playbook for filing Form 8889 with the 1040 (FFFF / paid software / paper / Direct File)
+- [`filing.md`](./filing.md) — Browser-automation playbook for filing Form 8889 with the 1040 (Free File / FFFF / paid software / paper)
 
 ## Examples
 
@@ -365,7 +372,7 @@ End-to-end worked Form 8889s. Use these as patterns when the user's situation is
 
 Authoritative sources used by this skill. Always re-verify against the IRS site for the tax year being filed — the IRS publishes a new Revenue Procedure for HSA limits each year (typically May or June for the following year).
 
-- [Form 8889 (2026): HSA Contribution & Distribution Reporting Guide](https://jupid.com/blog/form-8889-hsa-2026) — Jupid's narrative companion to this skill
+- [Form 8889 + AI Agent Skill: HSA Contributions Guide 2026](https://jupid.com/blog/form-8889-hsa-2026) — Jupid's narrative companion to this skill
 - [Form 8889 (latest)](https://www.irs.gov/pub/irs-pdf/f8889.pdf) — the form itself
 - [Instructions for Form 8889 (latest)](https://www.irs.gov/pub/irs-pdf/i8889.pdf) — line-by-line IRS guidance with the Limitation Chart and Worksheet
 - [About Form 8889](https://www.irs.gov/forms-pubs/about-form-8889) — IRS landing page with archive of past revisions
@@ -378,7 +385,9 @@ Authoritative sources used by this skill. Always re-verify against the IRS site 
 - [Publication 502](https://www.irs.gov/publications/p502) — Medical and Dental Expenses (qualified expense list)
 - IRC §223 (HSA eligibility, limits, distributions), §213(d) (medical care definition), §125 (cafeteria plans), §72(m)(7) (disability for penalty exception)
 - Rev. Proc. 2024-25 — 2025 inflation-adjusted HSA limits and HDHP minimums
-- Rev. Proc. (forthcoming, expected May–June 2025) — 2026 HSA limits; verify before filing
+- Rev. Proc. 2025-19 — 2026 HSA limits ($4,400 / $8,750) and HDHP minimums ($1,700 / $3,400 deductible; $8,500 / $17,000 out-of-pocket)
+- P.L. 119-21 §§71306–71308 and Notice 2026-5 — telehealth safe harbor (plan years after 2024), bronze/catastrophic Marketplace plans as HDHPs and direct primary care arrangements (months after December 31, 2025)
+- Medicare.gov, "When does Medicare coverage start?" — Part A retroactivity of 6 months
 - Notice 2004-50 — Comprehensive HSA Q&A (recordkeeping, qualified expenses, prohibited transactions)
 
 ## Disclaimer

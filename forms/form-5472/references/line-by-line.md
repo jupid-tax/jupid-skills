@@ -1,260 +1,273 @@
 # Form 5472 — Line by Line
 
-Walkthrough of every page of Form 5472 with the rule that governs each
+Walkthrough of every line of Form 5472 with the rule that governs each
 line and where the agent should ask vs. compute. Ordered as the form
-prints. References are to the most recent revision of Form 5472 (check
-revision date in the form's footer). Line numbers are stable but always
-cross-check.
+prints.
 
-## Top of page 1 — Tax year and reporting type
+**Revision verified:** Form 5472 (Rev. December 2023) and Instructions
+for Form 5472 (Rev. December 2024, "Use with December 2023 revision of
+Form 5472"), checked 2026-10-06. Form 5472 is not an annual form; before
+use, confirm the current revision at
+https://www.irs.gov/forms-pubs/about-form-5472 and re-check every line
+number below if the revision date has changed.
 
-- **Tax year box** — Beginning and ending dates of the reporting
-  corporation's tax year. For calendar-year filers, 1/1/YYYY to
-  12/31/YYYY.
-- **Type of reporting corporation** — Check appropriate boxes:
-  - 25% foreign-owned US corporation (Type 1)
-  - Foreign corporation engaged in a US trade or business (Type 2)
-  - Foreign-owned US disregarded entity (Type 3 — combined with
-    pro-forma 1120)
+Citations: "Instr." = Instructions for Form 5472 (Rev. December 2024).
 
-## Part I — Reporting Corporation
+## Header
 
-### Lines 1a-1g — Identifying information
+- **Tax year** — "For tax year of the reporting corporation beginning
+  ___ and ending ___". A foreign-owned U.S. disregarded entity (DE) uses
+  the tax year its owner uses for U.S. tax filing requirements or, if
+  none, the calendar year (Instr., When and Where To File).
+- Enter all information in English and money items in U.S. dollars
+  (form header). Attach a schedule showing the exchange rates used for
+  Part IV amounts (Instr., Part IV).
 
-- **Line 1a** — Name of reporting corporation. For a DE, the LLC's
-  legal name as filed with state registration.
-- **Line 1b** — Employer ID number. The reporting corp's US EIN. For a
-  foreign-owned DE, the EIN obtained via Form SS-4. EIN is mandatory.
-- **Line 1c** — Address. Use the corporation's principal US address. A
-  DE with no US office uses its registered agent's address (most
-  Delaware LLCs use a registered agent service like Harvard Business
-  Services or CSC).
-- **Line 1d** — Total assets. Year-end book value, US GAAP or local
-  GAAP if foreign. For a DE with no operations, this may be just the
-  capital contribution from the foreign owner.
-- **Line 1e** — Principal business activity. Plain-English description
-  + 6-digit NAICS code.
-- **Line 1f** — Total US-source gross income. For a Type 3 DE with no
-  US-source income, this is $0.
-- **Line 1g** — Total payments and receipts from reportable
-  transactions. Sum of all monetary flows on all attached 5472s.
+There is no "type of reporting corporation" checkbox. The type shows up
+on line 2 (50% foreign ownership) and line 3 (foreign-owned U.S. DE).
 
-### Line 1h — Country(ies) where return is filed for tax purposes
+## Part I — Reporting Corporation (all filers complete Part I)
 
-List all foreign countries where the reporting corporation files an
-income tax return. For a US C-corp with foreign owner, this is usually
-just "United States". For a foreign corp filing 1120-F, list the home
-country.
-
-### Line 1i — Country(ies) of filing for tax purposes
-
-Similar to 1h; sometimes the IRS form combines or splits these — read
-the current-year instructions.
+| Line | Entry | Rule |
+|------|-------|------|
+| 1a | Name; number, street, room or suite; city, state, ZIP | P.O. box only if the post office does not deliver to the street address. Foreign address: city, province or state, country; do not abbreviate the country (Instr., Line 1a) |
+| 1b | Employer identification number | The reporting corporation's EIN. A foreign-owned DE needs its own EIN (Form SS-4) |
+| 1c | Total assets | Domestic reporting corporation: total assets from Form 1120, page 1, item D. Foreign reporting corporation: Form 1120-F, Schedule L, line 17, column (d) (Instr., Line 1c). Ask the DE owner for the year-end balance |
+| 1d | Principal business activity | Description, using the activity list in the Instructions for Form 1120 or 1120-F (Instr., Lines 1d and 1e) |
+| 1e | Principal business activity code | 6-digit code from the same list. Nonstore (online) retailers pick the code by the primary product sold (Instructions for Form 1120 (2025), Schedule K line 2a) |
+| 1f | Total value of gross payments made or received reported on THIS Form 5472 | Line 22 + line 36 + FMV of Part VI transactions (and, for a foreign-owned DE, the Part V transactions). Leave blank if the related party is a U.S. person (Instr., Line 1f) |
+| 1g | Total number of Forms 5472 filed for the tax year | One Form 5472 per related party with which there was a reportable transaction; count includes this one (Instr., Line 1g) |
+| 1h | Total value of gross payments on ALL Forms 5472 | Sum of line 1f on every Form 5472 filed for the year (Instr., Line 1h) |
+| 1i | Consolidated filing checkbox | Only for a U.S. consolidated Form 5472 with the schedule of members (Instr., Consolidated returns) |
+| 1j | Initial-year checkbox | Check if this is the first year the reporting corporation files Form 5472 (Instr., Line 1j) |
+| 1k | Total number of Parts VIII attached | One Part VIII per cost sharing arrangement (Instr., Line 1k) |
+| 1l | Country of incorporation | |
+| 1m | Date of incorporation | For an LLC, the formation date |
+| 1n | Country(ies) under whose laws the reporting corporation files an income tax return as a resident | U.S. corporation: United States. Foreign-owned DE: the instructions give no specific entry for an entity that files no income tax return of its own; ASK the user's preparer and keep the entry the same every year |
+| 1o | Principal country(ies) where business is conducted | List countries; never "worldwide"; exclude countries where business is conducted only through a subsidiary. Same rule for lines 4c–7c and 8f (Instr., Line 1o) |
+| 2 | Checkbox: a foreign person owned, directly or indirectly, at least 50% of vote or value at any time in the year | §318 attribution with the §6038A(c)(5) modifications (Instr., Line 2) |
+| 3 | Checkbox: reporting corporation is a foreign-owned U.S. DE | Check if a foreign-owned U.S. DE (Instr., Line 3) |
 
 ## Part II — 25% Foreign Shareholder
 
-This identifies the foreign related party. **One Form 5472 per related
-party** — if the reporting corp has 3 foreign related parties, file 3
-Form 5472s, each with its own Part II.
+Completed only by 25% foreign-owned U.S. corporations, including
+foreign-owned U.S. DEs. A foreign-owned DE reports its foreign owner on
+the 25% foreign shareholder lines (Instr., Part II).
 
-### Lines 2a-2k — Foreign related party information
+- **Heading checkbox** — any direct or ultimate indirect 25% foreign
+  shareholder is a surrogate foreign corporation under §7874(a)(2)(B)
+  (inversion in the current year or previous 10 years).
+- **Lines 4a–4e** — the direct 25% foreign shareholder with the largest
+  percentage (by vote or value).
+- **Lines 5a–5e** — the direct 25% foreign shareholder with the second
+  largest percentage.
+- **Lines 6a–6e** — the ultimate indirect 25% foreign shareholder with
+  the largest percentage.
+- **Lines 7a–7e** — the ultimate indirect 25% foreign shareholder with
+  the second largest percentage.
+- More shareholders than spaces: attach a sheet (Instr., Part II).
 
-- **Line 2a** — Name (legal name as registered in foreign jurisdiction)
-- **Line 2b** — US identifying number. If the related party has an EIN
-  or ITIN in the US, list it. Otherwise, list the foreign tax ID with
-  appropriate prefix or "FOREIGNUS".
-- **Line 2c** — Reference ID number. A unique identifier the reporting
-  corp assigns to track the related party across years. Once assigned,
-  use the same reference ID on every year's 5472 for that party.
-- **Line 2d** — Foreign taxpayer ID number (the related party's home
-  country tax ID, e.g., German Steuernummer, UK UTR, Canadian BN).
-- **Line 2e** — Country in which related party files an income tax
-  return as a tax resident.
-- **Line 2f** — Address (in foreign country).
-- **Line 2g** — Country of citizenship/organization.
-- **Line 2h** — Country in which related party's principal business is
-  conducted.
-- **Line 2i** — Principal business activity (description + NAICS or
-  international equivalent).
-- **Line 2j** — Ownership percentage. Direct ownership; see line 2k for
-  total.
-- **Line 2k** — Total direct + indirect ownership percentage.
+Within each block:
 
-## Part III — Related Party Other Than Reporting Corp / Direct Owner
+| Line | Entry | Rule |
+|------|-------|------|
+| 4a (5a, 6a, 7a) | Name and address | |
+| 4b(1) | U.S. identifying number, if any | Individuals: SSN or ITIN. Entities: EIN (Instr., Lines 4b(1)–7b(1)) |
+| 4b(2) | Reference ID number | Required only when no U.S. identifying number is entered on 4b(1). Assigned by the reporting corporation: alphanumeric, no spaces or special characters, max 50 characters, used consistently every year, never reused for another person. No IRS application needed (Instr., Reference ID number) |
+| 4b(3) | Foreign taxpayer identification number (FTIN), if any | A foreign-owned DE must enter the FTIN of each direct and ultimate foreign owner; if none, enter "None" or "N/A". Other filers may enter an FTIN but must also complete 4b(1) or 4b(2) (Instr., Lines 4b(3)–7b(3)) |
+| 4c | Principal country(ies) where business is conducted | Same rule as line 1o |
+| 4d | Country of citizenship, organization, or incorporation | |
+| 4e | Country(ies) under whose laws the shareholder files an income tax return as a resident | |
 
-If Part II identifies an indirect owner (e.g., the reporting corp is
-held by a foreign holding company that is in turn held by an ultimate
-foreign individual), Part III identifies the **direct** owner or the
-intermediate.
+"Ultimate indirect 25% foreign shareholder" = a 25% foreign shareholder
+whose ownership is not attributed (under §958(a)(1) and (2) principles)
+to any other 25% foreign shareholder (Instr., Definitions; Rev. Proc.
+91-55). For lines 6a–6e and 7a–7e, attach an explanation of the
+attribution of ownership (Instr., Lines 6a–6e and 7a–7e; Treas. Reg.
+§1.6038A-1(e)). If a foreign-owned DE's direct owner is a foreign DE,
+report that foreign DE as the direct owner (Instr., Lines 4b(3)–7b(3)).
 
-For simple two-level ownership (foreign owner → US sub directly), Part
-III duplicates Part II and the form sometimes leaves Part III blank
-with notation "Same as Part II".
+## Part III — Related Party (all filers complete Part III)
 
-For multi-level chains, Part III names the intermediate owner. The IRS
-needs to map the chain.
+Part III identifies the one related party this Form 5472 is about, even
+if it is also listed in Part II (Instr., Part III).
 
-### Lines 3a-3j — Direct owner / intermediate identification
+| Line | Entry | Rule |
+|------|-------|------|
+| Heading | Is the related party a foreign person or a U.S. person? | Checking "foreign person" makes Part IV mandatory (form caution in Part IV) |
+| 8a | Name and address of related party | |
+| 8b(1) | U.S. identifying number, if any | SSN/ITIN for individuals; EIN for entities |
+| 8b(2) | Reference ID number | Foreign related party with no 8b(1) entry; same rules as 4b(2) |
+| 8b(3) | FTIN, if any | |
+| 8c / 8d | Principal business activity / code | |
+| 8e | Relationship (check all that apply) | "Related to reporting corporation", "Related to 25% foreign shareholder", "25% foreign shareholder" |
+| 8f | Principal country(ies) where business is conducted | Same rule as line 1o |
+| 8g | Country(ies) under whose laws the related party files an income tax return as a resident | |
 
-Mirror of Part II for the direct/intermediate owner: name, address,
-country, ownership %, ID numbers.
+## Part IV — Monetary Transactions Between Reporting Corporations and Foreign Related Party
 
-## Part IV — Monetary Transactions Between Reporting Corp and Foreign Related Party
+Complete Part IV if the "foreign person" box is checked in Part III. Do
+not complete it for a domestic related party. Check the box at the top
+if estimates are used (Instr., Part IV).
 
-The core of the form. For each transaction category, fill the dollar
-amount of transactions during the year. Two columns:
+Received side (money or accruals coming in to the reporting
+corporation):
 
-- "**Amounts received from related party**" — money flowing from the
-  related party TO the reporting corp
-- "**Amounts paid to related party**" — money flowing FROM the reporting
-  corp to the related party
+| Line | Category |
+|------|----------|
+| 9 | Sales of stock in trade (inventory) |
+| 10 | Sales of tangible property other than stock in trade |
+| 11 | Platform contribution transaction payments received |
+| 12 | Cost sharing transaction payments received (only if the corporation itself incurred intangible development costs) |
+| 13a | Rents received (for other than intangible property rights) |
+| 13b | Royalties received (for other than intangible property rights) |
+| 14 | Sales, leases, licenses, etc., of intangible property rights (patents, trademarks, secret formulas) |
+| 15 | Consideration received for technical, managerial, engineering, construction, scientific, or like services |
+| 16 | Commissions received |
+| 17a / 17b | Amounts borrowed: 17a beginning balance and 17b ending balance (outstanding balance method), or 17b only with the monthly average (monthly average method) |
+| 18 | Interest received |
+| 19 | Premiums received for insurance or reinsurance |
+| 20 | Loan guarantee fees received |
+| 21 | Other amounts received, to the extent taken into account in determining the reporting corporation's taxable income |
+| 22 | Total. Combine lines 9 through 21 |
 
-Don't net offsetting transactions. Show gross flows in each direction.
-A US sub that bought $10M of inventory from foreign parent and sold
-$3M of inventory to foreign parent reports both $10M and $3M, not net
-$7M.
+Paid side (money or accruals going out to the foreign related party):
 
-### Line-by-line categories (approximate; verify against current form)
+| Line | Category |
+|------|----------|
+| 23 | Purchases of stock in trade (inventory) |
+| 24 | Purchases of tangible property other than stock in trade |
+| 25 | Platform contribution transaction payments paid |
+| 26 | Cost sharing transaction payments paid |
+| 27a | Rents paid (for other than intangible property rights) |
+| 27b | Royalties paid (for other than intangible property rights) |
+| 28 | Purchases, leases, licenses, etc., of intangible property rights |
+| 29 | Consideration paid for technical, managerial, engineering, construction, scientific, or like services |
+| 30 | Commissions paid |
+| 31a / 31b | Amounts loaned: beginning and ending balance, or monthly average on 31b |
+| 32 | Interest paid (if limited by §163(j), report only the amount allowed as a deduction; carried-forward interest is reported in the year it is allowed) |
+| 33 | Premiums paid for insurance or reinsurance |
+| 34 | Loan guarantee fees paid |
+| 35 | Other amounts paid, to the extent taken into account in determining taxable income |
+| 36 | Total. Combine lines 23 through 35 |
 
-| Line | Category                                                   | Notes                                                       |
-|------|-----------------------------------------------------------|-------------------------------------------------------------|
-| 8    | Sales of stock in trade (inventory)                       | Goods sold for resale                                       |
-| 9    | Sales of tangible property other than stock in trade      | Equipment, fixed assets                                     |
-| 10   | Platform contribution transaction amounts                 | Cost-sharing arrangement platform contributions             |
-| 11   | Cost-sharing arrangement amounts                          | Annual CSA cost shares                                      |
-| 12   | Rents and royalties                                       | Receipts/payments for use of property                       |
-| 13   | Sales of intangible property                              | Patents, trademarks, software (transferred not licensed)    |
-| 14   | Consideration for services                                | Services rendered between parties                           |
-| 15   | Commissions                                               | Sales commissions                                           |
-| 16   | Amounts borrowed during year                              | New loans extended TO reporting corp                        |
-| 17   | Amounts loaned during year                                | New loans made BY reporting corp                            |
-| 18   | Interest                                                  | On any intercompany debt                                    |
-| 19   | Premiums received and paid for insurance/reinsurance      | Captive insurance arrangements                              |
-| 20   | Other amounts                                             | Reimbursements, management fees, anything not above         |
+Rules that apply across Part IV (Instr., Part IV; Treas. Reg.
+§1.6038A-2(b)):
 
-For each line, fill both columns (received and paid) where applicable.
-Leave $0 if no transactions of that type occurred.
+- Gross amounts by category. A purchase goes on line 23 and a sale on
+  line 9; never net them.
+- "Paid" and "received" include accrued amounts for an accrual-method
+  corporation (Instr., Accrued Payments and Receipts).
+- Loans are balances, not flows: lines 17 and 31 take beginning and
+  ending balances (or a monthly average). Repayments show up only as a
+  lower ending balance. Open accounts from sales and purchases already
+  reported, collected in full in the ordinary course, are excluded
+  (Treas. Reg. §1.6038A-2(b)(3)(vii)).
+- Lines 22 and 36 say "combine amounts on lines 9 through 21" / "23
+  through 35". On the form, 17a and 31a are inline entries and only 17b
+  and 31b sit in the amount column, so the plain reading includes 17b
+  and 31b in the totals (and therefore in line 1f). The instructions do
+  not say this expressly; confirm the convention with the preparer or
+  software and state it in the draft.
+- Reasonable estimate: 75%–125% of the actual amount, when actual
+  amounts are not determinable; check the estimates box.
+- Small amounts: any actual amount up to $50,000 may be reported as
+  "$50,000 or less" (Instr., Small amounts; Treas. Reg.
+  §1.6038A-2(b)(9)).
+- Partnership-owned transactions: if the reporting corporation owns 25%
+  or more of a partnership that transacted with the related party,
+  report its percentage share.
 
-### Loan balances (Lines 16, 17)
+## Part V — Reportable Transactions of a Reporting Corporation That Is a Foreign-Owned U.S. DE
 
-These lines report **amounts borrowed/loaned during the year**, not
-the year-end balance. If the reporting corp repaid an existing loan
-and didn't borrow new, Line 16 is $0 even though there was a balance
-during the year. The year-end balance is informational only on certain
-attached schedules; the 5472 line is about flows.
+A single checkbox plus an attached statement. Check the box and attach
+a description of any other transaction as defined by Treas. Reg.
+§1.482-1(i)(7) not already entered in Part IV, "such as amounts paid or
+received in connection with the formation, dissolution, acquisition,
+and disposition of the entity, including contributions to and
+distributions from the entity" (form Part V; Instr., Part V; Treas.
+Reg. §1.6038A-2(b)(3)(xi)).
 
-### Interest (Line 18)
+The statement should list, for each item: date, description
+(contribution, distribution, owner-paid LLC expense, liquidation
+proceeds), and USD amount. Part V items count toward line 1f for a DE.
 
-Interest paid to or received from the related party. If a loan
-exists but no interest is being charged at AFR, the IRS may impute
-interest under IRC §482 / §7872. Document the rate.
+There are no Part V dollar lines on the form; do not invent them.
 
-### Other amounts (Line 20)
+## Part VI — Nonmonetary and Less-Than-Full Consideration Transactions
 
-Catch-all for reimbursements, management fees, license fees not
-captured above, etc. Most "miscellaneous" intercompany flows land here.
-Itemize in a supporting statement attached to Form 5472 (or a footnote
-on Line 20 itself if the form provides space).
+Foreign related party only. Check the box and attach a schedule
+describing each transaction or group of transactions where any part of
+the consideration was not monetary or less than full consideration was
+paid or received. The schedule includes (Instr., Part VI):
 
-## Part V — Reportable Transactions of a Reporting Corporation That Is a Foreign-Owned US DE
+1. All property (including money), rights, or obligations transferred
+   each way
+2. All services performed each way
+3. A reasonable estimate of the FMV of what was exchanged, or another
+   reasonable indicator of value
 
-Used when the reporting corporation is a Type 3 foreign-owned US DE.
-Captures transactions between the DE and any related party (most often
-just the foreign owner).
+The reasonable-estimate and "$50,000 or less" rules from Part IV apply.
 
-Categories include:
+## Part VII — Additional Information (all filers complete Part VII)
 
-- Capital contributions received (e.g., the foreign owner's initial
-  $1,000 to fund the LLC)
-- Capital distributions paid (the foreign owner's withdrawals)
-- Loans (changes during year)
-- Interest, services, sales, etc. — same general categories as Part
-  IV but tailored to the DE pattern
+| Line | Question |
+|------|----------|
+| 37 | Does the reporting corporation import goods from a foreign related party? |
+| 38a | If yes, is the basis or inventory cost of the goods valued at greater than the customs value? |
+| 38b | If yes, attach a statement explaining the difference |
+| 38c | If 37 and 38a are yes, were the supporting documents in existence and available in the U.S. when Form 5472 was filed? |
+| 39 | Was the foreign parent corporation a participant in a cost sharing arrangement (CSA)? If yes, complete Part VIII |
+| 40a / 40b | Interest or royalty paid or accrued for which a deduction is disallowed under §267A (hybrid arrangements); if yes, the disallowed amount |
+| 41a–41d | Is the corporation claiming an FDII deduction (§250) for transactions with the foreign related party? If yes, gross receipts included in FDDEI from sales of general property (41b), intangible property (41c), and services (41d) |
+| 42a | A loan to or from the related party subject to the safe-haven rules of Treas. Reg. §1.482-2(a)(2)(iii)(B), with a rate within 100%–130% of the AFR for the term? |
+| 42b | Same, with a rate outside 100%–130% of the AFR? |
+| 43a / 43b | §385 covered debt instruments and related distributions or acquisitions (Treas. Reg. §1.385-3); 43b(1) amount of the transactions, 43b(2) amount of the related-party debt. Domestic corporations only; a foreign-owned DE does not complete lines 43a–43b (Instr., Lines 43a and 43b) |
 
-A Type 3 DE in its formation year reports the formation contribution
-in Part V even if no other activity occurred.
+Ask the user each question. Do not default to "No".
 
-A Type 3 DE that received NO contributions and made NO distributions
-during a year still files Form 5472 with all-zero Part V — confirming
-nothing happened. Filing with all zeros is required; not filing is what
-triggers the $25,000 penalty.
+## Part VIII — Cost Sharing Arrangement (CSA)
 
-## Part VI — Nonmonetary and Less-Than-FMV Transactions
+One Part VIII per CSA in which the reporting corporation was a
+controlled participant during the year (line 1k counts them).
 
-Any transaction not in cash, or any cash transaction not at arm's
-length. Examples:
+| Line | Entry |
+|------|-------|
+| 44 | Brief description of the CSA (industry, intangibles, enough to distinguish it from other CSAs) |
+| 45 | Did the corporation become a participant during the year? |
+| 46 | Was the CSA in effect before January 5, 2009? |
+| 47 | Reporting corporation's share of reasonably anticipated benefits (RAB), % |
+| 48a | Total stock-based compensation deductions claimed |
+| 48b | Stock-based compensation directly identified with or reasonably allocable to the intangible development activity |
+| 48c | Any stock-based compensation not treated as allocable to the intangible development activity? |
+| 49a | Total intangible development costs (IDCs) for the CSA |
+| 49b | IDCs allocable to the reporting corporation based on its RAB share |
 
-- Equipment transferred from foreign parent to US sub for less than
-  FMV
-- IP licensed without compensation
-- Services performed by one party for the other without billing
-- Stock issued for less than FMV consideration
+Small filers almost never have a CSA. If the user says yes on line 39,
+stop and route to a practitioner.
 
-Report:
-- Description of property/service
-- Date of transaction
-- FMV (market value if arm's length)
-- Amount actually paid (if any)
-- Difference (the IRS uses this to assess transfer pricing
-  adjustments under §482)
+## Part IX — Base Erosion Payments and Base Erosion Tax Benefits Under Section 59A
 
-These transactions are flagged for transfer-pricing scrutiny. The user
-should be prepared with §6662(e) contemporaneous documentation if the
-amounts are material.
+| Line | Entry |
+|------|-------|
+| 50 | Base erosion payments under §59A(d): generally deductible amounts paid or accrued to a foreign related party, plus the §59A(d)(2)–(4) categories |
+| 51 | Base erosion tax benefits under §59A(c)(2) |
+| 52 | Total qualified derivative payments under §59A(h) (not included on lines 50–51) |
+| 53 | Reserved for future use |
 
-## Part VII — Additional Information About the Reporting Entity, Foreign Shareholders, or Other Persons
-
-Various Yes/No questions. Read carefully against current-year
-instructions; the IRS adds and removes questions over revisions.
-Common questions:
-
-- Did the reporting corp pay any income to a treaty country at a
-  reduced withholding rate? (Form W-8BEN-E elections; treaty positions)
-- Does the reporting corp have any cost-sharing arrangements? (If
-  yes, complete Part VIII)
-- Does the reporting corp have any intercompany loans outstanding at
-  year-end? (Balance disclosure)
-- Did the reporting corp have any "base erosion payments" subject to
-  BEAT? (If yes, complete Part IX)
-
-## Part VIII — Cost-Sharing Arrangement
-
-Only if the reporting corp is party to a CSA under §482 regulations.
-The form asks for:
-
-- Identification of the CSA
-- Each participant's contribution for the year
-- Allocation of intangible development costs
-- "Reasonably anticipated benefits" allocation
-
-Most small filers leave Part VIII blank. CSAs are typically a
-multinational-corp issue, not a small-DE issue.
-
-## Part IX — Base Erosion Payments (BEAT)
-
-Only if the reporting corp meets the BEAT thresholds under IRC §59A:
-
-- Average annual gross receipts of **$500 million** or more over the
-  prior 3 years (or $1 billion for certain foreign banks; verify
-  current threshold), AND
-- Base erosion percentage of **3%** or more (2% for banks/securities
-  dealers)
-
-If both met, BEAT is computed and reported separately on Form 8991.
-Part IX of Form 5472 captures the underlying base erosion payments to
-related parties.
-
-For 99% of foreign-owned DEs and small-to-mid US C-corps, Part IX is
-N/A.
+Who must report: §6038A(b)(2) and Treas. Reg. §1.6038A-2(b)(7) require
+the base erosion information from a reporting corporation that is an
+"applicable taxpayer" under Treas. Reg. §1.59A-2(b) (average annual
+gross receipts of $500 million or more for the 3 prior years and a base
+erosion percentage of 3% or more, 2% for groups with a bank or
+registered securities dealer; IRC §59A(e)). The line 50–52 instructions
+say "(if any)" and do not repeat that limit. For a corporation that is
+not an applicable taxpayer, ASK the CPA whether to complete Part IX and
+record the answer in the draft.
 
 ## Signature
 
-Form 5472 is signed by an authorized officer of the reporting
-corporation when filed standalone, but more commonly the signature
-of the underlying Form 1120 / 1120-F / pro-forma 1120 covers all
-attached 5472s. The 1120 signature block is enough; no separate
-signature on each 5472.
-
-For a foreign-owned DE, the foreign owner (as Member or Manager of
-the LLC) signs the pro-forma 1120. The 5472(s) follow as attachments
-under that signature.
+Form 5472 has no signature area. It is covered by the signature on the
+return it is attached to (Form 1120, Form 1120-F, or the pro forma Form
+1120 of a foreign-owned DE). For the pro forma Form 1120, see the
+skill's `references/disregarded-entity.md`.

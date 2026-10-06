@@ -11,12 +11,12 @@ Suspension is the most-misunderstood part of Form 2290. The agent must understan
 
 A vehicle is **suspended** (Category W) for a tax period if it is **expected to be used** on public highways:
 
-- **5,000 miles or fewer** during the period (general rule), OR
-- **7,500 miles or fewer** if used for **agricultural purposes**
+- **5,000 miles or less** during the period (general rule), OR
+- **7,500 miles or less** for **agricultural vehicles**
 
-Suspension means **$0 tax owed**, but the filing still happens.
+Suspension means **$0 tax owed**, but the filing still happens. The mileage use limit counts total highway miles in the period regardless of the number of owners.
 
-**Legal Basis:** IRC §4483(d). The IRS calls this "vehicles used for less than 5,000 miles" (or 7,500 for agricultural).
+**Legal Basis:** IRC §4483(d); Instructions for Form 2290 (Rev. July 2026), Part II and "Suspended vehicles exceeding the mileage use limit".
 
 ---
 
@@ -24,21 +24,22 @@ Suspension means **$0 tax owed**, but the filing still happens.
 
 A vehicle qualifies for the 7,500-mile agricultural threshold if:
 
-1. The vehicle is **used primarily** for farming purposes during the period — meaning at least 50% of the vehicle's use during the period is for farming
-2. The vehicle is **registered** as a "highway motor vehicle used for farming purposes" under state law (state designations vary)
+1. The vehicle is **used primarily** for farming purposes during the period — meaning **more than half** of the vehicle's use (based on mileage) during the period is for farming purposes
+2. The vehicle is **registered** under state law as a highway motor vehicle used for farming purposes **for the entire period** (no special farm tag or plate is required)
 
-**Farming purposes include:**
+**Farming purposes** (IRC §4483(d)(5)(B); instructions "Agricultural vehicles"):
 
-- Transporting any agricultural commodity to or from the farm
-- Transporting any item used in agricultural production (feed, seed, fertilizer, equipment) to the farm
-- Direct use in farming operations (e.g., a feed truck running between barns and fields)
+- Transporting any farm commodity to or from a farm. Farm commodity = any agricultural or horticultural commodity, feed, seed, fertilizer, livestock, bees, poultry, fur-bearing animals, or wildlife
+- Use directly in agricultural production (cultivating soil, raising or harvesting crops, clearing land, repairing fences and farm buildings, building terraces or irrigation ditches, cleaning tools or farm machinery, painting)
 
-**Farming does NOT include:**
+**Not farming purposes:**
 
-- Long-haul trucking of agricultural products by a non-farmer (a contract trucker hauling cattle for a ranch is not farming use, even though the cargo is agricultural — they don't qualify for the 7,500 threshold)
-- Transporting agricultural products from the farm to processing plants more than ~150 miles away (the IRS scrutinizes this)
+- Use in connection with canning, freezing, packaging, or other processing operations
+- Hauling a commodity that a processing operation has changed from its raw or natural state (e.g., juice extracted from fruit)
 
-If the user is a rancher with their own truck that they drive themselves to haul their own cattle, that's clear agricultural use. If they're a contract trucker hired by ranchers, it's not.
+Miles driven on the farm don't count toward the 7,500-mile public-highway limit; keep records of farm miles separately.
+
+The statute does not limit the 7,500-mile rule to owner-farmers, but both tests must hold: farming purposes for more than half the mileage and a farm-vehicle state registration for the whole period. If the user hauls for others or the truck is not registered as a farm vehicle, ask for the registration and the mileage split before applying 7,500; if either test fails, the limit is 5,000.
 
 ---
 
@@ -48,7 +49,7 @@ Three reasons the suspension category is filed (not skipped):
 
 1. **Schedule 1 for DMV plate registration** — Even a $0-tax suspended vehicle gets a stamped Schedule 1, which the state DMV requires
 2. **Audit trail** — The IRS knows the vehicle exists; if you don't file at all, they may eventually inquire
-3. **Penalty avoidance** — Failure to file is its own penalty (IRC §6651), independent of tax owed
+3. **The suspension has to be claimed** — collection of the tax is suspended only when the owner furnishes the information the IRS requires on the form (IRC §4483(d)(1)(A)(ii)); with no return, there is no suspension claim on file
 
 ---
 
@@ -57,11 +58,13 @@ Three reasons the suspension category is filed (not skipped):
 ### On Form 2290
 
 - List the VIN on Schedule 1 with **Category W**
+- Count it on Schedule 1, Part I, line b (category W) and on page 2, category W line, column (3)
 - Complete Part II (Statement in Support of Suspension)
-  - Statement (a): Certify the vehicle will be used 5,000 miles or fewer (or 7,500 if agricultural)
-  - User signs the statement (sworn certification)
+  - Line 7: check "5,000 miles or less", "7,500 miles or less for agricultural vehicles", or both
+  - The return is signed under penalties of perjury; mileage records must support the declaration
 - Line 2 (tax) excludes this vehicle's contribution
 - Line 6 (balance due) reflects $0 for this vehicle
+- A return with only suspended vehicles is not subject to the 25-vehicle e-file requirement (category W vehicles aren't counted), though e-filing is still encouraged
 
 ### After Filing
 
@@ -76,25 +79,25 @@ Three reasons the suspension category is filed (not skipped):
 
 ## What Happens If Mileage Exceeds the Threshold
 
-If a suspended vehicle drives **more than 5,000 miles** (or **more than 7,500 if agricultural**) during the period, the suspension is voided and the user owes the **full annual tax** for that vehicle (or the partial-period tax if first use was mid-year).
+If a suspended vehicle exceeds the mileage use limit (**5,000 miles**, or **7,500 if agricultural**) during the period, the tax becomes due. The user owes the tax figured from the month the vehicle was **first used** in the period: the full annual amount for July first use, or the partial-period amount for a later first-use month.
 
 ### Required Action
 
-1. **File an Amended Return** (Form 2290 with Box B checked) within the month following when the threshold was crossed
-2. Pay the tax owed (the full annual or partial-period rate based on the vehicle's first-use month)
-3. Receive an updated stamped Schedule 1 reflecting the correct category (A-V instead of W)
+1. **File Form 2290 with the Amended Return box checked**, writing the month the mileage limit was exceeded next to the box, by the **last day of the month following that month**
+2. Report the tax on **line 2** (page 2 table, by first-use month) and pay it. Don't complete Part II unless other category W vehicles are also being reported
+3. List the VIN on Schedule 1 under its weight category (A–V instead of W) and receive the stamped Schedule 1
 
 ### Worked Example
 
-Sarah filed her cattle hauler under Category W (agricultural, 7,500-mile threshold) on August 1, 2025. By April 15, 2026, the truck has driven 7,400 miles. She thinks usage will stay under 7,500 for the remaining 2.5 months.
+Sarah filed her cattle hauler under Category W (agricultural, 7,500-mile limit) in August 2026 for the July 1, 2026 – June 30, 2027 period; first use was July 2026. By April 15, 2027, the truck has driven 7,400 highway miles. She thinks usage will stay under 7,500 for the remaining 2.5 months.
 
-Then in late April she takes a one-time long haul, putting the truck at 8,200 miles by April 30.
+Then in late April she takes a one-time long haul, putting the truck at 8,200 highway miles by April 30.
 
 **She must:**
-- File an Amended Return by **May 31, 2026** (last day of month following when threshold was crossed)
-- Pay the full annual tax for the truck (Category C if 56,000 lbs taxable gross weight = $144)
-- Receive an updated Schedule 1 with Category C
-- Forward the new Schedule 1 to the state DMV
+- File the amended Form 2290 ("April" next to the Amended Return box) by the last day of May. May 31, 2027 is Memorial Day, so the due date is **June 1, 2027** (instructions chart, April 2027 row)
+- Pay the annual tax for July first use: 56,000 lbs taxable gross weight is **Category B = $122.00**
+- List the VIN on Schedule 1 under Category B
+- Forward the new stamped Schedule 1 to the state DMV
 
 If she doesn't amend, the IRS can later reconcile her records and assess the tax plus failure-to-file and failure-to-pay penalties.
 
@@ -118,7 +121,7 @@ For suspended vehicles, the agent should recommend:
 - **Monthly** total summary
 - **Periodic** photo of odometer for proof
 
-Records should be kept for at least 3 years (the standard IRS audit window).
+Keep records at least 3 years after the end of the period to which the suspension applies (instructions "Recordkeeping").
 
 ---
 
@@ -129,28 +132,28 @@ Records should be kept for at least 3 years (the standard IRS audit window).
 If a vehicle was Category W last period and finished the period under the mileage threshold:
 
 - Current period filing: continue Category W if expected use is still under threshold
-- Complete Part II Statement (c) — Carry-Forward Suspended Vehicles
+- Check Part II **line 8a** (prior-period suspended vehicles were not subject to the tax)
 - No tax owed, no credit needed (no tax was paid in the prior period)
 
 ### Edge Case 2: Vehicle Suspended in Prior Period, Sold During Prior Period
 
 - Current period: do NOT include the vehicle on Schedule 1 (it's no longer the user's)
-- Complete Part II Statement (b) — Sold Prior-Period Suspended Vehicles
-- Lists the VIN and date of sale to close the IRS expectation
+- Complete Part II **line 9**: VINs, buyer, and date of transfer; the vehicles must still have been eligible for suspension at transfer
+- At the sale, give the buyer the required statement (seller name, address, EIN; VIN; date; odometer at start of period and at sale; buyer name, address, EIN). If the seller doesn't, the seller is also liable for the tax if the vehicle later exceeds the limit (the limit counts both owners' miles)
 
 ### Edge Case 3: Vehicle Originally Filed at Active Category, Stayed Under Threshold
 
-- The user paid full tax but should have suspended
-- Current period filing: claim the prior-period tax as a credit on Line 5 (Scenario 3 in [`tax-table.md`](./tax-table.md))
+- The user paid full tax but the vehicle stayed within the mileage limit
+- First Form 2290 for the next period: claim the prior-period tax as a credit on Line 5 (Scenario 3 in [`tax-table.md`](./tax-table.md)), or a refund on Form 8849, Schedule 6; neither can be claimed before the period ends
 - File the current vehicle either as suspended (W) or active (A-V) based on expected use
 
 ### Edge Case 4: Mid-Year Fleet Sale
 
 If the user sells the entire fleet mid-period:
 
-- The buyer files Form 2290 for first use as of the date of sale (mid-year first-use rules)
-- The seller may claim a credit on next year's filing (or via Form 8849) for the unused months on each vehicle
-- The seller files Form 2290 with Box D (Final Return) on the next 2290 they would have filed (or sooner, if confident the sale is permanent)
+- If the seller paid this period's tax and the buyer first uses each vehicle in the month of sale, the buyer's tax runs from the first day of the month after the sale; the buyer enters that month on line 1 and the due date doesn't change (instructions "Used vehicles")
+- The seller may claim a credit on the next Form 2290 filed (or a refund via Form 8849, Schedule 6) for each vehicle sold before June 1 and not used again, with the purchaser's name and address
+- If the seller no longer has taxable vehicles, file a final return (check the Final Return box)
 
 ---
 
@@ -159,14 +162,14 @@ If the user sells the entire fleet mid-period:
 If the user misses the deadline (didn't file at all, or filed but didn't pay):
 
 ```
-Failure-to-file penalty = 4.5% of unpaid tax per month (max 25%)
-Failure-to-pay penalty   = 0.5% of unpaid tax per month (max 25%)
-Interest                 = federal short-term rate + 3%, compounded daily
+Failure-to-file penalty = 5% of unpaid tax per month or part month (max 25%)   IRC §6651(a)(1)
+Failure-to-pay penalty  = 0.5% of unpaid tax per month or part month (max 25%) IRC §6651(a)(2)
+Interest                = federal short-term rate + 3 percentage points, compounded daily (IRC §6621, §6622)
 ```
 
-Both failure-to-file and failure-to-pay can apply concurrently in some cases — see IRC §6651.
+For months when both apply, the failure-to-file amount is reduced by the failure-to-pay amount (IRC §6651(c)(1)), so the combined rate is 5% per month for the first five months.
 
-The minimum penalty for late filing (when the return is more than 60 days late) is the **lesser** of $485 (2025 figure) or the full unpaid tax. This figure adjusts for inflation; verify current amount in IRS Notice or instructions.
+The §6651(a) minimum penalty for a return more than 60 days late applies only to income tax returns (chapter 1); it does not apply to Form 2290 (chapter 36 excise tax). For reasonable-cause relief, the instructions say to send a letter explaining the cause (don't attach it to the return) or see IRS.gov/PenaltyRelief.
 
 ---
 
@@ -176,7 +179,7 @@ If the user is genuinely unsure whether the truck will stay under the mileage th
 
 1. File at the active category (A-V) and pay the full tax
 2. Track mileage rigorously
-3. If usage stays under the threshold, claim a credit on next year's Line 5 (or via Form 8849 for a refund)
+3. If usage stays under the threshold, claim a credit on Line 5 of the first Form 2290 for the next period (or a refund via Form 8849, Schedule 6), after the period ends
 
 The downside is paying tax that may be refunded later. The upside is no risk of failure-to-pay penalty if usage exceeds the threshold.
 

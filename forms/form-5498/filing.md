@@ -1,9 +1,14 @@
 # Handling Form 5498 (verification, corrections, archiving)
 
 Form 5498 is **not filed by the recipient**. The IRA custodian files it
-with the IRS (by May 31 of the year following the contribution year) and
-sends a copy to the account holder. The recipient's job is to verify it
-matches their tax return and resolve mismatches before the IRS does.
+with the IRS (by May 31 of the year following the contribution year, or
+the next business day: June 1, 2026 for the 2025 form) and sends a copy to
+the account holder. The recipient's job is to verify it matches their tax
+return and resolve mismatches before the IRS does.
+
+This file covers verification and corrections only; the user does not
+file Form 5498 through Free File, Free File Fillable Forms, tax software,
+or paper. Any amended return goes through Form 1040-X (see Section 3).
 
 This file describes:
 
@@ -32,10 +37,10 @@ Agent must have:
 
 ### Browser / data flow
 
-1. **Confirm the tax year.** A 5498 received in May 2026 is for tax year
-   2025. The boxes that include "amounts contributed by April 15"
-   (Boxes 1, 8, 9, 10) report contributions designated for the prior
-   tax year, even if deposited in the current year.
+1. **Confirm the tax year.** A 5498 received by June 1, 2026 is for tax
+   year 2025. Boxes 1 and 10 include contributions made by April 15, 2026
+   that were designated for 2025. Boxes 8 and 9 (SEP, SIMPLE) report
+   deposits made during calendar 2025, whatever year they are for.
 
 2. **Read Box 7 to determine the IRA type.** This drives which other
    contribution box should be populated.
@@ -87,11 +92,10 @@ account type), the user must request a corrected 5498.
 
 ### How to request
 
-1. **Contact the custodian's tax-form team.** Each custodian has a
-   process; common ones:
-   - Fidelity: log in → Tax Forms → Request a Correction
-   - Vanguard: contact via secure message; reference the specific 5498
-   - Schwab: log in → Statements & Tax Forms → "Need a correction?"
+1. **Contact the custodian's tax-form team.** Each custodian has its own
+   process (online correction request, secure message, or phone); menu
+   names change, so confirm the current path on the custodian's site
+   rather than assuming one.
 2. **Provide documentation** supporting the correct value (deposit
    confirmations, contribution paperwork, account-opening documents).
 3. **Wait for the corrected 5498** — typically 4-8 weeks. The custodian
@@ -170,12 +174,12 @@ issued with code G (direct rollover). The user mistakenly reported the
 $50,000 as taxable on Form 1040 Line 5b.
 
 **Action**: Amend to set Line 5b = $0 (or appropriate non-taxable
-amount), with "Rollover" written in the margin or via the appropriate
-code. The user is owed a substantial refund.
+amount), with box 1 ("Rollover") checked on Line 5c (2025 Form 1040). The
+user is owed a substantial refund.
 
 ### Amendment process
 
-1. Use the `form-1040-x` skill (when available) for the actual
+1. Use the [`form-1040-x`](../form-1040-x/SKILL.md) skill for the actual
    amendment mechanics
 2. Attach a copy of the corrected statement explaining the
    reconciliation
@@ -187,9 +191,12 @@ code. The user is owed a substantial refund.
 
 ## Section 4 — Archiving and recordkeeping
 
-The IRS recommends retaining tax-related documents for 7 years after the
-return due date (longer for any year with basis tracking — Form 8606
-basis records should be kept indefinitely).
+Keep tax records at least as long as the period of limitations for the
+return — generally 3 years from filing, longer in some cases
+(https://www.irs.gov/businesses/small-businesses-self-employed/how-long-should-i-keep-records).
+Form 8606 basis records should be
+kept until all IRA basis has been recovered, which in practice means
+indefinitely.
 
 ### What to retain related to Form 5498
 
@@ -224,9 +231,10 @@ No. The custodian files it. The user keeps the copy for records.
 ### "Why did I get my 5498 in May, after I already filed my return?"
 
 Because Form 5498 is due May 31 of the year following the contribution
-year. The IRS designed it this way because contributions for the prior
-tax year can be made until April 15 (or extension date), so the 5498
-deadline is set after the filing deadline.
+year (June 1, 2026 for the 2025 form). The IRS designed it this way
+because contributions for the prior tax year can be made until April 15
+(a filing extension does not extend this), so the 5498 deadline is set
+after the filing deadline.
 
 If you discover a discrepancy after filing, see Section 3 (amend the
 return).
@@ -237,9 +245,11 @@ It shouldn't be, for the original Roth IRA owner. Roth IRAs have no
 RMD requirement during the original owner's lifetime (IRC §408A(c)(5)).
 This is likely a custodian error; request a corrected 5498.
 
-Exception: an *inherited* Roth IRA does have RMD requirements for the
-beneficiary in some cases (depending on death-year rules). If this is
-an inherited account, Box 11 may legitimately be checked.
+Inherited Roth IRAs do have distribution requirements for the
+beneficiary, but custodians are not required to report RMDs for IRAs of
+deceased owners on Form 5498 (2025 Instructions for Forms 1099-R and 5498,
+"RMDs"). For an inherited account, work out the beneficiary's
+requirement from Pub. 590-B regardless of Box 11.
 
 ### "Box 5 (FMV) is much smaller than I expected. Did the custodian make a mistake?"
 
@@ -257,9 +267,10 @@ If you made the contribution before April 15 of the next year and
 designated it for the prior tax year, it should appear in Box 1 of the
 prior year's 5498 (which arrives by May 31 of the contribution year).
 
-Check: is this the right year's 5498? A 2025-tax-year contribution
-made in March 2026 appears on the 2025 5498 (received May 2026), not
-the 2026 5498.
+Check: is this the right year's 5498? A 2025-tax-year traditional or Roth
+contribution made in March 2026 appears on the 2025 5498 (furnished by
+June 1, 2026), not the 2026 5498. A SEP or SIMPLE deposit made in March
+2026 is the opposite: it appears in Box 8 or 9 of the 2026 5498.
 
 If the timing is right and Box 1 is still $0, contact the custodian.
 

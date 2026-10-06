@@ -2,12 +2,12 @@
 
 ## Persona
 
-**Priya Patel**, 38, single, lives in Denver, CO. Priya runs "Patel Consulting" as a sole proprietor (Schedule C) — strategy consulting for nonprofits. She also holds a small position in a real estate investment trust through her brokerage account, and she had a Schedule C loss in 2023 that generated a QBI loss carryforward.
+**Priya Patel**, 38, single, lives in Denver, CO. Priya runs "Patel Consulting" as a sole proprietor (Schedule C) — strategy consulting for nonprofits. She also holds a small position in a real estate investment trust through her brokerage account, and she had a Schedule C loss in 2024 that generated a QBI loss carryforward.
 
 For tax year 2025:
 - Schedule C (Patel Consulting): $30,000 net profit
 - 1099-DIV from Schwab (REIT ETF): Box 5 Section 199A dividends $250
-- Prior-year QBI loss carryforward (from 2023 Form 8995 Line 16): -$3,000
+- Prior-year QBI loss carryforward (from 2024 Form 8995 Line 16): -$3,000
 - No K-1 income, no PTP income, no rental real estate
 
 ---
@@ -36,16 +36,18 @@ For tax year 2025:
 ### 1099-DIV
 
 - Box 1a (total ordinary dividends): $400
-- Box 1b (qualified dividends): $300
-- **Box 5 (Section 199A dividends): $250**
+- Box 1b (qualified dividends): $150
+- **Box 5 (Section 199A dividends): $250** (Box 1b and Box 5 are separate parts of Box 1a: a qualified REIT dividend is never a qualified dividend)
+- Priya held the fund shares all year, so the 45-day holding period is met
 
 ### Form 1040 (computed pre-QBI)
 
 - Total income: $30,000 (Schedule C) + $400 (ordinary div) + $0 (other) = $30,400
 - Adjustments to income: $5,720
-- **AGI (Line 11): $24,680**
-- Standard deduction (single, 2025): $15,000
-- **Taxable income before QBI: $9,680**
+- **AGI (Line 11a): $24,680**
+- Standard deduction (single, 2025, line 12e): $15,750
+- Schedule 1-A deductions (line 13b): $0
+- **Taxable income before QBI: $8,930**
 
 (Note: this is unusually low taxable income for the example, but plausible for a consultant rebuilding their practice.)
 
@@ -53,8 +55,8 @@ For tax year 2025:
 
 ## Threshold check
 
-- 2025 single threshold: $241,950
-- Priya's taxable income before QBI: $9,680
+- 2025 single threshold: $197,300
+- Priya's taxable income before QBI: $8,930
 - ✓ Well below threshold — Form 8995 applies
 
 ---
@@ -80,57 +82,56 @@ QBI = $30,000 (Schedule C Line 31)
 - Name: Priya Patel
 - SSN: XXX-XX-9999
 
-### Lines 1a-1e
+### Line 1, rows i–v
 
-| (i) Trade/business | (ii) TIN | (iii) QBI |
+| (a) Trade/business | (b) TIN | (c) QBI |
 |--------------------|----------|-----------|
 | Patel Consulting | XXX-XX-9999 (Priya's SSN) | $24,280 |
 
-### Lines 2-4
+### Lines 2-5
 
 - Line 2: $24,280
-- Line 3: -$3,000 (prior-year QBI loss carryforward)
+- Line 3: ($3,000) (prior-year QBI loss carryforward)
 - Line 4: $24,280 − $3,000 = $21,280
+- Line 5: $21,280 × 0.20 = $4,256
 
-### Lines 5-9
+### Lines 6-9
 
-- Line 5: $250 (REIT Section 199A dividends from 1099-DIV Box 5)
-- Line 6: $0 (no REIT/PTP carryforward)
-- Line 7: $250
+- Line 6: $250 (REIT Section 199A dividends from 1099-DIV Box 5)
+- Line 7: $0 (no REIT/PTP carryforward)
+- Line 8: $250
+- Line 9: $250 × 0.20 = $50
 
-### Lines 10-12
+### Lines 10-17
 
-- Line 10: $21,280 × 0.20 = $4,256
-- Line 11: $250 × 0.20 = $50
-- Line 12: $4,256 + $50 = $4,306
-
-### Lines 13-17
-
-- Line 13: $9,680 (taxable income before QBI)
-- Line 14: $300 (qualified dividends from 1099-DIV Box 1b; no LTCG)
-- Line 15: $9,680 − $300 = $9,380
-- Line 16: $9,380 × 0.20 = $1,876
-- Line 17: lesser of $4,306 or $1,876 = **$1,876**
+- Line 10: $4,256 + $50 = $4,306
+- Line 11: $8,930 (taxable income before QBI)
+- Line 12: $150 (qualified dividends from 1099-DIV Box 1b; no net capital gain)
+- Line 13: $8,930 − $150 = $8,780
+- Line 14: $8,780 × 0.20 = $1,756
+- Line 15: smaller of $4,306 or $1,756 = **$1,756**
+- Line 16: $0 (lines 2 + 3 = $21,280, positive)
+- Line 17: $0
 
 ---
 
 ## Result
 
-Priya's QBI deduction is **$1,876**. This flows to Form 1040 Line 13.
+Priya's QBI deduction is **$1,756**. This flows to Form 1040 line 13a.
 
-**Limiting factor:** Taxable income limit (Line 16). Her actual QBI + REIT could have produced a $4,306 deduction, but her taxable income is too low to support it.
+**Limiting factor:** Taxable income limit (Line 14). Her actual QBI + REIT could have produced a $4,306 deduction, but her taxable income is too low to support it.
 
 ---
 
 ## Updated Form 1040
 
 - AGI: $24,680
-- Standard deduction: $15,000
-- QBI deduction: $1,876
-- **Taxable income: $7,804**
-- Federal income tax (2025 single brackets): 10% × $7,804 = $780
+- Standard deduction: $15,750
+- QBI deduction: $1,756
+- **Taxable income: $7,174**
+- Federal income tax (Qualified Dividends and Capital Gain Tax Worksheet): $150 of qualified dividends at 0%; tax on the remaining $7,024 from the 2025 Tax Table ($7,000–$7,050, single) = $703
 - SE tax: $4,239
-- Total federal tax: $5,019
+- Total federal tax: $4,942
 
 ---
 
@@ -138,11 +139,11 @@ Priya's QBI deduction is **$1,876**. This flows to Form 1040 Line 13.
 
 For Priya's 2026 filing, the agent must track:
 
-- **QBI loss carryforward from 2023 was -$3,000.** This year Priya used the entire $3,000 (Line 4 = $21,280 = $24,280 − $3,000, both positive). **No carryforward to 2026.**
-- **REIT/PTP carryforward: $0** (Line 7 was positive).
-- **Unused §199A deduction is NOT a carryforward.** The $4,306 − $1,876 = $2,430 difference between Line 12 and the binding Line 16 is forfeited. §199A taxable income limit is hard-capped per year — it doesn't carry.
+- **QBI loss carryforward from 2024 was -$3,000.** This year Priya used the entire $3,000 (Line 4 = $21,280 = $24,280 − $3,000, both positive). **No carryforward to 2026.**
+- **REIT/PTP carryforward: $0** (Line 17 = $0; lines 6 + 7 were positive).
+- **Unused §199A deduction is NOT a carryforward.** The $4,306 − $1,756 = $2,550 difference between Line 10 and the binding Line 14 is forfeited. §199A taxable income limit is hard-capped per year — it doesn't carry.
 
-The agent should surface this in workpapers: "Used full $3,000 prior-year QBI loss this year. No carryforward to 2026. Note: $2,430 of potential deduction was lost to taxable income limit and does not carry."
+The agent should surface this in workpapers: "Used full $3,000 prior-year QBI loss this year. No carryforward to 2026. Note: $2,550 of potential deduction was lost to taxable income limit and does not carry."
 
 ---
 
@@ -150,11 +151,11 @@ The agent should surface this in workpapers: "Used full $3,000 prior-year QBI lo
 
 ### REIT dividends are small but real
 
-$250 in Box 5 produces $50 of additional Line 11 deduction. Don't skip Line 5 just because the dollar amount is small.
+$250 in Box 5 produces $50 of additional Line 9 deduction. Don't skip Line 6 just because the dollar amount is small.
 
 ### Qualified dividends from regular stocks subtract twice — confirm with user
 
-Priya's $300 in qualified dividends (Line 1b of 1099-DIV) appears in Form 1040 Line 3a. They reduce Line 15 of Form 8995 (subtracting net capital gain). They are NOT §199A dividends — those are only the Box 5 amounts.
+Priya's $150 in qualified dividends (Box 1b of 1099-DIV) appears in Form 1040 line 3a. They go on Line 12 of Form 8995 and reduce Line 13. They are NOT §199A dividends — those are only the Box 5 amounts.
 
 ### Carryforward consumed = good, but document it
 
@@ -169,15 +170,15 @@ Priya didn't make a SEP-IRA contribution this year. That means her QBI is higher
 ## Validation summary
 
 - Math: all checks passed ✓
-- Threshold: $9,680 well below $241,950 single threshold ✓
+- Threshold: $8,930 well below $197,300 single threshold ✓
 - Sanity:
-  - Line 17 = Line 16 (taxable income limit binding) — surfaced
+  - Line 15 = Line 14 (taxable income limit binding) — surfaced
   - Carryforward fully consumed — note in workpapers
   - REIT dividends from Box 5 (not Box 1a) confirmed ✓
   - QBI = 80.9% of Schedule C net profit — within expected range ✓
 - Carryforwards: None for 2026 (loss carryforward fully used)
 - Next steps:
   - Form 8995 attaches to Form 1040
-  - Line 17 ($1,876) → Form 1040 Line 13
+  - Line 15 ($1,756) → Form 1040 line 13a
   - Schedule SE flows separately
   - File by April 15, 2026

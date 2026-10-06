@@ -1,8 +1,8 @@
-# Insolvency Worksheet (Pub 4681 Worksheet 2)
+# Insolvency Worksheet (Pub. 4681)
 
 How to compute the insolvency amount required for §108(a)(1)(B) exclusion. This is the single most error-prone calculation on Form 982 — users underestimate assets and over-claim insolvency.
 
-The Worksheet 2 itself is NOT filed with Form 982. It must be retained with the user's records and made available on IRS request.
+Pub. 4681 (2025) calls it the "Insolvency Worksheet" (no number) and marks it "Keep for Your Records". It is NOT filed with Form 982. It must be retained with the user's records and made available on IRS request.
 
 ---
 
@@ -32,7 +32,7 @@ If zero or negative → user is NOT insolvent; cannot use §108(a)(1)(B).
 
 ## What counts as a LIABILITY
 
-Include EVERY debt, whether or not secured, whether or not in default. The full list per Pub 4681:
+Include EVERY debt, whether or not secured, whether or not in default. Examples (map each to the Pub. 4681 worksheet line in the template below; don't count a liability twice):
 
 | Category | Examples |
 |----------|----------|
@@ -52,7 +52,12 @@ Include EVERY debt, whether or not secured, whether or not in default. The full 
 | Guarantees | Personal guarantees on business or other debt, only IF the user would be required to pay |
 | Lawsuits / settlements | If a judgment is anticipated, include estimated amount |
 
-**Important nuance — non-recourse debt**: For non-recourse debt, the IRS position (per Pub 4681 and Rev. Rul. 92-53) is that the debt is included in liabilities at the FMV of the secured property — but ONLY if the discharge is of the same non-recourse debt. The full mechanics are subtle; for personal-use property in a typical 1099-C scenario, include the full face amount.
+**Important nuance — nonrecourse debt** (Pub. 4681 "Insolvency"). Liabilities include:
+- the entire amount of recourse debt;
+- nonrecourse debt up to the FMV of the property securing it; and
+- nonrecourse debt in excess of that FMV only to the extent the excess is forgiven.
+
+Ask whether each secured debt is recourse (Form 1099-C box 5 checked) or nonrecourse before entering it.
 
 **INCLUDE the canceled debt itself**: The canceled debt is a liability immediately before the discharge. After discharge it goes away; before, it counts. This is a common error users make.
 
@@ -60,7 +65,7 @@ Include EVERY debt, whether or not secured, whether or not in default. The full 
 
 ## What counts as an ASSET (FMV)
 
-Include EVERY asset the user owns, at fair market value. The full list per Pub 4681:
+Include EVERY asset the user owns, at fair market value, including assets that secure debt and assets exempt from creditors such as a pension interest or retirement account (Pub. 4681 "Insolvency"; Carlson v. Commissioner, 116 T.C. 87 (2001), held that assets exempt from creditors under state law count). The valuation sources below are practical suggestions, not IRS-prescribed methods:
 
 | Category | Valuation method |
 |----------|------------------|
@@ -82,7 +87,7 @@ Include EVERY asset the user owns, at fair market value. The full list per Pub 4
 | Cryptocurrency | Market value at time of discharge |
 | Trust beneficial interests | Present value if currently distributable |
 
-**Common omissions** (each has caused IRS audit disputes):
+**Common omissions**:
 - Retirement accounts (HUGE — many users with $200K+ in 401(k) think they're "broke")
 - Life insurance cash value (often $5K-$50K accumulated)
 - Vested employer stock options (count if exercisable / valuable)
@@ -91,83 +96,93 @@ Include EVERY asset the user owns, at fair market value. The full list per Pub 4
 
 **EXCLUDE**:
 - Property you don't own (rented home, leased car)
-- Joint property where only one spouse is liable for the canceled debt — see "tenancy by entirety" rules below
 - Property held in irrevocable trust where the user has no current beneficial interest
+
+**ASK, don't decide alone**: a pension or annuity interest the user says cannot be cashed out, sold, assigned, or borrowed against. The Tax Court held such an interest was not an asset in Schieber v. Commissioner, T.C. Memo. 2017-32, while Pub. 4681 lists pension interests as assets (worksheet line 29). Include it by default and flag it for a CPA.
 
 ---
 
 ## Joint debt and joint property
 
-If the canceled debt was JOINT (both spouses liable):
-- Each spouse's insolvency is computed separately if filing separately
-- If filing jointly, generally aggregate assets and liabilities
+If the canceled debt was JOINT (both spouses jointly and severally liable):
+- Each may receive a Form 1099-C for the full amount; how much each reports depends on the facts: state law, who received the loan proceeds, who claimed interest deductions, how basis of co-owned property was allocated (Pub. 4681 "Persons who each receive a Form 1099-C showing the full amount of debt")
+- Pub. 4681 Example 3 (separate returns): each spouse takes their share of the canceled debt and completes a separate Insolvency Worksheet
+- Pub. 4681 gives no rule for combining spouses' assets and liabilities on a joint return. Ask a CPA rather than assuming
 
-If the canceled debt was the user's INDIVIDUAL debt but they hold property jointly with a spouse (e.g., tenancy by entirety):
-- Special rules apply; some states protect joint property from individual creditors
-- See Pub 4681 examples; consult a CPA for state-specific application
+If the canceled debt was the user's INDIVIDUAL debt but they hold property jointly with a spouse (e.g., tenancy by the entirety):
+- Whether and how much of the joint property counts is not addressed in Pub. 4681; consult a CPA for state-specific application
 
 For non-married joint owners (e.g., siblings co-owning property): include only the user's share at FMV.
 
 ---
 
-## Worksheet 2 template
+## Insolvency Worksheet template
+
+Line numbers and labels follow the Pub. 4681 (2025) Insolvency Worksheet. The canceled debt itself goes in its own category (for example line 1 for a credit card). The steps after line 38 are the agent's, not part of the IRS worksheet.
 
 ```
-Pub 4681 Worksheet 2 — Insolvency
-Filer: ________________________
-Date of debt discharge (1099-C Box 1): ____________
-"Immediately before" date: ____________ (same as Box 1 for snapshot)
+Pub. 4681 Insolvency Worksheet (Keep for Your Records)
+Date debt was canceled (mm/dd/yy): ____________  (1099-C Box 1)
 
-LIABILITIES IMMEDIATELY BEFORE DISCHARGE:
-1. Mortgage(s) on primary residence              $________
-2. Mortgage(s) / loans on other real estate      $________
-3. Home equity loans / HELOCs                    $________
-4. Credit card balances (all cards)              $________
-5. Student loans (federal + private)             $________
-6. Auto loans                                    $________
-7. Personal loans (bank, family, etc.)           $________
-8. Business loans / lines of credit              $________
-9. Business credit cards                         $________
-10. Tax debt (federal / state / local)           $________
-11. Judgments                                    $________
-12. Medical bills outstanding                    $________
-13. Past-due utilities / other consumer          $________
-14. The canceled debt itself (per 1099-C Box 2)  $________
-15. Other liabilities (specify): _______________ $________
-16. **TOTAL LIABILITIES**                        $________
+Part I. Total liabilities immediately before the cancellation
+(don't include the same liability in more than one category)
+1.  Credit card debt                                               $________
+2.  Mortgage(s) on real property (first and second mortgages and
+    home equity loans; main home, additional home, investment or
+    business property)                                             $________
+3.  Car and other vehicle loans                                    $________
+4.  Medical bills owed                                             $________
+5.  Student loans                                                  $________
+6.  Accrued or past-due mortgage interest                          $________
+7.  Accrued or past-due real estate taxes                          $________
+8.  Accrued or past-due utilities (water, gas, electric, etc.)     $________
+9.  Accrued or past-due childcare costs                            $________
+10. Federal or state income taxes remaining due (prior tax years)  $________
+11. Judgments                                                      $________
+12. Business debts (including those owed as a sole proprietor
+    or partner)                                                    $________
+13. Margin debt on stocks and other debt to purchase or secured
+    by investment assets other than real property                  $________
+14. Other liabilities (debts) not included above                   $________
+15. Total liabilities. Add lines 1 through 14                      $________
 
-ASSETS (FMV) IMMEDIATELY BEFORE DISCHARGE:
-17. Cash on hand                                 $________
-18. Checking / savings account balances           $________
-19. Money market / CDs                           $________
-20. Investment / brokerage accounts (FMV)        $________
-21. Retirement accounts (401(k), IRA — vested)   $________
-22. Pension benefits (present value)             $________
-23. Real estate (FMV of home + others)           $________
-24. Vehicles (KBB / NADA)                        $________
-25. Boats / RVs / motorcycles                    $________
-26. Jewelry / watches / art (if material)        $________
-27. Furniture / appliances (used value)          $________
-28. Collectibles / antiques                      $________
-29. Life insurance cash value                    $________
-30. Business assets (sole prop, partnership)     $________
-31. Cryptocurrency / digital assets              $________
-32. Other assets (specify): ___________________ $________
-33. **TOTAL ASSETS**                             $________
+Part II. FMV of assets owned immediately before the cancellation
+(don't include the FMV of the same asset in more than one category)
+16. Cash and bank account balances                                 $________
+17. Real property, including the value of land                     $________
+18. Cars and other vehicles                                        $________
+19. Computers                                                      $________
+20. Household goods and furnishings                                $________
+21. Tools                                                          $________
+22. Jewelry                                                        $________
+23. Clothing                                                       $________
+24. Books                                                          $________
+25. Stocks and bonds                                               $________
+26. Investments in coins, stamps, paintings, or other collectibles $________
+27. Firearms, sports, photographic, and other hobby equipment      $________
+28. Interest in retirement accounts (IRA, 401(k), and other)       $________
+29. Interest in a pension plan                                     $________
+30. Interest in education accounts                                 $________
+31. Cash value of life insurance                                   $________
+32. Security deposits with landlords, utilities, and others        $________
+33. Interests in partnerships                                      $________
+34. Value of investment in a business                              $________
+35. Other investments (annuity contracts, guaranteed investment
+    contracts, mutual funds, commodity accounts, hedge funds,
+    options)                                                       $________
+36. Other assets not included above (e.g., cryptocurrency)         $________
+37. FMV of total assets. Add lines 16 through 36                   $________
 
-INSOLVENCY:
-34. Insolvency = Line 16 − Line 33               $________
-   (If zero or negative: NOT insolvent; cannot exclude under §108(a)(1)(B))
+Part III. Insolvency
+38. Amount of insolvency. Subtract line 37 from line 15.
+    If zero or less, you aren't insolvent.                         $________
 
-CANCELED DEBT (FROM 1099-C):
-35. Amount of debt canceled (1099-C Box 2)       $________
-
-EXCLUSION:
-36. Excluded amount = LESSER of Line 34 or Line 35  $________
-    (This is Form 982 Line 2)
-
-INCLUDED IN INCOME:
-37. Schedule 1 Line 8c amount = Line 35 − Line 36   $________
+Agent steps after the worksheet:
+A. Amount of debt canceled (1099-C Box 2, corrected to the actual
+   cancellation)                                                   $________
+B. Excluded amount = SMALLER of line 38 or line A (Form 982 Line 2) $________
+C. Taxable = line A − line B (Schedule 1 Line 8c for nonbusiness
+   debt; Schedule C Line 6 for sole-proprietorship debt)           $________
 ```
 
 ---
@@ -230,11 +245,11 @@ Excluded amount = lesser of $24,000 (canceled) or $63,700 (insolvency) = **$24,0
 Form 982 Line 2 = $24,000 (entire canceled amount excluded)
 Schedule 1 Line 8c = $0
 
-Sarah must then reduce tax attributes per §108(b) for the $24,000 (Form 982 Part II Lines 5-11).
+Sarah must then complete Form 982 Part II. If she has NOLs, credit carryovers, or capital loss carryovers, reduce them first (lines 6–9, 12, 13). If her only attribute is the basis of personal-use property, line 10a is the smallest of (a) that basis, (b) $24,000, or (c) the bases of her property plus money held immediately after the cancellation minus liabilities immediately after ($311,300 − $24,000 = $287,300). With $1,800 of cash, (c) is above $0 only if her property bases exceed $285,500; ask for the bases (cost of the home plus improvements, cost of the car) before entering line 10a (i982 "A nonbusiness debt"; §1017(b)(2)).
 
 ---
 
-## Common Worksheet 2 mistakes
+## Common Insolvency Worksheet mistakes
 
 | Mistake | Fix |
 |---------|-----|
@@ -244,9 +259,9 @@ Sarah must then reduce tax attributes per §108(b) for the $24,000 (Form 982 Par
 | Excluding the canceled debt from liabilities | INCLUDE — it was a liability immediately before |
 | Using "immediately AFTER" snapshot | Must be IMMEDIATELY BEFORE the discharge |
 | Including future obligations (rent, alimony) | Only include CURRENT obligations |
-| Joint property with non-liable spouse | Consult Pub 4681 + state law |
+| Joint property with non-liable spouse | Consult Pub. 4681 + state law; refer to a CPA |
 | Estimating "I'm broke" without the worksheet | Always do the math; intuition is wrong here |
-| Dropping retirement because it's "untouchable" | §108(d)(3) doesn't have a "touchability" test — include it |
+| Dropping retirement because it's "untouchable" | Pub. 4681 counts exempt assets, including retirement accounts and pension interests; Carlson v. Commissioner, 116 T.C. 87 (2001). A pension interest that can't be cashed out, sold, assigned, or borrowed against was held not an asset in Schieber v. Commissioner, T.C. Memo. 2017-32: include by default and flag for a CPA |
 | Excluding home because it's mortgaged | Include FMV of home as asset; mortgage is separate liability |
 
 ---
@@ -260,4 +275,4 @@ The agent should:
 4. Recommend a CPA review if insolvency is close to canceled-debt amount (audit risk)
 5. Retain the worksheet with the user's records (NOT filed with Form 982 but required if audited)
 
-The IRS frequently disputes insolvency claims, especially for users with substantial retirement balances. The worksheet is the user's defense.
+If the IRS questions the insolvency claim, the worksheet and its statements are the user's support.

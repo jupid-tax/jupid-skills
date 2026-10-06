@@ -11,49 +11,50 @@ Form 2553 must be filed **either**:
 - **No more than 2 months and 15 days after the start of the tax year** in which the election is to take effect, OR
 - **Any time during the tax year preceding** the election year
 
-For calendar-year filers: 2 months and 15 days from January 1 lands on **March 15**. To be an S-corp for tax year 2026, Form 2553 must be filed (faxed or postmarked) on or before **March 15, 2026**.
+For calendar-year filers: 2 months and 15 days from January 1 lands on **March 15**. March 15, 2026 was a Sunday, so a calendar-2026 election was due **Monday, March 16, 2026** (IRC §7503).
 
-The IRS treats "2 months and 15 days" as date arithmetic — *not* as 75 days. So:
+The IRS treats "2 months and 15 days" as date arithmetic, *not* as 75 days. Rule (Instructions for Form 2553, "When To Make the Election"): the 2-month period begins on the day the tax year begins and ends with the close of the day **before** the numerically corresponding day of the second calendar month following; if there is no corresponding day, it ends on the last day of that month. Then add 15 days. The instructions' own examples: January 7 → March 21; November 8 → January 22.
 
-| Tax year start | Deadline |
-|----------------|----------|
-| January 1 | March 15 |
-| February 1 | April 16 (Feb 1 + 2 months = April 1; + 15 days = April 16) |
-| April 1 | June 16 |
-| July 1 | September 15 |
-| October 1 | December 16 |
+| Tax year start | 2-month period ends | Deadline |
+|----------------|---------------------|----------|
+| January 1 | February 28 | March 15 |
+| January 7 | March 6 | March 21 |
+| February 1 | March 31 | April 15 |
+| March 1 | April 30 | May 15 |
+| April 1 | May 31 | June 15 |
+| July 1 | August 31 | September 15 |
+| October 1 | November 30 | December 15 |
 
-If the deadline falls on a weekend or federal holiday, the deadline shifts to the next business day (per IRC §7503).
+If the deadline falls on a Saturday, Sunday, or legal holiday, it shifts to the next business day (IRC §7503). Do not plan on the shift: file earlier.
 
 ---
 
 ## Decision tree: when does the clock start?
 
 ```
-Has the entity ever filed a U.S. federal tax return as an entity (not Schedule C
-on the owner's 1040)?
+Is the election meant to start with the entity's FIRST tax year in existence?
 
-  YES → Existing-entity case.
+  NO → Existing-entity case.
     The deadline is 2 months 15 days from the start of the tax year for which
     the election is to take effect.
     Example: calendar-year LLC operating since 2023 wants S-corp for 2026.
              Deadline = March 15, 2026.
 
-  NO → New-entity case.
-    The deadline is 2 months 15 days from the EARLIEST of:
+  YES → New-entity case.
+    The first tax year begins on the EARLIEST of (Reg. §1.1362-6(a)(2)(ii)(C);
+    Instructions, "Item E"):
       (a) the date the entity first had shareholders/members
-      (b) the date the entity first acquired assets
-      (c) the date the entity first began doing business
+      (b) the date the entity first had assets
+      (c) the date the entity began doing business
+    The deadline is 2 months 15 days after that date. An election filed
+    before that date is not valid, because the entity has no prior tax year.
 
-    "Began doing business" is interpreted broadly:
-      - opened a bank account in the entity's name
-      - hired an employee
-      - signed a lease or vendor contract
-      - accepted any payment
-      - filed a state tax return
-    The IRS does NOT use the date of state filing (articles of incorporation /
-    organization) as the trigger if business activity started later. The clock
-    starts at the FIRST operational event.
+    ASK about each event; any one can start the clock:
+      - members admitted / stock issued
+      - money deposited in an entity bank account, or any property contributed
+      - first contract, sale, hire, or lease
+    The state filing date (articles accepted) is item B, not automatically
+    item E; the clock starts at the FIRST of (a)-(c).
 ```
 
 ### Worked example — new entity
@@ -66,9 +67,10 @@ ABC Consulting, LLC
   03/10/2026 — LLC signs first client contract (Event C confirmed)
 
   Earliest event: 03/01/2026 (Event A)
-  Deadline: 03/01/2026 + 2 months 15 days = 05/16/2026
+  2-month period ends: 04/30/2026
+  Deadline: 04/30/2026 + 15 days = 05/15/2026 (a Friday)
 
-  To be an S-corp for tax year 2026, Form 2553 must be filed by 05/16/2026.
+  To be an S-corp from 03/01/2026, Form 2553 must be filed by 05/15/2026.
 ```
 
 ### Worked example — existing entity
@@ -80,9 +82,10 @@ XYZ Software, Inc.
   Wants to elect S-corp starting 2026
 
   Calendar year, so 2026 starts 01/01/2026.
-  Deadline: 01/01/2026 + 2 months 15 days = 03/15/2026.
+  Deadline: 01/01/2026 + 2 months 15 days = 03/15/2026, a Sunday,
+            so 03/16/2026 under IRC §7503.
 
-  Form 2553 must be filed by 03/15/2026 to be effective for tax year 2026.
+  Form 2553 must be filed by 03/16/2026 to be effective for tax year 2026.
   (Could also have filed any time during 2025.)
 ```
 
@@ -90,23 +93,21 @@ XYZ Software, Inc.
 
 ## What if the deadline is missed?
 
-If the form is filed after the deadline, the IRS treats the election as effective for the **following** tax year — UNLESS the filer qualifies for late-election relief under Rev. Proc. 2013-30.
-
-The good news: Rev. Proc. 2013-30 grants relief generously for filers who acted in good faith. The bar is "reasonable cause," not "extraordinary circumstances."
+If the form is filed after the deadline, the election generally is effective for the **following** tax year (Instructions, "Relief for a Late S Corporation Election Filed by a Corporation"), UNLESS the filer qualifies for late-election relief under Rev. Proc. 2013-30. The standard is reasonable cause plus diligent action once the mistake was found (§4.02(4)).
 
 ---
 
 ## Rev. Proc. 2013-30 — late-election relief mechanics
 
-Rev. Proc. 2013-30 (effective September 3, 2013, supersedes Rev. Proc. 2003-43, 2007-62, 2004-48, 97-48) provides simplified relief for late S-corp elections that would otherwise miss the §1362(b) deadline.
+Rev. Proc. 2013-30, 2013-36 I.R.B. 173 (effective September 3, 2013) modifies and supersedes Rev. Procs. 2003-43, 2004-48, and 2007-62, supersedes Situation 1 and obsoletes Situation 2 of Rev. Proc. 97-48, and replaces sections 4.01-4.03 of Rev. Proc. 2004-49 (§9). It provides relief without a letter ruling for late S elections that missed the §1362(b) deadline.
 
-### Eligibility — all five must be true
+### Eligibility — all must be true
 
-1. **Entity intended to be classified as an S-corp** as of the intended effective date (Line F)
-2. **Entity failed to qualify as an S-corp solely because the election was not timely filed** — i.e., the only defect is the lateness, not eligibility
-3. **Entity has reasonable cause** for the late filing
-4. **Less than 3 years and 75 days** have passed since the intended effective date (with limited exceptions for entities that had already filed all returns consistent with S-corp treatment for the period)
-5. **Entity (and shareholders) have reported all income consistently with S-corp treatment** for the period from the intended effective date — OR the entity has not yet filed a return for that period (most-common new-entity case)
+1. **Entity intended to be classified as an S-corp** as of the intended effective date (item E) (§4.02(1))
+2. **Failure to qualify was solely because the election was not timely filed**: the only defect is lateness, not eligibility (§4.02(3))
+3. **Reasonable cause** for the late filing, and the entity **acted diligently** to correct the mistake once discovered (§4.02(4))
+4. **Request made within 3 years and 75 days** of the intended effective date (§4.02(2)). Exception: a corporation (not seeking classification relief) that filed every return as an S corporation, whose first Form 1120-S was filed at least 6 months ago with no IRS notice of a problem within 6 months, can file later (§5.04)
+5. **Consistent reporting:** every person who was a shareholder from the effective date to the filing date states they reported income consistently with S status for every affected year (§5.02; the column K consent text covers this). An LLC that also needs classification relief must make Part IV representation 5: all required returns timely filed consistent with S status and no inconsistent returns (5a), or no return yet filed for the first year because its due date has not passed (5b) (§5.03(5))
 
 ### The 3-year-75-day window
 
@@ -121,16 +122,16 @@ Form 2553 with Rev. Proc. 2013-30 relief can be filed any time between
 01/01/2024 and 03/17/2027.
 ```
 
-If the user is past 3 years 75 days, Rev. Proc. 2013-30 is unavailable. The remaining option is a Private Letter Ruling under Reg. §301.9100-3 — expensive ($12,600 user fee as of 2026, plus CPA/attorney fees) and outside the scope of this skill. Refer to a tax attorney.
+If the user is past 3 years 75 days (and §5.04 does not apply), Rev. Proc. 2013-30 is unavailable. The remaining option is a letter ruling under §1362(b)(5) (with Reg. §301.9100-3 for a late classification election). User fee under Rev. Proc. 2026-1, Appendix A (A)(3)(c)(i): $14,500, reduced to $3,450 for gross income under $400,000 or $9,775 for gross income under $10 million (A)(4); plus professional fees. Outside the scope of this skill. Refer to a CPA or tax attorney.
 
 ### Mechanics of filing late under Rev. Proc. 2013-30
 
-1. Complete Form 2553 normally (Parts I, II if applicable, III if QSST)
-2. **Across the top of page 1**, write or print: **"FILED PURSUANT TO REV. PROC. 2013-30"**
-3. Complete **Part IV** — check Boxes 1, 2, 3
-4. **Attach a reasonable-cause statement** as a separate page — see acceptable language below
-5. Get all shareholder signatures (same as on-time filing)
-6. Either fax to the appropriate service center OR attach to the first Form 1120-S being filed and mail with that 1120-S
+1. Complete Form 2553 normally (Part I, Part II if applicable, Part III if QSST)
+2. **In the top margin of page 1**, write or print: **"FILED PURSUANT TO REV. PROC. 2013-30"** (§4.03(1))
+3. **Item I**: state the reasonable cause and the diligent actions, or attach a statement that does so and carries the §4.03(3) penalties-of-perjury declaration, signed by an authorized officer
+4. **Column K**: consents from everyone who was a shareholder at any time from the item E date to the filing date (§5.01)
+5. **Part IV**: only if the entity is an eligible entity (LLC) without a timely Form 8832; all five representations must be true (§5.03)
+6. File by one of the three routes in §4.03(2): (a) attach to the current-year Form 1120-S if all Forms 1120-S since the effective date have been filed; (b) attach to the late-filed Form 1120-S for the year including the effective date, with all other delinquent Forms 1120-S filed at the same time; or (c) send Form 2553 directly to the service center. Routes (a) and (b): write "INCLUDES LATE ELECTION(S) FILED PURSUANT TO REV. PROC. 2013-30" at the top of the Form 1120-S. All routes must be completed within 3 years 75 days; extending the 1120-S does not extend that window
 
 ### Acceptable reasonable-cause language
 
@@ -144,63 +145,62 @@ The IRS has historically accepted these patterns:
 
 ### Unacceptable reasonable-cause language
 
-These do NOT qualify and will result in CP262 rejection:
+These do not show reasonable cause and risk a CP264 notice (Form 2553 denied):
 
 - "We wanted to wait and see how the year went before electing." (willful, not inadvertent)
 - "We elected at our convenience." (no cause)
 - "We were too busy to file." (insufficient diligence)
 
-The reasonable-cause statement should be **2-4 sentences**, factual, dated, and signed (typically by the same officer signing Line J).
+The reasonable-cause statement should be **2-4 sentences**, factual, dated, and signed by an authorized officer under the §4.03(3) penalties-of-perjury declaration.
 
 ### Consistent-treatment requirement
 
-Box 3 of Part IV requires that the entity and shareholders have reported income consistent with S-corp treatment since the intended effective date. In practice:
+Every late election needs the §5.02 statements (all shareholders reported consistently with S status); an LLC relying on the deemed classification election also needs Part IV representation 5. ASK which returns have already been filed for each year from the item E date, then:
 
-| Entity status | Action required |
-|---------------|-----------------|
-| New entity, no returns filed yet | Box 3 satisfied automatically; just check it |
-| LLC that filed Schedule C (single member) | Owner must amend Form 1040 to remove Schedule C and report S-corp income via Schedule K-1 from Form 1120-S |
-| LLC that filed Form 1065 (multi-member) | File a "final" 1065 for the period before effective date; file 1120-S from effective date forward; partners amend their 1040s |
-| Corporation that filed Form 1120 (C-corp) | File 1120-S retroactively from effective date; if 1120 was already filed, may need to file a 1120-X (amended C-corp return showing zero) for the period |
+| Entity status | Result |
+|---------------|--------|
+| No return of any kind filed yet for the first intended S year, and its due date has not passed | LLC: Part IV representation 5b can be made. Corporation: no Part IV; shareholders' column K consents carry the §5.02 statement |
+| LLC; every return since the effective date was a timely Form 1120-S and no inconsistent return was filed | Part IV representation 5a can be made |
+| LLC; the owner already reported an intended S year on Schedule C, or the LLC filed Form 1065 for it | Representation 5a cannot be made as written ("no inconsistent tax or information returns ... filed by or with respect to the entity"). Stop: refer to a CPA (a letter ruling may be required) |
+| LLC; first-year Form 1120-S due date passed with no return filed | Neither 5a nor 5b is true. Stop: refer to a CPA |
+| Corporation that filed Form 1120 (C-corp) for an intended S year | No Part IV; shareholders must be able to give the §5.02 statement. How to replace the filed Form 1120 is a CPA question: refer |
 
-Most new entities take the easy path: file Form 2553 with Rev. Proc. 2013-30 relief BEFORE filing any return for the year. Then file 1120-S directly. No amendments needed.
+The easiest path, when it is still open: file Form 2553 under Rev. Proc. 2013-30 BEFORE any return for the first intended S year is due or filed, then file Form 1120-S on time.
 
 ---
 
 ## Special timing case: Form 8832 already filed
 
-Some LLCs first file Form 8832 (Entity Classification Election) to be taxed as a C-corp, then later decide to be an S-corp. The 2-month-15-day clock for Form 2553 starts at the **8832 effective date**, not the original LLC formation date — because the entity was a partnership-taxed LLC before, and only became a "small business corporation" eligible for S-election when 8832 took effect.
+If an LLC already elected corporate classification on Form 8832, it is a corporation for Form 2553 purposes and needs no deemed classification election (and no Part IV). If the S election is meant to start on the Form 8832 effective date (its first tax year as a corporation), use the new-entity deadline counted from that date; if it starts in a later year, use the existing-entity window for that year.
 
-For LLCs going **directly** to S-corp without an intervening C-corp period, Form 2553 alone makes the combined election (per Rev. Proc. 2013-30). The 2-month-15-day clock starts at the *desired* S-corp effective date, which can be the LLC's original formation date for a new entity.
+For LLCs going **directly** to S-corp without Form 8832, a timely Form 2553 is itself the deemed election to be classified as a corporation (Reg. §301.7701-3(c)(1)(v)(C); Rev. Proc. 2013-30 §4.01(1); Form 2553 instructions, "Purpose of Form"). For a new LLC, item E can be its first day (earliest of members, assets, or business).
 
 ---
 
 ## §444 election (fiscal year)
 
-If the entity wants a non-calendar tax year that isn't a "natural business year" or "ownership year," it can elect under §444 to use a fiscal year by making a **required payment** under IRC §7519. Mechanics:
+If the entity wants a non-calendar tax year that isn't a natural business year or ownership tax year, it can elect under §444 a year with a deferral period of no more than 3 months (Form 1120-S instructions, "Electing a tax year under section 444") by making the **required payment** under IRC §7519. Mechanics:
 
-1. Check Line I Box 4 ("Other") on Form 2553
-2. Complete Part II
-3. Also file **Form 8716** (Election to Have a Tax Year Other Than a Required Tax Year)
-4. Annually compute and pay the required payment via Form 8752
+1. Check item F box (2) (fiscal year ending month/day) on Form 2553
+2. Complete Part II: item O, then R1 (or Q1 with a Q2 back-up §444 election)
+3. File **Form 8716** (Election To Have a Tax Year Other Than a Required Tax Year), attached or separately
+4. Compute and pay the required payment annually on Form 8752
 
-Most small entities should not elect §444 — the required payment captures most of the deferral benefit, and the compliance overhead is significant. Default to calendar year.
+Most small entities should not elect §444: the required payment offsets most of the deferral, and the compliance overhead is significant. Default to calendar year.
 
 ---
 
 ## Quick reference: timing decision matrix
 
 ```
-| Scenario                                              | Filing window                          | Relief?            |
-|-------------------------------------------------------|----------------------------------------|--------------------|
-| Calendar-year existing entity, 2026 election          | 1/1/2025 - 3/15/2026                  | None needed        |
-| Calendar-year, missed 3/15/2026                       | After 3/15/2026, before 3/16/2029     | Rev. Proc. 2013-30 |
-| New entity formed 3/1/2026                            | 3/1/2026 - 5/16/2026                  | None needed        |
-| New entity formed 3/1/2026, missed 5/16/2026          | 5/16/2026 - 5/15/2029                 | Rev. Proc. 2013-30 |
-| Calendar-year, missed by >3 years 75 days             | Beyond 3/16/2029 (for 2026 effective)  | §301.9100-3 PLR    |
+| Scenario                                         | Filing window                              | Relief?                   |
+|--------------------------------------------------|--------------------------------------------|---------------------------|
+| Calendar-year existing entity, 2026 election     | 1/1/2025 - 3/16/2026 (3/15 was a Sunday)   | None needed               |
+| Calendar-year, missed 3/16/2026                  | After 3/16/2026, by 3/17/2029              | Rev. Proc. 2013-30        |
+| New entity, first event 3/1/2026                 | 3/1/2026 - 5/15/2026                       | None needed               |
+| New entity, first event 3/1/2026, missed 5/15    | 5/16/2026 - 5/15/2029                      | Rev. Proc. 2013-30        |
+| Calendar-year, missed by >3 years 75 days        | After 3/17/2029 (for 1/1/2026 effective)   | §1362(b)(5) letter ruling, unless §5.04 applies |
 ```
-
----
 
 ## Cross-references
 
@@ -208,4 +208,4 @@ Most small entities should not elect §444 — the required payment captures mos
 - Eligibility: [`eligibility.md`](./eligibility.md)
 - Common timing mistakes: [`common-mistakes.md`](./common-mistakes.md)
 - Filing channel and CP261 follow-up: [`../filing.md`](../filing.md)
-- Authority sources: IRC §1362(b), Rev. Proc. 2013-30, Rev. Proc. 2006-46 (natural business year), Reg. §301.9100-3 (PLR relief)
+- Authority sources: IRC §1362(b) and (b)(5), IRC §7503, Reg. §1.1362-6(a)(2)(ii)(C), Rev. Proc. 2013-30, Rev. Proc. 2006-46 (natural business year), Rev. Proc. 2026-1 (user fees), Reg. §301.9100-3

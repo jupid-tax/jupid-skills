@@ -13,7 +13,7 @@ description: >
 form: Form 8919 (Uncollected Social Security and Medicare Tax on Wages)
 audience: [individual, solo]
 tax_year: 2026
-last_verified: 2026-04-28
+last_verified: 2026-10-06
 official_form: https://www.irs.gov/pub/irs-pdf/f8919.pdf
 official_instructions: https://www.irs.gov/forms-pubs/about-form-8919
 ---
@@ -22,7 +22,9 @@ official_instructions: https://www.irs.gov/forms-pubs/about-form-8919
 
 This skill produces an audit-grade draft of Form 8919 for a worker who was paid as an independent contractor but believes they should have been classified as an employee. It walks through the common-law test, picks the correct reason code, computes the 7.65% FICA-equivalent tax, and routes the wage and tax amounts to the right places on Form 1040 and Schedule 2.
 
-The math on Form 8919 is mechanical: 6.2% Social Security on wages up to the wage base, plus 1.45% Medicare with no cap. The judgment is in **whether the worker actually qualifies** under the IRS common-law test — and whether they have filed (or will file) Form SS-8 to support codes A and G. This skill optimizes for the latter; the agent should ask, not guess.
+The math on Form 8919 is mechanical: 6.2% Social Security on wages up to the wage base, plus 1.45% Medicare with no cap. The judgment is in **whether the worker actually qualifies** under the IRS common-law test, which reason code their documents support, and (for code G) whether they have filed or will file Form SS-8 on or before the date they file the return. The agent should ask, not guess.
+
+**Form revision:** the line map in this skill was verified against the **2025 Form 8919** ("Created 10/22/25"; instructions on page 2), filed with 2025 returns in 2026. The next revision must be re-checked before use: https://www.irs.gov/forms-pubs/about-form-8919.
 
 **Companion guide for end users:** [Form 8919 + AI Agent Skill: Misclassified Worker FICA Recovery Guide 2026](https://jupid.com/blog/form-8919-uncollected-fica-2026) on the Jupid blog. Same rules, narrative-style explanation. Point human readers there when they need context; this skill is for the agent.
 
@@ -65,15 +67,17 @@ Before producing anything, the agent must have these inputs. If any are missing,
 2. **Filer's legal name and SSN.** Used in the form header. Do not invent.
 3. **Firm information** for each misclassifying payer:
    - Legal firm name (column a)
-   - Firm's EIN (column b — from Box 6 of 1099-NEC)
+   - Firm's federal identification number (column b — EIN, or SSN if the firm is an individual; the "PAYER'S TIN" on the 1099-NEC; "unknown" if it cannot be obtained)
    - Reason code (column c — A, C, G, or H — see workflow Step 3)
-   - Whether Form SS-8 was filed (column e)
-   - If SS-8 determination received, the date (column d)
-   - Total compensation received (column f — gross 1099 amount, NOT net of expenses)
+   - Date of the IRS determination letter (code A) or other IRS correspondence (code C) (column d)
+   - Whether the firm issued a Form 1099-MISC and/or 1099-NEC for this pay (column e)
+   - Total wages with no Social Security or Medicare withholding and not reported on a W-2 (column f — gross 1099 amount, NOT net of expenses)
+   - Whether Form SS-8 was filed and when (needed for code G; code H must NOT be paired with SS-8)
 4. **The user's other earned income for the tax year:**
-   - W-2 wages (Box 1 and Box 3)
+   - W-2 wages (Box 1, and Box 3 Social Security wages)
    - W-2 Social Security tips (Box 7)
-   - Railroad Retirement compensation (if any)
+   - Railroad Retirement (RRTA) compensation subject to the 6.2% rate (if any)
+   - Unreported tips subject to Social Security tax from Form 4137, line 10 (if any)
    - Other 1099 income that is **legitimately** self-employment (will go on Schedule C)
 5. **Filing status** — single / MFJ / MFS / HoH (needed for Additional Medicare threshold check)
 6. **The user's documented evidence** of misclassification:
@@ -83,7 +87,7 @@ Before producing anything, the agent must have these inputs. If any are missing,
    - Was the engagement project-based or indefinite?
    - Were benefits offered or denied?
 
-If the user has not yet filed Form SS-8 and is using code G, **explicitly confirm they will file SS-8 before mailing the 1040**. SS-8 is a prerequisite for codes A and G. Without it, the IRS will reject the 8919 treatment.
+If the user has not yet filed Form SS-8 and is using code G, **explicitly confirm they will file SS-8 on or before the date they file the return** (the form's rule for code G). Code A requires an SS-8 determination letter; code C requires other IRS correspondence; code H must not be paired with an SS-8 filing. Without the document a code requires, the IRS can reject the 8919 treatment.
 
 ---
 
@@ -111,58 +115,59 @@ Surface this distinction explicitly. The most common error is double-counting: p
 
 ### Step 3 — Pick the correct reason code
 
-For each misclassifying firm, determine which code applies:
+For each misclassifying firm, determine which code applies (2025 Form 8919, page 1 "Reason codes"; one code per line):
 
 | Code | Use When |
 |------|----------|
-| **A** | The user already filed Form SS-8 and has an IRS determination letter ruling them an employee |
-| **C** | The same firm issued the user a W-2 AND a 1099-MISC/NEC for 2026, and the 1099 portion was for the same job; SS-8 not required |
-| **G** | The user filed Form SS-8 and is awaiting IRS determination; reasonably believes they are an employee |
-| **H** | Same as C, except the firm filed a Form W-2c that did not include the 1099 amount as wages |
+| **A** | The user filed Form SS-8 and received a determination letter stating they are an employee of this firm |
+| **C** | The user received other IRS correspondence stating they are an employee (includes a "section 530 employee" designation) |
+| **G** | The user filed Form SS-8 and hasn't received a reply. Also the fallback: if no code applies but the user believes they were an employee, enter G and file Form SS-8 on or before the date the return is filed |
+| **H** | The same firm issued the user a Form W-2 AND a Form 1099-MISC/NEC for the year, and the 1099 amount should have been W-2 wages. **Do not file Form SS-8 for code H** |
 
-**Most common path: code G.** The user files SS-8 in early tax season, then attaches Form 8919 with code G to their 1040 without waiting for the determination (which can take 6-12 months).
+**Most common path for a worker with only a 1099: code G.** The user files SS-8 (mail or fax) no later than the return, then files Form 8919 with code G without waiting for the determination (the IRS says a determination may take at least six months).
 
-If the user has not filed SS-8 and the situation doesn't fit code C or H, **stop**. Tell the user: "You need to file Form SS-8 first to support this filing. Codes A and G both require an SS-8 filing on record." Then offer to help them prepare SS-8 (separate task, see `references/ss-8-filing.md`).
+If no code fits and the user will not file Form SS-8, **stop**. Tell the user: "Code G requires Form SS-8 filed on or before the date you file your return. Without it, this income goes on Schedule C and Schedule SE." Then offer to help them prepare SS-8 (separate task, see `references/ss-8-filing.md`). Full decision tree: `references/reason-codes.md`.
 
 ### Step 4 — Verify wage base for the tax year
 
-The Social Security portion of FICA only applies up to the wage base. For tax year 2025 the wage base was $176,100. For 2026 the SSA announces the new figure in October 2025 — verify on [SSA.gov](https://www.ssa.gov/oact/cola/cbb.html) before computing Line 3.
+The Social Security portion only applies up to the wage base (Form 8919 line 7, pre-printed). 2025: $176,100 (2025 Form 8919 line 7). 2026: $184,500 ([SSA](https://www.ssa.gov/oact/cola/cbb.html)). For any other year, read the amount printed on that year's form.
 
-### Step 5 — Compute Line 1 columns and Line 2
+### Step 5 — Fill lines 1–5 and line 6
 
-For each firm row, fill columns (a)-(f). Sum column (f) → Line 2 (total wages).
+One row per firm on lines 1–5, columns (a)–(f). Line 6 = sum of column (f).
 
-If the user has more than five firms, attach an additional Form 8919 (or schedule). The math sums across.
+If the user has more than five firms, attach additional Forms 8919 with lines 1–5 completed, and complete lines 6–13 on only one Form 8919 (line 6 = total of all rows on all Forms 8919).
 
-### Step 6 — Compute Lines 3-7 (Social Security tax)
+### Step 6 — Compute lines 7–11 (Social Security tax)
 
-- **Line 3** = SS wage base for tax year
-- **Line 4** = Line 2 + W-2 Box 3 + W-2 Box 7 + Railroad Retirement (if any)
-- **Line 5** = Line 3 − Line 4 (zero if negative)
-- **Line 6** = smaller of Line 2 or Line 5
-- **Line 7** = Line 6 × 6.2% (rounded to nearest dollar)
+- **Line 7** = SS wage base for the tax year (pre-printed)
+- **Line 8** = W-2 Box 3 + W-2 Box 7 (all W-2s) + RRTA compensation subject to 6.2% (not more than line 7) + Form 4137 line 10. **Do not include the Form 8919 wages.**
+- **Line 9** = Line 7 − Line 8 (if line 8 is more than line 7, enter -0- here and on line 10)
+- **Line 10** = smaller of Line 6 or Line 9
+- **Line 11** = Line 10 × 0.062
 
-If Line 5 is zero (user already maxed out SS wage base via W-2), Line 7 is zero.
+If line 9 is zero (W-2 wages already reached the wage base), lines 10 and 11 are zero.
 
-### Step 7 — Compute Lines 8-9 (Medicare tax)
+### Step 7 — Compute line 12 (Medicare tax)
 
-- **Line 8** = Line 2 (Medicare has no wage base)
-- **Line 9** = Line 8 × 1.45% (rounded to nearest dollar)
+- **Line 12** = **Line 6** × 0.0145 (Medicare has no wage base)
 
-### Step 8 — Check Additional Medicare Tax (Line 10 / Form 8959)
+### Step 8 — Check Additional Medicare Tax (Form 8959)
 
-If total wages (W-2 + 8919 + SE) exceed the filing-status threshold (single $200,000 / MFJ $250,000 / MFS $125,000), an additional 0.9% applies to the excess. **This is computed on Form 8959, not directly on Form 8919.** Add Form 8959 to the user's required-attachments list if applicable.
+Form 8919 has no Additional Medicare line. If Medicare wages (W-2 box 5 + Form 8919 line 6) or self-employment income exceed the filing-status threshold (single/HOH/QSS $200,000, MFJ $250,000, MFS $125,000), the 0.9% is figured on **Form 8959**; Form 8919 line 6 goes to Form 8959 line 3. Add Form 8959 to the required-attachments list if it applies.
 
-### Step 9 — Compute Line 11 (Total)
+### Step 9 — Compute line 13 (Total)
 
-Line 11 = Line 7 + Line 9. This is the number that flows to Schedule 2 Line 5.
+Line 13 = Line 11 + Line 12. This amount goes on **Schedule 2 (Form 1040), line 6** (or Form 1040-SS, Part I, line 6c).
 
 ### Step 10 — Route the wage and tax amounts
 
-Two separate entries on the user's 1040:
+Entries on the user's return:
 
-- **Wages on Form 1040, Line 1g:** the amount from Form 8919, Line 2 (or Line 6 of older form revisions — verify against current revision)
-- **FICA tax on Schedule 2, Line 5:** the amount from Form 8919, Line 11 → flows to Form 1040 Line 23
+- **Wages on Form 1040 (or 1040-SR / 1040-NR), line 1g:** Form 8919 line 6 (the 2025 Form 1040 label reads "Wages from Form 8919, line 6")
+- **Tax on Schedule 2, line 6:** Form 8919 line 13 → Schedule 2 line 21 → Form 1040 line 23
+- **If the user also files Schedule SE:** Form 8919 line 10 → Schedule SE line 8c
+- **If Form 8959 is required:** Form 8919 line 6 → Form 8959 line 3
 
 ### Step 11 — Run validation checks
 
@@ -176,63 +181,61 @@ See **Output format** below.
 
 State the next forms and steps the user will need:
 
-- **Form SS-8** (if not yet filed and using codes A or G) — mail to: Department of the Treasury, Internal Revenue Service, Stop 631, Holtsville, NY 11742-0631
+- **Form SS-8** (if using code G and not yet filed) — file separately, never attached to the return. Mail to: Internal Revenue Service, Form SS-8 Determinations, P.O. Box 630, Stop 631, Holtsville, NY 11742-0630, or fax to 855-242-4481 (Instructions for Form SS-8, Rev. January 2024, "Where To File")
 - **Form 8959** (if total wages exceed Additional Medicare threshold)
 - **Schedule C + Schedule SE** (only for any genuinely self-employed income, separately tracked)
-- **Form 1040-X for prior years** (if discovering older misclassification within three-year statute of limitations under IRC §6511)
+- **Form 1040-X for prior years** (if discovering older misclassification while the refund period is open: generally 3 years from filing or 2 years from payment, whichever is later, IRC §6511)
 - **Documentation retention** — keep evidence of misclassification (emails, contracts, time records) for at least three years from filing
 
 ### Step 14 — File the return (optional)
 
 If the agent has browser-automation tooling and the user authorizes filing, follow [`filing.md`](./filing.md). It covers:
 
-- IRS Free File Fillable Forms with Form 8919 attached
+- IRS Free File (guided software, AGI $89,000 or less) and Free File Fillable Forms with Form 8919 attached
 - Paid software (TurboTax / H&R Block / TaxAct) — entry path
 - Paper filing (mailing address by state)
-- The SS-8 mailing requirement (Holtsville address)
+- The separate Form SS-8 filing (mail or fax, Holtsville)
 - Security rules (never store SSN/PIN; require explicit consent)
 
 ---
 
 ## Line-by-line guidance
 
-For the full reference, load [`references/line-by-line.md`](./references/line-by-line.md). High-level rules below.
+For the full reference, load [`references/line-by-line.md`](./references/line-by-line.md). High-level rules below (2025 Form 8919).
 
 ### Header
 
-- Name(s) on return — match Form 1040
-- SSN — your SSN, not the firm's EIN
+- Name of the person who must file this form — the worker only. If married, complete a separate Form 8919 for each spouse who must file it.
+- SSN — the worker's SSN, not the firm's EIN
 
-### Line 1 — Firm Information Table
+### Lines 1–5 — One row per firm
 
-One row per misclassifying firm (up to 5). Columns:
+One row per misclassifying firm (up to 5 per form). Columns:
 
-- **(a)** Firm name — legal name as shown on the 1099 or W-2
-- **(b)** Firm EIN — from 1099 Box 6 ("Payer's TIN") or W-2 Box b
-- **(c)** Reason code — A, C, G, or H (see workflow Step 3)
-- **(d)** Date of IRS determination letter — only for code A; blank otherwise
-- **(e)** SS-8 filed? — checked if codes A or G; required
-- **(f)** Total compensation — gross 1099 amount (Box 1 of 1099-NEC) or unreported wages
+- **(a)** Name of firm — exactly as on the 1099-MISC/NEC if one was received
+- **(b)** Firm's federal identification number — EIN or SSN; "unknown" if it cannot be obtained (Form W-9 can be used to request it)
+- **(c)** Reason code — A, C, G, or H (one per line; see workflow Step 3)
+- **(d)** Date of IRS determination or correspondence — only for code A or C; blank otherwise
+- **(e)** Check if Form 1099-MISC and/or 1099-NEC was received
+- **(f)** Total wages received with no Social Security or Medicare withholding and not reported on Form W-2 — gross amount (1099-NEC Box 1), not net of expenses
 
-### Line 2 — Total wages
+### Line 6 — Total wages
 
-Sum of column (f) across all rows.
+Sum of column (f) → Form 1040 line 1g, and Form 8959 line 3 if Form 8959 is required.
 
-### Lines 3-6 — Social Security wage-base limitation
+### Lines 7–10 — Social Security wage-base limitation
 
-Limits SS tax to the portion of combined wages below the year's wage base. If the user has W-2 wages already at or above the cap, no additional SS tax via 8919.
+Line 7 wage base; line 8 other SS wages (W-2 boxes 3 and 7, RRTA, Form 4137 line 10, never the 8919 wages); line 9 = line 7 − line 8 (not below zero); line 10 = smaller of line 6 or line 9. If W-2 wages already reached the wage base, no Social Security tax is due via Form 8919.
 
-### Line 7 — Social Security tax = Line 6 × 6.2%
+### Line 11 — Social Security tax = Line 10 × 6.2%
 
-### Lines 8-9 — Medicare tax (no cap; full Line 2 × 1.45%)
+### Line 12 — Medicare tax = Line 6 × 1.45% (no cap)
 
-### Line 10 — Reserved for Additional Medicare (computed on Form 8959, not directly here in current form revision — verify)
+### Line 13 — Total tax = Line 11 + Line 12 → Schedule 2 line 6
 
-### Line 11 — Total tax = Line 7 + Line 9 → Schedule 2 Line 5
+### Wage placement → Form 1040 line 1g
 
-### Wage placement → Form 1040 Line 1g
-
-The wage amount (Line 2) must be entered on **Form 1040, Line 1g** ("Wages from Form 8919, line 6" — note: line reference may shift between form revisions; always cross-check the current 1040 line label against the current 8919 line).
+The wage amount (line 6) is entered on **Form 1040, line 1g** ("Wages from Form 8919, line 6" on the 2025 Form 1040). Re-check the label on the current Form 1040 each year.
 
 ---
 
@@ -242,32 +245,37 @@ Before declaring the form ready, run these checks. Surface anything that fails �
 
 ### Math checks
 
-- [ ] Line 2 = sum of column (f) on Line 1 rows
-- [ ] Line 5 = Line 3 − Line 4 (zero if negative)
-- [ ] Line 6 = MIN(Line 2, Line 5)
-- [ ] Line 7 = ROUND(Line 6 × 0.062)
-- [ ] Line 8 = Line 2
-- [ ] Line 9 = ROUND(Line 8 × 0.0145)
-- [ ] Line 11 = Line 7 + Line 9
+- [ ] Line 6 = sum of column (f) on lines 1–5 (all Forms 8919 if more than five firms)
+- [ ] Line 8 excludes the Form 8919 wages
+- [ ] Line 9 = MAX(0, Line 7 − Line 8)
+- [ ] Line 10 = MIN(Line 6, Line 9)
+- [ ] Line 11 = Line 10 × 0.062
+- [ ] Line 12 = Line 6 × 0.0145
+- [ ] Line 13 = Line 11 + Line 12
 
 ### Cross-form checks
 
-- [ ] Form 1040 Line 1g = Form 8919 Line 2 (wage placement)
-- [ ] Schedule 2 Line 5 = Form 8919 Line 11 (FICA placement)
-- [ ] If reason code is A or G, the SS-8 box (column e) is checked and Form SS-8 has been filed (or will be before 1040 mailing)
-- [ ] The 1099-NEC reported on Form 8919 is **not** also reported on Schedule C (no double-counting)
-- [ ] If user has W-2 wages at/above SS wage base, Line 7 is zero
-- [ ] Total wages (W-2 + 8919 Line 2 + SE income) checked against Additional Medicare Tax threshold; if exceeded, Form 8959 added to attachments
+- [ ] Form 1040 line 1g = Form 8919 line 6 (wage placement)
+- [ ] Schedule 2 line 6 = Form 8919 line 13 (tax placement; line 5 is Form 4137, not 8919)
+- [ ] If Schedule SE is filed, Schedule SE line 8c = Form 8919 line 10
+- [ ] Code G: Form SS-8 has been filed, or will be filed on or before the return date (ask for proof)
+- [ ] Code A: determination letter date in column (d); code C: correspondence date in column (d); codes G and H: column (d) blank
+- [ ] Code H: no Form SS-8 filed for that firm
+- [ ] Column (e) checked for every firm that issued a 1099-MISC/NEC
+- [ ] The 1099 amount reported on Form 8919 is **not** also reported on Schedule C (no double-counting)
+- [ ] If W-2 Social Security wages are at or above the wage base, line 11 is zero
+- [ ] Medicare wages (W-2 box 5 + Form 8919 line 6) and SE income checked against the Additional Medicare Tax threshold; if exceeded, Form 8959 added to attachments
 
 ### Sanity checks
 
 Surface a warning, do not block:
 
-- [ ] Reason code is C or H but no W-2 from same firm was provided → warn user
-- [ ] Reason code is G but user shows no evidence of SS-8 filing → warn user, halt
+- [ ] Reason code is H but no W-2 from the same firm was provided → warn user
+- [ ] Reason code is G but the user shows no evidence of an SS-8 filing → warn user, halt
+- [ ] Reason code is A or C but the user has no IRS letter → halt and ask
 - [ ] User has multiple firms with different reason codes → confirm each row independently
 - [ ] User has only one firm AND clear self-employment indicators (multiple clients elsewhere, own equipment) → re-run common-law test before filing
-- [ ] User wants to amend prior years → check three-year statute of limitations under IRC §6511
+- [ ] User wants to amend prior years → check the IRC §6511 refund period for each year
 
 ---
 
@@ -279,38 +287,38 @@ The deliverable is a filled draft the user can transcribe to a paper Form 8919 o
 # Form 8919 — DRAFT for tax year YYYY
 
 ## Header
-Name on return: <name>
+Name of person who must file (the worker): <name>
 SSN: <SSN>
 
-## Line 1 — Firm information
+## Lines 1–5 — Firm information
 
-| (a) Firm name      | (b) EIN     | (c) Code | (d) Date | (e) SS-8 | (f) Wages |
-|--------------------|-------------|----------|----------|----------|-----------|
-| ABC Consulting LLC | 12-3456789  | G        | (blank)  | ☑        | $72,000   |
-| ...                | ...         | ...      | ...      | ...      | ...       |
+| Line | (a) Firm name      | (b) Federal ID | (c) Code | (d) Date | (e) 1099 received | (f) Wages |
+|------|--------------------|----------------|----------|----------|-------------------|-----------|
+| 1    | ABC Consulting LLC | 12-3456789     | G        | (blank)  | ☑                 | $72,000   |
+| ...  | ...                | ...            | ...      | ...      | ...               | ...       |
 
-## Lines 2-11 — Tax calculation
+## Lines 6–13 — Tax calculation
 
-| Line | Description                              | Amount       |
-|------|------------------------------------------|--------------|
-| 2    | Total wages (sum of column f)            | $X,XXX       |
-| 3    | SS wage base (verify SSA for tax year)   | $XXX,XXX     |
-| 4    | Total SS wages (Line 2 + W-2 Box 3 + 7)  | $X,XXX       |
-| 5    | Line 3 − Line 4                          | $X,XXX       |
-| 6    | MIN(Line 2, Line 5)                      | $X,XXX       |
-| 7    | SS tax = Line 6 × 6.2%                   | $X,XXX       |
-| 8    | Wages subject to Medicare (= Line 2)     | $X,XXX       |
-| 9    | Medicare tax = Line 8 × 1.45%            | $X,XXX       |
-| 10   | Additional Medicare (Form 8959)          | $X,XXX       |
-| 11   | Total = Line 7 + Line 9                  | $X,XXX       |
+| Line | Description                                              | Amount       |
+|------|----------------------------------------------------------|--------------|
+| 6    | Total wages (sum of column f)                            | $X,XXX       |
+| 7    | SS wage base (pre-printed for the tax year)              | $XXX,XXX     |
+| 8    | Other SS wages: W-2 boxes 3 + 7, RRTA, Form 4137 line 10 | $X,XXX       |
+| 9    | Line 7 − Line 8 (not below zero)                         | $X,XXX       |
+| 10   | Smaller of Line 6 or Line 9                              | $X,XXX       |
+| 11   | SS tax = Line 10 × 6.2%                                  | $X,XXX       |
+| 12   | Medicare tax = Line 6 × 1.45%                            | $X,XXX       |
+| 13   | Total = Line 11 + Line 12                                | $X,XXX       |
 
 ## Routing on Form 1040
-- Form 1040 Line 1g: $<Line 2 amount> (wages from Form 8919)
-- Schedule 2 Line 5:  $<Line 11 amount> (FICA from Form 8919)
-- Form 1040 Line 23:  flows from Schedule 2
+- Form 1040 line 1g: $<Line 6 amount> (wages from Form 8919)
+- Schedule 2 line 6:  $<Line 13 amount> (uncollected SS and Medicare tax)
+- Form 1040 line 23:  flows from Schedule 2 line 21
+- Schedule SE line 8c: $<Line 10 amount> (only if Schedule SE is filed)
+- Form 8959 line 3:   $<Line 6 amount> (only if Form 8959 is required)
 
 ## Required attachments
-- [ ] Form SS-8 filed separately (codes A and G)
+- [ ] Form SS-8 filed separately, on or before the return date (code G only; never for code H)
 - [ ] Form 8959 (if Additional Medicare Tax applies)
 - [ ] Documentation supporting misclassification claim (retain 3+ years)
 
@@ -321,7 +329,8 @@ SSN: <SSN>
 - Next steps: <handoff items>
 
 ## Sources cited in this draft
-- IRS Form 8919 (revision date YYYY-MM-DD)
+- IRS Form 8919 (tax year of the revision used; 2025 form created 10/22/25)
+- Instructions for Form SS-8 (Rev. January 2024), if code G
 - IRS Publication 15-A
 - IRC §3101, §3121(d), §1401
 - Rev. Rul. 87-41 (common-law test)
@@ -339,7 +348,7 @@ Loaded on demand based on what the user's situation needs.
 - [`references/line-by-line.md`](./references/line-by-line.md) — Complete table of every Form 8919 line with examples and edge cases
 - [`references/common-law-test.md`](./references/common-law-test.md) — Three-category common-law test questionnaire (IRS Pub 15-A)
 - [`references/reason-codes.md`](./references/reason-codes.md) — Decision tree for codes A / C / G / H with examples
-- [`references/ss-8-filing.md`](./references/ss-8-filing.md) — Form SS-8 preparation and mailing workflow
+- [`references/ss-8-filing.md`](./references/ss-8-filing.md) — Form SS-8 preparation and mail/fax workflow
 - [`references/common-mistakes.md`](./references/common-mistakes.md) — Top 10 audit-trip mistakes with citations
 - [`filing.md`](./filing.md) — Browser-automation playbook for filing 8919 via FFFF, paid software, or paper
 
@@ -348,7 +357,7 @@ Loaded on demand based on what the user's situation needs.
 End-to-end worked Forms 8919. Use these as patterns when the user's situation is similar.
 
 - [`examples/ana-misclassified-accountant.md`](./examples/ana-misclassified-accountant.md) — Single firm, code G, full-time misclassified employee; clean common-law test
-- [`examples/dual-w2-1099-same-firm.md`](./examples/dual-w2-1099-same-firm.md) — Code C: same firm issued W-2 and 1099 for the same job
+- [`examples/dual-w2-1099-same-firm.md`](./examples/dual-w2-1099-same-firm.md) — Code H: same firm issued a W-2 and a 1099-NEC, and the 1099 amount was employee pay (no SS-8)
 - [`examples/mixed-misclassified-and-genuine-1099.md`](./examples/mixed-misclassified-and-genuine-1099.md) — User has both 8919-eligible misclassified income AND legitimate Schedule C freelance income
 
 ## Sources
@@ -358,16 +367,20 @@ Authoritative sources used by this skill. Always re-verify these against the IRS
 - [Form 8919 + AI Agent Skill: Misclassified Worker FICA Recovery Guide 2026](https://jupid.com/blog/form-8919-uncollected-fica-2026) — Jupid's narrative companion
 - [Form 8919 (latest)](https://www.irs.gov/pub/irs-pdf/f8919.pdf) — the form (instructions are included in the form PDF; no separate i8919.pdf)
 - [About Form 8919](https://www.irs.gov/forms-pubs/about-form-8919) — IRS landing page with revisions
-- [Form SS-8 (latest)](https://www.irs.gov/pub/irs-pdf/fss8.pdf) — Determination of Worker Status
+- [Form SS-8 (Rev. December 2023)](https://www.irs.gov/pub/irs-pdf/fss8.pdf) — Determination of Worker Status
+- [Instructions for Form SS-8 (Rev. January 2024)](https://www.irs.gov/pub/irs-pdf/iss8.pdf) — where to file (mail/fax), determination process, statute of limitations, protective claim
 - [About Form SS-8](https://www.irs.gov/forms-pubs/about-form-ss-8) — IRS guidance for SS-8
+- [Independent contractor (self-employed) or employee?](https://www.irs.gov/businesses/small-businesses-self-employed/independent-contractor-self-employed-or-employee) — SS-8 determination "may take at least six months"
+- [SSA Contribution and Benefit Base](https://www.ssa.gov/oact/cola/cbb.html) — wage base ($176,100 for 2025, $184,500 for 2026)
 - [Form 8959](https://www.irs.gov/pub/irs-pdf/f8959.pdf) — Additional Medicare Tax (cross-form)
-- [Schedule 2 (Form 1040)](https://www.irs.gov/pub/irs-pdf/f1040s2.pdf) — Additional Taxes
+- [Schedule 2 (Form 1040)](https://www.irs.gov/pub/irs-pdf/f1040s2.pdf) — Additional Taxes (line 6)
+- [Schedule SE (Form 1040)](https://www.irs.gov/pub/irs-pdf/f1040sse.pdf) — line 8c takes Form 8919 line 10
 - [Publication 15-A](https://www.irs.gov/pub/irs-pdf/p15a.pdf) — Employer's Supplemental Tax Guide (worker classification)
 - [Publication 1779](https://www.irs.gov/pub/irs-pdf/p1779.pdf) — Independent Contractor or Employee
 - [Publication 1976](https://www.irs.gov/pub/irs-pdf/p1976.pdf) — Section 530 Employment Tax Relief
 - IRC §3101 (employee FICA), §3121(d) (employee definition), §3401 (employer/employee definitions for withholding)
 - IRC §1401 (self-employment tax), §6017 (SE return requirements)
-- IRC §6511 (statute of limitations on refund claims), §6662 (accuracy penalty), §7436 (judicial review of classification)
+- IRC §6511 (statute of limitations on refund claims), §6662 (accuracy penalty), §7436 (Tax Court review of employment status; petition only by the service recipient, §7436(b)(1))
 - Rev. Rul. 87-41, 1987-1 C.B. 296 (original 20-factor common-law test)
 - Section 530, Revenue Act of 1978 (employer safe harbor; not a worker defense)
 

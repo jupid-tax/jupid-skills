@@ -10,7 +10,7 @@ The pattern when a 529 owner takes money out for non-education purposes (or the 
 - **Tax year**: 2025 (filing in 2026)
 - **Marisol's filing status**: Single; AGI $78,000
 
-Marisol pulled $5,000 from the 529 to use for a kitchen renovation, knowing it was non-qualified. She wants the worksheet to confirm the tax owed.
+On September 15, 2025, Marisol pulled $5,000 from the 529 to use for a kitchen renovation, knowing it was non-qualified. She wants the worksheet to confirm the tax owed.
 
 ## 1099-Q received
 
@@ -18,9 +18,10 @@ Marisol pulled $5,000 from the 529 to use for a kitchen renovation, knowing it w
 Box 1 (Gross distribution):        $5,000
 Box 2 (Earnings):                  $1,750
 Box 3 (Basis):                     $3,250
-Box 4 (Trustee-to-trustee):        Unchecked
-Box 5 (Program type):              State 529
-Box 6 (Designated beneficiary):    Unchecked (recipient is account owner)
+Box 4a/4b (Type of transfer):      Both blank
+Box 5 (Distribution is from):      5b State QTP
+Box 6 (Recipient is not the        Checked (recipient is the account owner)
+       designated beneficiary):
 Recipient: Marisol Reyes
 Payer: Utah my529
 ```
@@ -29,23 +30,23 @@ Verification: Box 1 = Box 2 + Box 3 → $5,000 = $1,750 + $3,250 ✓
 
 ## Qualified Education Expenses (Step 3)
 
-Diego had no qualified expenses in 2025. He attended a six-week non-registered trade program at a non-Title-IV-eligible school. Per the agent's check at fafsa.gov, that program is not on the Department of Education's eligible list.
+Diego had no qualified expenses in 2025. He attended a six-week non-registered trade program at a non-Title-IV-eligible school. Per the agent's check with the Federal School Code search (https://studentaid.gov/help/federal-school-code-search), the school is not on the Department of Education's eligible list. Because the distribution was made after July 4, 2025, the agent also asked whether the program is a recognized postsecondary credential program (IRC §529(e)(3)(C), (f)): Marisol confirmed it is not on the state WIOA training-provider list or the VA WEAMS directory and does not prepare for a credentialing exam, so its costs are not qualified postsecondary credentialing expenses either.
 
 ```
 Total QHEE = $0
 ```
 
-## AAQEE Adjustment (Step 4)
+## AQEE Adjustment (Step 4)
 
 ```
-AAQEE = $0 − $0 (scholarships) − $0 (other adjustments) = $0
+AQEE = $0 − $0 (scholarships) − $0 (other adjustments) = $0
 ```
 
 ## Step 5 — Compute taxable earnings
 
 ```
 Box 1 = $5,000
-AAQEE = $0
+AQEE = $0
 
 Non-qualified portion = $5,000 − $0 = $5,000  (the entire distribution)
 Earnings ratio = $1,750 / $5,000 = 0.35
@@ -83,23 +84,25 @@ Not applicable. The withdrawal is to Marisol for personal use, not a Roth IRA ro
 - Box 1 (Gross distribution): $5,000
 - Box 2 (Earnings): $1,750
 - Box 3 (Basis): $3,250
-- Box 4 (Trustee-to-trustee transfer): No
-- Box 5 (Program type): State 529
-- Box 6 (Designated beneficiary is recipient): No
+- Box 4a (Trustee-to-trustee): Blank
+- Box 4b (QTP to Roth IRA): Blank
+- Box 5 (Distribution is from): 5b State QTP
+- Box 6 (Recipient is not the designated beneficiary): Checked
+- Box 7: blank
 
 ## Qualified Education Expenses
 Total QHEE: $0 (Diego did not enroll in an eligible institution in 2025)
 
-## AAQEE Adjustment
+## AQEE Adjustment
 - Tax-free scholarships:               −$0
 - Employer education assistance:       −$0
 - Expenses used for AOTC:              −$0
 - Expenses used for LLC:               −$0
-- **Adjusted QHEE (AAQEE)**:           $0
+- **Adjusted QHEE (AQEE)**:           $0
 
 ## Taxable amount calculation
 - Box 1:                          $5,000
-- AAQEE:                          $0
+- AQEE:                          $0
 - Non-qualified portion:          $5,000
 - Earnings ratio (Box 2 / Box 1): 0.35
 - **Taxable earnings**:           $1,750
@@ -111,7 +114,8 @@ Total QHEE: $0 (Diego did not enroll in an eligible institution in 2025)
 
 ## Where this goes on the return
 - Schedule 1 Line 8z: $1,750 (description: "Taxable 529 distribution")
-- Schedule 2 Line 8 via Form 5329 Part II: $175 (10% additional tax on $1,750)
+- Form 5329 Part II: line 5 $1,750, line 6 $0, line 7 $1,750, line 8 $175
+- Schedule 2 Line 8: $175 (10% additional tax on $1,750)
 - 1040 Line 8: includes $1,750 from Schedule 1 Line 10
 - 1040 Line 23: includes $175 from Schedule 2
 
@@ -123,12 +127,12 @@ At 22% marginal rate (single filer, $78K AGI):
 - Effective tax rate on the $1,750 of earnings: 32% (22% income + 10% additional)
 
 (State tax also applies. Utah may also recapture any prior state tax deduction
-on the non-qualified portion — verify with state tax skill or professional.)
+on the non-qualified portion — verify with a state tax professional.)
 
 ## Validation summary
 - Math: all checks passed
   - Box 1 = Box 2 + Box 3: ✓
-  - AAQEE ≤ Total QHEE: ✓ (both are $0)
+  - AQEE ≤ Total QHEE: ✓ (both are $0)
   - Taxable earnings = Box 2 (full earnings, fully non-qualified): ✓
   - 10% additional tax = Taxable earnings × 10%: $175 ✓
 - Sanity:
@@ -142,24 +146,25 @@ on the non-qualified portion — verify with state tax skill or professional.)
     designated to avoid future non-qualified distributions? (Planning question — refer to a CPA.)
 
 ## Sources cited in this draft
-- IRS Form 1099-Q (Rev. 2025)
+- IRS Form 1099-Q (Rev. April 2025) and Instructions for Form 1099-Q (Rev. April 2025)
 - IRC §529 (Qualified Tuition Programs)
-- IRC §529(c)(3)(D) — Earnings allocation rule
-- IRC §529(c)(6) — 10% additional tax
-- IRC §529(c)(6)(B) — Exceptions (none applied here)
-- Pub 970 chapter 8
-- Form 5329 (Additional Taxes on Qualified Plans), Part II
+- IRC §529(c)(3)(A)-(B) — taxed under §72; exclusion ratio
+- IRC §529(c)(6) — 10% additional tax (applies §530(d)(4))
+- IRC §530(d)(4)(B) — Exceptions (none applied here)
+- IRC §529(e)(3)(C), (f) — postsecondary credentialing expenses (checked, not applicable)
+- Pub. 970 (2025) chapter 7
+- 2025 Form 5329 (Additional Taxes on Qualified Plans), Part II
 ```
 
 ## Why each non-obvious choice
 
-**Why is the entire $1,750 taxable rather than a fraction?** AAQEE = $0 means *no portion* of the $5,000 distribution corresponds to qualified expenses. The non-qualified portion = the entire $5,000. The earnings ratio (0.35) applied to $5,000 gives $1,750 = the full Box 2 earnings.
+**Why is the entire $1,750 taxable rather than a fraction?** AQEE = $0 means *no portion* of the $5,000 distribution corresponds to qualified expenses. The non-qualified portion = the entire $5,000. The earnings ratio (0.35) applied to $5,000 gives $1,750 = the full Box 2 earnings.
 
-**Why no exception to the 10% additional tax?** None of the IRC §529(c)(6)(B) exceptions apply. Marisol used the money for a kitchen renovation, not any qualifying purpose. The "AOTC coordination" exception requires the distribution be taxable *because of* the credit — here, no credit is involved.
+**Why no exception to the 10% additional tax?** None of the IRC §530(d)(4)(B) exceptions (applied to QTPs by §529(c)(6)) apply. Marisol used the money for a kitchen renovation, not any qualifying purpose. The "AOTC coordination" exception requires the distribution be taxable *because of* the credit — here, no credit is involved.
 
 **Why didn't Marisol consider a beneficiary change instead?** A beneficiary change to a "member of the family" of Diego (e.g., a younger sibling, a niece) under IRC §529(e)(2) is non-taxable. If Marisol had a younger child or a niece/nephew, she could have transferred Diego's account balance to that person and avoided this entire tax bill. This is a planning consideration, but the agent should mention it for next time.
 
-**Why did the trade program not qualify?** IRC §529(e)(5) requires an "eligible educational institution" — one eligible for federal student aid under HEA Title IV. The trade program in question wasn't accredited under HEA, wasn't on the FAFSA school code list, and didn't participate in federal student aid. So distributions to pay for it would not have been qualified anyway.
+**Why did the trade program not qualify?** IRC §529(e)(5) requires an "eligible educational institution" — one eligible for federal student aid under HEA Title IV. The trade program in question wasn't accredited under HEA, had no Federal School Code, and didn't participate in federal student aid. For distributions after July 4, 2025, a non-Title-IV program can still produce qualified postsecondary credentialing expenses if it meets one of the §529(f)(2) tests (state WIOA list, WEAMS, exam-based credential, or Treasury list); this one met none. So distributions to pay for it would not have been qualified anyway.
 
 **Could Marisol have used it for student loan repayment instead?** Yes, IRC §529(c)(9) allows up to $10,000 lifetime per beneficiary for qualified student loan repayment. If Diego had qualifying student loans from a prior period, Marisol could have used the $5,000 against those. But since Diego had no qualifying loans, this option didn't apply.
 

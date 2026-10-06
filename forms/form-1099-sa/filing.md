@@ -13,8 +13,8 @@ The agent must produce a complete `SKILL.md`-format draft *first*, then pick a f
 The user picks the channel; if undecided, default to **IRS Free File Fillable Forms (FFFF)**.
 
 ```
-User has AGI ≤ ~$84,000 and wants free guided software?
-  → IRS Free File (Free File Alliance partners)
+User has AGI ≤ $89,000 (2025 returns) and wants free guided software?
+  → IRS Free File (Free File Alliance partners; https://www.irs.gov/filing/irs-free-file-do-your-taxes-for-free)
     Browser automation: provider-specific.
     Most Free File partners support Form 8889 in their guided wizard.
     Skip — proprietary flows change too often for deterministic automation.
@@ -33,12 +33,9 @@ User has paid tax software (TurboTax, H&R Block, FreeTaxUSA)?
 User wants to file on paper?
   → Print Form 1040 + Form 8889 + supporting schedules, sign, mail.
     Use Section 3.
-
-User wants to use IRS Direct File?
-  → Note: as of early 2026, IRS Direct File supports limited HSA scenarios
-    (depending on state and complexity). Check current scope.
-    See https://www.irs.gov/filing/irs-direct-file
 ```
+
+IRS Direct File was not offered in the 2026 filing season; do not route users to it.
 
 ---
 
@@ -46,7 +43,7 @@ User wants to use IRS Direct File?
 
 URL: https://www.irs.gov/e-file-providers/free-file-fillable-forms
 
-**Availability**: late January through mid-October each year. Outside that window, FFFF returns "season closed".
+**Availability**: opens in late January; for 2025 returns the program closes Oct. 15, 2026 (FFFF page). Outside that window, FFFF returns "season closed".
 
 ### Pre-flight
 
@@ -78,32 +75,23 @@ Agent must have:
 | Header | Name(s) shown on Form 1040 | Filer name |
 | Header | Social security number of HSA beneficiary | Filer SSN |
 | 14a | "Total distributions you received in YYYY from all HSAs" | Sum of Box 1 from all 1099-SAs |
-| 14b | "Distributions included on line 14a that you rolled over to another HSA" | Rollover amount; usually $0 |
+| 14b | "Distributions included on line 14a that you rolled over to another HSA. Also include any excess contributions (and the earnings on those excess contributions) ... withdrawn by the due date of your return" | Rollovers + timely withdrawn excess (Code 2); usually $0 |
 | 14c | (auto-computed: 14a − 14b) | Verify |
 | 15 | "Qualified medical expenses paid using HSA distributions" | User-supplied QME total |
 | 16 | (auto-computed: 14c − 15, floor 0) | Verify; this is the taxable portion |
-| 17a | "Exception" (checkbox: age 65+, disabled, died) | Per Step 5 in SKILL workflow |
-| 17b | (auto-computed: 16 × 0.20 if no exception) | Verify |
+| 17a | "Exception" checkbox (after 65, disabled, died) | Per Step 5 in SKILL workflow |
+| 17b | 20% of the part of Line 16 with no exception | Verify |
 
-   The agent fills each non-computed field. After each field, capture a screenshot.
-
-   **Note on Line 14b**: FFFF labels Line 14b as "Distributions you rolled over" — different from the SKILL.md draft where 14b was QME. Reconcile carefully: Form 8889 reorders these. The actual IRS Form 8889 Part II structure is:
-   - 14a = Total distributions
-   - 14b = Rollovers (subtract these — they're not real distributions)
-   - 14c = 14a − 14b
-   - 15 = QME amount
-   - 16 = 14c − 15 = taxable
-
-   The SKILL.md draft used "14b = QME" as a teaching simplification; the actual form has a rollover line in 14b. The agent must recognize this difference when transcribing.
+   The agent fills each non-computed field. After each field, capture a screenshot. The SKILL.md draft uses the same Part II structure as the form: 14a total, 14b rollovers and timely withdrawn excess, 14c = 14a − 14b, 15 QME, 16 = 14c − 15.
 
 8. **Verify auto-linking to Schedule 1 and Schedule 2**:
    - Schedule 1 Line 8f = Form 8889 Line 16 (taxable HSA distribution)
    - Schedule 2 Line 17c = Form 8889 Line 17b (20% additional tax)
    - These should auto-link in FFFF; verify before submission
 
-9. **If Code 2 (excess contributions)**: also add Form 5329 to handle the 6% excise on the contribution side. This is a separate flow — see the (forthcoming) `form-5329` skill.
+9. **If Code 2 (excess contributions)**: enter the withdrawn excess and earnings on Line 14b (if withdrawn by the due date) and Box 2 earnings on Schedule 1 Line 8z. Add Form 5329 only if an excess stayed in the HSA past the due date — see the [`form-5329`](../form-5329/SKILL.md) skill.
 
-10. **If Code 4 or 5 (death of account holder, prohibited transaction)**: surface to the user that the situation is unusual and a tax pro review is recommended. Filing through FFFF is technically possible but the consequences (e.g., entire HSA deemed distributed under Code 5) merit a second opinion.
+10. **If Code 4, 5, or 6 (death of account holder, prohibited transaction)**: surface to the user that the situation is unusual and a tax pro review is recommended. A beneficiary writes "Death of HSA account beneficiary" across the top of Form 8889; check whether FFFF supports that header text, and use paper if it does not. Code 6 income belongs to the year of death.
 
 11. **Run FFFF's "Check Form" tool** — flags math errors and missing required fields. Resolve every flag.
 
@@ -131,9 +119,9 @@ Agent must have:
 
 | Symptom | Likely cause | Fix |
 |---------|--------------|-----|
-| "Form 8889 requires the HSA contribution section completed" | User had contributions in addition to distributions; Part I needed | Complete Form 8889 Part I as well (or use the forthcoming `form-8889` skill) |
+| "Form 8889 requires the HSA contribution section completed" | User had contributions in addition to distributions; Part I needed | Complete Form 8889 Part I as well (use the [`form-8889`](../form-8889/SKILL.md) skill) |
 | "Schedule 1 Line 8f mismatch" | FFFF didn't auto-link | Manually transcribe Form 8889 Line 16 to Schedule 1 Line 8f |
-| "Excess contribution flag" | Code 2 1099-SA but no Form 5329 | Add Form 5329 to handle the 6% excise |
+| "Excess contribution flag" | Code 2 1099-SA | Timely withdrawn: Line 14b + earnings as other income, no Form 5329; late: Form 5329 Part VII |
 | "Multiple HSAs not aggregated" | User has 2+ HSAs but only 1 1099-SA entered | Aggregate Box 1 from all 1099-SAs into Line 14a |
 
 ---
@@ -149,7 +137,7 @@ For users with paid tax software, the flow is:
    - "What's in Box 1 (gross distribution)?" → enter Box 1
    - "What's the distribution code in Box 3?" → enter Box 3
    - "How much of the distribution was for qualified medical expenses?" → enter QME total
-   - "Were you age 65 or older / disabled / did the account holder die?" → answer per Step 5
+   - "Were you age 65 or older / disabled / did the account holder die?" → answer per Step 5 (age 65 counts only for distributions after the birthday)
 4. The software auto-generates Form 8889 Part II
 5. Review the Form 8889 line-by-line in the summary screen — match against the draft
 6. Continue through Form 1040 review; the software files Form 8889 inside the e-file package
@@ -169,12 +157,10 @@ The IRS expects this stack from top to bottom:
 
 1. **Form 1040** (signed in ink)
 2. **Schedule 1, 2, 3** in order
-3. **Form 8889** (one per HSA holder; if both spouses have HSAs, two Form 8889s)
-4. **Form 8853** (if Archer / MA MSA distributions)
-5. **Form 5329** (if Code 2 excess contributions or other excise issues)
-6. **All other schedules and forms** in attachment-sequence order
-7. **W-2 Copy B** stapled to the front of Form 1040
-8. **1099s with federal withholding** stapled
+3. **Forms in attachment-sequence order** (number in the top-right corner): Form 5329 (Seq. 29) if excess contributions stayed past the due date or other excise issues; Form 8853 (Seq. 39) if Archer / MA MSA distributions; Form 8889 (Seq. 52), one per HSA holder (two if both spouses have HSAs)
+4. **All other schedules and forms** in attachment-sequence order
+5. **W-2 Copy B** stapled to the front of Form 1040
+6. **1099s with federal withholding** stapled
 
 Single staple, upper-left corner. Letter paper, single-sided.
 

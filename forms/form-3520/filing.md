@@ -1,8 +1,9 @@
-# Filing Form 3520 (paper only)
+# Filing Form 3520 (mail)
 
 How an agent equipped with browser/printing tooling helps the user file
-Form 3520 with the IRS. As of tax year 2025, **Form 3520 is paper only —
-not e-filable**. Treat this as a deterministic mail flow.
+Form 3520 with the IRS. The Instructions for Form 3520 (Rev. December
+2025) give only a mailing address and describe no electronic filing
+channel. Treat this as a deterministic mail flow.
 
 The agent must produce a complete `SKILL.md`-format draft *first*, then
 move data into the IRS fillable PDF, then assemble and mail.
@@ -13,9 +14,9 @@ move data into the IRS fillable PDF, then assemble and mail.
 
 ```
 User wants to e-file Form 3520?
-  → Not supported. The IRS has not opened Form 3520 to e-filing as of 2026.
-    Verify status at https://www.irs.gov/forms-pubs/about-form-3520
-    If still paper-only, proceed to the paper flow below.
+  → The current instructions describe no e-file channel (only the Ogden
+    address). Re-check https://www.irs.gov/forms-pubs/about-form-3520;
+    if still mail-only, proceed to the paper flow below.
 
 User wants paper filing?
   → This is the only channel. Use Section 1.
@@ -27,7 +28,7 @@ User wants to file Form 3520 along with their Form 1040?
 
 User missed the deadline?
   → File late with a reasonable cause statement (IRC §6677(d) /
-    §6039F(d)). See Section 3.
+    §6039F(c)(2)). See Section 3.
 ```
 
 ---
@@ -42,12 +43,15 @@ Agent must have:
 - Filer's full legal name, SSN/ITIN/EIN exactly as it appears on Form 1040
 - Spouse's information if filing a joint Form 3520
 - Trust identifying details (name, country, EIN if any) for any Part I/II/III
-- Donor identifying details (name, address, country, type) for Part IV
+- For Part IV: each gift's date, description, FMV (line 54); for foreign
+  corporation/partnership donors also name, address, TIN, type (line 55)
 - All currency translations done in advance with documented exchange-rate
   source
 - Substitute Form 3520-A if Part II applies and the trust didn't file its
-  own (data needed: trust income, expenses, distributions, year-end FMV,
-  identification of beneficiaries, signature of US owner)
+  own (data needed: trust income, expenses, distributions, balance sheet,
+  owners and beneficiaries; Owner Statement pages 3–4 and Beneficiary
+  Statement page 5; signature of US owner)
+- Line 1j statement if the user lives and works abroad (June 15 due date)
 - The IRS fillable PDF for Form 3520 (latest revision) downloaded from
   https://www.irs.gov/pub/irs-pdf/f3520.pdf
 - The IRS fillable PDF for Form 3520-A if substitute is needed:
@@ -64,8 +68,9 @@ Agent must have:
    sublines). Cache the field map per tax year.
 3. Fill identifying info first (page 1 top), then check the Part(s)
    applicable boxes, then fill each applicable Part in order.
-4. For Part IV donor table: each row is a separate set of fields. Don't
-   leave a row blank between filled rows; fill consecutively.
+4. For the Part IV tables (lines 54 and 55): each row is a separate set of
+   fields. Don't leave a row blank between filled rows; fill
+   consecutively; use an attached statement if more rows are needed.
 5. Save as flattened PDF — flatten before printing so checkboxes don't
    shift in print queue.
 6. **Do NOT save in Adobe Reader's "Save with form data" mode if the PDF
@@ -77,11 +82,15 @@ Agent must have:
 If the foreign trust did not file Form 3520-A by March 15:
 
 1. Download Form 3520-A fillable PDF
-2. Fill on behalf of the US owner. Check the box at top indicating this is
-   a "substitute" 3520-A.
-3. The US owner signs in the trustee's signature block (with notation that
-   this is a substitute filed by the US owner under Notice 97-34).
-4. Attach the completed substitute 3520-A behind the main Form 3520.
+2. Fill on behalf of the US owner, to the best of the owner's ability.
+   Check the "Substitute Form 3520-A" box at the top.
+3. The US owner signs and dates it, entering the owner's name and TIN on
+   the "Title" line of the signature box (Instructions for Form 3520-A,
+   Who Must Sign).
+4. Attach the completed substitute 3520-A (with the Owner Statement,
+   pages 3–4, and Beneficiary Statement, page 5) to the main Form 3520,
+   and send copies of those statements to the U.S. owners and U.S.
+   beneficiaries by the Form 3520 due date.
 
 ### Step 3 — Print the package
 
@@ -89,15 +98,21 @@ Print order (top to bottom):
 
 1. **Form 3520** — all pages, single-sided, full size on letter paper
 2. **Substitute Form 3520-A** if applicable
-3. **Foreign Grantor Trust Owner Statement** (if Part II — page 3 of 3520-A)
-4. **Foreign Nongrantor Trust Beneficiary Statement** (if Part III actual)
-5. **Schedule A / B / C of Part III** if used
-6. **Trust instrument** — optional but recommended for Part I large transfers
-7. **Reasonable cause statement** if filing late
+3. **Foreign Grantor Trust Owner Statement** (if Part II and the trust
+   filed — pages 3–4 of Form 3520-A)
+4. **Foreign Grantor or Nongrantor Trust Beneficiary Statement** (if line
+   29 or 30 is "Yes")
+5. **Form 4970** worksheet (if Part III Schedule C is used) and the line 32
+   explanation (Schedule A)
+6. **Loan / sale documents and trust documents** required by lines 11b,
+   14, and 18 (only the updates if attached within the previous 3 years)
+7. **Line 1j statement** (if living and working abroad)
+8. **Reasonable cause statement** if filing late
 
 Use a single staple in the upper-left corner. Do not double-side print.
-Sign every signature block in **blue ink** (preferred) — black is
-acceptable but blue distinguishes the original from a copy.
+Sign and date every signature block (the instructions accept
+e-signatures). Only a complete Form 3520 with all required attachments is
+considered timely filed.
 
 ### Step 4 — Make a complete copy for the user's records
 
@@ -108,8 +123,8 @@ on paper.
 
 ### Step 5 — Mail via USPS Certified Mail with Return Receipt
 
-Mailing address (verify against the current-year Form 3520 instructions —
-the IRS shifts service centers periodically):
+Mailing address (Instructions for Form 3520, Rev. December 2025, When and
+Where To File; re-check each year):
 
 ```
 Internal Revenue Service Center
@@ -117,22 +132,21 @@ P.O. Box 409101
 Ogden, UT 84409
 ```
 
-Use **USPS Certified Mail with Return Receipt** (Form 3811 green card).
-This establishes timely-mailing-as-timely-filing under IRC §7502 and
-provides proof of receipt at Ogden. Private delivery services (FedEx, UPS)
-also qualify under §7502 for IRS-designated services — see Notice 2016-30
-for the current list of designated services and addresses (private
-delivery cannot use a P.O. Box; use the IRS street address from the
-instructions).
+Use **USPS Certified Mail with Return Receipt**. This gives proof of
+timely mailing under IRC §7502 and proof of receipt. The address is a P.O.
+box, which private delivery services cannot deliver to; the Form 3520
+instructions give no street address, so use USPS.
 
-Postmark by **April 15** (or April 18 if 15 falls on a weekend/holiday) for
-calendar-year individuals. If the filer extended Form 1040 via Form 4868,
-the Form 3520 deadline extends to October 15 automatically — no separate
-extension form needed for individuals.
+Postmark by **April 15** for calendar-year individuals (the next business
+day if April 15 is a Saturday, Sunday, or legal holiday). June 15 if the
+user lives and works outside the United States and Puerto Rico (line 1j
+statement attached). If the user was granted an extension for the income
+tax return (e.g., Form 4868), Form 3520 is due October 15: check line 1k
+and enter the extension's form number.
 
-For domestic trusts and estates filing Form 3520, the deadline tracks
-Form 1041 (April 15 for calendar-year, 15th day of 4th month after fiscal
-year-end) and Form 7004 extends both 1041 and 3520.
+For a U.S. decedent or an estate, the 15th day of the 4th month after the
+decedent's last tax year or the estate's tax year, or the 15th day of the
+10th month if the income tax return was extended.
 
 ### Step 6 — Track delivery
 
@@ -147,15 +161,14 @@ notice the way it does for 1040 e-files. The first signal of processing
 is usually:
 
 - Silence (most common, means no issues identified)
-- A CP15 / CP215 / 3520 penalty notice (means the IRS believes the form
-  was late or incomplete)
+- A penalty notice (the IRS believes the form was late or incomplete)
 - A letter requesting additional information
 
 If the user receives a penalty notice and they had reasonable cause,
-respond with a written reasonable-cause statement within the response
-window stated on the notice (typically 30 days). The First-Time Abate
-program does NOT apply to §6677 or §6039F penalties (per IRM 20.1.9 — the
-IRS treats foreign trust/gift penalties as outside the FTA scope).
+respond with a written reasonable-cause statement by the deadline stated
+on the notice. Whether any administrative waiver (such as first-time
+abatement) can apply to a §6677 or §6039F penalty is a question for the
+practitioner; this skill does not rely on it.
 
 ---
 
@@ -163,21 +176,21 @@ IRS treats foreign trust/gift penalties as outside the FTA scope).
 
 Form 3520 is filed **separately** from Form 1040, but the timing aligns:
 
-| Filer type           | 1040 due | 3520 due | 3520 extension                                   |
-|----------------------|----------|----------|--------------------------------------------------|
-| Individual (cal year)| Apr 15   | Apr 15   | Auto with 1040's Form 4868; no separate filing   |
-| US person abroad     | Jun 15   | Jun 15   | Auto with the abroad-filer 2-month extension     |
-| Domestic trust/estate| Apr 15   | Apr 15   | Form 7004 extends 1041 and 3520 together         |
+| Filer type           | 3520 due | 3520 extension                                   |
+|----------------------|----------|--------------------------------------------------|
+| Individual (cal year)| Apr 15   | Oct 15 if the income tax return was extended (check line 1k) |
+| US citizen/resident living and working abroad | Jun 15 (line 1j statement) | Oct 15 if the income tax return was extended |
+| U.S. decedent / estate | 15th day of 4th month after the tax year | 15th day of 10th month if the income tax return was extended |
 
 **Critical**: The 1040 goes to the filer's state service center (or
 e-files); the 3520 goes to **Ogden, UT** regardless of state. Don't put
 them in the same envelope.
 
-If the user e-files Form 1040 with Form 8938 (foreign financial assets) on
-the same trust assets reported on Form 3520, the data should match
-exactly. Common mismatch: trust EIN reported on 8938 differs from 3520
-because the trust has both an EIN and a country-specific tax ID. Use the
-US EIN on both.
+If the user files Form 8938, assets reported on a timely Form 3520 are
+"excepted specified foreign financial assets": count the Form 3520 on
+Form 8938 Part IV, line 15, and check item C on Form 3520 (Instructions
+for Form 3520, Item C; Instructions for Form 8938, Duplicative
+reporting).
 
 ---
 
@@ -224,9 +237,8 @@ After filing, the form moves through:
 4. **Action** — silence (most common), notice of deficiency, or
    penalty assessment
 
-There is no "Where's My 3520" tool. The user can request an account
-transcript at https://www.irs.gov/individuals/get-transcript to see if a
-3520 module appears for the tax year.
+There is no "Where's My 3520" tool. Keep the certified-mail receipt and
+tracking record as proof of filing.
 
 ---
 
@@ -239,9 +251,9 @@ These are non-negotiable:
    form personally; the agent does not.
 2. **Never store SSN, ITIN, or EIN** in agent logs, vector stores, or
    transcripts. Pull at filing time, use, discard.
-3. **Never mail the form on the user's behalf without the signed
-   original** — the user must wet-ink-sign Form 3520 before it goes in
-   the mail.
+3. **Never mail the form on the user's behalf without the user's
+   signature** — the user signs Form 3520 (and any substitute 3520-A)
+   personally before it goes in the mail.
 4. **Always retain a complete copy** of the filed package in the user's
    account, not the agent's.
 5. **If anything looks wrong** — donor name doesn't match the user's
@@ -254,9 +266,9 @@ These are non-negotiable:
 
 | Symptom                                            | Likely cause                            | Fix                                                                |
 |----------------------------------------------------|-----------------------------------------|--------------------------------------------------------------------|
-| User receives CP15 penalty notice                  | IRS believes form was late or incomplete| Respond within 30 days with reasonable cause statement             |
-| User receives Letter 6291 / 6292                   | IRS questions specific entries          | Respond with documentation; user may need to amend                 |
+| User receives a penalty notice                     | IRS believes form was late or incomplete| Respond by the notice deadline with a reasonable cause statement   |
+| User receives a letter questioning entries         | IRS questions specific entries          | Respond with documentation; user may need to amend                 |
 | Trust didn't file 3520-A; user filed 3520 only     | Substitute 3520-A omitted               | File substitute 3520-A immediately with reasonable cause           |
 | Wrong mailing address (e.g., user's state service) | Form went to wrong service center       | IRS may forward; if penalty notice arrives, contest with proof of mailing |
-| User filed 3520 attached to 1040                   | Form was attached to 1040 instead of separate | The 1040 service center forwards to Ogden, but timing may slip; verify with transcript |
-| Currency conversion challenged                      | Auditor questions exchange rate used    | Provide source documentation (Treasury yearly average page or spot rate publication) |
+| User filed 3520 attached to 1040                   | Form was attached to 1040 instead of separate | Mail a complete Form 3520 to Ogden at once; ask a CPA about a reasonable cause statement |
+| Currency conversion challenged                      | Auditor questions exchange rate used    | Provide source documentation (IRS yearly average page or the dated rate source) |

@@ -19,7 +19,7 @@ This example shows that **Form 8889 Part II is still required** even when there'
 ### 1099-SA from HealthEquity
 
 ```
-PAYER: HealthEquity Inc., EIN 52-2153069
+PAYER: HealthEquity, <payer TIN as printed on the form>
 RECIPIENT: Aisha Rahman, SSN ***-**-XXXX
 
 Box 1 (Gross distribution):                $3,200
@@ -106,7 +106,7 @@ Line 17b (20% additional tax):                   $0
 14b. Rollovers:                                  $0
 14c. Subtract 14b from 14a:                     $3,200
 15.  Qualified medical expenses paid using HSA: $3,200
-16.  Taxable HSA distributions (14a − 15):       $0
+16.  Taxable HSA distributions (14c − 15):       $0
 17a. Exception reason:                           N/A
 17b. Additional 20% tax (16 × 0.20):             $0
 
@@ -118,7 +118,7 @@ Line 17b (20% additional tax):                   $0
 ## Validation summary
 - Math: all checks passed
   - Line 14c = $3,200 (= 14a − 14b) ✓
-  - Line 16 = $0 (= 14a − 15) ✓
+  - Line 16 = $0 (= 14c − 15) ✓
   - Line 17b = $0 (no taxable distribution) ✓
 - Sanity: none flagged
   - All receipts substantiate QME ✓
@@ -131,9 +131,9 @@ Line 17b (20% additional tax):                   $0
   - Receipts retention: retain all QME receipts for at least 3 years (April 15, 2029)
 
 ## Sources cited in this draft
-- IRS Form 1099-SA, Rev. 2025
-- IRS Instructions for Forms 1099-SA and 5498-SA, Rev. 2025
-- IRS Form 8889, Rev. 2025
+- IRS Form 1099-SA (Rev. April 2025)
+- IRS Instructions for Forms 1099-SA and 5498-SA (2025)
+- IRS Form 8889 (2025)
 - IRS Pub 502 (qualified medical expenses)
 - IRS Pub 969 (HSAs)
 - IRC §223(f)(1) (taxable on non-QME — N/A here since Line 16 = $0)
@@ -149,7 +149,7 @@ Line 17b (20% additional tax):                   $0
 
 **Why is therapy with Sarah Brooks (LCSW) qualified?** Mental health services from a licensed mental health provider are QME under IRC §213(d) and Pub 502. LCSW (Licensed Clinical Social Worker) is a qualified provider. The same would apply to LMFT (marriage and family therapist) or psychologist.
 
-**Why are OTC allergy medications now QME?** The CARES Act (2020) restored OTC medications and menstrual care products to the QME list. Before 2020, OTC items required a prescription to be QME — that requirement was removed for 2020 and onward.
+**Why are OTC allergy medications now QME?** The CARES Act (2020) restored OTC medications and menstrual care products to the QME list. From 2011 through 2019, OTC medicines (other than insulin) required a prescription to be QME — that requirement was removed for amounts paid after 2019.
 
 **Why Aisha's vision glasses qualify?** Corrective eyewear (glasses, contacts, contact solution, vision exams, even some over-the-counter reading glasses) are QME. Cosmetic colored contacts without vision correction would NOT be.
 

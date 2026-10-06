@@ -118,9 +118,9 @@ The threshold is **$2,500 per item, not per invoice**. Ten $1,000 keyboards on o
 
 For each remaining tangible personal property asset used >50% for business:
 
-1. Compute Line 1: maximum dollar limit. **2025: $2,500,000** (P.L. 119-21 §70306; 2025 Form 4562 instructions, Line 1). **2026: $2,560,000** (Rev. Proc. 2025-32 §3.24). Re-verify each year in the instructions.
+1. Compute Line 1: maximum dollar limit. **2025: $2,500,000** (P.L. 119-21 §70306; 2025 Form 4562 instructions, Line 1). **2026: $2,560,000** (Rev. Proc. 2025-32 §4.24). Re-verify each year in the instructions.
 2. Compute Line 2: total cost of §179 property placed in service this year (sum of all eligible assets at full cost).
-3. Compute Line 3: phase-out threshold. **2025: $4,000,000** (2025 Form 4562 instructions, Line 3). **2026: $4,090,000** (Rev. Proc. 2025-32 §3.24).
+3. Compute Line 3: phase-out threshold. **2025: $4,000,000** (2025 Form 4562 instructions, Line 3). **2026: $4,090,000** (Rev. Proc. 2025-32 §4.24).
 4. Line 4 = Line 2 − Line 3 if positive; else 0. Reduces Line 5.
 5. Line 5 = Line 1 − Line 4. If zero, no §179 available this year.
 6. Line 6: list each asset (description, cost, elected §179 amount). Cost on Line 6 must be reduced by personal-use portion (if a $40,000 truck is 80% business, Line 6 cost is $32,000).
@@ -485,7 +485,7 @@ Authoritative sources used by this skill. Always re-verify these against the IRS
 - P.L. 119-21 (One Big Beautiful Bill Act) §70301 (100% bonus for property acquired after January 19, 2025) and §70306 (§179 limit $2,500,000, phase-out $4,000,000 for tax years beginning after 2024)
 - Rev. Proc. 2024-40 — tax year 2025 heavy SUV §179 cap $31,300 (its $1,250,000 / $3,130,000 §179 figures were superseded by P.L. 119-21)
 - Rev. Proc. 2025-16 — §280F caps for passenger automobiles placed in service in 2025
-- Rev. Proc. 2025-32 §3.24 — tax year 2026: §179 limit $2,560,000; phase-out $4,090,000; heavy SUV cap $32,000
+- Rev. Proc. 2025-32 §4.24 — tax year 2026: §179 limit $2,560,000; phase-out $4,090,000; heavy SUV cap $32,000
 - Rev. Proc. 2026-15 — §280F caps for passenger automobiles placed in service in 2026
 
 ## Disclaimer

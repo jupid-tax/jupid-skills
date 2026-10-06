@@ -76,17 +76,19 @@ The borrower does **not** report the canceled amount on Schedule 1 Line 8c (or a
 2. **General business credits** — IRC §38 credit carryovers
 3. **Minimum tax credits** — alternative minimum tax credits
 4. **Capital loss carryovers** — current-year capital loss + carryovers
-5. **Basis of property** — reduce basis of all property held at the start of the year following discharge (subject to a limit equal to total liabilities minus total asset basis)
+5. **Basis of property** — reduce basis of property held at the start of the year following discharge (limited to the excess of aggregate basis of property over aggregate liabilities immediately after the discharge, §1017(b)(2))
 6. **Passive activity losses and credits** — IRC §469 carryovers
-7. **Foreign tax credit carryovers** — IRC §27 / §901 carryovers
+7. **Foreign tax credit carryovers**
+
+Form 982 lines: 6 NOL, 7 general business credit, 8 minimum tax credit, 9 capital loss, 10a basis, 12 passive, 13 foreign tax credit.
 
 Each $1 of exclusion reduces $1 of attribute (with a 33⅓¢ ratio for credits — a $1 exclusion reduces $1/3 of credit dollars in categories 2, 3, and 7).
 
-**For most consumer bankruptcies, the borrower has no tax attributes to reduce.** No NOLs, no business credits, no capital loss carryovers, minimal property basis. In that case, attribute reduction is a non-event — Part II of Form 982 is filled with zeros and a "no attributes to reduce" note.
+**For most consumer bankruptcies, the borrower has no tax attributes other than basis in personal-use property.** In that case, Form 982 line 10a is the smallest of (a) basis of nondepreciable property, (b) the line 2 amount, or (c) aggregate bases plus money minus aggregate liabilities, all immediately after the discharge (Form 982 instructions, "A nonbusiness debt"). After a bankruptcy discharge, (c) can be positive because liabilities drop sharply, so compute it; the other Part II lines are usually zero.
 
 For borrowers with significant attributes (active business, capital loss carryovers, NOLs from prior years), the reduction is the price of the exclusion. The attribute reduction is timing — the borrower pays tax later when those attributes would have offset income — rather than absolute. But it can be material.
 
-**Election to reduce basis of depreciable property first (§108(b)(5)):** A borrower can elect to apply the reduction to depreciable property basis **before** the standard attribute order. This is sometimes useful for borrowers with both NOLs and depreciable property; it preserves the NOLs for future use at the cost of reducing basis (which becomes recapture on sale or smaller depreciation deductions). The election is made on Form 982 Part III Line 14.
+**Election to reduce basis of depreciable property first (§108(b)(5)):** A borrower can elect to apply the reduction to depreciable property basis **before** the standard attribute order. This is sometimes useful for borrowers with both NOLs and depreciable property; it preserves the NOLs for future use at the cost of reducing basis (which becomes recapture on sale or smaller depreciation deductions). The election is made on Form 982 line 5 (Part II), on a timely filed return including extensions (Form 982 instructions, "When To File").
 
 ---
 
@@ -140,5 +142,6 @@ Some federal income tax debts are dischargeable in Chapter 7 (older taxes meetin
 - 11 U.S.C. §1141 — Chapter 11 discharge
 - 11 U.S.C. §1228 — Chapter 12 discharge
 - 11 U.S.C. §1328 — Chapter 13 discharge
-- [Publication 4681](https://www.irs.gov/publications/p4681) — Chapter 1 walks through the exclusion
+- [Publication 4681 (2025)](https://www.irs.gov/publications/p4681) — Chapter 1 walks through the exclusion
+- IRC §1017(b)(2) — basis reduction limit in title 11 and insolvency cases
 - [Form 982](https://www.irs.gov/pub/irs-pdf/f982.pdf) and [Instructions](https://www.irs.gov/pub/irs-pdf/i982.pdf)

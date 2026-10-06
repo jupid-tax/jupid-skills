@@ -55,10 +55,10 @@ The annualization periods are cumulative, not discrete:
 
 For each period:
 1. Sum income, deductions, credits earned **through that date**
-2. Multiply by the annualization factor → annualized AGI
-3. Compute tax on annualized AGI
-4. Multiply by `period_months / 12` → required cumulative installment as of that due date
-5. Subtract prior installments → required current installment
+2. Multiply by the annualization factor → annualized income
+3. Compute tax on annualized income (plus annualized SE tax and other taxes, minus credits)
+4. Multiply by the applicable percentage — 22.5%, 45%, 67.5%, 90% — to get the cumulative required amount (2025 Form 2210, Schedule AI lines 20–21)
+5. Subtract prior installments, and compare with the regular 25% installment plus any carryover (Schedule AI lines 22–27) → required current installment is the smaller
 
 This produces a payment that scales with actual earnings.
 
@@ -117,6 +117,7 @@ A taxpayer who realizes by November they're underpaid can request additional fed
 - W-2: file Form W-4 with employer specifying "additional withholding per pay period" (Line 4(c))
 - 1099-R: file Form W-4P with the payer specifying additional withholding
 - Social Security: file Form W-4V (only flat percentages: 7%, 10%, 12%, 22%)
+- Nonperiodic IRA distributions: Form W-4R (default 10%; the user may choose another rate)
 
 Because of IRC §6654(g), withholding is treated as paid evenly across the year — so a December lump-sum of withholding retroactively cures Q1, Q2, Q3 underpayment. Estimated payments cannot do this.
 
@@ -148,6 +149,6 @@ The default plan output assumes equal installments (Option A). If the user has l
 
 - For penalty computation on a year that's already underpaid → `form-2210` skill
 - For Schedule AI line-by-line annualization → `form-2210` skill
-- For Form W-4 withholding adjustment → forthcoming `form-w4` skill
+- For Form W-4 withholding adjustment → [`../../form-w4/SKILL.md`](../../form-w4/SKILL.md)
 
 This skill is prospective. It plans the payment schedule. It does not compute penalties retrospectively or work the Schedule AI math.

@@ -10,9 +10,9 @@ Real mistakes filers make on Form 1099-C and Form 982, ranked by how often they 
 
 **Why it happens:** Borrowers in financial distress are stressed; the form looks like more bad news; they don't realize the IRS already has a copy.
 
-**Consequence:** 12-18 months later, a **CP2000 underreporter notice** arrives showing the canceled amount as unreported income, plus interest from the original due date and a 20% accuracy-related penalty. The notice is computer-generated; no audit needed.
+**Consequence:** Months later, a **CP2000 underreporter notice** can arrive proposing tax on the canceled amount, plus interest and possibly an accuracy-related penalty. The notice is computer-generated; no audit needed.
 
-**Fix:** Report **every** 1099-C — even if confident an exclusion applies. Exclusions are claimed on Form 982; Form 982 must be on the return for the exclusion to be on the record. The fact that an exclusion fully covers the income doesn't relieve the documentation requirement.
+**Fix:** Account for **every** 1099-C — even if confident an exclusion applies. §108(a) exclusions are claimed on Form 982, which must be on the return for the exclusion to be on the record. (Student loan exclusions under §108(f) don't use Form 982; keep the discharge documents instead.)
 
 ---
 
@@ -24,7 +24,7 @@ Real mistakes filers make on Form 1099-C and Form 982, ranked by how often they 
 
 **Consequence:** Thousands of dollars of unnecessary tax. For a $13,000 cancellation at the 22% bracket, the cost is $2,860 — the exact amount most filers in financial distress can least afford.
 
-**Fix:** Run [Pub 4681 Worksheet 2](https://www.irs.gov/publications/p4681) every time. The calculation takes 20 minutes. If the borrower is insolvent by any amount, file Form 982 Box 1b with the excluded amount on Line 2.
+**Fix:** Run the [Pub. 4681 Insolvency Worksheet](https://www.irs.gov/publications/p4681) every time. The calculation takes 20 minutes. If the borrower is insolvent by any amount, file Form 982 Box 1b with the excluded amount on Line 2.
 
 ---
 
@@ -36,7 +36,7 @@ Real mistakes filers make on Form 1099-C and Form 982, ranked by how often they 
 
 **Consequence:** IRS sees the 1099-C, sees no income reported, sees no Form 982 explaining the omission → **CP2000**. The exclusion is valid in concept but not on the record.
 
-**Fix:** Form 982 is the documented basis for the exclusion. Always attach it when claiming any §108 exclusion (except the auto-excluded permanent §108(f) student loan sub-rules). The return is incomplete without it.
+**Fix:** Form 982 is the documented basis for the exclusion. Always attach it when claiming any §108(a) exclusion (boxes 1a–1e); §108(f) student loan exclusions don't use it (Form 982 instructions, "When To File").
 
 ---
 
@@ -46,9 +46,9 @@ Real mistakes filers make on Form 1099-C and Form 982, ranked by how often they 
 
 **Why it happens:** State-law creditor protection (ERISA, state homestead) confuses borrowers about §108 federal tax treatment. The two are unrelated.
 
-**Consequence:** In an audit, the IRS recomputes insolvency including retirement accounts at FMV (per Rev. Rul. 92-53 and Pub 4681). Insolvency drops; exclusion drops; borrower owes back tax + interest + accuracy penalty.
+**Consequence:** In an audit, the IRS recomputes insolvency including retirement accounts at FMV (Pub. 4681 Insolvency Worksheet lines 28–29 list retirement and pension interests as assets). Insolvency drops; exclusion drops; borrower owes back tax + interest + possibly a penalty.
 
-**Fix:** Include retirement balances at FMV in the asset column. If the user pushes back, cite Rev. Rul. 92-53 and Pub 4681. The asset side gets bigger; insolvency gets smaller; exclusion is what it is — but the calculation is defensible in audit.
+**Fix:** Include retirement balances at FMV in the asset column. If the user pushes back, point to Pub. 4681 Insolvency Worksheet lines 28–29. The asset side gets bigger; insolvency gets smaller; exclusion is what it is — but the calculation is defensible in audit.
 
 ---
 
@@ -72,7 +72,7 @@ Real mistakes filers make on Form 1099-C and Form 982, ranked by how often they 
 
 **Consequence:** Income reports in the wrong place. The IRS notices because Schedule C revenue doesn't reconcile with the 1099-K and 1099-NEC totals reported. It's also a missed chance to use any business-specific exclusions like §108(a)(1)(D) qualified real property business indebtedness, and the income may be subject to **self-employment tax** when properly reported on Schedule C.
 
-**Fix:** Business debt forgiven → **Schedule C Line 6** (other income) for sole proprietors. For partnerships, S-corps, and C-corps, the entity reports the cancellation on its own return, not the individual 1040. For farming, **Schedule F Line 8**.
+**Fix:** Business debt forgiven → **Schedule C Line 6** (other income) for sole proprietors; nonfarm rental real property debt → **Schedule E Line 3**; farm debt → **Schedule F Line 8** (Pub. 4681). For partnerships, S-corps, and C-corps, the entity reports the cancellation on its own return, not the individual 1040.
 
 ---
 
@@ -88,39 +88,39 @@ Real mistakes filers make on Form 1099-C and Form 982, ranked by how often they 
 
 ---
 
-## 8. Claiming the principal residence exclusion without verifying year-status
+## 8. Claiming the principal residence exclusion for a 2026 discharge
 
-**The mistake:** Borrower claims §108(a)(1)(E) for a 2026 mortgage cancellation without verifying the exclusion was extended into 2026.
+**The mistake:** Borrower claims §108(a)(1)(E) for a mortgage canceled in 2026.
 
-**Why it happens:** The exclusion was extended through 2025 by the Consolidated Appropriations Act 2021; tax software, prior-year guidance, and online articles may still reference the exclusion without reflecting the most-recent legislative status.
+**Why it happens:** The exclusion ran through 2025 (Consolidated Appropriations Act, 2021); tax software, prior-year guidance, and online articles may still describe it as available.
 
-**Consequence:** If the exclusion has lapsed for the year and is not retroactively extended, the IRS disallows the §108(a)(1)(E) claim. Insolvency may be a fallback; if the borrower wasn't insolvent, the canceled amount is fully taxable.
+**Consequence:** §108(a)(1)(E) covers only debt discharged before Jan. 1, 2026, or discharged under an arrangement entered into and evidenced in writing before that date (IRC §108(a)(1)(E); Pub. 4681 (2025) What's New). Otherwise the IRS disallows the claim; insolvency may be a fallback; if the borrower wasn't insolvent, the canceled amount is taxable.
 
-**Fix:** Verify the §108(a)(1)(E) status for the tax year being filed. Check IRS [About Form 982](https://www.irs.gov/forms-pubs/about-form-982) and the current Form 982 instructions. If the exclusion is in effect, claim it; if not, test insolvency as the backup.
-
----
-
-## 9. Claiming ARPA student loan exclusion past 2025 without verification
-
-**The mistake:** Borrower claims federal exclusion for a 2026 student loan discharge under §108(f)(5) without confirming the ARPA broad exclusion was extended past December 31, 2025.
-
-**Why it happens:** Same pattern as #8 — guidance lags legislation; borrowers and tax software may still treat student loan discharges as auto-excluded.
-
-**Consequence:** If the broad exclusion has lapsed, only the **permanent** §108(f) sub-rules (PSLF, teacher, death/disability, school closure, borrower defense) auto-exclude. Other federal student loan discharges become taxable unless §108(a)(1)(B) insolvency or another exclusion applies.
-
-**Fix:** For any 2026+ federal student loan discharge, verify the §108(f)(5) status. If not extended, fall back to permanent sub-rules or test insolvency. Always check the borrower's state — some states tax even federally-excluded student loans.
+**Fix:** Check the discharge date and any pre-2026 written arrangement. As of 2026-10-06 there is no extension; re-check [About Form 982](https://www.irs.gov/forms-pubs/about-form-982) for later legislation. If QPRI is unavailable, test insolvency.
 
 ---
 
-## 10. Not retaining Worksheet 2 for the insolvency test
+## 9. Claiming the ARPA student loan exclusion for a 2026 discharge
+
+**The mistake:** Borrower treats a 2026 student loan discharge (e.g., income-driven repayment forgiveness) as excluded under the ARPA rule.
+
+**Why it happens:** Same pattern as #8 — guidance and software lag legislation.
+
+**Consequence:** The ARPA rule covered discharges after 2020 and before Jan. 1, 2026 only. For later discharges, P.L. 119-21 §70119 left §108(f)(5) covering only death or total and permanent disability (SSN required on the return); §108(f)(1) work-requirement discharges (e.g., PSLF) and §108(f)(4) repayment assistance remain excluded. Anything else is taxable unless §108(a)(1)(B) insolvency or another exclusion applies.
+
+**Fix:** Check the discharge date and category. For a 2026 discharge outside those rules, test insolvency. Always check the borrower's state — some states tax even federally excluded student loans.
+
+---
+
+## 10. Not retaining the Insolvency Worksheet
 
 **The mistake:** Borrower runs the insolvency calculation, claims the exclusion on Form 982 Box 1b, but doesn't keep the line-item worksheet showing the calculation.
 
-**Why it happens:** Worksheet 2 is in Pub 4681 — a publication, not a form. Borrowers think "if it's not filed, it doesn't matter."
+**Why it happens:** The Insolvency Worksheet is in Pub. 4681 — a publication, not a form. Borrowers think "if it's not filed, it doesn't matter."
 
 **Consequence:** If the IRS questions the exclusion (3 years later, or 6 years if substantial omission), the borrower has Form 982 with a Line 2 number but no documentation supporting it. Without the worksheet, the exclusion is hard to defend in audit; the IRS may disallow it and assess back tax + interest + penalty.
 
-**Fix:** Prepare Worksheet 2 with full line items (every liability, every asset, every FMV source). Keep it with the borrower's tax records for **at least 3 years** (general statute) and ideally **6 years**. The worksheet is **not** filed but is the audit-defense document. Photocopies of statements supporting the FMV figures (account balances, KBB printout, comp sales) should be in the same file.
+**Fix:** Prepare the Insolvency Worksheet with full line items (every liability, every asset, every FMV source). Keep it with the borrower's tax records for **at least 3 years** (general statute) and ideally **6 years**. The worksheet is **not** filed but is the audit-defense document. Photocopies of statements supporting the FMV figures (account balances, KBB printout, comp sales) should be in the same file.
 
 ---
 
@@ -132,16 +132,16 @@ Real mistakes filers make on Form 1099-C and Form 982, ranked by how often they 
 
 **Consequence:** Overstated exclusion for the second cancellation. After the first cancellation, the borrower's liability stack drops; their insolvency for the second cancellation is smaller (or zero).
 
-**Fix:** Run Worksheet 2 separately for each cancellation in **chronological order**. Each cancellation reduces the liability stack for subsequent cancellations. Document the running insolvency for each.
+**Fix:** Run the Insolvency Worksheet separately for each cancellation in **chronological order**. Each cancellation reduces the liability stack for subsequent cancellations. Document the running insolvency for each.
 
 ---
 
 ## Sources
 
-- [Publication 4681](https://www.irs.gov/publications/p4681) — Canceled Debts, Foreclosures, Repossessions, and Abandonments
+- [Publication 4681 (2025)](https://www.irs.gov/publications/p4681) — Canceled Debts, Foreclosures, Repossessions, and Abandonments
 - [Form 982](https://www.irs.gov/pub/irs-pdf/f982.pdf) and [Instructions](https://www.irs.gov/pub/irs-pdf/i982.pdf)
 - IRC §108 — exclusions
 - IRC §108(d)(3) — insolvency definition
-- Rev. Rul. 92-53 — retirement accounts as assets in insolvency
+- P.L. 119-21 §70119 — student loan death/disability rule after 2025
 - IRS Tax Topic 431 — canceled debt
-- CP2000 underreporter program (IRS Doc 9252)
+- [Understanding your CP2000 notice](https://www.irs.gov/individuals/understanding-your-cp2000-notice)

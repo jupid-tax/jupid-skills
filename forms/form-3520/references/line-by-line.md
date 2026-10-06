@@ -1,304 +1,253 @@
 # Form 3520 — Line by Line
 
-Walkthrough of every page of Form 3520 with the rule that governs each line
-and where the agent should ask vs. compute. Ordered as the form prints.
-References are to the 2024-revision Form 3520 PDF; line numbers are stable
-across revisions but always cross-check against the year being filed.
+Walkthrough of every item of Form 3520 (Rev. December 2023), built from the
+form text and the Instructions for Form 3520 (Rev. December 2025, "Use with
+December 2023 revision of Form 3520"; continuous-use instructions for tax
+year 2025 and later). Before use, check
+https://www.irs.gov/forms-pubs/about-form-3520 for a newer revision and
+re-check the line numbers if one exists.
 
-## Page 1 — Identifying information and filing triggers
+The form is six pages: page 1 identifying information, pages 2–3 Part I,
+page 4 Part II and the start of Part III, page 5 Part III schedules, page 6
+Part IV and the signature. File a separate Form 3520 for each foreign trust.
+All information must be in English and all amounts in U.S. dollars.
 
-### Filer identification block
+## Page 1 — Identifying information
 
-- **Line 1a** — Name of US person (filer). Use the legal name from Form
-  1040. For a domestic estate or trust, the legal name from Form 1041.
-- **Line 1b** — Filer's identifying number: SSN for individuals, ITIN if
-  no SSN, EIN for entity filers (estate/trust/partnership/corporation).
-- **Lines 1c-1f** — Mailing address. Use the address used on Form 1040 or
-  1041 for the same year. If the filer is abroad, use the foreign address.
-- **Line 1g** — Check if the filer is an individual; otherwise mark the
-  type (partnership, corporation, estate, non-grantor trust, etc.)
-- **Line 1h** — Filing status: Single, MFJ, MFS, HoH, QW. Match Form 1040.
-- **Line 1i** — If amended return, check the box and identify the original
-  filing date.
+### Heading
 
-### Spouse identification (if joint Form 3520)
+- **Tax year** — calendar year, or the beginning and ending dates of the
+  filer's tax year.
+- **A** — Initial return / Final return / Amended return.
+- **B** — Type of filer: Individual, Partnership, Corporation, Trust,
+  Executor.
+- **C** — Check only if the filer also files Form 8938 for the same year
+  and counts this Form 3520 on Form 8938 Part IV, line 15 (excepted
+  specified foreign financial assets reported on Form 3520).
+- **Four trigger boxes** (no letters on the form): check every box that
+  applies — (1) U.S. transferor / related-trust obligations / executor →
+  Part I; (2) U.S. owner of a foreign trust → Part II; (3) distribution,
+  loan, uncompensated use of trust property, or outstanding qualified
+  obligation → Part III; (4) certain gifts or bequests from foreign
+  persons → Part IV.
 
-- **Lines 2a-2f** — Spouse name, SSN, address. Only complete if filing a
-  joint Form 3520 (allowed when both spouses file a joint Form 1040 AND
-  both have reportable transactions on the same Form 3520; see Form 3520
-  instructions).
+### Lines 1a–1k — U.S. person filing
 
-### Trigger boxes (top of page 1)
+| Line | Entry |
+|------|-------|
+| 1a | Name of U.S. person(s) with respect to whom the form is filed |
+| 1b | TIN (SSN, ITIN, or EIN) |
+| 1c, 1e–1h | Address (street, city, state or province, ZIP or foreign postal code, country) |
+| 1d | Spouse's TIN (joint Form 3520 only) |
+| 1i | Check if filing a joint Form 3520 with a spouse on a current-year joint income tax return. The instructions allow it when both spouses are transferors, grantors, or beneficiaries of the same foreign trust |
+| 1j | Check and attach a statement if the automatic 2-month extension applies (U.S. citizen or resident living and working outside the United States and Puerto Rico, or on military duty outside them) |
+| 1k | Check if an extension was requested for the income tax return, and enter that return's form number (e.g., 4868 for Form 1040) |
 
-- Box A — Filing because of transfer to foreign trust (Part I)
-- Box B — Filing as US owner of foreign trust (Part II)
-- Box C — Filing because of distribution from foreign trust (Part III)
-- Box D — Filing because of receipt of foreign gift/bequest (Part IV)
+### Lines 2a–2h — Foreign trust
 
-The user can check multiple boxes. The Parts they fill must match the
-boxes checked.
+Name, EIN (if any), address, and date the foreign trust was created. Leave
+blank for a Part IV-only filing.
 
-### Initial / Final / Amended
+### Line 3 and lines 3a–3g — U.S. agent
 
-- **Initial return** — first time filing for this trust/situation
-- **Final return** — last time (e.g., trust terminated, last distribution
-  received)
-- **Amended return** — supersedes a prior 3520 for the same year. Show the
-  changed lines and attach an explanation.
+Line 3: did the foreign trust appoint a U.S. agent who can provide the IRS
+with all relevant trust information? A U.S. agent is a U.S. person with a
+binding contract with the trust to act as its agent for IRS requests and
+summonses; a U.S. grantor or beneficiary may serve. The trust is treated as
+having a U.S. agent only if the agent's name, address, and TIN are on lines
+3a–3g. If "No" and Part I is required, complete lines 15–18. If a trust
+with a U.S. owner has no U.S. agent, the IRS may redetermine the amounts
+the owner must take into account (IRC §6048(b)(2)).
 
----
+### Lines 4a–4f — U.S. decedent
 
-## Part I — Transfers by US Persons to a Foreign Trust
-
-Filed when the user transferred cash, property, or services (gratuitously
-or at less than FMV) to a foreign trust during the tax year. Also filed
-when the user's death triggers a transfer (special exception applies).
-
-### Lines 5a-5h — Foreign trust identification
-
-- **Line 5a** — Trust name (legal name as registered in the foreign
-  jurisdiction)
-- **Line 5b** — Trust EIN if any. Many foreign trusts have no US EIN; if
-  none, write "N/A". Some practitioners obtain a US EIN for the foreign
-  trust to facilitate compliance — ask the user.
-- **Line 5c** — Country in which the trust was created
-- **Line 5d** — Country whose laws govern the trust (sometimes different
-  from the country of creation)
-- **Line 5e** — Date trust was created
-- **Line 5f-5h** — Trust mailing address
-
-### Line 6 — Trustee information
-
-For each trustee: name, address, country. If the trustee is an institution
-(a foreign bank or trust company), use the institutional name and address.
-
-### Line 7 — Identification of US agent (if appointed)
-
-A US person who is the grantor of a foreign trust may appoint a US agent
-under IRC §6048(b)(2). If a US agent is appointed and accepts service of
-process, certain reporting simplifications apply (the IRS can audit the
-trust through the US agent rather than treating all trust transactions as
-deemed income to the grantor). If no US agent is appointed, the IRS may
-recharacterize trust transactions as deemed income.
-
-Ask the user: "Has a US agent been appointed for this trust under
-§6048(b)(2)? If yes, the agent's name and address. If no, this is fine
-but the IRS may apply less favorable presumption rules."
-
-### Lines 9-18 — Transfer details
-
-- **Line 9** — Cash transferred during the year (USD)
-- **Line 10** — FMV of property transferred. For non-cash property, attach
-  a description and valuation method.
-- **Lines 11-13** — Loans to the trust, sale of property to the trust,
-  other transactions. Each row: description, date, amount.
-- **Lines 14-17** — Tax basis of property transferred (separate from FMV);
-  description of property in detail
-- **Line 18** — Total transfers, summing prior lines
-
-### Schedule A of Part I — Obligations received
-
-If the user received an obligation from the trust in exchange for the
-transfer (e.g., a note), Schedule A documents it. A "qualified obligation"
-under Treas. Reg. §1.679-4(d)(1) avoids treating the transfer as a
-gratuitous transfer:
-
-- Term of obligation ≤ 5 years
-- Stated principal in USD or specified foreign currency
-- Interest at rate ≥ AFR for the obligation's term
-- Filer agrees to extend statute of limitations on assessment for the
-  transfer
-
-If any condition fails, the obligation is "non-qualified" and the
-transfer's full FMV is reported in Part I as if no obligation existed.
+For an executor filing for a U.S. decedent: name, address, TIN, date of
+death, estate EIN, and one of the three line 4f boxes (transfer by reason
+of death; decedent treated as owner immediately before death; trust assets
+included in the estate).
 
 ---
 
-## Part II — US Owner of a Foreign Trust
+## Part I — Transfers by U.S. Persons to a Foreign Trust During the Current Tax Year (pages 2–3)
 
-Filed when the user is treated as the owner of any portion of a foreign
-trust under the grantor trust rules (IRC §§671-679). The most common
-trigger is **§679**: a US person who transferred property to a foreign
-trust at any time, where the trust has at least one US beneficiary, is
-treated as the owner.
+Most fair market value (FMV) transfers are not reportable, but some are
+(e.g., transfers for qualified obligations, transfers of appreciated
+property without full gain recognition, transfers by a related U.S.
+transferor; Instructions, Exceptions To Filing, citing Notice 97-34 §III).
 
-### Lines 19-21 — Trust identification
+| Line | Entry |
+|------|-------|
+| 5a–5c | Trust creator's name, address, TIN |
+| 6a | Country code (IRS.gov/CountryCodes) where the trust was created |
+| 6b | Country code of the country whose law governs the trust |
+| 6c | Date the trust was created |
+| 7a | Will any person other than the trust be treated as owner of the transferred assets after the transfer? |
+| 7b | If yes: owner's name, address, country of residence, TIN, relevant Code section |
+| 8 | Was the transfer a completed gift or bequest? If a completed gift, Form 709 may be required; if a bequest, Form 706 (Instructions, Line 8) |
+| 9a | Now or at any time in the future, can any part of the income or corpus benefit a U.S. beneficiary? |
+| 9b | If 9a is "No," could the trust be revised or amended to benefit a U.S. beneficiary? |
+| 10 | Reserved |
 
-Same data as Lines 5a-5h. If the user filed Part I in a prior year for
-this trust, the same identifying information should appear here.
+### Schedule A — Obligations of a Related Trust (lines 11a–12)
 
-- **Line 21** — Date the user became the US owner. For §679, this is
-  generally the date of the transfer (not retroactive).
+- **11a** — Did you transfer property (including cash) to a related foreign
+  trust (or a person related to it) in exchange for an obligation?
+- **11b** — Were any obligations qualified obligations? If yes, report each
+  with (i) date of transfer, (ii) maximum term, (iii) yield to maturity,
+  (iv) FMV of the obligation, and attach each loan document.
+- **12** — Do you agree to extend the assessment period to 3 years after
+  the obligation's maturity? Refusing means the obligation is not
+  qualified.
 
-### Line 22 — US owner's portion of trust
+A **qualified obligation** (Instructions, Definitions) must be (1) in
+writing, (2) for a term of 5 years or less including renewals and
+rollovers, (3) payable entirely in U.S. dollars, (4) at a yield to maturity
+of not less than 100% and not more than 130% of the §1274(d) AFR for the
+issue date, (5) covered by the agreement to extend the assessment period,
+and (6) reported each year it is outstanding.
 
-Describe in detail the user's portion of the trust. For each item:
+### Schedule B — Gratuitous Transfers (lines 13–18)
 
-- Beginning-of-year FMV of US owner's portion
-- Trust income earned attributable to US owner during the year
-- Trust expenses attributable to US owner
-- Distributions during the year to US owner (cross-reference to Part III)
-- End-of-year FMV
+- **13** — Transfers for less than FMV or no consideration? If yes, one
+  row per transfer: (a) date, (b) description, (c) FMV transferred,
+  (d) U.S. adjusted basis, (e) gain recognized, (f) excess of (c) over
+  (d)+(e), (g) description of property received, (h) FMV of property
+  received (enter -0- for a nonqualified obligation), (i) excess of (c)
+  over (h). Totals for (c) and (i).
+- **14a–14c** — Sale document, loan document, subsequent variances:
+  attached now or year previously attached.
+- **15–18** — Only if line 3 is "No": 15 beneficiaries (name, address,
+  U.S. beneficiary yes/no, TIN); 16 trustees; 17 other persons with trust
+  powers (with description of powers); 18a–18f trust documents attached
+  (summary of agreements, trust instrument, letters of wishes, variances,
+  financial statements, organizational chart).
 
-The amounts here should match the **Foreign Grantor Trust Owner Statement**
-attached (page 3 of Form 3520-A). If the trust didn't file Form 3520-A,
-the user must file a substitute (see `3520-vs-3520-a.md`).
+### Schedule C — Qualified Obligations Outstanding (line 19)
 
-### Box at top of Part II — "Did the foreign trust file Form 3520-A?"
-
-- **Yes** — confirm the trust's 3520-A was filed by March 15 (or by the
-  trust's extended due date if Form 7004 was filed). Attach the Foreign
-  Grantor Trust Owner Statement (page 3) to Part II.
-- **No** — file a substitute Form 3520-A as an attachment. The substitute
-  is a fully completed 3520-A signed by the US owner with notation
-  "Substitute" in the heading.
-
-If neither path is taken, the user faces a §6677 penalty equal to 5% of
-the trust's gross value (per IRC §6677(b)).
-
----
-
-## Part III — Distributions From a Foreign Trust to a US Person
-
-Filed when the user received any distribution (cash, property, or use of
-trust property) from a foreign trust during the tax year. Loans from a
-foreign trust that are not "qualified obligations" are treated as
-distributions under IRC §643(i).
-
-### Lines 24-26 — Trust identification
-
-Same identification as Lines 5/19. Critical addition:
-
-- **Line 26** — Type of trust: Grantor or Non-grantor. If grantor (the US
-  owner already reports trust income), the distribution is generally tax
-  free to the recipient (it's already been taxed to the owner). If
-  non-grantor, the distribution carries DNI / UNI and may trigger
-  throwback tax.
-
-### Line 27 — Foreign Nongrantor Trust Beneficiary Statement
-
-- **Yes** — actual method available. Use Schedule B of Part III to compute
-  the income / corpus split per the statement.
-- **No** — default method required. Use Schedule C of Part III to compute
-  the deemed accumulation distribution and §668 interest charge.
-
-### Lines 28-29 — Distribution details
-
-For each distribution:
-
-- Date received
-- Type (cash, property, use of property — including rent-free use of
-  foreign real estate held by the trust, valued at fair rental value)
-- FMV in USD on the date of receipt
-
-### Schedule A — Distributions from a grantor trust with a US owner
-
-If the trust is a grantor trust with a US owner who received the
-distribution, the distribution is generally not separately taxable. The
-US owner already reported the trust's income on their 1040 (via the
-Foreign Grantor Trust Owner Statement). Schedule A documents the
-distribution but no tax flows through.
-
-### Schedule B — Actual method (Beneficiary Statement provided)
-
-Use the statement's allocation of the distribution between current-year
-DNI (taxable to the recipient as ordinary income, capital gain, etc.,
-based on the statement's character classifications) and corpus (tax-free).
-
-### Schedule C — Default method
-
-Without a Beneficiary Statement, the default method computes:
-
-1. **Average distribution over prior 3 years** = (sum of distributions
-   from this trust to this beneficiary in years 1-3) ÷ 3
-2. **Excess distribution** = current-year distribution − 1.25 × average
-3. The excess is treated as a "deemed accumulation distribution" — UNI
-   carryout taxable in the current year
-4. The throwback tax is computed on **Form 4970** (Tax on Accumulation
-   Distribution of Trusts) and added to Form 1040 tax
-5. An **interest charge** under IRC §668(a) applies, computed using the
-   underpayment rate from the year the income was deemed accumulated
-   through the current year
-
-The default method almost always produces a worse outcome than actual
-method. Recommend the user request a Beneficiary Statement from the
-trustee for current and future years.
-
-See [`throwback-default-method.md`](./throwback-default-method.md) for the
-mechanics.
+Did you hold an outstanding qualified obligation of a related foreign
+trust during the year? If yes: (a) date of original obligation, (b) year
+first reported, (c) principal paid this year, (d) interest paid this
+year, (e) year-end balance, (f) still meets the criteria?
 
 ---
 
-## Part IV — US Recipients of Gifts or Bequests From Foreign Persons
+## Part II — U.S. Owner of a Foreign Trust (page 4)
 
-Filed when aggregate gifts/bequests during the tax year exceed:
+Required for every year a U.S. person is treated as owner of any part of a
+foreign trust under §§671–679, even with no transactions during the year.
 
-- **$100,000** from foreign individuals + foreign estates (statutory; not
-  inflation-adjusted; IRC §6039F(c)(1)(B))
-- **Inflation-adjusted threshold** from foreign corporations + foreign
-  partnerships. Rev. Proc. 2024-40 set this at **$19,570 for 2025**. The
-  2026 figure will be in the 2025 inflation-adjustment Rev. Proc. — verify
-  before filing using the current-year Form 3520 instructions.
+| Line | Entry |
+|------|-------|
+| 20 | Each person treated as owner of any portion (including the filer): (a) name, (b) address, (c) country of tax residence, (d) TIN, (e) Code section that makes the person an owner (e.g., 679) |
+| 21a / 21b | Country codes: where created / whose law governs |
+| 21c | Date the trust was created |
+| 22 | Did the trust file Form 3520-A for the current year? "Yes": attach pages 3 and 4 (Foreign Grantor Trust Owner Statement). "No": complete and attach a substitute Form 3520-A to the best of your ability |
+| 23 | Gross value of the portion of the trust you are treated as owning at the end of your tax year: FMV of all assets, disregarding liabilities (from line 9 of the Owner Statement if received; at a minimum the value of everything you transferred) |
 
-### Line 54 — Gifts from foreign individuals + foreign estates
-
-Aggregate threshold check first. If aggregate ≤ $100,000, Part IV is not
-required for these donors and the line is blank.
-
-If aggregate > $100,000:
-
-- Itemize each donor that contributed > $5,000 individually
-- Donors that contributed ≤ $5,000 can be aggregated as "various donors,
-  each ≤ $5,000"
-- For each itemized donor: name, address, country, relationship to filer,
-  date of each gift, description, FMV in USD
-
-### Line 55 — Gifts from foreign corporations + foreign partnerships
-
-If aggregate > the inflation-adjusted threshold, all such donors are
-itemized regardless of individual amount. For each: donor name, address,
-country, type (corporation/partnership), date, description, FMV.
-
-### Line 56 — Additional questions about Line 55 donors
-
-- Was the donor a related person to the filer or to a US person? (This
-  goes to whether the gift might actually be a §301 distribution
-  recharacterizable as income.)
-- Is the donor a CFC (controlled foreign corporation) or PFIC (passive
-  foreign investment company)? If yes, additional reporting may apply on
-  Form 5471 / Form 8621.
-
-### What Part IV is NOT
-
-- Not a tax computation. Gifts and bequests are excluded from gross income
-  under IRC §102. The reporting is purely informational.
-- Not for gifts received indirectly through a domestic intermediary (those
-  are not "from a foreign person" for §6039F purposes — but they may be
-  reportable on other forms if the intermediary is a foreign trust).
-- Not for purchases at FMV. A bona fide sale isn't a gift even if the
-  buyer is a foreign person.
-
-### Rebutting the §6039F(b) presumption (Line 55 only)
-
-If the donor is a foreign corporation or partnership above the threshold,
-the IRS may presume the "gift" is actually disguised income (e.g., a
-bonus, a dividend, or compensation routed through a related entity). To
-rebut, attach a statement explaining:
-
-- The donor's relationship to the recipient (no employment, no service,
-  no investment relationship)
-- The donative intent of the donor
-- Whether the donor expects anything in return
+Penalty for a missing Form 3520-A or substitute: the greater of $10,000 or
+5% of the gross value of the portion owned (IRC §6677(b); Instructions,
+Line 22). Use Form 8082 to notify the IRS that no Owner Statement was
+received; it does not relieve the penalty.
 
 ---
 
-## Signature
+## Part III — Distributions to a U.S. Person From a Foreign Trust (pages 4–5)
 
-The filer signs at the bottom of page 6. For a joint return, both spouses
-sign. For a corporate or trust filer, an authorized officer/trustee signs.
-**Wet ink signature required** — Form 3520 is paper-only and the IRS does
-not accept digital signatures on paper-filed information returns as of 2026.
+If the amount came from a portion of the trust you are treated as owning,
+complete only lines 24 and 27. If an amount would be reportable in both
+Part III and Part IV, report it only in Part III.
 
-If a paid preparer assisted, the preparer signs and provides PTIN. Most
-3520s are self-prepared or attorney-prepared; CPAs and EAs sign in their
-PTIN block.
+| Line | Entry |
+|------|-------|
+| 24 | Each distribution (excluding loans and uncompensated use reported on line 25): (a) date, (b) description of property received, (c) FMV on the distribution date, (d) description of property you transferred, if any, (e) FMV of property you transferred, (f) excess of (c) over (e). Total of (f) |
+| 25 | Loan or uncompensated use of trust property from a related foreign trust (you or a related person)? If yes, per item: (a) FMV of loan proceeds or property, (b) date, (c) maximum term, (d) interest rate, (e) qualified obligation yes/no, (f) FMV of qualified obligation, (g) amount treated as distribution = (a) − (f). Total of (g) |
+| 26 | Agreement to extend the assessment period for each qualified obligation on line 25 |
+| 27 | Total distributions = line 24 column (f) total + line 25 column (g) total |
+| 28 | Did the trust hold an outstanding qualified obligation of yours (or a related person's)? If yes, the same six columns as line 19 |
+| 29 | Foreign Grantor Trust Beneficiary Statement received? Yes: attach it (page 5 of Form 3520-A) and stop for that distribution. No: Schedule A (plus Schedule C if line 37 > 0). N/A for a nongrantor trust |
+| 30 | Foreign Nongrantor Trust Beneficiary Statement received? Yes: attach it and complete Schedule A or Schedule B. No: Schedule A. N/A for a grantor trust |
+
+Consistency rule: once Schedule A has been used for a trust, keep using it
+in later years, except that Schedule B may be used in the year the trust
+terminates if line 30 is "Yes" that year (Instructions, Schedule A).
+
+### Schedule A — Default Calculation of Trust Distributions (lines 31–38)
+
+| Line | Computation |
+|------|-------------|
+| 31 | Amount from line 27 |
+| 32 | Number of years the trust has been a foreign trust, including the current year (any part of a year counts as a year; attach the basis). If this is the trust's first year as a foreign trust, stop |
+| 33 | Total distributions received from the trust in the 3 preceding years (or fewer years if the trust is younger), excluding the current year |
+| 34 | Line 33 × 1.25 |
+| 35 | Line 34 ÷ 3.0 (or the number of preceding years if fewer than 3) |
+| 36 | Smaller of line 31 or line 35: treated as ordinary income earned in the current year |
+| 37 | Line 31 − line 36: accumulation distribution (if zero, stop) |
+| 38 | Line 32 ÷ 2.0: applicable number of years of trust |
+
+### Schedule B — Actual Calculation (lines 39–47)
+
+Line 39 = line 27; then, from the Nongrantor Trust Beneficiary Statement:
+40a ordinary income (40b qualified dividends), 41a accumulation
+distribution (41b tax-exempt part), 42a net short-term capital gain, 42b
+net long-term capital gain (42c 28% rate gain, 42d unrecaptured §1250
+gain), 43 trust corpus, 44 other amounts (attach explanation), 45 trust's
+aggregate undistributed net income (UNI), 46 weighted UNI, 47 applicable
+number of years = line 46 ÷ line 45.
+
+### Schedule C — Calculation of Interest Charge (lines 48–53)
+
+Complete if line 37 or line 41a is more than zero.
+
+| Line | Computation |
+|------|-------------|
+| 48 | Accumulation distribution from line 37 or 41a |
+| 49 | Tax on the accumulation distribution from Form 4970, line 28 (put line 48 on Form 4970 line 1; attach Form 4970 to Form 3520 as a worksheet) |
+| 50 | Applicable number of years from line 38 or 47, rounded to the nearest half year |
+| 51 | Combined interest rate. Calendar-year filers using June 30 as the applicable date take it from the table at IRS.gov/CombinedInterestRate for that year; otherwise compute it (6% simple for 1977–1995 periods; underpayment rate compounded daily after 1995) |
+| 52 | Line 49 × line 51 |
+| 53 | Line 49 + line 52: tax attributable to accumulation distributions. Report as additional tax on the income tax return (Form 1040: Schedule 2, Part II, the "any other taxes" line) |
+
+---
+
+## Part IV — U.S. Recipients of Gifts or Bequests From Foreign Persons (page 6)
+
+Not reportable here: qualified tuition or medical payments made for you;
+distributions from a foreign trust (Part III instead). A distribution from
+a domestic trust treated as owned by a foreign person is reported here as
+a gift.
+
+| Line | Entry |
+|------|-------|
+| 54 | Did you receive more than $100,000 that you treated as gifts or bequests from a nonresident alien individual or a foreign estate? Aggregate gifts from donors you know or have reason to know are related to each other (or acting as nominees). If yes, list each gift or bequest over $5,000: (a) date, (b) description of property, (c) FMV. No donor names are requested on line 54. If none exceeds $5,000, write "No gifts or bequests exceed $5,000" in column (b) |
+| 55 | Did you receive gifts from foreign corporations or foreign partnerships (including related foreign persons) above the §6039F threshold for the year? If yes, list each gift: (a) date, (b) donor's name, (c) address, (d) TIN, (e) corporation or partnership, (f) description, (g) FMV. Threshold: $20,116 for 2025 (Rev. Proc. 2024-40 §2.48); $20,573 for 2026 (Rev. Proc. 2025-32 §4.47); the instructions point to IRS.gov/InflationAdjustment for the current year. Such gifts can be recharacterized under §672(f)(4) |
+| 56 | Any reason to believe a donor on line 54 or 55 was acting as a nominee or intermediary for another person? If the ultimate donor is a foreign corporation or partnership, attach its name, address, TIN, and type; if it is a foreign trust, report the amount in Part III |
+
+The $100,000 line 54 amount is set by the form and instructions (it comes
+from Notice 97-34); IRC §6039F(a) itself uses an inflation-adjusted $10,000
+figure (§6039F(d)), which is the line 55 threshold.
+
+A gift from a covered expatriate may require Form 708 (§§877A, 2801;
+Instructions, What's New).
+
+---
+
+## Signature (page 6)
+
+- An individual or fiduciary signs and dates; a partnership by a partner
+  or LLC member; a corporation by an authorized officer.
+- A joint Form 3520 is signed by both spouses.
+- A substitute Form 3520-A attached to the owner's Form 3520 is signed by
+  the U.S. owner, with the owner's name and TIN on the "Title" line.
+- The instructions say "E-signatures are accepted."
+- A paid preparer completes the preparer block (name, PTIN), signs, and
+  gives the filer a copy.
+
+## Sources
+
+- Form 3520 (Rev. December 2023): https://www.irs.gov/pub/irs-pdf/f3520.pdf
+- Instructions for Form 3520 (Rev. December 2025): https://www.irs.gov/pub/irs-pdf/i3520.pdf
+- Instructions for Form 3520-A (Rev. December 2025): https://www.irs.gov/pub/irs-pdf/i3520a.pdf
+- Form 4970 (2025): https://www.irs.gov/pub/irs-pdf/f4970.pdf
+- Rev. Proc. 2024-40 §2.48 and Rev. Proc. 2025-32 §4.47 (§6039F thresholds)
+- IRC §§6039F, 6048, 6677; Notice 97-34, 1997-25 I.R.B. 22
+- Combined interest rate tables: https://www.irs.gov/CombinedInterestRate

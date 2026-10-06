@@ -7,7 +7,7 @@ A complete walkthrough of Form 2210 for a filer with steady W-2 wages and a Sche
 - **Name**: Marcus Chen
 - **Filing status**: Single
 - **Income**:
-  - W-2 from MarketingCo: $95,000 (Box 1) / $24,000 federal income tax withheld (Box 2)
+  - W-2 from MarketingCo: $112,925 (Box 1) / $24,000 federal income tax withheld (Box 2)
   - Schedule C consulting: $32,000 net profit
 - **Tax year**: 2025 (filing in 2026)
 - **Prior year**: similar mix, prior-year total tax = $19,500, prior-year AGI = $108,000
@@ -15,15 +15,19 @@ A complete walkthrough of Form 2210 for a filer with steady W-2 wages and a Sche
 ## Inputs gathered
 
 ```
-Current-year:
-  Form 1040 Line 22 (total tax):    $26,400
-    (income tax + SE tax + Add'l Medicare Tax)
+Current-year (2025):
+  Form 1040 line 22 (income tax):   $21,879
+    (AGI $142,664 − $15,750 standard deduction − $5,948 QBI deduction
+     = $120,966 taxable income; 2025 Tax Rate Schedule X)
+  Schedule 2 line 4 (SE tax):       $4,521   ($32,000 × 92.35% × 15.3%)
+  Current-year tax (2210 line 4):   $26,400
+    (no Additional Medicare Tax: wages + SE earnings $142,477 < $200,000)
   Withholding:                      $24,000  (W-2 Box 2 only)
   Estimated tax payments:           $0
   (Marcus thought withholding was enough)
 
-Prior-year:
-  Form 1040 Line 22:                $19,500
+Prior-year (2024):
+  Tax per Form 2210 line 8 rules:   $19,500
   AGI:                              $108,000
 ```
 
@@ -35,7 +39,7 @@ Test 1 — De minimis:
   $2,400 > $1,000 → de minimis fails
   Continue.
 
-Test 2 — First-year exception:
+Test 2 — No prior-year liability (IRC §6654(e)(2)):
   Prior-year tax = $19,500 ≠ $0 → fails
   Continue.
 
@@ -47,7 +51,7 @@ Test 3 — 90% current-year safe harbor:
 No penalty owed. No Form 2210 required.
 ```
 
-Wait — let's double-check by computing both safe harbors:
+Check both safe harbors:
 
 ```
 Test 3 — 90% current-year:
@@ -94,30 +98,25 @@ Penalty: yes, owed.
 Compute the regular method penalty:
 
 ```
-Required quarterly installments (cumulative):
-  Q1: $23,760 × 25% = $5,940
-  Q2: $23,760 × 50% = $11,880
-  Q3: $23,760 × 75% = $17,820
-  Q4: $23,760 × 100% = $23,760
+Part III, Section A (regular method):
+  Line 10, each column: $23,760 × 25% = $5,940
+  Line 11, each column: withholding $22,000 ÷ 4 = $5,500 (no estimated payments)
 
-Withholding allocated evenly: $22,000 ÷ 4 = $5,500 per quarter
-  (cumulative: $5,500 / $11,000 / $16,500 / $22,000)
+  Column (a) 4/15/25: line 15 $5,500 → line 17 underpayment $440
+  Column (b) 6/15/25: the $5,500 pays the $440 first (line 14) → line 15 $5,060 → line 17 $880
+  Column (c) 9/15/25: the $5,500 pays the $880 first → line 15 $4,620 → line 17 $1,320
+  Column (d) 1/15/26: the $5,500 pays the $1,320 first → line 15 $4,180 → line 17 $1,760
+  The $1,760 is paid with the return on April 15, 2026.
 
-Underpayment per quarter:
-  Q1: $5,940 − $5,500 = $440
-  Q2: $11,880 − $11,000 = $880  (incremental: $440)
-  Q3: $17,820 − $16,500 = $1,320  (incremental: $440)
-  Q4: $23,760 − $22,000 = $1,760  (incremental: $440)
-
-Penalty (assume 8% annual rate, days from quarter due to next-year 4/15):
-  Q1 underpayment $440 outstanding 365 days × 8% = $35.20
-  Q2 underpayment +$440 outstanding 304 days × 8% = $29.32
-  Q3 underpayment +$440 outstanding 213 days × 8% = $20.54
-  Q4 underpayment +$440 outstanding 90 days × 8% = $8.68
-  Total ≈ $93.74
+Section B penalty worksheet (2025 rate: 0.07 in every rate period):
+  (a) $440 from 4/15/25 to 6/15/25 (61 days):     $440 × 0.07 × 61/365   = $5.15
+  (b) $880 from 6/15/25 to 9/15/25 (92 days):     $880 × 0.07 × 92/365   = $15.53
+  (c) $1,320 from 9/15/25 to 1/15/26 (122 days):  $1,320 × 0.07 × 122/365 = $30.88
+  (d) $1,760 from 1/15/26 to 4/15/26 (90 days):   $1,760 × 0.07 × 90/365  = $30.38
+  Total (line 19) ≈ $81.94
 ```
 
-Penalty ≈ $94. Marcus could let the IRS compute it (simpler) or file Form 2210 (no waiver claim, no Schedule AI needed).
+Penalty ≈ $82. (Same total as treating each $440 shortfall as unpaid from its own due date to April 15, 2026: the balance outstanding over time is identical.) Marcus could let the IRS compute it (simpler) or file Form 2210 (no waiver claim, no Schedule AI needed).
 
 ## The completed Form 2210 draft (under the modified scenario)
 
@@ -125,8 +124,8 @@ Penalty ≈ $94. Marcus could let the IRS compute it (simpler) or file Form 2210
 # Form 2210 — DRAFT for tax year 2025
 
 ## Filing decision
-- [x] No Form 2210 — let IRS compute penalty and bill (~$94 expected)
-  (Filing decision: regular method gives the only available answer; Schedule AI doesn't help with even-income mix; no waiver basis. IRS will compute and issue CP14 notice.)
+- [x] No Form 2210 — let IRS compute penalty and bill (~$82 expected)
+  (Filing decision: no Part II box applies; Schedule AI doesn't help with even-income mix; no waiver basis. IRS will compute and send a CP30 notice.)
 
 ## Header
 Name(s) shown on return:    Marcus Chen
@@ -135,68 +134,72 @@ Filing status:              Single
 Prior-year AGI:             $108,000  → safe-harbor multiplier: 100%
 
 ## Part I — Required Annual Payment
-1. Current-year total tax:                          $26,400
-2. (Other taxes already in Line 1 per worksheet):   $0
+1. Form 1040 line 22:                               $21,879
+2. Other taxes (Schedule 2 line 4, SE tax):         $4,521
 3. (Refundable credits):                            $0
-4. Subtotal:                                        $26,400
+4. Current-year tax:                                $26,400
 5. Line 4 × 90%:                                    $23,760
-6. Current-year withholding:                        $22,000
-7. Line 5 − Line 6:                                 $1,760  (> $1,000 → not de minimis)
+6. Withholding:                                     $22,000
+7. Line 4 − Line 6:                                 $4,400  (not less than $1,000 → continue)
 8. Prior-year tax × 100%:                           $24,000
 9. Required annual payment (smaller of 5 or 8):     $23,760
 
-## Part II — Waivers (none claimed)
+## Part II — Reasons for Filing
 - [ ] Box A
 - [ ] Box B
 - [ ] Box C
-- [x] No waiver
+- [ ] Box D
+- [ ] Box E
+- [x] None (don't file Form 2210)
 
-## Part III — Quarterly Underpayment Computation (Regular Method)
+## Part III, Section A — Underpayment per column (worksheet only; not filed)
 
-| Quarter | Due date | Cumulative req'd installment | Cumulative withholding | Cumulative paid | Underpayment |
-|---------|----------|------------------------------|----------------------|----------------|--------------|
-| Q1      | 4/15/2025 | $5,940                       | $5,500               | $5,500         | $440         |
-| Q2      | 6/16/2025 | $11,880                      | $11,000              | $11,000        | $880         |
-| Q3      | 9/15/2025 | $17,820                      | $16,500              | $16,500        | $1,320       |
-| Q4      | 1/15/2026 | $23,760                      | $22,000              | $22,000        | $1,760       |
+| Line | (a) 4/15/25 | (b) 6/15/25 | (c) 9/15/25 | (d) 1/15/26 |
+|------|-------------|-------------|-------------|-------------|
+| 10 Required installment | $5,940 | $5,940 | $5,940 | $5,940 |
+| 11 Tax withheld | $5,500 | $5,500 | $5,500 | $5,500 |
+| 14 Earlier underpayment | — | $440 | $880 | $1,320 |
+| 15 Line 13 − 14 | $5,500 | $5,060 | $4,620 | $4,180 |
+| 17 Underpayment | $440 | $880 | $1,320 | $1,760 |
 
 (Withholding allocated evenly per IRC §6654(g)(1) default.)
 
-## Penalty computation per quarter (illustrative — verify rates against current Form 2210 instructions)
+## Part III, Section B — Penalty worksheet (2025 rate 7% in every rate period)
 
-| Quarter | Incremental underpayment | Days (due to next 4/15) | Rate | Penalty |
-|---------|--------------------------|--------------------------|------|---------|
-| Q1      | $440                     | 365                      | 8%   | $35.20  |
-| Q2      | $440                     | 304                      | 8%   | $29.32  |
-| Q3      | $440                     | 213                      | 8%   | $20.54  |
-| Q4      | $440                     | 90                       | 8%   | $8.68   |
-| **Total** |                       |                          |      | **$93.74** |
+| Column | Underpayment | Paid on | Days | Rate | Penalty |
+|--------|--------------|---------|------|------|---------|
+| (a)    | $440         | 6/15/25 | 61   | 7%   | $5.15   |
+| (b)    | $880         | 9/15/25 | 92   | 7%   | $15.53  |
+| (c)    | $1,320       | 1/15/26 | 122  | 7%   | $30.88  |
+| (d)    | $1,760       | 4/15/26 | 90   | 7%   | $30.38  |
+| **Total** |           |         |      |      | **$81.94** |
 
 ## Validation summary
-- Math: all checks passed (using illustrative 8% rate)
+- Math: all checks passed (2025 worksheet rate 0.07)
 - Sanity:
   - Penalty < $100: filer should let IRS compute and bill rather than file Form 2210
   - Income was even across the year: Schedule AI does not help
-  - For 2026 planning: update Form W-4 to add ~$8/biweekly extra federal withholding to lock into prior-year safe harbor next year
+  - For 2026 planning: the 2026 prior-year safe harbor is 100% of 2025 tax ($26,400; 2025 AGI $142,664 ≤ $150,000), $4,400 more than 2025 withholding
 - Filing decision: let IRS compute (no Form 2210 attached)
-- Penalty: ~$94 (IRS-computed, expected on CP14 notice 4-8 weeks post-acceptance)
+- Penalty: ~$82 (IRS-computed, sent on a CP30 notice)
 - Next steps:
-  - Form 1040 Line 38: leave blank (IRS computes)
-  - For 2026: increase W-4 Step 4(c) by $8 biweekly to add ~$200/year of withholding, putting Marcus over both safe harbors
+  - Form 1040 line 38: leave blank (IRS computes)
+  - For 2026: increase W-4 Step 4(c) by about $170 per biweekly paycheck ($4,420/year), or pay $1,100 per quarter on Form 1040-ES, so payments reach 100% of 2025 tax
 
 ## Sources cited in this draft
 - IRS Form 2210, Rev. 2025
 - IRS Instructions for Form 2210, Rev. 2025
-- IRC §6654(d)(1)(A) — $1,000 de minimis
-- IRC §6654(d)(1)(B) — 100% prior-year safe harbor
+- IRC §6654(e)(1) — $1,000 de minimis
+- IRC §6654(d)(1)(B) — 90% current-year / 100% prior-year required annual payment
+- IRC §6654(b)(3) — Payments applied to the earliest underpayment
 - IRC §6654(g)(1) — Withholding allocated evenly across quarters
-- IRC §6621 — Penalty rate (verify current rate against Form 2210 instructions)
+- IRC §6621 — Penalty rate (7% for all 2025 rate periods, 2025 Form 2210 worksheet)
 - Form 1040 Line 38
 ```
 
 ## Why each non-obvious choice
 
-**Why does the SKILL recommend "let IRS compute" instead of filing Form 2210?** Two reasons. First, the regular method is the only method that fits this filer (income was even, no waiver basis). The IRS computes regular method automatically. Second, the penalty is small (~$94) — the analytical and form-filing effort exceeds the cost of just letting IRS bill it.
+**Why does the SKILL recommend "let IRS compute" instead of filing Form 2210?** Two reasons. First, the regular method is the only method that fits this filer (income was even, no waiver basis). The IRS computes regular method automatically. Second, the penalty is small (~$82) — the analytical and form-filing effort exceeds the cost of just letting IRS bill it.
 
 **Why does Marcus pass the safe harbor in the original scenario but fail in the modified one?** The original had withholding of $24,000 against current-year tax of $26,400. 90% current = $23,760, and $24,000 > $23,760 → safe harbor met. The modified scenario dropped withholding to $22,000, falling under both 90% current ($23,760) and 100% prior ($24,000).
 
@@ -204,6 +207,6 @@ Prior-year AGI:             $108,000  → safe-harbor multiplier: 100%
 
 **Why won't Schedule AI help here?** Marcus's income was roughly even across the year (W-2 paid biweekly, Schedule C work spread across the year). Schedule AI annualizes income through each quarter-end and applies cumulative percentages — for steady income, the cumulative annualization closely matches the regular method's 25% per quarter, and Schedule AI doesn't reduce the required installments. It only helps when income is back-loaded.
 
-**What should Marcus do for 2026?** Either increase W-4 Step 4(c) by ~$8 per biweekly paycheck (adds $208/year of withholding), or file quarterly estimates of $50/quarter. Either approach lifts him above 100% of prior-year tax (which is the easier safe harbor to lock into prospectively). The W-4 approach is simpler — one form change with the employer, no quarterly tracking.
+**What should Marcus do for 2026?** For 2026 the prior-year safe harbor is 100% of his 2025 tax, $26,400 (2025 AGI $142,664, under $150,000). At $22,000 of withholding he is $4,400 short. Either increase W-4 Step 4(c) by about $170 per biweekly paycheck (26 × $170 = $4,420), or pay $1,100 per quarter on Form 1040-ES. Either approach lifts him to 100% of prior-year tax (the easier safe harbor to lock into prospectively). The W-4 approach is simpler — one form change with the employer, no quarterly tracking, and withholding counts as paid evenly even if the change starts mid-year.
 
-**What audit defense does Marcus have?** His W-2 Box 2 matches his pay summary; Schedule C income is documented; SE tax computes through Schedule SE; Form 8959 documents any Additional Medicare Tax (likely zero at this income level). The IRS-computed penalty of ~$94 will appear on the CP14 notice and Marcus pays it within 21 days to close the case.
+**What audit defense does Marcus have?** His W-2 Box 2 matches his pay summary; Schedule C income is documented; SE tax computes through Schedule SE; no Form 8959 is needed (wages plus SE earnings are under $200,000). The IRS-computed penalty of ~$82 arrives on a CP30 notice; Marcus pays it by the date on the notice (no interest on the penalty if paid by then, per the Form 1040 line 38 instructions).

@@ -2,215 +2,189 @@
 
 Complete lookup for every line on Form 982. Use this when the agent needs to confirm what a line means or where a value goes.
 
+Line map rebuilt from the PDF text of **Form 982 (Rev. March 2018)** and the **Instructions for Form 982 (Rev. December 2021)**, the current revisions as of 2026-10-06 (the About page lists "Recent Developments: None"). Re-check https://www.irs.gov/forms-pubs/about-form-982 before use; a new revision may renumber lines.
+
+The form has 13 numbered lines in Parts I and II plus the Part III corporate consent. There is no line 14 and no total line.
+
 ## Header
 
 | Field | What goes here | Notes |
 |-------|----------------|-------|
-| Name(s) shown on return | Filer's name as on Form 1040 | Match the 1040 |
+| Name shown on return | Filer's name as on Form 1040 | Match the 1040 |
 | Identifying number | SSN (individuals) or EIN (entities) | |
 
 ---
 
 ## Part I — General Information
 
-### Line 1 — Type of discharge (check ONE box)
+### Line 1 — Amount excluded is due to (check applicable box(es))
 
-The exclusion under §108(a) is one of five categories. Check exactly ONE box. Multiple discharges in the same year requiring different exclusions need multiple Forms 982.
+The form says "check applicable box(es)": one Form 982 can carry more than one box when one discharge, or several discharges in the same year, fall under different exclusions. Pub. 4681 (2025) shows this: boxes 1b and 1c together (farm debt, insolvency Example 2) and 1b and 1d together (QRPBI Examples 1 and 2).
 
-| Box | Code | Exclusion | When to use |
-|-----|------|-----------|-------------|
-| 1a | §108(a)(1)(A) | Discharge in a Title 11 (bankruptcy) case | Court-discharged debt in Chapter 7, 11, 12, or 13 |
-| 1b | §108(a)(1)(B) | Discharge to extent insolvent (NOT Title 11) | Outside bankruptcy; user is technically insolvent per Pub 4681 Worksheet 2 |
-| 1c | §108(a)(1)(C) | Discharge of qualified farm indebtedness | Farm debt; ≥ 50% of last 3 years' income from farming |
-| 1d | §108(a)(1)(D) | Discharge of qualified real property business indebtedness | NON-corporate; debt secured by real property used in trade/business; election under §108(c) |
-| 1e | §108(a)(1)(E) | Discharge of qualified principal residence indebtedness | Acquisition indebtedness on principal residence; verify exclusion is in effect for the tax year |
+| Box | Code section | Form text | When to use |
+|-----|--------------|-----------|-------------|
+| 1a | §108(a)(1)(A) | Discharge of indebtedness in a title 11 case | Under the bankruptcy court's jurisdiction; discharge granted by the court or under a court-approved plan (§108(d)(2); any chapter, e.g. 7, 11, 12, 13) |
+| 1b | §108(a)(1)(B) | Discharge of indebtedness to the extent insolvent (not in a title 11 case) | Liabilities exceeded FMV of assets immediately before the discharge (§108(d)(3); Pub. 4681 Insolvency Worksheet) |
+| 1c | §108(a)(1)(C) | Discharge of qualified farm indebtedness | Debt incurred directly in operating a farming business; 50% or more of aggregate gross receipts for the 3 preceding tax years from farming; discharged by a qualified person (§108(g)) |
+| 1d | §108(a)(1)(D) | Discharge of qualified real property business indebtedness | Taxpayer other than a C corporation; debt incurred or assumed in connection with, and secured by, real property used in a trade or business; pre-1993 debt or qualified acquisition indebtedness (§108(c)(3)); checking the box is the election |
+| 1e | §108(a)(1)(E) | Discharge of qualified principal residence indebtedness (form caution: see instructions if discharged after 2017) | Debt to buy, build, or substantially improve the main home and secured by it; only for discharges before Jan. 1, 2026, or under an arrangement entered into and evidenced in writing before Jan. 1, 2026 |
 
-**§108(a)(2) ordering rule**: If multiple exclusions could apply:
-- Bankruptcy is checked FIRST — if applicable, use bankruptcy exclusively. Other exclusions don't apply to the bankruptcy discharge.
-- Insolvency vs. principal residence: principal residence has priority unless the user elects insolvency instead (§108(a)(2)(C)).
-- QRPBI is elective — only applies if the user makes the §108(c) election.
+**Coordination rules (§108(a)(2); i982 Lines 1b–1e)**:
+- Title 11 first: boxes 1b through 1e don't apply to a discharge in a title 11 case. A title 11 discharge of home mortgage debt goes on 1a, never 1e.
+- Insolvency before farm and QRPBI: the farm and QRPBI exclusions don't apply to the extent the taxpayer was insolvent (§108(a)(2)(B)). Apply 1b first, then 1c or 1d to the remainder.
+- QPRI before insolvency, unless the taxpayer elects to check 1b instead of 1e (§108(a)(2)(C)).
+- QRPBI is elective: the election is made by checking 1d on a timely filed return (including extensions).
 
 ### Line 2 — Total amount of discharged indebtedness excluded from gross income
 
-Dollar amount being excluded under the chosen Box 1 selection.
+The total excluded under §108 for all boxes checked. Limits (i982 Lines 1b–1e; Pub. 4681):
+- Box 1a: no cap in §108(a).
+- Box 1b: not more than the amount by which liabilities exceeded the FMV of assets immediately before the discharge (§108(a)(3)).
+- Box 1c: not more than the sum of adjusted tax attributes (credits counted at $3 per $1) and the adjusted basis of qualified property held at the beginning of the next tax year (§108(g)(3)).
+- Box 1d: not more than (i) outstanding principal immediately before the discharge minus the net FMV of the securing property (reduced by other QRPBI secured by it), and (ii) the aggregate adjusted basis of depreciable real property held immediately before the discharge, other than property acquired in contemplation of the discharge (§108(c)(2)).
+- Box 1e: QPRI is acquisition debt up to $750,000 ($375,000 married filing separately) for discharges after 2020 (§108(h)(2)); if only part of a loan is QPRI, the exclusion applies only to the amount discharged in excess of the non-QPRI part (§108(h)(4) ordering rule).
 
-Caps:
-- Box 1a (Bankruptcy): no cap; entire discharge can be excluded
-- Box 1b (Insolvency): capped at the amount of insolvency (lesser of canceled debt or insolvency)
-- Box 1c (Farm): aggregate adjusted bases of qualified property + tax attributes
-- Box 1d (QRPBI): excess of debt over FMV of property (also limited to basis of depreciable real property under §108(c)(2))
-- Box 1e (Principal residence): $750,000 ($375K MFS) of qualified principal residence indebtedness
+Line 2 never exceeds the debt actually canceled. Box 2 of Form 1099-C may show only part of the canceled debt or include interest (Pub. 4681, "Amount of canceled debt"); reconcile to the actual cancellation.
 
-Line 2 cannot exceed the Box 2 amount on the underlying Form 1099-C.
+**Line 2 does not have to equal Part II.** If 1a, 1b, or 1c is checked, line 2 won't necessarily equal the total of lines 5 through 13 (excluding 10b) because the excluded amount may exceed the available tax attributes. If 1e is checked, line 2 won't necessarily equal line 10b (i982 Line 2; Pub. 4681 "Reduction of Tax Attributes").
 
-### Line 3 — Election under §108(b)(5)
+### Line 3 — Election to treat real property held for sale as depreciable property
 
-Checkbox. If checked, the user elects to apply the §108(b) attribute reduction FIRST to the basis of depreciable property, before reducing NOLs.
+Form text: "Do you elect to treat all real property described in section 1221(a)(1), relating to property held for sale to customers in the ordinary course of a trade or business, as if it were depreciable property?" Yes / No.
 
-**When to elect §108(b)(5)**:
-- User has substantial NOLs they want to preserve
-- User has substantial basis in depreciable property they're willing to reduce
-- The basis reduction will produce smaller current-year tax cost than losing the NOL carryforward
+- Authority: §1017(b)(3)(E). The election lets inventory real estate absorb a line 5 basis reduction (i982 Part II "Basis Reduction") or a farm-debt basis reduction (Pub. 4681).
+- It does not apply to the discharge of qualified real property business indebtedness (i982 Line 3; §1017(b)(3)(F)(ii)).
+- Made on the return for the year of the discharge; revocable only with IRS consent (§1017(b)(3)(E)(ii)).
+- Most individual filers check "No" or leave it blank. Ask before checking "Yes"; it only matters for a dealer in real estate.
 
-**When NOT to elect**:
-- User has no significant depreciable property
-- User has no NOL or small NOL anyway
-- User would prefer to give up the NOL than reduce basis (e.g., basis reduction triggers depreciation recapture concerns at future sale)
-
-The election is **irrevocable**. Once filed, it cannot be undone.
-
-The §108(b)(5) election applies only to bankruptcy and insolvency exclusions. For QRPBI under §108(c), basis reduction is automatic (not elective).
+Line 3 is **not** the §108(b)(5) election. That election is line 5.
 
 ---
 
 ## Part II — Reduction of Tax Attributes
 
-Required only if Box 1a (bankruptcy) or Box 1b (insolvency) is checked. The total of Lines 4-11 must equal Line 2.
+Form header: "You must attach a description of any transactions resulting in the reduction in basis under section 1017. See Regulations section 1.1017-1 for basis reduction ordering rules, and, if applicable, required partnership consent statements." Every line in Part II is an **amount excluded from gross income** applied to that attribute ("Enter amount excluded from gross income"). For credit lines, enter the excluded dollars applied; the credit itself drops by 33⅓ cents per dollar (i982 Line 7; §108(b)(3)(B)).
 
-For Box 1c, 1d, or 1e, Part II works differently:
-- Box 1c (farm): see special rules in §108(g) and instructions
-- Box 1d (QRPBI): basis reduction goes to Line 4 only
-- Box 1e (principal residence): basis reduction is to the residence itself (not on Part II); not on Form 982 directly
+Default order when 1a, 1b, or 1c is checked and no line 5 election is made: lines 6, 7, 8, 9, 10a (or 11a–11c for farm debt), 12, 13 (i982 "Any other debt"; §108(b)(2)). Reductions are made after the tax for the discharge year is figured (§108(b)(4)(A)).
 
-### Line 4 — Reduction of basis under §108(b)(5) election OR §108(c) QRPBI
+### Line 4 — QRPBI applied to reduce the basis of depreciable real property
 
-Two uses:
-1. If Line 3 (§108(b)(5) election) is checked: amount of basis reduction applied first, before NOLs.
-2. If Box 1d (QRPBI): amount of basis reduction in the depreciable real property used in the business.
+Box 1d only. Enter the excluded QRPBI amount; it reduces the basis of depreciable real property (§108(c)(1); §1017(b)(3)(F)). The reduction is made at the beginning of the next tax year, or immediately before disposition if the property is sold first (Pub. 4681 "Qualified Real Property Business Indebtedness"; §1017(b)(3)(F)(iii)). Land is not depreciable real property.
 
-Cannot exceed the basis of the depreciable property (or principal residence under §108(c)).
+### Line 5 — Election under §108(b)(5) to reduce the basis of depreciable property first
 
-### Line 5 — Net operating loss
+- Available when box 1a, 1b, or 1c is checked (i982 Part II "Basis Reduction"). Completing line 5 is the election; there is no checkbox.
+- Enter all or part of the excluded amount; it reduces the basis (under §1017) of depreciable property, including real property elected on line 3. The balance, if any, goes to lines 6 through 13 (excluding 10b).
+- Limited to the aggregate adjusted bases of depreciable property held at the beginning of the next tax year (§108(b)(5)(B)). The §1017(b)(2) liabilities limit that applies to line 10a does not apply to line 5 (i982 Line 10a).
+- Must be made on a timely filed return (including extensions); revocable only with IRS consent. If the return was timely filed without it, the election can be made on an amended return filed within 6 months of the due date (excluding extensions) marked "Filed pursuant to section 301.9100-2" (i982 "When To File"; §108(d)(9)).
+- Basis reduction order under the election (Pub. 4681): (1) depreciable real property used in a trade or business or held for investment that secured the canceled debt; (2) depreciable personal property used in a trade or business or held for investment that secured the canceled debt; (3) other depreciable property used in a trade or business or held for investment; (4) real property held for sale to customers, if elected on line 3.
 
-Reduce CURRENT-YEAR NOL first, then NOL carryovers from prior years (oldest first).
+### Line 6 — Net operating loss
 
-Dollar-for-dollar: $1 of excluded debt → $1 of NOL reduction.
+NOL for the tax year of the discharge, then NOL carryovers to that year in order of the years they arose, starting with the earliest (§108(b)(4)(B)). Dollar for dollar. $0 if none.
 
-If user has no NOL, Line 5 = $0.
+### Line 7 — General business credit carryover
 
-### Line 6 — General business credit carryover
+Carryovers to or from the discharge year (Form 3800). Reduce the carryover by 33⅓ cents for each dollar excluded (i982 Line 7). Enter the excluded dollars applied: absorbing a $1,000 carryover uses $3,000 of excluded amount, so line 7 shows $3,000. $0 if none.
 
-Reduce general business credit (Form 3800) carryovers to/from this year.
+### Line 8 — Minimum tax credit
 
-**Conversion**: 33⅓ cents per dollar of excluded debt. So $3 of excluded debt = $1 of credit reduction.
+Minimum tax credit available as of the beginning of the tax year after the discharge year (§108(b)(2)(C)). 33⅓ cents per dollar; enter the excluded dollars applied. $0 if none.
 
-If user has no general business credit carryover, Line 6 = $0.
+### Line 9 — Net capital loss and capital loss carryovers
 
-### Line 7 — Minimum tax credit
+Net capital loss for the discharge year, then capital loss carryovers to that year, earliest first (§108(b)(4)(B)). Dollar for dollar. $0 if none.
 
-Reduce minimum tax credit (Form 8801) — i.e., AMT credit from prior years.
+### Line 10a — Basis of nondepreciable and depreciable property (if not reduced on line 5)
 
-**Conversion**: 33⅓ cents per dollar.
+Not for qualified farm indebtedness (form text). Dollar for dollar. Basis is reduced for property held at the beginning of the next tax year (§1017(a)), in this order and, within each category, in proportion to adjusted basis (Pub. 4681 "Basis"):
+1. Real property used in a trade or business or held for investment (other than real property held for sale to customers) that secured the canceled debt
+2. Personal property used in a trade or business or held for investment (other than inventory and accounts and notes receivable) that secured the canceled debt
+3. Any other property used in a trade or business or held for investment (other than inventory, accounts and notes receivable, and real property held for sale)
+4. Inventory, accounts receivable, notes receivable, and real property held primarily for sale to customers
+5. Personal-use property
 
-If user has no AMT credit, Line 7 = $0.
+**Limit in title 11 and insolvency cases:** the line 10a reduction can't exceed the excess of the aggregate bases of property held immediately after the discharge over the aggregate liabilities immediately after the discharge (§1017(b)(2); i982 Line 10a). In a title 11 case, exempt property is not reduced (§1017(c)(1)).
 
-### Line 8 — Net capital loss + capital loss carryovers
+**Nonbusiness debt with no attributes other than basis of nondepreciable property** (i982 "How To Complete the Form", "A nonbusiness debt"): check 1a or 1b, enter the excluded amount on line 2, and enter on line 10a the **smallest** of:
+- (a) the basis of the nondepreciable property,
+- (b) the amount of the nonbusiness debt on line 2, or
+- (c) the excess of the aggregate bases of property plus money held immediately after the discharge over aggregate liabilities immediately after the discharge.
 
-Reduce CURRENT-YEAR net capital loss first, then carryovers (oldest first).
+Compute all three and show them. For an insolvent filer, (c) is often $0, which makes line 10a $0; say so in the draft rather than leaving the line blank. Pub. 4681's repossessed-car example gets $100 for (c) and allocates it 91%/9% between furniture and jewelry by basis.
 
-Dollar-for-dollar.
+### Line 10b — Basis of the principal residence
 
-If user has no net capital loss or carryover, Line 8 = $0.
+**Only if box 1e is checked** (form text) and only if the taxpayer continues to own the home after the discharge. Enter the smaller of (a) the part of line 2 attributable to the QPRI exclusion or (b) the basis of the main home (i982 Line 10b; §108(h)(1)). If the home was sold, foreclosed, or otherwise disposed of in the transaction (short sale, foreclosure, deed in lieu), line 10b is $0.
 
-### Line 9 — Other basis (default ordering)
+### Line 11 — Qualified farm indebtedness: basis reduction
 
-Reduce basis of property — but only if §108(b)(5) election was NOT made.
+Box 1c only, for amounts not absorbed by lines 6–9 and not reduced on line 5 (i982 Line 1c; §1017(b)(4)):
+- **11a** Depreciable property used or held for use in a trade or business or for the production of income, if not reduced on line 5
+- **11b** Land used or held for use in a trade or business of farming
+- **11c** Other property used or held for use in a trade or business or for the production of income
 
-If §108(b)(5) was elected (Line 4 has the basis reduction), Line 9 may also have additional basis reduction if basis exceeds Line 4 cap and other attributes exist.
+### Line 12 — Passive activity loss and credit carryovers
 
-Reduction order within Line 9 (per §1017):
-1. Basis of real property used in trade/business (depreciable)
-2. Basis of personal property used in trade/business (depreciable)
-3. Basis of property held for investment (capital assets)
-4. Basis of inventory and accounts receivable
-5. Basis of personal-use property
+Carryovers from the discharge year (Form 8582 / 8582-CR). Losses dollar for dollar; credits 33⅓ cents per dollar (i982 "Any other debt", item 6). $0 if none.
 
-Cannot reduce basis below zero.
+### Line 13 — Foreign tax credit carryover
 
-### Line 10 — Passive activity loss + credit
-
-Reduce passive activity loss (Form 8582) carryovers + passive activity credit carryovers.
-
-PAL: dollar-for-dollar.
-PA credits: 33⅓ cents per dollar.
-
-If user has no passive activity carryovers, Line 10 = $0.
-
-### Line 11 — Foreign tax credit
-
-Reduce foreign tax credit (Form 1116) carryovers.
-
-**Conversion**: 33⅓ cents per dollar.
-
-If user has no FTC carryover, Line 11 = $0.
+Carryovers to or from the discharge year (Form 1116). 33⅓ cents per dollar. $0 if none.
 
 ### Reconciliation (the math)
 
 ```
-Sum(Lines 4-11) = Line 2 (excluded amount)
+Line 2 ≥ Line 4 + Line 5 + Lines 6–9 + Line 10a + Lines 11a–11c + Line 12 + Line 13   (for 1a/1b/1c/1d)
+Line 2 ≥ Line 10b                                                                      (for 1e)
+Each Part II line ≤ the attribute available (credits: excluded dollars ≤ 3 × credit)
 ```
 
-If the user's available attributes don't sum to the full excluded amount (i.e., they have less attributes than excluded debt), the EXCESS is permanently lost — there's no further reduction beyond what's available. The exclusion still applies; the only "cost" was reducing all available attributes.
-
-This is the "tax-attribute reduction" in action — the user gets the exclusion now, and pays it back over time through reduced future deductions / credits / basis.
+If the excluded amount exceeds the available attributes, the excess stays excluded and no further reduction is required (Pub. 4681 "Reduction of Tax Attributes": "the total reduction of tax attributes in Part II of Form 982 will be less than the amount on line 2").
 
 ---
 
-## Part III — Consent of Corporation to Adjustment of Basis
+## Part III — Consent of Corporation to Adjustment of Basis of Its Property Under Section 1082(a)(2)
 
-Not applicable for individual filers. For corporate filings only.
+Corporations only: consent under §1081(b) to adjust basis under §1082(a)(2) (Regulations section 1.1082-3(b)), with a description of the transactions resulting in nonrecognition of gain under §1081. It has nothing to do with the §108(b)(5) election. Leave Part III blank for individual and sole-proprietor filers.
 
 ---
 
 ## Worksheets and supporting documentation
 
-These are NOT lines on Form 982 but are required by the IRS to support the filing.
+### Pub. 4681 Insolvency Worksheet
 
-### Pub 4681 Worksheet 2 — Insolvency Worksheet
+Use when box 1b is checked. Pub. 4681 (2025) worksheet: Part I lines 1–15 (liabilities), Part II lines 16–37 (FMV of assets, including line 28 retirement accounts and line 29 pension plan), Part III line 38 (amount of insolvency). Marked "Keep for Your Records"; it is not attached to the return. See [`insolvency-worksheet.md`](./insolvency-worksheet.md).
 
-Required if Box 1b (insolvency) is checked. Computes the insolvency amount (liabilities minus assets immediately before discharge). The Worksheet 2 itself is NOT filed with Form 982 but must be retained with the user's records.
+### §1017 basis-reduction statement
 
-See [`insolvency-worksheet.md`](./insolvency-worksheet.md).
+Required whenever Part II reduces basis (lines 4, 5, 10a, 11a–11c): a description of the transactions resulting in the basis reduction and the property whose basis was reduced (Form 982 Part II header; i982 Part II "Basis Reduction").
 
-### §108(b)(5) election statement
+### QRPBI election
 
-If Line 3 is checked, attach a statement identifying:
-- The election under IRC §108(b)(5)
-- The amount of basis reduction
-- The depreciable property to which the reduction applies
+Made by checking box 1d and completing Form 982 on a timely filed return (Pub. 4681 "How to elect the qualified real property business debt exclusion"). Attach the §1017 statement above for the line 4 reduction.
 
-### §108(c) QRPBI election statement
+### Bankruptcy documents
 
-If Box 1d is checked, attach a statement identifying:
-- The election under §108(c)
-- The qualified real property business indebtedness
-- The depreciable real property
-- The amount of basis reduction
+If box 1a is checked, keep the case number, chapter, and discharge order or confirmed plan with the records. Form 982 instructions don't require attaching them.
 
-### Bankruptcy discharge order
+### Principal residence documentation
 
-If Box 1a is checked, retain a copy of the bankruptcy court's discharge order. NOT filed with Form 982 but must be available on IRS request.
-
-### Principal residence acquisition documentation
-
-If Box 1e is checked, retain mortgage statements, closing documents, and any refinance documents establishing the debt was qualified principal residence indebtedness (acquisition / improvement debt, secured by the residence).
+If box 1e is checked, keep the mortgage, closing, and refinance documents showing the debt was used to buy, build, or substantially improve the main home and was secured by it, plus any written arrangement dated before Jan. 1, 2026 for a 2026 discharge.
 
 ---
 
 ## Reconciling with Form 1099-C
 
-The Form 1099-C the user received is the trigger for Form 982. The reconciliation:
-
 ```
-1099-C Box 2 (debt discharged)        $X,XXX
-- Form 982 Line 2 (excluded amount)   $X,XXX
-= Schedule 1 Line 8c (taxable)        $X,XXX
+Canceled debt (1099-C Box 2, corrected to the actual cancellation)   $X,XXX
+- Form 982 Line 2 (excluded amount)                                 $X,XXX
+= Taxable canceled debt                                              $X,XXX
 ```
 
-If the entire 1099-C is excluded → Schedule 1 Line 8c = $0
-If part is excluded → Schedule 1 Line 8c = remainder
+Where the taxable part goes (Pub. 4681 chapter 1): Schedule 1 (Form 1040) line 8c for nonbusiness debt; Schedule C line 6 for a nonfarm sole proprietorship; Schedule E line 3 for nonfarm rental real property; Form 4835 line 6 for farm rental; Schedule F line 8 for farm debt.
 
-The agent must ensure the user reports the non-excluded portion on Schedule 1. Excluding the entire amount when only part qualifies is a common error.
+Excluding the entire amount when only part qualifies is a common error.
 
 ---
 
@@ -218,33 +192,28 @@ The agent must ensure the user reports the non-excluded portion on Schedule 1. E
 
 ### Multiple 1099-Cs in the same year
 
-Each 1099-C may need different treatment:
-- One under bankruptcy
-- Another under insolvency
-- Another not excludable
-
-If the same exclusion applies to multiple 1099-Cs, aggregate them on a single Form 982 (one Box 1 selection, summed Line 2). If different exclusions apply, file multiple Forms 982.
+Analyze each debt separately (a different exclusion may apply to each), then report on one Form 982: check every applicable box on line 1 and enter the total excluded on line 2. Debts with no exclusion go to the income line for that debt type.
 
 ### 1099-C from a related party
 
-If the canceled debt was owed to a related party (family member, controlled entity), it might not be a real cancellation — could be a gift under §102 (not income) or a constructive distribution (different reporting). Investigate before excluding.
+A cancellation that is a gift, bequest, devise, or inheritance generally is not income (Pub. 4681 "Exceptions"); a corporation canceling a stockholder's debt is a constructive distribution (Pub. 4681 "Stockholder Debt"). Investigate before excluding.
 
-### Recourse vs. non-recourse debt
+### Recourse vs. nonrecourse debt
 
-For non-recourse debt secured by property, the cancellation rules differ. The "debt forgiveness" portion (debt > FMV of property) is income; the "FMV of property" portion is a sale (capital gain or loss). See Pub 4681 examples 6-9 for the math.
+For nonrecourse debt, a foreclosure or abandonment produces no cancellation-of-debt income: the full debt is the amount realized on the disposition (Pub. 4681 chapter 1, "Sales or Other Dispositions" and "Abandonments"). For recourse debt, the excess of the canceled debt over the property's FMV is cancellation-of-debt income. See Pub. 4681 chapters 2 and 3.
 
-### Discharge during a bankruptcy proceeding
+### Discharge timing and bankruptcy
 
-Box 1a applies if the discharge occurred while the user was IN a Title 11 case. If a creditor canceled debt outside the bankruptcy (before filing or after dismissal), Box 1a doesn't apply — try insolvency instead.
+Box 1a applies only if the taxpayer was under the court's jurisdiction and the discharge was granted by the court or under a court-approved plan (§108(d)(2)). A cancellation before the petition or after dismissal is not a title 11 discharge; test insolvency instead. In chapter 7 or 11 cases to which §1398 applies, the bankruptcy estate, not the individual, reduces the attributes (§108(d)(8)); refer these to a CPA (Pub. 908).
 
-### Pass-through entity discharges (partnerships, S-corps)
+### Pass-through entity discharges
 
-For pass-through entity discharges, the §108 exclusions apply at the partner / shareholder level, not the entity level. Each partner / shareholder makes their own §108(a) determination on their share of the discharge. Form 982 is filed by the individual, not the entity.
+Partnerships: §108(a), (b), (c), and (g) are applied at the partner level (§108(d)(6)); each partner files their own Form 982. S corporations: those subsections are applied at the corporate level (§108(d)(7)), so the exclusion and attribute reduction belong to the S corporation, not the shareholder. Out of scope for this skill; refer to a CPA.
 
-This skill is scoped to individual / solo filers; pass-through entity coordination is out of scope. Refer to a CPA.
+### Canceled student loans
 
-### Cancellation of student loan debt
-
-§108(f) provides exclusions for certain student loan discharges (death, disability, public service forgiveness, certain school closures). Many §108(f) discharges do NOT require Form 982 — the exclusion is automatic.
-
-The temporary §108(f)(5) broad exclusion (American Rescue Plan, 2021-2025) covered most student loan discharges regardless of program. Verify whether this is still in effect for the user's tax year.
+§108(f) student loan exclusions are not §108(a) exclusions and are not claimed on Form 982 (i982 "When To File" covers §108(a) exclusions; Pub. 4681 treats student loans under "Exceptions", which apply before the exclusions and don't reduce tax attributes).
+- Work-requirement discharges (§108(f)(1)) and the health-care repayment programs (§108(f)(4)) remain.
+- The broad §108(f)(5) exclusion enacted by the American Rescue Plan Act covered discharges after Dec. 31, 2020 and before Jan. 1, 2026 (Pub. 4681 "Special rule for student loan discharges for 2021 through 2025").
+- For discharges after Dec. 31, 2025, P.L. 119-21 §70119 rewrote §108(f)(5): it excludes only discharges on account of death or total and permanent disability (federal student loans and private education loans), and only if the taxpayer's SSN, valid for employment and issued before the return due date, is on the return (§108(f)(5)(C); Pub. 4681 (2025) "What's New").
+- Other student loan discharges after 2025 (not covered by §108(f)(1) or (f)(4)) are income unless a §108(a) exclusion (for example insolvency, on Form 982) applies.

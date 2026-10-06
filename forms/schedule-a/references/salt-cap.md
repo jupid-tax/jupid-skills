@@ -1,8 +1,8 @@
-# SALT Cap (Lines 5-7) — IRC §164(b)(6) as Amended by OBBBA 2025
+# SALT Cap (Lines 5-7) — IRC §164(b)(6)–(7) as Amended by OBBBA 2025
 
-The SALT cap is the most-changed Schedule A rule in the past decade. TCJA capped it at $10,000 in 2018. OBBBA quadrupled it for 2025 and indexed it through 2029, before reverting to $10,000 in 2030. This file is the definitive year-by-year reference for the cap, the high-income phaseout, and what counts as a SALT item.
+The SALT cap is the most-changed Schedule A rule in the past decade. TCJA capped it at $10,000 in 2018. The One Big Beautiful Bill Act (P.L. 119-21 §70120, effective for tax years beginning after December 31, 2024) quadrupled it for 2025 and raised it 1% a year through 2029, before reverting to $10,000 in 2030. This file is the year-by-year reference for the cap, the high-income phase-down, and what counts as a SALT item.
 
-**Verify the OBBBA amendments before each filing season.** The bill was passed in mid-2025; some IRS forms and software lagged in updating. The numbers below reflect the statute as enacted.
+Verified 2026-10-06 against IRC §164(b)(6)–(7) (statute text) and the 2025 Schedule A and instructions (line 5e and the State and Local Tax Deduction Worksheet). Re-check the 2026 form and instructions when released.
 
 ---
 
@@ -12,30 +12,35 @@ The SALT cap is the most-changed Schedule A rule in the past decade. TCJA capped
 |----------|------------------------------|-----|---------|
 | 2017 and earlier | Unlimited | Unlimited | Pre-TCJA |
 | 2018-2024 | $10,000 | $5,000 | IRC §164(b)(6) — TCJA |
-| 2025 | $40,000 | $20,000 | OBBBA amendment to IRC §164(b)(6) |
-| 2026 | $40,400 | $20,200 | OBBBA amendment (1% annual increase) |
-| 2027 | $40,804 | $20,402 | OBBBA amendment (1% annual increase) |
-| 2028 | $41,212 | $20,606 | OBBBA amendment (1% annual increase) |
-| 2029 | $41,624 | $20,812 | OBBBA amendment (1% annual increase) |
-| 2030+ | $10,000 | $5,000 | Reverts to TCJA cap (sunset) |
+| 2025 | $40,000 | $20,000 | IRC §164(b)(7)(A)(i) |
+| 2026 | $40,400 | $20,200 | IRC §164(b)(7)(A)(ii) |
+| 2027 | ≈ $40,804 | ≈ $20,402 | §164(b)(7)(A)(iii): 101% of the prior year's amount |
+| 2028 | ≈ $41,212 | ≈ $20,606 | same |
+| 2029 | ≈ $41,624 | ≈ $20,812 | same |
+| 2030+ | $10,000 | $5,000 | §164(b)(7)(A)(iv); no phase-down after 2029 |
 
-Calculation rule: `Cap_year = round(prior_year_cap × 1.01, nearest dollar)`. Verify rounding against IRS guidance once published; the rounding convention may follow Rev. Proc. inflation-adjustment rules.
+The statute says "101 percent of the dollar amount in effect" for the preceding year and gives no rounding rule; the 2027–2029 figures above are arithmetic, not published amounts. Use the figure the IRS prints on that year's Schedule A.
 
 ---
 
-## High-income phaseout (NEW under OBBBA, effective 2025)
+## High-income phase-down (NEW under OBBBA, 2025–2029)
 
-Filers with MAGI above $500,000 ($250,000 MFS) have the SALT cap reduced. The phaseout works as follows:
+Filers with MAGI above $500,000 ($250,000 MFS) for 2025 have the SALT cap reduced. The 2025 State and Local Tax Deduction Worksheet (Schedule A instructions) works as follows:
 
 ```
-Excess MAGI = max(0, MAGI − $500,000)   [MFS: $250,000 threshold]
-Phaseout    = Excess MAGI × 30%
-Effective cap = max($10,000, base cap − Phaseout)   [MFS: floor $5,000]
+If line 5d ≤ $10,000 ($5,000 MFS): line 5e = line 5d (no worksheet)
+Line 1  $40,000 (the full amount, also for MFS)
+Line 4  MAGI = Form 1040 line 11b + excluded Puerto Rico income + Form 2555 lines 45 and 50 + Form 4563 line 15
+Line 5  $500,000 ($250,000 MFS)
+Line 7  30% × max(0, line 4 − line 5)
+Line 8  line 1 − line 7
+Line 9  larger of line 8 or $10,000
+Line 10 smaller of line 9 (half of line 9 if MFS) or line 5d → line 5e
 ```
 
-The phaseout cannot reduce the cap below $10,000 ($5,000 MFS) — that's the hard floor.
+The phase-down cannot reduce the cap below $10,000 ($5,000 MFS, because line 9 is halved).
 
-**Threshold and floor both increase 1% annually through 2029** (matching the cap's indexing). For 2026, threshold = $505,000 / $252,500 MFS; floor = $10,100 / $5,050 MFS (verify against IRS guidance once published).
+**Only the threshold is indexed, not the floor.** For 2026 the threshold is $505,000 ($252,500 MFS) (IRC §164(b)(7)(B)(ii)(II)); it rises to 101% of the prior year's amount after 2026. The $10,000 floor is fixed (IRC §164(b)(7)(B)(iii)). The phase-down applies only to tax years beginning before January 1, 2030.
 
 ### Worked phaseout examples (2025)
 
@@ -49,11 +54,13 @@ The phaseout cannot reduce the cap below $10,000 ($5,000 MFS) — that's the har
 | $700,000 | $200,000 | $60,000 | $40,000 | $10,000 (floor) |
 | $1,000,000 | $500,000 | $150,000 | $40,000 | $10,000 (floor) |
 
+MFS (2025): MAGI $300,000 → $40,000 − 30% × $50,000 = $25,000 → half = **$12,500**. MAGI $350,000 or more → $10,000 → half = **$5,000**. (Worksheet arithmetic.)
+
 **Implication**: For a filer between $500K and $600K MAGI, every dollar of MAGI reduction (e.g., 401(k) contribution, HSA contribution, charitable gift via QCD) restores 30¢ of SALT cap room. Useful planning lever.
 
 ### MAGI definition for SALT phaseout
 
-MAGI for SALT phaseout = AGI + foreign earned income exclusion (IRC §911) + foreign housing exclusion + Puerto Rico/possession exclusions + adoption assistance excluded from income. Most domestic filers have MAGI = AGI.
+MAGI for the SALT phase-down = AGI increased by any amount excluded under IRC §911 (foreign earned income and housing exclusions, Form 2555), §931 (Guam/American Samoa/CNMI, Form 4563) or §933 (Puerto Rico) (IRC §164(b)(7)(B)(iv)). Nothing else is added back. Most domestic filers have MAGI = AGI.
 
 ---
 
@@ -68,15 +75,15 @@ The filer must pick **one or the other**, not both. Pick the larger.
 - 1099 boxes for state withholding
 - State estimated tax payments paid in the tax year
 - Prior-year state balance due paid in the tax year (e.g., a 2024 balance due paid in April 2025 deducts on the 2025 return)
-- Mandatory state disability insurance contributions in CA, NJ, NY, PA, RI, WA (some states only — check)
+- Mandatory contributions to the California, New Jersey, or New York nonoccupational disability funds, the Rhode Island temporary disability fund, or the Washington State supplemental workmen's compensation fund; mandatory contributions to the Alaska, California, New Jersey, or Pennsylvania state unemployment funds; mandatory contributions to state family leave programs (e.g., NJ FLI, California Paid Family Leave) (2025 instructions, line 5a). From 2025, contributions to a governmental paid family leave program are included in income and can be deducted here (2025 Form 1040 instructions, What's New)
 
 **General sales tax (better choice for no-income-tax states or filers with major purchases)**:
-- Use the [IRS Sales Tax Deduction Calculator](https://apps.irs.gov/app/stdc/) — enters ZIP, income, dependents, and returns the optional table amount
-- OR keep actual receipts and total
-- Plus actual sales tax on big purchases (vehicles, boats, aircraft, home building materials) if using the optional table — these are added on top
-- Local sales tax counted only if levied at the same rate as state, or if the locality conforms to the state base
+- Use the IRS Sales Tax Deduction Calculator (IRS.gov/SalesTax) or the 2025 Optional State and Local Sales Tax Tables with the worksheet in the Schedule A instructions
+- OR keep actual receipts and total (receipts required for this method)
+- If using the tables, add actual sales tax on specified items: motor vehicles (only at the general rate), aircraft or boats (only if taxed at the general rate), and a home or substantial addition/major renovation in the cases the instructions list (worksheet line 7)
+- Local sales tax: the worksheet (lines 2–6) handles it; California and Nevada residents follow the special line 3 rule
 
-**No-income-tax states** (where sales tax often wins): Alaska, Florida, Nevada, South Dakota, Tennessee, Texas, Washington, Wyoming.
+**States with no tax on wages** (where sales tax often wins): Alaska, Florida, Nevada, New Hampshire, South Dakota, Tennessee, Texas, Washington, Wyoming.
 
 **Tax refund recapture rule**: If the user received a state income tax refund in the tax year for a prior year in which they itemized and deducted state income tax, the refund is income on Schedule 1 Line 1 (subject to the tax-benefit rule). Choosing sales tax this year breaks the chain — no refund recapture next year if next year's refund relates to a sales-tax-pick year.
 
@@ -98,7 +105,7 @@ If the closing statement shows the seller paid property tax for the year and was
 
 ### Line 5c — Personal property tax
 
-Value-based portion only. Examples:
+Value-based portion only, imposed on a yearly basis (2025 instructions, line 5c). Examples:
 
 - **Vehicle registration** in states like CA, MA, MN, NV, AZ, where part of the registration fee is value-based ad valorem (the deductible portion). Flat-fee states (e.g., NY) — none deductible.
 - **Boat/aircraft** ad valorem registration
@@ -110,9 +117,9 @@ NOT deductible: flat license-plate fees, title fees, smog/inspection fees, parki
 
 The most common entry is **foreign income tax**, but most filers do better claiming the foreign tax credit on Schedule 3 Line 1 instead of deducting on Line 6. Run both numbers and take the larger benefit.
 
-Other items: certain occupational taxes if mandatory for the privilege of working in a profession (rare in modern practice).
+The only other item the instructions list is generation-skipping transfer (GST) tax imposed on certain income distributions. Enter one total and list the type and amount of each tax.
 
-NOT on Line 6: federal income tax, self-employment tax, FICA on the user's wages, federal excise taxes.
+NOT on Line 6: federal income tax, self-employment tax, FICA on the user's wages, federal excise taxes, foreign real or personal property taxes (not deductible).
 
 ---
 
@@ -131,9 +138,9 @@ The cap is a quirk of personal-itemizer SALT only. Business filers route around 
 
 ## SALT planning around the cap
 
-**Bunching property taxes**: Some jurisdictions allow prepaying next year's property tax in December of the current year. This bunches two years of property tax into one Schedule A, useful if standard deduction would otherwise win. Verify the jurisdiction allows prepayment AND that it's been actually assessed (the IRS disallowed pre-assessment "prepayments" after the original 2017 SALT cap workaround attempts — see IRS notice IR-2017-210).
+**Bunching property taxes**: Some jurisdictions allow prepaying next year's property tax in December of the current year. Only taxes paid in the year and assessed before the next year are deductible ("Only taxes paid in 2025 and assessed prior to 2026 can be deducted for 2025," 2025 instructions, line 5b; IRS news release IR-2017-210). Verify the jurisdiction allows prepayment AND has assessed the tax.
 
-**State PTET (Pass-Through Entity Tax) elections**: 36+ states allow pass-through businesses (S-corps, partnerships) to pay state income tax at the entity level, deducting it as a federal business expense (uncapped) instead of as an SALT itemized deduction (capped). Common workaround for high-income owners — verify state-by-state rules. PTET regimes were broadly preserved by OBBBA.
+**State PTET (Pass-Through Entity Tax) elections**: Many states let partnerships and S corporations pay state income tax at the entity level, where it is deducted as a business expense and not subject to the individual cap (IRS Notice 2020-75). Out of scope for Schedule A; refer the user to a CPA and verify state-by-state rules.
 
 **MFS coordination**: If one spouse itemizes, the other must itemize too (IRC §63(c)(6)(A)). MFS each get half the cap ($20,000 / $20,200). Sometimes splitting deductions across two MFS returns optimizes — usually not, because of bracket compression. Run both.
 
@@ -143,23 +150,25 @@ The cap is a quirk of personal-itemizer SALT only. Business filers route around 
 
 ## Common SALT mistakes
 
-1. **Using the old $10K cap on a 2025/2026 return** — the cap is $40K / $40,400. Confirm the year, then confirm the cap.
+1. **Using the old $10K cap on a 2025/2026 return** — the cap is $40,000 / $40,400. Confirm the year, then confirm the cap.
 2. **Including federal taxes** — federal income tax, federal payroll tax, federal SE tax never go on Schedule A.
 3. **Counting both income AND sales tax on Line 5a** — pick one.
 4. **Deducting special assessments as property tax** — those add to basis, not Line 5b.
 5. **Forgetting prior-year state balance due** — paid in current year, deducts in current year.
 6. **Forgetting state income tax refund recapture** — if last year you itemized + deducted state income tax + received a refund this year, that refund is income on Schedule 1.
-7. **Missing the high-income phaseout** — at MAGI > $500K, the cap shrinks. Compute the phaseout, don't assume the full cap.
+7. **Missing the high-income phase-down** — at MAGI > $500K (2025) / $505K (2026), the cap shrinks. Run the worksheet; don't assume the full cap.
 8. **Treating estimated state tax payments paid AFTER year-end as current year** — January 15 estimate counts on the year it's paid, not the year it's for.
+9. **Indexing the $10,000 floor** — only the cap and the threshold rise after 2025; the floor stays $10,000 ($5,000 MFS).
 
 ---
 
 ## Sources
 
 - [IRC §164](https://www.law.cornell.edu/uscode/text/26/164) — Taxes
-- [IRC §164(b)(6)](https://www.law.cornell.edu/uscode/text/26/164) — SALT cap as enacted by TCJA and amended by OBBBA 2025
+- [IRC §164(b)(6)–(7)](https://www.law.cornell.edu/uscode/text/26/164) — SALT cap as enacted by TCJA and amended by P.L. 119-21 §70120 (applicable limitation amount, threshold, 30% phase-down, $10,000 floor, MAGI definition)
 - [IRS Publication 17](https://www.irs.gov/publications/p17) — Your Federal Income Tax (chapter on itemized deductions)
-- [Schedule A Instructions](https://www.irs.gov/pub/irs-pdf/i1040sca.pdf) — line 5 guidance
-- [IRS Sales Tax Deduction Calculator](https://apps.irs.gov/app/stdc/)
-- [Bipartisan Policy Center — SALT Deduction Changes in OBBBA](https://bipartisanpolicy.org/explainer/salt-deduction-changes-in-the-one-big-beautiful-bill-act/) — accessible summary of the OBBBA SALT amendments
-- One Big Beautiful Bill Act of 2025 — text governing the cap increase, indexing, and high-income phaseout. Verify the public-law citation once enrolled.
+- [Schedule A Instructions (2025)](https://www.irs.gov/pub/irs-pdf/i1040sca.pdf) — lines 5a–5e, State and Local Tax Deduction Worksheet
+- IRS Sales Tax Deduction Calculator — IRS.gov/SalesTax
+- [IR-2017-210](https://www.irs.gov/newsroom/irs-advisory-prepaid-real-property-taxes-may-be-deductible-in-2017-if-assessed-and-paid-in-2017) — prepaid property tax must be assessed in the year paid
+- IRS Notice 2020-75 — entity-level state tax payments by partnerships and S corporations
+- One Big Beautiful Bill Act, P.L. 119-21 (July 4, 2025), §70120 — cap increase, 1% annual increase through 2029, high-income phase-down

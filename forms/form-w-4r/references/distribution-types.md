@@ -1,8 +1,14 @@
 # Distribution types — ERD vs. nonperiodic vs. periodic vs. no-form scenarios
 
-The biggest classification call when filling Form W-4R is determining what kind of distribution is being made. The classification drives the form choice (W-4R vs. W-4P vs. no form at all) and the default withholding rate. Misclassification is the most common reason recipients end up with under-withholding or, conversely, blocked distributions.
+The biggest classification call when filling Form W-4R is determining what kind of payment is being made. The classification drives the form choice (W-4R vs. W-4P vs. W-4 vs. no form at all) and the default withholding rate. Verified 2026-10-06 against the 2026 Form W-4R, Pub. 505 (2026) chapter 1, Pub. 575 (2025), Pub. 590-B (2025) and Pub. 15 (2026).
 
 This reference walks the classifications in detail.
+
+---
+
+## What Form W-4R covers
+
+Form W-4R is for "your nonperiodic payment or eligible rollover distribution from an employer retirement plan, annuity (including a commercial annuity), or individual retirement arrangement (IRA)" (2026 Form W-4R, Purpose of form). Withholding applies only to the taxable part of payments from an employer pension, annuity, profit-sharing or stock bonus plan, any other deferred compensation plan, a traditional IRA, or a commercial annuity (Pub. 575 (2025), "Withholding Tax and Estimated Tax"). It does **not** cover wages, and Pub. 505 (2026) says to use Form W-4 for military retirement pay and payments from certain nonqualified deferred compensation plans.
 
 ---
 
@@ -12,176 +18,145 @@ This reference walks the classifications in detail.
 
 Authority: IRC §3405(a).
 
-Definition: Designated distributions that are an annuity or similar periodic payment, paid in installments at regular intervals over a period of more than one year.
+Definition (form text): "payments made in installments at regular intervals over a period of more than 1 year." Pub. 575 (2025): "amounts paid at regular intervals (such as weekly, monthly, or yearly) for a period of time greater than 1 year (such as for 15 years or for life)."
 
 Examples:
 
 - Monthly pension benefit from a defined benefit plan (lifetime annuity)
-- 10-year, 20-year, life-with-period-certain annuity from a 403(b)
-- Monthly distribution from a qualified retirement plan paid as a defined annuity option
-- 10-year scheduled installments from an inherited IRA
+- 10-year, 20-year, or life-with-period-certain annuity payments from a plan or 403(b)
+- Installment payments from a plan scheduled over more than one year
 
-**Form**: W-4P (NOT W-4R). W-4P is structurally similar to Form W-4 (wages) — uses tables and dependents to set withholding.
+**Form**: W-4P (NOT W-4R). If no W-4P is given, tax is withheld as if Single with no adjustments in Steps 2–4 (Pub. 575 (2025)).
 
-### Category 2 — Eligible Rollover Distributions (ERDs) → Form W-4R, 20% mandatory
+**IRA exception**: "Distributions from an IRA that are payable on demand are treated as nonperiodic payments" (2026 Form W-4R, page 2). Regular withdrawals from an IRA the owner can stop or change at will are W-4R payments.
+
+### Category 2 — Eligible Rollover Distributions (ERDs) → Form W-4R, 20%
 
 Authority: IRC §3405(c) and §402(c).
 
-Definition: A distribution from a qualified plan, 403(b), or 457(b) governmental plan that:
+Definition (form text): "Distributions you receive from qualified retirement plans (for example, 401(k) plans and section 457(b) plans maintained by a governmental employer) or tax-sheltered annuities that are eligible to be rolled over to an IRA or qualified plan are subject to a 20% default rate of withholding on the taxable amount of the distribution."
 
-1. Is paid to the participant (not directly rolled over), AND
-2. Is eligible to be rolled over to an IRA or another qualified plan
+Most lump-sum and partial cash-outs from employer plans paid to the participant are ERDs. IRA distributions are never ERDs for this purpose.
 
-Most lump-sum distributions from employer plans are ERDs.
-
-**Form**: W-4R; minimum withholding 20%.
+**Form**: W-4R; 20% default and floor. Give a W-4R only for more than 20%.
 
 Examples:
 
-- 401(k) lump sum to participant after they leave the company
-- 401(k) partial cash-out to participant
-- Profit-sharing plan distribution to participant
-- 403(b) lump sum to participant
-- 457(b) governmental plan lump sum to participant (NOTE: 457(f) plans and non-governmental 457(b) plans have different rules — see Pub. 575)
+- 401(k) lump sum paid to the participant after leaving the company
+- 401(k) partial cash-out paid to the participant
+- Profit-sharing, money purchase, or ESOP distribution paid in cash to the participant
+- 403(b) lump sum paid to the participant
+- Governmental 457(b) lump sum paid to the participant (non-governmental 457(b) and 457(f) plans have different rules — see Pub. 575 and Pub. 957)
+- Surviving spouse's distribution from a deceased participant's plan, if eligible for rollover
+
+No withholding is required on an ERD paid to the participant if it and earlier ERDs from the same plan that year total less than $200, or if it consists solely of employer securities plus $200 or less of cash; withholding doesn't apply to net unrealized appreciation in employer securities (Pub. 575 (2025), "Withholding requirements").
 
 ### Category 3 — Other Nonperiodic → Form W-4R, 10% default
 
 Authority: IRC §3405(b).
 
-Definition: Distributions that are nonperiodic but NOT ERDs.
+Definition: payments that are not periodic and not ERDs.
 
 Examples:
 
-- Traditional IRA cash withdrawal
-- SEP-IRA cash withdrawal
-- SIMPLE IRA cash withdrawal (after the 2-year holding period; before that, special rules apply)
-- 401(k) hardship withdrawal (excluded from ERD definition)
-- Required minimum distribution (RMD) (excluded from ERD definition)
-- 401(k) corrective distribution (excess deferrals returned)
-- Severance from employer when treated as nonperiodic (not as wages)
-- Lump-sum from a non-qualified deferred compensation plan (in some cases)
-- Non-spouse beneficiary distribution from a retirement account (generally)
+- Traditional, SEP, or SIMPLE IRA cash withdrawal (including IRA distributions payable on demand)
+- Required minimum distribution (RMD) — not an ERD (form; §402(c)(4)(B))
+- 401(k) or 403(b) hardship distribution — not an ERD (form; §402(c)(4)(C))
+- Series of substantially equal payments over life or 10+ years — not an ERD (§402(c)(4)(A); Pub. 575 (2025)), and often periodic (W-4P) if from a plan
+- Corrective distributions of excess contributions or excess deferrals — not ERDs (Pub. 575 (2025))
+- Distributions from a pension-linked emergency savings account, eligible distributions to a domestic abuse victim, qualified disaster recovery distributions, qualified birth or adoption distributions, qualified long-term care distributions, emergency personal expense distributions — listed on the 2026 form as not ERDs for these withholding rules
+- Nonperiodic payment from a commercial annuity
+- Traditional IRA to Roth IRA conversion (reported as a traditional IRA distribution even when done trustee-to-trustee or with the same trustee; Instructions for Forms 1099-R and 5498, "Reporting Roth IRA conversions")
 
-**Form**: W-4R; default withholding 10% (can be 0–100%).
+**Form**: W-4R; default 10% (can be 0–100%, generally not below 10% if delivered outside the U.S. and its territories).
 
 ---
 
 ## "No form needed" scenarios
 
-Some distributions don't require any withholding form:
+### Direct rollover (plan → IRA or plan)
 
-### Direct trustee-to-trustee rollover
+The plan pays the funds directly to another qualified plan or to a traditional or Roth IRA. "There is no withholding" (Pub. 575 (2025), Table 1; IRC §3405(c)(2)). The plan codes Form 1099-R with **code G**. A direct rollover of pre-tax money to a Roth IRA is still not subject to withholding, but the taxable amount is income (no 10% additional tax applies; Pub. 575 (2025), "Rollovers to Roth IRAs").
 
-The funds move directly from one qualified plan / IRA / 403(b) / 457(b) to another. The participant never has constructive receipt. No withholding applies because there's no taxable distribution to the participant.
+The recipient signs the plan's direct-rollover election. No W-4R, no W-4P.
 
-The transferring trustee codes Form 1099-R with **Distribution Code G** (direct rollover). Federal withholding on the 1099-R: $0.
+### IRA-to-IRA trustee-to-trustee transfer
 
-The recipient signs a rollover request form with the transferring custodian (e.g., "direct rollover to receiving IRA at Fidelity"). No W-4R, no W-4P.
+A transfer between IRA trustees is not a distribution or a rollover; it is not reported on Form 1099-R (Pub. 590-B (2025); Instructions for Forms 1099-R and 5498, "Transfers"). No W-4R.
 
-### Roth qualified distribution
+### Roth distribution not includible in income
 
-A "qualified" Roth distribution requires:
+"There will be no withholding on any part of a distribution where it is reasonable to believe that it won't be includible in gross income" (Pub. 575 (2025)). A qualified Roth IRA distribution (5-year period met, counted from January 1 of the year of the first contribution, AND made after age 59½, after death, on account of disability, or for a first home up to $10,000; IRC §408A(d)(2)) is not taxable, so no withholding applies.
 
-1. The Roth account has been open for at least 5 years (counted from January 1 of the year the first contribution was made), AND
-2. Distribution occurs after age 59½, after death, after disability (under §72(m)(7)), or for first-home purchase (up to $10,000 lifetime)
+A nonqualified Roth distribution may have a taxable part (earnings, after contributions and conversions come out first under the ordering rules in Pub. 590-B). Ask the custodian how it withholds; any withholding applies to the taxable part only.
 
-If both conditions are met, the entire distribution is **not taxable** — no withholding applies. W-4R is not needed.
+### Wages, including severance (use Form W-4)
 
-(Roth distributions that are NOT qualified — e.g., earnings withdrawal before age 59½ — have a taxable component (the earnings, after basis is recovered). The taxable component is subject to default 10% withholding under §3405(b); W-4R is needed for the taxable portion.)
+"Severance payments are wages subject to social security and Medicare taxes, federal income tax withholding, and FUTA tax" (Pub. 15 (2026)). Severance pay is a supplemental wage (Pub. 15 (2026), section 7): the employer withholds at the 22% optional flat rate or by aggregating with regular wages (37% mandatory on supplemental wages over $1 million in the year). Form W-4R never applies. Redirect to [`../../form-w4/SKILL.md`](../../form-w4/SKILL.md).
 
-### IRA-to-IRA transfer (not a "rollover")
+Payments from certain nonqualified deferred compensation plans are also wage withholding (Form W-4), per Pub. 505 (2026), chapter 1.
 
-If the participant transfers funds from one IRA custodian to another IRA custodian (e.g., move from Fidelity Traditional IRA to Schwab Traditional IRA), this is a **trustee-to-trustee transfer**, not a "rollover" in the IRS sense. No 1099-R is issued. No W-4R needed. The funds simply move between custodians.
+### Nonresident aliens and foreign estates
 
-### Wages (use Form W-4)
-
-If the payment is wages from an employer (regular salary, bonus, commission, severance treated as wages), the form is **W-4** (the wage withholding form), not W-4R. Most severance is treated as wages by the employer.
+"Do not use Form W-4R. See Pub. 515... and Pub. 519" (2026 Form W-4R, page 2). A U.S. citizen or resident who gives no U.S. or territory home address can't elect out of withholding; a payee who certifies non-U.S. status may be subject to 30% nonresident withholding unless a treaty reduces it (Pub. 575 (2025)).
 
 ---
 
 ## Classification edge cases
 
-### Severance: wages or nonperiodic?
-
-Severance can be either, depending on the substance:
-
-**Wages (W-4 applies)**:
-- Tied to past services rendered
-- Subject to FICA / FUTA in addition to income tax
-- Paid through payroll
-- Reported on Form W-2
-
-**Nonperiodic distribution (W-4R applies)**:
-- Lump sum after separation, distinct from regular pay
-- Not subject to FICA / FUTA in some cases (rare; usually FICA still applies)
-- Paid as a one-time check, not through regular payroll
-- Reported on Form 1099-R or Form W-2 depending on employer treatment
-
-**Most employers treat severance as wages.** This is the default and usually the right answer. The recipient should ask HR which form applies before electing.
-
 ### 401(k) lump sum vs. IRA cash withdrawal
-
-Both are common; the rules differ:
 
 | Aspect | 401(k) lump sum to participant | IRA cash withdrawal |
 |--------|--------------------------------|---------------------|
 | Type | Eligible rollover distribution | Other nonperiodic |
-| Withholding | 20% mandatory minimum | 10% default; 0% allowed |
-| Rollover within 60 days | Allowed (but loses the 20% withheld unless made whole) | Allowed (one rollover per 12 months across all IRAs) |
-| Form 1099-R distribution code | Code 1 (early), 2 (early w/exception), or 7 (normal) | Code 1, 2, or 7 |
-| Direct rollover available | Yes (use Code G — bypass withholding) | Trustee-to-trustee transfer (not technically "rollover" — no 1099-R) |
-
-The big difference: 401(k) lump sums to participant trigger the 20% mandatory withholding. IRA withdrawals do not — the recipient can opt out (0% withholding) and pay tax via Form 1040.
+| Withholding | 20% default and floor | 10% default; 0% allowed (U.S. address) |
+| 60-day rollover | Allowed; replace the 20% withheld from other funds to roll over the full amount | Allowed; one IRA-to-IRA rollover per 12 months (Pub. 590-B) |
+| Form 1099-R code | 1 (early, no known exception), 2 (early, exception), or 7 (normal) | 1, 2, or 7 |
+| Moving money without withholding | Direct rollover (code G) | Trustee-to-trustee transfer (not reported) |
 
 ### Hardship withdrawal vs. regular withdrawal from 401(k)
 
-- **Hardship withdrawal**: NOT an ERD (IRC §402(c)(4)(C)). 10% default withholding under §3405(b). Cannot be rolled over.
-- **Regular post-separation 401(k) lump sum**: IS an ERD. 20% mandatory withholding. Rollable.
-
-If the participant is still employed and takes a hardship, classification = nonperiodic. If the participant has separated and takes a lump sum, classification = ERD.
+- **Hardship distribution**: NOT an ERD (IRC §402(c)(4)(C); form list). 10% default under §3405(b). Cannot be rolled over. Hardship is not a §72(t) exception.
+- **Post-separation 401(k) lump sum**: an ERD. 20% withholding unless directly rolled over.
 
 ### RMD treatment
 
-Required Minimum Distributions (RMDs) under IRC §401(a)(9) are explicitly excluded from ERD definition (§402(c)(4)(B)). RMDs are "other nonperiodic" — 10% default withholding under §3405(b).
+RMDs under IRC §401(a)(9) are excluded from the ERD definition (§402(c)(4)(B); the form calls them "Distributions required by federal law"). They are other nonperiodic (10% default) unless paid as periodic installments (W-4P). IRA owners must begin RMDs by the required beginning date based on age 73 (Pub. 590-B (2025)).
 
-For Traditional IRA RMDs, custodians typically apply 10% by default unless the participant elects otherwise via W-4R.
+If a participant takes an RMD and a larger distribution from the same plan in one year, the RMD part is not an ERD and the excess is. Ask the plan how it applies the W-4R rate to each part; a rate of 20% or more satisfies both.
 
-For a participant taking BOTH an RMD and a larger distribution from the same 401(k) plan in the same year, the RMD portion is "other nonperiodic" (10% default) and the excess over the RMD is the ERD portion (20% mandatory). The payor often blends the rates — the W-4R can specify a single rate that satisfies both.
+### Substantially equal periodic payments (§72(t)(2)(A)(iv))
 
-### SEPP — substantially equal periodic payments under §72(t)(2)(A)(iv)
+From an IRA payable on demand: nonperiodic (form rule) → W-4R. From an employer plan as scheduled installments over more than one year: periodic → W-4P. Either way, not an ERD. Confirm with the payer.
 
-If the recipient is under 59½ and wants to avoid the 10% §72(t) penalty by taking SEPP — a series of substantially equal payments computed under one of the IRS-approved methods (RMD method, fixed amortization, fixed annuitization) — the payments are typically treated as **periodic** for withholding purposes (since they span more than one year). Form W-4P, not W-4R.
+### Inherited IRA / inherited plan distributions
 
-If the SEPP is structured as annual lump sums for, say, 5 years, classification depends on the arrangement and the payor's interpretation. Consult the payor.
-
-### Inherited IRA / inherited 401(k) distributions
-
-Distributions to a non-spouse beneficiary from an inherited IRA / 401(k) are generally **not ERDs** — they are nonperiodic.
-
-Exception: Spousal beneficiary can elect to roll over the deceased spouse's qualified plan to their own IRA — this is treated as an ERD (20% mandatory unless direct rollover).
-
-For inherited Traditional IRAs, a non-spouse beneficiary takes RMDs (under §401(a)(9)) — these are nonperiodic, 10% default.
+A surviving spouse can roll over a deceased spouse's plan distribution; it is an ERD if eligible for rollover. A non-spouse beneficiary can move plan money to an inherited IRA only by direct rollover; ask the plan how it withholds on amounts paid to a non-spouse beneficiary. Inherited IRA withdrawals (payable on demand) are other nonperiodic, 10% default.
 
 ---
 
 ## Decision tree summary
 
 ```
-Is the distribution from a Roth account, qualified?
-  → No taxable component. No W-4R / W-4P.
+Is it wages, a bonus, or severance pay?
+  → Form W-4 (wage withholding). Not W-4R.
 
-Is the distribution a direct trustee-to-trustee rollover (Code G)?
+Is the payee a nonresident alien or a foreign estate?
+  → Not W-4R (Pub. 515 / Pub. 519).
+
+Is it a direct rollover (plan → IRA/plan) or an IRA trustee-to-trustee transfer?
   → No withholding. No W-4R / W-4P.
 
-Is the distribution wages (severance treated as wages)?
-  → Form W-4 (regular wage withholding).
+Is it reasonable to believe none of it is taxable (e.g., qualified Roth distribution)?
+  → No withholding. No W-4R.
 
-Is the distribution paid in periodic installments scheduled for more than one year?
+Is it paid in installments at regular intervals over more than 1 year (and not an IRA payable on demand)?
   → Form W-4P. Periodic withholding.
 
-Is the distribution a one-time / nonperiodic payment from a retirement account?
-  → Is it an ERD (lump sum from qualified plan, 403(b), 457(b) governmental)?
-      → Yes: Form W-4R, 20% mandatory minimum. Direct rollover available to bypass.
+Otherwise it is nonperiodic:
+  → Is it an ERD (from a qualified plan, 403(b), or governmental 457(b), eligible for rollover,
+     and not on the form's non-ERD list)?
+      → Yes: Form W-4R, 20% default and floor; direct rollover avoids withholding.
       → No (IRA withdrawal, hardship, RMD, etc.): Form W-4R, 10% default, 0–100% allowed.
 ```
 
@@ -189,11 +164,12 @@ Is the distribution a one-time / nonperiodic payment from a retirement account?
 
 ## Verification checklist before signing W-4R
 
-- [ ] Distribution type confirmed (ERD vs. other nonperiodic vs. periodic)
+- [ ] Payment type confirmed (ERD vs. other nonperiodic vs. periodic vs. wages)
 - [ ] If periodic: wrong form — switch to W-4P
-- [ ] If direct rollover: no form needed — confirm with payor
-- [ ] If Roth qualified: no form needed — confirm with custodian
+- [ ] If wages or severance: wrong form — Form W-4
+- [ ] If direct rollover or transfer: no form needed — confirm with payer
+- [ ] If Roth: confirm with custodian whether any part is taxable
 - [ ] If ERD: rate ≥ 20%
-- [ ] If other nonperiodic: rate 0–100
-- [ ] Not under 59½ (if so, also factor §72(t) 10% penalty paid separately)
-- [ ] State withholding handled separately (state form, not W-4R)
+- [ ] If other nonperiodic: rate 0–100 (10–100 if delivered outside the U.S.)
+- [ ] Under 59½? Factor the §72(t) 10% additional tax (not in the default rates)
+- [ ] State withholding handled separately (payer's state election)

@@ -1,6 +1,6 @@
 # Top 10 W-4 Mistakes
 
-The IRS estimates roughly 20% of W-4s are filled out incorrectly enough to cause a tax-time surprise (refund > $2,000 or balance due > $1,000). These are the most common mistakes the agent should watch for.
+The most common W-4 mistakes the agent should watch for. Rules verified 2026-10-06 against the 2026 Form W-4, Pub. 15 (2026), Pub. 15-T (2026) and Pub. 505 (2026).
 
 ## 1. Never updating after a life change
 
@@ -8,7 +8,7 @@ The IRS estimates roughly 20% of W-4s are filled out incorrectly enough to cause
 
 **Impact:** Wildly under- or over-withheld depending on direction of the life changes. Common to be off by $5,000+ annually.
 
-**Fix:** Submit a new W-4 within 30 days of any life event. Set a calendar reminder for January 15 each year to verify the W-4 still matches the current household.
+**Fix:** Submit a new W-4 when the household changes. It is required within 10 days when a change reduces the withholding the user is entitled to (e.g., filing status changes from MFJ to Single, an expected Child Tax Credit is lost, credits drop by more than $500, deductions drop by more than $2,300) (Pub. 505 (2026), chapter 1). Recheck with the Estimator at the start of each year (2026 Form W-4, page 1 TIP).
 
 **Trigger events for a new W-4:**
 - Marriage, divorce, legal separation
@@ -20,19 +20,19 @@ The IRS estimates roughly 20% of W-4s are filled out incorrectly enough to cause
 - Significant raise (changes which bracket the household sits in)
 - Buy a house (potential Schedule A itemizing)
 
-**Citation:** IRC §3402(f)(2) — employee must provide accurate W-4 information.
+**Citation:** IRC §3402(f)(2) (furnishing a new certificate after a change in status); Pub. 505 (2026), chapter 1.
 
 ---
 
 ## 2. Both spouses claim dependents on Step 3
 
-**Mistake:** Marcus claims $4,000 (2 kids × $2,000) on his W-4 Step 3. Jenna also claims $4,000 on hers. Combined household withholding is reduced by $8,000, but only $4,000 of CTC actually exists.
+**Mistake:** Marcus claims $4,400 (2 kids × $2,200) on his W-4 Step 3. Jenna also claims $4,400 on hers. Combined household withholding is reduced by $8,800, but only $4,400 of CTC actually exists.
 
-**Impact:** Under-withholding by $4,000 → tax bill plus underpayment penalty (~4-8% annualized).
+**Impact:** Under-withholding by $4,400 → tax bill plus underpayment penalty (interest at the IRC §6621 underpayment rate on each late installment).
 
-**Fix:** Only the highest-paying spouse claims dependents on Step 3. The other spouse leaves Step 3 blank. The form instructions are explicit: "If your total income will be ≤ $400,000 (MFJ)…"
+**Fix:** Only one W-4 carries Step 3 — the highest-paying job's for best accuracy. The other spouse leaves Step 3 blank. The form is explicit: "Complete Steps 3–4(b) on Form W-4 for only ONE of these jobs."
 
-**Citation:** Form W-4 Instructions, Step 3 ("If your total income will be…"). IRC §24(a) — CTC is per child, not per parent.
+**Citation:** 2026 Form W-4, Step 2 note and page 2 "Multiple jobs" caution. IRC §24(a) — CTC is per child, not per parent.
 
 ---
 
@@ -40,11 +40,11 @@ The IRS estimates roughly 20% of W-4s are filled out incorrectly enough to cause
 
 **Mistake:** User has two jobs at $40K each. Each W-4 claims "Single, no other income." Each employer withholds as if $40K is the only income.
 
-**Impact:** $40K + $40K = $80K combined, taxed in higher brackets than $40K. Without Step 2, under-withheld by $2,000-$3,500.
+**Impact:** $40K + $40K = $80K combined, taxed in higher brackets than $40K. Pub. 15-T (2026) withholding on each job: $2,620, total $5,240; 2026 tax on $80,000 single (taxable $63,900): $8,770. Under-withheld by about $3,530. The 2026 Single table (page 5, row $40,000–59,999, column $40,000–49,999) calls for $6,080 of extra withholding because it uses $10,000 bands.
 
-**Fix:** Use Step 2 method (a) IRS Tax Withholding Estimator (recommended), (b) Multiple Jobs Worksheet, or (c) Step 2(c) box if jobs pay similarly. Apply result to Step 4(c) of the higher-paying job's W-4.
+**Fix:** Use Step 2 option (a) IRS Tax Withholding Estimator (most accurate), (b) Multiple Jobs Worksheet → Step 4(c) of the highest-paying job's W-4, or (c) the Step 2(c) box on both W-4s (two equal jobs: the form says (c) is generally more accurate than (b) when the lower pay is more than half the higher pay).
 
-**Citation:** IRC §3402(f)(2)(A) — withholding must reflect "actual withholding allowance" given household structure. See [`multi-job.md`](./multi-job.md).
+**Citation:** 2026 Form W-4, Step 2 and page 2. See [`multi-job.md`](./multi-job.md).
 
 ---
 
@@ -65,13 +65,13 @@ The IRS estimates roughly 20% of W-4s are filled out incorrectly enough to cause
 
 ---
 
-## 5. Side-gig income missing from Step 4(a)
+## 5. Side-gig income left out of withholding (or put on Step 4(a))
 
-**Mistake:** User has a $20,000/year side gig but doesn't mention it on the W-4. Employer only withholds based on the W-2 wage.
+**Mistake:** User has a $20,000/year side gig and neither adjusts the W-4 nor pays estimated tax. Or the user enters the side-gig profit on Step 4(a), which the 2026 form says not to do ("You shouldn't include income from any jobs or self-employment").
 
-**Impact:** Federal income tax on $20K (~$2,400-$5,000) plus 15.3% SE tax (~$2,826) goes uncollected → $5,000-$8,000 tax bill plus underpayment penalty.
+**Impact:** Federal income tax on $20K (roughly $2,400 at 12% to $4,800 at 24%) plus SE tax ($20,000 × 0.9235 × 15.3% = $2,826) goes uncollected → a tax bill plus underpayment penalty. Step 4(a) would at best cover the income tax, never the SE tax.
 
-**Fix:** Either enter the $20K on Step 4(a) AND add a Step 4(c) amount for SE tax, OR set up quarterly Form 1040-ES payments. See [`side-income.md`](./side-income.md).
+**Fix:** Either use the IRS Tax Withholding Estimator (the form's instruction for self-employment income) and enter its result in Step 4(c), OR set up quarterly Form 1040-ES payments. See [`side-income.md`](./side-income.md).
 
 **Citation:** IRC §6654 — estimated tax payment requirement. IRC §1401 — self-employment tax.
 
@@ -83,12 +83,12 @@ The IRS estimates roughly 20% of W-4s are filled out incorrectly enough to cause
 
 **Impact:**
 - Tax bill in April plus underpayment penalty
-- IRS can require employer to apply "lock-in letter" — highest withholding rate (single, no adjustments) — for the rest of the year, possibly into next year
-- For egregious cases, civil penalty under IRC §6682 ($500 per false W-4 statement) or fraud referral
+- IRS can issue a "lock-in letter" that tells the employer which filing status and maximum withholding to use; the employer must follow it until the IRS releases it (Pub. 15 (2026), section 9; Pub. 505 (2026), chapter 1)
+- Civil penalty of $500 for a W-4 statement with no reasonable basis that decreases withholding (IRC §6682), plus possible criminal penalties
 
 **Fix:** Don't fabricate dependents. If withholding is too high relative to income, lower Step 4(c), claim only LEGITIMATE Step 3 amounts, ensure filing status is correct.
 
-**Citation:** IRC §3402(f)(2)(B) — accuracy required. IRC §6682 — civil penalty for false withholding statement.
+**Citation:** Form W-4 jurat (signed under penalties of perjury). IRC §6682 — civil penalty for false withholding statement.
 
 ---
 
@@ -96,7 +96,7 @@ The IRS estimates roughly 20% of W-4s are filled out incorrectly enough to cause
 
 **Mistake:** A married user claims HoH on Step 1(c) because it has a higher standard deduction. Or a single user claims HoH without a qualifying person.
 
-**Impact:** Tax return gets reclassified to correct status (Single or MFS), often years later via CP2000 notice. Tax bill plus interest and penalties.
+**Impact:** On examination the return is moved to the correct status (Single or MFS). Tax bill plus interest and penalties.
 
 **Fix:** HoH requires ALL THREE:
 1. Unmarried (or "considered unmarried" — separated 6+ months)
@@ -111,11 +111,11 @@ The IRS estimates roughly 20% of W-4s are filled out incorrectly enough to cause
 
 **Mistake:** User completes all five steps but forgets to sign Step 5.
 
-**Impact:** Form is INVALID. Employer must withhold at the highest rate (single, no adjustments, no dependents) per IRC §3402(f)(2)(B).
+**Impact:** "This form is not valid unless you sign it" (2026 Form W-4, Step 5). The employer keeps using the employee's earlier valid W-4; if there is none, it withholds as if the employee checked Single or Married filing separately with no entries in Steps 2, 3, or 4 (Pub. 15 (2026), section 9).
 
-**Fix:** Always sign and date. For electronic submission, click through the e-signature flow.
+**Fix:** Always sign and date. For electronic submission, click through the e-signature flow (the employer's electronic system must meet Treas. Reg. §31.3402(f)(5)-1(c)).
 
-**Citation:** IRC §3402(f)(2)(B); Treas. Reg. §31.3402(f)(5)-1.
+**Citation:** 2026 Form W-4, Step 5; Pub. 15 (2026), section 9; Treas. Reg. §31.3402(f)(5)-1.
 
 ---
 
@@ -127,7 +127,7 @@ The IRS estimates roughly 20% of W-4s are filled out incorrectly enough to cause
 
 **Fix:** When updating the federal W-4, also update the state form. Many payroll platforms (Workday, Gusto) prompt for both at the same time. Paper requires two separate forms.
 
-**Citation:** State-specific (CA Rev. & Tax. Code §§13020-13088, NY Tax Law §671, etc.)
+**Citation:** State-specific; check the state revenue agency's withholding form instructions (e.g., California Form DE 4, New York Form IT-2104).
 
 ---
 
@@ -139,7 +139,7 @@ The IRS estimates roughly 20% of W-4s are filled out incorrectly enough to cause
 
 **Fix:** Set Step 4(c) to the precise amount needed (from Estimator or Worksheet). If you want a slight buffer, add $20-50/check, not $200-300. If you want forced savings, use a savings account, not the IRS.
 
-**Citation:** Behavioral, not legal. But see Pub 505 ("Don't have too much withheld").
+**Citation:** Behavioral, not legal. Pub. 505 (2026), chapter 1: "If too much tax is withheld, you will lose the use of that money until you get your refund."
 
 ---
 
@@ -155,29 +155,29 @@ The IRS estimates roughly 20% of W-4s are filled out incorrectly enough to cause
 
 - Filing status: Single (or HoH if qualifying person lives with you >half year)
 - Coordinate dependent claims with ex-spouse (Form 8332 if non-custodial parent claims)
-- Update beneficiary designations and W-4 within 30 days of the divorce decree
+- Filing status change from MFJ to Single or HoH: new W-4 within 10 days if withholding for the rest of the year would fall short; if it only affects next year, a new W-4 by December 1 (Pub. 505 (2026), chapter 1). Update beneficiary designations too
 
 ### New baby
 
-- Newborn = qualifying child for full year if born by Dec 31
-- SSN must be obtained — apply at the hospital or ASAP after birth
-- Add $2,000 to Step 3 on next paycheck (not the next year)
+- A child born during the year is treated as living with you more than half the year if your home was the child's home for more than half the time the child was alive (Pub. 501)
+- SSN valid for employment must be obtained by the return due date — apply at the hospital or ASAP after birth
+- Add $2,200 to Step 3 on a new W-4 now (not next year)
 
 ### Child turns 17
 
-- Lose CTC for that child → reduce Step 3 by $2,000
-- May still qualify for $500 ODC → add $500 to Step 3 (net change: -$1,500)
-- Update W-4 in January of the year the child will turn 17
+- Lose CTC for that child → reduce Step 3 by $2,200
+- May still qualify for $500 ODC → add $500 to Step 3 (net change: -$1,700)
+- Update W-4 in January of the year the child will turn 17 (losing an expected CTC triggers the 10-day rule in Pub. 505 (2026), chapter 1)
 
 ### Spouse starts working (MFJ)
 
 - Both jobs need Step 2 coordination
 - Run Estimator to compute new Step 4(c) on higher-paying job
-- Lower-paying spouse files W-4 with only Steps 1 + 5
+- Lower-paying spouse files W-4 with Steps 2 through 4(b) blank (or Step 2(c) checked if both W-4s use the checkbox)
 
 ### Big bonus / equity vest
 
-- Bonuses use 22% supplemental rate for amounts ≤ $1M (38.6% above $1M)
+- Bonuses can be withheld at the 22% optional flat rate; supplemental wages over $1 million in the year are withheld at a mandatory 37% (Pub. 15 (2026), section 7)
 - For taxpayers in 22% bracket, supplemental rate matches → no adjustment needed
 - For taxpayers in 24%+ bracket, supplemental rate under-withholds → add Step 4(c) to bridge the gap, OR pay extra via 1040-ES
-- For RSU vests with single-trigger withholding, often the default 22% under-withholds dramatically — talk to a CPA
+- For RSU vests withheld at the 22% flat rate, high earners often end up under-withheld — refer large equity situations to a CPA

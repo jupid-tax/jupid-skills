@@ -7,14 +7,14 @@ When the reconciliation between Form 5498-SA and Form 8889 fails, this diagnosis
 ## The reconciliation formula
 
 ```
-Form 8889 Line 2 (direct) + Form 8889 Line 9 (employer/cafeteria)
+Form 8889 Line 2 (direct) + Line 9 (employer/cafeteria) + Line 10 (IRA funding distribution)
   =
-Form 5498-SA Box 2 (current year's form)
-  + Box 3 from next year's 5498-SA (prior-year-designated contributions made Jan–Apr after tax year)
-  − Box 3 from current year's 5498-SA (prior-year-designated contributions made for the prior tax year, already counted on prior year's Form 8889)
+Box 2 of this year's 5498-SA (all money received this calendar year)
+  − Box 3 of LAST year's 5498-SA (money received this year but designated for last year)
+  + Box 3 of THIS year's 5498-SA (money received Jan 1–Apr 15 of next year, designated for this year)
 ```
 
-In most cases, only the first term on the right side matters. The Box 3 corrections apply only when the filer made prior-year-designated contributions.
+In most cases, only the first term on the right side matters. The Box 3 corrections apply only when the filer made prior-year-designated contributions (2025 Instructions for Forms 1099-SA and 5498-SA, Boxes 2 and 3). Line 9 can also differ from W-2 code W when the Employer Contribution Worksheet moves employer money between years (2025 Instructions for Form 8889, Line 9).
 
 ---
 
@@ -22,7 +22,7 @@ In most cases, only the first term on the right side matters. The Box 3 correcti
 
 ### Cause 1 (most common): Prior-year contribution timing
 
-**Symptom:** The user reports an amount on Form 8889 Line 2 that is higher than 5498-SA Box 2 by exactly the amount of a contribution they remember making in January, February, or March.
+**Symptom:** The user reports an amount on Form 8889 Line 2 that is higher than 5498-SA Box 2 by exactly the amount of a contribution they remember making in January, February, or March of the next year — or this year's Box 2 is higher than expected by a contribution made early this year for last year.
 
 **Diagnosis:**
 
@@ -31,9 +31,9 @@ Did you make a contribution between January 1 and April 15 of the year following
 and tell the custodian it was for the prior tax year?
 ```
 
-If yes, that contribution lands on the **next year's** 5498-SA Box 3, not the current year's Box 2. Pull the next year's 5498-SA (which will arrive in May of the following year) to confirm.
+If yes, that contribution appears in **Box 3 of the same tax year's 5498-SA** (and later in the next year's Box 2). Read Box 3 on the form in hand.
 
-**Action:** Wait for the next year's 5498-SA. When it arrives, verify Box 3 contains the prior-year designation. No amendment needed — Form 8889 was correct.
+**Action:** Confirm Box 3 shows the designated amount. If it does, no amendment is needed — Form 8889 was correct. If Box 3 is $0 but the custodian's history shows the designation, ask the custodian for a corrected 5498-SA. Next year, subtract this Box 3 from next year's Box 2.
 
 **Note:** This cause causes more reconciliation panic than any other. Always check it first.
 
@@ -53,7 +53,7 @@ If yes, the contribution likely lands on the **next year's** Box 2 (calendar yea
 
 **Action:**
 
-- If the user wants the contribution to count for the original tax year, contact the custodian and ask them to recharacterize it as a prior-year contribution. This must be done before April 15 of the year after the tax year (or the extended deadline).
+- If the user wants the contribution to count for the original tax year, contact the custodian and ask them to record it as a prior-year contribution. The designation is only possible for a contribution made by April 15 of the year after the tax year (not the extended deadline); custodian policies on changing a designation vary.
 - If recharacterization isn't possible, amend Form 8889 to remove the contribution from Line 2; the contribution will count for the next tax year automatically.
 
 ---
@@ -77,7 +77,7 @@ If yes, the contribution likely lands on the **next year's** Box 2 (calendar yea
 
 **Action:** Contact custodian. Provide bank records. Custodian issues **CORRECTED 5498-SA** with corrected boxes; the IRS receives a corrected copy automatically. No 1040-X needed if the custodian's correction matches what was originally reported on Form 8889.
 
-**Timeline:** Custodian corrections typically take 2-6 weeks. If the user is approaching the statute of limitations on Form 8889 amendment (3 years from filing), don't delay.
+**Timeline:** Custodian turnaround varies. If the user is approaching the refund statute of limitations for an amendment (3 years from filing or 2 years from payment, IRC §6511), don't delay.
 
 ---
 
@@ -112,7 +112,7 @@ The user reported the wrong amount on Form 8889 Line 2 or Line 9. Either:
 
 - Under-reported (claimed less deduction than entitled) → easy fix; refund coming
 - Over-reported (claimed more deduction than entitled) → file 1040-X to repay tax + interest
-- Excess contribution (Box 2 > annual limit) → withdraw excess plus earnings before extended deadline OR pay 6% excise tax on Form 5329
+- Excess contribution (contributions for the year > annual limit) → withdraw excess plus earnings by the due date including extensions OR pay 6% excise tax on Form 5329
 
 **Action:** File Form 1040-X with corrected Form 8889. See [filing.md](../filing.md) for the workflow.
 
@@ -122,13 +122,10 @@ The user reported the wrong amount on Form 8889 Line 2 or Line 9. Either:
 
 **Symptom:** The user has an HSA but never received a 5498-SA.
 
-**Diagnosis:** Custodians are required to issue Form 5498-SA by May 31 if:
+**Diagnosis:** Custodians file Form 5498-SA for each person for whom they maintained an HSA during the year, due May 31 (June 1, 2026 for 2025 forms) (2025 Instructions for Forms 1099-SA and 5498-SA):
 
-- The account had a balance on December 31 (regardless of contribution activity), OR
-- Contributions were made during the tax year, OR
-- A rollover or qualified HSA funding distribution occurred
-
-If none of those apply (e.g., account closed mid-year with $0 balance and no contributions), no 5498-SA is required.
+- If the account was open at year-end, the form is filed even with no contributions (to report the December 31 FMV); the participant may get only a January 31 FMV statement instead of a separate 5498-SA when no contributions or rollovers were made
+- If the account was fully distributed during the year and no contributions were made for that year, no 5498-SA is needed
 
 **Action:**
 

@@ -13,12 +13,12 @@ A complete walkthrough of issuing Form 1099-MISC Box 1 for $14,400 paid to an in
 ## The landlord (payee)
 
 - **Name**: Helena Boucher (individual, owns the office building personally)
-- **W-9 status**: returned January 12, 2026 (before lease started):
+- **W-9 status** (Form W-9 Rev. March 2024): returned January 12, 2026 (before lease started):
   - Line 1: Helena Boucher
   - Line 2: blank (no DBA)
-  - Line 3: Individual / sole proprietor or single-member LLC
-  - Line 4: SSN 058-XX-XXXX
-  - Line 5: 412 Pearl St, Burlington, VT 05401
+  - Line 3a: Individual/sole proprietor
+  - Lines 5–6: 412 Pearl St, Burlington, VT 05401
+  - Part I: SSN 058-XX-XXXX
   - Part II: certified, not subject to backup withholding
 - **TIN matching**: payer ran TIN match on January 13, 2026; matched.
 
@@ -31,11 +31,11 @@ A complete walkthrough of issuing Form 1099-MISC Box 1 for $14,400 paid to an in
 
 ## Decision: 1099-MISC Box 1 required?
 
-**Threshold**: $600 for Box 1 rent (current verification — OBBBA's $2,000 raise applies to §6041A nonemployee compensation per IRS guidance; not yet confirmed for §6041 rent payments. Default to $600 unless IRS issues new guidance).
+**Threshold**: $2,000 for Box 1 rent paid in 2026 (P.L. 119-21 §70433; Instructions for Forms 1099-MISC and 1099-NEC, Rev. December 2026, Box 1). It was $600 for 2025 payments.
 
-$14,400 ≥ $600 → **threshold met**.
+$14,400 ≥ $2,000 → **threshold met**.
 
-**Entity classification**: Helena is an individual (W-9 Line 3) → not a corporation → **subject to 1099-MISC Box 1**.
+**Entity classification**: Helena is an individual (W-9 Line 3a) → not a corporation → **subject to 1099-MISC Box 1**.
 
 **Payment channel**: paid by check, no third-party payment network → **payer issues 1099-MISC**.
 
@@ -46,6 +46,8 @@ $14,400 ≥ $600 → **threshold met**.
 ## The completed 1099-MISC
 
 ```
+FORM 1099-MISC (Rev. December 2026), calendar year 2026
+
 PAYER: Cedar & Cloth Apparel LLC
   EIN: 84-2901XXX
   38 Mill St
@@ -68,17 +70,18 @@ Box 7 — Direct sales ≥$5,000:             ☐
 Box 8 — Substitute payments:              $0
 Box 9 — Crop insurance:                   $0
 Box 10 — Gross proceeds to attorney:      $0
-(Boxes 12-15 left blank or $0)
+Box 11 — Fish purchased for resale:       $0
+(Boxes 12, 13a, 13b, 14, 15 left blank; FATCA box unchecked)
 Box 16 — State tax withheld:              $0
-Box 17 — State / Payer's state no.:       VT / 84-2901XXX
+Box 17 — State / Payer's state no.:       VT / <Vermont-assigned payer ID, not the EIN>
 Box 18 — State income:                    $14,400
 ```
 
 ## Filing checklist
 
-- [x] Recipient Copy B mailed to Helena by **February 1, 2027** (postmarked January 28, 2027)
-- [x] Copy A filed with IRS via IRIS by **March 31, 2027** (electronic deadline; well before paper Feb 28 deadline since IRIS is e-filing)
-- [x] State copy: VT is a CF/SF participant; IRIS forwarded to VT Department of Taxes automatically
+- [x] Recipient Copy B mailed to Helena by **February 1, 2027** (January 31 is a Sunday; postmarked January 28, 2027)
+- [x] Copy A filed with IRS via IRIS by **March 31, 2027** (electronic deadline; the paper deadline would be March 1, 2027 because February 28 is a Sunday)
+- [x] State copy: ask whether Vermont needs a direct filing; check tax.vermont.gov (1099 e-filing specifications) instead of assuming IRIS CF/SF forwarding covers it
 - [x] Records retained: signed W-9, TIN match confirmation, lease agreement, rent payment ledger, copies of canceled checks, 1099-MISC, IRIS submission ID
 - [x] No Form 945 needed (no backup withholding)
 
@@ -87,7 +90,7 @@ Box 18 — State income:                    $14,400
 Helena is an individual landlord — **not a real estate dealer, no substantial services**. Her rental activity is passive rental real estate.
 
 She reports on **Schedule E Part I**:
-- Property A (1 column): "Office Building, 38 Mill St, Burlington VT"
+- Property A (1 column): line 1a "38 Mill St, Burlington, VT 05401"; line 1b type 4 (Commercial)
 - Line 3 (Rents received): $14,400
 - Lines 5-19 (expenses): mortgage interest, property tax, insurance, utilities (if she pays), repairs, depreciation
 - Line 21: net rental income or loss
@@ -95,17 +98,17 @@ She reports on **Schedule E Part I**:
 
 If Helena has multiple rental properties, each gets its own column (A, B, C) in Schedule E Part I.
 
-**Why not Schedule C?** Helena is a passive landlord (she holds the property as an investment, doesn't provide substantial services like daily housekeeping). Per Reg. §1.469-1T(e)(3), rental of real estate is a passive activity unless specific exceptions apply. Schedule C is for real estate dealers (flippers) or hotel-style operations, not passive landlords.
+**Why not Schedule C?** Helena holds the property as an investment and doesn't provide significant services to the tenant. Copy B, Box 1: report rents from real estate on Schedule E unless you provided significant services to the tenant, sold real estate as a business, or rented personal property as a business. Rental activity is generally passive (IRC §469(c)(2)) unless an exception applies.
 
 ## Why each non-obvious choice
 
 **Why is this Box 1 (rent) and not 1099-NEC (services)?** Helena is renting property to Cedar & Cloth, not providing services. The payment is for property use, not for personal services.
 
-**What if Helena's office building were owned by an LLC taxed as S-corp?** Then the corporate exemption (Reg. §1.6041-3(c)) would apply to Box 1, and Cedar & Cloth would NOT issue 1099-MISC. Verify entity type from W-9 every year — landlords sometimes change their entity election.
+**What if Helena's office building were owned by an LLC taxed as S-corp?** Then the corporate exemption (Reg. §1.6041-3(p)(1)) would apply to Box 1, and Cedar & Cloth would NOT issue 1099-MISC. Verify entity type from W-9 every year — landlords sometimes change their entity election.
 
-**What if Cedar & Cloth paid Helena via Stripe?** Then Stripe issues 1099-K to Helena, and Cedar & Cloth does NOT issue 1099-MISC for the same payments (anti-double-reporting).
+**What if Cedar & Cloth paid Helena by card or through a payment app?** Those payments are reported on Form 1099-K by the payment settlement entity, not on 1099-MISC (Instructions, "Form 1099-K"), so Cedar & Cloth leaves them off its 1099-MISC whether or not a 1099-K is actually issued.
 
-**What if Cedar & Cloth used a property management company that collects rent and remits to Helena?** The PMC is the entity that files 1099-MISC to Helena (the principal). Cedar & Cloth does NOT file 1099-MISC to the PMC (because the PMC isn't earning the rental income; the PMC is a conduit). Cedar & Cloth's payment to the PMC is not 1099-MISC reportable for rent purposes (the PMC's services to Cedar & Cloth might be 1099-NEC reportable separately, depending on entity status).
+**What if Cedar & Cloth used a property management company that collects rent and remits to Helena?** Rent paid to a real estate agent or property manager is not reportable by the tenant; the manager reports the rent paid over to Helena on 1099-MISC (Reg. §1.6041-3(d); Instructions, Box 1).
 
 **Why include account number "CC-LEASE-2026"?** Optional. Useful for the payer's records; useful if Cedar & Cloth had multiple recipient relationships with Helena (e.g., separate sublease for storage).
 
@@ -117,14 +120,14 @@ Suppose Helena never returned a W-9. Cedar & Cloth would:
 1. Apply 24% backup withholding on each $1,200 rent payment → $288 withheld
 2. Pay Helena $912 net per month, deposit $288 with IRS via EFTPS
 3. Annual: $14,400 × 24% = $3,456 withheld
-4. File Form 945 by January 31, 2027 reporting $3,456 backup withholding
+4. File Form 945 by February 1, 2027 (January 31 is a Sunday) reporting $3,456 backup withholding on line 2
 5. Issue 1099-MISC with Box 1 = $14,400, Box 4 = $3,456
 6. Helena reports $14,400 gross rent on Schedule E Line 3, claims $3,456 credit on Form 1040 Line 25b
 
 ## Sources cited
-- IRS Form 1099-MISC, Rev. 2026 (https://www.irs.gov/pub/irs-pdf/f1099msc.pdf)
-- IRS Instructions for Forms 1099-MISC and 1099-NEC, Rev. 2026 (https://www.irs.gov/pub/irs-pdf/i1099mec.pdf)
-- IRC §6041, §3406
-- Reg. §1.6041-3(c) (corporate exemption)
-- Reg. §1.469-1T(e)(3) (rental real estate as passive activity)
+- IRS Form 1099-MISC, Rev. December 2026 (https://www.irs.gov/pub/irs-pdf/f1099msc.pdf)
+- IRS Instructions for Forms 1099-MISC and 1099-NEC, Rev. December 2026 (https://www.irs.gov/pub/irs-pdf/i1099mec.pdf)
+- IRC §6041 (as amended by P.L. 119-21 §70433), §3406, §469(c)(2)
+- Reg. §1.6041-3(p)(1) (corporate exemption), §1.6041-3(d) (rental agents)
+- Form W-9 (Rev. March 2024)
 - IRS Schedule E Part I (Form 1040)

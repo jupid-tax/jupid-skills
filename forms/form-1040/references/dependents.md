@@ -1,6 +1,6 @@
 # Dependents Reference
 
-A dependent is a qualifying child or qualifying relative the filer can claim on Form 1040. Each dependent unlocks credits ($2,000 CTC for qualifying children under 17 with valid SSN; $500 Credit for Other Dependents otherwise) and may affect filing status (HoH requires a qualifying person).
+A dependent is a qualifying child or qualifying relative the filer can claim on Form 1040. Each dependent unlocks credits ($2,200 CTC for qualifying children under 17 with a valid SSN for 2025 and 2026; $500 Credit for Other Dependents otherwise) and may affect filing status (HoH requires a qualifying person).
 
 **Legal basis**: IRC §151–152 (dependents and personal exemptions; exemption deduction itself is $0 post-TCJA, but the dependent definition still controls credits and HoH status).
 
@@ -33,9 +33,11 @@ NOT qualifying children for this test: cousins (they may be qualifying relatives
 ### Test 2: Age
 
 ONE of the following:
-- Under age 19 at end of year
-- Under age 24 at end of year AND a full-time student for at least 5 months of the year
+- Under age 19 at end of year and younger than the filer (or spouse, if joint)
+- Under age 24 at end of year AND a full-time student for at least 5 months of the year, and younger than the filer (or spouse)
 - Permanently and totally disabled at any time during the year (any age)
+
+The child must also be a U.S. citizen, U.S. national, U.S. resident alien, or resident of Canada or Mexico to be claimed as a dependent (2025 Instructions for Form 1040, Dependents Step 2).
 
 "Full-time student" = enrolled for the number of hours the school considers full-time, for at least 5 months (not necessarily consecutive) of the year. Online schools count if accredited.
 
@@ -94,11 +96,9 @@ Note: parents and grandparents do NOT need to live with the filer to be qualifyi
 
 ### Test 3: Gross income
 
-The person's gross income for 2025 must be less than **$5,200** (verify 2026 figure).
+The person's gross income for 2025 must be less than **$5,200** (Rev. Proc. 2024-40 §2.24); for 2026, less than **$5,300** (Rev. Proc. 2025-32 §4.23).
 
 Gross income excludes: tax-exempt income, Social Security (mostly), gifts, scholarships used for tuition.
-
-For 2026, verify the gross income limit against the latest IRS Revenue Procedure.
 
 ### Test 4: Support
 
@@ -120,7 +120,7 @@ For "multiple support" situations (e.g., siblings supporting an elderly parent),
 
 ### Elderly parents
 
-- Mom living in own apartment, $14,000 SS only, filer pays $8,000 of $15,000 total support → NOT a dependent. SS is excluded from gross income, so mom passes Test 3. But filer didn't provide > half support ($8,000 of $15,000 = 53% — actually does pass. Check carefully.).
+- Mom living in own apartment, $14,000 SS only, filer pays $8,000 of her $15,000 total support → can be a qualifying relative. Her SS is not taxable at that income, so her gross income is under the limit (Test 3), and the filer provided $8,000 of $15,000 = 53%, more than half (Test 4). Count SS benefits she spends on her own support as support she provided.
 - Mom living in nursing home, filer pays $40,000/year, mom has $5,000 pension → mom's $5,000 pension is gross income < $5,200? No, $5,000 < $5,200. Passes Test 3 if 2025. Also passes Test 4 if filer's $40,000 > half of total support (likely yes). Qualifying relative — claim with $500 ODC.
 
 ### Divorced parents, alternating years
@@ -151,8 +151,8 @@ If parents lived together AND child lived with both, tiebreaker is higher AGI pa
 
 For each dependent in the dependents grid, check ONE:
 
-- **CTC** (Child Tax Credit) — for qualifying children under 17 at end of year with valid SSN. Up to $2,000 per child for 2025. Refundable up to $1,700.
-- **ODC** (Credit for Other Dependents) — for all other dependents. $500 non-refundable.
+- **CTC** (Child Tax Credit) — for qualifying children under 17 at end of year with an SSN valid for employment issued by the due date. Up to $2,200 per child for 2025 and 2026. Refundable up to $1,700. The filer (or one spouse on a joint return) must also have such an SSN.
+- **ODC** (Credit for Other Dependents) — for all other dependents who are U.S. citizens, nationals, or resident aliens. $500 non-refundable.
 
 A dependent is either a qualifying child for CTC OR a qualifying relative / older child for ODC, never both.
 
@@ -162,19 +162,19 @@ Being a dependent of someone else REDUCES your standard deduction. If "Someone c
 
 ### Dependents and EITC
 
-Qualifying children for EITC have slightly different rules than qualifying children for CTC — specifically, no support test and no joint-return test for EITC. So a child can be a "qualifying child for EITC" but NOT a "qualifying child for CTC" (e.g., 18-year-old non-student who lived with filer > half year).
+Qualifying children for EITC have slightly different rules than qualifying children for CTC — there is no support test, the child must have lived with the filer **in the United States** more than half the year, and the age limit is 19 (24 for students) instead of 17. The joint-return test still applies. So a child can be a "qualifying child for EITC" but NOT a "qualifying child for CTC" (e.g., 18-year-old non-student who lived with filer > half year).
 
 ---
 
 ## Required information for each dependent
 
-For each dependent on Form 1040:
-- Legal first name + last name
-- SSN (or ATIN/ITIN)
-- Relationship (e.g., "Son", "Daughter", "Mother", "Niece")
-- Number of months lived with filer (used to verify residency test)
-- CTC checkbox (if qualifying child under 17 with SSN)
-- ODC checkbox (if not CTC but is a dependent)
+For each dependent on the 2025 Form 1040 (numbered rows):
+- (1) First name, (2) last name
+- (3) SSN (or ATIN/ITIN)
+- (4) Relationship (e.g., "Son", "Daughter", "Mother", "Niece")
+- (5)(a) lived with the filer more than half the year; (5)(b) and in the U.S. (ask for months lived with the filer and where)
+- (6) Full-time student / permanently and totally disabled
+- (7) CTC checkbox (qualifying child under 17 with the required SSN) or ODC checkbox (any other dependent)
 
 If filing an SSN-less dependent (e.g., newborn whose SSN hasn't arrived), file Form 4868 for an extension to give time for the SSN.
 
@@ -192,3 +192,5 @@ If filing an SSN-less dependent (e.g., newborn whose SSN hasn't arrived), file F
 - [Publication 596](https://www.irs.gov/publications/p596) — Earned Income Credit (EITC qualifying child specifics)
 - [Form 8332](https://www.irs.gov/forms-pubs/about-form-8332) — Release / Revocation of Release of Claim to Exemption
 - Rev. Proc. 2024-40 — 2025 dependent gross income limit ($5,200)
+- Rev. Proc. 2025-32 — 2026 dependent gross income limit ($5,300) and $2,200 CTC
+- [2025 Instructions for Form 1040](https://www.irs.gov/pub/irs-pdf/i1040gi.pdf) — Dependents flowchart (pp. 17–21) and SSN rules for the CTC/ODC (line 19)

@@ -12,7 +12,7 @@ This reference helps the agent classify each business correctly and surface bord
 
 Includes: physicians, dentists, pharmacists, nurses, dentist hygienists, physical therapists, psychologists, veterinarians, and "other similar healthcare professionals."
 
-Specifically excluded by Treas. Reg. §1.199A-5(b)(2)(ii) (and clarified in PLRs): operations of health clubs/spas, the operation of facilities like medical research, testing services, and the sale of pharmaceuticals/medical devices not directly tied to the patient.
+Specifically excluded by Treas. Reg. §1.199A-5(b)(2)(ii): services not directly related to a medical services field, such as the operation of health clubs or health spas, payment processing, and the research, testing, manufacture, and sale of pharmaceuticals or medical devices.
 
 **Edge cases:**
 - A **medical research lab** that doesn't treat patients is NOT health SSTB
@@ -48,12 +48,13 @@ Includes: any business providing professional advice and counsel to clients to a
 **The biggest gray area.** Per Treas. Reg. §1.199A-5(b)(2)(vii):
 
 - Pure "consulting" (advice + recommendations + no other services) → SSTB
-- Consulting bundled with non-consulting services → "incidental to" rule: if consulting is incidental to a non-SSTB primary activity, the whole business may be non-SSTB (de minimis: under 5% of gross receipts from consulting in trades-of-business with gross receipts ≤ $25M; under 10% if gross receipts ≤ ~$10M — see the regulation for thresholds)
+- Consulting embedded in, or ancillary to, the sale of goods or performance of services by a non-SSTB, with no separate payment for the consulting → not consulting (Reg. §1.199A-5(b)(2)(vii))
+- De minimis rule for any SSTB field (Reg. §1.199A-5(c)(1)): gross receipts of $25 million or less → not an SSTB if less than 10% of gross receipts come from the specified service; gross receipts over $25 million → less than 5%
 
 **Critical exclusions from "consulting":**
-- **Software development and IT services** — programming, design, implementation are NOT consulting (Reg. §1.199A-5(b)(2)(vii) example 4)
+- **Software development and IT services** — not a listed field; consulting means advice and counsel and "does not include the performance of services other than advice and counsel" (Reg. §1.199A-5(b)(2)(vii)). Writing and delivering code is a service other than advice; separately billed IT advice can be consulting. Ask what the client pays for
 - **Engineering services** — explicitly excluded by IRC §199A(d)(2)(A) (architecture and engineering carve-out)
-- **Sales** that include "consultative" elements — not SSTB if the consulting is incidental to selling product/services
+- **Sales** (or economically similar services) — excluded from consulting; consulting with no separate payment that is ancillary to a non-SSTB's sales is not consulting (Reg. §1.199A-5(b)(2)(vii))
 
 ### 7. Athletics
 
@@ -95,7 +96,7 @@ This does NOT cover ordinary skilled professionals (e.g., a custom furniture mak
 
 - **Architecture and engineering** — IRC §199A(d)(2)(A) explicitly carves these out. Architects, structural engineers, civil engineers, MEP engineers, all non-SSTB.
 - **Real estate brokerage and insurance brokerage** — Reg. §1.199A-5(b)(2)(x) — only securities brokerage is SSTB.
-- **Software development** — Programming, IT services, IT integration are not "consulting" per Reg. §1.199A-5(b)(2)(vii) example 4.
+- **Software development** — Programming and IT integration are not a listed field and are services other than advice and counsel (Reg. §1.199A-5(b)(2)(vii)); confirm how the work is billed.
 - **Manufacturing, retail, e-commerce, wholesale, distribution** — Not SSTB regardless of products sold.
 - **Banking and lending** — Not financial services SSTB (those are about advisory, not depository institutions).
 
@@ -117,13 +118,13 @@ Does it qualify for the "incidental to" / de minimis exception?
 └── No → SSTB
 
 For SSTBs:
-  Below threshold ($241,950 / $483,900 in 2025)?
-  ├── Yes → no SSTB phase-in; uses Form 8995 (simplified)
+  At or below threshold ($197,300 / $394,600 MFJ in 2025)?
+  ├── Yes → SSTB treated as a qualified trade or business; Form 8995 unless a co-op patron
   └── No → continue
   
-  In phase-in zone (within $50K single / $100K MFJ above threshold)?
+  In phase-in range (within $50,000 / $100,000 MFJ above the threshold in 2025; $75,000 / $150,000 in 2026)?
   ├── Yes → Schedule A applies; partial deduction
-  └── No → above phase-in top; SSTB deduction = $0
+  └── No → above phase-in top; SSTB's QBI, W-2 wages, UBIA not taken into account
 ```
 
 ---
@@ -132,11 +133,11 @@ For SSTBs:
 
 1. **Always ask the user to confirm SSTB status for borderline cases.** Don't silently classify a "consultant" as SSTB without confirming the nature of services.
 
-2. **For S-corp software developers** who call themselves consultants: software development is explicitly excluded from SSTB. They are non-SSTB.
+2. **For S-corp software developers** who call themselves consultants: software development is not a listed field, and building software is not advice and counsel. Generally non-SSTB; confirm the deliverable and billing.
 
 3. **For real estate brokers**: real estate brokerage is excluded; not SSTB.
 
-4. **For multi-line businesses**: if SSTB activities and non-SSTB activities are conducted in the same legal entity, the de minimis rule (under 5% or 10% depending on gross receipts) may save the whole business from SSTB status. Otherwise, the SSTB portion contaminates the entire business.
+4. **For multi-line businesses**: if SSTB activities and non-SSTB activities are conducted in the same trade or business, the de minimis rule (less than 10% of gross receipts if gross receipts are $25 million or less; less than 5% above $25 million) may keep the whole business out of SSTB status. Otherwise the business is an SSTB.
 
 5. **For financial planners** who also sell insurance: financial advisory is SSTB; insurance brokerage is not. If the same entity does both, apply the de minimis rule.
 

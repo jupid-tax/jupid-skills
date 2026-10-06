@@ -2,7 +2,7 @@
 
 The single most important classification on Form 4684. It determines:
 - Which Section (A, B, or both) to file
-- Whether the §165(h)(5) federally-declared-disaster restriction applies (Section A only, post-TCJA, through 2025)
+- Whether the §165(h)(5) disaster restriction applies (Section A only; tax years beginning after 2017, made permanent by P.L. 119-21 §70109)
 - Whether the $100 per-event floor and 10% AGI floor apply (Section A only)
 - Where the loss flows on the return (Schedule A vs. Form 4797)
 
@@ -25,34 +25,32 @@ Examples:
 - Personal art collection (not held for investment)
 - Boats, RVs used only personally
 
-**Post-TCJA restriction (IRC §165(h)(5))**: For tax years 2018-2025, personal-use casualty/theft losses are deductible **only** if attributable to a federally declared disaster. A house fire that destroys your home is NOT deductible if the fire wasn't part of a declared disaster. A theft of personal property is NOT deductible at all (no theft is part of a federally declared disaster).
+**Disaster restriction (IRC §165(h)(5))**: For tax years beginning after 2017, personal-use casualty/theft losses are deductible **only** if attributable to a federally declared disaster (for tax years beginning after 2025, also a State declared disaster), except to the extent of personal casualty gains. A house fire that destroys your home is NOT deductible if the fire wasn't part of a declared disaster. A theft of personal property is generally not deductible, because a theft is rarely attributable to a declared disaster; it can only offset personal casualty gains (line 14, Worksheet 1-1).
 
 The Section A floors:
-- $100 per casualty event (Line 11)
-- 10% of AGI floor across all Section A losses (Line 17)
+- $100 per casualty event (Line 11); $500 for a qualified disaster loss
+- 10% of AGI floor across all Section A losses (Line 17); none for a qualified disaster loss
 
-The deductible result flows to **Schedule A Line 15** (itemized deduction). If the user takes the standard deduction, there is NO tax benefit from a Section A casualty loss.
+The line 18 result flows to **Schedule A Line 15** (itemized deduction). If the user takes the standard deduction, a line 18 loss gives NO tax benefit. A net qualified disaster loss (line 15) goes to Schedule A line 16 and can be added to the standard deduction.
 
-### 2. Trade or business property → Section B, column (b)(i)
+### 2. Trade, business, rental, or royalty property → Section B, column (b)(i)
 
-Property used in a trade or business that the user actively operates:
+Column (b)(i) of Section B Part II is "Trade, business, rental, or royalty property":
 - Schedule C business assets (laptop used 100% for self-employment, business vehicle, equipment)
-- Inventory (special rules — usually deducted via Schedule C COGS, not Form 4684)
-- Rental real estate IF the user is a real-estate dealer or active real-estate professional under §469(c)(7) (otherwise income-producing, see below)
+- Inventory (special rules: deduct either through cost of goods sold or separately as a casualty loss, not both; Pub. 547, "Loss of inventory")
+- Rental real estate and royalty property (Schedule E), including a vacation home rented out part of the year (rental part only)
 - Farm equipment (Schedule F filers)
 - Partnership / S-corp business assets passed through to the user
 
-The Section B trade/business loss flows to **Form 4797 Part II Line 14** as an ordinary loss. No floors. No AGI threshold.
+The (b)(i) loss flows through Section B line 31 or 38a to **Form 4797 Line 14** as an ordinary loss (or Schedule 1 line 4 if Form 4797 is not otherwise required). No floors. No AGI threshold. A rental or passive-activity loss may still be limited by Form 8582 (instructions, "Property Used in a Passive Activity").
 
 ### 3. Income-producing property → Section B, column (b)(ii)
 
-Property held for the production of income but NOT used in a trade or business:
-- Rental real estate (most rentals — passive activity)
-- Investment property held for appreciation
-- A car held purely for investment (rare)
-- A vacation home rented out part of the year
+Property held for investment, not used in a trade or business or rented out. The instructions' examples: stocks, notes, bonds, gold, silver, vacant lots, and works of art. Also:
+- A collector car held purely for investment (rare)
+- Funds lost in a Ponzi-type scheme or a financial scam entered into for profit
 
-The Section B income-producing loss flows to **Schedule A Line 16**. Under TCJA, miscellaneous itemized deductions subject to the 2% floor are suspended through 2025 — but a §165(c)(2) loss from a transaction entered into for profit is NOT a 2%-floor item. It's deductible without the 2% floor. Verify against current Schedule A instructions before filing.
+The Section B income-producing loss flows through line 32 or 38b to **Schedule A Line 16** ("other itemized deductions"; the 2025 Schedule A instructions list casualty and theft losses of income-producing property from Form 4684 lines 32 and 38b there). It is not a miscellaneous itemized deduction, so the termination of those deductions does not reach it. It helps only a user who itemizes.
 
 ### 4. Mixed-use property (special rules)
 
@@ -62,15 +60,13 @@ If property is used partly for business and partly for personal:
 - The personal-use portion follows Section A rules (federally-declared-disaster restriction, $100 floor, 10% AGI floor).
 - Allocate by business-use percentage.
 
-Example: Home with a 200 sq ft home office in a 2,000 sq ft house = 10% business use. A $100,000 loss to the structure is split as $10,000 business (Section B) and $90,000 personal (Section A, only if FEMA disaster).
+Example: Home with a 200 sq ft home office in a 2,000 sq ft house = 10% business use. A $100,000 loss to the structure is split as $10,000 business (Section B, deductible loss figured on Form 8829 for a Schedule C filer) and $90,000 personal (Section A, only if a declared disaster). If the user figured the home office deduction with the simplified method, the whole home goes in Section A (instructions, "Which Sections To Complete").
 
 Example: Vehicle used 60% for business and 40% personal = 60% Section B, 40% Section A.
 
-### 5. Employee property (post-TCJA: usually not deductible)
+### 5. Employee property (not deductible)
 
-Property used in employment (employee tools, work clothing, etc.). Pre-TCJA, deductible as a miscellaneous itemized deduction subject to 2% AGI floor. Post-TCJA (2018-2025), the 2%-floor miscellaneous deductions are suspended. A casualty loss to employee property generally provides no current deduction.
-
-Exception: certain qualified performing artists, fee-basis state/local government officials, and reservists can still deduct unreimbursed employee expenses above the line. If the user is in one of those narrow categories, treat as Section B income-producing (verify with the current Form 4684 instructions).
+Property used in performing services as an employee (employee tools, work clothing, etc.). Before 2018 this was a miscellaneous itemized deduction subject to the 2% AGI floor. Miscellaneous itemized deductions are no longer allowed (P.L. 119-21 §70110 made the TCJA suspension permanent), and the 2025 instructions (Section B caution) say business casualty and theft losses of property used as an employee cannot be deducted or used in the netting process. Do not enter them. If the user says they are a qualified performing artist, fee-basis government official, armed forces reservist, or eligible educator, refer the question to a CPA rather than guessing.
 
 ---
 
@@ -82,17 +78,18 @@ Ask the user these questions in order:
    - Yes → Section B, trade/business
    - No → continue
 
-2. **"Was this property held for rental, investment, or other profit-seeking purpose?"**
-   - Yes → Section B, income-producing
+2. **"Was this property rented out, or held for investment or another profit-seeking purpose?"**
+   - Rental or royalty property → Section B, column (b)(i)
+   - Investment property (stocks, vacant land, collectibles held for investment, scam or Ponzi losses) → Section B, column (b)(ii)
    - No → continue
 
 3. **"Was this your home, personal vehicle, or other personal-use property?"**
    - Yes → Section A
    - No → unusual; investigate (might be employee property → see Section 5 above)
 
-4. **For Section A only: "Was the property in a FEMA-declared federal disaster area when the loss occurred?"**
-   - Yes → continue with Section A; record the FEMA-DR number
-   - No → loss is NOT deductible (post-TCJA, through 2025); STOP
+4. **For Section A only: "Was the property in a FEMA-declared federal disaster area when the loss occurred?"** (For 2026 and later tax years, also ask about a State declared disaster.)
+   - Yes → continue with Section A; record the DR- or EM- number and whether it was a major disaster (DR) with an incident period in the qualified window
+   - No → loss is deductible only against personal casualty gains; with no gains, STOP
 
 5. **For mixed-use (home office, business vehicle): "What percentage was business use?"**
    - Allocate; split between Sections.
@@ -103,13 +100,13 @@ Ask the user these questions in order:
 
 | Mistake | Why it's wrong | Correct treatment |
 |---------|----------------|-------------------|
-| Filing Section A for a non-disaster house fire (2018-2025) | §165(h)(5) bars it | Loss not deductible; do not file Form 4684 |
-| Filing Section A for theft of personal property | No theft is "federally declared disaster" | Loss not deductible (Section A); see if any business-use portion qualifies for Section B |
-| Filing Section B for a personal vehicle stolen during a business trip | Personal-use property; the trip's purpose doesn't change classification | Section A (and only if FEMA disaster, which a theft never is) |
-| Filing Section A for a rental property loss | Rentals are income-producing | Section B column (b)(ii) |
+| Filing Section A for a non-disaster house fire (tax years after 2017) | §165(h)(5) bars it | Loss not deductible unless offsetting personal casualty gains; otherwise do not file Form 4684 |
+| Filing Section A for theft of personal property | A theft is rarely attributable to a declared disaster | Not deductible beyond personal casualty gains; see if any business-use portion qualifies for Section B |
+| Filing Section B for a personal vehicle stolen during a business trip | Personal-use property; the trip's purpose doesn't change classification | Section A (deductible only if attributable to a declared disaster or against personal casualty gains) |
+| Filing Section A for a rental property loss | Rental property is Section B property | Section B column (b)(i), "trade, business, rental, or royalty property" |
 | Filing Section A for a vehicle used 80% for Uber driving | 80% business → Section B | 80% Section B (b)(i), 20% Section A |
-| Treating inventory destruction as Form 4684 | Inventory loss flows through COGS | Adjust Schedule C Lines 35-42 (purchases / inventory); not Form 4684 |
-| Claiming employee tool loss on Section B | TCJA suspended unreimbursed employee expenses | Generally not deductible (2018-2025); confirm against Pub 547 |
+| Deducting inventory destruction twice | Inventory loss can go through COGS or be deducted separately, not both (Pub. 547, "Loss of inventory") | If taken through COGS, include reimbursement in income and skip Form 4684; if deducted separately, reduce opening inventory or purchases |
+| Claiming employee tool loss on Section B | Employee-property casualty losses cannot be deducted (2025 instructions, Section B caution) | Not deductible; do not enter |
 
 ---
 
@@ -119,14 +116,14 @@ A "federally declared disaster" is an event the President has declared as a majo
 
 - Major disasters: typically hurricanes, wildfires, floods, tornadoes
 - Emergencies: typically narrower, time-limited federal response
-- Both qualify for §165(h)(5) treatment (verify in current Pub 547 — there have been distinctions in some years)
+- Both are federally declared disasters for §165(h)(5) and §165(i) (2025 instructions, "Definitions"; Reg. §1.165-11(b)(1)). Only a major disaster can be a qualified disaster.
 
 The "disaster area" is the geographic area covered by the declaration. The user's property must be **in** the declared area, and the loss must be **caused by** the declared disaster.
 
-A "qualified disaster loss" (different from any federally declared disaster) gets enhanced treatment — Congress periodically passes laws elevating specific disasters to qualified status (no 10% AGI floor, simpler election, etc.). The list changes over time; check Pub 547 for the current qualified-disaster list.
+A "qualified disaster loss" gets enhanced treatment: $500 reduction instead of $100, no 10% AGI floor, and deductible without itemizing (added to the standard deduction). The 2025 instructions cover major disasters declared January 1, 2020 – September 2, 2025 with an incident period beginning December 28, 2019 – July 4, 2025 and ending by August 3, 2025. P.L. 119-108 (Sept. 11, 2026) replaced that window for tax years beginning after December 31, 2024 with IRC §165(h)(6): any Stafford Act §401 major disaster whose incident period begins on or after December 28, 2019 and before January 1, 2027.
 
 Lookup tools:
 - FEMA disaster page: https://www.fema.gov/disaster/declarations
 - IRS tax relief in disaster situations: https://www.irs.gov/newsroom/tax-relief-in-disaster-situations
 
-The IRS publishes notices when Congress designates qualified disasters; the agent should search "IRS [year] qualified disaster" before filing.
+Check https://www.irs.gov/forms-pubs/about-form-4684 and https://www.irs.gov/DisasterTaxRelief for IRS guidance issued after the 2025 instructions (Dec 19, 2025), including guidance implementing P.L. 119-108.

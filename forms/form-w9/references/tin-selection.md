@@ -12,7 +12,7 @@ The TIN type follows from Line 3a (federal tax classification):
 
 | Line 3a | TIN type | Boxes used |
 |---------|----------|-----------|
-| Individual/sole proprietor (incl. SMLLC disregarded) | SSN (or ITIN) | SSN boxes |
+| Individual/sole proprietor (incl. SMLLC disregarded) | SSN (or ITIN); a sole prop may instead use its own EIN | SSN boxes (EIN boxes if using the EIN) |
 | LLC with S-corp or C-corp election | EIN | EIN boxes |
 | Multi-member LLC (partnership default) | EIN | EIN boxes |
 | Multi-member LLC with corporate election | EIN | EIN boxes |
@@ -27,7 +27,7 @@ The TIN type follows from Line 3a (federal tax classification):
 
 This is the most-misfiled case. An SMLLC owner often has BOTH an SSN (their personal one) and an EIN (the one they obtained for the LLC to open a business bank account or hire employees).
 
-**Default rule:** SMLLC with no corporate election → use the **owner's SSN**, not the LLC's EIN.
+**Default rule:** SMLLC with no corporate election → use the **owner's SSN** (or the owner's own EIN, if the owner has one), never the LLC's EIN (W-9 Part I: "enter the owner's SSN (or EIN, if the owner has one)").
 
 **Why:** Under federal tax law, a default SMLLC is "disregarded" — treated as if the LLC doesn't exist. The owner files Schedule C with their Form 1040 using their SSN. The LLC's EIN is only used for federal employment tax, certain excise taxes, and bank-account-opening — NOT for income tax matching.
 
@@ -41,7 +41,8 @@ If Part I has the LLC's EIN, the match fails. Result: the IRS sends the requesto
 
 1. **SMLLC with Form 2553 (S-corp) election** → use the LLC's EIN. The S-corp election makes the LLC a separate taxpayer for federal income tax.
 2. **SMLLC with Form 8832 (C-corp) election** → use the LLC's EIN. Same reasoning.
-3. **SMLLC owned by another LLC or by a corporation** → uses the parent's TIN.
+3. **SMLLC owned by another LLC or by a corporation** → the first owner that is not disregarded goes on line 1, with its EIN (W-9 chart item 8).
+4. **SMLLC owned by a foreign person** → not a W-9 case; the foreign owner gives a Form W-8, even if it has a US TIN (W-9 instructions, Line 1).
 
 ---
 
@@ -62,18 +63,19 @@ Both go in the SSN boxes on W-9. ITIN is a substitute for SSN when the filer can
 
 A sole proprietor (no LLC) can apply for an EIN if they want one (often for opening a business bank account, hiring employees, or for privacy when sharing TIN with a vendor).
 
-**Per IRS instructions:** A sole proprietor with both SSN and EIN should enter the **SSN** on W-9. The IRS prefers SSN for sole-prop tax matching because Schedule C uses the SSN.
+**Per IRS instructions:** "If you are a sole proprietor and you have an EIN, you may enter either your SSN or EIN." The chart note adds: "You may use either your SSN or EIN (if you have one), but the IRS encourages you to use your SSN." Line 1 is still the owner's individual name either way.
 
-**Practical reality:** Some requestors accept EIN from sole props. If the filer wants to use their EIN to avoid sharing the SSN, the IRS instructions tolerate it but it can occasionally cause a TIN-matching failure (the IRS has both records but matches against SSN by default for sole props). Safest to use SSN.
+**Practical reality:** Using the sole-proprietor EIN keeps the SSN off vendor files; it is allowed. Ask the user which they prefer.
 
 ---
 
-## EIN application (forthcoming form-ss4 skill)
+## EIN application (form-ss-4 skill)
 
 If the user needs an EIN before they can complete the W-9, they apply via:
 
-- IRS EIN application (online): https://www.irs.gov/businesses/small-businesses-self-employed/apply-for-an-employer-identification-number-ein-online (issued instantly, M-F business hours)
-- Form SS-4 (paper): https://www.irs.gov/pub/irs-pdf/fss4.pdf (4-week turnaround)
+- IRS EIN application (online): https://www.irs.gov/businesses/small-businesses-self-employed/apply-for-an-employer-identification-number-ein-online (EIN issued at the end of the session; hours Mon–Fri 6:00 a.m.–1:00 a.m. ET, Sat 6:00 a.m.–9:00 p.m., Sun 6:00 p.m.–midnight)
+- Form SS-4 (paper): https://www.irs.gov/pub/irs-pdf/fss4.pdf (by mail about 4 weeks; by fax about 4 business days)
+- See [`../../form-ss-4/SKILL.md`](../../form-ss-4/SKILL.md) for the full application workflow
 
 EINs are free. There are scam websites that charge for EIN applications — these are not affiliated with the IRS.
 
@@ -88,6 +90,6 @@ When the agent enters Part I of the draft, verify:
 - [ ] SSN format: XXX-XX-XXXX (3-2-4)
 - [ ] EIN format: XX-XXXXXXX (2-7)
 - [ ] If SSN starts with `9`, flag as ITIN (and confirm the filer is still a US person for W-9 purposes; if non-resident alien, redirect to form-w8ben)
-- [ ] EIN does not start with `00` or `07-09` (those are not valid EIN prefixes)
-- [ ] TIN matches Line 3a (sole prop = SSN; corp/partnership/trust = EIN)
+- [ ] EIN prefix is valid: the first two digits must be one of 01–06, 10–16, 20–27, 30–48, 50–68, 71–77, 80–88, 90–95, 98, 99 (irs.gov, "How EINs are assigned and valid EIN prefixes"); 00, 07–09, 17–19, 28–29, 49, 69–70, 78–79, 89, 96–97 are not issued
+- [ ] TIN matches Line 3a (sole prop = SSN or own EIN; corp/partnership/trust/LLC with C, S, or P = EIN)
 - [ ] If filer described an SMLLC default and is using the LLC's EIN, raise a sanity warning ("The IRS expects your SSN here, not the LLC's EIN — confirm before signing")

@@ -48,10 +48,14 @@ substantive analysis happens elsewhere (in transfer-pricing studies
 and on supporting documentation under §6662(e)).
 
 But the amounts reported on Form 5472 are the IRS's primary lens into
-the user's transfer pricing. Large amounts on Lines 12-14 (royalties,
-intangibles, services) attract attention. Cost-sharing amounts on
-Lines 10-11 attract attention. Loans without interest at AFR attract
-attention.
+the user's transfer pricing. Large amounts on lines 14/28 (intangible
+property rights, including license royalties), 15/29 (services), and
+13b/27b (other royalties) attract attention. Platform contribution and
+cost sharing amounts on lines 11–12 and 25–26 attract attention. Loans
+without interest attract attention, and Part VII lines 42a/42b ask
+directly whether the loan rate is inside or outside the 100%–130% AFR
+safe-haven range of Treas. Reg. §1.482-2(a)(2)(iii)(B). (Line numbers:
+Form 5472, Rev. December 2023.)
 
 The agent should:
 
@@ -109,15 +113,20 @@ These attract IRS attention and likely audit scrutiny:
 
 ### High royalty rates to foreign parent
 
-Royalty payments on Line 12 exceeding 5% of US sub gross income
-suggest aggressive transfer pricing. Reasonable royalty rates depend
-on industry but commonly fall in the 3-8% range for established IP.
-Rates above 10% are unusual and require strong support.
+Large royalty payments to the foreign parent (Form 5472 line 28 for
+licenses of intangible property rights) relative to the US sub's
+revenue draw questions. Arm's-length royalty rates depend on the
+industry and the intangible; support the rate with comparable
+licenses under Treas. Reg. §1.482-4. This skill sets no numeric
+threshold; the CPA or transfer-pricing specialist judges it.
 
 ### Intercompany loans without interest at AFR
 
 If a foreign parent lent funds to a US sub at 0% interest (or below
-AFR), the IRS will impute interest at AFR under §482 / §7872. The
+AFR), the IRS may impute an arm's-length rate under §482 (for USD
+loans by a lender not regularly in the business of lending, the
+safe-haven range is 100%–130% of the AFR, Treas. Reg.
+§1.482-2(a)(2)(iii)(B)) or under §7872. The
 imputed interest creates additional taxable income to the parent and
 deduction to the sub, but more importantly, the IRS may then
 recharacterize the underlying transaction as a disguised dividend.
@@ -153,9 +162,11 @@ disguised distribution (constructive dividend), nondeductible.
 
 ### "Cost plus" services with high markups
 
-Foreign parent provides services to US sub at cost plus 30%+. Industry
-benchmarks for routine back-office services typically support markups
-of 5-10%. Markups outside this range require specific economic
+Foreign parent provides services to US sub at a high markup on cost.
+Certain low-margin support services may be charged at cost with no
+markup under the services cost method (Treas. Reg. §1.482-9(b)); other
+services need a markup supported by comparables. A markup the
+documentation does not support requires specific economic
 justification.
 
 ## What the agent does when transfer pricing is suspect
@@ -167,8 +178,9 @@ royalties, no-interest loans, services with no documentation, etc.):
 2. **Recommend §6662(e) documentation** — tell the user to prepare or
    obtain contemporaneous documentation before filing
 3. **Recommend a transfer-pricing specialist** for non-trivial flows
-   (typically: any single line item > $1M, total intercompany flows
-   > $10M, or any cost-sharing / IP transfer arrangement)
+   (this skill's escalation rule, not an IRS threshold: any single
+   line item > $1M, total intercompany flows > $10M, or any
+   cost-sharing / IP transfer arrangement)
 4. **Do NOT reprice on Form 5472** — the form reports actual
    transactions, not what the IRS might adjust them to. Repricing
    is the substantive position the user takes; it goes on the
@@ -207,7 +219,8 @@ enters the picture.
 For a typical small filer with simple flows:
 - Report amounts on Form 5472 as they appear on books
 - Flag any transaction > $100,000 with a related party for the user to
-  confirm transfer-pricing support exists
+  confirm transfer-pricing support exists (this skill's escalation
+  rule, not an IRS threshold)
 - Recommend §6662(e) documentation as a baseline
 - Do not perform substantive transfer-pricing analysis
 
@@ -219,6 +232,6 @@ For a mid-to-large filer or any complex pattern:
 - Do not file without practitioner sign-off
 
 The penalties for getting transfer pricing wrong are substantial: 20%
-or 40% accuracy-related penalty under §6662(e) on top of the tax
-adjustment. Form 5472 is the IRS's first lens; getting the form right
+accuracy-related penalty under §6662(e), or 40% for a gross valuation
+misstatement under §6662(h), on top of the tax adjustment. Form 5472 is the IRS's first lens; getting the form right
 matters but doesn't fix bad pricing.

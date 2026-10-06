@@ -10,9 +10,9 @@ This example mirrors the worked example in the [Jupid blog post on Schedule A](h
 - **Filing status**: Married Filing Jointly
 - **State**: California
 - **Tax year**: 2025 (filing in 2026)
-- **AGI** (Form 1040 Line 11): $180,000
-- **MAGI**: $180,000 (no foreign earned income, no add-backs)
-- **Standard deduction MFJ 2025**: $30,000
+- **AGI** (Form 1040 line 11b): $180,000
+- **MAGI** (SALT phase-down): $180,000 (no §911/§931/§933 exclusions)
+- **Standard deduction MFJ 2025**: $31,500 (both under 65, not blind)
 
 ## Inputs gathered (Step 2 of workflow)
 
@@ -44,7 +44,7 @@ Patricia had a knee surgery in 2025 that wasn't fully covered by insurance. Afte
 |------|--------|
 | Form 1098 box 1 (interest paid) | $11,800 |
 | Form 1098 box 6 (points paid) | $0 |
-| Form 1098 box 5 (PMI premiums) | $0 |
+| Form 1098 box 5 (mortgage insurance premiums) | $0 (and not deductible for 2025 anyway) |
 | Loan origination date | 2019-03-15 (post-12/15/2017, $750K cap applies) |
 | Loan original principal | $620,000 |
 | Loan current balance Jan 1, 2025 | $580,000 |
@@ -77,10 +77,10 @@ None.
 
 ## Filing context
 Filing status: Married Filing Jointly
-AGI (Form 1040 Line 11): $180,000
+AGI (Form 1040 line 11b): $180,000
 MAGI: $180,000
-Standard deduction MFJ 2025: $30,000
-SALT cap applicable: $40,000 (no phaseout; MAGI < $500,000)
+Standard deduction MFJ 2025: $31,500
+SALT cap applicable: $40,000 (no phase-down; MAGI < $500,000)
 
 ## Lines 1-4 — Medical and Dental
 1. Medical and dental expenses:        $14,700
@@ -101,8 +101,8 @@ SALT cap applicable: $40,000 (no phaseout; MAGI < $500,000)
 8a. Mortgage interest (Form 1098):     $11,800
 8b. Mortgage interest not on 1098:         $0
 8c. Points not on 1098:                    $0
-8d. Mortgage insurance premiums:           $0  (Line 8d not available for 2025; reinstated for 2026+)
-8e. Sum 8a-8d:                         $11,800
+8d. Reserved for future use (2025 form)     —
+8e. Sum 8a-8c:                         $11,800
 9.  Investment interest:                   $0
 10. Total interest:                    $11,800
 
@@ -122,15 +122,16 @@ SALT cap applicable: $40,000 (no phaseout; MAGI < $500,000)
 16. Other itemized deductions:              $0
 
 ## Line 17 — Total itemized deductions
-17. Total: Sum Lines 4+7+10+14+15+16:  $40,700
+17. Total: Sum Lines 4+7+10+14+15+16:  $40,700  (→ Form 1040 line 12e)
+18. Elect to itemize although less than standard: ☐ (not needed)
 
 ## Standard-vs-itemized comparison
 Itemized (Line 17):       $40,700
-Standard deduction MFJ:   $30,000
+Standard deduction MFJ:   $31,500
 Recommendation: ITEMIZE
-Difference: $10,700 (additional deduction by itemizing)
+Difference: $9,200 (additional deduction by itemizing)
 
-Federal tax savings at 22% bracket: ~$2,354
+Federal tax savings at 22% bracket: ~$2,024 (taxable income $139,300 is in the 2025 MFJ 22% bracket, $96,950–$206,700)
 
 ## Required attachments
 - [ ] Form 8283 — NOT required (Line 12 = $0)
@@ -140,17 +141,17 @@ Federal tax savings at 22% bracket: ~$2,354
 ## Validation summary
 - Math: all checks passed
 - Sanity: no warnings raised
-  - Line 17 ($40,700) > standard deduction ($30,000) ✓
-  - Line 8d = 0 (correct for 2025) ✓
+  - Line 17 ($40,700) > standard deduction ($31,500) ✓
+  - No mortgage insurance claimed (not deductible for 2025; line 8d reserved) ✓
   - SALT cap $40K applied (correct for 2025 under OBBBA) ✓
-  - Effective SALT cap = full $40K (MAGI $180K < $500K phaseout threshold) ✓
-- Next steps: Schedule A attaches to Form 1040; Line 17 flows to 1040 Line 12
+  - Effective SALT cap = full $40K (MAGI $180K < $500K phase-down threshold) ✓
+- Next steps: Schedule A attaches to Form 1040; Line 17 flows to 1040 line 12e
 
 ## Sources cited in this draft
 - IRS Form 1040 Schedule A (2025 revision)
 - IRS Instructions for Schedule A (2025 revision)
-- IRC §164(b)(6) (SALT cap as amended by OBBBA 2025)
-- Rev. Proc. 2024-40 (2025 inflation adjustments)
+- IRC §164(b)(6)–(7) (SALT cap as amended by P.L. 119-21 §70120)
+- IRC §63(c)(7) as amended by P.L. 119-21 §70102 (2025 standard deduction $31,500 MFJ)
 - Pub 502, 526, 936
 ```
 
@@ -163,8 +164,8 @@ Line 5e (old cap): min($23,500, $10,000) = $10,000
 Line 7 (old): $10,000
 Line 17 (old): $1,200 + $10,000 + $11,800 + $4,200 = $27,200
 
-Standard MFJ 2025: $30,000
-Result under old cap: TAKE STANDARD DEDUCTION (gap $2,800)
+Standard MFJ 2025: $31,500
+Result under old cap: TAKE STANDARD DEDUCTION (gap $4,300)
 ```
 
 Under OBBBA's $40,000 cap (2025):
@@ -174,11 +175,11 @@ Line 5e (new cap): min($23,500, $40,000) = $23,500 (full SALT deducts)
 Line 7 (new): $23,500
 Line 17 (new): $1,200 + $23,500 + $11,800 + $4,200 = $40,700
 
-Standard MFJ 2025: $30,000
-Result under new cap: ITEMIZE (gap $10,700)
+Standard MFJ 2025: $31,500
+Result under new cap: ITEMIZE (gap $9,200)
 ```
 
-OBBBA's SALT cap increase added $13,500 of deductible SALT to Patricia and Mike's return — moving them from "take standard" to "itemize" and saving roughly $2,354 in federal tax at their 22% bracket.
+OBBBA's SALT cap increase added $13,500 of deductible SALT to Patricia and Mike's return — moving them from "take standard" ($31,500) to "itemize" ($40,700) and saving roughly $2,024 in federal tax at their 22% bracket.
 
 ## Sensitivity check 1: Move to Texas (no state income tax)
 
@@ -186,7 +187,7 @@ If Patricia and Mike had moved to Austin, TX, before 2025:
 
 ```
 Line 5a (state income tax): $0 (Texas has none) — or use sales tax via optional table
-Line 5a (sales tax via IRS optional table at $180K MFJ in TX): ~$1,500
+Line 5a (sales tax via the IRS optional table at $180K MFJ in TX; illustrative — look up the 2025 table): ~$1,500
 Line 5b (TX property tax — comparable home): $7,500
 Line 5c: $0
 Line 5d: $9,000
@@ -195,19 +196,19 @@ Line 7: $9,000
 
 Line 17: $1,200 + $9,000 + $11,800 + $4,200 = $26,200
 
-Standard MFJ 2025: $30,000
-Result: TAKE STANDARD DEDUCTION (gap $3,800)
+Standard MFJ 2025: $31,500
+Result: TAKE STANDARD DEDUCTION (gap $5,300)
 ```
 
 The lesson: state income tax is what makes itemizing pay for typical homeowners. Without it (or without a high-property-tax state replacing it), the standard deduction wins even with a mortgage.
 
 ## Sensitivity check 2: Tax year 2026 instead of 2025
 
-For tax year 2026, two OBBBA changes affect the math:
+For tax year 2026, three OBBBA changes could affect the math (assuming the same amounts; the 2026 Schedule A line numbers must be confirmed when the form is released):
 
-1. **PMI reinstated (Line 8d)**: Patricia and Mike don't pay PMI (their LTV was below 80% at origination), so this doesn't help them. Other filers with PMI gain a deduction.
+1. **Mortgage insurance deductible again** (IRC §163(h)(3)(E), P.L. 119-21 §70108): Patricia and Mike don't pay PMI (their LTV was below 80% at origination), and at $180,000 AGI the $100,000–$109,000 phase-out would remove it anyway.
 
-2. **0.5% AGI charitable floor**: $180,000 × 0.5% = $900. Their $4,200 charitable becomes $4,200 − $900 = $3,300.
+2. **0.5% charitable floor** (IRC §170(b)(1)(I)): $180,000 × 0.5% = $900. Their $4,200 charitable becomes $4,200 − $900 = $3,300.
 
 3. **SALT cap increases to $40,400**: Doesn't bind since their SALT is $23,500.
 
@@ -218,8 +219,8 @@ Line 10 (interest, unchanged):     $11,800
 Line 14 (charity, after floor):    $3,300  (was $4,200; lost $900 to floor)
 Line 17 (total):                   $39,800
 
-Standard MFJ 2026 (placeholder):   ~$30,800 (estimate; verify Rev. Proc.)
-Result: ITEMIZE (gap ~$9,000)
+Standard MFJ 2026:                 $32,200 (Rev. Proc. 2025-32 §4.14)
+Result: ITEMIZE (gap $7,600)
 ```
 
 Itemizing still wins, but the $900 charity floor cost them $198 of federal tax at 22%. For higher-income, higher-charity donors, the floor's bite is bigger — and bunching contributions becomes more valuable.
@@ -232,7 +233,7 @@ Patricia and Mike will file via TurboTax (paid software) since they have W-2 wag
 2. Auto-import W-2 box 17 for state income tax
 3. Ask "Did you make charitable contributions?" — they enter $4,200 cash to church
 4. Ask "Did you have medical expenses out of pocket?" — they enter $14,700 with category breakdown
-5. Compare itemized $40,700 vs standard $30,000 and recommend ITEMIZE
+5. Compare itemized $40,700 vs standard $31,500 and recommend ITEMIZE
 6. File electronically; e-file confirmation typically within 24-48 hours
 
 If using FFFF instead, follow the field-by-field mapping in `filing.md` Section 1. If filing on paper, attach Schedule A behind Form 1040 in attachment-sequence order.
@@ -242,14 +243,14 @@ If using FFFF instead, follow the field-by-field mapping in `filing.md` Section 
 - Form 1098 from lender (for 3 years from filing)
 - Property tax bill (3 years; longer if disposing of property)
 - W-2 (3 years; same as return)
-- Church year-end giving statement (CWA — required since gifts ≥ $250 made annually)
+- Church year-end giving statement (each weekly gift is under $250, so a bank record or the church's written record is enough; separate gifts are not combined for the $250 rule — 2025 Schedule A instructions, "Gifts of $250 or more")
 - Medical receipts and EOBs (3 years)
 - Insurance reimbursement records showing out-of-pocket calculation (3 years)
 
 ## Common variations to watch for
 
 - **Refinance during the year**: split the loan into pre-refinance and post-refinance interest; both go on Line 8a if purposes were qualifying
-- **Spouse 65 or older**: add additional standard deduction ($1,550 per qualifying spouse for 2025) — could shift the breakeven
+- **Spouse 65 or older**: add the additional standard deduction ($1,600 per qualifying spouse for 2025, Rev. Proc. 2024-40 §2.15(3)) — could shift the breakeven; the $6,000 Schedule 1-A senior deduction applies either way
 - **Major home improvement funded by HELOC**: add HELOC interest to Line 8a if buy/build/improve traced
 - **Donor-advised fund contribution**: would substantially boost Line 11 if used for bunching
-- **Casualty loss in a federally declared disaster**: would add to Line 15
+- **Casualty loss in a federally declared disaster**: would add to Line 15 (2026+: also State declared disasters)

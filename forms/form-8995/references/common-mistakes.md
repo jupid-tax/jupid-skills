@@ -1,14 +1,14 @@
 # Form 8995 — Common Mistakes
 
-Audit-trip mistakes that surface in IRS notices, Form 8995 filings reviewed by Jupid, and the §199A regulations. Each entry has the problem, the impact, and the fix.
+Mistakes that follow from the 2025 Form 8995, its instructions, and the §199A regulations. Each entry has the problem, the impact, and the fix.
 
 ---
 
 ## Mistake 1: Using Schedule C net profit as QBI without §199A adjustments
 
-**Problem:** Filer enters Schedule C Line 31 ($50,000) directly as Column (iii) on Form 8995 Line 1a, without subtracting ½ SE tax, SE health insurance, and SE retirement.
+**Problem:** Filer enters Schedule C Line 31 ($50,000) directly as column (c) on Form 8995 row 1i, without subtracting ½ SE tax, SE health insurance, and SE retirement.
 
-**Impact:** Overstated QBI by 7-15% typically, leading to overstated deduction. IRS notice CP2000 if the IRS computer cross-checks Schedule SE and Schedule 1 against the Form 8995 QBI figure.
+**Impact:** Overstated QBI by 7-15% typically, leading to an overstated deduction that an examination would reverse, with interest.
 
 **Fix:** QBI = Schedule C Line 31 − ½ SE tax (Schedule SE Line 13) − SE health insurance (Schedule 1 Line 17) − SE retirement (Schedule 1 Line 16). Authority: Treas. Reg. §1.199A-3(b)(1)(vi).
 
@@ -16,17 +16,17 @@ Audit-trip mistakes that surface in IRS notices, Form 8995 filings reviewed by J
 
 ## Mistake 2: Filing Form 8995 instead of Form 8995-A
 
-**Problem:** Taxable income before QBI exceeds the threshold ($241,950 single / $483,900 MFJ for 2025), but the filer uses Form 8995 anyway because it's simpler.
+**Problem:** Taxable income before QBI exceeds the threshold ($197,300 / $394,600 MFJ for 2025; $201,750 / $201,775 MFS / $403,500 MFJ for 2026), but the filer uses Form 8995 anyway because it's simpler.
 
 **Impact:** Wrong form. E-file rejection or IRS notice. Above the threshold, W-2 wage and UBIA limits apply, plus SSTB phase-out — the simplified form does not capture these.
 
-**Fix:** Compute taxable income before QBI. If above threshold or in the phase-in range ($75K above for single, $100K above for MFJ), switch to Form 8995-A. If exactly at threshold, Form 8995 is allowed.
+**Fix:** Compute taxable income before QBI. If above the threshold (including the phase-in range: $50,000 / $100,000 MFJ above it for 2025, $75,000 / $150,000 MFJ for 2026), switch to Form 8995-A. If exactly at threshold, Form 8995 is allowed.
 
 ---
 
 ## Mistake 3: Skipping Form 8995 entirely
 
-**Problem:** Filer with QBI sources (Schedule C, K-1, REIT, PTP) leaves Form 1040 Line 13 blank because they don't realize they qualify or think the form is "too complicated."
+**Problem:** Filer with QBI sources (Schedule C, K-1, REIT, PTP) leaves Form 1040 line 13a blank because they don't realize they qualify or think the form is "too complicated."
 
 **Impact:** Forfeits 20% deduction worth potentially thousands of dollars. The IRS does not auto-compute QBI and add it for the taxpayer.
 
@@ -34,16 +34,17 @@ Audit-trip mistakes that surface in IRS notices, Form 8995 filings reviewed by J
 
 ---
 
-## Mistake 4: Including non-§199A income on Lines 1 or 5
+## Mistake 4: Including non-§199A income on Lines 1 or 6
 
-**Problem:** Filer puts on Line 1 column (iii):
+**Problem:** Filer puts on Line 1 column (c):
 - Wages from W-2 work (not QBI)
 - Capital gains from stock sales (not QBI)
 - Ordinary dividends not designated as §199A (not QBI)
 - Investment interest income (not QBI)
 - Guaranteed payments from a partnership (not QBI per §199A(c)(4))
+- Qualified tips deducted under §224 on Schedule 1-A (not QBI per §199A(c)(4)(D), 2025 and later)
 
-Or on Line 5:
+Or on Line 6:
 - 1099-DIV Box 1a total dividends (instead of Box 5 §199A dividends)
 - REIT capital gain distributions (Box 2a)
 
@@ -53,13 +54,13 @@ Or on Line 5:
 
 ---
 
-## Mistake 5: Forgetting to subtract net capital gain on Line 14
+## Mistake 5: Forgetting to subtract net capital gain on Line 12
 
-**Problem:** Filer enters $0 on Line 14 even though Form 1040 Line 3a (qualified dividends) or Schedule D Line 16 (net long-term capital gain) is positive.
+**Problem:** Filer enters $0 on Line 12 even though Form 1040 line 3a (qualified dividends) or Schedule D lines 15 and 16 (net capital gain) are positive.
 
-**Impact:** Overstated Line 15 → overstated 20% taxable income limit on Line 16 → potential overstated final deduction on Line 17.
+**Impact:** Overstated Line 13 → overstated 20% taxable income limit on Line 14 → potential overstated final deduction on Line 15.
 
-**Fix:** Line 14 = Form 1040 Line 3a (qualified dividends) + Schedule D Line 16 (net LTCG, if Schedule D is required). Even small qualified dividend amounts must be included. The §199A deduction excludes capital gain because Congress did not want to compound preferential rates.
+**Fix:** Line 12 = Form 1040 line 3a (qualified dividends) + the smaller of Schedule D line 15 or 16 (nothing if either is zero or less), or Form 1040 line 7a if Schedule D isn't required (2025 i8995, Line 12). Even small qualified dividend amounts must be included. The §199A deduction excludes capital gain because Congress did not want to compound preferential rates.
 
 ---
 
@@ -67,29 +68,29 @@ Or on Line 5:
 
 **Problem:** Filer uses Box 1 (ordinary business income) of the K-1 instead of the Section 199A QBI figure in the attached statement (Box 20 code Z for partnership, Box 17 code V for S-corp).
 
-**Impact:** Box 1 typically includes amounts that don't qualify for §199A (guaranteed payments, interest, etc.). Using Box 1 overstates QBI.
+**Impact:** Box 1 is not the QBI figure; the statement's QBI can differ because of separately stated items (for example the section 179 deduction) and non-qualifying activities. Using Box 1 can overstate or understate QBI.
 
 **Fix:** Use the QBI figure from the Section 199A statement, not Box 1. If the K-1 has "STMT" but no attached statement, request a corrected K-1.
 
 ---
 
-## Mistake 7: Computing Line 13 (taxable income before QBI) wrong
+## Mistake 7: Computing Line 11 (taxable income before QBI) wrong
 
-**Problem:** Filer enters their AGI (Form 1040 Line 11) on Line 13 of Form 8995 instead of taxable income.
+**Problem:** Filer enters their AGI (Form 1040 line 11a) on Line 11 of Form 8995 instead of taxable income, or forgets the Schedule 1-A deductions on Form 1040 line 13b.
 
-**Impact:** Overstated income limit on Line 16 → potentially overstated final deduction.
+**Impact:** Overstated income limit on Line 14 → potentially overstated final deduction.
 
-**Fix:** Line 13 is taxable income, not AGI. Practical formula: Line 13 = Form 1040 Line 15 + Form 1040 Line 13 (the QBI deduction itself). Or: AGI − standard or itemized deductions, before subtracting QBI.
+**Fix:** Line 11 is taxable income, not AGI. 2025 formula: Form 1040 line 11a minus lines 12e and 13b (2025 i8995, Line 11). Check: Form 1040 line 15 + line 13a.
 
 ---
 
 ## Mistake 8: Forgetting prior-year QBI loss carryforward
 
-**Problem:** Filer had a Schedule C loss in the prior year that pushed Line 2 (prior year) to negative, generating a carryforward. They forget to enter the carryforward on this year's Line 3.
+**Problem:** Filer had a Schedule C loss in the prior year that made the prior year's line 16 negative, generating a carryforward. They forget to enter the carryforward on this year's Line 3.
 
 **Impact:** Misses the offset, claiming higher current-year QBI deduction than they're entitled to. Eventually reconciled by the IRS, with interest.
 
-**Fix:** Check last year's Form 8995 Line 16 (or 8995-A equivalent). If negative, that's the carryforward — enter as a negative on this year's Line 3.
+**Fix:** Check last year's Form 8995 Line 16 (or Schedule C (Form 8995-A) line 6). If negative, that's the carryforward — enter as a negative on this year's Line 3.
 
 ---
 
@@ -107,7 +108,7 @@ Or on Line 5:
 
 **Problem:** Patron of an agricultural or horticultural cooperative files Form 8995 because their income is below the threshold.
 
-**Impact:** Wrong form. Co-op patrons must use Form 8995-A regardless of income to apply the §199A(g) cooperative reduction.
+**Impact:** Wrong form. Co-op patrons must use Form 8995-A regardless of income to apply the patron reduction under §199A(b)(7) (Schedule D (Form 8995-A)).
 
 **Fix:** Switch to Form 8995-A. The form has additional schedules for the co-op patron computation.
 
@@ -117,7 +118,7 @@ Or on Line 5:
 
 **Problem:** Filer with passive rental income (single rental property, 50 hours/year of management) includes the net rental income as QBI on Line 1.
 
-**Impact:** Most passive rentals don't meet the §162 trade-or-business standard or the §199A safe harbor (Notice 2019-7 — 250+ hours, separate books, contemporaneous records). Including non-qualifying rental income overstates QBI.
+**Impact:** Many passive rentals don't meet the §162 trade-or-business standard or the §199A safe harbor (Rev. Proc. 2019-38 — 250+ hours, separate books, contemporaneous records). Including non-qualifying rental income overstates QBI.
 
 **Fix:** Apply the §199A safe harbor or §162 trade-or-business analysis. If neither is met, exclude the rental from QBI. Document the analysis in workpapers.
 
@@ -129,27 +130,27 @@ Or on Line 5:
 
 **Impact:** Below the threshold, aggregation has no math impact (so the IRS rarely catches this). Above the threshold, aggregation can change the W-2/UBIA limits and an unfiled election can be denied on audit.
 
-**Fix:** Below threshold, just list each trade or business as a separate row on Lines 1a-1e. Don't aggregate informally. Above threshold, formally elect aggregation per §1.199A-4(c) and attach the election statement.
+**Fix:** Below threshold, list each trade or business as a separate row (1i–1v) unless the user wants to aggregate. Don't aggregate informally. If aggregating, enter "Aggregation 1" in column (a) and attach Schedule B (Form 8995-A) or a similar schedule (2025 i8995, Line 1; Treas. Reg. §1.199A-4(c)).
 
 ---
 
 ## Mistake 13: Ignoring the holding-period rule for REIT dividends
 
-**Problem:** Filer received REIT dividends but bought and sold the REIT shares within the holding period window (45 days during the 91-day period around the ex-dividend date).
+**Problem:** Filer received REIT dividends but held the shares 45 days or less during the 91-day period beginning 45 days before the ex-dividend date.
 
-**Impact:** The brokerage normally enforces this rule and excludes ineligible dividends from Box 5 of 1099-DIV. But if the filer manages this themselves (e.g., direct REIT purchase outside a brokerage), they must enforce it.
+**Impact:** Box 5 of Form 1099-DIV shows dividends that "may be eligible"; the payer does not apply the holder's holding period. Including ineligible dividends overstates Line 6.
 
-**Fix:** Per §199A(e)(3), only dividends meeting the holding period qualify. If unsure, defer to 1099-DIV Box 5 from the brokerage — they enforce this rule.
+**Fix:** Per Treas. Reg. §1.199A-3(c)(2)(ii), exclude dividends on shares held 45 days or less in that window. Ask whether any REIT positions were bought and sold around a dividend date.
 
 ---
 
-## Mistake 14: Not reconciling Form 8995 Line 17 with Form 1040 Line 13
+## Mistake 14: Not reconciling Form 8995 Line 15 with Form 1040 line 13a
 
-**Problem:** Filer fills out Form 8995 but accidentally enters a different figure on Form 1040 Line 13 (e.g., transposes digits, uses Line 16 instead of Line 17).
+**Problem:** Filer fills out Form 8995 but accidentally enters a different figure on Form 1040 line 13a (e.g., transposes digits, uses Line 14 or Line 10 instead of Line 15).
 
-**Impact:** IRS computer auto-checks. Discrepancy triggers a notice.
+**Impact:** Mismatch between the attachment and the return; expect an IRS math-error correction or notice.
 
-**Fix:** Always verify Form 8995 Line 17 = Form 1040 Line 13. If using e-file software, the software auto-links — but spot-check on the final review screen.
+**Fix:** Always verify Form 8995 Line 15 = Form 1040 line 13a. If using e-file software, the software auto-links — but spot-check on the final review screen.
 
 ---
 

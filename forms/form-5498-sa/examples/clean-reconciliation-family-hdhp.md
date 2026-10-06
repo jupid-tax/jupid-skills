@@ -32,7 +32,7 @@ Line 8:  Total limit:                            $8,550
 Line 9:  Employer + cafeteria (W-2 Box 12 W):    $6,000
 Line 10: Qualified HSA funding distribution:         $0
 Line 11: Line 9 + Line 10:                       $6,000
-Line 12: Line 2 + Line 11:                       $8,550
+Line 12: Line 8 − Line 11:                       $2,550
 Line 13: HSA deduction:                          $2,550
             → Schedule 1, Line 13
 ```
@@ -49,15 +49,15 @@ This represents the cafeteria plan contributions Marcus made through payroll, wh
 
 ```
 Trustee: Fidelity Investments
-TIN: 04-2647...
+TIN: <trustee TIN as printed>
 Recipient: Marcus
 SSN: ***-**-1234
 Address: <home address>
 Account number: ********7842
 
 Box 1 (Archer MSA contributions):              $0
-Box 2 (Total HSA contributions for 2025):  $8,550
-Box 3 (Prior-year contributions made 2026):    $0
+Box 2 (Total contributions made in 2025):  $8,550
+Box 3 (Contributions made in 2026 for 2025):   $0
 Box 4 (Rollover contributions):                $0
 Box 5 (FMV at year-end 2025):             $43,200
 Box 6 (Account type):                          HSA  ✓
@@ -90,7 +90,8 @@ Total HSA balance: **$43,200** (cash + Fidelity ZERO Total Market Index Fund)
 ```
 Box 1: $0    → Marcus has no Archer MSA, expected
 Box 2: $8,550 → Total contributions, see reconciliation below
-Box 3: $0    → No prior-year-designated contribution made in 2026 for 2025
+Box 3: $0    → No contribution made in 2026 designated for 2025
+           (and Marcus made no 2025 deposit designated for 2024, so his 2024 Box 3 is $0 too)
 Box 4: $0    → No rollovers
 Box 5: $43,200 → Year-end FMV, matches December custodian statement
 Box 6: HSA  ✓ → Account type confirmed
@@ -151,8 +152,8 @@ Match!
 | Box | Label                         | Value     |
 |-----|-------------------------------|-----------|
 | 1   | Archer MSA contributions      | $0        |
-| 2   | Total contributions (cal yr)  | $8,550    |
-| 3   | Prior-year contributions      | $0        |
+| 2   | Total contributions made in yr| $8,550    |
+| 3   | Made next year for this year  | $0        |
 | 4   | Rollover contributions        | $0        |
 | 5   | Year-end FMV                  | $43,200   |
 | 6   | Account type                  | HSA       |

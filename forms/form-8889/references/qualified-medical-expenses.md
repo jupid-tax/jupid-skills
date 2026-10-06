@@ -71,12 +71,13 @@ If an expense is on this list, it goes on Form 8889 Line 15 and the related dist
 ### Long-term care
 
 - Long-term care services (in-home care, nursing home if medically necessary)
-- Long-term care insurance premiums — **subject to age-based annual limits** (Pub 502 Table 21):
-  - Age 40 or under: $480 (2024) — verify each year
-  - Age 41–50: ~$890
-  - Age 51–60: ~$1,790
-  - Age 61–70: ~$4,770
-  - Age 71+: ~$5,960
+- Long-term care insurance premiums — **subject to age-based annual limits** (IRC §213(d)(10); age at the end of the year):
+  - Age 40 or under: $480 (2025) / $500 (2026)
+  - Age 41–50: $900 / $930
+  - Age 51–60: $1,800 / $1,860
+  - Age 61–70: $4,810 / $4,960
+  - Age 71+: $6,020 / $6,200
+  - Sources: Rev. Proc. 2024-40 §2.28 (2025); Rev. Proc. 2025-32 §4.27 (2026). Re-check each year.
 
 ### Health insurance premiums (limited cases)
 
@@ -87,8 +88,7 @@ Generally, health insurance premiums are NOT qualified medical expenses for HSA 
 - **Long-term care insurance premiums** (subject to age limits above)
 - **Medicare Part A, B, D premiums** — only after age 65; **NOT Medigap**
 - Medicare Advantage (Part C) premiums after 65
-- Health insurance for the unemployed/uninsured collecting unemployment compensation
-- Healthcare premiums while receiving federal/state unemployment
+- **Direct primary care fees** — for months beginning after December 31, 2025, the fixed periodic fee for a direct primary care service arrangement (no more than $150 a month, $300 if it covers more than one person) can be paid from the HSA (IRC §223(d)(2)(C) as amended by P.L. 119-21 §71308; Notice 2026-5)
 
 **Individual-market premiums (Healthcare.gov) for working-age filers** are NOT qualified. This catches many users who try to use HSA for ACA marketplace premiums while still employed.
 
@@ -109,7 +109,7 @@ Generally, health insurance premiums are NOT qualified medical expenses for HSA 
 - Special education for a child with learning disabilities (recommended by a doctor)
 - Drug addiction treatment
 - Capital improvements to a home for medical reasons (e.g., wheelchair ramp, widened doorways) — only the cost above the increase in home value
-- Travel for medical care: mileage at the medical rate (21 cents/mile in 2024 — verify yearly), tolls, parking, lodging up to $50/night per person if traveling for medical care
+- Travel for medical care: mileage at the medical rate (21 cents/mile for 2025; 20.5 cents for January–June 2026 and 23.5 cents for July–December 2026, per https://www.irs.gov/tax-professionals/standard-mileage-rates — verify yearly), tolls, parking, lodging up to $50/night per person if traveling for medical care
 - Funeral expenses are NOT qualified, but burial plot is NOT either
 
 ---
@@ -151,7 +151,7 @@ Important: the family member need NOT be covered under the user's HDHP. A user w
 
 ### Timing of expenses vs. HSA establishment
 
-An expense qualifies only if it was **incurred after the HSA was established**. The "established" date is when the HSA was funded — not when it was opened. State trust law (typically Massachusetts or wherever the custodian is chartered) governs.
+An expense qualifies only if it was **incurred after the HSA was established**. The "established" date is when the HSA was funded — not when it was opened. State trust law governs; most states require funding, and an HSA funded by a rollover or transfer from another HSA keeps the earlier account's date (Notice 2008-59 Q&A-38, Q&A-40).
 
 A user who opened an HSA in March 2024 but didn't fund it until July 2024 has an HSA establishment date of July 2024. Medical expenses from January–June 2024 cannot be reimbursed tax-free from this HSA.
 

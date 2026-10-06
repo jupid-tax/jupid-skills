@@ -1,6 +1,6 @@
 # Example: Airbnb Host — Schedule E vs Schedule C Decision Tree
 
-Short-term rental hosts (Airbnb, VRBO, Vrbo, Turo) often receive a 1099-K and immediately ask: Schedule E or Schedule C? The financial impact is significant — Schedule C net profit is subject to 15.3% SE tax, Schedule E is not. Get the classification right.
+Short-term rental hosts (Airbnb, Vrbo) often receive a 1099-K and immediately ask: Schedule E or Schedule C? The financial impact is significant — Schedule C net profit is subject to 15.3% SE tax, Schedule E is not. Get the classification right.
 
 ## The filer
 
@@ -10,7 +10,7 @@ Short-term rental hosts (Airbnb, VRBO, Vrbo, Turo) often receive a 1099-K and im
 - **Services provided**: Riley does turnover cleaning between guests (or hires a cleaner), provides linens and towels at check-in, leaves a welcome basket. Does NOT provide daily cleaning, meals, transportation, or concierge services.
 - **Other rental properties**: None
 - **Tax year**: 2026
-- **State**: North Carolina (state 1099-K threshold is $600, so Riley would receive a 1099-K from Airbnb regardless of federal threshold)
+- **State**: North Carolina (no lower state 1099-K threshold; NCDOR receives duplicates of the federal filings, G.S. 105-251.2(c))
 
 ## The 1099-K
 
@@ -20,16 +20,17 @@ Airbnb Payments, Inc. issued a 1099-K showing:
 |-----|-------|
 | Filer | Airbnb Payments, Inc. |
 | Box 1a (Gross) | $32,400 |
-| Box 1b (CNP) | $32,400 |
-| Box 2 (Transactions) | 87 (one per booking) |
+| Transactions reported | Third party network |
+| Box 1b (CNP) | Blank (not reported on third party network forms) |
+| Box 3 (Transactions) | 87 (one per booking) |
 | Box 4 (Federal tax withheld) | $0 |
 | Box 6 (State) | NC |
 
-Box 1a includes Airbnb's gross collection — nightly rates + Airbnb cleaning fees + Airbnb service fees + state/local lodging taxes Airbnb collected and remitted.
+Box 1a includes the gross guest payments credited to Riley — nightly rates + cleaning fees + state/local lodging taxes Airbnb collected and remitted — before Airbnb's host service fee.
 
 ## Step 1 — Confirm form
 
-Riley confirms the form title says "Payment Card and Third Party Network Transactions." Yes, it's a 1099-K. Box 1a = $32,400 met both federal thresholds ($20,000 + 200... wait, only 87 transactions). Riley would still receive a 1099-K because of NC's $600 state threshold OR because Airbnb voluntarily issues at $20,000 regardless of transaction count for some host categories. Reconciliation needed either way.
+Riley confirms the form title says "Payment Card and Third Party Network Transactions." Yes, it's a 1099-K. Box 1a = $32,400 is over $20,000, but Box 3 = 87 is not over 200, so Airbnb was not federally required to file. A TPSO may still file below the threshold (IRS FS-2025-08, General information Q5). Reconciliation is the same either way, and the rental income is taxable whether or not a form was issued.
 
 ## Step 2 — Schedule E vs Schedule C decision tree
 
@@ -50,7 +51,9 @@ What Riley provides:
 - Welcome basket (snacks, water) — NOT substantial
 - Standard listing maintenance — NOT substantial
 
-**Verdict: Riley does NOT provide substantial services.** This is a passive rental of real property. **Schedule E.**
+**Verdict: Riley does NOT provide substantial services.** This is a rental of real property without significant services. **Schedule E** (2025 Schedule E instructions, line 3: rentals with significant services such as maid service go on Schedule C).
+
+Separate question, not decided here: Riley's average stay is under 7 days (150 nights / 87 bookings), so under Temp. Reg. §1.469-1T(e)(3)(ii)(A) the activity is not a "rental activity" for the passive-loss rules. That matters only if the property shows a loss; with a profit, it does not change this return. Flag it for a CPA if a loss appears.
 
 The substantial-services bar is genuinely high. Most Airbnb hosts file Schedule E. The exception is people running boutique hotels / B&Bs with real hospitality services. Even "luxury" Airbnbs typically don't meet it without daily housekeeping or meals.
 
@@ -60,29 +63,30 @@ Riley pulls the Airbnb host dashboard year-end summary:
 
 | Source | Amount |
 |--------|--------|
-| Gross from guests (nightly rates) | $24,800 |
-| Airbnb cleaning fees passed to host | $4,200 |
-| Airbnb service fees (host portion) | -$1,400 (deducted before payout) |
+| Gross from guests (nightly rates) | $23,400 |
+| Cleaning fees charged to guests | $4,200 |
 | Lodging taxes collected and remitted by Airbnb | $4,800 |
 | **1099-K Box 1a total** | **$32,400** ✓ |
+| Airbnb host service fee (deducted from payouts, not from Box 1a) | $1,400 |
 
-The 1099-K reports gross **before** Airbnb's host service fees and **including** the lodging taxes Airbnb collected and remitted to the state.
+The 1099-K reports gross **before** Airbnb's host service fee and, in this example, **including** the lodging taxes Airbnb collected and remitted to the state. Check the host's year-end statement for what the platform actually included in Box 1a.
 
 ## Step 4 — Cross-check against other 1099s
 
 Riley received no 1099-NEC from individual guests (guests aren't reporting). No double-reporting.
 
-Riley also collected $1,200 in cash for one guest who paid by check after a platform issue — that $1,200 is not on the 1099-K but is still rental income.
+Riley also collected $1,200 by check from one guest after a platform issue — that $1,200 is not on the 1099-K but is still rental income.
 
 ## Step 5 — Map to Schedule E lines
 
 | Line | Description | Amount |
 |------|-------------|--------|
-| Line 1a | Property location | "Asheville, NC — guesthouse" |
-| Line 2 | Type of property | "2 — Multi-Family Residence" |
+| Line 1a | Physical address | Guesthouse street address, Asheville, NC |
+| Line 1b | Type of property | 3 — Vacation/Short-Term Rental |
+| Line 2 | Fair rental days / personal use days | 150 / 0 |
 | Line 3 | Rents received | $32,400 + $1,200 = **$33,600** (1099-K Box 1a + cash) |
 | Line 5 | Advertising (Airbnb-internal listing boosts Riley paid for) | $180 |
-| Line 6 | Auto and travel (mileage to property for maintenance) | $94 |
+| Line 6 | Auto and travel (mileage for supply and hardware-store runs) | $94 |
 | Line 7 | Cleaning and maintenance (paid cleaner $35/turnover × 87 turnovers) | $3,045 |
 | Line 8 | Commissions (Airbnb host service fee — the $1,400 deducted from Riley's payouts) | $1,400 |
 | Line 9 | Insurance (rental dwelling insurance allocated to guesthouse) | $620 |
@@ -97,11 +101,11 @@ Riley also collected $1,200 in cash for one guest who paid by check after a plat
 | **Line 20** | **Total expenses** | **$15,344** |
 | **Line 21** | **Income or loss** (Line 3 − Line 20) | **$18,256** |
 
-Line 21 net flows to Schedule E Line 26 (Total rental real estate income), then to **Schedule 1 Line 5 (Rental real estate, royalties, partnerships, S corporations, trusts, etc.)**.
+Line 21 net flows through Schedule E Line 24 to Line 26 (Total rental real estate and royalty income), then to **Schedule 1 Line 5 (Rental real estate, royalties, partnerships, S corporations, trusts, etc.)**.
 
 ## Step 6 — NO Schedule SE
 
-Because this is Schedule E (passive rental, no substantial services), the $18,256 net rental income is **NOT subject to self-employment tax**. Riley saves 15.3% × $18,256 = **$2,793** compared to Schedule C treatment.
+Because this is Schedule E (rental, no substantial services), the $18,256 net rental income is **NOT subject to self-employment tax**. Riley avoids about **$2,579** of SE tax (15.3% × 92.35% × $18,256) compared to Schedule C treatment.
 
 This is the entire reason the Schedule E vs Schedule C classification matters financially.
 
@@ -110,8 +114,8 @@ This is the entire reason the Schedule E vs Schedule C classification matters fi
 | Line | Source | Amount |
 |------|--------|--------|
 | Schedule 1 Line 5 | Schedule E net rental income | $18,256 |
-| Form 1040 Line 8 | Other income from Schedule 1 | $18,256 |
-| Form 1040 Line 23 | Other taxes (no SE tax for Schedule E) | $0 |
+| Form 1040 Line 8 | Additional income (Schedule 1 Line 10) | $18,256 |
+| Schedule SE | Not filed for this activity (no SE tax on Schedule E rental income) | — |
 
 ## Step 8 — Validation
 
@@ -121,7 +125,7 @@ This is the entire reason the Schedule E vs Schedule C classification matters fi
 | Activity classified as rental real estate without substantial services | ✓ |
 | Schedule E Line 3 ≥ trade-or-business portion of Box 1a | $33,600 ≥ $32,400 ✓ (extra is non-1099 cash) |
 | No Schedule C filed for this activity | ✓ (no substantial services) |
-| Box 4 = $0, no Line 25c entry | ✓ |
+| Box 4 = $0, no Line 25b entry | ✓ |
 | Lodging taxes reported on Line 3 (gross) and deducted on Line 16 (pass-through) | ✓ |
 
 ## What Riley does NOT do
@@ -180,6 +184,8 @@ Riley should:
 - IRS Instructions for Form 1099-K
 - IRC §6050W (1099-K reporting)
 - IRC §1402(a)(1) (rental real estate excluded from SE tax)
+- Temp. Treas. Reg. §1.469-1T(e)(3)(ii)(A) (average customer use of 7 days or less)
+- 2025 Instructions for Schedule E, line 3 (significant services → Schedule C)
 - IRC §280A (personal use of dwelling unit)
 - Treasury Regulation §1.1402(a)-4 (substantial services / hotel-like definition)
 - Schedule E (Form 1040) and instructions

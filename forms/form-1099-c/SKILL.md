@@ -15,7 +15,7 @@ description: >
 form: Form 1099-C (Cancellation of Debt) — informational; received not filed
 audience: [individual, solo]
 tax_year: 2026
-last_verified: 2026-04-28
+last_verified: 2026-10-06
 official_form: https://www.irs.gov/pub/irs-pdf/f1099c.pdf
 official_instructions: https://www.irs.gov/pub/irs-pdf/i1099ac.pdf
 ---
@@ -24,11 +24,13 @@ official_instructions: https://www.irs.gov/pub/irs-pdf/i1099ac.pdf
 
 This skill produces an audit-grade decision and reporting plan for an individual who has received a Form 1099-C from a creditor. The 1099-C is **informational** — the recipient does not file the 1099-C itself; they report the canceled debt as income on the 1040 series, **unless** an IRC §108 exclusion applies.
 
-The judgment is in: (a) reading the form correctly, (b) testing every exclusion in the right order, (c) computing insolvency precisely if that's the path, and (d) routing the income to the correct place on the return (Schedule 1 Line 8c vs. Schedule C Line 6 vs. Schedule F).
+Box map verified against **Form 1099-C (Rev. April 2025)** and the Instructions for Forms 1099-A and 1099-C (Rev. April 2025); Form 982 lines against **Form 982 (Rev. March 2018)** and its instructions (Rev. December 2021); law and worksheet against **Pub. 4681 (2025)**. Re-check https://www.irs.gov/forms-pubs/about-form-1099-c and https://www.irs.gov/forms-pubs/about-form-982 before use.
+
+The judgment is in: (a) reading the form correctly, (b) testing every exclusion in the right order, (c) computing insolvency precisely if that's the path, and (d) routing the income to the correct place on the return (Schedule 1 Line 8c vs. Schedule C Line 6 vs. Schedule E Line 3 vs. Schedule F Line 8; Pub. 4681).
 
 The math is mechanical. The wrong answer most filers give is "default to taxable" — they pay tax on canceled debt that the Code lets them exclude. This skill exists to make that mistake impossible.
 
-**Companion guide for end users:** [Form 1099-C (2026): Cancellation of Debt Tax Guide & Exclusions](https://jupid.com/blog/form-1099-c-cancellation-debt-2026) on the Jupid blog. Same rules, narrative-style explanation. Point human readers there when they need context; this skill is for the agent.
+**Companion guide for end users:** [Form 1099-C + AI Agent Skill: Cancellation of Debt Guide 2026](https://jupid.com/blog/form-1099-c-cancellation-debt-2026) on the Jupid blog. Same rules, narrative-style explanation. Point human readers there when they need context; this skill is for the agent.
 
 ---
 
@@ -59,12 +61,12 @@ Before producing a reporting plan, the agent must have these eight inputs. If an
 
 1. **Tax year** the 1099-C is for (taken from Box 1 date). A 1099-C dated 2025 is reported on the 2025 return filed in 2026.
 2. **Box 2 amount** — the canceled debt amount, in dollars.
-3. **Box 6 identifiable event code** — A through I. This shapes the analysis.
+3. **Box 6 identifiable event code** — A through H. This shapes the analysis.
 4. **Box 4 debt description** — what the debt was (credit card, mortgage, auto loan, student loan, business loan, medical debt, other).
 5. **Box 5** — was the borrower personally liable? (Yes/No.) Affects foreclosure analysis.
 6. **Was the debt personal or business?** Routing depends on this. A sole proprietor's vendor debt is business; a credit card used for personal purchases is personal.
 7. **Has the debtor filed bankruptcy?** If yes, get the chapter (7, 11, 13) and the discharge order date.
-8. **Approximate financial position immediately before the cancellation date (Box 1)** — total liabilities, total fair market value of assets. This is required for the insolvency test. If the user can't ballpark, ask for: cash + checking, retirement balances, vehicle FMV, home FMV less mortgage, total credit card balances, total auto/personal loan balances, mortgage balance, student loan balance, the canceled debt itself at face value before cancellation.
+8. **Approximate financial position immediately before the cancellation date (Box 1)** — total liabilities, total fair market value of assets. This is required for the insolvency test. If the user can't ballpark, walk the Pub. 4681 Insolvency Worksheet categories: cash and bank accounts, real property FMV, vehicles, household goods, retirement and pension interests, education accounts, life insurance cash value, investments; and on the liability side credit cards, mortgages, vehicle loans, medical bills, student loans, past-due taxes, judgments, business debts, and the canceled debt itself at face value before cancellation.
 
 For mortgage cancellation specifically, additionally ask:
 - Was this the user's principal residence? (Required for §108(a)(1)(E) exclusion.)
@@ -74,7 +76,7 @@ For mortgage cancellation specifically, additionally ask:
 For student loan cancellation, additionally ask:
 - Federal or private loan?
 - Reason for discharge (PSLF, teacher cancellation, death/disability, school closure, borrower defense, other)?
-- Date of discharge — affects whether ARPA's 2021-2025 broad exclusion applies (verify 2026 extension status).
+- Date of discharge — the ARPA §108(f)(5) broad exclusion covered discharges after Dec. 31, 2020 and before Jan. 1, 2026; for discharges after 2025, only death / total and permanent disability discharges are excluded under §108(f)(5) as rewritten by P.L. 119-21 §70119, and the user's SSN must be on the return.
 
 ---
 
@@ -102,13 +104,13 @@ Build the internal record:
 | 3   | Interest if included in Box 2      | $X,XXX            |
 | 4   | Debt description                   | <credit card / mortgage / etc.> |
 | 5   | Borrower personally liable?        | Yes / No          |
-| 6   | Identifiable event code            | A | B | ... | I  |
+| 6   | Identifiable event code            | A | B | ... | H  |
 | 7   | FMV of property                    | $X,XXX (if foreclosure) |
 ```
 
 If Box 6 = A (bankruptcy), bankruptcy exclusion is the obvious path — confirm with the user that they have a Title 11 discharge order.
 
-If Box 6 = E (probate), this is decedent-related and out of scope for individual reporting.
+If Box 6 = E (debt relief from probate or a similar proceeding), this is usually decedent-related and out of scope for individual reporting.
 
 ### Step 3 — Classify the debt as personal or business
 
@@ -118,19 +120,22 @@ This determines the **default reporting line**:
 
 - Personal → Schedule 1 Line 8c (cancellation of debt)
 - Business (sole prop) → Schedule C Line 6 (other income)
+- Nonfarm rental of real property → Schedule E Line 3
 - Business (farming) → Schedule F Line 8 (other income)
+
+Source: Pub. 4681 (2025), Chapter 1, list of lines for taxable canceled debt.
 
 Write down the routing target before testing exclusions, so the agent doesn't lose track.
 
 ### Step 4 — Test exclusions in this order
 
-The exclusions are stacked. The agent tests each in order; the **first** one that fully covers the canceled amount is the path. If none covers it fully, the unexcluded portion is taxable income on the routing target from Step 3.
+The exclusions are stacked, with statutory precedence (IRC §108(a)(2)): a title 11 discharge must use the bankruptcy exclusion; the qualified principal residence exclusion applies before insolvency unless the user elects insolvency (box 1b instead of 1e); insolvency applies before the farm and real-property-business exclusions. Test each below in that light. If none covers the amount fully, the unexcluded portion is taxable income on the routing target from Step 3.
 
 #### 4a. Bankruptcy — IRC §108(a)(1)(A)
 
 **Test:** Was the debt discharged in a Title 11 case (Chapter 7, 11, 12, or 13) where the discharge order has been entered?
 
-**If yes:** Full exclusion. File Form 982 Box 1a. Line 2 = Box 2 amount. Apply attribute reduction per IRC §108(b).
+**If yes:** Full exclusion. File Form 982 Box 1a. Line 2 = Box 2 amount. Apply attribute reduction per IRC §108(b). Creditors are generally not required to file a 1099-C for a bankruptcy discharge of a nonbusiness debt (Instructions for Forms 1099-A and 1099-C, "Exceptions"), so a code A form is uncommon.
 
 Reference: [`references/bankruptcy-exclusion.md`](./references/bankruptcy-exclusion.md)
 
@@ -138,7 +143,7 @@ Reference: [`references/bankruptcy-exclusion.md`](./references/bankruptcy-exclus
 
 **Test:** Was the user insolvent immediately before the cancellation (liabilities > FMV of assets)?
 
-**Computation:** Run the Pub 4681 Worksheet 2 walkthrough in [`references/insolvency-test.md`](./references/insolvency-test.md). Output: insolvency amount in dollars (zero or positive).
+**Computation:** Run the Pub. 4681 Insolvency Worksheet walkthrough in [`references/insolvency-test.md`](./references/insolvency-test.md). Output: insolvency amount in dollars (zero or positive).
 
 **Exclusion amount:** min(canceled amount, insolvency amount). The exclusion is capped at insolvency.
 
@@ -150,11 +155,11 @@ Reference: [`references/bankruptcy-exclusion.md`](./references/bankruptcy-exclus
 
 **Test:** Is the debt acquisition indebtedness on the user's principal residence?
 
-**Limit:** $750,000 ($375,000 MFS).
+**Limit:** $750,000 ($375,000 MFS) of qualified principal residence indebtedness for discharges after 2020; ordering rule: only the amount discharged above the loan's nonqualified part is excludable (§108(h)(4); Form 982 instructions, Line 1e).
 
-**Year-aware:** This exclusion was extended through Dec 31, 2025. **Verify 2026 status** with the IRS before relying on it for tax year 2026 cancellations. Check https://www.irs.gov/forms-pubs/about-form-982 and recent legislative updates.
+**Year-aware:** Only for debt discharged **before January 1, 2026**, or discharged under an arrangement entered into and evidenced in writing before January 1, 2026 (IRC §108(a)(1)(E); Pub. 4681 (2025) What's New). As of 2026-10-06 it has not been extended; for other 2026 discharges, test insolvency instead.
 
-**If applies:** File Form 982 Box 1e. Line 10b reduces the basis of the principal residence by the excluded amount.
+**If applies:** File Form 982 Box 1e. If the user still owns the home after the discharge, Line 10b reduces its basis by the smaller of the excluded amount or the home's basis; after a foreclosure or short sale there is no Line 10b entry.
 
 Reference: [`references/qualified-principal-residence.md`](./references/qualified-principal-residence.md)
 
@@ -162,11 +167,11 @@ Reference: [`references/qualified-principal-residence.md`](./references/qualifie
 
 **Test categories (each independently sufficient):**
 
-- PSLF discharge → automatic exclusion under §108(f)(1), **no Form 982 required**, just don't report the income. Flag this and stop.
-- Teacher loan cancellation → automatic exclusion
-- Death/total-and-permanent-disability discharge → automatic exclusion
-- School closure / borrower defense discharge → automatic exclusion
-- Other federal student loan discharge in tax years 2021-2025 under ARPA → broad exclusion under §108(f)(5). **Verify 2026 extension status before filing.**
+- PSLF or another work-requirement discharge (the loan's terms cancel it for working a set period in certain professions for a broad class of employers; Pub. 4681 "Student Loans") → exclusion under §108(f)(1), **no Form 982** (Form 982 is for §108(a) exclusions), just don't report the income. Flag this and stop.
+- NHSC / state health-professional loan repayment payments → §108(f)(4)
+- Death / total and permanent disability discharge → excluded: under ARPA for 2021–2025, and for discharges after 2025 under §108(f)(5) as rewritten by P.L. 119-21 §70119 (federal and private education loans; the user's SSN, valid for employment and issued before the return due date, must be on the return)
+- Any other discharge of an eligible education loan (federal, state, school, or private education loan) **after Dec. 31, 2020 and before Jan. 1, 2026** → ARPA broad exclusion under former §108(f)(5). Lenders were told not to file 1099-C for these (Notice 2022-1).
+- Any other discharge **after 2025** (school closure, borrower defense, income-driven repayment forgiveness, settlements) → no §108(f) exclusion; test insolvency or bankruptcy.
 
 For state tax purposes, some states tax forgiven student loans even when federally excluded. Flag this if the user mentions state tax.
 
@@ -174,11 +179,11 @@ Reference: [`references/student-loan-discharge.md`](./references/student-loan-di
 
 #### 4e. Qualified Farm Indebtedness — IRC §108(a)(1)(C)
 
-For farmers. Specific tests on lender and gross receipts. Out of scope for the typical consumer 1099-C; if the user is a farmer with farm-related cancellation, see Pub 4681 Chapter 3 and consult a CPA.
+For farmers. Specific tests on lender and gross receipts. Out of scope for the typical consumer 1099-C; if the user is a farmer with farm-related cancellation, see Pub. 4681 (2025) Chapter 1, "Qualified Farm Indebtedness", and consult a CPA.
 
 #### 4f. Qualified Real Property Business Indebtedness — IRC §108(a)(1)(D)
 
-For non-corporate taxpayers with depreciable real property used in a trade or business. Limited and reduces basis. See Pub 4681 Chapter 4.
+For taxpayers other than C corporations, with debt secured by real property used in a trade or business. Limited and reduces the basis of depreciable real property. See Pub. 4681 (2025) Chapter 1, "Qualified Real Property Business Indebtedness" (the publication has three chapters: canceled debts, foreclosures and repossessions, abandonments).
 
 ### Step 5 — Determine the reporting path
 
@@ -190,25 +195,27 @@ Based on Step 4, the canceled amount falls into one of these buckets:
 | Insolvency fully covers | 1b | None (excluded) |
 | Insolvency partially covers | 1b (for excluded portion) | Routing target from Step 3 (for remainder) |
 | Principal residence fully covers (and exclusion is in effect for tax year) | 1e | None (excluded), basis reduction on Line 10b |
-| Student loan automatic exclusion (PSLF, teacher, death/disability, school closure) | None required | None (excluded) |
-| Student loan ARPA broad exclusion (verify year) | 1e or per current instructions | None (excluded) |
+| Student loan exclusion under §108(f) (work requirement, death/disability, or ARPA for 2021–2025 discharges) | None (not a Form 982 exclusion) | None (excluded) |
 | No exclusion applies, personal debt | None | Schedule 1 Line 8c |
 | No exclusion applies, sole-prop business debt | None | Schedule C Line 6 |
+| No exclusion applies, nonfarm rental real property debt | None | Schedule E Line 3 |
 | No exclusion applies, farming business debt | None | Schedule F Line 8 |
 
 ### Step 6 — Apply attribute reduction (Form 982 Part II)
 
-If an exclusion is claimed via Form 982 (Boxes 1a, 1b, 1c, 1d, 1e), IRC §108(b) requires reducing the user's tax attributes in this order:
+If an exclusion is claimed via Form 982 Boxes 1a or 1b (and 1c), IRC §108(b) requires reducing the user's tax attributes in this order (Form 982 instructions, "Any other debt"):
 
-1. Net operating loss for the year of discharge → Form 982 Line 6
-2. General business credit carryovers → Line 7
-3. Minimum tax credits → Line 8
-4. Capital loss carryovers → Line 9
-5. Basis of property (depreciable first, then non-depreciable, then principal residence) → Lines 10a / 10b
-6. Passive activity losses and credits → Line 11
-7. Foreign tax credit carryovers → Line 12
+1. Net operating loss for the year of discharge and carryovers → Form 982 Line 6 (dollar for dollar)
+2. General business credit carryovers → Line 7 (33⅓ cents per dollar)
+3. Minimum tax credit → Line 8 (33⅓ cents per dollar)
+4. Net capital loss and carryovers → Line 9
+5. Basis of property → Line 10a (Lines 11a–11c for farm debt)
+6. Passive activity loss (dollar for dollar) and credit (33⅓ cents) carryovers → Line 12
+7. Foreign tax credit carryovers → Line 13 (33⅓ cents per dollar)
 
-For most consumer filers with no carryovers, attribute reduction is a non-event. Document this explicitly: "No attributes to reduce."
+Line 4 is for qualified real property business indebtedness (box 1d); Line 5 is the §108(b)(5) election to reduce depreciable basis first; Line 10b is only for box 1e. Box 1e reduces only the home's basis (Line 10b), and only if the user still owns it.
+
+For a nonbusiness debt (car loan, credit card) when the user has no attributes other than basis in personal-use property, Line 10a = the smallest of (a) the basis of nondepreciable property, (b) the Line 2 amount, or (c) the excess of the aggregate bases of property plus money held immediately after the discharge over aggregate liabilities immediately after the discharge (Form 982 instructions, "A nonbusiness debt"). For an insolvent filer, (c) is usually $0 — compute it and say so. Otherwise document "No attributes to reduce."
 
 For users with NOLs or carryovers, work through the order with care; the reduction is the price of the exclusion.
 
@@ -229,7 +236,7 @@ State the next steps:
 - If no exclusion → report on Schedule 1/C/F, no Form 982
 - If business 1099-C → reminder that the income may flow into self-employment tax via Schedule SE
 - If basis was reduced → record the basis adjustment in user's tax records for future sale of the property
-- Recordkeeping reminder: keep the Pub 4681 Worksheet 2 and Form 982 with tax records for at least 3 years
+- Recordkeeping reminder: keep the Pub. 4681 Insolvency Worksheet and Form 982 with tax records for at least 3 years
 
 ### Step 10 — File the return (optional, if user authorizes)
 
@@ -256,10 +263,10 @@ For full reference, load [`references/1099-c-boxes.md`](./references/1099-c-boxe
 ### Form 982 high-level rules
 
 - **Part I, Line 1a-1e** — check the box matching the exclusion claimed
-- **Part I, Line 2** — total amount excluded
-- **Part I, Line 3** — applies if §108(a)(1)(D) qualified real property business indebtedness
-- **Part II, Lines 4-13** — required attribute reduction in the order specified above
-- **Part III, Line 14** — only for §108(b)(5) election to apply reduction first to depreciable property basis
+- **Part I, Line 2** — total amount excluded (need not equal the Part II total when attributes run out)
+- **Part I, Line 3** — §1017(b)(3)(E) election to treat real property held for sale to customers as depreciable property (Yes/No); consumers leave it alone
+- **Part II, Lines 4-13** — Line 4 QRPBI basis; Line 5 §108(b)(5) election; Lines 6-13 attribute reduction in the order above (Line 10b only for box 1e)
+- **Part III** — corporate consent under §1081(b)/§1082; not used by individuals
 
 ---
 
@@ -273,7 +280,7 @@ Before declaring the plan ready, run these checks. Surface failures — don't si
 - [ ] If insolvency claimed: liabilities − assets = insolvency amount, and excluded amount ≤ insolvency
 - [ ] If insolvency partially covers: excluded amount + reported amount = Box 2
 - [ ] Form 982 Line 2 = sum of exclusions claimed across boxes 1a-1e
-- [ ] If basis reduction applied: Line 10a + Line 10b ≤ Line 2 of Form 982
+- [ ] If basis reduction applied: Line 10a ≤ Line 2 and within the Form 982 Line 10a limit; Line 10b ≤ the box 1e amount and the home's basis, and only if the home is still owned
 
 ### Sanity checks
 
@@ -284,10 +291,10 @@ Surface a warning, do not block, if any of these are true:
 - [ ] User has Box 6 = A but no bankruptcy discharge order → confirm the bankruptcy is final, not pending
 - [ ] User has Box 6 = F (by agreement) on a credit card and is reporting as personal → confirm the card was not used for business
 - [ ] User has multiple 1099-Cs in the same year → each tested separately; aggregate exclusions can compound
-- [ ] User claims principal residence exclusion → verify the law is in effect for the tax year (extension status changes); flag for re-verification
-- [ ] User claims student loan ARPA exclusion → verify the law is in effect for the tax year
+- [ ] User claims principal residence exclusion → discharge before Jan. 1, 2026, or written arrangement before that date? If not, block; test insolvency
+- [ ] User claims the ARPA student loan exclusion → discharge before Jan. 1, 2026? After 2025, only death / total and permanent disability discharges qualify (SSN required)
 - [ ] User received a 1099-A in addition to or instead of 1099-C (foreclosure abandonment) → different treatment; route to Pub 4681 Chapter 2
-- [ ] Excluded amount > $100,000 and no Form 982 attached → impossible; Form 982 is required
+- [ ] Any §108(a) exclusion claimed (boxes 1a–1e) and no Form 982 attached → Form 982 is required (Form 982 instructions, "When To File")
 - [ ] User reports business 1099-C on Schedule 1 instead of Schedule C → wrong line; redirect
 
 ### Cross-form checks
@@ -312,12 +319,12 @@ The agent's deliverable is a **reporting plan** the user can transcribe to their
 - Box 3 (interest in Box 2):       $X,XXX
 - Box 4 (debt description):        <description>
 - Box 5 (personally liable):       Yes | No
-- Box 6 (event code):              <A | B | C | D | E | F | G | H | I>
+- Box 6 (event code):              <A | B | C | D | E | F | G | H>
 - Box 7 (FMV of property):         $X,XXX (if applicable)
 
 ## Classification
 - Debt type:                       Personal | Business (sole prop) | Business (farm)
-- Default reporting target:        Schedule 1 Line 8c | Schedule C Line 6 | Schedule F Line 8
+- Default reporting target:        Schedule 1 Line 8c | Schedule C Line 6 | Schedule E Line 3 | Schedule F Line 8
 
 ## Exclusion analysis
 - Bankruptcy (§108(a)(1)(A)):      Applies | Does not apply | Reason
@@ -326,13 +333,13 @@ The agent's deliverable is a **reporting plan** the user can transcribe to their
   - Assets immediately before:      $X,XXX (itemized in worksheet)
   - Insolvency amount:              $X,XXX
   - Exclusion amount:               $X,XXX (min of insolvency, canceled)
-- Principal residence (§108(a)(1)(E)): Applies | Does not apply | Reason | Year-status: <verified for YYYY>
-- Student loan (§108(f)):          Applies | Does not apply | Sub-rule: <PSLF | teacher | disability | school closure | ARPA broad>
+- Principal residence (§108(a)(1)(E)): Applies | Does not apply | Reason | Discharged before 2026 or written arrangement before 2026: <Yes | No>
+- Student loan (§108(f)):          Applies | Does not apply | Sub-rule: <work requirement §108(f)(1) | §108(f)(4) repayment program | death/disability | ARPA broad (2021–2025 discharges)>
 - Farm / business real property:   Applies | Does not apply
 
 ## Reporting outcome
 - Excluded via Form 982:           $X,XXX (Box <1a/1b/1e> checked)
-- Reported as income:              $X,XXX on <Schedule 1 Line 8c | Schedule C Line 6 | Schedule F Line 8>
+- Reported as income:              $X,XXX on <Schedule 1 Line 8c | Schedule C Line 6 | Schedule E Line 3 | Schedule F Line 8>
 - Federal tax estimate at marginal rate: $X,XXX
 
 ## Form 982 draft (if exclusion claimed)
@@ -348,27 +355,27 @@ The agent's deliverable is a **reporting plan** the user can transcribe to their
   - Line 7 (general business cr.): $X,XXX
   - Line 8 (minimum tax credits):  $X,XXX
   - Line 9 (capital loss carryov.): $X,XXX
-  - Line 10a (basis non-deprec.):  $X,XXX
-  - Line 10b (basis prin. res.):   $X,XXX
-  - Line 11 (passive activity):    $X,XXX
-  - Line 12 (foreign tax credits): $X,XXX
+  - Line 10a (basis of property):  $X,XXX (nonbusiness debt: smallest of the three amounts)
+  - Line 10b (basis prin. res.):   $X,XXX (box 1e only, home still owned)
+  - Line 12 (passive activity):    $X,XXX
+  - Line 13 (foreign tax credits): $X,XXX
 - "None — no attributes to reduce" if applicable
 
 ## Required attachments
 - [ ] Form 982 (if any exclusion claimed)
-- [ ] Worksheet 2 from Pub 4681 (kept in records, not filed) if insolvency claimed
+- [ ] Insolvency Worksheet from Pub. 4681 (kept in records, not filed) if insolvency claimed
 
 ## Validation summary
 - Math: all checks passed | <list failures>
 - Sanity: <list warnings raised>
-- Year-aware flags: <principal residence / ARPA student loan extension status verified for YYYY>
+- Year-aware flags: <QPRI discharge date vs. Jan. 1, 2026; student loan discharge date vs. Jan. 1, 2026>
 - Next steps: <handoff items from Step 9>
 
 ## Sources cited in this plan
 - IRC §61(a)(11), §108(a)–(f), §108(b)
-- IRS Pub 4681 (revision date YYYY-MM-DD)
-- Form 982 (revision date YYYY-MM-DD)
-- Form 1099-C and Instructions for 1099-A and 1099-C (revision date YYYY-MM-DD)
+- IRS Pub 4681 (2025)
+- Form 982 (Rev. March 2018) and Instructions (Rev. December 2021)
+- Form 1099-C and Instructions for Forms 1099-A and 1099-C (Rev. April 2025)
 - (any other authority used)
 ```
 
@@ -381,10 +388,10 @@ The plan is **not** the final filed return. The user transcribes Form 982 to the
 Loaded on demand based on what the user's situation needs.
 
 - [`references/1099-c-boxes.md`](./references/1099-c-boxes.md) — Box-by-box explanation of every field on Form 1099-C
-- [`references/insolvency-test.md`](./references/insolvency-test.md) — Pub 4681 Worksheet 2 walkthrough; what counts as asset / liability; retirement inclusion
+- [`references/insolvency-test.md`](./references/insolvency-test.md) — Pub. 4681 Insolvency Worksheet walkthrough; what counts as asset / liability; retirement inclusion
 - [`references/bankruptcy-exclusion.md`](./references/bankruptcy-exclusion.md) — Title 11 cases; timing of discharge order
-- [`references/student-loan-discharge.md`](./references/student-loan-discharge.md) — ARPA temporary federal exclusion 2021-2025; PSLF; teacher cancellation; year-aware status
-- [`references/qualified-principal-residence.md`](./references/qualified-principal-residence.md) — §108(a)(1)(E); $750k limit; extension history; year-aware status
+- [`references/student-loan-discharge.md`](./references/student-loan-discharge.md) — §108(f) work-requirement and repayment-program rules; ARPA exclusion for 2021–2025 discharges; death/disability rule after 2025 (P.L. 119-21)
+- [`references/qualified-principal-residence.md`](./references/qualified-principal-residence.md) — §108(a)(1)(E); $750k limit; ordering rule; ends for discharges after 2025
 - [`references/form-982-walkthrough.md`](./references/form-982-walkthrough.md) — line-by-line of Form 982
 - [`references/common-mistakes.md`](./references/common-mistakes.md) — top filer mistakes
 - [`filing.md`](./filing.md) — reporting via 1040 e-file or paper, Form 982 attachment rules
@@ -401,20 +408,21 @@ End-to-end worked 1099-C scenarios. Use these as patterns when the user's situat
 
 Authoritative sources used by this skill. Always re-verify these against the IRS site for the tax year being reported.
 
-- [Form 1099-C Cancellation of Debt Tax Guide & Exclusions](https://jupid.com/blog/form-1099-c-cancellation-debt-2026) — Jupid's narrative companion for human readers
+- [Form 1099-C + AI Agent Skill: Cancellation of Debt Guide 2026](https://jupid.com/blog/form-1099-c-cancellation-debt-2026) — Jupid's narrative companion for human readers
 - [About Form 1099-C](https://www.irs.gov/forms-pubs/about-form-1099-c) — IRS landing page
 - [Form 1099-C (PDF)](https://www.irs.gov/pub/irs-pdf/f1099c.pdf) — the form itself
 - [Instructions for Forms 1099-A and 1099-C](https://www.irs.gov/pub/irs-pdf/i1099ac.pdf) — line-by-line IRS guidance
 - [Form 982 (PDF)](https://www.irs.gov/pub/irs-pdf/f982.pdf) — Reduction of Tax Attributes Due to Discharge of Indebtedness
 - [Instructions for Form 982](https://www.irs.gov/pub/irs-pdf/i982.pdf)
-- [Publication 4681](https://www.irs.gov/publications/p4681) — Canceled Debts, Foreclosures, Repossessions, and Abandonments
+- [Publication 4681 (2025)](https://www.irs.gov/publications/p4681) — Canceled Debts, Foreclosures, Repossessions, and Abandonments (Insolvency Worksheet; reporting lines; QPRI and student loan rules)
 - [Publication 525](https://www.irs.gov/publications/p525) — Taxable and Nontaxable Income (canceled debts chapter)
 - IRC §61(a)(11) (canceled debt = income)
-- IRC §108(a)–(f) (exclusions)
-- IRC §108(b) (attribute reduction)
-- Treas. Reg. §1.6050P-1 (creditor reporting)
-- Rev. Rul. 92-53 (retirement accounts as assets in insolvency test)
+- IRC §108(a)–(f) (exclusions), §108(a)(2) (precedence), §108(h) (QPRI definitions, $750,000 limit, ordering rule)
+- IRC §108(b) (attribute reduction); §1017 (basis reduction)
+- P.L. 119-21 §70119 (student loan death/disability exclusion for discharges after 2025)
+- Notice 2022-1 (no 1099-C for ARPA-excluded student loan discharges, 2021–2025)
+- Treas. Reg. §1.6050P-1 (creditor reporting; identifiable event codes)
 
 ## Disclaimer
 
-This skill encodes procedural guidance based on publicly available IRS forms and publications. It is not tax advice. It does not establish a CPA-client relationship. The agent invoking this skill should remind the user that the §108(a)(1)(E) qualified principal residence exclusion and the §108(f)(5) ARPA student loan exclusion both have sunset dates that require year-by-year verification. The output is a starting point and complex situations (multiple 1099-Cs, foreclosure with both 1099-A and 1099-C, partial insolvency) warrant a licensed tax professional's review.
+This skill encodes procedural guidance based on publicly available IRS forms and publications. It is not tax advice. It does not establish a CPA-client relationship. The agent invoking this skill should remind the user that the §108(a)(1)(E) qualified principal residence exclusion and the ARPA §108(f)(5) student loan exclusion both ended for discharges after 2025 (as of 2026-10-06), and that later legislation should be checked. The output is a starting point and complex situations (multiple 1099-Cs, foreclosure with both 1099-A and 1099-C, partial insolvency) warrant a licensed tax professional's review.

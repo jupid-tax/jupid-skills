@@ -1,25 +1,27 @@
 # Form 982 — Line-by-Line Walkthrough
 
-Form 982 ("Reduction of Tax Attributes Due to Discharge of Indebtedness") is the single form that turns a 1099-C from a tax bill into a wash. It has three parts; most consumer filers only touch Part I and write zeros across Part II.
+Form 982 ("Reduction of Tax Attributes Due to Discharge of Indebtedness (and Section 1082 Basis Adjustment)") is the form that documents a §108(a) exclusion. It has three parts; individuals use Parts I and II. Part III is for corporations only.
 
 This file covers the form line by line, the attribute-reduction order, and the §108(b)(5) election.
 
-Form revision in scope: 2018-revision form (used for tax years 2018 forward; check the [current PDF](https://www.irs.gov/pub/irs-pdf/f982.pdf) for the tax year being filed).
+Form revision in scope: **Form 982 (Rev. March 2018)** with the **Instructions for Form 982 (Rev. December 2021)**, both current on 2026-10-06 (About Form 982: "Recent Developments: None"). Check the [current PDF](https://www.irs.gov/pub/irs-pdf/f982.pdf) and https://www.irs.gov/forms-pubs/about-form-982 for the tax year being filed.
 
 ---
 
 ## When to file
 
-File Form 982 with Form 1040 (attach to the return) when the borrower is claiming any §108 exclusion that **requires** the form:
+File Form 982 with the income tax return "for a year a discharge of indebtedness is excluded from your income under section 108(a)" (Form 982 instructions, "When To File"):
 
-- §108(a)(1)(A) bankruptcy → required
-- §108(a)(1)(B) insolvency → required
-- §108(a)(1)(C) qualified farm indebtedness → required
-- §108(a)(1)(D) qualified real property business indebtedness → required
-- §108(a)(1)(E) qualified principal residence indebtedness → required
-- §108(f) student loan discharges → not required for permanent §108(f)(1)-(4) sub-rules; conservative practice for §108(f)(5) ARPA broad exclusion (verify per current Form 982 instructions)
+- §108(a)(1)(A) bankruptcy → required (box 1a)
+- §108(a)(1)(B) insolvency → required (box 1b)
+- §108(a)(1)(C) qualified farm indebtedness → required (box 1c)
+- §108(a)(1)(D) qualified real property business indebtedness → required (box 1d)
+- §108(a)(1)(E) qualified principal residence indebtedness → required (box 1e); only for debt discharged before Jan. 1, 2026 or under a written arrangement entered into before that date
+- §108(f) student loan exclusions are not §108(a) exclusions → no Form 982 (Pub. 4681 covers them under "Exceptions")
 
-If no exclusion is claimed and the canceled amount is reportable as income, **do not** file Form 982. Just report the income on Schedule 1 Line 8c (or Schedule C Line 6 for business debt).
+If no exclusion is claimed and the canceled amount is reportable as income, **do not** file Form 982. Just report the income on Schedule 1 Line 8c (or Schedule C Line 6 for sole-proprietor business debt, Schedule E Line 3 for nonfarm rental real property debt, Schedule F Line 8 for farm debt; Pub. 4681).
+
+The §108(b)(5) election (line 5) and the box 1d election must be made on a timely filed return (including extensions); a missed election can still be made on an amended return filed within 6 months of the due date (excluding extensions) marked "Filed pursuant to section 301.9100-2".
 
 ---
 
@@ -27,10 +29,10 @@ If no exclusion is claimed and the canceled amount is reportable as income, **do
 
 | Field | What goes here |
 |-------|----------------|
-| Name | Filer's legal name (matches 1040) |
+| Name shown on return | Filer's name as on the 1040 |
 | Identifying number | SSN or ITIN (matches 1040) |
 
-For joint returns, the form is filed under the spouse whose 1099-C and exclusion is being claimed. If both spouses have separate 1099-Cs, file two Forms 982.
+If spouses file separately, each completes their own Form 982 and Insolvency Worksheet for their share of a joint debt (Pub. 4681, Insolvency, Example 3). For a joint return, Pub. 4681 gives no separate example; flag how insolvency was measured for a CPA to review.
 
 ---
 
@@ -38,155 +40,130 @@ For joint returns, the form is filed under the spouse whose 1099-C and exclusion
 
 ### Lines 1a-1e — Type of discharge
 
-Check the box that matches the exclusion claimed. Exactly one box is checked per Form 982 (per discharge); if multiple exclusions apply to a single discharge, prioritize the highest-coverage exclusion.
+Check the box(es) that match the exclusion claimed (the form says "check applicable box(es)").
 
 | Line | Box | Use this when |
 |------|-----|---------------|
-| **1a** | Discharge of indebtedness in a title 11 case | §108(a)(1)(A) bankruptcy — Title 11 discharge order entered |
-| **1b** | Discharge of indebtedness to the extent insolvent (not in a title 11 case) | §108(a)(1)(B) insolvency — borrower was insolvent immediately before discharge, not in bankruptcy |
-| **1c** | Discharge of qualified farm indebtedness | §108(a)(1)(C) qualified farm indebtedness — farmer-specific |
-| **1d** | Discharge of qualified real property business indebtedness | §108(a)(1)(D) qualified real property business indebtedness — non-corporate, depreciable real property used in trade/business |
-| **1e** | Discharge of qualified principal residence indebtedness | §108(a)(1)(E) — main home mortgage acquisition debt (verify year-status) |
-
-If multiple discharges occurred in the same year with different exclusions (e.g., one credit card excluded under insolvency, one mortgage excluded under principal residence), the IRS allows a single Form 982 with multiple boxes checked **and** the total on Line 2 — but practice varies. Conservative approach: file two Forms 982, one per exclusion category. Check current Form 982 instructions for the tax year.
+| **1a** | Discharge of indebtedness in a title 11 case | §108(a)(1)(A) bankruptcy — the court has jurisdiction and grants the discharge or approves the plan |
+| **1b** | Discharge of indebtedness to the extent insolvent (not in a title 11 case) | §108(a)(1)(B) insolvency — liabilities exceeded FMV of assets immediately before the discharge |
+| **1c** | Discharge of qualified farm indebtedness | §108(a)(1)(C) — farmer-specific; not in a title 11 case or to the extent insolvent |
+| **1d** | Discharge of qualified real property business indebtedness | §108(a)(1)(D) — non-corporate (or S corporation) taxpayer, debt secured by real property used in a trade or business; this is an election |
+| **1e** | Discharge of qualified principal residence indebtedness | §108(a)(1)(E) — main-home acquisition debt discharged before 2026 (or under a pre-2026 written arrangement). Not allowed in a title 11 case (use 1a); an insolvent filer may elect 1b instead |
 
 ### Line 2 — Total amount of discharged indebtedness excluded from gross income
 
 The dollar amount being excluded.
 
-- **Bankruptcy:** Line 2 = canceled amount (no cap from §108(a)(1)(A) itself)
+- **Bankruptcy:** Line 2 = canceled amount discharged in the title 11 case
 - **Insolvency:** Line 2 = min(canceled amount, insolvency amount). Cannot exceed insolvency.
-- **Qualified principal residence:** Line 2 = min(canceled QPRI, $750,000) ($375,000 if MFS).
+- **Qualified principal residence:** Line 2 = the excludable QPRI amount after the ordering rule (only the part of the discharge above the loan's nonqualified part), within the $750,000 ($375,000 MFS) QPRI limit.
 - **Multiple boxes checked:** Line 2 = sum of all amounts excluded.
 
-This line **must equal or exceed** the sum of basis reductions in Part II Lines 10a-10b and any attribute reductions in Part II Lines 6-12 — see Part II below.
+Line 2 "won't necessarily equal" the Part II reductions: when the excluded amount exceeds the filer's tax attributes, the Part II total is smaller (Form 982 instructions, Line 2).
 
-### Line 3 — Election under §108(c)(3)(C) (qualified real property business indebtedness)
+### Line 3 — Election under §1017(b)(3)(E)
 
-Check **Yes** if applying the qualified real property business indebtedness exclusion under §108(a)(1)(D) **and** electing to apply the basis reduction first to the depreciable real property that secured the discharged debt.
+Check **Yes** to treat all real property held primarily for sale to customers in the ordinary course of a trade or business as if it were depreciable property (relevant to the line 5 election). It does not apply to qualified real property business indebtedness.
 
-For most consumer filers, leave **No**.
+For consumer filers, leave it unchecked.
 
 ---
 
 ## Part II — Reduction of Tax Attributes
 
-This is where §108(b) attribute reduction is computed. The borrower reduces tax attributes by the excluded amount, in a fixed order. Each attribute reduction is reported on a specific line.
+Part II applies the excluded amount against tax attributes. A description of any basis reduction under §1017 must be attached.
 
-**Order of reduction** (mandatory under §108(b)(2) unless §108(b)(5) election made):
+**Order of reduction** for boxes 1a and 1b (and 1c), unless the line 5 election is made (Form 982 instructions, "Any other debt"):
 
-1. **Net operating loss (NOL)** for the year of discharge → Line 6
-2. **General business credit carryovers** → Line 7
-3. **Minimum tax credits** → Line 8
-4. **Capital loss carryovers** for the year of discharge → Line 9
-5. **Basis of property** → Lines 10a / 10b
-6. **Passive activity losses and credits** → Line 11
-7. **Foreign tax credit carryovers** → Line 12
+1. **Net operating loss** for the year of discharge and NOL carryovers to that year → Line 6 (dollar for dollar)
+2. **General business credit** carryovers to or from the year → Line 7 (33⅓ cents per dollar)
+3. **Minimum tax credit** as of the start of the next tax year → Line 8 (33⅓ cents per dollar)
+4. **Net capital loss** for the year and capital loss carryovers → Line 9 (dollar for dollar)
+5. **Basis of property** → Line 10a (farm debt: Lines 11a–11c)
+6. **Passive activity loss and credit carryovers** → Line 12 (losses dollar for dollar; credits 33⅓ cents per dollar)
+7. **Foreign tax credit carryovers** → Line 13 (33⅓ cents per dollar)
 
-Each $1 of exclusion reduces $1 of attribute (with a 33⅓¢ ratio for credits — Lines 7, 8, 12).
+Box 1d (QRPBI) reduces only the basis of depreciable real property (Line 4). Box 1e (QPRI) reduces only the basis of the home (Line 10b), and only if the filer still owns it.
 
-The total reduced (Lines 6 + 7 ÷ 3 + 8 ÷ 3 + 9 + 10a + 10b + 11 + 12 ÷ 3) **must equal the excluded amount on Line 2**, **subject to the cap**: the borrower can never reduce attributes below zero, and basis reduction is capped at total liabilities minus total asset basis.
+### Line 4 — QRPBI applied to reduce basis of depreciable real property
 
-### Line 4 — Reduction of credit carryovers under §1374(f)
+Only with box 1d. Consumers leave it blank.
 
-Special rule for S-corp built-in gains. Almost never applies to consumer 1099-Cs. Leave 0.
+### Line 5 — §108(b)(5) election
 
-### Line 5 — Reduction of credit carryovers under §1502 (consolidated returns)
-
-Consolidated-return rule. Almost never applies. Leave 0.
+Amount the filer elects to apply first to reduce the basis of depreciable property (including property elected on line 3), before the line 6–13 order. See "§108(b)(5) election" below. Consumers leave it blank.
 
 ### Line 6 — Net operating loss
 
-Reduce the NOL for the year of discharge **first**, then NOL carryovers from prior years (in chronological order, oldest first).
+Reduce the NOL for the year of discharge, then NOL carryovers to that year.
 
-For most consumer filers without business losses, NOL = 0. Enter 0 on Line 6.
+For most consumer filers without business losses, NOL = 0.
 
-### Line 7 — General business credits (§38)
+### Line 7 — General business credit carryover
 
-Reduce general business credit carryovers (§38 carryovers, including R&D credit, work opportunity credit, etc.). $3 of credit reduces $1 of exclusion.
+Reduce by 33⅓ cents for each dollar excluded (Form 982 instructions, Line 7; see Form 3800).
 
-For most consumer filers, general business credits = 0.
+### Line 8 — Minimum tax credit
 
-### Line 8 — Minimum tax credits (§53)
-
-Reduce MTC carryovers from §53 (alternative minimum tax credits). $3 of MTC reduces $1 of exclusion.
-
-For most consumer filers, MTC = 0.
+Minimum tax credit as of the beginning of the tax year after the discharge year; 33⅓ cents per dollar.
 
 ### Line 9 — Net capital loss
 
-Reduce current-year net capital loss + capital loss carryovers (§1212). $1 of capital loss reduces $1 of exclusion.
+Current-year net capital loss and carryovers to the discharge year; dollar for dollar.
 
-For most consumer filers, capital losses = 0 unless they have a stock-loss history.
+### Line 10a — Basis of nondepreciable and depreciable property (if not reduced on line 5)
 
-### Line 10a — Basis of property (other than principal residence)
+Not for qualified farm debt. In a title 11 or insolvency case, the basis reduction is limited to the excess of the aggregate basis of the filer's property over aggregate liabilities, both immediately after the discharge (§1017(b)(2); Form 982 instructions, Line 10a). The limit doesn't apply to a line 5 reduction.
 
-Reduce basis of property held by the borrower at the start of the tax year following the discharge. Cap: total liabilities (immediately after discharge) minus total asset basis (immediately after discharge).
+**Nonbusiness debt (car loan, credit card) with no attributes other than basis of personal-use property** (Form 982 instructions, "A nonbusiness debt"; Pub. 4681 "Reduction of Tax Attributes"): enter the smallest of
 
-§1017 governs the order of basis reduction within a category — Treas. Reg. §1.1017-1 and Pub 4681 Chapter 1 cover the order:
+- (a) the basis of nondepreciable property,
+- (b) the amount on line 2, or
+- (c) the excess of the aggregate bases of property **plus money** held immediately after the discharge over aggregate liabilities immediately after the discharge.
 
-1. Real property used in a trade or business or held for investment (other than principal residence)
-2. Personal property used in a trade or business or held for investment
-3. Other property used in a trade or business or held for investment
-4. Inventory, accounts receivable, notes receivable
-5. Other property
+For an insolvent consumer, (c) is usually $0 because liabilities still exceed bases and cash after the discharge. Compute it anyway and show the numbers. The reduction applies to personal-use property held at the beginning of the next year, in proportion to adjusted basis.
 
-For each category, basis is reduced before the next category is touched.
+§1017 and Treas. Reg. §1.1017-1 govern the order of basis reduction among properties for business and investment property.
 
-For most consumer filers, basis reduction is irrelevant — they have no business or investment property.
+### Line 10b — Basis of principal residence (box 1e only)
 
-### Line 10b — Basis of principal residence (only for §108(a)(1)(E))
+If box 1e is checked **and the filer continues to own the residence after the discharge**, enter the smaller of the box 1e amount included on line 2 or the basis of the main home (Form 982 instructions, Line 10b). After a foreclosure or short sale, the filer no longer owns the home, so there is no Line 10b entry.
 
-If Line 1e is checked, reduce the basis of the principal residence by the excluded amount on Line 10b. **Mandatory** for §108(a)(1)(E) — see [`qualified-principal-residence.md`](./qualified-principal-residence.md).
+### Lines 11a-11c — Qualified farm indebtedness
 
-This is reported separately because the basis reduction is required regardless of attribute reduction order — it's tied directly to the discharged debt.
+Basis reductions for depreciable property, farmland, and other business property when box 1c is checked. Farm filers only.
 
-### Line 11 — Passive activity losses and credits
+### Line 12 — Passive activity loss and credit carryovers
 
-Reduce passive activity loss and credit carryovers under §469. $1 PAL reduces $1; $3 passive credit reduces $1.
+Losses dollar for dollar; credits 33⅓ cents per dollar.
 
-For most consumer filers, PAL = 0.
+### Line 13 — Foreign tax credit carryover
 
-### Line 12 — Foreign tax credit carryovers
+33⅓ cents per dollar.
 
-Reduce FTC carryovers under §27 / §901. $3 of FTC reduces $1 of exclusion.
-
-For most consumer filers, FTC = 0.
-
-### Line 13 — Total
-
-Sum of attribute reductions (in dollar-equivalent terms after the credit ratios). Should equal Line 2.
-
-If the borrower has fewer attributes than the exclusion amount, the excess is **forgiven** — there's nothing more to reduce, and the borrower doesn't owe tax on the excess. This is the case for most consumer filers: the excluded amount exceeds the available attributes (typically zero), so attribute reduction is a non-event.
+There is no "total" line on Form 982. If the filer has fewer attributes than the excluded amount, the excess just goes unused: it is not added back to income and not carried forward (Pub. 4681: if line 2 is more than total tax attributes, the Part II total will be less than line 2).
 
 ---
 
-## Part III — Election to Reduce Basis of Depreciable Property First (§108(b)(5))
+## §108(b)(5) election (Line 5)
 
-§108(b)(5) lets the borrower elect to reduce **basis of depreciable property first**, before applying the standard §108(b)(2) attribute order. This is a strategic election: it preserves NOLs, credits, and capital loss carryovers at the cost of immediately reducing depreciable basis.
+§108(b)(5) lets the filer elect to reduce **basis of depreciable property first** (line 5), before the §108(b)(2) order. It can preserve NOLs and credits at the cost of lower depreciation or a larger gain later. Only available with boxes 1a–1c.
 
-### Line 14 — Election to apply §108(b)(5)
+**When to consider:** significant depreciable property and significant NOLs or credits.
 
-Check Yes if making the election. Then list the depreciable property and the basis reductions.
+**When not:** no depreciable property or no NOLs to preserve (most consumers). Leave line 5 blank. Refer anyone considering it to a CPA.
 
-**When to elect:**
+---
 
-- Borrower has significant depreciable property and significant NOLs/credits
-- Borrower wants to preserve NOLs for future income years
-- Trade-off: reduced depreciation deductions in future years vs. preserved NOL for offsetting future income
+## Part III — Consent of Corporation to Adjustment of Basis
 
-**When NOT to elect:**
-
-- Borrower has no depreciable property (most consumers)
-- Borrower has no NOLs to preserve (most consumers)
-
-For consumer filers, leave Line 14 blank (no election).
+Used only by a corporation excluding income under §1081(b) and consenting to basis adjustment under §1082(a)(2). Individuals never complete Part III.
 
 ---
 
 ## Sample completed Form 982 — consumer insolvency case
 
-Jenna's $13,000 credit card cancellation (from the blog example), with Jenna insolvent by $21,000:
+Jenna's $13,000 credit card cancellation (see `../examples/credit-card-settled-with-insolvency.md`), insolvent by $21,000 immediately before the discharge. Immediately after: liabilities $45,000 (other cards $20,000 + auto loan $25,000); property bases plus money $17,500 (car bought for $17,500; 401(k) has no basis; $0 cash left after paying the $5,000 settlement).
 
 ```
 Name: Jenna Doe
@@ -198,75 +175,73 @@ Part I — General Information
 1c. Discharge of qualified farm indebtedness ............... ☐
 1d. Discharge of qualified real property business .......... ☐
 1e. Discharge of qualified principal residence ............. ☐
-
 2.  Total amount of discharged indebtedness excluded ....... $13,000
-
-3.  Election under §108(c)(3)(C) (qualified RP biz) ........ No
+3.  §1017(b)(3)(E) election ................................ (not checked)
 
 Part II — Reduction of Tax Attributes
-4.  Reduction under §1374(f) ............................... $0
-5.  Reduction under §1502 .................................. $0
-6.  NOL .................................................... $0
-7.  General business credits ............................... $0
-8.  Minimum tax credits .................................... $0
-9.  Capital loss carryover ................................. $0
-10a. Basis of property (other than principal residence) .... $0
-10b. Basis of principal residence ........................... $0
-11. Passive activity losses and credits .................... $0
-12. Foreign tax credit carryovers .......................... $0
-13. Total .................................................. $0
-
-(Note: Total Line 13 < Line 2 because Jenna has no tax attributes
- to reduce. The unreduced excess is permanent — not added back to
- income, not carried forward to future years.)
-
-Part III — §108(b)(5) Election
-14. Election to apply §108(b)(5) ........................... No
+4.   QRPBI basis reduction ................................. (blank)
+5.   §108(b)(5) election ................................... (blank)
+6.   NOL ................................................... $0
+7.   General business credit ............................... $0
+8.   Minimum tax credit .................................... $0
+9.   Net capital loss ...................................... $0
+10a. Basis of property ..................................... $0
+     smallest of (a) basis of nondepreciable property $17,500,
+     (b) line 2 $13,000, (c) $17,500 bases + $0 money − $45,000
+     liabilities after discharge = $0 → $0
+10b. Basis of principal residence .......................... (blank; box 1e not checked)
+11a–11c. Farm .............................................. (blank)
+12.  Passive activity loss and credit carryovers ........... $0
+13.  Foreign tax credit carryover .......................... $0
 ```
 
-This is the typical consumer pattern: Line 1b checked, Line 2 = excluded amount, Part II all zeros, no election.
+Part II total ($0) is less than line 2 ($13,000) because Jenna has no attributes to reduce. The unreduced excess is not added back to income and not carried forward.
 
 ---
 
-## Sample completed Form 982 — principal residence case
+## Sample completed Form 982 — principal residence, home still owned
 
-Borrower had $200,000 of mortgage debt forgiven on principal residence, all qualifying as acquisition indebtedness, basis pre-reduction was $350,000 (purchase $300,000 + $50,000 of capital improvements):
+A 2025 loan modification reduced the principal on a married couple's main-home purchase mortgage by $90,000. All of the loan is acquisition debt (well under the $750,000 QPRI limit); they keep the home. Basis before the discharge: $350,000 (purchase $300,000 + $50,000 of improvements).
 
 ```
 Part I
 1e. Discharge of qualified principal residence ............. ☑
-2.  Excluded ............................................... $200,000
+2.  Excluded ............................................... $90,000
 
 Part II
-10b. Basis of principal residence reduction ................. $200,000
+10b. Basis of principal residence ........................... $90,000
+     (smaller of the $90,000 box 1e amount or the $350,000 basis)
 
-(All other lines zero.)
+(All other lines blank.)
 
-New basis of home: $350,000 − $200,000 = $150,000
-(Carried in borrower's records for future sale.)
+New basis of home: $350,000 − $90,000 = $260,000
+(Carried in the owners' records for a future sale.)
 ```
+
+Discharges completed after Dec. 31, 2025 don't qualify unless under a written arrangement entered into before Jan. 1, 2026.
 
 ---
 
 ## Common errors
 
-1. **Checking multiple boxes 1a-1e on a single Form 982 without splitting Line 2** — IRS prefers each exclusion category have its own Form 982 (or at least clear allocation in Line 2).
+1. **Using box 1e for a 2026 discharge** — QPRI ended for discharges after 2025 (absent a pre-2026 written arrangement). Test insolvency.
 2. **Filing Form 982 when no exclusion applies** — the form is for exclusions, not for reporting income. If reporting income, just put it on Schedule 1 Line 8c.
-3. **Forgetting Line 10b** for principal residence cases — the basis reduction is mandatory, not optional.
-4. **Reducing attributes the borrower doesn't have** — Part II should reflect actual attributes; if NOL is 0, write 0, don't fabricate a reduction.
-5. **Sum of Part II ≠ Line 2** — a math error if the borrower has enough attributes; otherwise (consumer case) it's expected — Line 13 < Line 2 when attributes are insufficient.
-6. **Skipping Form 982 for §108(a)(1)(B) insolvency** — required by IRC §108(d)(6) and Form 982 instructions; without it, the IRS sees no income reported and no exclusion documented → CP2000.
+3. **Entering Line 10b after a foreclosure or short sale** — Line 10b applies only if the filer still owns the home.
+4. **Reducing attributes the borrower doesn't have** — Part II should reflect actual attributes; if NOL is 0, write 0.
+5. **Skipping the Line 10a computation for a consumer insolvency case** — the instructions require the smallest-of-three amount; it is usually $0 but must be computed.
+6. **Skipping Form 982 for §108(a)(1)(B) insolvency** — without it, the IRS sees the 1099-C, no income, and no documented exclusion → likely CP2000.
 7. **Filing Form 982 without attaching it to a 1040** — Form 982 is an attachment, not a stand-alone return.
+8. **Using Form 982 for a student loan exclusion** — §108(f) exclusions don't go on Form 982.
 
 ---
 
 ## Sources
 
-- [Form 982 (PDF)](https://www.irs.gov/pub/irs-pdf/f982.pdf) — current revision
-- [Instructions for Form 982 (PDF)](https://www.irs.gov/pub/irs-pdf/i982.pdf) — line-by-line IRS guidance
-- IRC §108(b) — attribute reduction order
-- IRC §108(b)(5) — depreciable property basis-first election
-- IRC §108(d)(6) — Form 982 filing requirement
-- IRC §1017 — basis-reduction ordering rules
-- Treas. Reg. §1.1017-1 — basis-reduction rules within a property category
-- [Publication 4681](https://www.irs.gov/publications/p4681) — Chapters 1 and 4
+- [Form 982 (Rev. March 2018)](https://www.irs.gov/pub/irs-pdf/f982.pdf)
+- [Instructions for Form 982 (Rev. December 2021)](https://www.irs.gov/pub/irs-pdf/i982.pdf) — When To File, How To Complete the Form chart, Lines 1b–3, Part II, Lines 7, 10a, 10b
+- IRC §108(a)(2) — precedence of exclusions
+- IRC §108(b) — attribute reduction order; §108(b)(5) election
+- IRC §108(h) — QPRI definitions, $750,000 limit, basis reduction, ordering rule
+- IRC §1017 — basis reduction; §1017(b)(2) limit; §1017(b)(3)(E) election
+- Treas. Reg. §1.1017-1 — basis-reduction ordering
+- [Publication 4681 (2025)](https://www.irs.gov/publications/p4681) — Exclusions, Reduction of Tax Attributes

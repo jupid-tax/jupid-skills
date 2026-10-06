@@ -16,7 +16,7 @@ The five filing statuses on Form 1040, with eligibility rules. Filing status con
 
 If you got divorced or legally separated on December 31, you're considered single for the entire year. Same for marriage on December 31 — you're considered married for the entire year.
 
-**Standard deduction (2025)**: $15,000.
+**Standard deduction (2025)**: $15,750 (2026: $16,100).
 
 **Brackets (2025)**: 10% up to $11,925 → 12% up to $48,475 → 22% up to $103,350 → 24% up to $197,300 → 32% up to $250,525 → 35% up to $626,350 → 37% above.
 
@@ -31,7 +31,7 @@ If you got divorced or legally separated on December 31, you're considered singl
 
 A common-law marriage recognized by the state where the relationship began counts as married for federal tax. Same-sex marriage is recognized federally regardless of state. Domestic partnerships and civil unions are NOT marriage for federal tax purposes.
 
-**Standard deduction (2025)**: $30,000 (double the single amount).
+**Standard deduction (2025)**: $31,500 (double the single amount; 2026: $32,200).
 
 **Brackets (2025)**: 10% up to $23,850 → 12% up to $96,950 → 22% up to $206,700 → 24% up to $394,600 → 32% up to $501,050 → 35% up to $751,600 → 37% above.
 
@@ -49,7 +49,7 @@ A common-law marriage recognized by the state where the relationship began count
 
 Both spouses must use the same deduction method (both standard or both itemized). If one itemizes, the other cannot take the standard deduction — they must itemize too, even if their itemized deductions are $0.
 
-**Standard deduction (2025)**: $15,000 (same as single, but if spouse itemizes, must itemize).
+**Standard deduction (2025)**: $15,750 (same as single, but if spouse itemizes, must itemize; 2026: $16,100).
 
 **Brackets (2025)**: same as MFJ but at half the thresholds — 10% up to $11,925 → 12% up to $48,475 → etc.
 
@@ -60,13 +60,12 @@ Both spouses must use the same deduction method (both standard or both itemized)
 - Separated but not legally divorced and don't want to file jointly
 
 **Restrictions on MFS**:
-- Cannot claim EITC
-- Cannot claim Saver's Credit
+- Cannot claim EITC, unless the filer lived apart from the spouse for the last 6 months of the year (or is legally separated and not living together at year-end) and a qualifying child lived with the filer more than half the year
 - Cannot deduct student loan interest
 - Cannot exclude US Savings Bond interest used for education
 - Cannot take the dependent care credit (in most cases)
 - Cannot take the AOTC or Lifetime Learning Credit
-- Roth IRA contribution phaseout starts at $0 (vs. $146,000 single) for MFS who lived with spouse during the year
+- Roth IRA contribution phaseout is $0–$10,000 MAGI (vs. $150,000–$165,000 single for 2025) for MFS who lived with spouse during the year (2025 Pub. 590-A)
 - IRA deduction phaseout extremely tight if covered by retirement plan
 - 85% of Social Security is taxable starting at $0 combined income (vs. $32,000 MFJ) for MFS who lived with spouse
 
@@ -90,7 +89,7 @@ Run the math both ways before choosing MFS — it rarely beats MFJ.
 
 **NOT a qualifying person for HoH**: cousins, aunts/uncles, unrelated dependents (e.g., a friend you support).
 
-**Standard deduction (2025)**: $22,500 (between Single and MFJ).
+**Standard deduction (2025)**: $23,625 (between Single and MFJ; 2026: $24,150).
 
 **Brackets (2025)**: 10% up to $17,000 → 12% up to $64,850 → 22% up to $103,350 → 24% up to $197,300 → 32% up to $250,525 → 35% up to $626,350 → 37% above. Wider than Single brackets in the lower tiers.
 
@@ -115,7 +114,7 @@ When in doubt, run the qualifying person test from `dependents.md` before claimi
 
 The year the spouse dies, the filer can file MFJ. The two following years, if the conditions are met, the filer can file QSS (uses MFJ brackets). After that, filer typically files HoH (if dependent qualifying child still in home) or Single.
 
-**Standard deduction (2025)**: $30,000 (same as MFJ).
+**Standard deduction (2025)**: $31,500 (same as MFJ; 2026: $32,200).
 
 **Brackets (2025)**: same as MFJ (most favorable).
 
@@ -153,7 +152,7 @@ Otherwise unmarried?
 
 **Domestic partnership / civil union**: NOT marriage for federal tax purposes, even if state recognizes. File Single or HoH.
 
-**Common-law marriage**: recognized federally if recognized by the state where the relationship began (typically AL, CO, IA, KS, MT, NH, OK, RI, SC, TX, UT). File MFJ or MFS.
+**Common-law marriage**: recognized federally if validly entered under the law of the state where the relationship began. Few states still allow new common-law marriages and several have abolished them for later dates, so ask which state and when the relationship began; do not rely on a list. File MFJ or MFS.
 
 ---
 
@@ -164,4 +163,5 @@ Otherwise unmarried?
 - IRC §2(b) — definition of HoH
 - IRC §7703 — determination of marital status
 - [Publication 501](https://www.irs.gov/publications/p501) — Dependents, Standard Deduction, and Filing Information (the canonical IRS reference)
-- Rev. Proc. 2024-40 — 2025 brackets and standard deductions
+- Rev. Proc. 2024-40 — 2025 brackets (its 2025 standard deduction was superseded by P.L. 119-21 §70102: $15,750 / $31,500 / $23,625)
+- Rev. Proc. 2025-32 — 2026 brackets and standard deductions

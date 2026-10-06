@@ -16,14 +16,16 @@ description: >
 form: Form 1095-A (Health Insurance Marketplace Statement) + Form 8962
 audience: [individual]
 tax_year: 2026
-last_verified: 2026-04-28
+last_verified: 2026-10-06
 official_form: https://www.irs.gov/pub/irs-pdf/f1095a.pdf
 official_instructions: https://www.irs.gov/pub/irs-pdf/i1095a.pdf
 ---
 
 # Form 1095-A — Health Insurance Marketplace Statement (and Form 8962 reconciliation)
 
-This skill produces an audit-grade Form 8962 reconciliation from a user's Form 1095-A, household income, and family details. It walks through the form box by box, applies IRC §36B at each step, validates the result against repayment limits in Pub 974 Table 5, and emits a deliverable the user can transcribe to a paper or e-file Form 8962 with confidence.
+This skill produces an audit-grade Form 8962 reconciliation from a user's Form 1095-A, household income, and family details. It walks through the form box by box, applies IRC §36B at each step, validates the result against the repayment limitation in Table 5 of the Form 8962 instructions (tax years before 2026 only), and emits a deliverable the user can transcribe to a paper or e-file Form 8962 with confidence.
+
+**Form revision.** The Form 1095-A map was verified against the 2025 Form 1095-A (created 6/5/25) and the 2025 Instructions for Form 1095-A (Oct 8, 2025); the Form 8962 lines against the 2025 Form 8962 and its instructions, as used for 2025 returns filed in 2026. Re-check https://www.irs.gov/forms-pubs/about-form-1095-a and https://www.irs.gov/forms-pubs/about-form-8962 for the next revision before use. For the full Form 8962 computation, the [`form-8962`](../form-8962/SKILL.md) skill is the reference; this skill must stay consistent with it.
 
 The math is mechanical. The judgment is in *which year's FPL applies, what the applicable figure is for the user's income bracket, whether shared policy allocation is needed, and when a rule depends on a fact the user hasn't mentioned*. This skill optimizes for those — the agent should ask, not guess.
 
@@ -47,7 +49,8 @@ Do **not** engage this skill when:
 - The user received **Form 1095-C** (employer-provided coverage from a large employer, generally 50+ FTEs) — this is informational only, no entry on the tax return, no Form 8962
 - The user only had Medicare or TRICARE — no Marketplace coverage, no PTC
 - The user purchased health insurance directly from an insurer outside the Marketplace — not eligible for PTC
-- The user is asking about employer health insurance deduction → that's Schedule 1 Line 17 (self-employed health insurance), not Form 8962
+- The user is asking about the self-employed health insurance deduction → that's Schedule 1 Line 17, not Form 8962
+- The user was enrolled only in a Marketplace catastrophic plan or a stand-alone dental plan → no Form 1095-A should be issued and no PTC is allowed for that coverage (2025 Form 1095-A, Instructions for Recipient)
 
 If the user is unsure which 1095 they received, ask them to read the form's title:
 - "Form 1095-A — Health Insurance Marketplace Statement" → use this skill
@@ -60,14 +63,14 @@ If the user is unsure which 1095 they received, ask them to read the form's titl
 
 Before producing anything, the agent must have these inputs. If any are missing, **ask for them explicitly** and stop until you get an answer.
 
-1. **Tax year** the return covers. Form 1095-A for tax year 2025 is filed in 2026; for tax year 2024, in 2025. The FPL table, applicable figures, and repayment limits depend on this.
-2. **Filer's filing status** — Single, Married Filing Jointly, Married Filing Separately (note: MFS generally cannot claim PTC; ask whether one of the narrow exceptions applies — domestic abuse or spousal abandonment), Head of Household, Qualifying Surviving Spouse.
-3. **Tax family size** — filer + spouse (if MFJ) + dependents claimed on the return. Ask explicitly; don't infer from the 1095-A Part II covered individuals (which may include people not on the tax return).
-4. **Modified AGI for the tax family** — AGI from Form 1040 Line 11 + tax-exempt interest + excluded foreign earned income + non-taxable Social Security. Ask whether dependents had a filing requirement; if so, their modified AGI is added too.
-5. **State of residence** — drives whether the user used the federal Marketplace (healthcare.gov) or a state Marketplace, which affects how to look up missing SLCSP amounts. Also: 48 contiguous states + DC use one FPL table; Alaska and Hawaii each have a higher FPL table.
-6. **Form 1095-A Part III monthly amounts** — Column A (premium), Column B (SLCSP), Column C (APTC) for each month coverage was in force. Ask for all 12 months even if the same number repeats; this is how you detect a missing-month problem.
-7. **Whether all 12 months had identical coverage details** — same plan, same family size, same APTC. If yes, the annual calculation (Form 8962 Line 11) applies. If no, the monthly calculation (Lines 12–23) applies.
-8. **Whether this is a shared policy** — was anyone on the 1095-A NOT on the user's tax return? Common scenarios: divorced parents sharing a child's coverage, unmarried parents sharing a child's coverage, an adult child enrolled who files their own return. If yes, Form 8962 Part IV allocation is required.
+1. **Tax year** the return covers. Form 1095-A for tax year 2025 is furnished by January 31, 2026 and used on the 2025 return filed in 2026. The FPL table, applicable figures, and repayment limits depend on this. For 2026 the enhanced credits have expired: Rev. Proc. 2025-25 sets the applicable percentages (2.10% to 9.96%), household income above 400% FPL gets no PTC (IRC §36B(c)(1)(A)), and excess APTC is repaid in full with no limitation (P.L. 119-21 §71305). No extension had been enacted as of 2026-10-06; re-check IRS.gov/Form8962 before computing a 2026 return.
+2. **Filer's filing status** — Single, Married Filing Jointly, Married Filing Separately (note: MFS generally cannot claim PTC; ask whether one of the narrow exceptions applies — domestic abuse or spousal abandonment, claimed by checking the box on Form 8962 line A), Head of Household, Qualifying Surviving Spouse.
+3. **Tax family size** — filer + spouse (if MFJ) + every dependent claimed on the return, whether or not on the policy. Ask explicitly; don't infer from the 1095-A Part II covered individuals.
+4. **Modified AGI for the tax family** — AGI from Form 1040 Line 11a + tax-exempt interest (Line 2a) + excluded foreign earned income and housing (Form 2555, lines 45 and 50) + non-taxable Social Security (2025 Form 8962 instructions, Worksheet 1-1). Ask whether dependents were required to file; if so, their modified AGI is added too (Line 2b).
+5. **State of residence during the year** — drives whether the user used the federal Marketplace (healthcare.gov) or a state Marketplace, which affects how to look up missing SLCSP amounts. Also: 48 contiguous states + DC use one FPL table; Alaska and Hawaii each have a higher FPL table. If the user lived in Alaska or Hawaii for part of the year, or joint filers lived in different states, use the higher table (2025 Form 8962 instructions, Line 4).
+6. **Form 1095-A Part III monthly amounts** (lines 21–32, totals on line 33) — Column A (premium), Column B (SLCSP), Column C (APTC) for each month coverage was in force. Ask for all 12 months even if the same number repeats; this is how you detect a missing-month problem.
+7. **Whether the annual calculation is allowed** — Form 8962 Line 10 = Yes only if everyone in the tax family was enrolled all 12 months with the same enrollment premium (Column A) and the same applicable SLCSP premium (Column B) every month, and Part IV is not completed. Otherwise the monthly calculation (Lines 12–23) applies (2025 Form 8962 instructions, Line 10).
+8. **Whether this is a shared policy** — did the policy cover someone in the user's tax family and someone in another tax family, and does the user's 1095-A list someone not in their tax family or miss a member of it? Common scenarios: divorced parents sharing a child's coverage, unmarried parents sharing a child's coverage, an adult child enrolled who files their own return. If yes, Form 8962 Line 9 = Yes and Part IV allocation is required (2025 Form 8962 instructions, Line 9).
 
 For the worked example below, ask:
 - "What's your filing status?"
@@ -88,7 +91,7 @@ Confirm the user has Form 1095-A (not 1095-B or 1095-C). If 1095-B or 1095-C, ex
 
 ### Step 2 — Verify Part I and Part II
 
-Check that the recipient SSN, name, and policy number on Part I match the filer. Check Part II covered individuals and identify anyone who is NOT on the tax return — flag for shared policy allocation in Step 7.
+Check that the recipient name (line 4), SSN (line 5), and policy number (line 2) on Part I match the filer. Check Part II covered individuals (lines 16–20) and identify anyone who is NOT on the tax return — flag for shared policy allocation in Step 8. If the VOID box is checked, ignore that form; if CORRECTED is checked, use it instead of the original (2025 Form 1095-A, Instructions for Recipient).
 
 ### Step 3 — Check Part III for missing or zero values
 
@@ -97,77 +100,79 @@ For each month coverage was in force:
 - Column B should be greater than zero (SLCSP)
 - Column C may be zero (no APTC) or positive
 
-**If Column B is zero in any month with coverage**, walk the user through using the [healthcare.gov Tax Tool](https://www.healthcare.gov/tax-tool/) (federal Marketplace) or their state's equivalent to look up the correct SLCSP. Don't proceed with zero — the PTC calculation will be wrong.
+**If Column B is zero or blank in any month with coverage**, walk the user through using the [healthcare.gov Tax Tool](https://www.healthcare.gov/tax-tool/) (federal Marketplace) or their state's equivalent to look up the correct SLCSP. Don't proceed with zero — the PTC calculation will be wrong. Exception: the Marketplace reports -0- when every covered person enrolled after the first day of the month (and none by birth, adoption, foster placement, or court order), or the premiums for the month were not paid; no PTC is allowed for that month (2025 Instructions for Form 1095-A, Part III, column B). ASK before looking anything up.
+
+**If Column C is the only nonzero column for a month**, the insurer terminated the policy for nonpayment: no PTC for that month, but the APTC must still be reconciled (2025 Form 1095-A, Instructions for Recipient, Column C).
 
 If a 1095-A appears to have other errors (wrong APTC, wrong dates), tell the user to call the Marketplace and request a corrected 1095-A before filing.
 
 ### Step 4 — Determine annual vs. monthly calculation
 
 Ask if anything changed during the year:
-- Different plan in different months?
-- Family size change (marriage, divorce, baby, death)?
-- APTC changed mid-year (income update with the Marketplace)?
+- Different plan or enrollment premium in different months?
+- Different SLCSP premium in different months (family size change, move, birth, death)?
 - Any month without coverage?
+- Any shared-policy allocation (Part IV)?
 
-If everything was identical for all 12 months → annual calculation (Line 11). Otherwise → monthly calculation (Lines 12–23).
+If the tax family was enrolled all 12 months with the same Column A and the same Column B every month and no Part IV → annual calculation (Line 11). Otherwise → monthly calculation (Lines 12–23). A change in APTC alone does not force the monthly method.
 
 ### Step 5 — Collect household income and family size
 
 Compute:
 - Tax family size (Line 1)
 - Modified AGI (Line 2a) = AGI + tax-exempt interest + excluded foreign earned income + non-taxable Social Security
-- Dependent modified AGI (Line 2b) — only if dependents had filing requirement
+- Dependent modified AGI (Line 2b) — only if dependents were required to file
 - Household income (Line 3) = Line 2a + Line 2b
-- Federal Poverty Line (Line 4) — use **prior-year FPL table** (2024 FPL for tax year 2025; 2025 FPL for tax year 2026), correct table for 48 states+DC, Alaska, or Hawaii
-- Household income as % of FPL (Line 5) = Line 3 ÷ Line 4 × 100, rounded down to whole percent
+- Federal Poverty Line (Line 4) — use **prior-year FPL table** (2024 HHS guidelines for tax year 2025; 2025 HHS guidelines for tax year 2026), correct table for 48 states+DC, Alaska, or Hawaii; check box a, b, or c
+- Household income as % of FPL (Line 5) = Line 3 ÷ Line 4 × 100, dropping any digits after the decimal point; if above 400%, enter 401 (2025 instructions, Worksheet 2)
 
 Reference [`references/fpl-tables.md`](./references/fpl-tables.md) for FPL values by family size and state group.
 
 ### Step 6 — Look up Applicable Figure
 
-Use Table 2 in Form 8962 instructions, indexed by Line 5 percentage. Note the ARPA/IRA expansion (2021–2025) lowered applicable figures and removed the upper FPL cap; 2026 status depends on legislation. Reference [`references/applicable-figures.md`](./references/applicable-figures.md) for the year-by-year table.
+Use Table 2 in Form 8962 instructions, indexed by Line 5 percentage, and enter it on Line 7. The ARPA/IRA expansion (2021–2025) lowered applicable figures and removed the upper FPL cap (2025: 0% up to 150% FPL, 8.5% at 400% and above; Rev. Proc. 2024-35). For 2026 the expansion expired: Rev. Proc. 2025-25 sets 2.10% to 9.96%, and above 400% FPL there is no PTC. Reference [`references/applicable-figures.md`](./references/applicable-figures.md) for the year-by-year table.
 
 Compute:
-- Annual contribution amount (Line 8b) = Line 3 × Line 8a
-- For monthly: divide Line 8b by 12
+- Annual contribution amount (Line 8a) = Line 3 × Line 7, rounded to the nearest whole dollar
+- Monthly contribution amount (Line 8b) = Line 8a ÷ 12, rounded to the nearest whole dollar
 
 ### Step 7 — Compute PTC (Annual or Monthly)
 
 For annual (Line 11):
-- 11(a) = Annual enrollment premium = sum of 1095-A Column A for the year
-- 11(b) = Annual SLCSP = sum of 1095-A Column B for the year
-- 11(c) = Annual contribution = Line 8b
+- 11(a) = Annual enrollment premium = 1095-A line 33, Column A
+- 11(b) = Annual SLCSP = 1095-A line 33, Column B
+- 11(c) = Annual contribution = Line 8a
 - 11(d) = Maximum premium assistance = max(0, 11(b) − 11(c))
 - 11(e) = PTC = lesser of 11(a) or 11(d)
-- 11(f) = Annual APTC = sum of 1095-A Column C for the year
+- 11(f) = Annual APTC = 1095-A line 33, Column C
 
-For monthly (Lines 12–23): same formulas applied per row.
+For monthly (Lines 12–23): same formulas applied per row, with column (c) = Line 8b.
 
 ### Step 8 — Apply shared policy allocation if needed
 
-If anyone on Part II of 1095-A is not on the tax return, complete Form 8962 Part IV (Lines 30–34). Each row: SSN of other taxpayer, allocation percentage for premium / SLCSP / APTC. Allocations must total 100% across all sharing taxpayers.
+If Step 2 flagged a shared policy, complete Form 8962 Part IV (Lines 30–34) before Line 10. Each row: (a) policy number from 1095-A line 2, (b) SSN of other taxpayer, (c)/(d) start and stop month, (e)/(f)/(g) allocation percentage for premium / SLCSP / APTC as a decimal (e.g., "0.67"). Allocations must total 100% across all sharing taxpayers. Completing Part IV forces Line 10 = No (monthly calculation).
 
-Default if no agreement: 50/50. Best practice: get a written agreement signed by both parties.
+Default if no agreement depends on the situation (2025 Form 8962 instructions, Table 3 and Allocation Situations 1–4; Treas. Reg. §1.36B-4): spouses who divorced or legally separated during the year use 50/50 and the same percentage for all three amounts; married filing separately uses 50% under Situation 2 rules; any other shared policy (e.g., parents divorced in an earlier year, an adult child filing their own return) defaults to the number of individuals enrolled by one taxpayer who are in the other taxpayer's tax family divided by the total enrolled. See [`references/shared-policy.md`](./references/shared-policy.md). Best practice: both parties confirm the same percentages before either files.
 
 ### Step 9 — Reconcile
 
 - Line 24 = Total PTC = sum of column (e)
-- Line 25 = Total APTC = sum of column (f), should equal sum of 1095-A Column C
-- If Line 24 > Line 25 → Net PTC (Line 26) = Line 24 − Line 25 → flows to Schedule 3 Line 9 (refundable)
-- If Line 25 > Line 24 → Excess APTC = Line 25 − Line 24 → apply repayment limit (Line 28) → Line 29 = lesser of excess or limit → flows to Schedule 2 Line 1a
+- Line 25 = Total APTC = sum of column (f), should equal sum of 1095-A Column C (after any Part IV allocation)
+- If Line 24 > Line 25 → Net PTC (Line 26) = Line 24 − Line 25 → flows to Schedule 3 Line 9 (refundable). If equal, enter -0- on Line 26.
+- If Line 25 > Line 24 → leave Line 26 blank; Excess APTC (Line 27) = Line 25 − Line 24 → repayment limit (Line 28) → Line 29 = lesser of Line 27 or Line 28 → flows to Schedule 2 Line 1a
 
 ### Step 10 — Apply repayment limit
 
-If income is below 400% FPL, the excess APTC repayment is capped per Pub 974 Table 5. The cap depends on filing status (single vs. all others) and FPL bracket:
+For tax year 2025, if income is below 400% FPL, the excess APTC repayment is capped per Table 5 of the 2025 Form 8962 instructions. The cap depends on filing status (single vs. all others) and FPL bracket:
 
-| Income % FPL | Single | Other Filing Status |
+| Income % FPL (Line 5) | Single | Any other filing status |
 |--------------|--------|---------------------|
-| Under 200% | $375 | $750 |
+| Less than 200% | $375 | $750 |
 | At least 200% but less than 300% | $975 | $1,950 |
 | At least 300% but less than 400% | $1,625 | $3,250 |
-| 400% or more | No cap | No cap |
+| 400% or more | Leave Line 28 blank (no limit) | Leave Line 28 blank (no limit) |
 
-(2025 figures from Pub 974; verify for the year you're filing.)
+For tax years beginning after December 31, 2025 there is no repayment limitation at any income: Line 29 = Line 27 (P.L. 119-21 §71305; IRS FS-2025-10, Q31). Married filing separately: Table 5 applies to each spouse separately based on the household income on each return.
 
 Reference [`references/repayment-limits.md`](./references/repayment-limits.md) for year-by-year table.
 
@@ -188,7 +193,7 @@ State the next forms:
 
 ### Step 14 — File the return (optional)
 
-If the agent has browser automation and the user authorizes filing, follow [`filing.md`](./filing.md).
+If the agent has browser automation and the user authorizes filing, follow [`filing.md`](./filing.md). For the full Form 8962 draft, the [`form-8962`](../form-8962/SKILL.md) skill covers every line; for the parent return see [`form-1040`](../form-1040/SKILL.md) and [`schedule-2`](../schedule-2/SKILL.md).
 
 ---
 
@@ -200,14 +205,17 @@ For the full reference, load [`references/line-by-line.md`](./references/line-by
 
 These are identifying fields populated by the Marketplace. The agent verifies but does not edit.
 
-- **Lines 1–7** — Marketplace identifier and policy number; if blank or wrong, contact the Marketplace
-- **Lines 8–15** — Recipient name, SSN, DOB, address, policy issuer
+- **Line 1** — Marketplace identifier (the state where the user enrolled); **Line 2** — Marketplace-assigned policy number (goes in Form 8962 Part IV column (a)); **Line 3** — policy issuer's name
+- **Lines 4–6** — Recipient's name, SSN, date of birth (DOB only if no SSN)
+- **Lines 7–9** — Spouse's name, SSN, DOB (only if APTC was paid; DOB only if no SSN)
+- **Lines 10–11** — Policy start and termination dates
+- **Lines 12–15** — Street address, city, state, country and ZIP
 
-If Line 1 SSN does not match the filer's SSN on Form 1040, the recipient is the wrong person and a corrected 1095-A is needed.
+If the Line 5 SSN does not match the filer's SSN on Form 1040, the recipient is the wrong person and a corrected 1095-A is needed.
 
 ### Form 1095-A Part II — Covered Individuals
 
-Each row identifies one enrollee. Names + SSN + DOB + coverage start/end dates. Used for shared policy allocation analysis.
+Lines 16–20, one row per enrollee: (A) name, (B) SSN, (C) DOB only if no SSN, (D) coverage start date, (E) coverage termination date. More than five people → an additional Form 1095-A continues Part II. Used for shared policy allocation analysis.
 
 ### Form 1095-A Part III — Monthly amounts
 
@@ -217,7 +225,7 @@ The three columns that drive Form 8962:
 - **Column B — Monthly SLCSP premium**: The benchmark premium for the second-lowest cost silver plan in your coverage area for your family. Note: this is a pricing reference, not the plan you bought.
 - **Column C — Monthly APTC**: The credit the Marketplace paid your insurer on your behalf each month
 
-Each row is one month, January through December.
+Lines 21–32 are January through December; line 33 holds the annual totals. Column A includes only premiums for essential health benefits (plus the pediatric dental portion of a stand-alone dental plan, if any).
 
 ### Form 8962 Part I — Annual and Monthly Contribution Amount (Lines 1–8b)
 
@@ -225,17 +233,17 @@ Each row is one month, January through December.
 - **Line 2a** — Modified AGI of filer (and spouse if MFJ)
 - **Line 2b** — Modified AGI of dependents who had a filing requirement
 - **Line 3** — Household income = Line 2a + Line 2b
-- **Line 4** — FPL for tax family size (use prior-year table; 48 states + DC vs. Alaska vs. Hawaii)
-- **Line 5** — Income as % of FPL = Line 3 ÷ Line 4, expressed as whole percent rounded down
-- **Line 6** — Reserved (no entry)
+- **Line 4** — FPL for tax family size (use prior-year table; check box a Alaska, b Hawaii, or c other 48 states and DC)
+- **Line 5** — Income as % of FPL = Line 3 ÷ Line 4, expressed as whole percent rounded down (401 if above 400%)
+- **Line 6** — Reserved for future use (no entry)
 - **Line 7** — Applicable Figure (from Table 2 in Form 8962 instructions)
-- **Line 8a** — Annual contribution = Line 3 × Line 7
-- **Line 8b** — Monthly contribution = Line 8a ÷ 12
+- **Line 8a** — Annual contribution = Line 3 × Line 7, rounded to whole dollars
+- **Line 8b** — Monthly contribution = Line 8a ÷ 12, rounded to whole dollars
 
 ### Form 8962 Part II — Premium Tax Credit (Line 9–10 + Line 11 OR Lines 12–23)
 
-- **Line 9** — Yes/No: are you allocating policy amounts with another taxpayer? (If yes, complete Part IV first.)
-- **Line 10** — Yes/No: do all of these apply: (a) coverage all 12 months, (b) same plan, (c) same family, (d) same APTC? If yes → Line 11 (annual). If no → Lines 12–23 (monthly).
+- **Line 9** — Yes/No: are you allocating policy amounts with another taxpayer or electing the alternative calculation for year of marriage? (If yes, complete Part IV and/or Part V first.)
+- **Line 10** — Yes only if the tax family was enrolled all 12 months with the same enrollment premium and the same applicable SLCSP premium every month and Part IV was not completed → Line 11 (annual). Otherwise No → Lines 12–23 (monthly).
 
 For Line 11 or Lines 12–23, the columns are:
 - **(a)** — Premium amount (1095-A Col A)
@@ -248,23 +256,26 @@ For Line 11 or Lines 12–23, the columns are:
 ### Form 8962 Part III — Repayment of Excess APTC (Lines 27–29)
 
 - **Line 27** — Excess APTC = Line 25 − Line 24 (only if positive)
-- **Line 28** — Repayment limitation from Pub 974 Table 5
+- **Line 28** — Repayment limitation from Table 5 of the Form 8962 instructions (2025; blank if Line 5 is 400 or more); none for tax years after 2025
 - **Line 29** — Excess APTC repayment = lesser of Line 27 or Line 28 → Schedule 2 Line 1a
 
 ### Form 8962 Part II Line 26 — Net Premium Tax Credit
 
-If Line 24 > Line 25, Line 26 = Line 24 − Line 25 → Schedule 3 Line 9 (refundable credit)
+If Line 24 > Line 25, Line 26 = Line 24 − Line 25 → Schedule 3 Line 9 (refundable credit). If equal, -0-. If Line 25 > Line 24, leave blank and go to Part III.
 
 ### Form 8962 Part IV — Allocation of Policy Amounts (Lines 30–34)
 
-Up to four allocations. Each row:
-- Other taxpayer SSN
-- Months of allocation (start/end)
-- Allocation percentage for premium, SLCSP, and APTC (must total 100% across all sharers)
+Up to four allocations (Lines 30–33). Each row:
+- (a) Policy number (Form 1095-A line 2)
+- (b) SSN of other taxpayer
+- (c) Allocation start month, (d) stop month
+- (e) Premium, (f) SLCSP, (g) APTC allocation percentage as decimals (must total 100% across all sharers)
 
-### Form 8962 Part V — Alternative Calculation for Year of Marriage (Line 35)
+Line 34 asks whether all allocations are complete; the allocated monthly amounts then go on Lines 12–23.
 
-Optional simplified calculation for couples who married during the year. Only applies if marriage occurred mid-year and one or both spouses had Marketplace coverage before the marriage. See Pub 974 Chapter 4.
+### Form 8962 Part V — Alternative Calculation for Year of Marriage (Lines 35–36)
+
+Optional election for couples who were both unmarried on January 1, married on December 31, file jointly, had someone in the tax family enrolled before the first full month of marriage, and were paid excess APTC (2025 instructions, Table 4 and Worksheet 3). It can only reduce the excess APTC repayment. See Pub 974, Worksheets I–V, and the [`form-8962`](../form-8962/SKILL.md) skill.
 
 ---
 
@@ -275,9 +286,9 @@ Before declaring the form ready, run these checks. Surface anything that fails �
 ### Math checks
 
 - [ ] Line 3 = Line 2a + Line 2b
-- [ ] Line 5 = Line 3 ÷ Line 4 × 100, rounded down to whole percent
-- [ ] Line 8a = Line 3 × Line 7
-- [ ] Line 8b = Line 8a ÷ 12
+- [ ] Line 5 = Line 3 ÷ Line 4 × 100, rounded down to whole percent (401 if above 400%)
+- [ ] Line 8a = Line 3 × Line 7, rounded to whole dollars
+- [ ] Line 8b = Line 8a ÷ 12, rounded to whole dollars
 - [ ] For each Lines 12–23 row, column (e) = lesser of column (a) or column (d)
 - [ ] Line 24 = sum of column (e) — annual or monthly
 - [ ] Line 25 = sum of column (f) = annual sum of 1095-A Column C
@@ -286,7 +297,7 @@ Before declaring the form ready, run these checks. Surface anything that fails �
 
 ### Data-cross-check
 
-- [ ] 1095-A Part I SSN matches filer SSN
+- [ ] 1095-A Part I line 5 SSN matches filer SSN
 - [ ] 1095-A Part II covered individuals = tax family OR shared policy allocation completed (Part IV)
 - [ ] 1095-A Part III Column B has nonzero values for every month with coverage
 - [ ] Sum of 1095-A Column A annual = Form 8962 Line 11(a) or sum of monthly column (a)
@@ -299,10 +310,11 @@ Surface a warning, do not block:
 
 - [ ] Filing status is MFS without exception checkbox → not eligible for PTC
 - [ ] Line 5 (income % FPL) is below 100% → check eligibility (some states' Medicaid expansion gap rules apply)
-- [ ] Line 5 is over 400% → if 2026 reverted to pre-ARPA rules, no PTC at all; if ARPA/IRA still applies, full PTC available capped by 8.5% of income
-- [ ] APTC was received but Line 24 is zero → user is not eligible for PTC and must repay entire APTC (subject to limits)
+- [ ] Line 5 is over 400% → tax year 2025: applicable figure 0.0850 and no repayment limit; tax year 2026: no PTC at all and all APTC is repaid with no cap (confirm no extension was enacted after 2026-10-06)
+- [ ] Tax year 2026 and Line 25 > Line 24 → no repayment limitation at any income (P.L. 119-21 §71305); Line 29 = Line 27
+- [ ] APTC was received but Line 24 is zero → user is not eligible for PTC and must repay the APTC (2025: subject to Table 5; 2026: in full)
 - [ ] Column B has $0 in any month with coverage → block: must look up SLCSP
-- [ ] User's state shows in Part II as different from user's filing-state → double-check residency
+- [ ] Part I line 1 (Marketplace state) or lines 12–15 address differ from the user's state of residence → double-check which FPL table applies
 - [ ] User claims an exception to MFS rule but didn't provide reason → ask
 - [ ] Year-of-marriage alternative calculation might apply but wasn't considered → ask
 
@@ -370,7 +382,7 @@ Months of coverage: <e.g. Jan–Dec>
 
 [If Line 25 > Line 24:]
 27. Excess APTC:                        $X,XXX
-28. Repayment limit (from Pub 974):     $X,XXX
+28. Repayment limit (Table 5; 2025 only): $X,XXX
 29. Excess APTC repayment:              $X,XXX → Schedule 2 Line 1a (additional tax)
 
 ## Required attachments
@@ -401,18 +413,18 @@ Loaded on demand based on what the user's situation needs.
 - [`references/line-by-line.md`](./references/line-by-line.md) — Complete table of every Form 1095-A box and Form 8962 line with examples and edge cases
 - [`references/fpl-tables.md`](./references/fpl-tables.md) — Federal Poverty Line tables by family size and state group (48 states+DC, Alaska, Hawaii)
 - [`references/applicable-figures.md`](./references/applicable-figures.md) — Year-by-year applicable figure tables (pre-ARPA vs. ARPA/IRA-extended)
-- [`references/repayment-limits.md`](./references/repayment-limits.md) — Pub 974 Table 5 repayment limits by year and filing status
+- [`references/repayment-limits.md`](./references/repayment-limits.md) — Form 8962 instructions Table 5 repayment limits by year and filing status (none after 2025)
 - [`references/shared-policy.md`](./references/shared-policy.md) — Allocation rules for divorced parents, unmarried parents, dependents who file their own returns
 - [`references/common-mistakes.md`](./references/common-mistakes.md) — Top 10 filer mistakes with examples and fixes
-- [`filing.md`](./filing.md) — Browser-automation playbook: how an agent files Form 8962 via IRS Free File Fillable Forms, IRS Direct File, paid software, or paper
+- [`filing.md`](./filing.md) — Browser-automation playbook: how an agent files Form 8962 via IRS Free File, Free File Fillable Forms, paid software, or paper
 
 ## Examples
 
 End-to-end worked Form 8962 reconciliations. Use these as patterns when the user's situation is similar.
 
-- [`examples/lisa-freelancer-owes-back.md`](./examples/lisa-freelancer-owes-back.md) — Single freelancer, full-year coverage, income came in higher than estimated, owes back capped excess APTC
-- [`examples/family-net-ptc-refund.md`](./examples/family-net-ptc-refund.md) — Married couple with two kids, full-year coverage, income lower than estimated, owed net PTC as refund
-- [`examples/divorced-parents-shared-policy.md`](./examples/divorced-parents-shared-policy.md) — Shared policy allocation across two tax returns
+- [`examples/lisa-freelancer-owes-back.md`](./examples/lisa-freelancer-owes-back.md) — Single freelancer, full-year coverage, income came in higher than estimated, owes back capped excess APTC (2025)
+- [`examples/family-net-ptc-refund.md`](./examples/family-net-ptc-refund.md) — Married couple with two kids, full-year coverage, income lower than estimated, owed net PTC as refund (2025)
+- [`examples/divorced-parents-shared-policy.md`](./examples/divorced-parents-shared-policy.md) — Shared policy allocation across two tax returns, monthly calculation (2025)
 
 ## Sources
 
@@ -426,9 +438,11 @@ Authoritative sources used by this skill. Always re-verify these against the IRS
 - [Instructions for Form 8962 (latest)](https://www.irs.gov/pub/irs-pdf/i8962.pdf) — line-by-line IRS guidance with FPL and applicable figure tables
 - [Publication 974](https://www.irs.gov/publications/p974) — Premium Tax Credit (the comprehensive guide)
 - [healthcare.gov Tax Tool](https://www.healthcare.gov/tax-tool/) — SLCSP lookup for federal Marketplace
-- IRC §36B (Premium Tax Credit), §6055 (information reporting for minimum essential coverage), §5000A (individual shared responsibility — repealed federal penalty as of 2019 but state mandates remain in CA, DC, MA, NJ, RI, VT)
-- Rev. Proc. 2024-36 — 2025 inflation-adjusted applicable figure percentages
-- ARPA / Inflation Reduction Act — 2021–2025 expansion of PTC
+- IRC §36B (Premium Tax Credit), including §36B(f)(3) (Marketplace information reporting on Form 1095-A); §5000A (individual shared responsibility payment reduced to $0 for months after 2018; state mandates remain in CA, DC, MA, NJ, RI, VT)
+- Rev. Proc. 2024-35 — 2025 applicable percentage table; Rev. Proc. 2025-25 — 2026 applicable percentage table (2.10% to 9.96%)
+- ARPA / Inflation Reduction Act — 2021–2025 expansion of PTC (§36B(b)(3)(A)(iii), (c)(1)(E))
+- P.L. 119-21 §71305 — no repayment limitation for tax years beginning after December 31, 2025; IRS FS-2025-10 Q31
+- HHS poverty guidelines: 2024 (89 FR 2961) for 2025 returns; 2025 (90 FR 5917) for 2026 returns
 
 ## Disclaimer
 

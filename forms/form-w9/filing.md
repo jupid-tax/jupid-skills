@@ -12,13 +12,13 @@ Three properties make W-9 different from Schedule C, Form 1040, and most other I
 
 1. **No IRS endpoint.** The form goes from the filer to the requestor. The IRS receives it only indirectly, via the 1099 the requestor files at year-end.
 2. **Identity-theft-grade payload.** The form contains the filer's full legal name + SSN/EIN + address. Email-without-encryption exposes the SSN to interception, server-side storage, and phishing. The delivery channel matters more than the form contents.
-3. **No statutory deadline.** The user can deliver whenever, but in practice the requestor will withhold 24% backup withholding (IRC §3406) on payments until the W-9 arrives, so the user's incentive is to deliver before the first invoice.
+3. **No statutory deadline.** The user can deliver whenever, but without a TIN the requestor may have to backup withhold 24% (IRC §3406) on reportable payments — for contractor fees, once the year's payments reach the reporting threshold ($2,000 for 2026; IRC §3406(b)(6)) — so the user's incentive is to deliver before the first invoice.
 
 ---
 
 ## Channel decision tree
 
-The user picks the channel. If they don't know, default to **e-signature platform (DocuSign or Adobe Sign)** — it's encrypted, audit-logged, and IRS Pub 1345-compliant.
+The user picks the channel. If they don't know, default to **e-signature platform (DocuSign or Adobe Sign)** — it's encrypted and audit-logged, and it is how most requesters meet the electronic-W-9 rules in the Instructions for the Requester of Form W-9 ("Electronic Submission of Forms W-9").
 
 ```
 Requestor sent a DocuSign / Adobe Sign / Gusto / Bill.com link?
@@ -50,7 +50,7 @@ Plain-text email with W-9 PDF attached?
 
 ## Section 1 — E-signature platform (DocuSign / Adobe Sign / Gusto)
 
-These are the canonical channels for W-9 delivery in 2026. They meet IRS Pub 1345 e-signature standards (signer identity, intent, document, audit trail) and avoid the SSN-in-email problem entirely.
+These are the canonical channels for W-9 delivery in 2026. The requester's system must authenticate the signer, keep the paper form's information, produce a hard copy on IRS request, and end with an electronic signature under penalties of perjury using the paper form's language (Instructions for the Requester of Form W-9, Rev. March 2024). These platforms also avoid the SSN-in-email problem entirely.
 
 ### Pre-flight
 
@@ -78,12 +78,13 @@ This is the most common case: the requestor initiates a DocuSign envelope and em
 | 1 | "Name (as shown on your income tax return)" | Identity Line 1 |
 | 2 | "Business name / disregarded entity name" | Identity Line 2 |
 | 3a (Individual/sole proprietor) | "Individual/sole proprietor" checkbox | Line 3 |
-| 3a (C Corporation) | "C Corporation" checkbox | Line 3 |
-| 3a (S Corporation) | "S Corporation" checkbox | Line 3 |
+| 3a (C corporation) | "C corporation" checkbox | Line 3 |
+| 3a (S corporation) | "S corporation" checkbox | Line 3 |
 | 3a (Partnership) | "Partnership" checkbox | Line 3 |
 | 3a (Trust/estate) | "Trust/estate" checkbox | Line 3 |
-| 3a (LLC) | "Limited liability company" checkbox + classification letter | Line 3 |
-| 3b | "Pass-through FATCA exemption" checkbox | Line 3b |
+| 3a (LLC) | "LLC" checkbox + classification letter (C, S, P) | Line 3 |
+| 3a (Other) | "Other" checkbox + description | Line 3 |
+| 3b | "Foreign partners, owners, or beneficiaries" checkbox (partnerships / P-LLCs / trusts / estates only) | Line 3b |
 | 4 — Exempt payee code | "Exempt payee code (if any)" | Line 4 (usually blank) |
 | 4 — FATCA reporting code | "Exemption from FATCA reporting code (if any)" | Line 4 (usually blank) |
 | 5 | "Address (number, street, and apt. or suite no.)" | Line 5 |
@@ -161,7 +162,7 @@ Use only when the requestor cannot offer an e-signature platform or portal. Two 
 ### Variant 3a — Password-protected PDF + separate password channel
 
 1. Fill the IRS fillable PDF (https://www.irs.gov/pub/irs-pdf/fw9.pdf) using a PDF tool
-2. Sign electronically (agent must verify the signature meets IRS Pub 1345 standards: identity, intent, document, audit trail)
+2. Sign (an image of a handwritten signature on the PDF, or the requester's e-signature system if it has one; ask the requester what it accepts)
 3. Apply a strong password to the PDF (PDF native encryption; 12+ character random password)
 4. Email the password-protected PDF to the requestor
 5. Send the password via a SEPARATE channel: SMS, Signal, or phone call. **Never** in the same email or email thread
@@ -218,7 +219,7 @@ These are non-negotiable:
 4. **Never bypass the requestor's verification.** If the e-signature platform asks the user to prove identity (KBA, MFA, email click-through), pause and let the user respond directly.
 5. **Always capture delivery confirmations** as screenshots or audit-log PDFs stored under the user's account, not the agent's.
 6. **If the requestor seems suspicious** (unsolicited request, mismatched email domain, urgent pressure tactics), **stop and surface the issue.** Phishing for W-9s is common and well-documented.
-7. **Rotate the W-9** if the user suspects compromise. Forming a new EIN may be required if SSN is exposed and identity theft occurs.
+7. **If the user suspects the SSN was exposed**, point them to the W-9's identity-theft guidance: IRS.gov/IdentityTheft, the IRS Identity Theft Hotline 800-908-4490 or Form 14039 if their tax records are affected, and phishing@irs.gov for suspicious W-9 requests.
 
 ---
 
@@ -229,4 +230,4 @@ After delivery, advise the user:
 - Keep an **encrypted copy** of every W-9 sent, with: requestor name, requestor email, delivery channel, delivery date, executed PDF, audit-trail PDF
 - For security archives, **redact** the TIN from working copies — keep the unredacted version only in a password manager or encrypted vault
 - Maintain a **W-9 ledger**: which clients have your W-9 on file, the version sent, the date sent. When the user's address / name / TIN changes, re-issue to every active requestor on the ledger.
-- Backup withholding amounts (if any were applied before the W-9 arrived) appear on **Form 1099 Box 4** at year-end and credit against the user's tax liability via Form 1040 Line 25c.
+- Backup withholding amounts (if any were applied before the W-9 arrived) appear on **Form 1099 Box 4** at year-end and credit against the user's tax liability via Form 1040 Line 25b.

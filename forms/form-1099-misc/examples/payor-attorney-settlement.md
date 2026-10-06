@@ -1,11 +1,13 @@
 # Example: Settlement Payment Through Attorney's Trust Account
 
-A complete walkthrough of a $3,500 settlement paid through an attorney's trust account, illustrating the Box 10 (gross proceeds to attorney) and Box 3 (plaintiff's portion) split. Shows the corporate-exception rule for attorneys.
+A complete walkthrough of a $3,500 settlement paid to the claimant's attorney, illustrating Box 10 (gross proceeds to the attorney) and Box 3 (the claimant's full taxable damages). Shows why the payer issues no 1099-NEC for the attorney's fee, and that the attorney rule applies to corporate firms too.
+
+Rules used: Instructions for Forms 1099-MISC and 1099-NEC (Rev. December 2026), "Payments to attorneys", "Gross proceeds paid to attorneys", Box 3, Box 10; IRC §6045(f); Reg. §1.6045-5(f), Examples 2–3; Reg. §1.6041-1(f).
 
 ## The setup
 
-- **Defendant / Payor**: Riverstone Industries Inc. (C-corp; defendant in a wage-related dispute)
-- **Plaintiff**: Marcus Chen (former contractor; claim was for unpaid invoices, treated as a contract dispute — NOT a personal physical injury, so no §104 exclusion)
+- **Defendant / Payor**: Riverstone Industries Inc. (C-corp; defendant in a contract dispute)
+- **Plaintiff**: Marcus Chen (former independent contractor; claim was for unpaid invoices for his contracting services — a contract dispute, NOT a personal physical injury, so no §104 exclusion)
 - **Plaintiff's attorney**: Park & Sussman LLC (multi-member LLC taxed as a partnership; based in CA)
 - **Settlement amount**: $3,500
 - **Attorney's contingency fee**: 30% = $1,050
@@ -27,38 +29,30 @@ Per [`settlement-allocation.md`](../references/settlement-allocation.md):
 
 ### Form 1: 1099-MISC to Park & Sussman LLC (the attorney)
 
-- **Box 10 (gross proceeds paid to attorney)**: $3,500 — the full amount that passed through the trust account
+- **Box 10 (gross proceeds paid to attorney)**: $3,500 — the full amount paid to the attorney ($3,500 ≥ $600, the §6045(f) threshold, unchanged for 2026)
 - **Box 1**: $0
 - **Box 3**: $0
-- **Box 4**: $0 (no backup withholding; valid W-9 on file)
+- **Box 4**: $0 (no backup withholding; attorney supplied its TIN on a W-9)
 
-**Why issue to a corporate / non-individual attorney?** Reg. §1.6041-1(d)(2) carves out attorneys from the standard corporate exemption. Box 10 is reportable regardless of attorney's entity type. Even a professional corporation (PC) attorney gets a 1099-MISC Box 10.
+**Would it matter if the firm were a corporation?** No. The exemption for payments to corporations does not apply to payments for legal services, so Box 10 is reportable whether the firm is a partnership, LLC, or professional corporation (Instructions, "Payments to corporations for legal services").
 
-In this case Park & Sussman is a partnership, but it would matter if they were a PC: same outcome (Box 10 reportable).
+### No 1099-NEC to Park & Sussman for the $1,050 fee
 
-### Form 2: 1099-NEC to Park & Sussman LLC (the attorney's fee component)
+The $1,050 is the claimant's attorney's fee, paid out of the settlement. The instructions: "Generally, you are not required to report the claimant's attorney's fees." A 1099-NEC box 1a goes only to an attorney the payer itself engaged for legal services (e.g., Riverstone's own defense counsel, if paid $2,000 or more in 2026). The answer is the same whatever the plaintiff's firm's entity type.
 
-- **Box 1 (nonemployee compensation)**: $1,050 — the attorney's fee for legal services
+### Form 2: 1099-MISC to Marcus Chen (the plaintiff)
 
-**Why issue?** The $1,050 is compensation to the attorney for legal services; it falls under §6041A. Park & Sussman is a partnership (non-corporate), so the standard corporate exemption does NOT apply.
+- **Box 3 (other income)**: $3,500 — the **full** taxable damages, not the $2,450 net. The payer reports the claimant's gross amount even though part of it was paid to the attorney (Reg. §1.6045-5(f), Example 3; Reg. §1.6041-1(f)). $3,500 ≥ $2,000, the 2026 §6041 threshold.
 
-If Park & Sussman were a **corporation**, no 1099-NEC would be issued for the fee (corporate exemption applies to 1099-NEC). Only Box 10 would be issued (because Box 10 has the special anti-exemption rule for attorneys). 
+**Why Box 3?** The damages are taxable (contract dispute, not personal physical injury), so IRC §104(a)(2) does not exclude them, and taxable damages go in Box 3 (Instructions, Box 3 item 6).
 
-For a partnership: both 1099-MISC Box 10 ($3,500) and 1099-NEC Box 1 ($1,050).
-
-### Form 3: 1099-MISC to Marcus Chen (the plaintiff)
-
-- **Box 3 (other income)**: $2,450 — the plaintiff's portion
-
-**Why Box 3?** Marcus's portion is taxable income. The underlying claim is a contract dispute (not personal physical injury), so IRC §104(a)(2) does NOT exclude it. Marcus reports $2,450 on Schedule 1 Line 8z ("Settlement of contract dispute") with description.
-
-If the claim had been for personal physical injury: §104(a)(2) might exclude Marcus's portion, but Riverstone could still issue Box 3 to be safe. Marcus would exclude on his return with an explanatory statement.
+If the claim had been for personal physical injury with no punitive damages: Box 10 = $3,500 to the attorney and **no** form to Marcus (Instructions, Box 3 item 6a; Reg. §1.6045-5(f), Example 2).
 
 ## W-9 verification before issuance
 
 Before filing, Riverstone confirmed:
-- W-9 from Park & Sussman LLC: shows Line 3 box "Limited liability company — P (Partnership)"; TIN is the LLC's EIN
-- W-9 from Marcus Chen: shows Line 3 "Individual / sole proprietor or single-member LLC"; TIN is Marcus's SSN
+- W-9 from Park & Sussman LLC: Line 3a "Limited liability company" with tax classification "P" (partnership); TIN is the LLC's EIN
+- W-9 from Marcus Chen: Line 3a "Individual/sole proprietor"; TIN is Marcus's SSN
 
 TIN matching:
 - Park & Sussman LLC EIN matched IRS records
@@ -66,37 +60,33 @@ TIN matching:
 
 ## Filing checklist
 
-| Form | Issued to | Box 1 / 3 / 10 | Recipient deadline | IRS deadline |
-|------|-----------|----------------|--------------------|--------------|
-| 1099-MISC | Park & Sussman LLC | Box 10 = $3,500 | Feb 1, 2027 | Mar 31, 2027 (electronic) |
-| 1099-NEC | Park & Sussman LLC | Box 1 = $1,050 | Jan 31, 2027 | Jan 31, 2027 (electronic) |
-| 1099-MISC | Marcus Chen | Box 3 = $2,450 | Feb 1, 2027 | Mar 31, 2027 (electronic) |
+| Form | Issued to | Box | Recipient deadline | IRS deadline |
+|------|-----------|-----|--------------------|--------------|
+| 1099-MISC | Park & Sussman LLC | Box 10 = $3,500 | Feb 16, 2027 (Box 10 statements are due February 15, which is Presidents' Day in 2027) | Mar 31, 2027 (electronic) / Mar 1, 2027 (paper) |
+| 1099-MISC | Marcus Chen | Box 3 = $3,500 | Feb 1, 2027 (January 31 is a Sunday) | Mar 31, 2027 (electronic) / Mar 1, 2027 (paper) |
 
-Note the deadline asymmetry: 1099-NEC is January 31 for both recipient and IRS; 1099-MISC is February 1 / March 31.
+Sources for the dates: Instructions, "Statements to Recipients"; Pub. 1099 (2026), Reminders (February 15 for Boxes 8 and 10); next business day rule.
 
 ## How each party reports
 
 ### Park & Sussman LLC (the partnership)
 
-The partnership recognizes only the **fee income** ($1,050) as gross receipts on Form 1065. Box 10's $3,500 is informational gross-proceeds reporting; the partnership's accounting books show:
+The partnership recognizes only the **fee income** ($1,050) as gross receipts on Form 1065. Copy B, Box 10: "Report only the taxable part as income on your return." The partnership's books show:
 
 - Inflow to trust account: $3,500 (asset; not income)
 - Disbursement to client: $2,450 (decrease in asset; not expense)
 - Transfer of fee to operating account: $1,050 (income recognized at this point)
 
-The partnership reports $1,050 on Form 1065 Line 1a (gross receipts). Schedule K-1 to each partner allocates their share.
-
-The 1099-NEC Box 1 ($1,050) cross-checks the partnership's reported income.
-
-The 1099-MISC Box 10 ($3,500) is informational; doesn't represent partnership income beyond the $1,050 fee already captured.
+The partnership reports $1,050 on Form 1065 Line 1a (gross receipts). Schedule K-1 to each partner allocates their share. The 1099-MISC Box 10 ($3,500) is reconciled with the client distribution statement.
 
 ### Marcus Chen (the plaintiff)
 
-Marcus reports $2,450 on **Schedule 1 Line 8z** with description "Settlement of contract dispute, Riverstone Industries v. Chen". Total flows to Form 1040 Line 8 (additional income).
+Marcus received a 1099-MISC with $3,500 in Box 3, so his return must account for $3,500, not $2,450. Where it goes depends on facts the agent must ask about:
 
-No SE tax (this isn't a trade-or-business — Marcus's contracting was the underlying activity, but the settlement compensates him for unpaid invoices, taxable as ordinary income but not SE income because it's a settlement, not new earnings from a continuing business).
+- **If his contracting is an ongoing trade or business and the claim was for unpaid business invoices**: Copy B, Box 3 says to report trade or business income on Schedule C. Schedule C Line 1 includes $3,500; the $1,050 attorney fee is a business legal expense (Schedule C Line 17). Net profit is subject to SE tax.
+- **If not a trade or business**: Schedule 1 Line 8z, $3,500 ("Settlement, Riverstone Industries"). The $1,050 fee is not deductible: it is not a discrimination or whistleblower claim (IRC §62(a)(20)–(21)), and miscellaneous itemized deductions are disallowed (IRC §67(g)).
 
-If Marcus's underlying contracting WAS a trade or business and the settlement was directly compensating him for unpaid services revenue, an argument could be made for Schedule C treatment (with SE tax). The payor's classification (Box 3) is informational; the recipient determines the proper return treatment.
+The payer's choice of Box 3 does not decide the schedule; the character of the claim does. Ask the user and flag the choice for a CPA.
 
 ### Riverstone Industries Inc.
 
@@ -104,29 +94,23 @@ Riverstone deducts the $3,500 settlement as a business expense on its Form 1120 
 
 ## What if §104 had applied (personal physical injury)?
 
-Suppose the underlying claim was Marcus suing Riverstone for an injury at Riverstone's facility (broken ankle).
+Suppose the underlying claim was Marcus suing Riverstone for an injury at Riverstone's facility (broken ankle), with no punitive damages.
 
-- §104(a)(2) would exclude Marcus's $2,450 from gross income
+- §104(a)(2) excludes the damages from Marcus's gross income
 - Riverstone still issues 1099-MISC Box 10 = $3,500 to Park & Sussman (gross-proceeds reporting is independent of recipient tax treatment)
-- Riverstone might or might not issue Box 3 to Marcus:
-  - **Conservative practice**: issue Box 3 = $2,450, let Marcus exclude under §104 with explanatory statement
-  - **Some payors**: don't issue Box 3 if §104 clearly applies and the settlement agreement explicitly allocates to physical injury
-
-Either way, the Box 10 to attorney = $3,500.
+- Riverstone does **not** issue a Box 3 to Marcus (Instructions, Box 3 item 6a; Reg. §1.6045-5(f), Example 2: "P does not file an information return with respect to tax-free damages paid to C")
 
 ## What if Park & Sussman had been a professional corporation (PC)?
 
-- 1099-MISC Box 10 = $3,500 (still reportable; attorney special rule)
-- 1099-NEC Box 1 = NOT issued (PC is a corporation; standard corporate exemption applies to 1099-NEC; only 1099-MISC has the attorney exception)
+- 1099-MISC Box 10 = $3,500 (still reportable; no corporate exemption for legal services)
+- No 1099-NEC (same as for the partnership: the payer does not report the claimant's attorney's fees)
 
-The PC reports the full $1,050 fee as corporate income on Form 1120 / 1120-S regardless of 1099-NEC issuance.
+The PC reports the $1,050 fee as corporate income on Form 1120 / 1120-S.
 
 ## Sources cited
-- IRS Form 1099-MISC, Rev. 2026
-- IRS Form 1099-NEC, Rev. 2026
-- IRS Instructions for Forms 1099-MISC and 1099-NEC, Rev. 2026
-- IRC §6041, §6041A, §6045(f) (gross proceeds to attorney)
-- Reg. §1.6041-1(d)(2) (special rule for attorneys; corporate exemption does not apply to Box 10)
-- Reg. §1.6041-3(c) (general corporate exemption — applies to standard payments to corporations)
-- IRC §104(a)(2) (exclusion for personal physical injury damages)
+- IRS Form 1099-MISC, Rev. December 2026
+- IRS Instructions for Forms 1099-MISC and 1099-NEC, Rev. December 2026 ("Payments to attorneys", "Gross proceeds paid to attorneys", "Payments to corporations for legal services", Box 3, Box 10)
+- Pub. 1099 (2026), Reminders (February 15 statement date for Boxes 8 and 10)
+- IRC §6041 (as amended by P.L. 119-21 §70433), §6045(f) (gross proceeds to attorney), §104(a)(2), §62(a)(20)–(21), §67(g), §162
+- Reg. §1.6045-5(f), Examples 2–3; Reg. §1.6041-1(f); Reg. §1.6041-3(p)(1)
 - IRS Pub. 4345 (Settlements — Taxability)

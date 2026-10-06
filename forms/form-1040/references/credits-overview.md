@@ -1,6 +1,6 @@
 # Credits Overview
 
-Federal tax credits available to individual filers, organized by where they land on Form 1040. A credit reduces tax dollar-for-dollar (better than a deduction, which only saves the marginal-rate fraction). Refundable credits can produce a refund larger than tax paid; non-refundable credits cap at the tax owed.
+Federal tax credits available to individual filers, organized by where they land on Form 1040 (2025 revision, filed in 2026). A credit reduces tax dollar-for-dollar (better than a deduction, which only saves the marginal-rate fraction). Refundable credits can produce a refund larger than tax paid; non-refundable credits cap at the tax owed.
 
 **Legal basis**: IRC §21–35 (non-refundable personal credits), §32 (EITC), §24 (CTC), §25A (education), §25B (Saver's), §25D (residential energy), §901 (foreign tax), §36B (PTC).
 
@@ -10,20 +10,21 @@ Federal tax credits available to individual filers, organized by where they land
 
 | 1040 Line | Type | Credits |
 |-----------|------|---------|
-| 19 | Non-refundable | CTC + ODC (non-refundable portion) |
+| 19 | Non-refundable | CTC + ODC (Schedule 8812 line 14) |
 | 20 | Non-refundable | All other non-refundable credits via Schedule 3 Line 8 |
-| 27 | Refundable | EITC |
-| 28 | Refundable | Additional CTC (refundable portion of CTC) |
+| 27a | Refundable | EITC |
+| 28 | Refundable | Additional CTC (Schedule 8812 line 27) |
 | 29 | Refundable | AOTC refundable portion (40% of AOTC) |
-| 31 | Refundable | Net PTC, fuel tax credits, withholding excess via Schedule 3 Line 15 |
+| 30 | Refundable | Refundable adoption credit (Form 8839 line 13; new for 2025) |
+| 31 | Refundable | Net PTC, extension payment, excess SS withheld, fuel tax credit via Schedule 3 Line 15 |
 
 Non-refundable credits on Line 20 come from Schedule 3 Lines 1-7:
 - L1 Foreign tax credit (Form 1116)
 - L2 Credit for child and dependent care expenses (Form 2441)
 - L3 Education credits (Form 8863, non-refundable portion)
 - L4 Retirement savings contributions credit (Form 8880)
-- L5 Residential energy credits (Form 5695)
-- L6a-L6z Other specific credits
+- L5a Residential clean energy credit; L5b Energy efficient home improvement credit (Form 5695)
+- L6a-L6z Other specific credits (total on L7), including L6c nonrefundable adoption credit
 
 ---
 
@@ -34,11 +35,12 @@ Non-refundable credits on Line 20 come from Schedule 3 Lines 1-7:
 
 ### CTC
 
-- $2,000 per qualifying child under 17 at end of year (2025; verify 2026)
-- Refundable portion: up to $1,700 per child for 2025 (verify 2026)
-- Qualifying child must have a valid SSN issued before the return's due date
-- Phaseout: $50 per $1,000 of AGI over $200,000 single / $400,000 MFJ
-- Phases out completely at AGI $240,000 single / $440,000 MFJ for one child
+- $2,200 per qualifying child under 17 at end of year (2025: P.L. 119-21; 2026: Rev. Proc. 2025-32 §4.05)
+- Refundable portion (ACTC): up to $1,700 per child for 2025 and 2026 (Rev. Proc. 2024-40 §2.05; Rev. Proc. 2025-32 §4.05)
+- Qualifying child must have an SSN valid for employment issued before the return's due date (including extensions)
+- New for 2025: the filer must also have such an SSN; on a joint return one spouse needs it and the other needs an SSN or ITIN issued by the due date (2025 Instructions for Form 1040, line 19)
+- Phaseout: $50 per $1,000 (or fraction) of modified AGI over $200,000 single / $400,000 MFJ
+- One child, no other dependents: fully phased out once modified AGI exceeds $243,000 single / $443,000 MFJ
 
 ### ODC
 
@@ -61,24 +63,24 @@ ALL must be true:
 ### Computation flow on Schedule 8812
 
 1. List qualifying children with SSNs and ages
-2. Compute tentative credit ($2,000 × number of qualifying children + $500 × number of ODC dependents)
+2. Compute tentative credit ($2,200 × number of qualifying children + $500 × number of ODC dependents)
 3. Apply phaseout based on AGI
 4. Compare to tax liability — non-refundable portion fills tax liability up to limit
-5. Compute refundable portion (Additional CTC) = lesser of (1) earned income × 15%, (2) $1,700 per qualifying child, (3) excess of total CTC over non-refundable portion
+5. Compute refundable portion (Additional CTC) = lesser of (1) 15% of earned income above $2,500, (2) $1,700 per qualifying child, (3) excess of total CTC over non-refundable portion (filers with 3+ children may use the Part II-B Social Security tax method instead)
 
-For most filers with at least $20,000 earned income, the full refundable portion applies.
+The full $1,700 for one child needs earned income of at least $13,834 ($2,500 + $1,700 ÷ 15%); each additional child needs about $11,334 more.
 
 ---
 
 ## 2. Earned Income Tax Credit (EITC)
 
 **Form**: 1040 directly (with EIC tables in 1040 instructions). Schedule EIC if claiming a qualifying child.
-**Lands on**: 1040 Line 27.
+**Lands on**: 1040 Line 27a.
 **Refundable**: yes.
 
 A credit for low-to-moderate income workers, designed to reduce tax burden and encourage work.
 
-### Maximum credit (2025)
+### Maximum credit (2025, Rev. Proc. 2024-40 §2.06)
 
 | Qualifying children | Max EITC |
 |---------------------|----------|
@@ -89,35 +91,35 @@ A credit for low-to-moderate income workers, designed to reduce tax burden and e
 
 ### AGI / earned income limits (2025; phaseouts)
 
-EITC phases in, plateaus, then phases out. Approximate single filer thresholds for 2025 (verify; varies by status and number of children):
+EITC phases in, plateaus, then phases out. No credit once AGI (or earned income, if larger) reaches the completed phaseout amount (Rev. Proc. 2024-40 §2.06):
 
-| Children | Max earnings to claim any EITC |
-|----------|-------------------------------|
-| 0 (single, age 25-64) | ~$19,104 |
-| 1 | ~$50,434 |
-| 2 | ~$57,310 |
-| 3+ | ~$61,555 |
+| Children | Single / HOH / QSS / eligible MFS | MFJ |
+|----------|-----------------------------------|-----|
+| 0 (age 25-64) | $19,104 | $26,214 |
+| 1 | $50,434 | $57,554 |
+| 2 | $57,310 | $64,430 |
+| 3+ | $61,555 | $68,675 |
 
-MFJ thresholds are about $7,000 higher. **Verify all 2026 figures against Rev. Proc. 2025-XX.**
+2026 (Rev. Proc. 2025-32 §4.06): maximum $664 / $4,427 / $7,316 / $8,231; completed phaseout $19,540 / $51,593 / $58,629 / $62,974 ($26,820 / $58,863 / $65,899 / $70,244 MFJ).
 
 ### Disqualifiers
 
-- Investment income > $11,950 (2025; verify 2026)
-- MFS filing status (rarely allowed; only if separated and lived apart > 6 months and qualifying child lived with filer)
+- Investment income > $11,950 (2025)
+- MFS filing status, unless the filer lived apart from the spouse for the last 6 months of the year (or is legally separated and not living together) and a qualifying child lived with the filer more than half the year
 - Cannot claim if also claiming Foreign Earned Income Exclusion (Form 2555)
 - Must have valid SSN (ITIN disqualifies)
 - Must be US citizen or resident alien for the entire year
 
 ### Qualifying child for EITC (slightly different from CTC)
 
-- Same age tests as dependent qualifying child (under 19, or under 24 + full-time student, or any age if disabled)
+- Same age tests as dependent qualifying child (under 19, or under 24 + full-time student, and younger than the filer; or any age if disabled)
 - Same relationship test
-- Same residency test (> half year)
+- Residency test: lived with the filer **in the United States** more than half the year (rows (5)(a) and (5)(b) on the 2025 form)
 - NO support test
-- NO joint return test (different from CTC)
-- Doesn't need a valid SSN issued before due date if the child has SSN by the time the return is filed (but SSN required, not ITIN)
+- Same joint return test (the child can't file a joint return unless only to claim a refund)
+- The child needs an SSN valid for employment issued by the return due date (including extensions) to increase the credit; a child without one still goes on Schedule EIC, and the filer may claim the no-child credit
 
-A child can be a "qualifying child for EITC" but NOT a "qualifying child for CTC" — e.g., 18-year-old non-student living with filer. Filer gets EITC for the child but not the $2,000 CTC.
+A child can be a "qualifying child for EITC" but NOT a "qualifying child for CTC" — e.g., 18-year-old non-student living with filer. Filer gets EITC for the child but not the $2,200 CTC (the child may still qualify the filer for the $500 ODC).
 
 ---
 
@@ -133,7 +135,7 @@ A child can be a "qualifying child for EITC" but NOT a "qualifying child for CTC
 - 60% non-refundable — lands on Line 20 via Schedule 3 Line 3
 - Available for the first 4 years of post-secondary education
 - Student must be enrolled at least half-time, pursuing a degree, no felony drug conviction
-- Income phaseout: $80,000–$90,000 single / $160,000–$180,000 MFJ (verify 2026)
+- Income phaseout: $80,000–$90,000 MAGI single, HOH, QSS / $160,000–$180,000 MFJ (statutory amounts, not inflation-adjusted; 2025 Instructions for Form 8863). MFS cannot claim
 
 ### LLC (Lifetime Learning Credit)
 
@@ -155,7 +157,7 @@ Most undergrad students qualify for AOTC (better credit). Graduate students and 
 
 A credit of 10%, 20%, or 50% of up to $2,000 of retirement contributions (IRA, 401(k), 403(b), etc.). Maximum credit: $1,000 ($2,000 MFJ).
 
-### 2025 AGI limits
+### 2025 AGI limits (2025 Form 8880, line 9 table; Single column also covers MFS and QSS)
 
 | Status | 50% credit | 20% credit | 10% credit | $0 credit above |
 |--------|-----------|-----------|-----------|-----------------|
@@ -199,7 +201,7 @@ Alternative: deduct foreign tax as itemized on Schedule A. Credit usually beats 
 Refundable credit for ACA marketplace health insurance. If filer received advance PTC (premium reduced upfront) on a 1095-A, must reconcile on Form 8962 against actual income.
 
 If actual income < projected, additional PTC owed to filer (refundable, Line 31).
-If actual income > projected, excess advance PTC must be repaid (capped based on income; lands on Line 17 via Schedule 2 Line 1a).
+If actual income > projected, excess advance PTC must be repaid (lands on Line 17 via Schedule 2 Line 1a). For 2025 the repayment is capped by income (e.g., $1,625 single / $3,250 other filers at 300%–400% of the poverty line; Rev. Proc. 2024-40 §2.07); for tax years after 2025 the cap is repealed (P.L. 119-21 §71305; Rev. Proc. 2025-32 §2.04).
 
 Common pain point for self-employed filers whose income is hard to project.
 
@@ -213,7 +215,7 @@ Common pain point for self-employed filers whose income is hard to project.
 
 20%–35% of up to $3,000 (one qualifying person) or $6,000 (two or more) of qualifying childcare/dependent care expenses paid so the filer (and spouse if MFJ) could work or look for work.
 
-Qualifying person: child under 13, or disabled spouse / dependent of any age.
+Qualifying person: child under 13, or disabled spouse / dependent of any age. 2025 credit rate is 35% at AGI up to $15,000, stepping down to 20% above $43,000 (2025 Form 2441 line 8 table). For 2026, P.L. 119-21 raises the employer dependent care exclusion to $7,500 ($3,750 MFS) (2026 Pub. 15-B).
 
 Both spouses (if MFJ) must have earned income. The credit is the smaller of the qualifying expense or each spouse's earned income.
 
@@ -227,20 +229,20 @@ Care provider's name, address, and TIN required on Form 2441 — informational r
 **Lands on**: Schedule 3 Line 5 → 1040 Line 20.
 **Non-refundable** (mostly).
 
-- **Residential Clean Energy Credit**: 30% of cost of solar panels, solar water heaters, geothermal, wind, fuel cells. No annual cap (for most categories).
-- **Energy Efficient Home Improvement Credit**: 30% of cost of qualifying insulation, windows, doors, HVAC, with annual caps ($1,200 for most + $2,000 for heat pumps/biomass stoves).
+- **Residential Clean Energy Credit** (Schedule 3 line 5a): 30% of cost of solar panels, solar water heaters, geothermal, wind, fuel cells. No annual cap (for most categories).
+- **Energy Efficient Home Improvement Credit** (Schedule 3 line 5b): 30% of cost of qualifying insulation, windows, doors, HVAC, with annual caps ($1,200 for most + $2,000 for heat pumps/biomass stoves).
 
-Both made permanent / extended via the Inflation Reduction Act (IRA 2022) and unaffected by OBBBA 2025.
+**Terminated by OBBBA**: no residential clean energy credit for expenditures made after December 31, 2025, and no energy efficient home improvement credit for expenditures or property placed in service after December 31, 2025 (2025 Instructions for Form 5695, What's New). Both remain available on 2025 returns for qualifying 2025 expenditures; ask when the expenditure was made and the property placed in service.
 
 ---
 
 ## 9. Adoption Credit
 
 **Form**: Form 8839.
-**Lands on**: Schedule 3 Line 6c → 1040 Line 20.
-**Non-refundable**, but unused portion carries forward 5 years.
+**Lands on**: refundable part on 1040 Line 30 (Form 8839 line 13); nonrefundable part on Schedule 3 Line 6c → 1040 Line 20.
+**Partly refundable from 2025**: up to $5,000 per eligible child is refundable (P.L. 119-21; 2025 Instructions for Form 1040, What's New); unused nonrefundable credit carries forward 5 years.
 
-Up to ~$17,280 (2025; verify 2026) per adoption for qualifying expenses. Income phaseout starts ~$259,190 (2025).
+Up to $17,280 per adoption for 2025 (phaseout from $259,190 to $299,190 MAGI; Rev. Proc. 2024-40 §2.04). 2026: $17,670, refundable portion $5,120, phaseout $265,080–$305,080 (Rev. Proc. 2025-32 §4.04).
 
 ---
 
@@ -248,7 +250,7 @@ Up to ~$17,280 (2025; verify 2026) per adoption for qualifying expenses. Income 
 
 | Credit | Form | Refundable? | Income limit | Notes |
 |--------|------|-------------|--------------|-------|
-| CTC | Sch 8812 | Partly | $200K/$400K phaseout | $2,000/child under 17 with SSN |
+| CTC | Sch 8812 | Partly | $200K/$400K phaseout | $2,200/child under 17 with SSN |
 | ODC | Sch 8812 | No | Same as CTC | $500/other dependent |
 | EITC | EIC tables | Yes | varies, low to moderate | Up to $8,046 for 3+ children |
 | AOTC | 8863 | 40% refundable | $80K/$160K phaseout | First 4 yrs college |
@@ -257,8 +259,8 @@ Up to ~$17,280 (2025; verify 2026) per adoption for qualifying expenses. Income 
 | Foreign tax | 1116 | No | none | Direct on Sch 3 if ≤ $300/$600 |
 | PTC | 8962 | Yes | based on FPL % | ACA marketplace; 1095-A required |
 | Dep care | 2441 | No | none, but rate varies w/ AGI | $3,000/$6,000 max expense |
-| Residential energy | 5695 | No | none | 30% solar/wind etc. |
-| Adoption | 8839 | No | $259K phaseout | ~$17,280 per adoption |
+| Residential energy | 5695 | No | none | 30% solar/wind etc.; ends for expenditures after 2025 |
+| Adoption | 8839 | Up to $5,000 refundable | $259,190 phaseout start | $17,280 per adoption (2025) |
 
 ---
 
@@ -278,3 +280,6 @@ Up to ~$17,280 (2025; verify 2026) per adoption for qualifying expenses. Income 
 - [Publication 970](https://www.irs.gov/publications/p970) — Tax Benefits for Education
 - [Schedule 8812 Instructions](https://www.irs.gov/pub/irs-pdf/i1040s8.pdf) — CTC / ACTC
 - Rev. Proc. 2024-40 — 2025 figures
+- Rev. Proc. 2025-32 — 2026 figures
+- P.L. 119-21 (One Big Beautiful Bill Act) — $2,200 CTC and SSN rules, refundable adoption credit, termination of §§25C/25D after 2025
+- [2025 Instructions for Form 5695](https://www.irs.gov/pub/irs-pdf/i5695.pdf) — energy credit termination dates

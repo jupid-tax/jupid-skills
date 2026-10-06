@@ -1,269 +1,246 @@
-# Example: Single-Member LLC at $1.5M Gross Receipts ($6,000 LLC Fee Tier)
+# Example: Single-Member LLC With $1,050,000 Assigned to California ($6,000 LLC Fee Tier)
 
-A single-member California LLC running a SaaS-services business with $1.5M in California-source gross receipts. Hits the $1M-$4,999,999 tier ($6,000 fee). The owner used federal §168(k) bonus depreciation, which California doesn't allow → significant add-back.
+A single-member California LLC running a SaaS business with $1.5M of gross receipts, of which $1,050,000 is assigned to California. Hits the $1,000,000–$4,999,999 tier ($6,000 fee). The owner expensed $110,000 of equipment under federal §179, which California limits to $25,000 — an owner-level adjustment, not a Form 568 one. The June estimate was too low for this year's fee but met the prior-year safe harbor.
 
-This example shows how the §168(k) and §179 California adjustments work in practice when the dollar amounts are large enough to matter.
+Line numbers are from the 2025 Form 568; math checked in Python.
 
 ## The filer
 
 - **LLC name**: Sundial Software LLC
-- **Owner / sole member**: Priya Mehta, California resident, San Diego
-- **Entity**: California-formed LLC, formed March 2020
-- **California SOS file number**: `202032109876`
-- **Federal EIN**: 85-1230000
+- **Owner / sole member**: Priya Mehta, California resident, San Diego (an individual)
+- **Entity**: California-formed LLC, formed March 16, 2020
+- **California SOS file number**: `202032109876` (placeholder)
+- **FEIN**: 85-1230000 (placeholder)
 - **Federal classification**: Disregarded entity (SMLLC default; no Form 8832 / 2553)
-- **Tax year**: 2024 (filing in 2025)
-- **Federal Schedule C**: filed with Priya's 1040 by April 15, 2025
+- **Taxable year**: 2025 (filing in 2026)
+- **Federal Schedule C**: filed with Priya's 2025 Form 1040
 
 ## Inputs gathered
 
-### Income (federal Schedule C, Line 1)
+### Income (federal Schedule C, line 1)
 - Gross receipts: $1,500,000
 - Returns/refunds: $0
-- COGS: $0 (SaaS service business)
-- Other income (business interest): $4,500
+- COGS: $0 (SaaS subscriptions)
 
-Federal gross income (Schedule C Line 7): $1,504,500
+### Where customers receive the benefit
+Priya's customers are in many states. Her billing system shows customers with California billing addresses paid **$1,050,000** (70%); out-of-state customers paid $450,000. She runs the business from San Diego.
 
 ### Expenses (federal Schedule C)
 - Salaries to W-2 employees: $480,000
-- Subcontractors / contract labor: $120,000
+- Contract labor: $120,000
 - Office rent (San Diego coworking): $36,000
-- Software & cloud (AWS, Stripe, etc.): $84,000
+- Software & cloud: $84,000
 - Professional fees (legal + CPA): $24,000
-- Marketing / advertising: $48,000
+- Advertising: $48,000
 - Travel: $12,000
-- Meals (50%): $6,000
+- Meals (deductible 50% portion): $6,000
 
-### Equipment purchased in 2024
-- 5 high-end MacBooks @ $4,000 each = $20,000 (used 100% by employees)
-- Server farm hardware: $90,000 (used 100% in business)
-- Total equipment: $110,000
+### Equipment placed in service in 2025
+- 5 laptops @ $4,000 each = $20,000 (used 100% by employees)
+- Server hardware: $90,000 (used 100% in business)
+- Total equipment: $110,000 (5-year property)
 
-Priya's CPA elected on federal:
-- §179: $25,000 (max federal allowed within taxable income limits — actually federal limit is $1.25M, so this is artificially low; revising)
+Federal: Priya's CPA elected §179 = $110,000 (2025 federal limit $2,500,000, threshold $4,000,000; 2025 Instructions for Form 4562). Federal Schedule C line 13 includes the $110,000.
 
-Let's correct that: Priya's CPA elected federal §179 = $110,000 (full amount, since federal §179 cap is $1.25M for 2024 and she's well within it). Federal Schedule C Line 13 = $110,000.
+California (owner level): §179 limit $25,000 (§179 property $110,000 < $200,000 threshold; 2025 FTB 3885L lines 1 and 3, and FTB 3885A for an individual owner):
+- Excess: $110,000 − $25,000 = $85,000, depreciated under MACRS
+- MACRS 5-year, half-year convention, Year 1 = 20% × $85,000 = $17,000
+- California §179 + MACRS Year 1 = $25,000 + $17,000 = $42,000
+- **California depreciation is $68,000 less than federal** ($110,000 − $42,000) → Priya adds $68,000 on Schedule CA (540)
 
-For California:
-- §179 cap: $25,000 (R&TC §17255)
-- Excess: $110,000 − $25,000 = $85,000
-- This $85,000 must be depreciated under MACRS for California purposes
-- MACRS 5-year half-year convention Year 1 = 20% × $85,000 = $17,000
-- California §179 + MACRS Year 1 on excess = $25,000 + $17,000 = $42,000
-- **California §179 add-back** = $110,000 (federal) − $42,000 (California) = **$68,000**
+Because Sundial is a disregarded SMLLC below the $3,000,000 test, it files no Schedule B or K, and the depreciation difference lives on Priya's own California return, not on Form 568.
 
-### Additional 2024 expense: Federal §168(k) bonus depreciation
-
-Priya's CPA also elected $0 of bonus depreciation since the §179 already took the full $110K. **Skip add-back.**
-
-But if the CPA had taken §179 = $25,000 + §168(k) bonus = $85,000 (separate strategy), the federal numbers would have been the same but California would still allow only $25K + MACRS on $85K = $42K. Same result, different mechanic.
-
-For this example: federal Schedule C Line 13 = $110,000 (all §179). California Schedule K equivalent = $42,000. Add-back $68,000.
-
-### Federal §163(j) interest cap
-Sundial has minimal business interest ($1,200 on a credit card). §163(j) doesn't trigger. No California adjustment.
-
-### California-source: 100%
-Priya's customers are global (SaaS), but the business is operated entirely from California. Under R&TC §25136(b) (market-based sourcing for services), customers receive the benefit at their location. So Schedule R apportionment is technically required.
-
-For this example, assume **70% of customers are in California, 30% out-of-state**. Schedule R apportionment:
-- California sales: $1,050,000 (70% of $1,500,000)
-- Total sales: $1,500,000
-- California % = 70%
-- Schedule IW Total Income = 70% × $1,504,500 = **$1,053,150**
-
-Tier: $1,000,000-$4,999,999 → **LLC fee = $6,000**
-
-> Note: this assumes Schedule R apportionment applies to a SMLLC with disregarded federal status. In practice, the apportionment is done at the parent level (Priya's 1040 / Schedule C), and the Schedule IW for fee purposes uses California-source revenue. Because Priya is a CA resident, there are nuances about whether her California residency means 100% of the LLC's income is CA-source for personal income tax. For the **fee** computation under §17942, the apportionment to California-source applies. Out of scope for this skill: edge cases around CA-resident sole owners with multi-state-customer SMLLCs — redirect to a CPA for definitive treatment.
+### Prior-year fee
+Sundial's 2024 fee was $2,500 (2024 California income in the $500,000–$999,999 tier).
 
 ## Step-by-step workflow execution
 
 ### Step 1 — Confirm California nexus and entity classification
 
-Sundial formed in California. SMLLC, disregarded for federal. Priya is the only member, CA resident. Form 568 applies.
+Sundial was formed in California and is commercially domiciled there. SMLLC, disregarded for federal, individual owner. Form 568 applies.
 
-### Step 2 — $800 annual tax (Form 3522)
+### Step 2 — $800 annual tax (FTB 3522)
 
-Paid April 12, 2024. Record on Line 7.
+Paid with Web Pay on April 11, 2025 (due April 15, 2025). Goes on line 8.
 
 ### Step 3 — LLC fee tier
 
-Schedule IW Total Income = $1,053,150 → tier $1M-$4,999,999 → **LLC fee = $6,000**.
+Schedule IW assigns receipts item by item. SaaS subscriptions are services/intangibles: assigned to California to the extent the customer receives the benefit in California (R&TC §25136; R&TC §17942(b)(1)(B); 2025 booklet, Schedule IW instructions). Using billing addresses as the location evidence:
 
-### Step 4 — Form 3536 (estimated fee)
+- Line 2a (disregarded entity's gross income assigned to California): $1,050,000
+- Line 2b (its cost of goods sold): $0
+- Line 7: $1,050,000
+- Line 17: **$1,050,000**
 
-Priya's 2023 fee was $2,500 ($500K-$999K tier). She paid Form 3536 for 2024 = $2,500 by June 14, 2024.
+Tier: $1,000,000–$4,999,999 → **LLC fee = $6,000**
 
-But 2024 actual fee = $6,000. Underpayment = $6,000 − $2,500 = $3,500.
+⚠ Boundary: $1,050,000 is only $50,000 above the $1,000,000 boundary. If the California share were under $1,000,000, the fee would be $2,500. Confirm the sourcing evidence before finalizing.
 
-R&TC §17942(d) penalty = 10% × $3,500 = **$350**.
+### Step 4 — FTB 3536 (estimated fee)
 
-Add to Form 568 as part of penalties (calculated separately, not on Line 6).
+Priya paid a $2,500 estimate with Web Pay on June 12, 2025 (due June 16, 2025, because June 15 fell on a Sunday), matching the 2024 fee.
+
+The 2025 fee is $6,000, so $3,500 was not paid as an estimate. But the $2,500 paid by the 6th-month date equals the **2024 total fee**, so the 10% estimated-fee penalty does **not** apply (R&TC §17942(d)(2); 2025 FTB 3536 instructions).
+
+The $3,500 balance is due by the return's original due date, April 15, 2026, on FTB 3536. Priya pays it with Web Pay (estimated LLC fee payment type) on April 10, 2026, before e-filing. Paid on time → no late-payment penalty or interest.
+
+(Had she paid nothing in June, the penalty would have been 10% × $6,000 = $600.)
 
 ### Step 5 — Filing deadline
 
-SMLLC → Form 568 due **April 15, 2025** for tax year 2024.
+SMLLC owned by an individual → **April 15, 2026**; automatic 6-month extension to October 15, 2026 (the fee balance stays due April 15).
 
-### Step 6 — Schedule K (not applicable for SMLLC)
+### Step 6 — Schedule B and Schedule K
 
-SMLLC is disregarded; Schedule K is for partnership-classified LLCs. Skip.
+Not required: Schedule C gross receipts ($1,500,000) are below the $3,000,000 test. Schedules L, M-1, M-2 are not part of a disregarded SMLLC's required sides (Sides 1, 2, 3, 7). No Schedule K-1 (568).
 
-### Step 7 — Apportionment (Schedule R)
+### Step 7 — Schedule R
 
-Required: 70/30 split (CA / non-CA). Schedule R attached.
+Sundial has income from customers inside and outside California. The FTB LLC page says to use Schedule R in that situation, so Question M(1) is "Yes" and Schedule R is attached, showing California sales of $1,050,000 of $1,500,000 (70.00%). Schedule R does not change Schedule IW, which already assigned receipts item by item.
 
 ### Step 8 — Nonresident members
 
-Priya is the sole member and CA resident. No Form 3832, no Form 592.
+Priya is the sole member and a California resident; she signs the Single Member LLC Information and Consent on Side 3. No FTB 3832, no Schedule T, no withholding.
 
 ### Step 9 — Compute the bottom line
 
 ```
-Form 568 Line 1 (Total income from Sched IW after R apportionment): $1,053,150
-Form 568 Line 2 (LLC fee, $1M-$4.99M tier):                         $6,000
-Form 568 Line 3 (2024 annual LLC tax):                                $800
-Form 568 Line 4 (nonresident tax):                                      $0
-Form 568 Line 5 (partnership-level tax):                                $0
-Form 568 Line 6 (Total tax and fee):                                $6,800
-
-Form 568 Line 7 (Form 3522 prepaid):                                  $800
-Form 568 Line 8 (Form 3536 prepaid):                                $2,500
-Form 568 Line 11 (Total payments):                                  $3,300
-
-Form 568 Line 12 (Balance due before penalty):                      $3,500
-Plus §17942(d) underestimation penalty (10% × $3,500):                $350
-Plus interest on $3,500 from June 15, 2024 to filing date:           ~$XX
-Total amount due with return:                                      ~$3,850+
+Line 1  (Total income from Schedule IW):      $1,050,000
+Line 2  (LLC fee, $1M–$4,999,999 tier):           $6,000
+Line 3  (2025 annual LLC tax):                       $800
+Line 4  (PTE elective tax):                            $0
+Line 5  (Nonconsenting nonresident tax):               $0
+Line 6  (Partnership level tax):                   (blank)
+Line 7  (Total tax and fee):                       $6,800
+Line 8  (FTB 3522 $800 + 3536 $2,500 + 3536 $3,500): $6,800
+Line 12 (Total payments):                          $6,800
+Line 14 (Payments balance):                        $6,800
+Line 16 (Tax and fee due):                             $0
+Line 17 (Overpayment):                                 $0
+Line 20 (Penalties and interest):                      $0
+Line 21 (Total amount due):                            $0
 ```
-
-Priya owes ~$3,850 with the Form 568 return on April 15, 2025.
 
 ### Step 10 — Validation
 
-- ☑ Math: Line 6 = $0 + $800 + $0 + $0 + $6,000 = $6,800. Pass.
-- ☑ Math: Schedule IW = 70% × $1,504,500 = $1,053,150. Pass.
-- ☑ Math: Schedule R apportionment 1,050,000 / 1,500,000 = 70%. Pass.
-- ☑ Sanity: §179 add-back of $68,000 documented. MACRS Year 1 schedule retained.
-- ⚠ Sanity: Form 3536 underestimated → 10% penalty applies. Document.
-- ☑ Sanity: Schedule R attached (multi-state apportionment).
+- ☑ Math: Line 7 = $6,000 + $800 + $0 + $0 + $0 = $6,800. Line 8 = $800 + $2,500 + $3,500 = $6,800. Line 16 = $0. Pass.
+- ☑ Math: Schedule IW line 17 = $1,050,000 = line 1; $1,050,000 / $1,500,000 = 70.00%. Pass.
+- ☑ Sanity: Estimate $2,500 < 2025 fee $6,000, but ≥ 2024 fee $2,500 → no §17942(d)(2) penalty.
+- ⚠ Sanity: line 1 within $50,000 of the $1,000,000 boundary → sourcing records must support $1,050,000.
+- ☑ Sanity: federal §179 $110,000 > $25,000 → owner-level California adjustment ($68,000) flagged for Schedule CA (540).
 
 ### Step 11 — Deliverable
 
 ```markdown
-# California Form 568 — DRAFT for tax year 2024
+# California Form 568 — DRAFT for taxable year 2025
 
-## LLC identification
+## Identification (Side 1)
 A. SOS file number:                     202032109876
-B. Federal EIN:                         85-1230000
-C. Principal business activity:         SaaS / software services
-D. Principal product/service:           B2B SaaS subscriptions
-E. Date business started in CA:         03/15/2020
-F. Total assets EOY:                    $290,000
-G. Sales:                               $1,500,000
-H. Boxes checked:                       [X] Single-member LLC
-I. Number of members:                   1
-J. Federal classification election:     N/A (disregarded entity, default)
+B. FEIN:                                85-1230000
+E. Accounting method:                   Accrual
+F. Date business started in CA:         03/16/2020
+G. Total assets EOY:                    not required (disregarded SMLLC below the $3M test)
+H. Boxes checked:                       none
+I(1)–I(3):                              No / No / No
 
-## Side 1 — Tax and Fee
-Line 1.  Total income (from Sched IW):                  $1,053,150
-Line 2.  LLC fee ($1M-$4.99M tier):                     $6,000
-Line 3.  2024 annual LLC tax:                           $800
-Line 4.  Nonconsenting nonresident tax:                 $0
-Line 5.  Partnership-level tax:                         $0
-Line 6.  Total tax and fee:                             $6,800
+## Side 1 — Tax, fee, and payments
+Line 1.  Total income from Schedule IW:          $1,050,000
+Line 2.  LLC fee:                                $6,000
+Line 3.  Annual LLC tax:                         $800
+Line 4.  PTE elective tax:                       $0
+Line 5.  Nonconsenting nonresident tax:          $0
+Line 6.  Partnership level tax:                  (blank)
+Line 7.  Total tax and fee:                      $6,800
+Line 8.  Paid with FTB 3537 / 3522 / 3536:       $6,800
+Line 9.  PTE elective tax payments:              $0
+Line 10. Prior-year overpayment credited:        $0
+Line 11. Withholding:                            $0
+Line 12. Total payments:                         $6,800
+Line 13. Use tax:                                $0
+Line 14. Payments balance:                       $6,800
+Line 15. Use tax balance:                        $0
+Line 16. Tax and fee due:                        $0
+Line 17. Overpayment:                            $0
+Line 18. Credited to 2026:                       $0
+Line 19. Refund:                                 $0
+Line 20. Penalties and interest:                 $0
+Line 21. Total amount due:                       $0
 
-## Side 1 — Payments
-Line 7.  Form 3522 ($800) prepaid:                      $800
-Line 8.  Form 3536 prepaid (underestimated):            $2,500
-Line 9.  Withholding:                                   $0
-Line 10. Prior-year overpayment applied:                $0
-Line 11. Total payments:                                $3,300
-Line 12. Balance due:                                   $3,500
+## Questions (Side 2–3)
+J. PBA code / activity / product:   513210 / Software publishing / B2B SaaS subscriptions
+K. Maximum members:                 1
+M(1) Schedule R:                    Yes
+P(1)/P(2) nonresident members:      No / No
+U(1) Disregarded:                   Yes    U(2): No    U(3): Yes ($1,050,000 CA < $1,500,000 total)
+GG(2) First year doing business in CA: No
+SMLLC owner type:                   Individual (Priya Mehta), consent signed
 
-(Plus $350 §17942(d) underestimation penalty + interest, paid separately)
+## Schedule IW
+1a $0 · 1b $0 · 2a $1,050,000 · 2b $0 · 3a–6 $0 · 7 $1,050,000 · 8a–16 $0
+17 $1,050,000 → Side 1, line 1
 
-## Schedule IW — Income Worksheet (after Schedule R apportionment)
-IW Line 1. Gross receipts (CA-apportioned):             $1,050,000
-IW Line 2. Cost of goods sold (CA):                     $0
-IW Line 3. Subtract Line 2 from 1:                      $1,050,000
-IW Line 4. Other income (interest, CA-apportioned 70%): $3,150
-IW Line 7. Total → Form 568 Line 1:                     $1,053,150
+## Schedule R (single sales factor)
+Total sales (everywhere):       $1,500,000
+California sales:               $1,050,000
+California factor:              70.00%
 
-## Schedule R — Apportionment (single-sales-factor)
-Total sales (everywhere):                                $1,500,000
-California sales:                                        $1,050,000
-California apportionment %:                              70.00%
+## Owner-level California adjustment (Priya's Schedule CA (540), via FTB 3885A — not on Form 568)
+| Item | Federal Schedule C | California | Difference |
+|------|--------------------|------------|------------|
+| §179 + Year 1 MACRS on $110,000 of equipment | $110,000 | $42,000 ($25,000 + 20% × $85,000) | $68,000 less California depreciation |
 
-## Federal-to-California adjustments (relevant for Priya's 540 / Schedule CA)
-| Item | Federal Schedule C | CA-equivalent | Add-back |
-|------|--------------------|---------------| ---------|
-| §179 | $110,000 | $42,000 (= $25K cap + 20% MACRS Yr1 on $85K) | $68,000 |
-| §168(k) | $0 | $0 | $0 |
+## Member info (1 member, CA resident)
+| Name | TIN | % | CA resident | Consent |
+|------|-----|---|-------------|---------|
+| Priya Mehta | XXX-XX-XXXX | 100 | Yes | Side 3 SMLLC consent signed |
 
-## Member info (1 member, sole CA resident)
-| Name | SSN | % | CA resident | Form 3832 |
-|------|-----|---|-------------|-----------|
-| Priya Mehta | XXX-XX-XXXX | 100 | Yes | N/A |
-
-## Required attachments
-- [x] Form 3522 ($800 paid April 12, 2024)
-- [x] Form 3536 ($2,500 paid June 14, 2024 — UNDERESTIMATED, $350 penalty)
-- [ ] Form 3832 (N/A; sole member is CA resident)
-- [ ] Form 592 / 592-B (N/A; no nonresident members)
-- [x] Schedule R (multi-state apportionment, 70% CA)
-- [x] Federal Schedule C (filed with Priya's 1040)
-- [x] Schedule L, M-1, M-2 (receipts ≥ $250K → required)
+## Payments and attachments
+- [x] 2025 FTB 3522 ($800) — Web Pay, April 11, 2025
+- [x] 2025 FTB 3536 ($2,500 estimate) — Web Pay, June 12, 2025 (= 2024 fee; safe harbor met)
+- [x] 2025 FTB 3536 ($3,500 balance) — Web Pay, April 10, 2026 (by the original due date)
+- [ ] FTB 3832 — not applicable (single-member LLC)
+- [ ] Form 592-Q / 592-PTE / 592-B — not applicable
+- [x] Schedule R (70% California)
 
 ## Validation summary
 - Math: all checks passed
 - Sanity:
-  - §179 add-back of $68,000 documented
-  - Schedule R apportionment 70% / 30% based on customer location
-  - Form 3536 underestimated → 10% penalty applies (~$350)
-  - Schedule L, M-1, M-2 required (receipts ≥ $250K)
+  - Estimate below this year's fee but at least last year's fee → no 10% penalty
+  - Line 1 is $50,000 above the $1,000,000 boundary → keep the billing-address report
+  - $68,000 California depreciation difference flagged for Priya's own return
 - Next steps:
-  - Pay $3,500 balance + $350 penalty + interest by April 15, 2025
-  - 2025 Form 3522 ($800) due April 15, 2025 — Priya should pay simultaneously
-  - 2025 Form 3536 estimate: based on growth, recommend $11,790 (next-tier-up cushion) by June 15, 2025
-  - 2025 Form 568 due April 15, 2026
-  - On 1040: Priya reports federal Schedule C income; California Schedule CA(540) adjusts for §179 and bonus depreciation differences
+  - 2026 FTB 3522 ($800) due April 15, 2026
+  - 2026 FTB 3536 estimate due June 15, 2026 — paying at least $6,000 (the 2025 fee) by then avoids the penalty
+  - 2025 Form 568 due April 15, 2026 (October 15, 2026 on extension)
 
 ## Sources cited in this draft
-- California Form 568, Rev. 2024
-- California Form 568 Booklet, Rev. 2024
-- R&TC §17941 (annual LLC tax)
-- R&TC §17942(a)(3) (LLC fee, $1M-$4.99M tier = $6,000)
-- R&TC §17942(d) (estimated fee underpayment penalty, 10%)
-- R&TC §17255 (California §179 cap = $25,000)
-- R&TC §25128.7 (single-sales-factor apportionment)
-- R&TC §25136(b) (market-based sourcing for services)
+- 2025 Form 568 and 2025 Form 568 Booklet (Filing Requirements for Disregarded Entities; Schedule IW instructions; General Information E, F)
+- 2025 FTB 3536 instructions; FTB LLC page (Schedule R)
+- 2025 FTB 3885L / 3885A (§179 $25,000 / $200,000); 2025 Instructions for Form 4562
+- R&TC §17941; §17942(a)(3), (b)(1)(B), (d)(2); §25128.7; §25136
 ```
 
 ## Why each non-obvious choice
 
-**Why is the §179 add-back $68,000 specifically?** Federal allowed full $110K; California allows $25K + MACRS Year 1 on $85K excess = $25K + $17K = $42K. Difference: $68K.
+**Why is the California depreciation difference $68,000?** Federal allowed the full $110,000 under §179; California allows $25,000 plus 20% MACRS Year 1 on the $85,000 excess = $42,000. Difference: $68,000. For a disregarded SMLLC owned by an individual below the $3,000,000 test, this is reported on the owner's California return (Schedule CA (540), FTB 3885A), not on Form 568.
 
-**Why does Schedule R apply to a SMLLC?** Even disregarded entities apportion when they have multi-state customers. The apportionment determines the California-source share for the **§17942 fee** (and ultimately for Priya's California personal income tax).
+**Why is line 1 $1,050,000 and not 70% of something?** Schedule IW assigns each receipt to the location where the customer receives the benefit (R&TC §§17942(b)(1)(B), 25136). Here the assigned receipts happen to equal 70% of total receipts; the 70% factor on Schedule R is a result, not the method.
 
-**Why was the Form 3536 underestimated?** Priya assumed 2024 would track 2023 ($500K-$999K tier, $2,500 fee). Revenue grew faster than expected to $1.5M, pushing into the $1M-$4.99M tier ($6,000 fee). The estimate cushion should have been at the next-tier rate.
+**Why no estimated-fee penalty even though the estimate was $3,500 short?** R&TC §17942(d)(2): no penalty if the amount paid by the 15th day of the 6th month is at least the LLC's total fee for the preceding taxable year. Priya paid $2,500 = the 2024 fee.
 
-**Why is the 10% §17942(d) penalty $350 and not 10% of $6,000?** The penalty is 10% of the **underpayment**, not of the actual fee. Underpayment = $6,000 − $2,500 = $3,500. 10% × $3,500 = $350.
+**Why pay the $3,500 on FTB 3536 rather than with the return?** The booklet says the LLC uses FTB 3536 to pay, by the return's due date, any fee not paid as a timely estimate. Paying it before filing puts it on line 8; paying it with the return instead would show it on line 16 / 21. Either way it must be paid by April 15, 2026.
 
-**What if Priya had been more conservative on §179?** If she had taken federal §179 = $25,000 (matching California cap) and MACRS depreciated the rest, federal Schedule C net income would have been higher (worse federally) but no California add-back. Trade-off depends on Priya's federal vs. California marginal rates. The CPA optimized for federal.
+**Why no Schedule L?** A disregarded SMLLC completes Sides 1, 2, 3, and 7 (plus Schedules B and K only at $3,000,000); Schedules L, M-1, and M-2 are not in that list (2025 booklet, Filing Requirements for Disregarded Entities).
 
-**Why no Schedule T?** Priya is the sole member and a CA resident. No nonresident, no consent issue.
-
-**What if Priya had a co-investor in Wyoming?** Then the LLC would be multi-member, partnership-classified, and the Wyoming co-investor would need Form 3832 OR the LLC would withhold 7% per Form 592. Schedule T would compute additional tax for the LLC. See [`nonresident-members.md`](../references/nonresident-members.md).
+**What if Priya had a co-investor in Wyoming?** Then the LLC would be multi-member and partnership-classified. The Wyoming member signs FTB 3832, or the LLC pays Schedule T tax at 12.3% on that member's distributive share; separately, distributions of California-source income to that member above $1,500 in a calendar year require 7% withholding (Form 592-Q / 592-PTE / 592-B). See [`nonresident-members.md`](../references/nonresident-members.md).
 
 ## Audit defense
 
 Priya's 568 audit defense:
 1. SOS confirms LLC formation
-2. Federal Schedule C cross-references all income and expense
-3. Schedule R apportionment supported by customer-location records (Stripe charge addresses, billing systems)
-4. §179 add-back documented with MACRS Year 1 schedule
-5. Form 3522 + Form 3536 (with penalty paid) timely
-6. Schedule L balance sheet reconciles with bank records
+2. Federal Schedule C cross-references gross receipts
+3. Customer-location records (billing addresses by invoice) support the $1,050,000 assigned to California
+4. FTB 3536 payment history shows $2,500 by June 16, 2025 and $3,500 by April 15, 2026
+5. The 2024 Form 568 shows the $2,500 prior-year fee behind the safe harbor
 
-The fragile piece is Schedule R apportionment — Priya should keep an exportable customer-location report showing the 70/30 California / non-California split. Without it, FTB could challenge the apportionment and assess the higher fee on a 100% California basis.
+The fragile piece is the sourcing — Priya should keep an exportable customer-location report. It is the evidence for line 1, and line 1 sits close to the $1,000,000 boundary between the $2,500 and $6,000 tiers.

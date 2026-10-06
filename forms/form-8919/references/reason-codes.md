@@ -1,162 +1,144 @@
 # Form 8919 Reason Codes — Decision Tree
 
-Form 8919 Line 1 column (c) requires a single-letter reason code explaining why the worker is using Form 8919 instead of Schedule SE. The valid codes are A, C, G, and H. Picking the wrong code invalidates the filing.
+Lines 1–5, column (c), of Form 8919 take a single-letter reason code explaining why the worker is filing the form. The 2025 Form 8919 lists four codes: A, C, G, and H. Enter only one reason code on each line. Picking a code the facts don't support exposes the worker to the IRS rejecting the employee treatment.
 
-This document is a decision tree for the agent to pick the correct code with the user.
+This document is a decision tree for the agent to pick the code with the user. Code text below is quoted from the 2025 Form 8919 (page 1 "Reason codes" and page 2 "Column (c)"); re-check the current revision at https://www.irs.gov/forms-pubs/about-form-8919.
 
 ---
 
 ## Quick Reference Table
 
-| Code | Trigger | SS-8 Required? | Typical Use |
-|------|---------|----------------|-------------|
-| **A** | IRS already determined worker = employee | Yes (already filed) | After a successful SS-8 |
-| **C** | Same firm issued W-2 + 1099 for same job | No | Employer split your pay between W-2 and 1099 wrongly |
-| **G** | SS-8 filed, awaiting determination | Yes (just filed or about to file) | **Most common** for misclassified workers |
-| **H** | Same firm issued W-2 + 1099, then W-2c that didn't fix it | Optional | Employer corrected the W-2 but didn't include the 1099 amount |
+| Code | Form text (2025) | Form SS-8? | Column (d) date |
+|------|------------------|------------|-----------------|
+| **A** | I filed Form SS-8 and received a determination letter stating that I am an employee of this firm. | Already filed and decided | Date of the determination letter |
+| **C** | I received other correspondence from the IRS stating that I am an employee. (Includes a "section 530 employee".) | Not required | Date of the IRS correspondence |
+| **G** | I filed Form SS-8 with the IRS and haven't received a reply. Also the fallback when no other code applies. | Must be filed on or before the date the return is filed | Leave blank |
+| **H** | I received a Form W-2 and a Form 1099-MISC and/or 1099-NEC from this firm for the year. The 1099 amount should have been included as wages on Form W-2. | **Don't file Form SS-8** | Leave blank |
 
 ---
 
 ## Decision Tree
 
 ```
-Did the user file Form SS-8 with the IRS?
-├── No
-│   │
-│   Did the SAME firm issue both a W-2 AND a 1099 for the SAME work?
-│   ├── Yes
-│   │   │
-│   │   Did the firm later issue a W-2c that did NOT add the 1099 amount as wages?
-│   │   ├── Yes  → CODE H
-│   │   └── No   → CODE C
-│   │
-│   └── No → STOP. The user must file Form SS-8 first to use codes A or G.
-│            (Or, if they have W-2 + 1099 from same firm without SS-8, use code C/H.)
-│
-└── Yes
+Did the SAME firm issue the user both a Form W-2 AND a Form 1099-MISC/1099-NEC
+for the year, and the 1099 amount was really pay for services as an employee?
+├── Yes → CODE H (do not file Form SS-8)
+└── No
     │
-    Has the IRS issued a determination letter ruling worker = employee?
-    ├── Yes → CODE A
-    └── No (still pending) → CODE G
+    Does the user have an IRS determination letter (from Form SS-8) stating
+    they are an employee of this firm?
+    ├── Yes → CODE A (column (d) = letter date)
+    └── No
+        │
+        Does the user have other IRS correspondence stating they are an employee
+        of this firm (including a "section 530 employee" designation)?
+        ├── Yes → CODE C (column (d) = correspondence date)
+        └── No
+            │
+            Has the user filed Form SS-8 (or will they file it on or before
+            the date they file the return)?
+            ├── Yes → CODE G
+            └── No  → STOP. Code G requires Form SS-8 filed on or before the
+                      return. Offer to prepare SS-8 (references/ss-8-filing.md)
+                      or route the income to Schedule C / Schedule SE.
 ```
 
 ---
 
-## Code A: IRS Determination Letter on File
+## Code A: SS-8 Determination Letter on File
 
-**When to use:** The user filed Form SS-8 in a prior year, and the IRS issued a determination letter ruling that the user is an employee of the firm.
+**When to use:** The user filed Form SS-8 and the IRS issued a determination letter stating the user is an employee of this firm.
 
 **Required:**
-- Form SS-8 filed (the user has proof — typically a copy of the SS-8 they mailed and the IRS determination letter)
-- IRS determination letter ruling worker = employee
-- Determination letter date entered in Form 8919 column (d)
-- SS-8 box checked in column (e)
+- The determination letter (ask the user for its date; do not guess)
+- Determination letter date entered in column (d)
 
-**Example:** Maya filed SS-8 for tax year 2024 in February 2025. The IRS issued a determination letter dated October 15, 2025, ruling Maya was an employee of XYZ Marketing. For her 2025 1040 (filed April 2026), Maya uses code A on Form 8919, enters 10/15/2025 in column (d), and checks the SS-8 box.
+**Example:** Maya filed Form SS-8 in February 2025. The IRS issued a determination letter dated October 15, 2025, stating Maya is an employee of XYZ Marketing. On her 2025 return (filed in 2026), Maya uses code A and enters 10/15/2025 in column (d).
 
-**Audit defense:** The determination letter is conclusive for Maya's specific situation with XYZ Marketing. The IRS has already ruled. Form 8919 with code A is rarely challenged at audit because the underlying classification has been adjudicated.
+**Scope:** The SS-8 instructions say a determination letter applies only to the worker (or class of workers) requesting it and is binding on the IRS if there is no change in the facts or law that form its basis (Instructions for Form SS-8, Rev. January 2024, "Issuance of determination"). If the work relationship changed materially, ask the user before reusing the letter for a later year.
 
-**Subsequent years:** If the work relationship continues unchanged, Maya can use code A in subsequent years too (referencing the same determination date) until the relationship ends or materially changes.
+**Information letter instead of a determination:** In some cases the IRS issues an information letter instead of a formal determination. An information letter is advisory and not binding on the IRS, but the worker may use it in fulfilling their federal tax obligations (same section). Ask the user which kind of letter they have. If it is IRS correspondence stating they are an employee, code C fits.
 
 ---
 
-## Code C: Same Firm, W-2 + 1099, Same Job
+## Code C: Other IRS Correspondence Stating "Employee"
 
-**When to use:** The same firm issued the user both a W-2 and a 1099-MISC/NEC for the same work in the same year, and the 1099 portion should have been reported as wages on the W-2.
-
-**No SS-8 required** — the misclassification is self-evident from the firm's own filings (issuing two forms for one job).
+**When to use:** The user received IRS correspondence, other than an SS-8 determination letter, stating that they are an employee of this firm. Also use code C if the user was designated a "section 530 employee": determined by the IRS to be an employee, but the employer was granted relief from employment taxes under section 530 of the Revenue Act of 1978 (2025 Form 8919, page 2, "Column (c)").
 
 **Required:**
-- W-2 from the firm (with some wages reported)
-- 1099-MISC or 1099-NEC from the SAME firm
-- Both forms are for the same work / same job
-- 1099 amount entered in Form 8919 column (f)
-- SS-8 box left unchecked
-- Date column (d) typically blank
+- The IRS letter or notice (ask for a copy and its date)
+- Date entered in column (d)
 
-**Example:** Joel works as an in-house designer at Acme Studios. Acme runs payroll on him for 40 hours/week ($60,000 W-2). For "extra projects" outside the 40 hours, Acme paid Joel an additional $18,000 reported on a 1099-NEC. The "extra projects" were the same kind of design work, on Acme's premises, with Acme's tools — they should have been wages.
-
-For tax year 2026, Joel files Form 8919 with code C, listing Acme Studios with $18,000 in column (f). The W-2 portion remains separately reported on Form 1040 Line 1a.
-
-**Audit defense:** Code C cases are usually clear-cut. The agent should ensure the user has documentation that the 1099 work was the same as the W-2 work (same role, same supervision, same location).
+**Not code C:** a W-2 plus a 1099 from the same firm (that is code H), or the user's own belief without IRS paper (that is code G with Form SS-8).
 
 ---
 
-## Code G: SS-8 Filed, Determination Pending
+## Code G: SS-8 Filed, No Reply Yet (and the Fallback Code)
 
-**When to use:** The user filed Form SS-8 (or is filing it now), reasonably believes they are an employee, and is filing Form 8919 with the 1040 before the IRS has issued a determination.
-
-**This is the most common code** for proactive misclassified workers.
+**When to use:**
+1. The user filed Form SS-8 with the IRS and hasn't received a reply, or
+2. None of the other codes apply but the user believes they should have been treated as an employee. The form then says to enter code G **and file Form SS-8 on or before the date you file your tax return**. Form SS-8 is filed separately; do not attach it to the return.
 
 **Required:**
-- Form SS-8 filed with the IRS (proof of mailing recommended)
-- User has a reasonable basis to believe they are an employee (common-law test result)
-- SS-8 box checked in column (e)
-- Date column (d) typically blank (or date of any IRS correspondence acknowledging receipt of SS-8)
+- Form SS-8 filed (mail or fax) no later than the date the return is filed. Ask for proof: a fax confirmation, certified mail receipt, or the IRS acknowledgment of receipt.
+- A documented common-law basis for employee status (`common-law-test.md`)
+- Column (d) blank
 
-**Example:** Ana works full-time at ABC Consulting and was paid $72,000 on a 1099-NEC. She files SS-8 in February 2027 with documentation showing ABC sets her hours, supplies her equipment, and supervises her work. By April 15, 2027, the IRS has acknowledged receipt of SS-8 but has not yet issued a determination.
+**Example:** Ana works full-time at ABC Consulting and was paid $72,000 on a 1099-NEC for 2026. She mails Form SS-8 in February 2027 with documentation showing ABC sets her hours, supplies her equipment, and supervises her work. She files her 2026 return in April 2027 with Form 8919, code G, without waiting for the determination (the IRS says a determination may take at least six months).
 
-Ana files Form 1040 with Form 8919 attached, code G, on April 15. She mails the SS-8 in February with certified mail return receipt; she keeps the green card as proof of filing.
+**Risk (from the form):** If code G is entered, the worker or the firm may be contacted for additional information. Use of the code isn't a guarantee that the IRS will agree. If the IRS doesn't agree that the worker is an employee, the worker may be billed for the additional tax, penalties, and interest resulting from the change to worker status (2025 Form 8919, page 2 caution). Tell the user this before they choose code G.
 
-**Risk:** If the IRS later rules **against** Ana (rules her a contractor), she will need to amend her 1040 to file Schedule SE instead. The amendment will assess the difference (full SE tax minus the FICA she already paid) plus interest. There is no penalty for a good-faith filing — the IRS recognizes that SS-8 determinations can take 6-12 months and workers shouldn't have to wait to file their 1040.
-
-**Reasonable basis:** "Reasonable basis" means the user has documented evidence of the common-law test factors pointing toward employee status. It is a low bar but not zero — a worker who has multiple clients, sets their own hours, and uses their own equipment cannot reasonably claim employee status.
+**Documented basis:** The worker should have evidence of the common-law factors pointing toward employee status. A worker who has multiple clients, sets their own hours, and uses their own equipment does not have that basis.
 
 ---
 
-## Code H: W-2 + 1099 + W-2c That Didn't Fix It
+## Code H: W-2 and 1099 From the Same Firm
 
-**When to use:** The user got a W-2 and a 1099 from the same firm (like code C), then the firm issued a Form W-2c (corrected W-2). The W-2c, however, did **not** add the 1099 amount to wages — it left the misclassification unresolved.
+**When to use:** The user received both a Form W-2 and a Form 1099-MISC and/or 1099-NEC from the same firm for the year, and the 1099 amount should have been included as wages on the W-2 because it was pay for services as an employee (2025 Form 8919, page 2, "Column (c)").
+
+**Do not file Form SS-8** for code H (the form says so twice).
+
+The form lists amounts that are sometimes put on a 1099 by mistake when they should be W-2 wages: employee bonuses, awards, travel expense reimbursements not paid under an accountable plan, scholarships, and signing bonuses.
 
 **Required:**
-- W-2 from the firm
-- 1099-MISC or 1099-NEC from the same firm
-- W-2c subsequently issued by the firm
-- The W-2c does **not** reclassify the 1099 amount as wages
-- 1099 amount entered in Form 8919 column (f)
+- The W-2 from the firm
+- The 1099-MISC/NEC from the same firm
+- The 1099 amount (only the part that was employee pay) in column (f)
+- Column (d) blank; column (e) checked (a 1099 was received)
 
-**Example:** Continuing the Joel/Acme case, suppose Acme was audited for unrelated reasons and issued Joel a W-2c correcting his W-2 wages by +$2,000 (a withholding error). The W-2c left the $18,000 1099 amount alone. Joel uses code H instead of code C because the firm acted but didn't fix the misclassification.
-
-**Audit defense:** Like code C, code H is usually clear-cut. The W-2c is documentary evidence that the firm reconsidered the W-2 reporting but chose not to correct the misclassification.
+**Example:** Joel is a W-2 graphic designer at Acme Studios ($60,000 on his W-2). Acme paid him another $18,000 for extra hours of the same design work, on Acme's premises and equipment, and reported it on a 1099-NEC. Joel enters Acme Studios with code H and $18,000 in column (f). He does not file Form SS-8.
 
 ---
 
-## Why Other Codes Don't Apply
+## Codes Not on the Current Form
 
-The form historically had codes B, D, E, and F for various employer remediation scenarios. Most are now retired or apply to extremely narrow situations. **Workers should not use B, D, E, or F.** If your situation seems to fit one of those, it almost certainly fits A, C, G, or H instead — re-run the decision tree.
+The 2007 Form 8919 also listed codes B (designated a "section 530 employee" before January 1, 1997), D (previously treated as an employee by the firm in a similar capacity), E (co-workers in similar roles treated as employees), and F (co-workers received SS-8 determinations as employees); D, E, and F had to be paired with G. These codes are not on the 2025 form. Do not enter them. If a user describes one of those situations today, the current form routes it to code G with Form SS-8 (or code C if they hold IRS correspondence).
 
 ---
 
 ## Multiple Firms, Multiple Codes
 
-If the user has misclassified income from multiple firms, each row on Line 1 has its own code. Common patterns:
+Each firm gets its own row and its own code. Common patterns:
 
-- Two firms, both code G (filed SS-8 for both, both pending) → two rows, code G on each
-- One firm code C (W-2 + 1099 same job), one firm code G (SS-8 pending) → two rows with different codes
-- One firm code A (prior determination), one firm code G (new SS-8) → two rows with different codes
+- Two firms, both SS-8 pending → two rows, code G on each (a separate Form SS-8 for each firm, per the SS-8 instructions)
+- One firm with W-2 + 1099 for employee pay (code H), one firm with SS-8 pending (code G) → two rows with different codes
+- One firm with a prior determination letter (code A), one with a new SS-8 (code G) → two rows with different codes
 
-Each row stands on its own. The validation: every row's reason code must match the user's documentation for that specific firm.
+Validation: every row's code must match the user's documents for that firm.
 
 ---
 
-## What If the Reason Doesn't Fit Any Code?
+## What If No Code Fits?
 
-If the user genuinely believes they are misclassified but the situation doesn't fit codes A, C, G, or H — for example, no SS-8 has been filed and there's no W-2 from the same firm — **the user cannot use Form 8919 yet**.
-
-The path forward:
-
-1. File Form SS-8 immediately (mail to Holtsville, NY 11742-0631)
-2. Wait for the SS-8 mailing to be acknowledged by the IRS (or for proof of certified mail)
-3. File Form 1040 with Form 8919, code G, citing the SS-8 filing
-
-Without an SS-8 filing, code G is invalid. Without a W-2 from the same firm, codes C and H are invalid. Without a determination letter, code A is invalid. SS-8 is the gating step for the majority of misclassification cases.
+There is always a fallback: code G with Form SS-8 filed on or before the return. If the user is not willing to file Form SS-8 and none of A, C, or H applies, **the user cannot use Form 8919 for that firm**. The income is reported as self-employment (Schedule C and Schedule SE) unless and until the classification changes.
 
 ---
 
 ## Sources
 
-- [Form 8919](https://www.irs.gov/pub/irs-pdf/f8919.pdf) — current revision
-- [Form SS-8](https://www.irs.gov/pub/irs-pdf/fss8.pdf)
+- [Form 8919 (2025)](https://www.irs.gov/pub/irs-pdf/f8919.pdf) — reason codes, page 1; column instructions, page 2
+- [Form 8919 (2007)](https://www.irs.gov/pub/irs-prior/f8919--2007.pdf) — historical codes B, D, E, F
+- [Form SS-8 (Rev. December 2023)](https://www.irs.gov/pub/irs-pdf/fss8.pdf) and [Instructions (Rev. January 2024)](https://www.irs.gov/pub/irs-pdf/iss8.pdf)
 - [About Form SS-8](https://www.irs.gov/forms-pubs/about-form-ss-8)
-- IRC §7436 — Judicial review of employment status determinations
+- [Independent contractor (self-employed) or employee?](https://www.irs.gov/businesses/small-businesses-self-employed/independent-contractor-self-employed-or-employee) — "at least six months" for an SS-8 determination
 - IRC §3121(d) — Definition of "employee"

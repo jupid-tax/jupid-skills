@@ -33,10 +33,10 @@ Top mistakes account holders make when handling Form 5498-SA, with examples and 
 **Fix:**
 
 ```
-Form 8889 Line 2 = Form 5498-SA Box 2 − W-2 Box 12 code W
+Form 8889 Line 2 = (Box 2 − last year's Box 3 + this year's Box 3) − W-2 Box 12 code W − Line 10
 ```
 
-Line 2 reports only contributions made directly (outside payroll). Cafeteria plan and employer-only contributions go on Line 9.
+Line 2 reports only contributions made directly (outside payroll) for the tax year. Cafeteria plan and employer-only contributions go on Line 9; an IRA funding distribution (also in Box 2) goes on Line 10.
 
 **Citation:** Form 8889 instructions, "Line 2" definition; IRC §223(b).
 
@@ -61,22 +61,20 @@ Different forms, different roles, different parts of Form 8889.
 
 ---
 
-## Mistake #4: Missing the prior-year contribution split across two 5498-SAs
+## Mistake #4: Reading only Box 2 when a prior-year contribution was made
 
-**The error:** Filer made a $1,500 contribution in March 2026 for tax year 2025. They reconcile only against the **2025** 5498-SA, see only $4,300 in Box 2 (the 2025 calendar-year contributions), and panic that the $1,500 is missing.
+**The error:** Filer made a $1,500 contribution in March 2026 for tax year 2025. They reconcile the **2025** 5498-SA by Box 2 only, see $4,300 (the money received in 2025), and panic that the $1,500 is missing. A year later they compare the 2026 Box 2 to their 2026 Form 8889 and think the custodian over-reported by $1,500.
 
-**Why it happens:** The prior-year-designated contribution lands on the **2026** 5498-SA Box 3 (which won't arrive until May 2027), not the 2025 form.
+**Why it happens:** The prior-year-designated contribution appears in **Box 3 of the 2025 form** and again in **Box 2 of the 2026 form** (money received in 2026).
 
-**Impact:** Wasted hours arguing with the custodian about a contribution that is properly recorded — just on a different year's form. Sometimes filers preemptively amend Form 8889 to remove the "missing" contribution, then have to re-amend when they realize their mistake.
+**Impact:** Wasted hours arguing with the custodian about a contribution that is properly recorded. Sometimes filers preemptively amend Form 8889 to remove the "missing" contribution, then have to re-amend when they realize their mistake.
 
 **Fix:**
 
-- For any prior-year-designated contribution, **pull both years' 5498-SAs**:
-  - The current tax year's 5498-SA → check Box 2
-  - The next year's 5498-SA → check Box 3 for the prior-year designation
-- Sum (current Box 2) + (next year Box 3) = total contributions for the tax year
+- Contributions for 2025 = 2025 Box 2 − 2024 Box 3 + 2025 Box 3
+- Contributions for 2026 = 2026 Box 2 − 2025 Box 3 + 2026 Box 3
 
-**Citation:** Instructions for Forms 1099-SA and 5498-SA, "Box 3" definition.
+**Citation:** 2025 Instructions for Forms 1099-SA and 5498-SA, Box 2 ("Include any contribution made in 2025 for 2024") and Box 3.
 
 ---
 
@@ -88,7 +86,7 @@ Different forms, different roles, different parts of Form 8889.
 
 **Impact:** Two issues:
 
-1. The IRS uses Box 5 to flag potential excess contributions and untracked rollovers. If Box 5 grows by far more than (Box 2 + Box 4 + plausible market growth), the IRS may issue a query. Without tracking Box 5, you won't notice until the query arrives.
+1. Box 5 is reported to the IRS every year. If Box 5 grows by far more than (Box 2 + Box 4 + plausible market growth − distributions), something was recorded that you did not expect; without tracking Box 5, you won't notice.
 2. You lose track of the HSA as an asset for net-worth, estate, mortgage-application, and long-horizon planning purposes.
 
 **Fix:**
@@ -117,7 +115,7 @@ The full reconciliation requires three sources:
 2. **W-2 Box 12 code W** — employer + cafeteria plan contributions (which equals Form 8889 Line 9)
 3. **Form 8889 Line 2** — direct contributions
 
-Then: Box 2 − W-2 Box 12 W = Form 8889 Line 2 (should match exactly).
+Then: (Box 2 − last year's Box 3 + this year's Box 3) − W-2 Box 12 W − Form 8889 Line 10 = Form 8889 Line 2 (should match exactly).
 
 **Citation:** Form W-2 Box 12 codes; Instructions for Form 8889.
 
@@ -176,13 +174,13 @@ Diagnosis order before amending:
 - On a joint return, each spouse files a separate Form 8889; they are not consolidated
 - If the family contribution limit is split between two spousal HSAs, each spouse reports their own portion on their own Form 8889 Line 2 + Line 9
 
-**Citation:** IRC §223(d); Form 8889 instructions, "Joint returns" section.
+**Citation:** IRC §223(d); 2025 Instructions for Form 8889, "Name and social security number (SSN)" (separate Form 8889 for each spouse); Pub. 969 ("You can't have a joint HSA").
 
 ---
 
 ## Mistake #10: Letting an excess contribution sit
 
-**The error:** Reconciliation reveals Box 2 > annual contribution limit. Filer files Form 5329 to pay the 6% excise tax and forgets about it. Next year, the excess is still in the HSA, and the 6% applies again. And again.
+**The error:** Reconciliation reveals contributions for the year > annual contribution limit. Filer files Form 5329 to pay the 6% excise tax and forgets about it. Next year, the excess is still in the HSA, and the 6% applies again. And again.
 
 **Why it happens:** Filers think the 6% excise tax is a one-time penalty.
 
@@ -190,8 +188,8 @@ Diagnosis order before amending:
 
 **Fix:**
 
-- Withdraw the excess contribution **plus earnings** before the extended filing deadline (October 15 if the user filed for an extension)
-- The earnings come out as taxable income for the year of the excess (not the year withdrawn) — but the 6% excise tax disappears
-- If the deadline has passed: the excess can still be withdrawn later (paying ordinary income tax on the earnings) but the 6% applies for every year it remained in the HSA
+- Withdraw the excess contribution **plus earnings** by the due date of the return including extensions (October 15 if the user filed for an extension; a timely filer without an extension has until 6 months after the original due date with an amended return marked "Filed pursuant to section 301.9100-2")
+- The earnings are taxable as other income for the year withdrawn — but the 6% excise tax disappears (2025 Instructions for Form 8889, Line 13)
+- If the deadline has passed: the 6% applies for every year the excess remained. A later withdrawal is a regular distribution (taxable on Form 8889 Line 16, plus 20% unless an exception applies) that reduces the excess on Form 5329 Line 44; or the excess is absorbed when a later year's contributions are below that year's limit (Form 5329 Line 43)
 
 **Citation:** IRC §4973; Form 5329 instructions; Pub 969.

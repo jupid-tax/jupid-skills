@@ -13,7 +13,7 @@ A complete walkthrough of Form 8959 for a single filer with W-2 wages above $200
 
 | Source | Field | Amount |
 |--------|-------|--------|
-| W-2 (TechCo Inc.) | Box 1 (federal taxable wages) | $238,500 |
+| W-2 (TechCo Inc.) | Box 1 (federal taxable wages) | $238,900 |
 | W-2 (TechCo Inc.) | Box 3 (SS wages, capped at $176,100) | $176,100 |
 | W-2 (TechCo Inc.) | Box 5 (Medicare wages) | **$262,400** |
 | W-2 (TechCo Inc.) | Box 6 (Medicare tax withheld) | **$4,366** |
@@ -21,17 +21,17 @@ A complete walkthrough of Form 8959 for a single filer with W-2 wages above $200
 | RRTA | compensation | $0 |
 | Form 4137 / 8919 | unreported tips / misclassified worker | $0 |
 
-The Box 5 figure exceeds Box 1 because Daniel deferred $23,500 to a 401(k) (Box 1 reduced; Box 5 not reduced). Box 5 also includes ESPP discount and HSA wages added back.
+The Box 5 figure exceeds Box 1 because Daniel deferred $23,500 to a 401(k) (Box 1 reduced; Box 5 not reduced).
 
 ### Verify Box 6 against the IRC §3102(f) formula
 
 ```
 Expected Box 6 = (1.45% × $262,400) + (0.9% × ($262,400 − $200,000))
-              = $3,805 + $562
-              = $4,367
+              = $3,804.80 + $561.60
+              = $4,366.40
 ```
 
-Actual Box 6 = $4,366. Difference of $1 due to per-paycheck rounding. Within tolerance. The employer correctly withheld the additional 0.9% on the $62,400 of wages above $200K.
+Actual Box 6 = $4,366. Matches. The employer correctly withheld the additional 0.9% on the $62,400 of wages above $200K.
 
 ## The completed Form 8959 draft
 
@@ -73,22 +73,22 @@ Threshold (Line 5):          $200,000
 
 ## Part V — Withholding Reconciliation
 19. Medicare tax withheld (W-2 Box 6 total):       $4,366
-20. Regular 1.45% Medicare on Line 1 ($262,400 × 1.45%): $3,805
-21. Additional Medicare Tax withheld (19 − 20, floor zero): $561
-22. (Same as Line 21 — no railroad reconciliation): $561
+20. Amount from Line 1:                            $262,400
+21. Regular Medicare withholding (Line 20 × 1.45%): $3,805
+22. Additional Medicare Tax withheld (19 − 21, floor zero): $561
 23. RRTA Additional Medicare Tax withheld:         $0
-24. Total Additional Medicare Tax withheld (22 + 23): $561
-    → flows to Form 1040 Line 25c (federal income tax withheld)
+24. Total Additional Medicare Tax withholding (22 + 23): $561
+    → included on Form 1040 Line 25c
 
 ## Validation summary
 - Math: all checks passed
 - Sanity:
-  - Line 19 ($4,366) > Line 20 ($3,805): employer withheld additional Medicare tax (consistent with $262K > $200K from a single employer per IRC §3102(f))
-  - Line 18 ($562) ≈ Line 24 ($561): per-paycheck rounding accounts for the $1 difference; Daniel will owe $1 at filing through normal Form 1040 totals
+  - Line 19 ($4,366) > Line 21 ($3,805): employer withheld additional Medicare tax (consistent with $262K > $200K from a single employer per IRC §3102(f))
+  - Line 18 ($562) ≈ Line 24 ($561): whole-dollar rounding on the form accounts for the $1 difference (Line 7 rounds $561.60 up; Line 21 rounds $3,804.80 up); Daniel will owe $1 at filing through normal Form 1040 totals
   - Net at filing: Line 18 − Line 24 = $1 owed (effectively zero — captured in Form 1040 totals)
 - Next steps:
   - Schedule 2 Line 11 = $562
-  - Form 1040 Line 25c includes $561 from Form 8959 Line 24 (in addition to $XX,XXX from W-2 Box 2 federal income tax)
+  - Form 1040 Line 25c includes $561 from Form 8959 Line 24 (W-2 Box 2 federal income tax withholding goes on Line 25a)
   - No quarterly estimated tax adjustment needed for 2026 — employer withholding will continue to absorb the surtax as long as Daniel stays at TechCo
 
 ## Sources cited in this draft
@@ -102,12 +102,12 @@ Threshold (Line 5):          $200,000
 
 ## Why each non-obvious choice
 
-**Why Box 5 is $262,400 even though Box 1 is $238,500?** Box 1 (federal taxable wages) excludes 401(k) elective deferrals. Box 5 (Medicare wages) includes them. Daniel deferred $23,500 to his 401(k); the difference also reflects ESPP discount and HSA contributions handled through payroll. Always use Box 5 for Form 8959, not Box 1.
+**Why Box 5 is $262,400 even though Box 1 is $238,900?** Box 1 (federal taxable wages) excludes 401(k) elective deferrals. Box 5 (Medicare wages) includes them. Daniel deferred $23,500 to his 401(k) (the 2025 elective deferral limit). Always use Box 5 for Form 8959, not Box 1.
 
-**Why the $1 rounding gap?** Payroll systems compute the additional 0.9% withholding on each paycheck once year-to-date wages cross $200K. Per-paycheck rounding to whole cents accumulates a small variance across the year. The IRS expects this and accepts it; the filer settles the variance through Form 1040 totals.
+**Why the $1 rounding gap?** Form 8959 is completed in whole dollars: Line 7 ($561.60) rounds to $562 and Line 21 ($3,804.80) rounds to $3,805, so Line 22 shows $561. Per-paycheck rounding can add a similar small variance. The filer settles the variance through Form 1040 totals.
 
 **Why doesn't Daniel need to file Form 1040-ES quarterly estimates next year?** His employer absorbs the surtax through payroll. As long as he stays at the same employer at a similar income level, withholding will continue to cover the surtax. If he changes jobs mid-year and his new employer doesn't see year-to-date wages over $200K from its own payroll, he should reassess.
 
-**What if Daniel had a Roth IRA conversion in Q4?** Roth conversions are not earned income for Form 8959 purposes — they are ordinary income flowing to Form 1040 Line 4b but not Medicare wages. The conversion would NOT change Form 8959 figures. (It might trigger Form 8960 NIIT exposure if it pushes investment income up — but that's a different surtax.)
+**What if Daniel had a Roth IRA conversion in Q4?** Roth conversions are not earned income for Form 8959 purposes — they are ordinary income flowing to Form 1040 Line 4b but not Medicare wages. The conversion would NOT change Form 8959 figures. (It raises modified AGI, which can create Form 8960 NIIT exposure if Daniel also has net investment income — but that's a different surtax.)
 
 **What audit defense does Daniel have?** His W-2 Box 5 matches his year-end pay summary from TechCo. His Box 6 matches the IRC §3102(f) formula within $1. The Form 8959 reconciliation produces $562 owed and $561 withheld — the IRS sees a clean trail.

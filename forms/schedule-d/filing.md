@@ -9,7 +9,7 @@ Schedule D is rarely filed alone — it is always attached to a Form 1040 return
 ## Decision tree — pick a filing channel
 
 ```
-Is the user's AGI ≤ $84,000 (2025 limit, verify current)?
+Is the user's AGI ≤ $89,000 (2026 filing season limit, verify current)?
 ├── YES → IRS Free File: most providers support Schedule D + 8949 directly
 └── NO  → Continue
     │
@@ -21,14 +21,14 @@ Does the user prefer free filing and accept manual data entry?
 ├── YES → IRS Free File Fillable Forms (FFFF) — supports Schedule D + 8949 but no broker import
 └── NO  → Continue
     │
-Is the user in a state covered by IRS Direct File and within scope?
-├── YES → IRS Direct File supports limited capital gain scenarios (verify current scope — historically excludes complex cases)
-└── NO  → FreeTaxUSA (free federal, ~$15 state) is the most common fallback
+Paid software or a preparer
+└── FreeTaxUSA (free federal, ~$15 state) is the most common low-cost option
+    (IRS Direct File was not offered in the 2026 filing season; do not route users to it)
 ```
 
 **Notes on channel limitations:**
 
-- **IRS Direct File** in tax year 2024 expanded to 25 states but historically **does not support Schedule D for complex situations** (e.g., wash sales, multiple boxes, carryovers). Verify each year before recommending. A Schedule D with only 1099-DIV Box 2a capital gain distributions and no Form 8949 entries may qualify; anything with 8949 detail typically falls out of scope.
+- **IRS Direct File** was not offered in the 2026 filing season (2025 returns). Do not recommend it; if the IRS revives it, check its scope before use. A Schedule D with only 1099-DIV Box 2a capital gain distributions and no Form 8949 entries may qualify; anything with 8949 detail typically falls out of scope.
 - **IRS Free File Fillable Forms (FFFF)** supports Schedule D and Form 8949 but requires manual entry of every transaction. Acceptable for filers with under 20 transactions; impractical for active traders.
 - **Paid tax software** is the right answer for any filer with more than ~20 transactions or any crypto activity. The 1099-B import (TXF format or direct broker connection) handles boxes A/D automatically. Crypto tax software (CoinTracker, Koinly, TaxBit) can produce a TXF or 8949 PDF that the main tax software imports.
 
@@ -186,11 +186,9 @@ For tax year 2025 and later, the IRS strongly prefers e-file. Paper filing of co
 - Acceptable for under 50 transactions; tedious above that
 - Schedule D Tax Worksheet is auto-computed when applicable
 
-### IRS Direct File (where available)
+### IRS Direct File
 
-- Verify each tax year whether Schedule D scope includes the user's situation
-- Historically excludes wash sales, multiple boxes, carryovers, §1250, §1202
-- Useful for the simplest cases: 1099-DIV Box 2a only, single-broker covered shares, no carryover
+- Not offered in the 2026 filing season (2025 returns). Do not use it as a channel.
 
 ---
 
@@ -198,6 +196,5 @@ For tax year 2025 and later, the IRS strongly prefers e-file. Paper filing of co
 
 - [IRS Free File](https://www.irs.gov/filing/free-file-do-your-federal-taxes-for-free)
 - [IRS Free File Fillable Forms](https://www.irs.gov/e-file-providers/free-file-fillable-forms)
-- [IRS Direct File](https://directfile.irs.gov)
 - [Schedule D Instructions](https://www.irs.gov/pub/irs-pdf/i1040sd.pdf) — contains 28% Rate Gain Worksheet, Unrecaptured §1250 Gain Worksheet, Capital Loss Carryover Worksheet, Schedule D Tax Worksheet
 - [Form 1040 Instructions](https://www.irs.gov/pub/irs-pdf/i1040gi.pdf) — contains Qualified Dividends and Capital Gain Tax Worksheet

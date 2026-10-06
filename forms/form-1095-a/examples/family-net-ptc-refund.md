@@ -6,8 +6,8 @@
 - Married Filing Jointly
 - Two dependents: kids ages 8 and 5
 - Resident of Florida (48 states+DC FPL table)
-- Enrolled in Florida Marketplace silver plan all 12 months of 2025
-- Estimated 2025 income at enrollment: $90,000 (about 290% FPL for HH of 4)
+- Enrolled in a healthcare.gov silver plan (Florida uses the federal Marketplace) all 12 months of 2025
+- Estimated 2025 income at enrollment: about $116,000 (about 371% FPL for HH of 4)
 - Actual 2025 AGI: $68,000 (Marcus had a slow first half; both had higher self-employed health insurance and SEP-IRA contributions reducing AGI)
 
 ## Form 1095-A Received
@@ -24,7 +24,7 @@ All four on the joint tax return. No shared policy. No allocation needed.
 
 ### Part III — Coverage Information
 
-Family of 4 silver plan, identical premium and benchmark all year. APTC was set based on the $90,000 income estimate, so was relatively low (Marketplace assumed they'd contribute more).
+Family of 4 silver plan, identical premium and benchmark all year. APTC was set based on the $116,000 income estimate, so was relatively low (Marketplace assumed they'd contribute more): at 371% the 2025 applicable figure is 0.0778, a contribution of about $9,025 a year, leaving APTC of about ($18,960 − $9,025) ÷ 12 ≈ $828 a month, in line with the $830 reported.
 
 | Month | Col A (Premium) | Col B (SLCSP) | Col C (APTC) |
 |-------|-----------------|---------------|--------------|
@@ -42,16 +42,16 @@ Family of 4 silver plan, identical premium and benchmark all year. APTC was set 
 | 2b | Dependent modified AGI | $0 |
 | 3 | Household income | $68,000 |
 | 4 | FPL (HH of 4, 48 states+DC, 2024 FPL) | $31,200 |
-| 5 | Income % of FPL = 68,000 ÷ 31,200 × 100 | 217% |
-| 7 | Applicable Figure (200% → 250% interpolation under ARPA/IRA: 0.0200 + (17/50) × 0.0200) | 0.0268 (2.68%) |
-| 8a | Annual contribution = 68,000 × 0.0268 | $1,822 |
-| 8b | Monthly contribution = 1,822 ÷ 12 | $152 |
+| 5 | Income % of FPL = 68,000 ÷ 31,200 × 100 = 217.9, rounded down | 217% |
+| 7 | Applicable Figure (2025 Table 2 at 217: 0.0200 + (17/50) × 0.0200) | 0.0268 (2.68%) |
+| 8a | Annual contribution = 68,000 × 0.0268, rounded | $1,822 |
+| 8b | Monthly contribution = 1,822 ÷ 12, rounded | $152 |
 
-(Verify exact applicable figure for the year being filed.)
+(0.0268 is the value printed in Table 2 of the 2025 Form 8962 instructions for 217%.)
 
 ### Part II — Annual Calculation
 
-Coverage was identical all year, so Line 10 = Yes → Line 11 (annual).
+The family was enrolled all 12 months with the same enrollment premium and the same SLCSP premium every month, so Line 10 = Yes → Line 11 (annual).
 
 | Line | Description | Amount |
 |------|-------------|--------|
@@ -73,7 +73,7 @@ Coverage was identical all year, so Line 10 = Yes → Line 11 (annual).
 - [x] No shared policy (all covered individuals on the joint return).
 - [x] Column B nonzero all 12 months.
 - [x] MFJ filing status, eligible for PTC.
-- [x] Income % FPL within ARPA/IRA range.
+- [x] Income % FPL within ARPA/IRA range (2025 return; for 2026 the Rev. Proc. 2025-25 table would apply instead).
 
 ## Filing Steps for Marcus and Elena
 
@@ -86,7 +86,7 @@ Coverage was identical all year, so Line 10 = Yes → Line 11 (annual).
 
 ## Key Lesson
 
-Marcus and Elena's income came in $22,000 lower than the Marketplace estimate. Because they didn't update the Marketplace mid-year, they paid more out-of-pocket each month than they needed to. The good news: Form 8962 lets them recover the PTC they should have received as APTC. A $7,178 net credit becomes part of their refund.
+Marcus and Elena's income came in about $48,000 lower than the Marketplace estimate. Because they didn't update the Marketplace mid-year, they paid more out-of-pocket each month than they needed to. The good news: Form 8962 lets them recover the PTC they should have received as APTC. A $7,178 net credit becomes part of their refund.
 
 If they had updated the Marketplace in summer (when Marcus's slow Q1 was clear), the Marketplace would have increased APTC monthly, reducing what they paid out of pocket each month. The end result is the same total credit — $17,138 — but the cash-flow timing improves. For households relying on PTC for affordability, mid-year updates are the difference between waiting 12 months for a refund and paying less monthly all year.
 

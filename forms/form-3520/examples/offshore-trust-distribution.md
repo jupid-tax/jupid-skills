@@ -2,7 +2,9 @@
 
 End-to-end Form 3520 for a US beneficiary receiving a distribution from
 a foreign non-grantor trust that does NOT provide a Beneficiary
-Statement. Part III + Schedule C (default method) + Form 4970.
+Statement. Part III: Schedule A (default calculation), Form 4970 as a
+worksheet, and Schedule C (interest charge). Form 3520 (Rev. December
+2023). Math: /tmp/jupid-skills-work/calc/g4-3520-offshore.py.
 
 ## Filer profile
 
@@ -50,9 +52,9 @@ Part III when she receives a distribution.
 Sarah filed Form 3520 Part III for 2024 ($40,000) and 2025 ($80,000).
 The trust did not provide a Beneficiary Statement in those years either.
 
-For the smaller 2024 and 2025 distributions, Sarah's tax preparer
-applied default method but the excess distribution calculation produced
-small amounts because the prior-year averages were either zero or modest.
+For 2024 and 2025 her preparer used Schedule A (default calculation).
+Under the consistency rule she must keep using Schedule A for this trust
+in later years anyway (Instructions for Form 3520, Schedule A).
 
 The 2026 $500,000 is a different scale and the default method math gets
 ugly.
@@ -64,174 +66,116 @@ Beneficiary Statement for 2026. The trustee responded that they do not
 prepare such statements and that doing so would "violate the trust's
 confidentiality obligations under Cayman law."
 
-The trustee's position is wrong on US tax grounds (the IRS does not
-honor foreign confidentiality clauses) but Sarah has no practical way to
-compel a Beneficiary Statement. She is forced into the default method.
+Sarah has no practical way to compel a Beneficiary Statement, so she
+uses the default method (and the instructions say trust provisions that
+prevent disclosure are not reasonable cause).
 
-## Default method calculation (Schedule C of Part III)
+## Default calculation — Part III, Schedule A (lines 31–38)
 
-### Step 1 — Current distribution
+| Line | Computation | Amount |
+|------|-------------|--------|
+| 31 | Line 27: $500,000 cash received 08/30/2026 (USD wire; no conversion) | $500,000 |
+| 32 | Years the trust has been a foreign trust, 2015–2026 inclusive | 12 |
+| 33 | Distributions in the 3 preceding years: $0 (2023) + $40,000 (2024) + $80,000 (2025) | $120,000 |
+| 34 | $120,000 × 1.25 | $150,000 |
+| 35 | $150,000 ÷ 3.0 | $50,000 |
+| 36 | Smaller of line 31 or line 35 — ordinary income earned in 2026 | $50,000 |
+| 37 | $500,000 − $50,000 — accumulation distribution | $450,000 |
+| 38 | 12 ÷ 2.0 — applicable number of years | 6.0 |
 
-$500,000 received 2026-08-30. Already in USD; no currency conversion
-needed (Cayman Trust Company sent USD wire).
+The $50,000 on line 36 is ordinary income on Sarah's 2026 Form 1040.
 
-### Step 2 — Prior 3-year average
+## Form 4970 worksheet (tax on the accumulation distribution)
 
-Years 2023, 2024, 2025:
+The agent asked Sarah for her taxable income for the 5 preceding years:
+2021 $96,400; 2022 $104,800; 2023 $111,250; 2024 $187,300; 2025
+$123,600 (single each year). The trust paid no tax (line 4 = $0), and
+none of the income was accumulated before she reached 21 (line 2 = $0).
+For Form 4970 lines 8 and 11 (number of years), the preparer uses the
+line 38 applicable number of years, 6 — an assumption, because neither
+instruction states which number to use for a default-method foreign
+distribution.
 
-- 2023: $0
-- 2024: $40,000
-- 2025: $80,000
-- Sum: $120,000
-- Average: $40,000
+| Form 4970 line | Computation | Amount |
+|----------------|-------------|--------|
+| 1, 3, 5, 7 | Accumulation distribution (Form 3520 line 48) | $450,000 |
+| 8, 11 | Number of years (assumption above) | 6 |
+| 9, 12 | $450,000 ÷ 6 | $75,000 |
+| 10 | $75,000 × 25% | $18,750 |
+| 13 | Taxable income 2021–2025 | see above |
+| 14 | Drop highest (2024) and lowest (2021): 2022, 2023, 2025 | $104,800 / $111,250 / $123,600 |
+| 16 | Add $75,000 to each | $179,800 / $186,250 / $198,600 |
+| 17 | Tax on line 16 (2022, 2023, 2025 single rate schedules) | $37,767.50 / $38,432 / $40,615 |
+| 18 | Tax on line 14 | $18,987.50 / $20,100 / $22,511 |
+| 19–23 | Additional tax (no credit or AMT changes) | $18,780 / $18,332 / $18,104 |
+| 24 | Sum | $55,216 |
+| 25 | ÷ 3.0 | $18,405.33 |
+| 26 | × 6 years | $110,431.98 |
+| 28 | Less line 4 ($0) — partial tax | $110,431.98 |
 
-### Step 3 — Excess distribution
+Rate schedules: 2022 Rev. Proc. 2021-45 Table 3; 2023 Rev. Proc. 2022-38
+Table 3; 2025 Rev. Proc. 2024-40 Table 3.
 
-Excess = $500,000 − (1.25 × $40,000) = $500,000 − $50,000 = **$450,000**
+## Interest charge — Part III, Schedule C (lines 48–53)
 
-### Step 4 — Allocate excess across throwback years
+| Line | Computation | Amount |
+|------|-------------|--------|
+| 48 | From line 37 | $450,000 |
+| 49 | Form 4970 line 28 | $110,432 |
+| 50 | Line 38, rounded to the nearest half year | 6.0 |
+| 51 | Combined interest rate for 6.0 years from the IRS.gov/CombinedInterestRate table for 2026 calendar-year filers (June 30, 2026 applicable date) | look up when posted |
+| 52 | Line 49 × line 51 | — |
+| 53 | Line 49 + line 52 → additional tax on Form 1040 Schedule 2 | — |
 
-Trust was created in 2015 and Sarah has been a US beneficiary the entire
-time. Throwback years are 2015 through 2025 = **11 years**.
+On 2026-10-06 the newest posted table is for 2024 calendar-year filers
+(6.0 years: 0.3876). For scale only: at that rate, line 52 would be
+$110,432 × 0.3876 = $42,803 and line 53 $153,235 (30.6% of the
+distribution, on top of the regular tax on the $50,000 line 36 amount).
+Do not file with the 2024 rate; use the 2026 table or compute the rate as
+the line 51 instructions describe.
 
-Per-year deemed accumulation distribution: $450,000 ÷ 11 ≈ **$40,909/year**
-
-### Step 5 — Compute throwback tax (Form 4970)
-
-Sarah's highest marginal tax rate in any of the 3 immediately preceding
-years (2023, 2024, 2025) was 32% (in 2024 when she had a high-income
-year with bonuses).
-
-Using simplified method: **Throwback tax = 32% × $450,000 = $144,000**
-
-(The formal year-by-year recomputation under §667(b) would require
-reconstructing Sarah's 2015-2025 returns and adding the per-year deemed
-amount to each. The simplified method using highest recent marginal
-rate is allowed by Form 4970 instructions and is what most practitioners
-use when full reconstruction isn't feasible.)
-
-### Step 6 — Compute §668(a) interest charge
-
-The interest charge is roughly: per-year tax × underpayment rate ×
-(years from throwback year to current year).
-
-Approximating with a uniform 5% underpayment rate (current AFR
-underpayment rates are at https://www.irs.gov/payments/quarterly-interest-rates):
-
-For each of the 11 throwback years (2015-2025), the per-year tax of
-~$13,090 ($144,000 / 11) accrues interest from that year to 2026.
-
-| Throwback year | Years to 2026 | Per-year tax | Interest |
-|----------------|---------------|--------------|----------|
-| 2015           | 11            | $13,090      | $7,200   |
-| 2016           | 10            | $13,090      | $6,545   |
-| 2017           | 9             | $13,090      | $5,890   |
-| 2018           | 8             | $13,090      | $5,236   |
-| 2019           | 7             | $13,090      | $4,581   |
-| 2020           | 6             | $13,090      | $3,927   |
-| 2021           | 5             | $13,090      | $3,272   |
-| 2022           | 4             | $13,090      | $2,618   |
-| 2023           | 3             | $13,090      | $1,963   |
-| 2024           | 2             | $13,090      | $1,309   |
-| 2025           | 1             | $13,090      | $654     |
-| **Total**      |               | $144,000     | **$43,195** |
-
-(These figures use simple interest at 5% and are illustrative; the actual
-Form 3520 instructions and Form 4970 instructions specify the exact
-compounding method, which uses the IRS quarterly underpayment rates
-applied per the §668 formula. The skill's deliverable should use the
-form's worksheet and not the simple approximation here.)
-
-### Step 7 — Total additional US tax in 2026
-
-- Throwback tax (added on Form 1040 via Form 4970): **$144,000**
-- §668(a) interest charge (added on Form 1040 Schedule 2): **$43,195**
-- **Total additional tax**: $187,195
-
-Effective rate on the $500,000 distribution: 37.4%. Sarah's regular tax
-on her other 2026 income is unchanged (the throwback tax is in addition
-to her normal tax on her wages, etc.).
-
-If Sarah had obtained a Beneficiary Statement showing that the
-distribution was 80% long-term capital gains (taxed at 20%) and 20%
-qualified dividends (15%), the actual-method tax would have been roughly
-$500,000 × 0.19 = $95,000 — a savings of $92,195. The skill flags this
-and recommends Sarah escalate the Beneficiary Statement request for
-future years (perhaps via UK or Cayman counsel; a US tax practitioner
-familiar with Cayman trusts may have leverage).
+If Sarah had obtained a Beneficiary Statement, the actual calculation
+(Schedule B) would have split the distribution by character, but the
+consistency rule would still have required Schedule A because she used it
+in 2024 and 2025.
 
 ## Filled draft
 
 ```markdown
-# Form 3520 — DRAFT for tax year 2026
+# Form 3520 (Rev. December 2023) — DRAFT for tax year 2026
 
-## Filer identification
-Name: Sarah Patel
-Identifying number: 345-67-8901
-Address: 1840 Madison Avenue, New York, NY 10029
-Filing status: Single
-Country of citizenship: USA
-Initial: No (3rd Form 3520 for this trust; first was 2024)
+## Page 1
+A. Initial / Final / Amended: none (3rd Form 3520 for this trust; first was 2024)
+B. Filer type: Individual
+C. Counted on Form 8938: No
+Trigger box checked: Part III (distribution from a foreign trust)
+1a. Name: Sarah Patel     1b. TIN: 345-67-8901
+1c, 1e–1h. Address: 1840 Madison Avenue, New York, NY 10029, United States
+1i–1k: not checked
+2a. Foreign trust: [Father's name] Family Settlement   2b. EIN: none
+2c, 2e–2h. c/o Cayman Trust Company Ltd., P.O. Box XXXX, Grand Cayman KY1-XXXX, Cayman Islands
+2d. Date created: 2015 (exact date from the trust deed)
+3. U.S. agent: No
 
-## Parts being filed
-- [ ] Part I
-- [ ] Part II
-- [x] Part III — Distribution from foreign trust
-- [ ] Part IV
+## Part III — Distributions
+24. | (a) 08/30/2026 | (b) Cash (USD wire) | (c) $500,000 | (d) none | (e) $0 | (f) $500,000 |
+25. Loans / uncompensated use: No
+27. Total distributions: $500,000
+28. Trust holds Sarah's qualified obligation: No
+29. Foreign Grantor Trust Beneficiary Statement: N/A (nongrantor trust)
+30. Foreign Nongrantor Trust Beneficiary Statement: No
 
-## Part III — Distribution
-
-Foreign trust name: [Father's name] Family Settlement
-Trust country: Cayman Islands
-Trust governing law: Cayman Islands
-Trust EIN (US): None (trust has no US EIN; uses Cayman registration)
-Trust type: **Non-grantor trust** (settlor was non-US person; no
-              §679 applicable)
-Trustee: Cayman Trust Company Ltd., P.O. Box XXXX, Grand Cayman KY1-XXXX
-
-Beneficiary Statement provided for 2026: No
-Method used: **Default method (Schedule C)**
-
-Distribution detail:
-| Line | Date       | Type | Description                | FMV (USD) |
-|------|------------|------|----------------------------|-----------|
-| 28a  | 2026-08-30 | Cash | Wire from Cayman Trust Co. | $500,000  |
-| 29   | Total                                       | $500,000  |
-
-## Schedule C — Default method calculation
-
-| Line | Item                                       | Amount     |
-|------|--------------------------------------------|------------|
-|      | Current year distribution                  | $500,000   |
-|      | Prior 3-year distributions:                |            |
-|      |   2023                                     | $0         |
-|      |   2024                                     | $40,000    |
-|      |   2025                                     | $80,000    |
-|      |   Sum                                      | $120,000   |
-|      |   Average (÷ 3)                            | $40,000    |
-|      | 1.25 × Average                             | $50,000    |
-|      | Excess distribution                        | $450,000   |
-|      | Throwback years (2015-2025)                | 11         |
-|      | Per-year deemed amount                     | $40,909    |
-|      | Highest recent marginal rate (simplified)  | 32%        |
-|      | Throwback tax (Form 4970)                  | $144,000   |
-|      | §668(a) interest charge (worksheet)        | $43,195    |
-|      | Total additional 2026 tax                  | $187,195   |
+Schedule A: 31 $500,000 | 32 12 | 33 $120,000 | 34 $150,000 | 35 $50,000 | 36 $50,000 | 37 $450,000 | 38 6.0
+Schedule C: 48 $450,000 | 49 $110,432 (Form 4970 line 28) | 50 6.0 | 51 <2026 table> | 52 <49 × 51> | 53 <49 + 52>
 
 ## Currency translation
-Source: Wire received in USD; no conversion needed
-Notes: Trust corpus is denominated and administered in USD by Cayman
-trustee; no FX adjustment required for this distribution
+Wire received in USD; no conversion needed
 
 ## Required attachments
-- [ ] Form 4970 — attached to Form 1040, NOT to Form 3520; reflects
-      throwback tax of $144,000 added to Schedule 2 of Form 1040
-- [ ] Statement re: Beneficiary Statement request — Sarah's
-      correspondence with Cayman Trust Company Ltd. showing 2026
-      Beneficiary Statement was requested and refused (supports
-      reasonable cause if IRS questions default method)
-- [ ] Trust accounting (any portion provided by trustee) — kept with
-      Sarah's records, not necessarily filed
+- [x] Form 4970 worksheet (attached to Form 3520, not filed separately)
+- [x] Explanation of the 12 years on line 32 (trust deed date, 2015)
+- [ ] Correspondence with Cayman Trust Company Ltd. requesting a
+      Beneficiary Statement (kept with the file)
 
 ## Mailing address (for Form 3520)
 Internal Revenue Service Center
@@ -239,63 +183,38 @@ P.O. Box 409101
 Ogden, UT 84409
 
 ## Validation summary
-- Math: prior 3-year sum $120,000 / 3 = $40,000 ✓
-- Math: excess $500,000 − $50,000 = $450,000 ✓
-- Math: per-year $450,000 / 11 = $40,909 ✓
-- Math: throwback tax $450,000 × 32% = $144,000 ✓
-- Math: §668(a) interest worksheet result reconciled with
-        approximation (verify exact figure using Form 3520 Schedule C
-        worksheet and quarterly interest rates)
-- Sanity: Default method generated $187,195 additional tax on
-        $500,000 (37.4% effective). Recommend Sarah escalate
-        Beneficiary Statement request for 2027 and beyond to avoid
-        recurrence.
-- Sanity: Throwback period spans 11 years; if Sarah was not a US
-        person for any portion (e.g., became citizen later), the
-        throwback period may be shorter. CONFIRM Sarah was a US
-        person for 2015-2025 throughout.
-- Cross-form: Form 4970 must be attached to Form 1040; the $144,000
-        flows to Schedule 2 line 17z (or wherever Form 4970
-        instructions direct for current revision). §668 interest
-        charge of $43,195 also goes on Schedule 2 with notation
-        "§668 interest".
+- Math (python): 33 = $0 + $40,000 + $80,000 = $120,000 ✓; 34 = $150,000 ✓;
+  35 = $50,000 ✓; 36 = $50,000 ✓; 37 = $450,000 ✓; 38 = 6.0 ✓
+- Math: Form 4970 line 28 = $110,431.98 (3-of-5 years, 6 years) ✓
+- Sanity: consistency rule — Schedule A used in 2024–2025, so Schedule A again ✓
+- Sanity: line 51 must come from the 2026 table (not yet posted) — open item
+- Sanity: Form 4970 line 8/11 number of years is an assumption — confirm with the preparer
+- Cross-form: line 36 $50,000 as ordinary income on Form 1040; line 53 on
+  Schedule 2 (Form 1040), Part II, "any other taxes" line
 - Next steps:
-  1. Sarah signs Form 3520 in blue ink
+  1. Sarah signs Form 3520
   2. Mail Form 3520 to Ogden by April 15, 2027 (or October 15, 2027 if
-     Form 4868 extension filed)
-  3. File Form 1040 with attached Form 4970 and Schedule 2 entries
-  4. Pay the $187,195 additional tax (or apply withholding/estimated
-     payments if available)
-  5. For 2027 onward: Sarah should engage an international tax
-     practitioner to push Cayman Trust Company for a Beneficiary
-     Statement, OR explore alternative reporting positions (e.g., trust
-     accountings reconstructed to support an actual-method calculation)
+     Form 4868 is filed and line 1k checked)
+  3. File Form 1040 with the line 36 income and the line 53 additional tax
+  4. For 2027 onward: keep asking the trustee for a Beneficiary Statement;
+     engage an international tax practitioner
 
 ## Sources cited in this draft
-- IRS Form 3520 (latest revision)
-- IRS Instructions for Form 3520 (latest revision)
-- IRS Form 4970 (Tax on Accumulation Distribution of Trusts)
-- IRS Instructions for Form 4970
-- IRC §665 (definitions, including UNI)
-- IRC §667 (treatment of amounts deemed distributed by trust in prior
-  years; throwback rules)
-- IRC §668 (interest charge on accumulation distributions)
-- IRC §6048 (information returns for foreign trusts)
-- IRC §6677 (penalties for late/incomplete filing)
-- IRS quarterly underpayment interest rate publications
+- IRS Form 3520 (Rev. December 2023) and Instructions (Rev. December 2025), Part III Schedules A and C
+- IRS Form 4970 (2025) and its instructions ("Foreign trust beneficiaries")
+- IRS combined interest rate tables: https://www.irs.gov/CombinedInterestRate
+- IRC §665, §667, §668; IRC §6048(c); IRC §6677
+- Rev. Proc. 2021-45, 2022-38, 2024-40 (single rate schedules)
 ```
 
 ## Why this case is painful
 
-- The default method is structurally punitive
+- Only $50,000 of the $500,000 counts as current income; the rest is an
+  accumulation distribution
 - Sarah has no leverage with the Cayman trustee
-- The trust likely accumulated mostly capital gains income that would
-  have been taxed at 20% under actual method, but default method taxes
-  at 32% ordinary rate plus interest charge
-- The interest charge runs from 2015 (when the trust first started
-  accumulating) — 11 years of compounding
-- Future distributions will face the same default method until a
-  Beneficiary Statement is obtained
+- The accumulation distribution generally loses its character (Form 4970
+  instructions), and the interest charge is based on 6.0 applicable years
+- The consistency rule keeps her on Schedule A for this trust
 
 ## Mitigation strategies (out of scope for this skill, redirect to a CPA)
 
@@ -307,16 +226,18 @@ Ogden, UT 84409
 - Consider whether the trust could be restructured (e.g., decanted into
   a new trust with a cooperative US-aware trustee) — this is a
   practitioner-level project
-- For Sarah personally: avoid taking large distributions in a single
-  year if the default method applies; spread distributions across
-  multiple years to keep the 3-year average closer to the current-year
-  amount and reduce the "excess"
+- For Sarah personally: under the default method, distributions up to
+  125% of the prior 3-year average are current income rather than
+  accumulation distributions, so the timing and size of distributions
+  matter; that planning belongs to a practitioner
 
 ## What would simplify this case
 
-- A Beneficiary Statement → actual method, likely much lower tax
-- A trustee willing to file Form 3520-A on the trust's behalf (the trust
-  is non-grantor, so 3520-A doesn't strictly apply, but a Beneficiary
-  Statement modeled on the 3520-A page 4 information would substitute)
+- A Beneficiary Statement → actual method in later years only if Schedule
+  A had never been used (here, only in the termination year)
+- A trustee willing to provide a Foreign Nongrantor Trust Beneficiary
+  Statement with the contents listed in Notice 97-34 and the Form 3520
+  line 30 instructions (Form 3520-A does not apply to a nongrantor trust
+  with no U.S. owner)
 - Sarah being a UK or Singapore tax resident instead of US — the entire
   problem disappears outside the US tax net

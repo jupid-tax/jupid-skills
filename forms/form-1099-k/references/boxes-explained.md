@@ -2,7 +2,7 @@
 
 Every box on Form 1099-K with examples and edge cases. Use this when the user's 1099-K has unusual entries or you need to explain what each number represents.
 
-The 2026 form layout follows the post-2022 redesign that added monthly breakdown boxes (5a-5l). Older 1099-Ks (2021 and prior) had a different layout — if the user is asking about a prior-year form, check the form's revision date in the bottom-right corner.
+Verified against Form 1099-K (Rev. December 2026), used for 2026 transactions, and Form 1099-K (Rev. March 2024), used for 2024 and 2025 transactions, plus the Instructions for Form 1099-K (Rev. December 2026). The two revisions share boxes 1a, 1b, 2–4, 5a–5l and 6–8; Rev. December 2026 adds boxes 1c and 1d and splits the address fields. Check the revision printed under the form number before reading boxes. Re-check https://www.irs.gov/forms-pubs/about-form-1099-k for a newer revision.
 
 ---
 
@@ -12,8 +12,9 @@ The PSE — payment settlement entity. This is the platform that processed the p
 
 - **Name** — legal name of the PSE (e.g., "PayPal, Inc.", "Stripe Payments Company", "Etsy Payments, Inc.", "Uber Technologies, Inc.")
 - **Address** — PSE's mailing address
-- **Telephone** — PSE's contact number for tax questions (rarely useful in practice; corrections go through the platform's online help center)
-- **PSE / EPF indicator** — "Payment Settlement Entity" (PSE) for direct processors; "Electronic Payment Facilitator" (EPF) for sub-processors. Doesn't change recipient reporting.
+- **Telephone** — the instructions require a number that reaches someone knowledgeable about the payments; corrections are requested from this filer
+- **Filer checkbox** — "Payment settlement entity (PSE)" or "Electronic payment facilitator (EPF)/Other third party". If an EPF filed, the PSE's name and phone appear above the account number at the bottom left. Doesn't change recipient reporting.
+- **Transactions reported checkbox** — "Payment card" or "Third party network". A payee with both types gets a separate 1099-K for each type. The $20,000 / 200 de minimis test applies only to third party network transactions; payment card transactions have no minimum (Instructions for Form 1099-K, Box 1a; FS-2025-08).
 
 ### Edge case — multiple PSEs from the same parent
 
@@ -31,9 +32,9 @@ The PSE's EIN. Useful for identifying the PSE if the user has the form but isn't
 
 ---
 
-## PAYER MADE DIRECT SALES OF $5,000 OR MORE checkbox
+## 2nd TIN not. checkbox
 
-Almost never checked on a 1099-K. This box exists primarily for 1099-MISC; on 1099-K it's unused.
+Marked by the filer when the IRS notified it twice within 3 calendar years that the payee's TIN was incorrect. If marked, ask the user whether they received a B notice and fix the TIN with the filer.
 
 ---
 
@@ -72,9 +73,9 @@ The platform's internal account ID for the user. Useful for the user's records (
 
 The headline number. **This is the dollar amount the IRS document-matching system uses.**
 
-Definition (from IRS Form 1099-K instructions, January 2025 revision):
+Definition (Instructions for Form 1099-K, Rev. December 2026, Box 1a):
 
-> "Enter the gross amount of the total reportable payment transactions for the calendar year through the payment card and third party network. Do not include any adjustments for credits, cash equivalents, discount amounts, fees, refunded amounts, or any other amounts."
+> "'Gross amount' means the total dollar amount of total reportable payment transactions for each participating payee without regard to any adjustments for credits, cash equivalents, discount amounts, fees, refunded amounts, shipping amounts, or any other amounts. The dollar amount of each transaction is determined on the date of the transaction."
 
 **Critical**: gross is **before** all deductions. The user does NOT subtract platform fees, processing fees, refunds, chargebacks, or shipping costs from Box 1a. Those are handled as separate Schedule C deductions or Schedule C Line 2 (returns and allowances).
 
@@ -88,34 +89,41 @@ If a user has a $200 sale on December 28, 2026 that the buyer refunds on January
 
 ### Edge case — currency conversion
 
-For international platforms (Stripe operating in multiple currencies, PayPal cross-border), Box 1a is reported in USD using the conversion rate at settlement. May differ slightly from the user's bank deposit USD due to FX timing.
+For international platforms (Stripe operating in multiple currencies, PayPal cross-border), Box 1a is reported in USD converted at the spot rate on the date of the transaction, or a consistent spot-rate convention such as a monthly average (Instructions for Form 1099-K, "Conversion of amounts paid in foreign currency"). May differ slightly from the user's bank deposit USD due to FX timing.
 
 ---
 
-## Box 1b — Card-not-present transactions
+## Box 1b — Card not present transactions
 
-Subset of Box 1a where the card wasn't physically swiped (online-only sellers, almost always equal to Box 1a).
+Subset of Box 1a where the card was not present at the time of the transaction or the card number was keyed into the terminal (online, phone, catalog sales). Copy B instructions: if the third party network box is checked, card not present transactions are not reported, so Box 1b is blank on payment-app and marketplace forms.
 
-Informational only. Doesn't change the user's tax computation. Used by the IRS to identify online-only vs brick-and-mortar businesses.
+Informational only. Doesn't change the user's tax computation.
 
 ---
 
-## Box 2 — Number of payment transactions
+## Boxes 1c and 1d — Cash tips and TTOC (Rev. December 2026 only)
 
-Count of separate payment transactions during the year.
+- **Box 1c** — total cash tips included in Box 1a (P.L. 119-21 §70201)
+- **Box 1d** — up to two Treasury Tipped Occupation Codes; code 000 alone means the tips are not qualified tips
+
+The recipient uses them for the qualified tips deduction in Part II of Schedule 1-A. That deduction is outside this skill. The Rev. March 2024 form used for 2025 has no Box 1c or 1d.
+
+---
+
+## Box 2 — Merchant category code
+
+Four-digit merchant category code (MCC) for payment card transactions. A TPSO, or a filer that uses no industry classification, leaves it blank. Informational.
+
+---
+
+## Box 3 — Number of payment transactions
+
+Count of payment transactions during the year, not including refund transactions.
 
 - Multiple sales to one buyer count as separate transactions
-- One sale to many buyers (impossible in practice) would be one transaction
-- Refunds are NOT counted as transactions in the count
-- Voided / failed transactions are NOT counted
+- Refunds are NOT counted
 
-Used to verify the federal $20,000 / 200 threshold. Most filers are well above 200 transactions if they're getting a 1099-K at all (the dollar threshold usually triggers first).
-
----
-
-## Box 3 — (currently reserved)
-
-Not used in current revisions. Skip.
+Used to check the federal $20,000 / 200 test on third party network forms. A form with 200 or fewer transactions, or $20,000 or less, may still arrive: payment card forms have no minimum, a TPSO may file voluntarily, and some states set lower thresholds (FS-2025-08, General information Q5).
 
 ---
 
@@ -127,9 +135,10 @@ $0 for the vast majority of 1099-Ks. Non-zero only if:
 
 - The user failed W-9 / TIN matching at any point during the year
 - The IRS issued a "B" notice (CP2100) and the PSE began withholding
-- The user is subject to a 1099-K-specific backup withholding for unrelated underreporting
 
-If Box 4 > 0, the user **claims it on Form 1040 Line 25c** (Other federal income tax withheld). This is a refundable credit against total tax liability, treated identically to W-2 withholding.
+For third party network payments, backup withholding applies only when the $20,000 / 200 test is met (IRC §3406(b)(8), calendar years after 2024).
+
+If Box 4 > 0, the user **claims it on Form 1040 Line 25b** (Form(s) 1099). This is a refundable credit against total tax liability, treated identically to W-2 withholding.
 
 ### Edge case — Box 4 surprise
 
@@ -167,7 +176,7 @@ Sum of Boxes 5a-5l should equal Box 1a (small rounding allowed).
 
 ## Box 6 — State
 
-Two-letter state code where the recipient is located (per the W-9 address). Used for state tax reporting.
+Abbreviated name of the state the filer reports to. Up to two states per form. Used for state tax reporting.
 
 If the user moved during the year and the W-9 address didn't update, Box 6 may be stale. Doesn't affect federal filing.
 
@@ -175,13 +184,13 @@ If the user moved during the year and the W-9 address didn't update, Box 6 may b
 
 ## Box 7 — State identification number
 
-The PSE's state tax ID (varies by state). Informational.
+The filer's identification number assigned by the state. Informational.
 
 ---
 
 ## Box 8 — State income tax withheld
 
-State backup withholding, if applicable. Most states don't have backup withholding; this is usually $0. If non-zero, claim on the user's state tax return as state withholding.
+State income tax the filer withheld, if any. Usually $0. If non-zero, claim on the user's state tax return as state withholding.
 
 ---
 
@@ -190,5 +199,5 @@ State backup withholding, if applicable. Most states don't have backup withholdi
 - [Form 1099-K (current)](https://www.irs.gov/pub/irs-pdf/f1099k.pdf)
 - [Instructions for Form 1099-K (current)](https://www.irs.gov/pub/irs-pdf/i1099k.pdf)
 - IRC §6050W (returns relating to payment card and third-party network transactions)
-- IRC §3406 (backup withholding)
-- [IRS Form 1099-K FAQs](https://www.irs.gov/newsroom/form-1099-k-faqs)
+- IRC §3406 (backup withholding), including §3406(b)(8)
+- [IRS Form 1099-K FAQs, FS-2025-08](https://www.irs.gov/pub/taxpros/fs-2025-08.pdf)

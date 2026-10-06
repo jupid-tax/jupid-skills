@@ -1,19 +1,22 @@
 # Example — Sport Fishing Equipment Importer
 
-A small importer of finished fishing rods from overseas reports the §4161(a)(1) manufacturer's excise tax on Q3 Form 720.
+A small importer of finished fishing rods reports the §4161(a) manufacturers excise tax on its Q3 2026 Form 720.
+
+**Verified against:** Form 720 (Rev. June 2026), Instructions for Form 720 (Rev. June 2026), Pub. 510 (Rev. Dec. 2025) ch. 5, IRC §§4161, 4162, 4216, on 2026-10-06. Math checked in Python.
 
 ---
 
 ## Taxpayer facts
 
-- **Entity**: Pelican Tackle LLC (single-member LLC, EIN 88-7654321, treated as disregarded entity)
+- **Entity**: Pelican Tackle LLC (single-member LLC, EIN 88-7654321, disregarded for income tax; it files Form 720 under its own EIN, i720 "Disregarded entities")
 - **Owner**: sole member, files Schedule C on personal Form 1040
 - **Business**: imports finished fishing rods from Vietnam and resells to US sporting goods retailers
 - **Quarter under review**: Q3 2026 (July 1 – September 30, 2026)
-- **Sales during Q3**: 8 transactions to unrelated US retailers, totaling **$48,000** in invoiced sales price (excluding shipping and excluding the federal excise tax itself)
-- **No related-party sales** in the quarter
+- **Sales during Q3**: 8 invoices to unrelated US retailers, 660 rods, totaling **$48,000** in invoiced sale price (excluding separately stated shipping and excluding the federal excise tax itself)
+- **Per-rod sale prices**: $65 to $90; no rod sold for $100 or more
+- **No related-party sales** in the quarter; no other excise taxes
 
-The owner needs to determine excise liability and file Q3 2026 Form 720 by **October 31, 2026**.
+The owner needs to determine excise liability and file the Q3 2026 Form 720. The due date is October 31, 2026, a Saturday, so the return is timely if filed by Monday, November 2, 2026 (i720 "When To File").
 
 ---
 
@@ -21,135 +24,107 @@ The owner needs to determine excise liability and file Q3 2026 Form 720 by **Oct
 
 ### Is the importer the taxpayer?
 
-Per IRC §4161(a)(1) and Reg. §48.4161-1, the manufacturer's excise tax on sport fishing equipment is paid by the **manufacturer, producer, or importer** at the **first sale to an unrelated party**. An importer of finished goods from overseas is treated as the manufacturer for §4161 purposes.
+Under IRC §4161(a)(1)(A), the tax is imposed on the sale of sport fishing equipment by the **manufacturer, producer, or importer**. An importer is a person who brings a taxable article into the United States (Pub. 510, ch. 5, "Importer").
 
-Pelican Tackle imports finished rods (no further assembly in the US) and sells direct to retailers. The first sale to an unrelated US party is Pelican's invoice to the retailer. **Pelican is the §4161 taxpayer.**
+Pelican imports finished rods and sells them to retailers. **Pelican is the §4161 taxpayer** on its sales.
 
-### Which IRS Number applies?
+### Which IRS No. applies?
 
-Sport fishing rods → **IRS No. 41** (10% of sales price). See `references/sport-fishing-archery.md` for the full catalog.
+Fishing rods and poles → **IRS No. 110** (Part II): 10% of the sale price, not more than $10 per article (§4161(a)(1)(B); Form 720 Part II). IRS No. 41 is for sport fishing equipment *other than* rods and poles.
 
-### Sales price exclusions
+Because every rod sold for less than $100, 10% of each rod's price is under $10 and the cap never applies this quarter. If Pelican sells a rod for $180, the tax on that rod is $10, not $18.
 
-Per §4161(b) and Reg. §48.4161-1(c), the "sales price" excludes:
-- The §4161 tax itself
-- Separately stated and reasonable transportation charges
-- Separately stated warranty / installation charges
+### Sale price exclusions
 
-Pelican's $48,000 figure is the invoiced sales price excluding shipping (which it bills separately at actual cost). No §4161 tax was previously embedded — Pelican is the first US seller.
+Per Pub. 510 ch. 5 (price rules under §4216), the sale price excludes the manufacturers excise tax itself, transportation charges pursuant to the sale, and discounts actually granted; it includes charges for containers and packing for shipment. Pelican's $48,000 excludes shipping (billed separately at cost).
 
 ---
 
 ## Computation
 
-### Tax owed
+### Sales log (kept in the file; not reported line by line)
+
+| Sale date | Rods | Price per rod | Invoice amount | Tax @ 10% (each rod under the $10 cap) |
+|-----------|------|---------------|----------------|-----------|
+| Jul 8 | 80 | $65 | $5,200 | $520 |
+| Jul 22 | 120 | $65 | $7,800 | $780 |
+| Aug 5 | 50 | $90 | $4,500 | $450 |
+| Aug 18 | 120 | $75 | $9,000 | $900 |
+| Sep 3 | 100 | $65 | $6,500 | $650 |
+| Sep 12 | 60 | $80 | $4,800 | $480 |
+| Sep 25 | 90 | $80 | $7,200 | $720 |
+| Sep 30 | 40 | $75 | $3,000 | $300 |
+| **Total** | **660** | | **$48,000** | **$4,800** |
 
 ```
-Tax = $48,000 × 10% = $4,800
+Tax = Σ min(10% × price, $10) per rod = $4,800
 ```
 
-### Schedule A — semi-monthly liability dates
+### No Schedule A, no deposits
 
-Sport fishing manufacturer's tax is subject to **semi-monthly liability reporting** on Schedule A. The agent must populate Schedule A with the tax accrued in each semi-monthly period.
-
-Pelican's Q3 2026 sales by date:
-
-| Sale date | Invoice amount | Tax @ 10% |
-|-----------|----------------|-----------|
-| Jul 8 | $5,200 | $520 |
-| Jul 22 | $7,800 | $780 |
-| Aug 5 | $4,500 | $450 |
-| Aug 18 | $9,000 | $900 |
-| Sep 3 | $6,500 | $650 |
-| Sep 12 | $4,800 | $480 |
-| Sep 25 | $7,200 | $720 |
-| Sep 30 | $3,000 | $300 |
-| **Total** | **$48,000** | **$4,800** |
-
-Aggregating to the semi-monthly periods of Q3:
-
-| Period | Date range | Tax accrued |
-|--------|-----------|-------------|
-| 1 | Jul 1 – Jul 15 | $520 |
-| 2 | Jul 16 – Jul 31 | $780 |
-| 3 | Aug 1 – Aug 15 | $450 |
-| 4 | Aug 16 – Aug 31 | $900 |
-| 5 | Sep 1 – Sep 15 | $1,130 ($650 + $480) |
-| 6 | Sep 16 – Sep 30 | $1,020 ($720 + $300) |
-| **Total** | | **$4,800** |
+IRS No. 110 is a Part II tax. Schedule A is completed only for Part I taxes (Form 720 Schedule A note), and Pub. 510 ch. 5 says of sport fishing equipment: "Pay this tax with Form 720. No tax deposits are required." The full $4,800 is paid with the Q3 return.
 
 ---
 
-## Form 720 — Part I, IRS No. 41
+## Form 720 — Part II, IRS No. 110
 
 | Line | Field | Value |
 |------|-------|-------|
-| Quarter | 3 | Q3 2026 |
+| Quarter ending | | September 2026 |
 | Filer name | | Pelican Tackle LLC |
 | EIN | | 88-7654321 |
 | Address | | (entity address) |
-| IRS No. 41 — Sport fishing equipment | Sales price | $48,000 |
-| IRS No. 41 — Rate | | 10% |
-| IRS No. 41 — Tax | | $4,800 |
-| Schedule A | | Populated per period table above |
-| Schedule C | | N/A (no credits) |
+| Part I line 1 | | $0 (none) |
+| IRS No. 110 — Fishing rods and fishing poles | Tax | $4,800.00 |
+| Part II line 2 | | $4,800.00 |
+| Schedule A | | Not completed (no Part I liability) |
+| Schedule C | | Not used (no claims) |
 
 ### Part III — totals
 
 | Line | Field | Value |
 |------|-------|-------|
-| Total tax (Part I) | | $4,800 |
-| Less Schedule C credits | | $0 |
-| Balance due | | $4,800 |
+| 3 | Total tax (line 1 + line 2) | $4,800.00 |
+| 4 | Claims | $0 |
+| 5 | Deposits made for the quarter | $0 |
+| 6 | Overpayment from previous quarters | $0 |
+| 7 | Form 720-X amount included on line 6 | $0 |
+| 8 | Line 5 + line 6 | $0 |
+| 9 | Line 4 + line 8 | $0 |
+| 10 | Balance due | $4,800.00 |
 
 ---
 
 ## Filing channel
 
-Pelican exceeded $2,500 in prior-quarter aggregate excise tax (assumed from prior quarters in this scenario), so it must:
-- File **electronically** via an IRS-authorized MeF provider for Form 720
-- Pay via **EFTPS** with semi-monthly deposits if the threshold for semi-monthly deposit applies
+E-filing Form 720 is optional (IRS Form 720 e-file FAQ). Pelican can:
+- e-file through a provider on https://www.irs.gov/e-file-providers/720-mef-providers and pay by electronic funds withdrawal, EFTPS, or Direct Pay; or
+- mail the paper return to Department of the Treasury, Internal Revenue Service, Ogden, UT 84201-0009, with Form 720-V and a check payable to "United States Treasury" (i720 "Where To File", Form 720-V).
 
-### Semi-monthly deposit rule
-
-If Pelican's net excise tax for any month is > $2,500 in aggregate, the IRS requires **semi-monthly deposits** via EFTPS:
-
-- First semi-monthly period: deposit by the **9th of the following month**
-- Second semi-monthly period: deposit by the **24th** of the following month
-- "Safe harbor" rule: deposit at least 95% of the actual liability for the period, OR 1/6 of the prior quarter's net tax
-
-Pelican's monthly accruals:
-- July: $1,300 — under $2,500, no semi-monthly deposit required for July
-- August: $1,350 — under $2,500
-- September: $2,150 — under $2,500
-
-Since none of the months individually exceed $2,500, Pelican does NOT need semi-monthly deposits for Q3 2026. The full $4,800 can be paid with the Q3 Form 720 filing by October 31.
-
-(If the monthly aggregate were higher, semi-monthly deposits would be mandatory. Verify the threshold each year — see `references/line-by-line.md`.)
+Let the user choose. Pelican was liable this quarter, so it must keep filing Form 720 each quarter until it files a final return (i720 "Who Must File").
 
 ---
 
 ## Documentation to retain
 
-- Customs entry documents (Form 7501) for each import shipment showing duty paid and quantities
-- Sales invoices for all 8 transactions with sales price clearly broken out from shipping
-- Schedule A worksheet showing per-date sales and per-period aggregation
-- Form 720 filing confirmation (e-file) or certified mail receipt
-- EFTPS deposit confirmations (none for Q3 in this scenario)
-- The §4161(a)(1) and IRS No. 41 citation for the rate
+- Customs entry documents (CBP Form 7501) for each import shipment
+- Sales invoices for all 8 sales with rod counts, per-rod prices, and shipping stated separately
+- The sales log above
+- Form 720 filing confirmation (e-file) or certified mail receipt, and the payment record
+- The §4161(a)(1)(B) and IRS No. 110 citation for the rate and cap
 
-Retention: 4 years past the filing (some practitioners keep 7 for state-tax cross-reference).
+Retention: at least 4 years from the latest of the date the tax became due, the date it was paid, or the date a claim was filed (i720 "Recordkeeping").
 
 ---
 
 ## Common errors avoided
 
-1. **Forgetting Schedule A**: importers / manufacturers under §4161 MUST populate Schedule A. Skipping it triggers IRS correspondence and possible deposit-penalty assessment.
-2. **Including shipping in sales price**: shipping (separately stated, reasonable) is excluded. Including it overstates tax by 10% × shipping amount.
-3. **Confusing tackle boxes (3%) with rods (10%)**: tackle boxes use IRS No. 42 at 3%, not IRS No. 41. If Pelican sold tackle boxes, those would go on a separate IRS Number line.
-4. **Treating the wholesale buyer as a "related party"**: unless Pelican has a controlling interest in the retailer, the sale is at arm's length and the invoiced price is the sales price. Related-party sales use a constructive sales price.
-5. **Filing on Q3 calendar deadline (Sep 30) instead of Q3 form deadline (Oct 31)**: the filing is due by the **last day of the month following the end of the quarter**.
-6. **Missing the EFTPS enrollment**: e-filers must have an active EFTPS account to make deposits. Enrollment takes ~10 days; first-time filers should enroll well before the deadline.
+1. **Using IRS No. 41 for rods**: rods and poles are IRS No. 110, with the $10 per-article cap.
+2. **Completing Schedule A or making deposits for a Part II tax**: not required for sport fishing taxes.
+3. **Including shipping in sale price**: separately stated transportation pursuant to the sale is excluded; including it overstates tax by 10% × shipping.
+4. **Confusing tackle boxes (3%) with rods (10%)**: tackle boxes go on IRS No. 114 at 3%; electric outboard motors on IRS No. 42 at 3%.
+5. **Treating the retailer as a "related party"**: unless Pelican and the retailer are related, the invoiced price is the sale price. Related-party sales use a constructive sale price (§4216(b)).
+6. **Missing the weekend rule**: October 31, 2026 is a Saturday; the return is timely on November 2, 2026.
 
 ---
 
@@ -157,8 +132,8 @@ Retention: 4 years past the filing (some practitioners keep 7 for state-tax cros
 
 The agent delivers to Pelican Tackle:
 
-1. **Filing summary**: Q3 2026 Form 720, IRS No. 41, $4,800 owed, due October 31, 2026
-2. **Schedule A worksheet**: per-period accruals across 6 semi-monthly periods
-3. **Deposit analysis**: no semi-monthly deposits required for Q3 (monthly aggregate < $2,500)
-4. **Provider recommendation**: use an IRS-authorized MeF provider supporting Form 720 manufacturer's excise (e.g., TaxBandits, ExpressTaxFilings)
-5. **Future-quarter reminder**: monitor monthly aggregate; if any month crosses $2,500, semi-monthly deposits become mandatory
+1. **Filing summary**: Q3 2026 Form 720, IRS No. 110, $4,800.00 owed, timely if filed and paid by November 2, 2026
+2. **Sales log**: rods, per-rod price, tax per invoice, cap check
+3. **Payment note**: no deposits required; pay with the return
+4. **Channel options**: e-file through an IRS-listed 720 MeF provider, or paper to Ogden with Form 720-V
+5. **Future-quarter reminder**: watch for rods priced at $100 or more (cap applies) and file each quarter until a final return

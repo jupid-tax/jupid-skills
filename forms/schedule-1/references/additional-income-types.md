@@ -1,6 +1,6 @@
 # Schedule 1 Line 8 — Additional Income Types (Deep Reference)
 
-Line 8 is where every income item that doesn't fit Lines 1-7 of Schedule 1 lands. The 2025 form (carrying into 2026) has 22 sub-lines plus an "8z list type and amount" catchall. This file is the agent's deep reference for each type — when it applies, how to compute the amount, what's *not* included, and which authority controls.
+Line 8 is where every income item that doesn't fit Lines 1-7 of Schedule 1 lands. The 2025 form (filed in 2026; verified 2026-10-06 against the form and the 2025 Form 1040 instructions, Lines 8a through 8z) has 22 lettered sub-lines (8a–8v) plus an "8z list type and amount" catchall. Re-check the next revision at https://www.irs.gov/forms-pubs/about-form-1040. This file is the agent's deep reference for each type — when it applies, how to compute the amount, what's *not* included, and which authority controls.
 
 When in doubt about which sub-line an item belongs on, default to **8z with a clear label** rather than guessing. The IRS would rather see "8z — Settlement payment for emotional distress" than the same dollar mis-classified onto a wrong sub-line.
 
@@ -11,7 +11,9 @@ When in doubt about which sub-line an item belongs on, default to **8z with a cl
 Before Line 8, there is a dedicated above-Part-I row for 1099-K amounts that are not taxable income. Two qualifying situations:
 
 1. **Personal items sold at a loss** — used couch on Marketplace, used phone on eBay, concert tickets resold via PayPal G&S for less than face. The user bought it for $X, sold for less than $X, no gain. The 1099-K still reports the gross. Enter the gross 1099-K amount in this row to reconcile.
-2. **1099-K issued in error** — wrong taxpayer, duplicate, or non-business activity that doesn't fit any income category. Enter the erroneous amount and disregard.
+2. **1099-K issued in error** — e.g., gifts or reimbursements included in box 1a, a wrong taxpayer, or a duplicate. Enter only the erroneous amount; the rest of the 1099-K is reported where it belongs.
+
+For 2025, platforms must issue a 1099-K only when payments exceed $20,000 and transactions exceed 200 (2025 Form 1040 instructions); income below that is still reportable.
 
 If the 1099-K is for a real trade or business (regular Etsy sales, rideshare, freelance), it belongs on **Schedule C** — not on the 1099-K reconciliation row, not on Line 8.
 
@@ -21,11 +23,11 @@ If a 1099-K covers personal items sold at a **gain** (e.g., a watch the user bou
 
 ## 8a — Net operating loss (NOL)
 
-Reported as a **negative** number. NOL carryforward from a prior year, computed on Form 1045 Schedule A or Pub 536 worksheet.
+Reported as a **negative** number in the preprinted parentheses. NOL deduction carried from an earlier year; the 2025 instructions point to the Instructions for Form 172.
 
 Post-TCJA NOLs (arising in tax years after 2017):
 - Carry forward indefinitely (no 20-year limit)
-- Cannot be carried back (with limited exceptions for farming and casualty losses)
+- Cannot be carried back (exception: farming losses, 2-year carryback)
 - Limited to **80%** of taxable income before the NOL deduction
 
 Pre-TCJA NOLs follow the prior 2-back/20-forward rules and are not subject to the 80% cap.
@@ -44,7 +46,9 @@ W-2G is issued for:
 - $5,000+ on poker tournaments (net of buy-in)
 - $600+ and 300:1 odds on other gambling (horse racing, sweepstakes, lotteries)
 
-**Losses**: deductible only as an itemized deduction on Schedule A, **only up to the amount of winnings**. Filers who take the standard deduction get no offset for losses.
+**Losses**: deductible only as an itemized deduction on Schedule A line 16, **only up to the amount of winnings**. Filers who take the standard deduction get no offset for losses. For tax years beginning after 2025 the deduction is 90% of wagering losses, still capped at winnings (IRC §165(d)(1) as amended by P.L. 119-21 §70114); this does not affect 2025 returns.
+
+W-2G thresholds above are the 2025 figures. For payments made in 2026 the minimum reporting threshold becomes $2,000, indexed after that (Instructions for Forms W-2G and 5754, Rev. January 2026, What's New); re-check the instructions for the year being filed. Winnings are taxable whether or not a W-2G is issued.
 
 **Sports betting / DFS**: same rules. The platform issues a W-2G when thresholds are met; under-threshold winnings are still taxable.
 
@@ -64,7 +68,7 @@ Forgiven debt is income (IRC §61(a)(11)) unless an exception applies. Lender re
 - **Qualified principal residence indebtedness** — up to $750,000 ($375,000 MFS) for primary residence acquisition debt forgiven
 - **Qualified farm indebtedness**
 - **Qualified real property business indebtedness**
-- **Student loan discharge** — certain types are excluded under IRC §108(f); American Rescue Plan Act discharges through 2025 are non-taxable federally
+- **Student loan discharge** — certain types are excluded under IRC §108(f); the American Rescue Plan Act exclusion in §108(f)(5) covers discharges after 2020 and before 2026
 
 If an exception applies, attach Form 982 and reduce tax attributes per IRC §108(b).
 
@@ -76,7 +80,7 @@ If an exception applies, attach Form 982 and reduce tax attributes per IRC §108
 
 Reported as a **negative**. From Form 2555 Line 45. Reduces income for U.S. citizens / resident aliens working abroad who meet the bona fide residence or physical presence test.
 
-2025 exclusion: $130,000. 2026: announced fall 2025.
+2025 exclusion: $130,000 (Rev. Proc. 2024-40 §2.39). 2026: $132,900 (Rev. Proc. 2025-32 §4.39).
 
 If excluding via 2555, the housing exclusion goes on Line 8d as well; the housing **deduction** (for self-employed) goes on Line 24j.
 
@@ -86,13 +90,13 @@ If excluding via 2555, the housing exclusion goes on Line 8d as well; the housin
 
 ## 8e — Income from Form 8853
 
-Distributions from an Archer MSA or Medicare Advantage MSA used for non-qualifying medical expenses, plus taxable LTC contract distributions. Form 8853 computes the amount.
+Distributions from an Archer MSA or Medicare Advantage MSA used for non-qualifying medical expenses, plus taxable LTC contract distributions. Enter the total of Form 8853 lines 8, 12, and 26.
 
 ---
 
 ## 8f — Income from Form 8889
 
-Distributions from an HSA used for non-qualifying medical expenses. Subject to 20% additional tax on Schedule 2 (unless user is 65+, disabled, or deceased). Form 8889 computes the amount.
+Distributions from an HSA used for non-qualifying medical expenses (Form 8889 line 16) plus testing-period income (Form 8889 line 20). Enter the total of lines 16 and 20. Subject to additional tax on Schedule 2 (unless user is 65+, disabled, or deceased).
 
 **Source**: IRC §223(f).
 
@@ -128,7 +132,7 @@ Report **fair market value**, even for non-cash prizes (a $30,000 car won on a g
 
 Hobby income — gross receipts from an activity not engaged in for profit. Report **gross income only**.
 
-Under TCJA (2018-2025; verify status for 2026), hobby expenses are **not deductible** as miscellaneous itemized deductions. Filers cannot net expenses against hobby income on Line 8j.
+Hobby expenses would be miscellaneous itemized deductions, which are disallowed for tax years after 2017 (IRC §67(h)); P.L. 119-21 §70110 made that permanent. Filers cannot net expenses against hobby income on Line 8j. The 2025 instructions for Line 8j point to Pub 525.
 
 **Hobby vs. business** (IRC §183): the IRS uses 9 factors to determine for-profit intent (manner conducted, expertise, time and effort, expectation of asset appreciation, success in similar activities, history of income/loss, occasional profits, financial status, personal pleasure). If the activity is genuinely operating for profit, it's a Schedule C business — file Schedule C, not Line 8j.
 
@@ -140,7 +144,7 @@ Under TCJA (2018-2025; verify status for 2026), hobby expenses are **not deducti
 
 ## 8k — Stock options
 
-Non-statutory stock option income that wasn't reported on a W-2. Most NSO income lands on a W-2 because the employer captures it in payroll; this line catches edge cases (former employer, foreign exercise, contractor option grants).
+Income from the exercise of stock options not otherwise reported on Form 1040 line 1h (2025 instructions, Line 8k). Most employee NSO income lands on a W-2 because the employer captures it in payroll; this line catches edge cases (former employer, foreign exercise, contractor option grants).
 
 ISO disqualifying dispositions are typically captured on the user's W-2. ISO AMT adjustments go on Form 6251 (separate AMT preference item), not on Line 8k.
 
@@ -176,7 +180,7 @@ GILTI (Global Intangible Low-Taxed Income). International tax provision; rare fo
 
 ## 8p — Section 461(l) excess business loss adjustment
 
-Add-back if the user's aggregate business losses exceeded the §461(l) threshold ($305,000 single / $610,000 MFJ for 2025). The disallowed amount carries forward as an NOL.
+Add-back if the user's aggregate business losses exceeded the §461(l) threshold: $313,000 single / $626,000 MFJ for 2025 (Rev. Proc. 2024-40 §2.32); $256,000 / $512,000 for 2026 (Rev. Proc. 2025-32 §4.31). Enter the amount from Form 461 line 16. The disallowed amount carries forward as an NOL.
 
 **Source**: IRC §461(l).
 
@@ -204,7 +208,7 @@ Reported as a **negative**. Medicaid waiver payments to a care provider for cari
 
 ## 8t — Pension or annuity from nonqualified deferred comp / nongovt §457 plan
 
-Distributions from a nonqualified deferred compensation plan or a non-governmental §457 plan that aren't reported on W-2 (rare; most are W-2'd).
+Amounts received as a pension or annuity from a nonqualified deferred compensation plan or a non-governmental §457 plan. These may be shown in W-2 box 11; if box 11 is blank, ask the employer or payer (2025 instructions, Line 8t).
 
 ---
 
@@ -218,9 +222,8 @@ Income earned while incarcerated. The IRS excludes this from earned income for E
 
 The 8v line was added to capture digital asset (crypto, NFT, token) income received as **ordinary income**, when the activity is not a trade or business (which would belong on Schedule C).
 
-Common 8v scenarios:
+Common 8v scenarios (the 2025 instructions name forks, staking, and mining):
 - **Receiving crypto as payment** for goods or services as an individual (not a business) — FMV at receipt
-- **NFT royalties** received from secondary-market resales
 - **Staking rewards** when the activity is passive holding, not a Schedule C business
 - **Mining rewards** when small-scale and non-business
 - **Airdrops and forks** — FMV at the time of dominion and control
@@ -228,7 +231,7 @@ Common 8v scenarios:
 
 If the activity is regular and for-profit (an active mining operation, NFT-creation business, professional staking validator), it's a Schedule C business — not Line 8v.
 
-**Capital gains** from selling crypto held as an investment go on Form 8949 / Schedule D, not Line 8v.
+**Capital gains** from selling crypto held as an investment go on Form 8949 / Schedule D, not Line 8v. A gift or inheritance of digital assets is not reported on 8v. Royalties (including NFT creator royalties) are not a listed 8v item; ask whether they belong on Schedule E (royalties) or Schedule C (business). A broker sale may produce Form 1099-DA; the Form 1040 digital asset question must be answered either way.
 
 **Source**: Notice 2014-21; Rev. Rul. 2019-24; IRS digital asset FAQs.
 
@@ -242,10 +245,12 @@ Common 8z entries:
 - **Settlement / lawsuit proceeds** — taxable portion (lost wages, punitive damages, interest); excluded portion (physical injury) goes nowhere
 - **Recovery of a prior-year deduction** (other than state refund — that's Line 1)
 - **Director's fees** (if filer is a non-employee corporate director) — could also be Schedule C if it's a regular activity
-- **Forgiven student loan debt** under a non-§108(f) employer-arrangement
-- **Accident insurance benefits in excess of medical expenses** when employer paid premiums
-- **Foreign social security received** (not U.S. Social Security — that's its own Form 1040 line)
-- **Alimony from a foreign decree** that doesn't fit Line 2a
+- **Reemployment trade adjustment assistance (RTAA)** payments (Form 1099-G box 5)
+- **Taxable distributions from a Coverdell ESA or qualified tuition program** (529) beyond qualified expenses
+- **Dividends on insurance policies** that exceed the total net premiums paid
+- **Taxable part of disaster relief payments** (attach a statement)
+
+Do not use 8z for canceled debt (8c), for pre-2019 alimony (2a), or for foreign pensions or foreign social security without first asking how the payment is treated (treaty and Form 1040 line 5 questions are outside this skill; flag for a CPA). Source: 2025 Form 1040 instructions, Line 8z list.
 
 Format: "Description — $amount". Multiple items: list each on its own row, sum to the entered total.
 
@@ -265,8 +270,10 @@ The cost of asking is one extra prompt; the cost of guessing wrong is a CP2000 n
 
 ## Sources
 
-- IRS Schedule 1 (Form 1040), 2025 revision and instructions
-- IRC §§61, 74, 108, 111, 117, 165(d), 172, 183, 461(l), 911
+- IRS Schedule 1 (Form 1040), 2025 revision and instructions (2025 Form 1040 instructions, pp. 88–93)
+- IRC §§61, 67(h), 74, 108, 111, 117, 165(d), 172, 183, 461(l), 911
+- Rev. Proc. 2024-40 (2025) and Rev. Proc. 2025-32 (2026) for the FEIE and §461(l) amounts
+- P.L. 119-21 §§70110 (miscellaneous itemized deductions), 70114 (wagering losses)
 - IRS Publication 525 (Taxable and Nontaxable Income)
 - IRS Publication 529 (Miscellaneous Deductions)
 - IRS Publication 970 (Tax Benefits for Education)

@@ -10,19 +10,21 @@ Authority: IRC §223(c).
 
 ### 1. Enrolled in a qualifying HDHP
 
-The plan must meet IRS minimum deductible and maximum out-of-pocket thresholds (which change yearly). For 2025:
+The plan must meet IRS minimum deductible and maximum out-of-pocket thresholds (which change yearly):
 
-| Coverage | Minimum deductible | Maximum out-of-pocket |
-|----------|--------------------|-----------------------|
-| Self-only | $1,650 | $8,300 |
-| Family | $3,300 | $16,600 |
+| Coverage | 2025 min. deductible | 2025 max. out-of-pocket | 2026 min. deductible | 2026 max. out-of-pocket |
+|----------|----------------------|-------------------------|----------------------|-------------------------|
+| Self-only | $1,650 | $8,300 | $1,700 | $8,500 |
+| Family | $3,300 | $16,600 | $3,400 | $17,000 |
 
-For 2026: TBD. Verify the current Revenue Procedure (typically published May–June).
+Sources: Rev. Proc. 2024-25 (2025); Rev. Proc. 2025-19 (2026). Later years: the Revenue Procedure published each May–June.
 
 The HDHP must:
 - Have a deductible at or above the minimum
-- Have an out-of-pocket maximum at or below the maximum
-- Generally not pay any benefits before the deductible is met (with exceptions for preventive care and certain telehealth services per current IRS guidance)
+- Have an out-of-pocket maximum at or below the maximum (in-network only, if the plan uses a network)
+- Generally not pay any benefits before the deductible is met. Safe harbors: preventive care, selected insulin products, telehealth and other remote care (permanent for plan years beginning after 2024, IRC §223(c)(2)(E)), and surprise-billing benefits (2025 Instructions for Form 8889, "High Deductible Health Plan")
+
+**Bronze and catastrophic plans (from 2026).** For months beginning after December 31, 2025, any bronze or catastrophic plan available as individual coverage through a Marketplace is an HDHP even if it misses the deductible and out-of-pocket figures above; the same plan bought off-Marketplace also qualifies (IRC §223(c)(2)(H), P.L. 119-21 §71307; Notice 2026-5 Q&A-4 and Q&A-6). Bronze and catastrophic coverage before January 2026 must still pass the table test.
 
 If the user has an HDHP through one employer and a non-HDHP plan through another (e.g., spouse's employer), the non-HDHP coverage may disqualify them — see condition 2.
 
@@ -35,11 +37,13 @@ Disqualifying:
 - General-purpose Health Reimbursement Arrangement (HRA)
 - TRICARE
 - A second non-HDHP plan covering the user (e.g., parent's plan, second-employer plan)
-- VA medical benefits received in the past 3 months (limited exception for service-connected disabilities)
+- VA medical benefits received in the past 3 months (Notice 2004-50 Q&A-5), except care for a service-connected disability, which does not disqualify (IRC §223(c)(1)(C); Pub. 969 (2025))
 
 Not disqualifying:
 
-- Coverage limited to dental, vision, accident, disability, long-term care
+- Coverage limited to dental, vision, accident, disability, long-term care, or telehealth and other remote care (IRC §223(c)(1)(B))
+- Permitted insurance: workers' compensation, tort or property liabilities, a specified disease or illness, or a fixed amount per day of hospitalization
+- A direct primary care service arrangement, for months beginning after December 31, 2025, if the fees for all such arrangements total no more than $150 a month ($300 if the arrangement covers more than one person). The fees can be paid from the HSA (IRC §223(c)(1)(E), §223(d)(2)(C); Notice 2026-5). The $150 / $300 figures stay the same for 2027 (Rev. Proc. 2026-24).
 - Limited-purpose FSAs (dental and vision only)
 - Post-deductible HRAs (HRA pays only after HDHP deductible is met)
 - Suspended HRAs
@@ -55,9 +59,9 @@ Any part of Medicare (A, B, C, or D) disqualifies HSA contributions starting the
 
 **Distributions are still allowed**: an existing HSA can pay qualified medical expenses including Medicare premiums (A, B, D — but NOT Medigap) tax-free. Only contributions are blocked.
 
-**Medicare Part A retroactive enrollment**: when a person claims Social Security retirement benefits after age 65, Medicare Part A enrollment is **automatic and retroactive up to 6 months** (or back to the 65th birthday, whichever is later). This can retroactively disqualify HSA contributions that the person made during those months — creating excess contributions. The user must withdraw the excess plus earnings or pay 6% excise tax annually.
+**Medicare Part A retroactive enrollment**: premium-free Part A taken after 65, including through a Social Security retirement claim, starts **6 months back** from the sign-up or application, but not before the month the person turned 65 (https://www.medicare.gov/basics/get-started-with-medicare/sign-up/when-does-medicare-coverage-start). The contribution limit is zero for periods of retroactive Medicare coverage, so HSA contributions for those months become excess contributions (Pub. 969 (2025), "Enrolled in Medicare"). The user must withdraw the excess plus earnings or pay 6% excise tax annually.
 
-**Strategy**: someone planning to delay Social Security past 65 can continue HSA contributions until the month they enroll in Medicare. Once they take Social Security, Part A retroactivity kicks in, so they should plan to stop HSA contributions 6 months before the Social Security claim.
+**Timing**: someone planning to delay Social Security past 65 can continue HSA contributions until the month they enroll in Medicare. Because Part A will start up to 6 months before a later claim, contributions for those months will be excess; ASK about planned claim dates before drafting.
 
 ### 4. Not claimed as a dependent
 
@@ -91,9 +95,9 @@ Use the table to compute Line 3 (full annual or prorated). The agent should ASK 
 
 Common misconceptions:
 
-- **"My deductible is high so it's an HDHP"** — wrong. The plan must explicitly meet the IRS HDHP minimums. Many high-deductible plans on Healthcare.gov are NOT HSA-eligible because they pay benefits before the deductible (e.g., $30 office visit copay before deductible).
+- **"My deductible is high so it's an HDHP"** — wrong for an employer plan or a non-bronze individual plan. The plan must meet the IRS HDHP minimums. Many high-deductible silver or gold plans pay benefits before the deductible (e.g., $30 office visit copay before deductible) and do not qualify.
 - **"My plan documents say HDHP"** — usually correct, but verify the deductible and OOP max against the current year's IRS thresholds.
-- **"Bronze plan = HDHP"** — not necessarily. Many bronze plans have copays before the deductible, which disqualifies HSA-eligibility.
+- **"Bronze plan = HDHP"** — true for months from January 2026 if the bronze (or catastrophic) plan is available through a Marketplace (IRC §223(c)(2)(H)). For 2025 and earlier months, many bronze plans failed because of copays before the deductible or out-of-pocket maximums above the limit.
 
 The plan's Summary of Benefits and Coverage (SBC) should explicitly state "HSA-qualified" or "HDHP" if it qualifies. When in doubt, the user should call the insurer's member services line.
 

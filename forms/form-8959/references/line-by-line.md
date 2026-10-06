@@ -1,13 +1,13 @@
 # Form 8959 Line-by-Line Reference
 
-Complete lookup for every line on Form 8959. Use this when the agent needs to confirm where an input belongs or what a line means.
+Complete lookup for every line on Form 8959, built from the text of the **2025 Form 8959** ("Created 4/30/25") and the **2025 Instructions for Form 8959** (Aug 7, 2025). Use this when the agent needs to confirm where an input belongs or what a line means. Re-check the current revision at https://www.irs.gov/forms-pubs/about-form-8959 before using this map for another year. The form says: "If any line does not apply to you, leave it blank."
 
 ## Header
 
 | Field | What goes here | Notes |
 |-------|----------------|-------|
-| Name(s) shown on return | Same as Form 1040 header (joint string for MFJ) | Even if only one spouse triggers the surtax |
-| Your social security number | Filer's SSN | The spouse's SSN does not appear on Form 8959 separately; both spouses' wages and SE income combine on the same form for MFJ |
+| Name(s) shown on return | Exactly as on the return (your name and your spouse's if MFJ) | Even if only one spouse triggers the surtax |
+| Your social security number | Must match the SSN on the return; if MFJ, the first SSN that appears on the return | Both spouses' wages, SE income, and RRTA compensation combine on one form for MFJ |
 
 ---
 
@@ -29,13 +29,13 @@ Sum of **Box 5** ("Medicare wages and tips") across every W-2 received during th
 
 ### Line 2 — Unreported tips from Form 4137
 
-Form 4137 Line 6 (the Medicare-wage portion of unreported tips).
+Form 4137 line 6 (unreported tips). If MFJ, also include line 6 of the spouse's Form 4137.
 
-Most filers: zero. Applies only to filers who received tip income their employer did not include in W-2 Box 7. Filing Form 4137 separately reports the tips for SS/Medicare purposes; the Medicare-wage portion flows to Form 8959 Line 2.
+Most filers: zero. Applies only to filers with tips they did not report to their employer, which are figured on Form 4137.
 
 ### Line 3 — Wages from Form 8919
 
-Form 8919 Line 6. Form 8919 is filed when a worker was misclassified as an independent contractor and is paying their share of SS/Medicare on what should have been wages. The Medicare-wage portion flows here.
+Form 8919 line 6 (total wages). Form 8919 is filed when a worker believes they were an employee but was treated as an independent contractor and is paying their share of SS/Medicare on those wages. If MFJ, also include line 6 of the spouse's Form 8919.
 
 Most filers: zero.
 
@@ -55,7 +55,7 @@ Statutory under IRC §3101(b)(2):
 | Married Filing Jointly | $250,000 |
 | Married Filing Separately | $125,000 |
 
-**Not inflation-adjusted.** The threshold has been the same since the Additional Medicare Tax was enacted in 2013 (effective tax year 2013). Verify current-year instructions before transcribing — the rule is statutory but if Congress amends it, the instructions will reflect the change.
+**Not inflation-adjusted.** "The threshold amounts below aren't indexed for inflation" (2025 Instructions for Form 8959). The amounts have been the same since the tax took effect for 2013 (enacted by P.L. 111-148 §9015 in 2010). Verify current-year instructions before transcribing — the rule is statutory but if Congress amends it, the instructions will reflect the change.
 
 ### Line 6 — Subtract Line 5 from Line 4
 
@@ -77,7 +77,9 @@ From **Schedule SE Part I Line 6** — the figure after the 92.35% multiplier pe
 
 If the filer has multiple Schedule Cs or Schedule F + Schedule C, Schedule SE consolidates them; use the consolidated Line 6.
 
-If MFJ and both spouses have SE income, each spouse's Schedule SE Line 6 sums into Form 8959 Line 8.
+If MFJ and both spouses have SE income, each spouse's Schedule SE Line 6 sums into Form 8959 Line 8 ("Combine amounts from this line if you have multiple Schedules SE").
+
+If the result is a loss, enter -0- (form line 8). A self-employment loss is not used to reduce wages for this tax.
 
 ### Line 9 — Threshold
 
@@ -105,15 +107,15 @@ SE Additional Medicare Tax.
 
 ## Part III — Additional Medicare Tax on Railroad Retirement (RRTA) Compensation
 
-Almost always zero outside the railroad industry. Mirrors Part I but uses Tier 1 RRTA Medicare-equivalent compensation.
+Almost always zero outside the railroad industry. Mirrors Part I, and the threshold is compared to RRTA compensation **separately**: wages do not reduce the RRTA threshold, and RRTA compensation does not reduce the self-employment threshold (2025 Instructions, "Additional Medicare Tax"; Examples 6 and 7).
 
 ### Line 14 — RRTA compensation
 
-Tier 1 Medicare-equivalent RRTA compensation. From Form W-2 Box 14 (RRTA compensation often reported there for railroad employees) or from RRB-1099-R if applicable.
+RRTA compensation and tips from Form W-2, box 14 (all W-2s; include the spouse's if MFJ). An employee representative subject to RRTA taxes uses the total compensation subject to Tier 1 Medicare tax from line 2 of Form(s) CT-2. Railroad retirement benefits (Form RRB-1099-R) are not compensation and do not go here.
 
 ### Line 15 — Threshold
 
-Same as Lines 5 and 9.
+The full filing-status threshold, same amount as Lines 5 and 9. Not reduced by wages.
 
 ### Line 16 — Subtract Line 15 from Line 14
 
@@ -131,9 +133,9 @@ RRTA Additional Medicare Tax.
 
 Total Additional Medicare Tax owed for the year.
 
-**Flows to Schedule 2 Line 11** (verify line number against current-year Schedule 2 — line numbers on Schedule 2 have changed between revisions; the *label* "Additional Medicare Tax. Attach Form 8959" is stable).
+**Flows to Schedule 2 Line 11** (2025 Schedule 2: "Additional Medicare Tax. Attach Form 8959"). Form 1040-SS filers use Part I, line 5.
 
-From Schedule 2, the total flows to **Form 1040 Line 23** (Other taxes).
+From Schedule 2 line 21, the total flows to **Form 1040 Line 23** (Other taxes).
 
 ---
 
@@ -141,41 +143,49 @@ From Schedule 2, the total flows to **Form 1040 Line 23** (Other taxes).
 
 The reconciliation between what the employer withheld (W-2 Box 6) and what is actually owed.
 
+If the filer (and spouse, if MFJ) had no Medicare wages or RRTA compensation, leave Part V blank.
+
 ### Line 19 — Medicare tax withheld
 
-Sum of **Box 6** ("Medicare tax withheld") across every W-2 received during the year.
+Sum of **Box 6** ("Medicare tax withheld") across every W-2 received during the year (include the spouse's if MFJ). Box 6 holds both the regular Medicare tax and any Additional Medicare Tax withheld.
 
-### Line 20 — Regular 1.45% Medicare tax on Line 1
+Also include uncollected Medicare tax on tips (W-2 box 12, code B) and uncollected Medicare tax on group-term life insurance over $50,000 for former employees (box 12, code N). Do not include box 12 code B or N amounts that are uncollected RRTA Medicare tax (2025 Instructions, Line 19).
+
+### Line 20 — Amount from Line 1
 
 ```
-Line 20 = Line 1 × 0.0145
+Line 20 = Line 1
 ```
 
-This is what the employer *should* have withheld at the regular rate before any Additional Medicare Tax kicks in.
+### Line 21 — Regular Medicare tax withholding
 
-### Line 21 — Subtract Line 20 from Line 19
+```
+Line 21 = Line 20 × 0.0145
+```
 
-The Additional Medicare Tax already withheld by the employer.
+This is what the employer withholds at the regular rate before any Additional Medicare Tax.
 
-If Line 19 < Line 20: the W-2 Box 6 reports less than 1.45% of Box 5. This is unusual and usually indicates a W-2 error (or a §125 cafeteria plan reduction that should not have applied to Medicare wages). Reconcile with the W-2 issuer before filing.
+### Line 22 — Additional Medicare Tax withholding on Medicare wages
 
-If Line 19 > Line 20: the excess is the Additional Medicare Tax withheld. Per IRC §3102(f), the employer is required to withhold 0.9% additional on each employee's wages above $200,000 paid by that single employer regardless of filing status.
+```
+Line 22 = Line 19 − Line 21   (if zero or less, enter -0-)
+```
 
-### Line 22 — Additional Medicare Tax withholding from Form W-2
+If Line 19 > Line 21: the excess is the Additional Medicare Tax withheld. Per IRC §3102(f), the employer must withhold the 0.9% on wages it pays an employee above $200,000 in the calendar year, regardless of filing status or wages from another employer.
 
-Line 21 with adjustments per current-year instructions for combined railroad/wage cases. For non-railroad filers, Line 22 = Line 21.
+If Line 19 < Line 21: W-2 Box 6 reports less than 1.45% of Box 5. This is unusual and usually indicates a W-2 error. Ask the user to confirm with the W-2 issuer before filing.
 
 ### Line 23 — Additional Medicare Tax withholding on RRTA compensation
 
-From RRTA W-2 box (varies by tax year). Most filers: zero.
+Additional Medicare Tax withheld on RRTA compensation, reported on Form W-2, box 14 (include the spouse's if MFJ). Employee representatives use line 3 of Form(s) CT-2. Most filers: zero.
 
-### Line 24 — Total Additional Medicare Tax withheld
+### Line 24 — Total Additional Medicare Tax withholding
 
 ```
 Line 24 = Line 22 + Line 23
 ```
 
-**Flows to Form 1040 Line 25c** (Other federal income tax withheld). This is a withholding *credit* — without it, a high earner whose employer correctly withheld the 0.9% surtax above $200K would owe again at filing.
+**Include on Form 1040, 1040-SR, or 1040-NR Line 25c**, combined with other federal income tax withholding reported there (Form 1040-SS: Part I, line 11a). W-2 box 2 withholding goes on line 25a, not 25c. This is a withholding *credit* — without it, a high earner whose employer correctly withheld the 0.9% surtax above $200K would owe again at filing.
 
 ---
 
@@ -199,9 +209,9 @@ Part IV:
 
 Part V (employer correctly withheld 0.9% on $60K above $200K):
   Line 19 = $260,000 × 1.45% + $60,000 × 0.9% = $3,770 + $540 = $4,310
-  Line 20 = $260,000 × 1.45% = $3,770
-  Line 21 = $540
-  Line 22 = $540
+  Line 20 = $260,000   (Line 1)
+  Line 21 = $260,000 × 1.45% = $3,770
+  Line 22 = $4,310 − $3,770 = $540
   Line 24 = $540  → Form 1040 Line 25c
 
 Net at filing: Line 18 − Line 24 = $0
@@ -220,9 +230,10 @@ Part I:
   Line 7 = $180
 
 Part V (no employer hit the $200K trigger, so neither withheld extra):
-  Line 19 = $270,000 × 1.45% = $3,915
-  Line 20 = $270,000 × 1.45% = $3,915
-  Line 21 = $0
+  Line 19 = $180,000 × 1.45% + $90,000 × 1.45% = $2,610 + $1,305 = $3,915
+  Line 20 = $270,000   (Line 1)
+  Line 21 = $270,000 × 1.45% = $3,915
+  Line 22 = $0
   Line 24 = $0
 
 Net at filing: Line 18 − Line 24 = $180 owed
@@ -237,15 +248,15 @@ Couple owes $180 at filing because employer withholding doesn't see joint income
 - **Mid-year filing status change**: divorce, marriage, or death of spouse during the year does not split the threshold. The threshold is by *filing status used on the return*, applied to *full-year* wages and SE income. If a couple divorced in November and files single (or HoH) for the year, each former spouse uses the $200K threshold against their own wages.
 - **Multiple W-2s, none individually at $200K, combined over $200K**: no employer was required to withhold the additional 0.9% (each saw < $200K from itself). Filer owes the full surtax at filing. Common for filers with W-2 + 1099-NEC, or W-2 plus a part-time W-2 from a second employer.
 - **Statutory employees** (W-2 Box 13 "Statutory employee" checked): wages are reported on a W-2 but expenses go on Schedule C. Box 5 still reports as Medicare wages. No double-counting on Form 8959 — wages enter only on Line 1, not on Line 8.
-- **Nonresident aliens**: certain visa categories (F, J, M, Q) are exempt from Medicare tax during the substantial-presence-test exclusion period. If exempt, the worker should not have Medicare tax withheld in Box 6, and Line 1 should not include the exempt wages. Consult IRC §3121 totalization rules — out of scope for this skill.
+- **Nonresident aliens**: the instructions say there are no special Additional Medicare Tax rules for nonresident aliens and U.S. citizens living abroad; wages and SE income subject to Medicare tax are also subject to the 0.9% above the threshold. Some workers' wages are exempt from Medicare tax altogether (for example certain F, J, M, or Q visa holders while nonresident); exempt wages are not in Box 5. Exemption questions are out of scope for this skill.
 - **High SE income with Schedule SE optional methods**: filers using farm or nonfarm optional methods on Schedule SE Part II have an adjusted Line 6. The optional methods rarely benefit high earners but can shift Line 8 — use whatever Line 6 ultimately reports on Schedule SE.
 
 ---
 
 ## Sources
 
-- [Form 8959 (latest)](https://www.irs.gov/pub/irs-pdf/f8959.pdf)
-- [Instructions for Form 8959 (latest)](https://www.irs.gov/pub/irs-pdf/i8959.pdf)
+- [Form 8959 (2025)](https://www.irs.gov/pub/irs-pdf/f8959.pdf)
+- [Instructions for Form 8959 (2025)](https://www.irs.gov/pub/irs-pdf/i8959.pdf)
 - IRC §1401(b)(2) — Additional Medicare Tax on self-employment income
 - IRC §3101(b)(2) — Additional Medicare Tax on wages
 - IRC §3102(f) — Employer withholding obligation

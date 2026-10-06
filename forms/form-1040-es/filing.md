@@ -21,7 +21,7 @@ User wants recurring scheduled payments and is willing to enroll?
 
 User wants to pay by debit/credit card?
   → Third-party processors (Pay1040, ACI Payments)
-    Browser automation: possible but processors charge a fee (~$2.50 debit, ~1.85% credit).
+    Browser automation: possible but processors charge a fee (about $2.10–$2.15 debit, 1.75%–1.85% credit with a $2.50 minimum, per irs.gov as of 2026-10-06).
     Use Section 3.
 
 User wants to pay by check?
@@ -163,12 +163,12 @@ EFTPS allows scheduling **all four 1040-ES installments at once**, up to 365 day
 
 ## Section 3 — Pay by Card (third-party processors)
 
-The IRS authorizes three payment processors. The agent picks one based on the user's preference for fee structure:
+The IRS authorizes two payment processors (2026 Form 1040-ES; irs.gov card-payment page). The agent picks one based on the user's preference for fee structure:
 
 | Processor | Debit fee | Credit fee | URL |
 |-----------|-----------|------------|-----|
-| Pay1040 | $2.50 flat | 1.75% | https://www.pay1040.com |
-| ACI Payments | $2.20 flat | 1.85% | https://www.acipayonline.com |
+| Pay1040 | $2.15 | 1.75% ($2.50 minimum) | https://www.pay1040.com |
+| ACI Payments | $2.10 | 1.85% ($2.50 minimum) | https://fed.acipayonline.com |
 | (Verify the current authorized list at https://www.irs.gov/payments/pay-your-taxes-by-debit-or-credit-card before automating — list and fees change.) |
 
 **Pre-flight**: card number, CVV, billing address, exact expiration. The agent should confirm the user understands the fee is non-refundable even if the IRS later refunds.
@@ -191,7 +191,7 @@ When electronic isn't available (or the user prefers paper):
 
 ### Assemble the payment
 
-1. Print the appropriate voucher (1, 2, 3, or 4) from page 9–12 of the latest f1040es.pdf
+1. Print the appropriate voucher (1, 2, 3, or 4) from the last pages of the latest f1040es.pdf
 2. Fill in: filer name, SSN, spouse name + SSN if MFJ, address, payment amount
 3. Write a check payable to "United States Treasury"
 4. On the check memo line: "2026 Form 1040-ES" + filer's SSN

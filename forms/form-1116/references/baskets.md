@@ -6,13 +6,13 @@ Each Form 1116 covers exactly one category of foreign-source income. The filer f
 
 | Box | Category | Typical income |
 |-----|----------|---------------|
-| a | §951A category (GILTI) | GILTI inclusion — CFC shareholders, individual electing §962 |
-| b | Foreign branch category | Income of a foreign branch of a US business (post-TCJA) |
+| a | §951A category (GILTI) | GILTI inclusion of US shareholders of CFCs (an individual who made a §962 election claims the CFC-tax credit on Form 1118 instead) |
+| b | Foreign branch category | Business profits attributable to qualified business units (QBUs) in foreign countries |
 | c | Passive category | Dividends, interest, royalties, rents, capital gains, annuities |
 | d | General category | Wages, SE income, business income — anything not in another box |
-| e | §901(j) category | Income from sanctioned countries |
-| f | Income re-sourced by treaty | Treaty reclassifies the income source |
-| g | Lump-sum distributions | Qualified retirement lump-sum distribution |
+| e | §901(j) income | Income from sanctioned countries (no credit for taxes paid to them) |
+| f | Certain income re-sourced by treaty | US-source income a treaty treats as foreign source, when the filer elects the treaty |
+| g | Lump-sum distributions | Foreign-source pension lump sum when the tax is figured on Form 4972 |
 
 ## How to assign income
 
@@ -50,7 +50,7 @@ If the rental is part of an active trade or business (real estate dealer, hotel 
 
 → **Passive (c)**, usually.
 
-Gains on sale of inventory or business assets are general. Gains on personal-use property are personal (no FTC at all).
+Gains on sale of inventory or depreciable business property are general. Gain on a home abroad is foreign-source (real property is sourced where located, Pub. 514 Table 2) and is generally passive category income; ask a CPA before filing a large gain.
 
 ### Foreign royalties
 
@@ -58,11 +58,11 @@ Gains on sale of inventory or business assets are general. Gains on personal-use
 
 ### Foreign annuity / pension income
 
-→ **Passive (c)** typically. Lump-sum qualified retirement distribution → category (g).
+→ **Passive (c)** typically. Lump-sum distribution taxed using Form 4972 → category (g). Source: the part attributable to contributions is sourced where the services were performed; investment earnings are sourced where the pension trust is located (Pub. 514 Table 2).
 
 ### Income re-sourced by US treaty
 
-→ **Category (f)** — Income that is technically US-source under domestic rules but re-sourced as foreign under a US tax treaty (e.g., gain on disposition of US real estate by a non-resident under certain treaties).
+→ **Category (f)** — Income that is US-source under domestic rules but treated as foreign source by a treaty sourcing rule, when the filer elects to apply the treaty. Use a separate Form 1116 for each treaty country, and Form 8833 may be required. The category does not apply to income re-sourced only by the relief-from-double-taxation article that applies to US citizens resident in the treaty country (2025 i1116, category f; IRC §865(h), §904(d)(6), §904(h)(10)).
 
 This is highly treaty-specific. If the user has unusual cross-border income that they expect to be foreign-source via treaty, route to a CPA — not an automatic agent decision.
 
@@ -70,19 +70,17 @@ This is highly treaty-specific. If the user has unusual cross-border income that
 
 → **Category (e)**.
 
-Currently sanctioned (verify against the latest IRS list before filing): **Iran, North Korea, Sudan**. Cuba was on the list and was removed; the list changes by Executive Order. Foreign tax paid to a §901(j) country is NOT creditable as a normal FTC; it goes on category (e) with stricter limitation.
+Sanctioned for 2025 per Pub. 514: **Iran, Libya (Presidential waiver for taxes arising after Dec 9, 2004), North Korea, Sudan, Syria**. Cuba's sanction period ended Dec 21, 2015 and Iraq's June 27, 2004 (Pub. 514 Table 1). Re-check the current Pub. 514 before filing. No credit is allowed for tax paid to a sanctioned country. Income from each sanctioned country goes on its own Form 1116 (box e), generally completed only through line 17. A residence-based tax paid to a non-sanctioned country on that income can still be credited (2025 i1116, category e).
 
-### GILTI inclusion (CFC shareholders electing §962)
+### GILTI inclusion (US shareholders of CFCs)
 
-→ **Category (a) §951A**.
+→ **Category (a) §951A** (no carryover allowed; line 10 blank). If the individual made a §962 election, the credit for the CFC's taxes is claimed on Form 1118, not Form 1116.
 
 Out of scope for typical retail filers. If the user is a controlled foreign corporation shareholder, route to a CPA with international expertise.
 
 ### Lump-sum retirement distribution
 
-→ **Category (g)**.
-
-Special rules apply for certain pre-1974 distributions. Most filers won't see this.
+→ **Category (g)** when the filer elects Form 4972 for a foreign-source lump-sum pension distribution. Skip Part I and use the Worksheet for Lump-Sum Distributions for Part III (2025 i1116, category g). Most filers won't see this.
 
 ## Multi-basket filers
 
@@ -107,8 +105,8 @@ Income source determines whether it goes on Form 1116 at all. Foreign-source rul
 | Royalties | Where the property is used |
 | Rental income | Where the property is located |
 | Capital gain on real property | Where the property is located |
-| Capital gain on personal property | Residence of seller (with exceptions) |
-| Pension / annuity | Where services were performed (for the underlying employment) |
+| Capital gain on personal property | Seller's tax home (with exceptions, Pub. 514) |
+| Pension distributions | Contributions: where the services were performed; investment earnings: location of the pension trust |
 
 If the user is uncertain, ask: "Where were the services performed?" or "Where is the property located?" — those facts drive the source rule.
 

@@ -1,16 +1,16 @@
 # Common Form 2553 Mistakes
 
-The top patterns that void S-corp elections, trigger CP262 rejections, or cause IRS reclassification post-election. Pre-flight every Form 2553 against this list.
+The top patterns that void S-corp elections, trigger a CP264 notice (Form 2553 denied), or cause IRS reclassification post-election. Pre-flight every Form 2553 against this list. (CP262 is a different notice: it confirms a *revocation* of S status.)
 
 ---
 
-## 1. Filing without an EIN
+## 1. Leaving item A blank
 
-**Mistake**: Submitting Form 2553 before the entity has an EIN, with the EIN line blank or "applied for."
+**Mistake**: Submitting Form 2553 with item A (EIN) blank.
 
-**Consequence**: Automatic CP262 rejection. Form 2553 cannot be filed without an EIN.
+**Consequence**: The IRS cannot match the election to an entity; expect delay or a CP264 denial.
 
-**Fix**: Apply at https://www.irs.gov/EIN before drafting the form. Online application issues an EIN immediately for U.S. responsible parties with valid SSN/ITIN. Foreign responsible parties must apply via SS-4 fax (4-6 week wait) — file Form 2553 only after the EIN arrives.
+**Fix**: Apply at https://www.irs.gov/EIN before drafting the form (online, issued once the application is validated), or by fax or mail on Form SS-4. If the EIN has been applied for but not received when the election is due, the instructions allow "Applied For" and the date applied in item A (Instructions for Form 2553, "Item A"). Do not miss the election deadline waiting for the EIN.
 
 ---
 
@@ -18,26 +18,26 @@ The top patterns that void S-corp elections, trigger CP262 rejections, or cause 
 
 **Mistake**: Filing Form 2553 with the entity name "Smith Consulting LLC" when the EIN was issued to "Smith Consulting, LLC" (with a comma).
 
-**Consequence**: CP262 rejection for name mismatch. The election is void, and the user must refile from scratch.
+**Consequence**: Processing delay or a CP264 denial; after a denial the IRS asks for a new, complete Form 2553 (https://www.irs.gov/individuals/understanding-your-cp264-notice).
 
-**Fix**: Pull the IRS EIN confirmation letter (Form 147C if the original is lost — request via PPS line 866-860-4259). Use **exact-match** name on Line A, including punctuation, capitalization, and "Inc."/"LLC"/"Corp." abbreviations.
+**Fix**: Pull the EIN assignment notice (CP575), or request Letter 147C from the Business & Specialty Tax Line, 800-829-4933. Use the **exact** name in the name field, including punctuation and "Inc."/"LLC"/"Corp." abbreviations.
 
 ---
 
 ## 3. Missing shareholder consent
 
-**Mistake**: One shareholder forgot to sign Column K, or signed but didn't provide SSN in Column N, or didn't list dates of stock acquisition in Column M.
+**Mistake**: One shareholder forgot to sign column K, or signed but the SSN is missing from column M, or the dates of stock acquisition are missing from column L. For a late election, a former shareholder from the period since item E was left off.
 
-**Consequence**: CP262 rejection. The election requires unanimous shareholder consent — every shareholder, every column.
+**Consequence**: The election is not valid without every required consent (Form 2553 page 1 note; Reg. §1.1362-6(b)); expect a CP264 denial. A timely election missing a consent can be saved under Reg. §1.1362-6(b)(3)(iii).
 
-**Fix**: Walk through Columns J-N for every shareholder before transmission. Use a checklist:
+**Fix**: Walk through columns J-N for every shareholder before transmission. Use a checklist:
 ```
-For each shareholder:
+For each shareholder (and former shareholder, if filed on or after item E):
 □ Column J — Name and address
-□ Column K — Original signature
-□ Column L — Date signed (on or before filing date)
-□ Column M — Shares/percentage AND dates acquired
-□ Column N — SSN/ITIN/EIN
+□ Column K — Handwritten signature and date
+□ Column L — Shares/percentage AND date(s) acquired (-0- for former shareholders)
+□ Column M — SSN/ITIN/EIN
+□ Column N — Tax year end (month and day)
 ```
 
 ---
@@ -46,29 +46,29 @@ For each shareholder:
 
 **Mistake**: Shareholder lives in a community-property state (AZ, CA, ID, LA, NV, NM, TX, WA, WI) and is married, but only the shareholder signed — the non-owner spouse did not.
 
-**Consequence**: Election void. Community property = both spouses are deemed shareholders for §1361 purposes; both must consent.
+**Consequence**: The election is not valid without the spouse's consent. Each person with a community interest in the stock or its income must consent (Reg. §1.1362-6(b)(2)(i)). Fixes after the fact: Reg. §1.1362-6(b)(3)(iii), or Rev. Proc. 2004-35 for a spouse who was a shareholder only because of state community property law.
 
-**Fix**: For every shareholder in a community-property state, list the non-owner spouse on a separate consent row and obtain their signature. This is the **#2 cause of voided elections** (after late filing).
+**Fix**: For every married shareholder in a community-property state, list the spouse on a separate consent row and obtain their signature.
 
 ---
 
-## 5. Filing late without Part IV
+## 5. Filing late without the Rev. Proc. 2013-30 package
 
-**Mistake**: Filing Form 2553 after the 2-month-15-day deadline but not completing Part IV (late-relief representations) and not writing "FILED PURSUANT TO REV. PROC. 2013-30" across page 1.
+**Mistake**: Filing Form 2553 after the 2-month-15-day deadline without the "FILED PURSUANT TO REV. PROC. 2013-30" header, without the item I reasonable-cause and diligence explanation, or (for an LLC with no timely Form 8832) without the Part IV representations.
 
-**Consequence**: The IRS treats the election as effective for the **following** tax year — the user loses a year of S-corp treatment. If the user's first 1120-S is already filed for the intended year, the IRS sends back a CP262 or processes the 1120-S as a C-corp 1120 with substantial reclassification.
+**Consequence**: A late election generally takes effect for the **following** tax year (Instructions for Form 2553, "Relief for Late Elections"); the user loses a year of S-corp treatment. The CP261 FAQ says the same: a different effective date means the form was not timely for the requested date (https://www.irs.gov/individuals/understanding-your-cp261-notice).
 
-**Fix**: Check the deadline against today's date BEFORE drafting. If past the deadline, complete Part IV (boxes 1, 2, 3), write "FILED PURSUANT TO REV. PROC. 2013-30" across the top, and attach a reasonable-cause statement.
+**Fix**: Check the deadline against today's date BEFORE drafting. If past the deadline: header; item I explanation (or signed statement); consents from everyone who was a shareholder since item E; Part IV only for an eligible entity relying on the deemed classification election. See [`timing-rules.md`](./timing-rules.md).
 
 ---
 
 ## 6. Effective date earlier than entity formation
 
-**Mistake**: Line F (election effective date) is 01/01/2026, but the entity was formed 03/15/2026.
+**Mistake**: Item E (election effective date) is 01/01/2026, but the entity was formed 03/15/2026.
 
 **Consequence**: Election is void from formation; the IRS doesn't grant retroactive S-corp status before the entity legally existed.
 
-**Fix**: Line F must be ≥ Line D (date incorporated). For a new entity wanting S-corp from day one, Line F = the earliest of (shareholders / acquired assets / began doing business).
+**Fix**: Item E must be ≥ item B (date incorporated). For a new entity wanting S-corp from day one, item E = the earliest of (shareholders / assets / began doing business).
 
 ---
 
@@ -116,11 +116,11 @@ Common trap: a U.S. resident with valid ITIN is eligible, but a non-resident ali
 
 ## 10. Forgetting state-level S-corp election
 
-**Mistake**: User files federal Form 2553 successfully, gets CP261, but forgets that NY requires CT-6, NJ requires CBT-2553, AR requires AR1103, or LA requires R-6980.
+**Mistake**: User files federal Form 2553 successfully, gets CP261, but forgets that NY requires Form CT-6 and AR requires Form AR1103 (within the first 75 days of the tax year), or that NJ needs registration as a corporation filer plus the CP261 copy and Shareholder Jurisdictional Consent.
 
-**Consequence**: Federal S-corp, but state-level C-corp. State franchise / corporate tax owed at full rate, defeating much of the SE-tax savings.
+**Consequence**: Federal S-corp, but state-level C-corp in those states. State corporate tax owed at full rate, defeating much of the SE-tax savings.
 
-**Fix**: At the time of federal filing, identify state requirements (see [`state-conformity.md`](./state-conformity.md)) and queue the state filings. NJ's 1-month deadline is the tightest — easy to miss.
+**Fix**: At the time of federal filing, identify state requirements (see [`state-conformity.md`](./state-conformity.md)) and queue the state filings. Confirm each with the state revenue department; state rules change (NJ dropped its separate election for periods beginning on or after December 22, 2022).
 
 ---
 
@@ -138,29 +138,29 @@ Common trap: a U.S. resident with valid ITIN is eligible, but a non-resident ali
 
 **Mistake**: User faxes Form 2553 to be safe AND mails a paper copy via Certified Mail.
 
-**Consequence**: The IRS receives two filings for the same election. Often results in CP262 citing duplicate filing, or two CP261 letters (which confuses banks and state agencies later).
+**Consequence**: The IRS receives two filings for the same election, which can cause duplicate processing or conflicting notices.
 
 **Fix**: Pick **one** channel, document it (save the fax confirmation OR the Certified Mail receipt), and stop. Default to fax for speed and timestamp.
 
 ---
 
-## 13. Filing Form 2553 with an electronic signature that doesn't qualify
+## 13. Signing Form 2553 electronically
 
-**Mistake**: Shareholders sign with a typed name, an autofill signature, or a simple image-paste, without satisfying Reg. §1.1362-6(b)(3) qualifying-electronic-signature rules.
+**Mistake**: The officer or shareholders sign with a typed name, an e-signature service, or a pasted image.
 
-**Consequence**: CP262 rejection citing invalid signatures.
+**Consequence**: Form 2553 is not on the IRS list of forms that accept electronic or digital signatures in place of handwritten ones (IRM 10.10.1, Exhibit 10.10.1-2, checked 2026-10-06; the list includes Forms 1128, 3115, and 8832 but not 2553). An election without a valid signature risks a CP264 denial, and an unsigned form "won't be considered timely filed" (Instructions, "Signature").
 
-**Fix**: Use original wet-ink signatures whenever possible. If using e-signatures, use a service like DocuSign, Adobe Sign, or PandaDoc that captures audit trail metadata (IP, timestamp, identity verification). The IRS has been more accepting of e-signatures since 2020 but still rejects bare typed names.
+**Fix**: Use handwritten signatures for the officer and every consenting shareholder. Faxing a hand-signed form is fine; keep the original with the entity's records (Instructions, "Where To File").
 
 ---
 
-## 14. Misunderstanding the "tax year" choice on Line I
+## 14. Misunderstanding the "tax year" choice in item F
 
-**Mistake**: User checks Line I Box 2 (fiscal year) without completing Part II, or chooses fiscal year for tax-deferral reasons.
+**Mistake**: User checks item F box (2) (fiscal year) without completing Part II, or chooses a fiscal year for tax-deferral reasons.
 
-**Consequence**: CP262 rejection if Part II is incomplete, OR if Part II is complete, the IRS often denies fiscal year for small entities and forces calendar year — which means the election may take effect a year later than intended, or be deemed for calendar year by default.
+**Consequence**: An incomplete Part II risks a CP264 denial; a business-purpose request that is not approved (with no Q3/R2 calendar-year fallback checked) can leave the election without an acceptable tax year.
 
-**Fix**: Default to calendar year (Line I Box 1) for ~99% of small entities. Fiscal year requires documented business purpose, ownership tax year, natural business year (Rev. Proc. 2006-46), or §444 election with required-payment buy-in. Most small entities should not bother.
+**Fix**: Default to calendar year (item F box (1)) for most small entities. Fiscal year requires documented business purpose, ownership tax year, natural business year (Rev. Proc. 2006-46), or §444 election with required-payment buy-in. Most small entities should not bother.
 
 ---
 
@@ -168,9 +168,9 @@ Common trap: a U.S. resident with valid ITIN is eligible, but a non-resident ali
 
 **Mistake**: Filing Form 2553 in February, then in March filing payroll as if S-corp is in effect, taking distributions, etc. — without waiting for the CP261 confirmation.
 
-**Consequence**: If CP262 (rejection) arrives instead of CP261, the user has been operating as S-corp without authorization. Payroll filings are wrong, distributions are mischaracterized, etc.
+**Consequence**: If a CP264 (Form 2553 denied) arrives instead of CP261, the user has been operating as an S-corp without a valid election. Payroll filings are wrong, distributions are mischaracterized, etc.
 
-**Fix**: Wait for CP261 before changing payroll, distribution, or accounting practices. CP261 typically arrives within 60 days of filing. In the interim, continue prior-year practices. If CP261 is delayed past 60 days, call PPS line 866-860-4259.
+**Fix**: Ask the user how they want to handle the gap; the safest course is to confirm acceptance before relying on S status. A determination generally comes within 60 days. If neither acceptance nor nonacceptance arrives within 2 months (5 months if box Q1 was checked), call 800-829-4933 (Instructions for Form 2553, "Where To File"). Tax professionals with authorization can use the Practitioner Priority Service, 866-860-4259.
 
 ---
 
@@ -182,14 +182,15 @@ Common trap: a U.S. resident with valid ITIN is eligible, but a non-resident ali
 □ All shareholders are eligible (no NRA, partnerships, C-corps, multi-LLCs)
 □ ≤100 shareholders
 □ One class of stock; LLC operating agreement reviewed for waterfalls/preferences
-□ Effective date (Line F) ≥ formation date (Line D)
+□ Effective date (item E) ≥ formation date (item B)
 □ Effective date is consistent with the 2-month-15-day deadline
-   OR Part IV is completed for late relief
-□ Every shareholder consents (Cols J-N) including community-property spouses
-□ Officer signature on Line J
-□ "FILED PURSUANT TO REV. PROC. 2013-30" written across page 1 if late
-□ Reasonable-cause statement attached if late
-□ State-level S-corp election queued (NY CT-6 / NJ CBT-2553 / AR AR1103 / LA R-6980)
+   OR the Rev. Proc. 2013-30 package is complete (header, item I, consents,
+   Part IV if LLC without timely Form 8832)
+□ Every shareholder consents (cols J-N) including community-property spouses
+   and, if filed on or after item E, former shareholders
+□ Officer signature, title, and date below item I (handwritten)
+□ "FILED PURSUANT TO REV. PROC. 2013-30" in the top margin of page 1 if late
+□ State follow-up queued (NY CT-6 / AR AR1103 / NJ registration + consent)
 □ Reasonable salary plan documented before payroll begins
 □ Single transmission channel chosen (fax OR mail, not both)
 □ Confirmation page captured and saved

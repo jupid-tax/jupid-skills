@@ -16,9 +16,9 @@ A complete walkthrough of issuing Form 1099-NEC for a $3,500 freelance web desig
 - **W-9 status**: Sam returned a signed W-9 to Bright Roast on May 3, 2026, showing:
   - Line 1: Sam Patel
   - Line 2: Patel Studio (DBA)
-  - Line 3: Individual / sole proprietor or single-member LLC
-  - Line 4 (TIN): SSN 401-XX-XXXX
-  - Line 5: 1227 Charlotte St, Asheville, NC 28801
+  - Line 3a: Individual/sole proprietor
+  - Part I (TIN): SSN 401-XX-XXXX
+  - Lines 5–6: 1227 Charlotte St, Asheville, NC 28801
   - Part II: certified, not subject to backup withholding
 - **TIN matching**: Bright Roast verified Sam's name + SSN combo via IRS TIN Matching on May 4, 2026. Match confirmed.
 
@@ -37,12 +37,12 @@ No reimbursable expenses. No goods involved (services only). No backup withholdi
 Per the threshold rules:
 
 - Total paid in 2026: $3,500
-- 2026 threshold: $2,000 (OBBBA Section 112201)
+- 2026 threshold: $2,000 (P.L. 119-21 §70433)
 - $3,500 ≥ $2,000 → **1099-NEC required**
 
 Per payee classification:
 
-- Sam is an Individual / sole proprietor (per W-9 Line 3) → not a corporation → **subject to 1099-NEC**
+- Sam is an Individual / sole proprietor (per W-9 Line 3a) → not a corporation → **subject to 1099-NEC**
 
 Per payment channel:
 
@@ -69,9 +69,13 @@ RECIPIENT's address:
 
 Account number: BRIGHT-2026-002 (internal; Bright Roast's contractor ID for Sam)
 
-Box 1 — Nonemployee compensation:        $3,500.00
+Form 1099-NEC (Rev. December 2026), calendar year 2026
+Box 1a — Nonemployee compensation:       $3,500.00
+Box 1b — Cash tips:                       (blank)
+Box 1c — TTOC:                            (blank)
+Box 1d — Overtime compensation:           (blank)
 Box 2 — Direct sales of consumer products ≥ $5,000:  ☐ (unchecked)
-Box 3 — (reserved):                       (blank)
+Box 3 — Excess golden parachute payments: (blank)
 Box 4 — Federal income tax withheld:      $0.00
 Box 5 — State tax withheld:               $0.00
 Box 6 — State / Payer's state no.:        NC / 87-2143XXX
@@ -80,15 +84,15 @@ Box 7 — State income:                     $3,500.00
 
 ## Filing checklist
 
-- [x] Recipient Copy B mailed to Sam by January 31, 2027 (postmarked January 24, 2027)
-- [x] Copy A filed with IRS via IRIS by January 31, 2027 (submitted January 25, 2027; IRIS confirmation #2027NEC-XXXXXX)
+- [x] Recipient Copy B mailed to Sam by the due date, February 1, 2027 (January 31, 2027 is a Sunday) — postmarked January 24, 2027
+- [x] Copy A filed with IRS via IRIS by February 1, 2027 (submitted January 25, 2027; IRIS confirmation #2027NEC-XXXXXX)
 - [x] State copy: NC is a CF/SF participant; IRIS forwarded to NC Department of Revenue automatically
 - [x] Records retained: W-9, TIN match confirmation, ACH transaction records, copy of 1099-NEC, IRIS submission ID
 - [x] No Form 945 needed (no backup withholding applied)
 
 ## Why each non-obvious choice
 
-**Why ACH instead of Stripe / PayPal?** Bright Roast considered paying through Stripe but Sam preferred direct ACH. The choice matters for 1099 reporting: ACH = direct payment = payer's 1099-NEC obligation. Stripe = third-party network = Stripe issues 1099-K, payer doesn't issue 1099-NEC.
+**Why ACH instead of Stripe / PayPal?** Bright Roast considered paying through Stripe but Sam preferred direct ACH. The choice matters for 1099 reporting: ACH = direct payment = payer's 1099-NEC obligation. Card or third-party-network payment = reportable only on Form 1099-K by the platform (if its threshold is met), so the payer doesn't issue 1099-NEC.
 
 **Why TIN match before paying the second invoice?** Bright Roast's policy is to TIN-match every contractor before the first payment. If Sam's W-9 had failed matching, Bright Roast would have requested a corrected W-9 and applied backup withholding on subsequent payments until resolved. In Sam's case, TIN matched on May 4 (before the May 15 first payment), so no backup withholding needed.
 
@@ -100,26 +104,26 @@ Box 7 — State income:                     $3,500.00
 
 ## What if something had been different
 
-**If Sam had been an S-corp**: Bright Roast would have NOT issued 1099-NEC. Corporations are exempt for services (except medical / legal). Bright Roast would still keep the W-9 on file as proof of corporate status.
+**If Sam had been an S-corp**: Bright Roast would have NOT issued 1099-NEC. Corporations are exempt for services (except legal services, reported on 1099-NEC, and medical payments, reported on 1099-MISC). Bright Roast would still keep the W-9 on file as proof of corporate status.
 
-**If Sam had paid via Stripe instead of ACH**: Stripe would issue 1099-K to Sam (because Sam earned > $600 via Stripe). Bright Roast would NOT issue 1099-NEC for the same payments — that would be double-reporting.
+**If Bright Roast had paid Sam via Stripe instead of ACH**: the payments would belong on Form 1099-K from the platform, not on Bright Roast's 1099-NEC. For third-party network transactions the platform files a 1099-K only if Sam received more than $20,000 and more than 200 transactions in the year (IRC §6050W(e) as restored by P.L. 119-21), so for $3,500 Sam would likely get no form at all — and would still report the income.
 
 **If Sam had failed TIN matching**: Bright Roast would have:
-1. Sent a B-Notice (first or second depending on history) to Sam
-2. Started backup withholding 30 business days after sending the first B-Notice if no response
+1. Requested a corrected, certified W-9 (if the IRS later sent a CP2100 notice, Bright Roast would send Sam a B-Notice, first or second depending on history)
+2. Withheld 24% on payments while no valid TIN was on file (and, after an IRS notice, on payments made more than 30 business days after receiving it)
 3. Withheld 24% of each subsequent payment
 4. Deposited withheld amounts via EFTPS
-5. Filed Form 945 by January 31, 2027 reconciling backup withholding
+5. Filed Form 945 by February 1, 2027 reporting backup withholding on line 2
 6. Issued 1099-NEC with Box 4 > 0 (the withheld amount)
 
 **If total paid had been $1,800** (below the 2026 $2,000 threshold): no 1099-NEC required. Sam still has to report the $1,800 as income on Sam's Schedule C (income is taxable regardless of 1099 issuance).
 
-**If Bright Roast had paid 12 contractors $3,500 each** in 2026: total information returns = 12 → above the 10-form threshold → e-filing mandatory under TFA 2019 (IRC §6011(e)(2)). Paper filing would trigger penalty.
+**If Bright Roast had paid 12 contractors $3,500 each** in 2026: total information returns = 12 → at or above the 10-return threshold → e-filing mandatory (IRC §6011(e); T.D. 9972). Paper filing would trigger penalty for the returns beyond 10.
 
 ## Sources cited
-- IRS Form 1099-NEC, Rev. 2026 (https://www.irs.gov/pub/irs-pdf/f1099nec.pdf)
-- IRS Instructions for Forms 1099-MISC and 1099-NEC, Rev. 2026 (https://www.irs.gov/pub/irs-pdf/i1099mec.pdf)
+- IRS Form 1099-NEC, Rev. December 2026 (https://www.irs.gov/pub/irs-pdf/f1099nec.pdf)
+- IRS Instructions for Forms 1099-MISC and 1099-NEC, Rev. December 2026 (https://www.irs.gov/pub/irs-pdf/i1099mec.pdf)
 - IRC §6041, §6041A, §3406
-- OBBBA Section 112201 (2026 threshold raised to $2,000)
+- P.L. 119-21 §70433 (2026 threshold raised to $2,000)
 - Reg. §301.6109-4 (TIN truncation on payee statements)
 - W-9 Instructions (Reg. §301.6109-1(d)(2))

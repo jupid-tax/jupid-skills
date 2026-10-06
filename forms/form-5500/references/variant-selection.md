@@ -8,9 +8,9 @@ The Form 5500 series has three variants. Picking the wrong one is the most commo
 
 | Variant | Audience | Filing system | Schedules | Audit |
 |---------|----------|---------------|-----------|-------|
-| **Form 5500** (full) | Large pension/welfare plans (100+ participants) OR plans with non-eligible assets | EFAST2 only | A, C, D, G, H, MB/SB, R | IQPA audit required if 100+ |
-| **Form 5500-SF** (Short Form) | Small pension/welfare plans (< 100 participants) with eligible assets only | EFAST2 only | None (self-contained) | None |
-| **Form 5500-EZ** | One-participant plans (owner + spouse, no non-owner employees) | IRS — paper or optional EFAST2 | None | None |
+| **Form 5500** (full) | Large pension/welfare plans (100+ participants) OR small plans that fail any 5500-SF condition | EFAST2 only | H or I, R, and as applicable A, C, D, G, MB, SB, MEP, DCG | IQPA audit required for large plans; small plans only if the audit waiver is not met |
+| **Form 5500-SF** (Short Form) | Small pension/welfare plans (< 100 participants) that meet every 5500-SF condition | EFAST2 only | None, except Schedule SB, MB (lines 3, 9, 10), or MEP when applicable | None (the plan must qualify for the audit waiver) |
+| **Form 5500-EZ** | One-participant plans (owners/partners and their spouses only) and foreign plans | Paper to the IRS or EFAST2; EFAST2 required if the filer must file 10+ returns of any type in the calendar year | None (keep Schedule SB/MB in records) | None |
 
 ---
 
@@ -23,7 +23,7 @@ Plan is SEP-IRA or SIMPLE IRA?
   → No 5500. Stop. (IRA-based, not ERISA pension plan.)
 
 Plan is governmental plan (state/local/federal)?
-  → No 5500. Stop. (Title I ERISA exempt, narrow IRC §401(a)(26) exception.)
+  → No 5500. Stop. (Listed as exempt in the 2025 Form 5500-SF instructions, Plans Exempt from Filing.)
 
 Plan is non-electing church plan?
   → No 5500. Stop. (Unless plan elected ERISA coverage under IRC §410(d).)
@@ -40,24 +40,25 @@ Plan is a §403(b) plan sponsored by a non-governmental, non-church employer wit
 
 ### Step 2 — One-participant plan test (5500-EZ candidate)
 
-A one-participant plan covers **only**:
+A one-participant plan (2025 Form 5500-EZ instructions, Who Must File) is a retirement plan, other than an ESOP, that:
 
-- One owner (sole proprietor, single-member LLC member, 100% S-corp shareholder, partner who owns 100% of partnership), AND/OR
-- The owner's spouse (so long as the spouse is also an owner — e.g., both partners in a 50/50 LLC or both spouses are sole proprietors with separate businesses)
+- Covers only the owner (or the owner and spouse), and the owner (or owner and spouse) owns the entire business, incorporated or unincorporated; or
+- Covers only one or more partners (or partners and their spouses) in a partnership, treating a 2% S corporation shareholder as a partner; and
+- Provides benefits for no one else.
 
-It must have **no non-owner W-2 employees** participating in the plan during the year.
+The spouse does not have to be an owner. Any covered non-owner employee ends one-participant status.
 
 ```
-Plan covers only owner(s) + owner's spouse, no non-owner employees?
-  → Year-end plan assets ≥ $250,000?  → File 5500-EZ
-  → Year-end plan assets < $250,000?  
+Plan covers only owner(s)/partners and their spouses?
+  → Year-end plan assets (all one-participant plans of the employer combined) > $250,000?  → File 5500-EZ
+  → Combined year-end assets $250,000 or less?
       → Is this the final plan year (terminating)?  → File 5500-EZ
-      → Otherwise: NOT REQUIRED to file (IRC §6058(a) exception, IRS Notice 2011-31)
+      → Otherwise: NOT REQUIRED to file (2025 Form 5500-EZ instructions, Who Does Not Have To File)
 ```
 
-**Multiple one-participant plans by the same employer**: Aggregate the assets of all one-participant plans for the $250,000 test. If the aggregate exceeds $250,000, all the plans must file (each on its own 5500-EZ).
+**Multiple one-participant plans by the same employer**: Aggregate the assets of all one-participant plans for the $250,000 test, using line 6a(2). If the aggregate exceeds $250,000, all the plans must file (each on its own 5500-EZ).
 
-**Adding a non-owner employee**: Plan converts from 5500-EZ filer to 5500-SF / 5500 filer the year the employee becomes eligible (not the year hired). The plan is no longer one-participant.
+**Adding a non-owner employee**: Once the plan covers a non-owner employee it is no longer a one-participant plan; it becomes a Title I plan filing Form 5500-SF or Form 5500. A one-participant plan cannot file Form 5500-SF (5500-EZ instructions, Purpose of Form). Ask the user when the employee entered the plan.
 
 ### Step 3 — Welfare plan exemption (no 5500 at all for many small welfare plans)
 
@@ -68,44 +69,43 @@ Plan is a welfare plan (health, dental, vision, life, disability, EAP, etc.)?
           → No (unfunded, fully insured, or combination)?  → EXEMPT under 29 CFR §2520.104-20
           → Yes (plan has a trust)?  → Must file 5500 / 5500-SF
       → Continue
-  → Participants ≥ 100?  → Must file Form 5500 + Schedule A (insurance) and possibly Schedule C
+  → Participants ≥ 100?  → Must file Form 5500 + Schedule A (insurance), Schedule C if applicable, and Schedule H unless fully insured/unfunded under 29 CFR 2520.104-44
 ```
 
 Most small-employer health plans are exempt because they are fully insured (premiums paid to a carrier, no trust holding plan assets) or unfunded (paid from employer general assets).
 
 ### Step 4 — Pension plan size and asset test (5500-SF vs. 5500)
 
-For pension plans (401(k), profit-sharing, money purchase, target benefit, defined benefit) that are not one-participant:
+For pension plans (401(k), profit-sharing, money purchase, target benefit, defined benefit) that are not one-participant. Count participants on the first day of the plan year; defined contribution plans count only participants with account balances (Form 5500-SF line 5c(1), Form 5500 line 6g(1); end-of-year count on a first return):
 
 ```
-Participants on first day of plan year < 100?
-  → Plan invests only in "eligible plan assets"?
-      → Yes: file 5500-SF (no schedules, no audit)
-      → No (plan holds non-eligible assets — see below): file 5500 + Schedule I
+Participants on first day of plan year < 100 (or 80-120 rule)?
+  → Every 5500-SF condition met (100% eligible plan assets, no employer securities,
+    audit waiver met without enhanced bonding, not multiemployer / PEP / M-1 filer / ESOP / DCG)?
+      → Yes: file 5500-SF (no audit)
+      → No: file 5500 + Schedule I (IQPA report only if the audit waiver is not met, Schedule I line 4k "No")
   → Continue
 
-Participants ≥ 100?
+Participants ≥ 100 (and 80-120 rule not elected)?
   → File full 5500 + Schedule H + IQPA audit
 ```
 
-**80-120 participant rule** (29 CFR §2520.103-1(d)): A plan that filed as a small plan in the prior year may continue filing as small if its participant count at the beginning of the current year is between 80 and 120. This avoids forcing a plan that crosses 100 into a full audit if it's likely to drop back. The plan can elect to remain a small filer until the participant count exceeds 120.
+**80-120 participant rule** (29 CFR §2520.103-1(d)): A plan that filed as a small plan (Form 5500-SF, or Form 5500 with Schedule I) for 2024 may elect to file as a small plan for 2025 if it covers no more than 120 participants at the beginning of the 2025 plan year (2025 Form 5500 instructions, What To File, Exception (1)).
 
 ### Eligible plan assets (5500-SF qualification)
 
-A plan's assets are "eligible" if **all** assets are:
+"Eligible plan assets" (2025 Form 5500-SF instructions, line 6a) have a readily determinable fair market value, are not employer securities, and are held or issued by a bank or similar institution, a state-qualified insurance company, a registered broker-dealer, a registered investment company, or another organization authorized to act as an IRA trustee. Examples:
 
-- Bank or similar institution deposits (CDs, money market accounts)
-- Insurance company general or separate accounts
-- Mutual funds (registered investment companies)
-- Investment company securities (registered under the Investment Company Act of 1940)
-- Publicly traded employer securities held by a participant-directed account
-- Participant loans (meeting §72(p) requirements)
-- Cash held by trustee/custodian
+- Mutual fund shares
+- Investment contracts with insurance companies or banks that value the contract at least annually
+- Publicly traded stock held by a registered broker-dealer
+- Cash and cash equivalents held by a bank
+- Participant loans meeting ERISA §408(b)(1), even if deemed distributed
 
-If any plan asset is **not** on this list, the plan must file 5500 (not 5500-SF). Common non-eligible assets:
+If any plan asset is **not** eligible at any time during the year, the plan must file 5500 (not 5500-SF). Common non-eligible assets:
 
-- Real estate held directly
-- Privately held employer stock (non-public)
+- Any employer securities, publicly traded or not
+- Real estate, even if held by a bank as trustee
 - Limited partnership interests
 - Hedge funds, private equity funds
 - Tangible personal property
@@ -144,7 +144,7 @@ Filed at the plan level by the lead employer / pooled plan provider, not by each
 
 ### Controlled group / affiliated service group
 
-Multiple corporations under common control are treated as one employer for ERISA purposes. The participant count test applies to the controlled group as a whole.
+A controlled group (Code §414(b), (c), or (m)) is generally considered one employer for Form 5500 and Form 5500-SF reporting, so a plan covering several members checks the single-employer box (2025 Form 5500-SF instructions, Line A). Participants are still counted plan by plan. Enter plan characteristic code 3H.
 
 ### Top-heavy plan determination
 
@@ -162,7 +162,7 @@ A plan where no new contributions or accruals are made still files 5500 each yea
 
 2. **5500-SF filed when plan held non-eligible assets** (real estate, private LP interest, hedge fund). Must file full 5500 + Schedule H. DOL flags during examination.
 
-3. **No filing when the plan crossed $250,000**. Owner forgot the threshold. IRS penalty $250/day up to $150,000 per IRC §6652(e). Use the IRS one-participant late-filer relief program (Rev. Proc. 2015-32) for $500 flat fee per delinquent return.
+3. **No filing when the plan crossed $250,000**. Owner forgot the threshold. IRS penalty $250/day up to $150,000 per IRC §6652(e). Use the IRS late filer penalty relief program (Rev. Proc. 2015-32): $500 per delinquent return, maximum $1,500 per plan, paper filing only.
 
 4. **Continued filing 5500-SF after participant count exceeded 120**. The 80-120 rule allows continued small-plan filing only up to 120 participants. Above 120, full Form 5500 + audit are required.
 

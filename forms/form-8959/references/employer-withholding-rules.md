@@ -21,7 +21,7 @@ The $200,000 trigger is **per employer, per employee, per calendar year**.
 - Employer withholds 0.9% × ($260,000 − $200,000) = $540 (additional)
 - W-2 Box 6 = $4,310
 - Form 8959 Line 18 = $540 (owed)
-- Form 8959 Line 24 = $540 (already withheld via Box 6)
+- Form 8959 Line 22 = $4,310 − $3,770 = $540; Line 24 = $540 (already withheld via Box 6)
 - Net at filing = $0
 
 Employer absorbs the surtax through payroll. Filer reconciles on Form 8959 but owes nothing additional.
@@ -35,8 +35,9 @@ Employer absorbs the surtax through payroll. Filer reconciles on Form 8959 but o
 - Form 8959 Line 5 = $200,000 (single threshold)
 - Form 8959 Line 7 = $360 owed
 - Form 8959 Line 19 = $3,480
-- Form 8959 Line 20 = $240K × 1.45% = $3,480
-- Form 8959 Line 21 = $0 (no additional withheld)
+- Form 8959 Line 20 = $240,000 (Line 1)
+- Form 8959 Line 21 = $240K × 1.45% = $3,480
+- Form 8959 Line 22 = $0 (no additional withheld)
 - Form 8959 Line 24 = $0
 - Net at filing = $360 owed
 
@@ -51,8 +52,9 @@ Filer owes $360 at filing because each individual employer was under its own $20
 - Form 8959 Line 5 = $250,000 (MFJ threshold)
 - Form 8959 Line 7 = $180 owed
 - Form 8959 Line 19 = $3,915
-- Form 8959 Line 20 = $270K × 1.45% = $3,915
-- Form 8959 Line 21 = $0
+- Form 8959 Line 20 = $270,000 (Line 1)
+- Form 8959 Line 21 = $270K × 1.45% = $3,915
+- Form 8959 Line 22 = $0
 - Form 8959 Line 24 = $0
 - Net at filing = $180 owed
 
@@ -68,8 +70,9 @@ The classic dual-earner MFJ pattern.
 - Form 8959 Line 6 = $200,000
 - Form 8959 Line 7 = $1,800 owed
 - Form 8959 Line 19 = $7,600
-- Form 8959 Line 20 = $400K × 1.45% = $5,800
-- Form 8959 Line 21 = $1,800 (additional withheld)
+- Form 8959 Line 20 = $400,000 (Line 1)
+- Form 8959 Line 21 = $400K × 1.45% = $5,800
+- Form 8959 Line 22 = $1,800 (additional withheld)
 - Form 8959 Line 24 = $1,800
 - Net at filing = $0
 
@@ -89,12 +92,13 @@ Filer owes $45 because MFS lowers the filer threshold to $125K but the employer 
 
 ## When over-withholding happens
 
-Less common but exists. An employer can over-withhold under the additional 0.9% rule if:
+Less common but exists. The employer must withhold on its own wages above $200,000 regardless of filing status, so withholding can exceed what the filer owes when:
 
-- The filer is MFS at $125K threshold but the employer paid more than $200K — the employer correctly withheld the additional 0.9% on the over-$200K portion, but the filer's own Form 8959 calculation may show *more* surtax owed (filer's combined wages or SE income above $125K)
-- The filer changes employers mid-year, and the second employer pays over $200K, withholding correctly above $200K from its own payroll, while the first employer also withheld correctly from its own — but the filer's combined wages exceed neither's individual trigger, leaving both withholdings correct from each employer's view but mismatched against the filer's combined position
+- The filer is MFJ, one spouse's employer paid more than $200,000, and the couple's combined Medicare wages (plus SE income) are under the $250,000 MFJ threshold. Example: one spouse $220,000, the other $0 → the employer withheld $180 (0.9% × $20,000), Line 18 = $0, Line 24 = $180, and the $180 comes back as a credit.
 
-The reconciliation at Form 8959 Line 21 always settles to the correct number. Over- or under-withheld amounts flow through Line 24 to Form 1040 Line 25c, and any imbalance against Line 18 (Schedule 2 Line 11) flows through normal Form 1040 totals.
+The employee can't ask the employer to stop required withholding. "If you don't owe Additional Medicare Tax, you can claim a credit for any withheld Additional Medicare Tax against the total tax liability shown on your tax return by filing Form 8959" (2025 Instructions for Form 8959). (MFS does not cause over-withholding: the $125,000 MFS threshold is below the $200,000 employer trigger, so MFS filers tend to owe more at filing.)
+
+Line 22 (Line 19 − Line 21) captures the Additional Medicare Tax actually withheld on wages. Line 24 flows to Form 1040 Line 25c and Line 18 to Schedule 2 Line 11; any difference between them settles through normal Form 1040 totals.
 
 ## Multiple-employer planning
 
@@ -103,11 +107,11 @@ If a filer expects to be in the multiple-employer-under-trigger pattern next yea
 1. **Updated Form W-4 with Step 4(c) extra withholding**: have one employer withhold an additional fixed amount per pay period to absorb the expected surtax. If the user expects $360 of surtax annually, $14 per biweekly paycheck covers it.
 2. **Quarterly Form 1040-ES estimates**: alternative if the filer prefers to pay quarterly and not adjust W-4. Use the Additional Medicare Tax estimate as part of the total estimated tax computation.
 
-The agent should NOT recommend asking the second employer to start withholding additional Medicare tax voluntarily — employers cannot withhold the 0.9% additional unless their own payroll to the employee crosses $200K.
+The agent should NOT recommend asking the second employer to start withholding additional Medicare tax voluntarily — the employee "can't request additional withholding specifically for Additional Medicare Tax"; the tool is extra income tax withholding on a new Form W-4 (2025 Instructions for Form 8959, "Income Tax Withholding and Estimated Tax Payments for 2026").
 
 ## Self-employment has no employer-side withholding
 
-For SE income, there is no withholding mechanism — the filer pays via quarterly estimated taxes (Form 1040-ES). If a filer expects to owe Additional Medicare Tax on SE income, they should include it in their quarterly estimates. See Form 1040-ES Worksheet for the computation.
+For SE income, there is no withholding mechanism — the filer pays via quarterly estimated taxes (Form 1040-ES). If a filer expects to owe Additional Medicare Tax on SE income, they should include it in their quarterly estimates. Estimated payments apply to all taxes on the return and can't be designated specifically for Additional Medicare Tax (2025 Instructions for Form 8959). See Form 1040-ES and Pub. 505 for the computation.
 
 ## Sources
 

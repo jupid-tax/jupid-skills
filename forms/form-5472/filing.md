@@ -66,7 +66,7 @@ hours via the software's status page. Save the IRS submission ID.
 
 | Symptom | Likely cause | Fix |
 |---------|--------------|-----|
-| Software rejects 5472 with "missing related party EIN" | Foreign related party has no US EIN | Use foreign tax ID with appropriate prefix; if no foreign tax ID, leave blank with notation |
+| Software rejects 5472 with "missing related party EIN" | Foreign related party has no US EIN | Enter the reference ID the corporation assigned (lines 4b(2) / 8b(2)) and the FTIN if any (4b(3) / 8b(3)) per the Instructions for Form 5472 |
 | 1120 e-file rejected for inconsistency between 1120 and 5472 amounts | Cross-form mismatch | Reconcile (interest expense on 1120 must match interest paid on 5472) |
 | Software doesn't support Form 5472 | Some DIY packages omit international forms | Switch to enterprise software, or paper file |
 
@@ -115,20 +115,23 @@ Agent must have:
 
 - Completed Form 5472 draft for each related party (typically just the
   foreign owner)
-- Pro-forma Form 1120 — completed with:
-  - Entity name, EIN, address
-  - Date incorporated
-  - State of organization
-  - **"FOREIGN-OWNED U.S. DE" notation** at top of form (handwritten or
-    typed) per Form 5472 instructions
-  - Income, deduction, tax lines: typically all zeros
-  - Schedule attachments: Form 5472(s), nothing else needed
+- Pro-forma Form 1120 — completed with only (Instructions for Form
+  5472, When and Where To File):
+  - Entity name and address
+  - Item B: EIN
+  - Item E: initial return / final return / name change / address
+    change boxes as applicable
+  - **"Foreign-owned U.S. DE" written across the top** of the Form 1120
+  - Every other line left blank
+  - Attachments: Form 5472(s) and the Part V statement
 - Foreign owner's identification (name, address, country, foreign tax
   ID if any)
 - US EIN for the DE — obtain via Form SS-4 if not already held. Foreign
-  owners can apply for an EIN by phone (267-941-1099, IRS International
-  Tax Line) or by mail/fax of SS-4. The DE needs a US EIN even with no
-  US income.
+  owners with no US residence or place of business can apply by phone
+  (267-941-1099, not toll free), by fax (855-215-1627 from within the
+  US, 304-707-9471 from outside), or by mail (Instructions for Form
+  SS-4, Rev. December 2025; see [`form-ss-4`](../form-ss-4/SKILL.md)).
+  The DE needs a US EIN even with no US income.
 - Printer, fax machine OR fax service (e.g., HelloFax, eFax,
   RingCentral)
 - Postage and envelope if mailing instead of faxing
@@ -140,33 +143,32 @@ Agent must have:
    1 of Form 1120 (typed in PDF or handwritten on print)
 3. Print Form 5472 for each related party (one Form 5472 per related
    party)
-4. Sign Form 1120 in the corporate officer signature block. The
-   foreign owner can sign as "Owner" or as a corporate officer
-   designation (the DE may or may not have a formal officer structure;
-   "Member" or "Manager" is typical for an LLC). Wet ink or digital
-   signature acceptable on the printed form (the IRS accepts digital
-   signatures on most paper-filed forms since IRS Notice 2020-XX
-   guidance — verify current state).
+4. Signature: the Form 5472 instructions list only name, address,
+   items B and E as required on the pro forma 1120 and do not address
+   the signature block. ASK the user or CPA; a common practice is for
+   the foreign owner to sign as the LLC's "Member" or "Manager". Use a
+   wet-ink signature unless the CPA confirms the IRS currently accepts
+   an electronic signature on this paper filing.
 5. Stack: Form 1120 (top), then each Form 5472, then any supporting
    schedules. Single staple in upper-left corner.
 
 ### Step 2 — Choose between fax and mail
 
-Form 5472 instructions (current revision) specify a **fax number** for
-filing pro-forma 1120 + 5472:
+The Instructions for Form 5472 (Rev. December 2024), "Dedicated mailing
+address", specify the only two channels for a foreign-owned DE. These
+filers do not use the addresses in the Instructions for Form 1120:
 
-- **Fax**: **855-887-7737** (verify against current Form 5472
-  instructions before sending — the IRS has changed this number in the
-  past)
+- **Fax**: **855-887-7737** (300 DPI or higher)
 - **Mail address**:
   ```
   Internal Revenue Service
-  1973 N Rulon White Blvd.
-  M/S 6112, Attn: PIN Unit
-  Ogden, UT 84404
+  1973 Rulon White Blvd
+  M/S 6112 Attn: PIN Unit
+  Ogden, UT 84201
   ```
-  (Verify current address against Form 5472 instructions; the IRS shifts
-  service center addresses periodically)
+
+Re-check both against the instructions current on the filing date
+(https://www.irs.gov/forms-pubs/about-form-5472).
 
 **Fax is preferred** for foreign filers because:
 - No postal delivery delays from abroad
@@ -192,9 +194,10 @@ country where international fax is unreliable.
 1. Use **USPS Priority Mail International** (or equivalent express
    service from foreign country) with **tracking**
 2. Get a **certified mail receipt** or international tracking number
-3. The postmark date is the filing date (under IRC §7502
-   timely-mailing-as-timely-filing rule, applies to designated private
-   delivery services per Notice 2016-30)
+3. The postmark date is the filing date under the IRC §7502
+   timely-mailing-as-timely-filing rule, which also covers IRS-designated
+   private delivery services (current list at IRS.gov/PDS; a PDS cannot
+   deliver to a P.O. box, per the Instructions for Form 1120 (2025))
 4. International mail from outside the US: timely-mailing rules apply
    only to USPS and IRS-designated private delivery services. If using
    foreign postal service, the filing date is the date of IRS receipt,
@@ -209,9 +212,10 @@ confirmation.
 ### Step 6 — Wait for IRS processing
 
 The IRS does not send routine acknowledgments for paper-filed pro-forma
-1120 + 5472. Silence after 6+ months means the filing was processed
-without issues. If the user receives a notice (often a CP-210 or Letter
-2205), respond promptly with documentation.
+1120 + 5472. Silence generally means no issue was raised. If the user
+receives a notice (for example a penalty notice or a request for a
+missing return), respond by the deadline on the notice with
+documentation.
 
 A common notice: **"We have not received your Form 1120"** — sent
 because the IRS records show a corporate EIN but no return on file.
@@ -220,28 +224,38 @@ with proof of the original fax/mail filing.
 
 ### Due date
 
-- **Due date**: April 15 (15th day of 4th month after end of DE's tax
-  year — calendar year by default for DEs)
+- **Due date**: the due date of Form 1120: April 15 for a calendar-year
+  DE (the DE uses its owner's U.S. tax year or, if none, the calendar
+  year)
 - **Extension**: Form 7004 grants automatic 6-month extension to October
   15. File Form 7004 by April 15 via the same fax number
-  (855-887-7737) or by mail to the same Ogden address.
-- **For foreign owners outside the US**: the automatic 2-month
-  extension for "abroad" filers (June 15) does NOT apply to a US DE.
-  The DE files on the corporate calendar even if its foreign owner has
-  abroad-extension privileges.
+  (855-887-7737) or by mail to the same Ogden address, with
+  "Foreign-owned U.S. DE" written across the top and the Form 1120 code
+  on Part I, line 1 (Instructions for Form 5472, Extension of time to
+  file).
+- **For foreign owners outside the US**: Treas. Reg. §1.6081-5 gives an
+  automatic extension to the 15th day of the 6th month to a domestic
+  corporation that transacts its business and keeps its books and
+  records outside the US and Puerto Rico (Instructions for Form 7004,
+  Line 4). The Form 5472 instructions do not say whether a foreign-owned
+  DE's pro forma 1120 can use it. Do not rely on it: file by April 15
+  or file Form 7004, and ask the CPA.
 
 ### Penalty exposure for late or missed filing
 
-- **$25,000 per related party per year** under IRC §6038A(d)(1)
-- **Continuing $25,000 every 30 days** after IRS notice if not corrected
-- For a DE with a single foreign owner, that's $25,000/year minimum if
-  not filed; $25,000/year + $25,000/30 days if a notice is issued and
-  ignored
+- **$25,000 per related party per year** under IRC §6038A(d)(1) and
+  Treas. Reg. §1.6038A-4(a)(3)
+- **Additional $25,000 per 30-day period (or part)** if the failure
+  continues more than 90 days after IRS notice (§6038A(d)(2))
+- For a DE with a single foreign owner, that's $25,000/year if not
+  filed; plus $25,000 per 30-day period once 90 days pass after a
+  notice that is ignored
 
-The **First-Time Abate program does NOT apply** to §6038A penalties (per
-IRM 20.1.9 — international information return penalties are outside FTA
-scope). The only defense is **reasonable cause** under §6038A(d)(3),
-which requires affirmative documentation:
+The **First-Time Abate program does not apply** to Form 5472 penalties:
+IRM 20.1.1.3.3.2.1 lists Form 5472 among returns where FTA relief is
+not applicable (it points to IRM 20.1.9 for an exception). The normal
+defense is **reasonable cause** under §6038A(d)(3) and Treas. Reg.
+§1.6038A-4(b), which requires an affirmative showing:
 
 - The user (foreign owner) was unaware of the filing requirement and
   acted promptly upon discovery
@@ -268,9 +282,9 @@ After filing (any channel), the form moves through:
 
 There is no "Where's My 5472" tool. For Type 1 (1120 e-file), the
 e-file software status page shows acceptance/rejection. For Type 3
-(paper), the user can request an account transcript to confirm the
-1120 is on file (the transcript shows TC 150 = "Original return
-posted").
+(paper), the fax transmission report or mail tracking is the proof of
+filing; the user can also request a business account transcript for
+the EIN and have the CPA read it.
 
 ---
 
@@ -298,14 +312,14 @@ These are non-negotiable:
 
 | Symptom | Likely cause | Fix |
 |---------|--------------|-----|
-| User receives CP-210 / Letter 2205 (failure to file) | IRS shows no 5472 on file | Re-fax or re-mail with reasonable cause statement; cite original filing date if you have proof |
-| User receives $25,000 penalty notice | IRS believes 5472 was missing or incomplete | Respond within 30 days with reasonable cause statement OR proof of filing |
+| User receives a notice that the return or Form 5472 was not filed | IRS shows no 5472 on file | Re-fax or re-mail with reasonable cause statement; cite original filing date if you have proof |
+| User receives $25,000 penalty notice | IRS believes 5472 was missing or incomplete | Respond by the deadline on the notice with reasonable cause statement OR proof of filing |
 | Fax bounces / busy signal | IRS fax number changed or temporarily unavailable | Verify current number in Form 5472 instructions; switch to mail filing |
 | Mail returned undeliverable | Wrong service center address | Verify against current Form 5472 instructions and re-send |
 | User filed pro-forma 1120 to wrong address (e.g., to filer's state service center) | Type 3 DEs use Ogden specifically | Re-file at correct Ogden address; document original filing for reasonable cause |
 | Form 5472 "missing" but Form 1120 is on file | 5472 detached from 1120 in IRS system | Re-submit 5472 only with cover letter referencing the 1120 |
 | EIN mismatch between 5472 and 1120 | Two different EINs entered | Use the same EIN consistently; the DE has only one EIN |
-| Foreign owner has no US tax ID and no foreign tax ID | Some jurisdictions don't issue tax IDs to individuals | Use the foreign owner's full legal name + address + country; mark ID field "None" with notation |
+| Foreign owner has no US tax ID and no foreign tax ID | Some jurisdictions don't issue tax IDs to individuals | Assign a reference ID on line 4b(2) (alphanumeric, no spaces or special characters, up to 50 characters, same every year) and enter "None" or "N/A" on line 4b(3) (Instructions for Form 5472) |
 
 ---
 

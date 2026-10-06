@@ -75,12 +75,12 @@ This is the single most-important step for multi-member LLCs. Skipping it voids 
 
 ```
 Tax year start:  01/01/2026
-Deadline:        03/15/2026
+Deadline:        03/15/2026, a Sunday, so 03/16/2026 (IRC §7503)
 Today:           02/01/2026
 Status:          ON TIME (~6 weeks of cushion)
 ```
 
-Standard election. No Part IV required.
+Timely election: no Rev. Proc. 2013-30 header, item I blank, Part IV blank.
 
 ---
 
@@ -104,7 +104,7 @@ If Riverside elects S-corp with $80K salary each:
 
   Combined SE-tax savings: $36,737 − $24,480 = $12,257
 
-Compliance overhead:
+Compliance overhead (rough market estimates, not IRS figures; ask for quotes):
   Payroll software (2 employees):           $1,000
   TX state UI (low-tax state):              $400
   Bookkeeping increment:                    $1,800
@@ -124,13 +124,15 @@ Both Daniel and Rachel are 50/50 owners but perform different roles:
 
 ```
 Daniel — Field operations / project manager
-  BLS SOC: 11-9021 Construction Managers — 2024 median $104,900 (national)
+  BLS SOC: 11-9021 Construction Managers — May 2025 OEWS national median $114,990
+           (BLS series OEUN000000000000011902113)
   Texas-adjusted: ~$95,000
   Hours/week: 50 (active operations)
   Documented salary: $80,000 (conservative below BLS)
 
 Rachel — Sales, business development, finance
-  BLS SOC: 11-1021 General and Operations Managers — 2024 median $101,280
+  BLS SOC: 11-1021 General and Operations Managers — May 2025 OEWS national median $105,770
+           (BLS series OEUN000000000000011102113)
   Texas-adjusted: ~$92,000
   Hours/week: 45 (mix of office + field)
   Documented salary: $80,000 (parity with Daniel — equal partners equal pay)
@@ -142,7 +144,7 @@ Both salaries documented in writing, signed by both members. Memo dated 02/01/20
 
 ## Step 6 — Both members consent
 
-S-corp election requires **unanimous shareholder consent**. Both Daniel and Rachel must sign Form 2553 Column K. Both provide SSN in Column N.
+S-corp election requires **unanimous shareholder consent**. Both Daniel and Rachel must sign and date column K by hand, with SSNs in column M and tax year ends in column N.
 
 ```
 Daniel — single, lives in Texas. Texas IS a community-property state.
@@ -150,7 +152,8 @@ Daniel — single, lives in Texas. Texas IS a community-property state.
    Daniel is unmarried — no spouse signature needed.
 
 Rachel — married, lives in Texas (community-property state).
-   ⚠ Rachel's spouse (Mark Adams) must also sign and provide SSN.
+   ⚠ Rachel's spouse (Mark Adams) holds a community interest in her LLC
+     interest and must also consent (Reg. §1.1362-6(b)(2)(i)).
    Rachel and Mark both sign.
 ```
 
@@ -159,41 +162,44 @@ Rachel — married, lives in Texas (community-property state).
 ## Step 7 — Form 2553 draft
 
 ```
-PART I — ELECTION INFORMATION
+PART I — ELECTION INFORMATION (Form 2553, Rev. December 2017)
 
-A. Name of corporation:               Riverside Builds, LLC
-B. Address:                           7800 Industrial Way
+Name:                                 Riverside Builds, LLC
+Address:                              7800 Industrial Way
                                       Austin, TX 78745
-C. Employer Identification Number:    99-1122334
-D. Date incorporated:                 06/01/2024
-E. State of incorporation:            TX
-F. Election effective date:           01/01/2026
-G. Contact: Daniel Wright, 7800 Industrial Way, Austin, TX 78745, (512) 555-1010
-H. Name change:                       (blank)
-I. Tax year:
+A. Employer identification number:    99-1122334
+B. Date incorporated:                 06/01/2024
+C. State of incorporation:            TX
+D. Name/address changed after EIN:    (blank)
+E. Effective for tax year beginning:  01/01/2026
+F. Selected tax year:
    [X] (1) Calendar year
-J. Officer:    Daniel Wright
-   Title:      Member-Manager
-   Date:       02/01/2026
+G. >100 shareholders box:             (blank)
+H. Contact: Daniel Wright, Member-Manager, (512) 555-1010
+I. Late election explanation:         (blank, timely)
 
-SHAREHOLDER CONSENT STATEMENT
+Signature of officer:  Daniel Wright (handwritten)
+Title:                 Member-Manager
+Date:                  02/01/2026
 
-| # | J. Name & address       | K. Sig.  | L. Date    | M. Ownership          | N. SSN     |
-|---|-------------------------|----------|------------|-----------------------|------------|
-| 1 | Daniel Wright           | D.Wright | 02/01/2026 | 50% from 06/01/2024   | XXX-XX-1111|
-|   | 7800 Industrial Way     |          |            |                       |            |
-|   | Austin, TX 78745        |          |            |                       |            |
-| 2 | Rachel Adams            | R.Adams  | 02/01/2026 | 50% from 06/01/2024   | XXX-XX-2222|
-|   | 1505 Oak Lane           |          |            |                       |            |
-|   | Austin, TX 78704        |          |            |                       |            |
-| 3 | Mark Adams              | M.Adams  | 02/01/2026 | (community-prop spouse| XXX-XX-3333|
-|   | (spouse, Rachel Adams)  |          |            |  consent only — 0%)   |            |
-|   | 1505 Oak Lane           |          |            |                       |            |
-|   | Austin, TX 78704        |          |            |                       |            |
+PAGE 2 — SHAREHOLDERS' CONSENTS
 
-PART II — Skip (calendar year)
+| # | J. Name & address       | K. Signature / date    | L. Ownership / acquired    | M. SSN      | N. Tax yr ends |
+|---|-------------------------|------------------------|----------------------------|-------------|----------------|
+| 1 | Daniel Wright           | D. Wright / 02/01/2026 | 50% / 06/01/2024           | XXX-XX-1111 | 12/31          |
+|   | 7800 Industrial Way     |                        |                            |             |                |
+|   | Austin, TX 78745        |                        |                            |             |                |
+| 2 | Rachel Adams            | R. Adams / 02/01/2026  | 50% / 06/01/2024           | XXX-XX-2222 | 12/31          |
+|   | 1505 Oak Lane           |                        |                            |             |                |
+|   | Austin, TX 78704        |                        |                            |             |                |
+| 3 | Mark Adams              | M. Adams / 02/01/2026  | Community interest in      | XXX-XX-3333 | 12/31          |
+|   | (spouse, Rachel Adams)  |                        | Rachel's 50%               |             |                |
+|   | 1505 Oak Lane           |                        |                            |             |                |
+|   | Austin, TX 78704        |                        |                            |             |                |
+
+PART II — Skip (item F box 1)
 PART III — Skip (no trust shareholder)
-PART IV — Skip (on time)
+PART IV — Skip (timely; no late classification election)
 
 ATTACHMENTS:
   - Operating agreement amendment effective 01/01/2026 (NOT required by IRS but
@@ -212,7 +218,8 @@ ATTACHMENTS:
 □ Math: 50% + 50% = 100% ✓
 □ Sanity warnings: $80K salary on $130K K-1 income per member = 62% — well above
                   any "underpayment" risk threshold
-□ Form completeness: A-J complete, Line I Box 1 checked
+□ Form completeness: name, address, A-F and H complete; F box (1) checked;
+                     G and I blank; Parts II-IV blank; officer signature present
 ```
 
 Ready to file.
@@ -225,11 +232,11 @@ Ready to file.
 Service center:   Ogden, UT (TX is in Ogden zone)
 Method:           Fax to 855-214-7520
 Date:             02/02/2026, 11:30 AM
-Pages:            2
-Confirmation:     SUCCESSFUL — saved as PDF
+Pages:            4 (all form pages; pages 3-4 blank)
+Confirmation:     SUCCESSFUL — transmission report saved as PDF
 ```
 
-No mailing — fax only.
+No mailing — fax only. The entity keeps the original hand-signed form with its records (Instructions for Form 2553, "Where To File"). The fax report is not on the instructions' list of acceptable proof of filing, so the CP261 is the proof to keep.
 
 ---
 
@@ -249,14 +256,14 @@ This is the multi-member-specific step. The entity is moving from Form 1065 (par
 
 ```
 Tax year 2025 (final partnership year):
-  □ File final Form 1065 marked "Final Return" (due 03/15/2026)
+  □ File final Form 1065 marked "Final Return" (due 03/16/2026; 03/15 is a Sunday)
   □ Issue final Schedule K-1s to Daniel and Rachel (50/50 split of 2025 income)
   □ Daniel and Rachel each report 2025 K-1 income on their personal returns
 
 Tax year 2026 (first S-corp year):
   □ File Form 1120-S marked "Initial Return" by 03/15/2027
   □ Issue Schedule K-1s reflecting wages + distributions
-  □ Daniel and Rachel each report W-2 wages on Form 1040 Line 1
+  □ Daniel and Rachel each report W-2 wages on Form 1040 line 1a
     AND K-1 income on Schedule E
 
 Payroll setup (effective 01/01/2026 or as soon as CP261 received):
@@ -265,10 +272,11 @@ Payroll setup (effective 01/01/2026 or as soon as CP261 received):
   □ Federal income tax withholding (W-4 each)
   □ FICA: 7.65% employer + 7.65% employee = 15.3% combined
   □ FUTA: 0.6% on first $7,000 per employee
-  □ TX SUTA: rate ~ 2.7% on first $9,000 (rate set by TX Workforce Commission)
+  □ TX SUTA: rate and taxable wage base assigned by the Texas Workforce
+    Commission; ASK the user for the assigned rate
   □ Quarterly Form 941 (employer side) — covering both employees
   □ Annual Form 940 — covering both
-  □ W-2 to each employee by Jan 31, 2027
+  □ W-2 to each employee by Feb 1, 2027 (Jan 31, 2027 is a Sunday)
 ```
 
 ---
@@ -279,8 +287,8 @@ Texas has no state income tax. The federal S-corp election does not require a se
 
 However, Texas has a **franchise tax (margin tax)**:
 - Riverside Builds owes franchise tax regardless of federal tax election
-- 0.375% retail / 0.75% other rate on net taxable margin (above $1.23M no-tax threshold for 2025)
-- 2026 projected revenue likely below the no-tax threshold, but verify annually with TX Comptroller
+- 0.375% retail / 0.75% other rate on taxable margin; no tax due at or below the no-tax-due threshold ($2.47 million total revenue for 2024-2025 reports, $2.65 million for 2026 reports; see [`../references/state-conformity.md`](../references/state-conformity.md))
+- 2026 revenue is reported on the 2027 report; verify that year's threshold with the TX Comptroller
 
 The S-corp election is **net-positive** in Texas because:
 - No state income tax to layer on top
@@ -323,4 +331,4 @@ If Daniel and Rachel had filed Form 2553 without amending the operating agreemen
 - Plus penalties for underpayment, failure to file 1065, etc.
 - Estimated cost of this error: $40,000-$80,000 in back tax + penalties + interest
 
-The 30 minutes spent amending the operating agreement saved a six-figure mistake.
+The 30 minutes spent amending the operating agreement avoided a five-figure mistake (the cost range above is a rough estimate, not an IRS figure).

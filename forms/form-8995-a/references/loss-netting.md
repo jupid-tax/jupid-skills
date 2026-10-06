@@ -8,13 +8,13 @@ If any of the taxpayer's businesses has a negative QBI, Schedule C of Form 8995-
 
 ## When Schedule C of Form 8995-A applies
 
-You must complete it when:
-- You have two or more trades, businesses, or aggregations, AND
-- At least one has a negative QBI
+You must complete it before Part I when (2025 i8995-A, Schedule C):
+- Any trade, business, or aggregation has a qualified business loss for the current year, OR
+- You have a qualified business net loss carryforward from prior years (even if the loss was unreported or the business no longer exists)
 
-If only one business is reported and its QBI is negative: skip Schedule C; report the negative QBI as a carryforward to next year (no deduction this year).
+This includes a single business with a loss: Schedule C line 6 is how the loss carries to next year.
 
-If all businesses have positive QBI: skip Schedule C; sum the Part II Line 13 amounts directly into Part IV Line 27.
+If all businesses have positive QBI and there is no carryforward: skip Schedule C; Part II line 16 flows to Part IV line 27.
 
 ---
 
@@ -25,9 +25,9 @@ For each negative-QBI business, allocate its loss to each positive-QBI business 
   loss_to_business_i = (positive_QBI_i / sum_of_positive_QBIs) × total_negative_QBI
 ```
 
-After allocation, each positive-QBI business has a reduced positive QBI, which becomes its Line 2 input for Part II.
+On the schedule: line 3 = negative amounts on line 1(a) plus the line 2 carryforward; line 4 = positive amounts on line 1(a); line 5 = smaller of |line 3| or line 4, apportioned to positive-QBI businesses in column (b); column (c) = (a) + (b), floored at zero → Form 8995-A line 2. After allocation, each positive-QBI business has a reduced QBI, which becomes its Line 2 input for Part II.
 
-If the aggregate positive QBI minus the negative QBI is still negative: total carries forward; this year's Line 27 = $0.
+If the losses exceed the positive QBI: line 6 (line 3 − line 5) carries forward; this year's QBI component (Line 27) = $0.
 
 ---
 
@@ -36,7 +36,7 @@ If the aggregate positive QBI minus the negative QBI is still negative: total ca
 **Input:**
 - Business 1: QBI = $80,000 (positive)
 - Business 2: QBI = ($30,000) (negative — a loss)
-- Both are non-SSTB; both are below threshold (using Form 8995-A only because one is SSTB? Actually, if both are non-SSTB AND below threshold, use Form 8995. For this example, assume the user is above the threshold for some other reason.)
+- Both are non-SSTB; taxable income is above the threshold (Form 8995-A applies)
 
 **Allocation:**
 - Sum of positive QBIs: $80,000
@@ -84,7 +84,7 @@ The W-2/UBIA limit then applies to Business 1 on the netted $50,000. Business 1'
 
 **Net QBI: $30,000 − $60,000 = ($30,000) negative.**
 
-This year's QBI component (Part IV Line 27) = $0. The full $30,000 negative QBI carries forward to next year as a "QBI loss carryover" — entered on next year's Form 8995-A as a reduction to next year's QBI before any deduction.
+This year's QBI component (Part IV Line 27) = $0. Schedule C line 6 shows the ($30,000) carryforward; it goes on next year's Schedule C (Form 8995-A) line 2 (or Form 8995 line 3) and reduces next year's QBI.
 
 **Important:** The QBI loss carryforward does NOT reduce ordinary taxable income directly. It only reduces next year's QBI for §199A purposes. The loss is still deductible against ordinary income through the normal Schedule C / K-1 mechanisms (this is a separate concept).
 
@@ -124,8 +124,8 @@ This continues indefinitely; there's no expiration on the QBI loss carryforward.
 
 2. **Netting REIT loss against business QBI**: not allowed. REIT/PTP losses are netted against REIT/PTP income only.
 
-3. **Ignoring the carryforward**: if aggregate QBI was negative last year, this year's Line 28 must subtract the carryforward. Software sometimes drops this between years.
+3. **Ignoring the carryforward**: if last year's Schedule C (Form 8995-A) line 6 (or Form 8995 line 16) was negative, it goes on this year's Schedule C line 2. (Line 29 of Form 8995-A is only for the REIT/PTP carryforward.) Software sometimes drops this between years.
 
 4. **Allocating the loss disproportionately**: must be proportional to positive QBI, not by business size, age, or any other metric.
 
-5. **Counting an SSTB business with $0 deduction (above phase-in top) as a positive-QBI business for netting purposes**: it has positive QBI but contributes $0 to the deduction. The IRS hasn't published clear guidance on whether the netting uses pre-SSTB-suppression QBI or zero. The safer answer is to use the pre-suppression QBI; but if your facts are close to the line, consult a tax professional.
+5. **Counting an SSTB above the phase-in top in the netting**: above the top of the range, no QBI, W-2 wages, or UBIA from the SSTB are taken into account (2025 i8995-A, "SSTBs excluded from your qualified trades or businesses"), so it is neither a positive nor a negative business on Schedule C. In the phase-in range, use the Schedule A line 11 amount (Schedule A line 11 says to enter it on Schedule C).

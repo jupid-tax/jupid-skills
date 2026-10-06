@@ -69,7 +69,7 @@ The agent surfaces this to Raj: "Because you're an S-corp, you can mark exempt p
 ## Tax classification (Line 3)
 3a. Federal tax classification:                S Corporation
     (If LLC) Tax classification letter:        n/a (LLC box NOT checked — entity is a corporation, not an LLC)
-3b. (FATCA pass-through indicator):            blank
+3b. Foreign partners, owners, or beneficiaries: blank (a corporation, not a partnership, trust, or estate)
 
 ## Exemptions (Line 4)
 Exempt payee code:                             5 (Corporation, exempt from backup withholding)
@@ -107,7 +107,7 @@ Verification of requestor legitimacy:          Existing signed SOW; DocuSign env
 
 **Why is Line 2 blank instead of repeating "Patel Consulting Inc."?** When the legal entity name on Line 1 is also the operating name (no separate DBA), Line 2 is left blank per the IRS instructions. Repeating the same name on Line 2 is technically allowed but adds no information.
 
-**Why is the corp's address on Lines 5-6, not Raj's home address?** The address on the W-9 is where the requestor will mail the 1099 (if any) and any IRS-related correspondence. Patel Consulting Inc.'s registered address is its Delaware office of record (the entity's tax-return address on Form 1120-S). Using Raj's home address would create a mismatch with what the IRS has on file for the corporation's EIN.
+**Why is the corp's address on Lines 5-6, not Raj's home address?** The W-9 instructions describe line 5 as where the requester will mail information returns. The corporation's own mailing address (the one on its Form 1120-S) keeps the corporation's tax mail with the corporation. A registered agent's address is usually not the right mailing address unless the agent forwards mail.
 
 **Why does Raj sign as "President & CEO" rather than just "Raj Patel"?** When an entity (corp / LLC / partnership / trust) signs a W-9, the signer is acting as an officer of the entity — not as themselves. The signature line should make clear the signer has authority to bind the entity. Raj is the sole officer of Patel Consulting Inc., so he signs as an officer with title. DocuSign handles this through its title field; on a paper form, Raj would write his name + "President & CEO" beneath.
 
@@ -133,7 +133,7 @@ Northbridge stores Patel Consulting Inc.'s W-9 in their vendor master with the C
 
 - **1099-NEC**: Generally NOT required for payments to a corporation (IRC §6041, Treas. Reg. §1.6041-3(p) general exemption). Northbridge may opt to issue a 1099-NEC anyway as a courtesy or per their internal policy — the corp Code 5 exemption shields it from BUW regardless.
 - **No backup withholding**: W-9 on file, valid TIN matching the corporate name, Code 5 exemption certified.
-- **State 1099 filing**: Some states (CA, NY, MA, etc.) require 1099 filing thresholds different from federal. Northbridge's state-tax team handles those independently.
+- **State 1099 filing**: state rules can differ from federal; Northbridge checks each state it reports to.
 
 Patel Consulting Inc. then files its 2026 Form 1120-S by March 15, 2027 (or with extension by September 15, 2027), reporting the $144,000 as gross receipts. Raj receives:
 - A **W-2** from Patel Consulting for his reasonable salary (e.g., $80,000)
@@ -144,7 +144,7 @@ Both flow into Raj's personal return — but neither uses the W-9 with Northbrid
 ## Audit-defense documentation the corp keeps
 
 - DocuSign audit trail (signer email, IP, timestamp, tamper-evident seal)
-- Copy of the completed W-9 in the corporation's records (encrypted, retained at minimum 4 years per IRS records-retention guidance)
+- Copy of the completed W-9 in the corporation's records (encrypted)
 - Form 2553 IRS acceptance letter (proves S-corp election is valid)
 - Articles of Incorporation (proves entity is a corporation, not an LLC)
 - Corporate resolution authorizing Raj to sign W-9s on behalf of the corp (not strictly required when there's a sole officer, but good practice for audit defense)
@@ -160,4 +160,4 @@ Both flow into Raj's personal return — but neither uses the W-9 with Northbrid
 - IRC §1361-1378 (S-corporation tax provisions, Subchapter S)
 - Form 2553 (Election by a Small Business Corporation)
 - Form 1120-S (US Income Tax Return for an S Corporation)
-- IRS Publication 1345 (e-signature standards for tax forms)
+- IRS Instructions for the Requester of Form W-9 (Rev. March 2024), Electronic Submission of Forms W-9

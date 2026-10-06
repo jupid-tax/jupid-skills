@@ -1,18 +1,19 @@
 # Example: Late S-Corp Election with Rev. Proc. 2013-30 Relief
 
-End-to-end worked example: LLC formed in 2024 that missed the original S-corp election deadline. User discovers the omission in 2026 while preparing taxes. Demonstrates Rev. Proc. 2013-30 mechanics — Part IV completion, reasonable-cause statement, and combined filing with first Form 1120-S.
+End-to-end worked example: LLC formed in 2024 that missed the S-corp election deadline for 2026 by a few weeks. Demonstrates Rev. Proc. 2013-30 mechanics: the header, the item I reasonable-cause statement, the Part IV representations an LLC needs, and filing the late Form 2553 directly with the service center before any 2026 return is due.
 
 ---
 
 ## Scenario
 
 **Filer**: Aisha Patel, freelance marketing consultant
-**Entity**: Patel Strategic, LLC (California single-member LLC, formed 04/12/2024)
+**Entity**: Patel Strategic, LLC (California single-member LLC, formed 04/12/2024; no Form 8832 ever filed)
 **EIN**: 88-7654321
-**Tax history**: Filed Schedule C on 2024 Form 1040 (single-member LLC default)
-**Profit history**: 2024 net profit $95,000 (Schedule C); 2025 net profit $185,000 (Schedule C)
-**Discovery**: In April 2026, a CPA pointed out Aisha could have elected S-corp for 2024 or 2025
-**Goal**: Elect S-corp retroactive to 01/01/2025, recapture SE-tax savings for 2025
+**Tax history**: Schedule C on her 2024 and 2025 Forms 1040 (single-member LLC default). Those years were never meant to be S years.
+**Profit history**: 2024 net profit $95,000; 2025 net profit $185,000 (Schedule C). She projects about the same for 2026.
+**Plan**: In December 2025 she decided to operate as an S corporation from 01/01/2026, but never filed Form 2553.
+**Discovery**: On 04/15/2026 her new CPA pointed out that the 2026 deadline had passed.
+**Goal**: S-corp status effective 01/01/2026.
 
 ---
 
@@ -22,7 +23,6 @@ End-to-end worked example: LLC formed in 2024 that missed the original S-corp el
 □ Domestic LLC formed under California law           ✓
 □ Not bank/insurance/§936/DISC                       ✓
 □ Single shareholder (Aisha, U.S. citizen)           ✓
-□ Aisha is U.S. citizen                              ✓
 □ Single-member LLC, one class of stock              ✓
 □ Operating agreement: standard pro-rata template     ✓
 □ EIN matches "Patel Strategic, LLC"                  ✓
@@ -35,14 +35,15 @@ All eligibility checks pass.
 ## Step 2 — Deadline analysis
 
 ```
-Intended effective date:  01/01/2025
-Original deadline:        01/01/2025 + 2 months 15 days = 03/15/2025
+Intended effective date (item E):  01/01/2026
+Original deadline:        01/01/2026 + 2 months 15 days = 03/15/2026,
+                          a Sunday, so 03/16/2026 (IRC §7503)
 Current date:             04/20/2026
-Time past deadline:       ~13 months
+Time past deadline:       35 days
 Rev. Proc. 2013-30 window:
-  Opens:                  01/01/2025
-  Closes:                 01/01/2025 + 3 years 75 days = 03/17/2028
-  Status:                 Within the 3-year-75-day window ✓
+  Closes:                 01/01/2026 + 3 years 75 days = 03/17/2029
+                          (Rev. Proc. 2013-30 §4.02(2))
+  Status:                 Within the window ✓
 
 Late relief AVAILABLE under Rev. Proc. 2013-30.
 ```
@@ -51,201 +52,184 @@ Late relief AVAILABLE under Rev. Proc. 2013-30.
 
 ## Step 3 — Rev. Proc. 2013-30 eligibility check
 
-```
-1. Entity intended S-corp from effective date (01/01/2025)?
-   Aisha confirms she intended to operate as an S-corp from 2025;
-   she just didn't know about the form.                                ✓
+The LLC never filed Form 8832, so it needs relief for both the S election and the deemed corporate classification election (Rev. Proc. 2013-30 §5.03; Form 2553 Part IV).
 
-2. Entity failed to qualify SOLELY due to late filing (not eligibility)?
+```
+1. Entity intended S-corp (and corporate classification) from 01/01/2026?
+   Aisha decided in December 2025 and has a dated email to her
+   bookkeeper saying so.                                                ✓
+
+2. Failed to qualify SOLELY because the forms were late?
    All eligibility met (Step 1). Failure is purely procedural.          ✓
 
-3. Reasonable cause for late filing?
-   Aisha was unaware of the requirement to file Form 2553 within
-   2 months 15 days. She believed Schedule C was the right path.
-   She learned of the requirement from her new CPA on 04/15/2026.
-   She is filing immediately upon discovery.                            ✓
+3. Reasonable cause, and diligent action once discovered?
+   She did not know Form 2553 had a deadline. She learned of it on
+   04/15/2026 and is filing five days later.                            ✓
 
-4. Within 3 years 75 days of intended effective date?
-   01/01/2025 + 3 years 75 days = 03/17/2028. Today is 04/20/2026.      ✓
+4. Within 3 years 75 days of the intended effective date?
+   Closes 03/17/2029. Today is 04/20/2026.                               ✓
 
-5. Income reported consistent with S-corp treatment from 01/01/2025?
-   Issue: Aisha already filed 2025 Form 1040 with Schedule C reporting
-   $185K of LLC income. Rev. Proc. 2013-30 still permits relief, but
-   Aisha must AMEND her 2025 Form 1040 to:
-     - Remove Schedule C
-     - Report $185K via Form 1120-S → Schedule K-1 → Form 1040 Schedule E
-     - Compute reasonable salary retroactively for 2025
-     - Pay back FICA on the salary portion (entity owes employer share)
-     - Pay shortfall (or get refund) on the SE-tax-vs-FICA differential
-
-   Aisha decides this is worth doing because the SE-tax savings
-   on $185K profit are substantial (~$13K).                              ✓ (with amendment)
+5. Part IV representation 5 (§5.03(5)):
+   No federal tax or information return has been filed for 2026, and
+   the first S-year return (2026 Form 1120-S) is not due until
+   03/15/2027. Representation 5b is true.                               ✓
+   (Her 2024 and 2025 Schedule C filings are for years before item E,
+   so they are not inconsistent returns.)
 ```
 
-All five conditions met. Proceed with Rev. Proc. 2013-30 filing.
+All conditions met. Proceed with Rev. Proc. 2013-30 filing.
 
 ---
 
-## Step 4 — Reasonable-cause statement
+## Step 4 — Reasonable-cause statement (item I)
 
-Aisha and the agent draft this statement. 2-4 sentences, factual:
+Aisha and the agent draft this statement. 2-4 sentences, factual, covering both the reasonable cause and the diligent actions (Rev. Proc. 2013-30 §4.03(1)):
 
-> "Patel Strategic, LLC was formed on April 12, 2024, and the sole member intended at all times to operate the entity as an S-corporation effective January 1, 2025. The sole member was unaware that Form 2553 was required to be filed within 2 months and 15 days of the intended effective date and erroneously believed that filing Schedule C was the correct procedure. Upon being advised by her certified public accountant on April 15, 2026, of the requirement and of Rev. Proc. 2013-30 relief, the sole member promptly prepared and is filing this Form 2553 along with a corrected Form 1120-S for tax year 2025 and amended Form 1040-X to report income consistent with S-corp treatment."
+> "Patel Strategic, LLC decided in December 2025 to be classified as a corporation and to be an S corporation effective January 1, 2026. Its sole member did not know that Form 2553 had to be filed by March 16, 2026. On April 15, 2026 her certified public accountant told her of the deadline and of Rev. Proc. 2013-30, and the entity is filing this Form 2553 on April 20, 2026. No federal tax or information return has been filed for 2026."
 
-This statement is attached as a separate page to Form 2553. Aisha signs and dates it.
+It fits on item I; if it ran longer, it would go on an attached statement carrying the §4.03(3) penalties-of-perjury declaration, signed by Aisha. The officer signature below item I covers the item I text.
 
 ---
 
-## Step 5 — Reasonable-salary analysis (retroactive for 2025)
-
-For the 2025 amendment, Aisha must compute a retroactive reasonable salary.
+## Step 5 — Reasonable-salary analysis (2026, prospective)
 
 ```
 Role:           Marketing consultant / fractional CMO
 BLS SOC code:   13-1161 (Market Research Analysts and Marketing Specialists)
-2024 BLS median (national): $76,080  → adjusted up for senior level
+May 2025 OEWS national median: $78,760 (BLS series OEUN000000000000013116113)
+                → adjusted up for senior level
 Geographic:     California Bay Area — upward adjustment of ~25%
 Hours/week:     ~40
-Documented final 2025 salary: $90,000
+Documented 2026 salary: $90,000
 
-Distribution:   $185,000 − $90,000 = $95,000
+Projected 2026 distribution:   $185,000 − $90,000 = $95,000
 
-2025 retroactive payroll catch-up:
-  W-2 wages reclassified from distributions:    $90,000
-  Employer FICA (7.65%):                         $6,885
-  Employee FICA (7.65%):                         $6,885
-  FUTA (0.6% on first $7,000):                   $42
-  CA SUTA (~3.4% on first $7,000):               $238
-
-  Total catch-up payroll cost:                   ~$14,000 employer side
-
-  Original 2025 SE tax paid (sole prop):         ~$26,142 (15.3% × 0.9235 × $185K capped)
-  New 2025 FICA (employer + employee on $90K):  ~$13,770
-  Net 2025 SE-tax savings:                       ~$12,372
-                                                  (less penalties for late payroll deposits,
-                                                   which can be abated with reasonable cause)
+Rough 2026 comparison (projection; 2026 SS wage base $184,500,
+https://www.ssa.gov/oact/cola/cbb.html):
+  As sole prop:  SE tax on $185,000 × 0.9235 = $170,847.50 × 15.3% ≈ $26,140
+  As S corp:     FICA (employer + employee) on $90,000 × 15.3%   = $13,770
+  Difference:                                                    ≈ $12,370
+  Not included: FUTA, California UI/ETT/SDI, payroll service, extra
+  return prep. California employers' FUTA credit has been reduced
+  (DOL: 1.2% for 2025; potential 2026 total estimated at 5.3%), so do
+  not assume a 0.6% net FUTA rate; ask the payroll provider.
 ```
 
-Even with retroactive payroll catch-up costs, Aisha nets ~$10K of savings on the 2025 amendment.
+Payroll starts in May 2026. ASK the CPA how to treat owner draws taken between 01/01/2026 and the first payroll; the agent does not decide this.
 
 ---
 
-## Step 6 — Form 2553 draft
+## Step 6 — Form 2553 draft (Rev. December 2017)
 
 ```
-HEADER: write across top of page 1:
+HEADER (top margin of page 1):
 
     FILED PURSUANT TO REV. PROC. 2013-30
 
 PART I — ELECTION INFORMATION
 
-A. Name of corporation:               Patel Strategic, LLC
-B. Address:                           500 Howard St, Suite 100
+Name:                                 Patel Strategic, LLC
+Address:                              500 Howard St, Suite 100
                                       San Francisco, CA 94105
-C. Employer Identification Number:    88-7654321
-D. Date incorporated:                 04/12/2024
-E. State of incorporation:            CA
-F. Election effective date:           01/01/2025
-G. Contact: Aisha Patel, 500 Howard St, Suite 100, SF, CA 94105, (415) 555-9876
-H. Name change:                       (blank)
-I. Tax year:
+A. Employer identification number:    88-7654321
+B. Date incorporated:                 04/12/2024
+C. State of incorporation:            CA
+D. Name/address changed after EIN:    (blank)
+E. Effective for tax year beginning:  01/01/2026
+F. Selected tax year:
    [X] (1) Calendar year
-   [ ] (2-4)
+G. >100 shareholders box:             (blank)
+H. Contact: Aisha Patel, Sole Member, (415) 555-9876
+I. Late election explanation:         Statement from Step 4
 
-J. Officer signature:  Aisha Patel
-   Title:              Sole Member
-   Date:               04/20/2026
+Signature of officer:  Aisha Patel (handwritten)
+Title:                 Sole Member
+Date:                  04/20/2026
 
-SHAREHOLDER CONSENT
+PAGE 2 — SHAREHOLDERS' CONSENTS
 
-| # | J. Name & address    | K. Sig. | L. Date    | M. Ownership            | N. SSN     |
-|---|----------------------|---------|------------|-------------------------|------------|
-| 1 | Aisha Patel          | A.Patel | 04/20/2026 | 100% from 04/12/2024    | XXX-XX-5678|
-|   | 500 Howard St, #100  |         |            |                         |            |
-|   | San Francisco, CA    |         |            |                         |            |
+| # | J. Name & address    | K. Signature / date    | L. Ownership / acquired | M. SSN      | N. Tax yr ends |
+|---|----------------------|------------------------|-------------------------|-------------|----------------|
+| 1 | Aisha Patel          | A. Patel / 04/20/2026  | 100% / 04/12/2024       | XXX-XX-5678 | 12/31          |
+|   | 500 Howard St, #100  |                        |                         |             |                |
+|   | San Francisco, CA    |                        |                         |             |                |
 
-(Aisha is single — not in community-property state issue regardless,
- since CA community property only kicks in for married filers.)
+(Aisha is unmarried, so no community-property spouse consent. She is the
+ only person who owned the LLC from 01/01/2026 to the filing date. Her
+ column K signature also declares she reported income consistently with
+ S status for the affected years, Rev. Proc. 2013-30 §5.02.)
 
-PART II — Skip (calendar year)
+PART II — Skip (item F box 1)
 PART III — Skip (no trust shareholder)
 
-PART IV — LATE ELECTION RELIEF (REQUIRED)
+PART IV — LATE CORPORATE CLASSIFICATION ELECTION REPRESENTATIONS
+(required: LLC with no timely Form 8832)
 
-[X] (1) The corporation intended to be classified as an S corporation as of
-        the effective date entered on Line E.
-
-[X] (2) The corporation has reasonable cause for its failure to make the
-        timely election.
-
-[X] (3) The corporation and all of its shareholders have reported their
-        income for the period since the effective date in a manner consistent
-        with S corporation status, OR will do so via amended returns.
-
-ATTACHMENT: Reasonable-cause statement (separate page, Step 4 above), signed
-            and dated by Aisha Patel.
+1   The requesting entity is an eligible entity as defined in
+    Regulations section 301.7701-3(a);                                    ✓
+2   It intended to be classified as a corporation as of the effective
+    date of the S corporation status;                                     ✓
+3   It fails to qualify as a corporation solely because Form 8832 was
+    not timely filed or deemed filed;                                     ✓
+4   It fails to qualify as an S corporation on the effective date solely
+    because the S corporation election was not timely filed; and          ✓
+5b  It has not filed a federal tax or information return for the first
+    year in which the election was intended to be effective because the
+    due date has not passed for that year's return.                       ✓
 ```
 
 ---
 
 ## Step 7 — Filing channel decision
 
-Because Aisha is filing late and also needs to file her first Form 1120-S for 2025, the cleanest approach is:
+No Form 1120-S is due or ready (the 2026 return is due 03/15/2027), so Aisha uses Rev. Proc. 2013-30 §4.03(2)(c): file the late Form 2553 directly with the Form 2553 service center.
 
 ```
-Mail Form 2553 ATTACHED to Form 1120-S for tax year 2025.
-
-Service center: Ogden, UT (CA is in Ogden zone)
+Service center: Ogden, UT (California is on the Ogden list)
 Address: Department of the Treasury
-         IRS Service Center
+         Internal Revenue Service
          Ogden, UT 84201
+Fax:     855-214-7520
+(Instructions for Form 2553, "Where To File";
+ https://www.irs.gov/filing/where-to-file-your-taxes-for-form-2553)
 
-Method: USPS Certified Mail with Return Receipt
+Method chosen: USPS Certified Mail with Return Receipt (a timely
+postmarked certified mail receipt is on the instructions' list of
+acceptable proof of filing)
 
 Packet contents:
-  1. Form 2553 (with "FILED PURSUANT TO REV. PROC. 2013-30" across top)
-  2. Reasonable-cause statement
-  3. Form 1120-S for tax year 2025 (with Aisha's Schedule K-1)
-  4. Cover letter referencing both filings
+  1. Form 2553, all 4 pages, "FILED PURSUANT TO REV. PROC. 2013-30" in
+     the top margin of page 1, item I completed, Part IV completed
 ```
 
-Aisha mails on 04/22/2026. Certified Mail receipt postmarked 04/22/2026 — preserved as proof.
+Aisha mails on 04/22/2026. Certified Mail receipt postmarked 04/22/2026 — preserved as proof. She does not also fax it.
 
 ---
 
-## Step 8 — Amend 2025 Form 1040
+## Step 8 — 2024 and 2025 returns
 
-Separately, Aisha files **Form 1040-X** to:
+Nothing to amend. The Schedule C filings for 2024 and 2025 cover years before item E. The first Form 1120-S is for tax year 2026, due 03/15/2027.
 
-- Remove Schedule C reporting $185K of LLC income
-- Add Schedule E reporting Schedule K-1 from Form 1120-S
-- Recompute SE tax (now $0 since income is via K-1, not Schedule C)
-- Compute additional FICA owed on the $90K salary portion
-- Net effect: refund approximately $5,000-$10,000 (less amendments processing)
-
-Form 1040-X is filed via Aisha's tax software or paper. Wait time for processing: 12-16 weeks.
+If Aisha had instead wanted S status from 01/01/2025, the analysis would stop here: her 2025 Schedule C is an inconsistent return and the 2025 Form 1120-S due date (03/16/2026) has passed with no return filed, so neither Part IV representation 5a nor 5b can be made (Rev. Proc. 2013-30 §5.03(5)). That case goes to a CPA; a letter ruling may be the only route.
 
 ---
 
 ## Step 9 — California state conformity
 
-California auto-conforms to federal S-corp election. Aisha files **Form 100S** (CA S-corp return) for 2025 instead of relying on Schedule C in her CA return.
-
-CA also imposes 1.5% franchise tax on S-corp net income (minimum $800):
-```
-2025 CA franchise tax: max($800, $185,000 × 1.5%) = max($800, $2,775) = $2,775
-```
-
-This $2,775 is the cost of CA conformity — netted against the federal SE-tax savings.
+California follows the federal S election (no separate state election form). The entity files **Form 100S** for 2026 and pays the 1.5% franchise tax on S-corp net income, minimum $800 (see [`../references/state-conformity.md`](../references/state-conformity.md)):
 
 ```
-Net 2025 benefit (federal − CA franchise):
-  Federal SE-tax savings:    ~$12,372
-  CA franchise tax cost:     − $2,775
-  Net:                       ~$9,597
+2026 CA franchise tax (projection): max($800, $185,000 × 1.5%) = max($800, $2,775) = $2,775
 ```
 
-Still positive. Aisha proceeds.
+```
+Projected 2026 benefit before payroll and compliance costs:
+  Federal SE-tax/FICA difference:    ~$12,370
+  CA franchise tax:                  − $2,775
+  Net:                               ~$9,595
+```
+
+Still positive before compliance costs. Aisha proceeds.
 
 ---
 
@@ -253,11 +237,13 @@ Still positive. Aisha proceeds.
 
 ```
 Day 1   (04/22): Mailed packet via Certified Mail
-Day 7   (04/29): USPS Form 3811 returned showing IRS receipt
-Day 65  (06/26): CP261 acknowledgment letter received
-                  S-corp effective 01/01/2025 ✓
-                  Aisha saves CP261 permanently — proof of S-corp from 2025
+Day 7   (04/29): Return receipt shows IRS delivery
+Day 65  (06/25): CP261 acceptance notice received
+                  Effective date on the notice: 01/01/2026 ✓ (matches item E)
+                  Aisha keeps the CP261 permanently
 ```
+
+If no notice had arrived within 2 months of mailing, she would call 800-829-4933 (Instructions for Form 2553, "Where To File"). If the CP261 had shown 01/01/2027 instead, the IRS would have treated the election as not timely for 2026: compare the notice date with item E every time.
 
 ---
 
@@ -265,11 +251,11 @@ Day 65  (06/26): CP261 acknowledgment letter received
 
 For tax year 2026 (current year):
 ```
-□ Continue $90K salary (or re-run analysis for 2026 increase)
-□ Quarterly Form 941 (already starting Q2 2026 with retroactive payroll)
-□ Annual Form 940 for 2026
-□ CA Form 100S for 2026 (March 15, 2027 deadline)
-□ Federal Form 1120-S for 2026 (March 15, 2027 deadline)
+□ Payroll at $90,000 annualized from May 2026 (re-run analysis yearly)
+□ Form 941 from Q2 2026 (due 07/31/2026)
+□ Form 940 for 2026 (due 02/01/2027; 01/31/2027 is a Sunday)
+□ CA Form 100S for 2026 (due 03/15/2027)
+□ Federal Form 1120-S for 2026 (due 03/15/2027)
 ```
 
 ---
@@ -277,31 +263,30 @@ For tax year 2026 (current year):
 ## Result
 
 ```
-Permanent change to S-corp status from 01/01/2025
-Recovered ~$10K of 2025 SE-tax savings via Rev. Proc. 2013-30 + 1040-X
-Going forward: ~$12-15K/year SE-tax savings on $185K-ish profit
-                 less ~$3K compliance + $2.8K CA franchise = ~$8-10K net annual benefit
+S-corp status from 01/01/2026 under Rev. Proc. 2013-30
+No amended returns needed (relief requested before any 2026 return was due)
+Projected: ~$12,370/year SE-tax/FICA difference on ~$185K profit,
+           less $2,775 CA franchise tax and payroll/compliance costs
 ```
 
 ---
 
 ## Lessons / what went right
 
-1. **Caught the missed deadline within Rev. Proc. 2013-30 window** (13 months past, well within 3 years 75 days)
-2. **Reasonable-cause statement was clean and factual** — "unaware of requirement, learned on [date], filing immediately"
-3. **Combined filing with Form 1120-S** — simplest path; one packet, one service center
-4. **2025 Form 1040-X amendment was budgeted into the decision** — Aisha understood the full picture before committing
-5. **California conformity addressed at the same time** — Form 100S filed instead of doubling-up Schedule C and CA C-corp by accident
-6. **CP261 received within 65 days** — confirms relief was granted; Aisha now has permanent S-corp status proof
+1. **Caught the missed deadline early** (35 days past, well within 3 years 75 days)
+2. **Filed before any return for the first S year was due**, so Part IV representation 5b was true and nothing needed amending
+3. **Item I statement covered both the cause and the diligent action**, with dates
+4. **Part IV completed** because the LLC never filed Form 8832
+5. **California conformity addressed at the same time** — Form 100S and the franchise tax budgeted
+6. **CP261 effective date checked against item E**
 
 ---
 
 ## What could have gone wrong
 
-If Aisha had discovered the omission in **2029** instead of 2026, the 3-year-75-day window for a 01/01/2025 effective date would already have closed (closes 03/17/2028). Her remaining option would be a **Private Letter Ruling under Reg. §301.9100-3**:
-- $12,600 IRS user fee
-- 6-12 month wait
-- ~$10,000 tax attorney to prepare
-- Discretionary — IRS may deny
+If Aisha had discovered the omission after **03/17/2029**, the 3-year-75-day window for a 01/01/2026 effective date would have closed. Her remaining option would be a **letter ruling** under §1362(b)(5) (with Reg. §301.9100-3 for the late classification election):
+- IRS user fee $14,500, reduced to $3,450 if gross income is under $400,000 or $9,775 if under $10 million (Rev. Proc. 2026-1, Appendix A, (A)(3)(c)(i) and (A)(4))
+- Professional fees to prepare the request, and months of processing
+- Discretionary — the IRS may deny
 
-This is why early discovery matters. The agent should always check the 3-year-75-day window first.
+The other trap is filing 2026 returns inconsistent with S status first (for example a 2026 Schedule C) or letting the 03/15/2027 Form 1120-S due date pass: then representation 5 fails even inside the window. The agent should always check the window and the returns already filed before drafting.

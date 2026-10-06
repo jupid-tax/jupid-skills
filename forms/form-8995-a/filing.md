@@ -14,19 +14,19 @@ Does the user already have a tax software account they want to use?
 └── No → proceed below
 
 Does the user qualify for IRS Free File guided software?
-  (AGI ≤ ~$84,000 OR they want guided software)
+  (AGI ≤ $89,000 for the 2026 filing season)
 ├── Yes → IRS Free File Alliance partner
 └── No → continue
 
 Is the user comfortable filling forms directly?
-├── Yes → IRS Free File Fillable Forms (FFFF)
+├── Yes → IRS Free File Fillable Forms (FFFF); open for 2025 returns until Oct. 15, 2026
 └── No → paid commercial software (TurboTax, H&R Block, FreeTaxUSA, TaxSlayer, TaxAct, Cash App Taxes)
 
 Does the user prefer paper?
 └── Yes → paper Form 1040 + paper Form 8995-A attached
 ```
 
-**IRS Direct File** does NOT support QBI as of the 2026 filing season — Direct File covers W-2 wages, Social Security, unemployment, interest, and limited credits. If the user has QBI, they're not in Direct File scope. Do not route them there.
+**IRS Direct File** was not offered in the 2026 filing season. Do not route users there. Sources: https://www.irs.gov/filing/irs-free-file-do-your-taxes-for-free ($89,000 AGI limit); https://www.irs.gov/e-file-providers/free-file-fillable-forms (FFFF closes Oct. 15, 2026).
 
 ---
 
@@ -35,7 +35,7 @@ Does the user prefer paper?
 Before opening any browser session, confirm the agent has:
 
 - [ ] Completed Form 8995-A draft with all four schedules (or "N/A" markers) from `SKILL.md`
-- [ ] Form 1040 draft with Line 13 = Form 8995-A Line 39
+- [ ] Form 1040 draft with line 13a = Form 8995-A Line 39
 - [ ] Schedule C / K-1 source documents that fed QBI
 - [ ] User's verified identity for IRS e-file PIN signature (prior-year AGI or self-select PIN)
 - [ ] Direct deposit info (if expecting refund) OR payment method (if owing)
@@ -59,15 +59,20 @@ FFFF is the IRS's no-cost web app for filers who can fill out their own forms. M
 
 | Draft Section | FFFF Form | FFFF Field |
 |---------------|-----------|------------|
-| Part I L1(a) | Form 8995-A | "Trade, business, or aggregation name" rows 1-3 |
-| Part I L1(b) | Form 8995-A | "Specified service trade or business" checkbox |
-| Part I L1(c) | Form 8995-A | "Taxpayer Identification Number" |
-| Part II L2-13 | Form 8995-A | Numeric grid columns A, B, C |
+| Part I L1(a) | Form 8995-A | "Trade, business, or aggregation name" rows A–C |
+| Part I L1(b) | Form 8995-A | "Check if specified service" |
+| Part I L1(c) | Form 8995-A | "Check if aggregation" |
+| Part I L1(d) | Form 8995-A | "Taxpayer identification number" |
+| Part I L1(e) | Form 8995-A | "Check if patron" |
+| Part II L2-16 | Form 8995-A | Numeric grid columns A, B, C |
+| Part III L17-26 | Form 8995-A page 2 | Numeric grid columns A, B, C |
 | Schedule A | Form 8995-A Sch A | Add Schedule A from "Schedules" dropdown |
 | Schedule B | Form 8995-A Sch B | Add Schedule B from "Schedules" dropdown |
 | Schedule C | Form 8995-A Sch C | Add Schedule C from "Schedules" dropdown |
 | Schedule D | Form 8995-A Sch D | Add Schedule D from "Schedules" dropdown |
-| Part IV L27-39 | Form 8995-A | Bottom-of-form numeric fields |
+| Part IV L27-40 | Form 8995-A page 2 | Numeric fields |
+
+Labels follow the 2025 form captions; FFFF field names can differ slightly.
 
 ### Submission state machine
 
@@ -103,7 +108,7 @@ If the user is paper-filing:
 
 1. Print Form 1040, all schedules, Form 8995-A, and any required schedules of 8995-A
 2. Confirm the user signs (and spouse signs if MFJ)
-3. Mail to the IRS service center for the user's state (per Form 1040 instructions, page 110 for tax year 2025)
+3. Mail to the IRS address for the user's state and payment status (the "Where Do You File?" section of the 2025 Instructions for Form 1040)
 4. Use Certified Mail with return receipt — the receipt is proof of timely filing under IRC §7502
 5. Keep a complete copy
 
@@ -115,9 +120,9 @@ Paper filing has no e-file authentication so the SSN/AGI rules don't apply, but 
 
 | Error | Cause | Fix |
 |-------|-------|-----|
-| Form 8995-A Line 39 ≠ Form 1040 Line 13 | Transcription error | Re-enter Line 13 to match Form 8995-A Line 39 |
-| Schedule A mandatory but not attached | SSTB business in phase-in zone with no Schedule A | Add Schedule A; recompute the phase-in reduction |
-| QBI loss not carried forward | Prior-year QBI was negative; current year missed the carryforward input | Pull prior-year Form 8995-A Line 16 (or the carryforward worksheet) |
+| Form 8995-A Line 39 ≠ Form 1040 line 13a | Transcription error | Re-enter line 13a to match Form 8995-A Line 39 |
+| Schedule A mandatory but not attached | SSTB business in phase-in range with no Schedule A | Add Schedule A; recompute lines 2, 4, 7 and Part III |
+| QBI loss not carried forward | Prior-year QBI was negative; current year missed the carryforward input | Pull prior-year Schedule C (Form 8995-A) line 6 (or Form 8995 line 16) into this year's Schedule C line 2 |
 | W-2 wages overstated | Included guaranteed payments or independent-contractor 1099s | Reduce L4 to actual W-2 wages only |
 | Aggregation eligibility not confirmed | Schedule B used but one of the businesses is SSTB | Disaggregate; SSTBs cannot be in an aggregation |
 

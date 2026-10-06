@@ -1,6 +1,6 @@
 # Example: Homebuyer's Mortgage Lender Requests 2 Years of Tax Return Transcripts
 
-A complete walkthrough for a buyer in escrow whose mortgage underwriter requires Tax Return Transcripts for the last two filed tax years. The user attempts Get Transcript Online first; when ID.me identity verification fails, they fall back to Form 4506-T sent by fax.
+A complete walkthrough for a buyer in escrow whose mortgage underwriter requires Tax Return Transcripts for the last two filed tax years. The user tries her IRS online account first; when ID.me identity verification fails, she faxes Form 4506-T, and the IRS mails the transcripts to her so she can forward them. (Form 4506-T, Rev. April 2025.)
 
 ## The filer
 
@@ -12,20 +12,22 @@ A complete walkthrough for a buyer in escrow whose mortgage underwriter requires
 
 ## The situation
 
-Priya is closing on a house in 21 days. Her loan officer emailed: "We need IRS Tax Return Transcripts for tax years 2023 and 2024 within 7 business days. We can accept transcripts mailed to you OR sent directly to us via your signed authorization." Priya's loan number is **PNM-2026-04571**.
+Priya is closing on a house in 21 days. Her loan officer emailed: "We need IRS Tax Return Transcripts for tax years 2023 and 2024. Send us the transcripts you receive from the IRS." Priya's loan number is **PNM-2026-04571**.
 
-## Step 1 — Try Get Transcript Online
+The agent first asks whether the lender is an IVES participant that could pull the transcripts itself with a Form 4506-C (faster, and the only way a lender receives transcripts directly). The loan officer says no, so Priya must get them herself.
 
-Priya first attempts the IRS Get Transcript Online portal at https://www.irs.gov/individuals/get-transcript. Identity verification is via ID.me.
+## Step 1 — Try the Individual Online Account
+
+Priya first tries to sign in to her IRS Individual Online Account from https://www.irs.gov/individuals/get-transcript. Identity verification is via ID.me.
 
 She has:
 - Government-issued driver's license (Washington state)
 - iPhone with camera
 - Email and phone in her name
 
-She begins ID.me verification. The selfie capture flow times out twice; on the third attempt, ID.me returns "We could not verify your identity" — this happens occasionally when the ID photo and selfie don't match cleanly enough for the algorithm. ID.me offers a live video session as a backup, but the next available slot is 4 days out.
+She begins ID.me verification. The selfie capture flow times out twice; on the third attempt, ID.me returns "We could not verify your identity." ID.me offers a video chat agent as a backup, but the wait is longer than she wants.
 
-Given the 7-business-day deadline, Priya decides to fall back to Form 4506-T submitted by fax (faster than mail).
+Get Transcript by Mail would deliver a return transcript to her address on file in 5-10 calendar days, and is a reasonable alternative. Priya decides on Form 4506-T by fax because she wants both years on one request with a customer file number printed on the transcripts. The agent tells her: the IRS says most Form 4506-T requests are processed within 10 business days, and the transcripts are then mailed to her address of record, so she should also keep trying the online account.
 
 ## Step 2 — Confirm transcript type
 
@@ -35,7 +37,7 @@ A Tax Return Transcript shows most line items from the originally-filed Form 104
 
 ## Step 3 — Confirm tax year(s)
 
-Two years requested: 2023 and 2024. Both are within the 3-year window for Return Transcript availability (Form 4506-T allows up to 4 years per request).
+Two years requested: 2023 and 2024. Both are within the window for Return Transcript availability (current year and the prior 3 processing years); line 9 has four date slots.
 
 Format on Line 9: **12/31/2023** and **12/31/2024** (calendar-year filer).
 
@@ -45,18 +47,11 @@ Priya filed Form 1040 for both years. Line 6 entry: **1040**.
 
 ## Step 5 — Determine routing
 
-Per the routing chart on page 2 of Form 4506-T, Washington state residents fax Form 4506-T to the **Ogden, UT RAIVS** office. Priya looks up the current fax number from the IRS instructions (the form's page 2 is the authoritative source — verify the current number on the IRS-published revision).
+Per the "Chart for individual transcripts" on page 2 of Form 4506-T (Rev. April 2025), a return filed while living in Washington goes to the **Ogden RAIVS Team**: Internal Revenue Service, RAIVS Team, P.O. Box 9941, Mail Stop 6734, Ogden, UT 84409, **fax 855-298-1145**. She lived in Washington when she filed both returns.
 
-## Step 6 — Decide third-party delivery
+## Step 6 — Customer file number and delivery
 
-The lender accepts third-party delivery, and Priya wants the transcripts sent directly to them to save 2–3 days. She fills **Line 5** with the lender's information:
-
-- Name: **Pacific Northwest Mortgage, Attn: Underwriting**
-- Address: **1450 Westlake Ave N, Suite 400, Seattle, WA 98109**
-- Phone: **(206) 555-0188**
-- Customer file number: **PNM-2026-04571** (her loan number)
-
-She confirms the address with her loan officer by phone before submitting (sending sensitive tax data to the wrong address would be a serious problem).
+Line 5 is a customer file number only: up to 10 numeric characters printed on the transcript. The IRS will not mail the transcripts to the lender (since July 2019 it mails Form 4506-T transcripts only to the taxpayer's address of record). The loan number PNM-2026-04571 has letters and dashes, so Priya enters only its digits: **202604571**. The agent confirms her current address is the one the IRS has on file (she has not moved since filing), so no Form 8822 is needed.
 
 ## The completed Form 4506-T draft
 
@@ -75,19 +70,15 @@ She confirms the address with her loan officer by phone before submitting (sendi
    Seattle, WA 98105
 
 ## 4. Previous address shown on the last return filed:
-   Same as Line 3 (no change in address since 2023 return)
+   (blank — same as line 3)
 
-## 5. Third party (mail transcript directly to):
-   Name: Pacific Northwest Mortgage, Attn: Underwriting
-   Address: 1450 Westlake Ave N, Suite 400, Seattle, WA 98109
-   Phone: (206) 555-0188
-   Customer file number: PNM-2026-04571
+## 5. Customer file number: 202604571
 
 ## 6. Transcript requested for: 1040
    [X] 6a. Return Transcript
    [ ] 6b. Account Transcript
    [ ] 6c. Record of Account
-   (Exactly one box — 6a — checked)
+   (One box — 6a — checked)
 
 ## 7. [ ] Verification of Non-filing
 ## 8. [ ] Wage and Income Transcript
@@ -98,20 +89,20 @@ She confirms the address with her loan officer by phone before submitting (sendi
    (blank)
    (blank)
 
-## Signature box
-Signature of taxpayer: Priya Anand (wet signature)
+## Signature area
+[X] Signatory attests authority to sign
+Phone number of taxpayer on line 1a: (206) 555-0142
+Signature of taxpayer: Priya Anand (signed by hand)
 Date: 04/28/2026
-Daytime telephone: (206) 555-0142
-Print/type name: Priya Anand
 Title: (blank — individual filer)
 
 ## Spouse signature: (not applicable — Single filer)
 
 ## Submission instructions
-- Method: Fax to Ogden, UT RAIVS (verify current fax number on Form 4506-T page 2)
-- Routing based on state: Washington → Ogden, UT
-- Expected processing: 5-10 business days for IRS to fax/mail
-- Delivery: IRS will mail transcripts directly to Pacific Northwest Mortgage (Line 5)
+- Method: Fax to 855-298-1145 (Ogden RAIVS Team, individual-transcripts chart)
+- Routing based on state when the returns were filed: Washington → Ogden, UT
+- Expected processing: most requests within 10 business days (form), then mailed
+- Delivery: IRS mails the transcripts to Priya's address of record; she scans and sends them to the lender
 - Priya retains a copy of the signed 4506-T for her records
 
 ## Validation summary
@@ -120,45 +111,41 @@ Title: (blank — individual filer)
   - SSN on Line 1b is 9 digits ✓
   - Single filer; Lines 2a/2b blank ✓
   - Current address Line 3 matches the address she would mail it from ✓
-  - Line 4 same as Line 3 (no prior address change) ✓
+  - Line 4 blank (no address change since the last return) ✓
 - Transcript type:
-  - Exactly one box (6a Return Transcript) checked ✓
+  - One form number (1040) and one box (6a Return Transcript) ✓
   - Matches purpose (mortgage underwriting) ✓
 - Year(s):
-  - 2 years (2023, 2024) — within 4-year limit ✓
+  - 2 years (2023, 2024) — within the four date slots ✓
   - Both formatted as 12/31/YYYY ✓
   - Both years had returns filed (verify) ✓
 - Routing:
-  - Washington → Ogden, UT RAIVS — confirmed against form page 2 ✓
-- Third-party (Line 5):
-  - Lender address verified by phone with loan officer ✓
-  - Customer file number PNM-2026-04571 included ✓
-  - User explicitly authorized direct delivery to lender ✓
+  - Washington → Ogden, UT RAIVS, fax 855-298-1145 — confirmed against form page 2 ✓
+- Customer file number (Line 5):
+  - 9 digits, no SSN, no name ✓
 - Signatures:
-  - Wet signature, dated 04/28/2026 ✓
-  - Within 120-day validity window ✓
-  - Daytime phone provided ✓
+  - Authority box checked ✓
+  - Signed and dated 04/28/2026; IRS will receive it well within 120 days ✓
+  - Phone provided ✓
 
 ## Sources cited
-- IRS Form 4506-T (current revision, page 2 for routing chart)
-- IRS Get Transcript portal: https://www.irs.gov/individuals/get-transcript
+- IRS Form 4506-T (Rev. April 2025), page 2 for the routing chart
+- IRS Get Transcript page: https://www.irs.gov/individuals/get-transcript
 - About Form 4506-T: https://www.irs.gov/forms-pubs/about-form-4506-t
 - Fannie Mae Selling Guide B3-3.1-06 (use of IRS transcripts in mortgage underwriting)
 ```
 
 ## Why each non-obvious choice
 
-**Why try Get Transcript Online first?** It's free, instant, and avoids the 5–10 business day IRS processing window. For a 7-business-day lender deadline, the online path saves the entire mailing cycle. The fallback to 4506-T only happens because ID.me failed.
+**Why try the online account first?** It's free and immediate once verified, and avoids the processing and mail time of Form 4506-T. The fallback to 4506-T only happens because ID.me failed.
 
-**Why fax instead of mail?** Fax routes the same form to the same RAIVS office but skips USPS transit time. IRS internal processing is comparable; the savings are 3–5 days on each side. With a tight closing schedule, fax is the right choice.
+**Why fax instead of mail?** Fax reaches the same RAIVS office without inbound USPS transit. The transcript still comes back by mail to her address of record.
 
-**Why third-party delivery (Line 5)?** Mailing to Priya first would require her to forward to the lender, adding 2–3 days. The lender accepts direct IRS delivery, so Line 5 is the faster path.
+**Why not have the IRS send the transcripts to the lender?** It can't. Since July 2019 the IRS mails Form 4506-T transcripts only to the taxpayer's address of record; Line 5 is only a customer file number. A lender that wants transcripts directly uses IVES (Form 4506-C).
 
-**Why include the customer file number?** The lender's intake system uses the customer file number (loan number) to attach the transcript to the right loan file. Without it, the underwriter has to manually match the IRS-mailed transcript to a borrower — adding delay.
+**Why include the customer file number?** Transcripts mask the SSN, so a number printed on the transcript helps the underwriter match it to the loan file. Only digits are allowed (up to 10), so she uses the digits of her loan number.
 
-**Why verify the lender's address by phone?** Wrong address sends two years of confidential tax data to a stranger. The 30 seconds of verification is cheap insurance against an identity-theft incident.
-
-**Why not request 4506-C instead?** Form 4506-C is for IVES participants (high-volume lenders with IRS-approved IVES accounts). The lender did not provide a pre-filled 4506-C, so 4506-T is the correct form for Priya to submit on her own. If the lender later sends a pre-filled 4506-C, Priya signs that one — she does not duplicate.
+**Why not request 4506-C instead?** Form 4506-C is for IVES participants. This lender is not one, so Priya gets the transcripts herself. If a lender sends a Form 4506-C, the borrower signs that one and does not duplicate it with a 4506-T.
 
 **Why didn't Priya request 6c Record of Account?** The lender specifically asked for **Return Transcript**. Record of Account combines Return + Account but is a heavier document; it would still satisfy the request, but the simpler 6a is what the underwriter expects to see.
 
@@ -168,7 +155,7 @@ Common rejection reasons and Priya's responses:
 
 1. **Name/SSN mismatch with IRS records** → re-check name spelling and SSN; if she changed her name (e.g., marriage), the IRS may have the prior name on record. Resubmit with the name on the original return.
 2. **Signature older than 120 days** → re-sign with current date and resubmit.
-3. **Address on Line 3 doesn't match IRS records** → fill Line 4 with the prior address (the one on the 2023/2024 returns) and resubmit. The IRS uses Line 4 to match identity.
-4. **Multiple boxes checked on Line 6** → only one box allowed; resubmit with exactly one.
+3. **Authority box unchecked** → the form is returned unprocessed; check the box, re-sign, refax.
+4. **Transcript went to an old address** → the IRS mails only to the address of record; if she had moved, she would file Form 8822 first.
 
-If the deadline becomes critical, the loan officer may accept a stamped IRS transcript copy from Get Transcript by Mail (a separate IRS service that sends transcripts to the address on file in 5–10 days), or a CPA-prepared income verification letter as a temporary substitute pending the official transcript.
+If the deadline becomes critical, Get Transcript by Mail (or 800-908-9946) sends a return transcript to the address on file in 5-10 calendar days, and the online account remains the fastest path if ID.me verification succeeds on a later try.

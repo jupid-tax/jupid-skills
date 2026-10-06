@@ -12,8 +12,10 @@ This file applies to the **payor side**. Recipients do not file 1099-MISC themse
 
 ```
 Issuing 10+ information returns total in the calendar year (any 1099 + W-2 combined)?
-  → Electronic filing is MANDATORY (IRC §6011(e)(2), TFA 2019)
-  → Use IRIS (free) or FIRE (free, requires Transmitter Control Code) or a paid service
+  → Electronic filing is MANDATORY (IRC §6011(e); T.D. 9972)
+  → Use IRIS (free) or a paid service. FIRE is retired: from filing season
+    2027 (tax year 2026 forms) IRIS is the only IRS intake system for
+    information returns (Pub. 1099 (2026), What's New)
 
 Issuing < 10 information returns total?
   → Electronic optional, paper allowed
@@ -29,9 +31,9 @@ Already paying for tax software or payroll service that issues 1099s?
 
 URL: https://www.irs.gov/filing/e-file-information-returns
 
-IRIS supports 1099-MISC, 1099-NEC, 1099-K, 1099-INT, 1099-DIV, 1099-B, 1099-C, 1099-R, 1099-S, 1099-G, 1099-OID, 1099-PATR, 1099-Q, 1099-SA, and W-2G.
+IRIS is the free IRS portal for filing 1099-series forms. It has a Taxpayer Portal (manual entry / CSV upload, Pub. 5717) and an Application to Application channel (XML, Pub. 5718). A2A needs an IRIS Transmitter Control Code; Pub. 1099 (2026) says TCC applications typically take 45 business days, so apply early.
 
-**Account model**: payer registers an IRIS account (one per EIN). ID.me identity verification required for the responsible individual.
+**Account model**: payer registers an IRIS account (one per EIN). The IRS may require ID.me identity verification for the responsible individual.
 
 ### Pre-flight
 
@@ -41,7 +43,8 @@ Agent must have:
 - Payer's legal name, EIN, address, phone
 - ID.me account or equivalent
 - Each recipient's data: legal name, TIN, address, populated boxes
-- Special attention for Box 6 (medical) and Box 10 (attorney) — these include corporate recipients
+- Special attention for Box 6 (medical), Box 8, Box 10 (attorney), and Box 11 — these include corporate recipients
+- The payment year, so the right revision and thresholds are used (Rev. April 2025 / $600 for 2025 payments; Rev. December 2026 / $2,000 for 2026 payments)
 - Completed issuance plan from `SKILL.md`
 
 ### Browser flow
@@ -55,17 +58,17 @@ Agent must have:
    - **CSV upload**: bulk via IRIS template
 6. **Manual entry path** — for each recipient, fill:
    - Recipient name, address, TIN
-   - All applicable boxes (1-15) with amounts
+   - All applicable boxes with amounts (2026 forms add 13a cash tips, 13b TTOC, 14 overtime; usually blank for rent, medical and settlement payments)
    - State boxes (16-18) if state withholding or income reporting
-   - Account number (optional)
-   - Any checkboxes (Box 7 direct sales, Box 13 FATCA, "2nd TIN not.", "CORRECTED")
+   - Account number (optional; required if the FATCA box is checked)
+   - Any checkboxes (Box 7 direct sales, FATCA (Box 13 on 2025 forms, unnumbered on 2026 forms), "2nd TIN not.", "CORRECTED")
 7. **CSV upload path** — generate CSV per IRIS schema (download current-year template), validate, upload
 8. **Review summary** — IRIS displays totals; verify against issuance plan
 9. **Submit** — IRIS produces Submission ID. Save screenshot.
 10. **Distribute Copy B**:
     - IRIS option to e-deliver Copy B with recipient consent
-    - Otherwise mail Copy B (postmark by **February 1**, slightly later than 1099-NEC's January 31 deadline)
-11. **State filing**: if state in CF/SF, IRIS forwards. Otherwise file separately.
+    - Otherwise mail Copy B by **January 31** (**February 15** if Box 8 or Box 10 has an amount); next business day if a weekend or legal holiday: February 1, 2027 and February 16, 2027 for 2026 forms
+11. **State filing**: if the state is in CF/SF, IRIS can forward. Some participating states still require direct filing (e.g., Massachusetts). Ask, and check the state's rule.
 
 ### Failure modes
 
@@ -73,7 +76,7 @@ Agent must have:
 |---------|--------------|-----|
 | "Identity verification failed" | ID.me biometric / document mismatch | Pause, ask user via ID.me portal |
 | "Form rejected — TIN mismatch" | Recipient name/TIN wrong | Verify W-9, send B-Notice if needed |
-| "Box 6 to corporation rejected" | (false alarm — IRIS accepts this) | Confirm submission status; corporate medical / attorney is correct |
+| Warning that a Box 6 / Box 10 recipient is a corporation | Generic corporate-recipient check | Proceed; corporate medical providers and attorneys are reportable |
 | "Filing window closed" | Past deadline | Late-file with penalty (IRC §6721) |
 
 ---
@@ -89,25 +92,23 @@ For payers issuing < 10 information returns who prefer paper.
 3. **Form 1096 boxes**:
    - Filer's name, address, TIN
    - Box 3: total number of 1099-MISC forms transmitted
-   - Box 5: total amount reported (sum of payments — for Form 1099-MISC, this is sum of Boxes 1, 2, 3, 5, 6, 8, 9, 10, 14, 15 — verify which boxes are aggregated for Form 1096 Line 5 each year)
-   - Box 6: form type code "95" for 1099-MISC
+   - Box 5: total amount reported — for Form 1099-MISC, the total of Boxes 1, 2, 3, 5, 6, 8, 9, 10, and 11 (Form 1096 (2026) instructions, Box 5)
+   - Box 6: form type code "95" for 1099-MISC (Form 1096 (2026))
 
 ### Mailing address
 
-Look up at https://www.irs.gov/instructions/i1099gi by:
-1. Form type (1099-MISC)
-2. Filer's state
+Use the "Where To File" table in the Form 1096 instructions (https://www.irs.gov/pub/irs-pdf/f1096.pdf): Austin, Kansas City, or Ogden, by the filer's principal business state. Do not hardcode; re-read it each year.
 
 ### Mailing best practices
 
 - Send via **USPS Certified Mail with Return Receipt**
-- Postmark by **February 28** (1099-MISC paper IRS deadline) — note: this is later than 1099-NEC's January 31
+- Postmark by **February 28** (1099-MISC paper IRS deadline; March 1, 2027 for 2026 forms) — note: this is later than 1099-NEC's January 31
 - Keep a complete photocopy of the entire submission
 
 ### Copy B to recipient
 
 - Print Copy B (black ink OK; only Copy A requires red ink scannable)
-- Mail by **February 1**
+- Mail by **January 31** (**February 15** with Box 8 or 10 amounts), next business day if a weekend or holiday
 
 ---
 
@@ -119,8 +120,8 @@ For QuickBooks, Track1099, Tax1099, Gusto, Rippling, Bill.com, etc.:
 2. Confirm payer info (EIN, address)
 3. Import or enter recipients
 4. Verify W-9 status and TIN matches
-5. Enter box amounts. Watch out for boxes most platforms don't pre-populate (Box 9 crop insurance, Box 12 §409A, Box 14 golden parachute) — these may require manual entry.
-6. Software files with IRS via FIRE under the platform's transmitter ID; distributes Copy B to recipients
+5. Enter box amounts. Watch out for boxes most platforms don't pre-populate (Box 9 crop insurance, Box 12 §409A, Box 15) — these may require manual entry. Check that the platform uses the right year's form (Box 14 is reserved on the 2025 form and overtime on the 2026 form; golden parachute payments go on 1099-NEC box 3).
+6. Software files with IRS under the platform's IRIS transmitter code; distributes Copy B to recipients
 7. Pay platform fee per form
 
 Most platforms cover CF/SF states. Verify state coverage in platform docs.
@@ -129,7 +130,7 @@ Most platforms cover CF/SF states. Verify state coverage in platform docs.
 
 ## Section 4 — Backup withholding deposits (Form 945)
 
-Same as 1099-NEC: any Box 4 amount on a 1099-MISC is backup withholding, deposited via EFTPS, reconciled annually on Form 945 by January 31.
+Same as 1099-NEC: any Box 4 amount on a 1099-MISC is backup withholding (or Indian gaming withholding), deposited via EFTPS, reconciled annually on Form 945 (line 2 for backup withholding) by January 31 (February 1, 2027 for 2026).
 
 The Form 945 covers all backup withholding regardless of which 1099 form (NEC, MISC, K, INT, DIV) the withholding came from.
 
@@ -139,16 +140,17 @@ The Form 945 covers all backup withholding regardless of which 1099 form (NEC, M
 
 If a 1099-MISC was filed with errors:
 
-- **One-step correction** (wrong dollar amount, wrong recipient address): file a corrected 1099-MISC with the "Corrected" box checked, showing the correct amount.
-- **Two-step correction** (wrong TIN, wrong recipient name, or wrong box):
-  1. File a corrected 1099-MISC with original (incorrect) info and $0 in all boxes, marked Corrected
-  2. File a separate new 1099-MISC with correct info
+- **One-step correction** (Error Type 1: incorrect money amount, code, or checkbox — including an amount in the wrong box on the right form): file a corrected 1099-MISC with the "CORRECTED" box checked, showing the correct amounts. Send a corrected Copy B.
+- **Two-step correction** (Error Type 2: wrong TIN, wrong recipient name, or wrong form type):
+  1. File a corrected 1099-MISC with original (incorrect) info and $0 in all boxes, marked CORRECTED
+  2. File a separate new original 1099-MISC (or the right form) with correct info
+- **Filed when none was required** (e.g., below the threshold, or to a corporate landlord): one corrected form with all amounts $0.
 
 Common 1099-MISC correction scenarios:
-- Amount allocated to wrong box (e.g., put $1,200 medical payment in Box 3 instead of Box 6) → two-step correction
-- Plaintiff's settlement portion put in Box 10 instead of Box 3 → two-step correction (the boxes have different reporting consequences)
+- Amount in the wrong box (e.g., $2,450 medical payment in Box 3 instead of Box 6) → one-step correction: Box 3 = $0, Box 6 = $2,450
+- Attorney fees for the payer's own legal services reported in Box 10 instead of on 1099-NEC box 1a → wrong form type, two-step correction
 
-See IRS Pub. 1220 Section H for correction matrices.
+See Pub. 1099 (2026), part H, for paper corrections; Pub. 5717 (IRIS Taxpayer Portal) and Pub. 5718 (IRIS A2A) for electronic corrections. Do not check the VOID box on a correction.
 
 ---
 
@@ -156,10 +158,10 @@ See IRS Pub. 1220 Section H for correction matrices.
 
 After filing:
 
-1. **Submitted** → IRIS / FIRE / paper
+1. **Submitted** → IRIS / paper
 2. **Accepted** → IRS confirms; for IRIS, usually within minutes
 3. **Processed** → posted to recipient's account
-4. **Penalty notice** → CP2100 / CP2100A for TIN mismatches, CP14 for unpaid backup withholding
+4. **Notices** → Notice 972CG proposes information-return penalties; CP2100 / CP2100A lists name/TIN mismatches that start the B-Notice process
 
 ---
 
@@ -173,4 +175,4 @@ These are non-negotiable:
 4. **Always capture submission confirmations** as screenshots stored under user's account
 5. **TIN mismatches**: surface, do not silently file with a known-bad TIN
 6. **Recipient consent for e-delivery**: required before e-delivering Copy B
-7. **Box 6 / Box 10 to corporations**: do NOT exclude these from the issuance plan even though IRIS may surface a warning — the corporate exemption does NOT apply to medical or attorney payments. If unsure, verify against [`references/corporate-exception.md`](./references/corporate-exception.md).
+7. **Box 6 / 8 / 10 / 11 to corporations**: do NOT exclude these from the issuance plan even if a platform surfaces a warning — the corporate exemption does NOT apply to medical, substitute-payment, attorney, or fish-purchase payments. If unsure, verify against [`references/corporate-exception.md`](./references/corporate-exception.md).

@@ -1,6 +1,6 @@
 # Tax Computation Reference
 
-How to compute Line 16 (Tax) on Form 1040. The IRS provides multiple methods depending on the taxpayer's income level and the types of income they have. Pick the right method — using the wrong one can over- or under-state tax by thousands.
+How to compute Line 16 (Tax) on Form 1040 (2025 revision, filed in 2026; page numbers refer to the 2025 Instructions for Form 1040). The IRS provides multiple methods depending on the taxpayer's income level and the types of income they have. Pick the right method — using the wrong one can over- or under-state tax by thousands.
 
 **Legal basis**: IRC §1 (rate schedules), IRC §1(h) (preferential rates for net capital gain and qualified dividends), IRC §15 (tax in case of multiple rate schedules).
 
@@ -10,16 +10,22 @@ How to compute Line 16 (Tax) on Form 1040. The IRS provides multiple methods dep
 
 ```
 Is taxable income (Line 15) < $100,000?
-  → Use the Tax Tables (in the 1040 instructions, ~pages 66-77)
+  → Use the Tax Table (2025 instructions, pages 68–79)
 
 Is taxable income ≥ $100,000?
-  → Use the Tax Computation Worksheet (1040 instructions ~page 78)
+  → Use the Tax Computation Worksheet (2025 instructions, page 80)
 
-Did the filer have qualified dividends (3a > 0) OR net long-term capital gain on Schedule D?
-  → Use the Qualified Dividends and Capital Gain Tax Worksheet (overrides Tax Tables / TCW)
+Did the filer have qualified dividends (3a > 0), capital gain distributions on 7a with no Schedule D, OR gains on both Schedule D lines 15 and 16?
+  → Use the Qualified Dividends and Capital Gain Tax Worksheet (page 38; overrides Tax Table / TCW)
 
-Did the filer have 28%-rate gain (collectibles) OR unrecaptured §1250 gain?
-  → Use the Schedule D Tax Worksheet (more complex; overrides QDCG)
+Did Schedule D line 18 (28%-rate gain, e.g. collectibles) or line 19 (unrecaptured §1250 gain) show more than zero, with gains on lines 15 and 16, OR does Form 4952 line 4g have an amount?
+  → Use the Schedule D Tax Worksheet in the Schedule D instructions (overrides QDCG)
+
+Is the filer a child with more than $2,700 of unearned income (under 18, or certain 18–23-year-olds)?
+  → Use Form 8615
+
+Did the filer claim the foreign earned income exclusion or housing exclusion/deduction (Form 2555)?
+  → Use the Foreign Earned Income Tax Worksheet (page 37)
 
 Did the filer report a child's interest/dividends on Form 8814?
   → Use the Form 8814 method to add tax on the child's income to parent's
@@ -44,7 +50,7 @@ The Tax Tables are in the back of the Form 1040 Instructions, organized by:
 
 Look up Line 15 in the income range column, read across to the column for filing status. The number is the tax.
 
-Example: Line 15 = $44,039, Single. Look in the "$44,000 to $44,050" row, "Single" column. Tax ≈ $5,031 for 2025.
+Example: Line 15 = $44,039, Single. Look in the "$44,000 to $44,050" row, "Single" column. Tax = $5,045 for 2025 (the table computes tax on the row's midpoint, $44,025, and rounds).
 
 **The tables compute the bracket math automatically** — no need to multiply manually. The tables also handle the bracket transitions correctly.
 
@@ -66,13 +72,15 @@ If your taxable income is at least $X but less than $Y:
 The "adjustment" accounts for the lower brackets so you don't over-tax the lower portions.
 
 **2025 single filer example** (taxable income $250,000):
-- Bracket: 32% bracket starts at $197,300 for single in 2025
-- Use TCW row for "at least $197,300 but less than $250,525" → multiply by 32% and subtract a fixed adjustment
-- The adjustment ensures the lower brackets (10/12/22/24%) are computed correctly
+- Bracket: 32% bracket starts above $197,300 for single in 2025
+- Use the TCW row "Over $197,300 but not over $250,525" → $250,000 × 32% = $80,000, minus the $22,937.00 subtraction amount = $57,063
+- The subtraction amount ensures the lower brackets (10/12/22/24%) are computed correctly
 
-The TCW is more compact than the Tax Tables but produces exactly the same answer for any income level (the Tables stop at $100,000 to keep the booklet from being huge).
+2025 TCW subtraction amounts (Section A single): 22% $5,086.00; 24% $7,153.00; 32% $22,937.00; 35% $30,452.75; 37% $42,979.75. MFJ/QSS (Section B): 22% $10,172.00; 24% $14,306.00; 32% $45,874.00; 35% $60,905.50; 37% $75,937.50.
 
-**For 2026, verify the TCW from the 2026 Form 1040 instructions. Brackets are inflation-adjusted annually under IRC §1(f).**
+The TCW applies the same brackets as the Tax Table; the Table computes tax at the midpoint of each $50 row and stops at $100,000, so the two can differ by a few dollars at the same income. Use whichever one the instructions require for the income level.
+
+**For 2026, the bracket thresholds are published in Rev. Proc. 2025-32 §4.01 (single: 10% to $12,400, 12% to $50,400, 22% to $105,700, 24% to $201,775, 32% to $256,225, 35% to $640,600). Use the 2026 Form 1040 instructions' Tax Table and TCW once released; brackets are inflation-adjusted annually under IRC §1(f).**
 
 ---
 
@@ -80,7 +88,7 @@ The TCW is more compact than the Tax Tables but produces exactly the same answer
 
 If the filer has qualified dividends (Line 3a > 0) OR net long-term capital gain on Schedule D, the QDCG Worksheet computes tax using preferential LTCG rates (0%, 15%, 20%) on the qualifying portion and regular rates on the rest.
 
-The worksheet is in the 1040 instructions (~page 36).
+The worksheet is in the 2025 Form 1040 instructions (page 38).
 
 ### LTCG rate brackets (2025)
 
@@ -91,7 +99,7 @@ The worksheet is in the 1040 instructions (~page 36).
 | MFS | $0–$48,350 | $48,350–$300,000 | over $300,000 |
 | HoH | $0–$64,750 | $64,750–$566,700 | over $566,700 |
 
-**For 2026, verify against Rev. Proc. 2025-XX.**
+**2026** (Rev. Proc. 2025-32 §4.03): 0% up to $49,450 single/MFS, $98,900 MFJ/QSS, $66,200 HOH; 15% up to $545,500 single, $306,850 MFS, $613,700 MFJ/QSS, $579,600 HOH.
 
 ### Worksheet logic (high level)
 
@@ -106,11 +114,11 @@ The worksheet has 25+ lines to handle the bracket transitions correctly when ord
 
 ### Why preferential rates matter
 
-For a filer with $80,000 ordinary income + $20,000 qualified dividends (single):
-- Without QDCG: tax all $100,000 at ordinary rates → ~$13,841
-- With QDCG: ordinary portion taxed at ordinary rates, qualified dividends taxed at 15% LTCG rate → ~$13,841 − ($20,000 × (22% − 15%)) ≈ $12,441
+For a filer with $80,000 ordinary taxable income + $20,000 qualified dividends (single, 2025):
+- Without QDCG: tax all $100,000 at ordinary rates (TCW) → $100,000 × 22% − $5,086 = $16,914
+- With QDCG: $80,000 taxed from the Tax Table ($12,520) + $20,000 at 15% ($3,000) = $15,520
 
-That's $1,400 saved by using the right method. The IRS doesn't compute this for you; tax software does, but a paper filer or DIY user must use the worksheet.
+That's $1,394 saved by using the right method (about $20,000 × (22% − 15%)). The IRS doesn't compute this for you; tax software does, but a paper filer or DIY user must use the worksheet.
 
 ---
 
@@ -130,7 +138,7 @@ The worksheet is in the Schedule D instructions. Most individual filers don't tr
 
 If the filer chooses to report a child's interest and dividends on the parent's return (instead of the child filing their own return), use Form 8814. The child's income gets added to the parent's tax with a special calculation.
 
-Available only if the child's income is interest/dividends only, ≤ $13,000 (2025; verify 2026), and child is under 19 (or 24 if a student).
+Available only if the child's income is interest, dividends, and capital gain distributions only, the child's gross income is more than $1,350 and less than $13,500 (2025 and 2026; Rev. Proc. 2024-40 §2.02, Rev. Proc. 2025-32 §4.02), and the child is under 19 (or under 24 if a full-time student).
 
 Generally a higher tax than the child filing separately due to "kiddie tax" rules. Most parents don't elect.
 
@@ -150,19 +158,19 @@ If the filer claims the Foreign Earned Income Exclusion (Form 2555), tax is comp
 
 ### Capital loss
 
-If Line 7 is a net capital loss, it's already capped at $3,000 ($1,500 MFS) on Schedule D. The loss reduces ordinary income on Line 7. Line 16 is computed normally on the (now smaller) Line 15.
+If Line 7a is a net capital loss, it's already capped at $3,000 ($1,500 MFS) on Schedule D line 21. The loss reduces total income through Line 7a. Line 16 is computed normally on the (now smaller) Line 15.
 
 ### AMT
 
-Alternative Minimum Tax is computed separately on Form 6251 and added to Line 17 (via Schedule 2 Line 1). Most filers post-TCJA owe $0 AMT — the exemption is high enough that only very high earners trigger it.
+Alternative Minimum Tax is computed separately on Form 6251 and added to Line 17 (via Schedule 2 Line 2). Most filers post-TCJA owe $0 AMT — the exemption is high enough that only very high earners trigger it.
 
 ### Net Investment Income Tax
 
-3.8% on net investment income for single filers with AGI > $200,000 / MFJ > $250,000. Computed on Form 8960. Lands on Line 17 (via Schedule 2 Line 12). Not part of regular Line 16 computation.
+3.8% on the smaller of net investment income or MAGI over $200,000 (single/HOH), $250,000 (MFJ/QSS), $125,000 (MFS). Computed on Form 8960. Lands on Line 23 (via Schedule 2 Line 12 → Line 21). Not part of regular Line 16 computation.
 
 ### Additional Medicare Tax
 
-0.9% on wages + SE earnings exceeding $200,000 single / $250,000 MFJ. Form 8959. Lands on Line 17 (via Schedule 2 Line 11). Not part of Line 16.
+0.9% on Medicare wages + SE earnings exceeding $200,000 single/HOH/QSS, $250,000 MFJ, $125,000 MFS. Form 8959. Lands on Line 23 (via Schedule 2 Line 11 → Line 21); any amount withheld goes on Line 25c. Not part of Line 16.
 
 ---
 
@@ -195,3 +203,4 @@ For agents: the deliverable from `SKILL.md` should explicitly note which method 
 - [Form 4972](https://www.irs.gov/pub/irs-pdf/f4972.pdf) — Lump-Sum Distributions
 - [Publication 17](https://www.irs.gov/publications/p17) — Your Federal Income Tax (worked examples)
 - Rev. Proc. 2024-40 — 2025 brackets, including LTCG brackets
+- Rev. Proc. 2025-32 — 2026 brackets and LTCG breakpoints

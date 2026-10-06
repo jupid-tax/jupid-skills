@@ -9,23 +9,31 @@ modifications.
 
 ## The basic rule
 
-For a US C-corp or foreign corp filing Form 5472, "related party" means:
+For a US C-corp or foreign corp filing Form 5472, "related party" means
+(IRC §6038A(c)(2); Instructions for Form 5472, Definitions):
 
-1. **Any 25%+ direct foreign shareholder** of the reporting corporation
-2. **Any 25%+ indirect foreign shareholder** through ownership chains
-3. **Any other person related to the reporting corporation** under IRC
-   §267(b) or §707(b)(1)
+1. **Any 25%+ direct or indirect foreign shareholder** of the reporting
+   corporation
+2. **Any person related to the reporting corporation, or to a 25%
+   foreign shareholder,** under IRC §267(b) or §707(b)(1)
+3. **Any other person related to the reporting corporation** under §482
 
-For a foreign-owned US DE filing Form 5472, "related party" includes:
+A corporation filing a consolidated return with the reporting
+corporation is not a related party.
 
-1. **The foreign owner** of the DE (always, by definition)
-2. **Any other person related to the foreign owner** under §267(b) /
-   §707(b)(1)
+For a foreign-owned US DE filing Form 5472, the same definition gives:
 
-A separate Form 5472 is filed for each related party. If the DE has
+1. **The foreign owner** of the DE (always, as its 25% foreign
+   shareholder)
+2. **Any other person related to the DE or to the foreign owner** under
+   §267(b) / §707(b)(1) or §482
+
+A separate Form 5472 is filed for each related party with which the
+reporting corporation had a reportable transaction. If the DE has
 transactions only with its foreign owner, that's one 5472. If the DE
 also paid management fees to the foreign owner's brother (related
-under §267(b)), that's a second 5472 for the brother.
+under §267(b)(1) and §267(c)(4)), that's a second 5472 for the
+brother.
 
 ## §267(b) related parties
 
@@ -71,21 +79,25 @@ Similar to §267(b) but tailored to partnerships:
 
 ## Constructive ownership under §318 (modified by §6038A)
 
-For determining 25%+ ownership, IRC §6038A(c)(5) applies the
-constructive ownership rules of §318 with specific modifications. Key
-points:
+For determining 25%+ ownership (and for the related-party definition),
+IRC §6038A(c)(5) applies the constructive ownership rules of §318 with
+two modifications. Key points:
 
 - **Family attribution** — A person is treated as owning stock owned
   by their spouse, children, grandchildren, and parents (but NOT
-  siblings under §318, unlike §267(b)(1) which DOES include siblings)
-- **Entity attribution** — Stock owned by a corporation is attributed
-  to a 50%+ shareholder; stock owned by a partnership is attributed
-  proportionally to partners; stock owned by a trust is attributed
-  to beneficiaries proportionally to actuarial interest.
-- **Modifications under §6038A**:
-  - Family attribution applies broader (includes siblings for §6038A)
-  - Entity attribution applies broader (lower thresholds in some
-    cases)
+  siblings under §318, unlike §267(b)(1)/§267(c)(4), which DO include
+  siblings for the related-party test)
+- **Entity attribution** — Stock owned by a partnership, estate, or
+  trust is attributed proportionally to its partners or beneficiaries;
+  stock owned by a corporation is attributed proportionally to a
+  shareholder who owns 50% or more of it (§318(a)(2)(C))
+- **Modifications under §6038A(c)(5)**:
+  - "10 percent" replaces "50 percent" in §318(a)(2)(C): a shareholder
+    owning 10% or more of a corporation is treated as owning its
+    proportionate share of the stock that corporation owns
+  - §318(a)(3)(A), (B), and (C) (attribution to an entity from its
+    owners) are not applied so as to treat a US person as owning stock
+    owned by a foreign person
 
 Practical effect: in determining 25% foreign ownership of a US corp,
 you must trace through corporate, partnership, and trust intermediaries
@@ -126,10 +138,15 @@ business or another entity in the foreign owner's structure.
 - Italian individual's family
 - Any other entities owned by Italian individual or Srl
 
-**5472s required**: at least two — one for the Srl (Part III names the
-Srl as direct owner), one for the ultimate Italian individual (Part II
-names the individual; Part III names the Srl as intermediate). Plus any
-sister entities the DE transacted with.
+**How the forms look**: every Form 5472 shows the Srl in Part II lines
+4a–4e (direct 25% foreign shareholder) and the Italian individual in
+lines 6a–6e (ultimate indirect 25% foreign shareholder), with an
+attached explanation of the attribution (Instructions for Form 5472,
+Lines 6a–6e and 7a–7e). A separate Form 5472 is filed for each related
+party the DE transacted with, named in Part III: the Srl if money moved
+between the DE and the Srl, the individual if money moved between the
+DE and the individual personally, plus any sister entities the DE
+transacted with.
 
 ### Example C — US C-corp with foreign parent and foreign sister
 
@@ -155,10 +172,11 @@ beneficiaries are a US individual and various foreign individuals.
 
 **Related parties of the DE (Delaware LLC)**:
 - The Cayman trust (foreign owner, 100%)
-- The trustee (related under §267(b) trust rules)
-- The grantor (related under §267(b)(4))
-- The beneficiaries (related under §267(b)(6) for fiduciary-beneficiary
-  relationships)
+- The trustee (a fiduciary of a trust that owns more than 50% of the
+  DE, §267(b)(8))
+- Possibly the grantor and the beneficiaries, through §318/§267(c)
+  attribution of the trust's ownership; this is a practitioner
+  question
 
 This pattern gets complex fast. Multiple related parties; multiple
 5472s; possible Form 3520 issues for any US beneficiary; possible
@@ -171,17 +189,19 @@ The skill should flag this and recommend a practitioner.
 When determining whether a foreign person owns 25%+ of a US C-corp
 through intermediaries, trace through:
 
-- **Corporations**: ownership is proportional. If foreign person owns
-  60% of foreign holding, and foreign holding owns 50% of US sub, then
-  foreign person indirectly owns 30% of US sub (60% × 50%) — meets the
-  25% threshold.
+- **Corporations**: ownership is proportional once the 10% threshold
+  of the modified §318(a)(2)(C) is met. If foreign person owns 60% of
+  foreign holding, and foreign holding owns 50% of US sub, then foreign
+  person indirectly owns 30% of US sub (60% × 50%) — meets the 25%
+  threshold.
 - **Partnerships**: same proportional tracing.
 - **Trusts**: actuarial interest of beneficiaries; if foreign person
   is the sole beneficiary of a trust that owns 100% of US sub, foreign
   person owns 100% indirectly.
 
-§6038A(c)(5) and the regs at §1.6038A-1(d) specify the ownership
-attribution rules. When in doubt, trace conservatively (assume more
+§6038A(c)(5) and Treas. Reg. §1.6038A-1 specify the ownership
+attribution rules (the instructions point to Rev. Proc. 91-55 and
+Treas. Reg. §1.6038A-1(e) for ultimate indirect shareholders). When in doubt, trace conservatively (assume more
 attribution rather than less) to ensure the right related parties are
 identified.
 
@@ -203,11 +223,13 @@ If the DE never transacted with the foreign owner's brother, no 5472
 for the brother — even though he's a related party.
 
 For Type 3 DEs specifically: the formation contribution from the
-foreign owner is always a reportable transaction, so Year 1 always
-requires a 5472 for the owner. Subsequent years require a 5472 for
-the owner if any contributions, distributions, loans, or other
-transactions occurred — and the IRS expects Type 3 DEs to file
-annually even if Part V is all zeros.
+foreign owner is a reportable transaction (Treas. Reg.
+§1.6038A-2(b)(3)(xi)), so Year 1 requires a 5472 for the owner.
+Subsequent years require a 5472 for the owner if any contributions,
+distributions, loans, owner-paid expenses, or other transactions
+occurred. A year with no reportable transactions at all has no filing
+requirement (Instructions for Form 5472, Exceptions from filing, item
+1); confirm such a year line by line before relying on it.
 
 ## Documentation to retain
 
@@ -223,6 +245,9 @@ For each related party identified, the user should keep:
   terms)
 
 The IRS requires these records to be available for examination on
-request. Failure to provide records on request triggers a separate
-penalty under §6038A(d)(2) and may result in IRS-determined transfer
-prices replacing the corp's reported amounts.
+request, kept as long as they may be relevant or material and not less
+than the assessment period (Treas. Reg. §1.6038A-3(g)). Failure to
+maintain records is itself a $25,000 failure (§6038A(d)(1)(B)), and if
+a summons for the records is not complied with, the IRS may determine
+the deduction and cost amounts for the related-party transactions in
+its sole discretion (§6038A(e)(3)).

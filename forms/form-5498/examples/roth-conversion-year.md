@@ -10,7 +10,7 @@ user has nondeductible basis.
 - **Name**: Wei Lin
 - **Age**: 51
 - **Filing status**: Married Filing Jointly
-- **Tax year**: 2025 (Form 5498s received May 2026)
+- **Tax year**: 2025 (Form 5498s furnished by June 1, 2026)
 - **Accounts**:
   - Traditional IRA at Vanguard (Account A): $80,000 balance 12/31/2024
   - Traditional IRA at Vanguard (Account B): $40,000 balance 12/31/2024
@@ -85,8 +85,10 @@ Box 1  Gross distribution:                 $30,000
 Box 2a Taxable amount:                     $30,000 (or blank — let
                                                     8606 compute)
 Box 7  Distribution code:                  2 (early distribution,
-                                              exception applies — Roth
-                                              conversion exception)
+                                              exception applies — the
+                                              1099-R instructions list
+                                              "A Roth IRA conversion"
+                                              for a participant under 59½)
 Box 7 IRA/SEP/SIMPLE checkbox:             ✓
 ```
 
@@ -96,53 +98,52 @@ Wei's CPA prepared:
 
 **Form 1040**:
 - Line 4a (gross IRA distributions): $30,000
-- Line 4b (taxable amount): $27,000 (computed via Form 8606 Part II
-  with pro-rata basis applied)
+- Line 4b (taxable amount): $27,120 (computed via Form 8606 with
+  pro-rata basis applied)
 
 **Form 8606 Part II — Roth Conversions**:
 ```
 Line 16: Net amount converted to Roth IRAs in 2025:    $30,000
-Line 17: Basis in traditional IRAs (computed pro-rata):  $3,000
-Line 18: Taxable amount (Line 16 − Line 17):          $27,000
+Line 17: Basis in amount converted (Part I Line 11):    $2,880
+Line 18: Taxable amount (Line 16 − Line 17):          $27,120
 ```
 
 **Form 8606 Part I — Nondeductible Contributions**:
 - No new nondeductible contribution this year
-- Updated basis tracking: $12,000 prior basis − $3,000 used in
-  conversion = $9,000 remaining basis carrying forward to 2026
+- Updated basis tracking: $12,000 prior basis − $2,880 used in
+  conversion = $9,120 remaining basis carrying forward to 2026
 
-### How the $3,000 basis was computed (pro-rata rule)
+### How the $2,880 basis was computed (pro-rata rule)
 
-Per IRC §72(e)(8) and Form 8606 instructions:
+Per IRC §408(d)(1)–(2) (all traditional IRAs treated as one contract,
+valued at year end) and the 2025 Form 8606, Part I:
 
 ```
-Aggregate traditional IRA value just before conversion:
-  $80,000 (Account A) + $40,000 (Account B) = $120,000
-  + the $30,000 being converted... actually the formula uses
-  values *as of 12/31* of the year, with adjustments
+Line 1: 2025 nondeductible contributions:            $0
+Line 2: Total basis in traditional IRAs:         $12,000
+Line 3 / Line 5 (no 2026 contributions for 2025): $12,000
 
-For Form 8606 Part I Line 6:
-  Year-end value of all traditional IRAs (12/31/2025):
-  $52,800 (Account A) + $42,400 (Account B) = $95,200
+Line 6: Value of all traditional IRAs on 12/31/2025:
+  $52,800 (Account A) + $42,400 (Account B) =      $95,200
 
-For Line 7: distributions during the year:
-  $30,000 (the conversion)
+Line 7: Distributions other than conversions:          $0
 
-For Line 8: total to allocate basis across:
-  $95,200 + $30,000 = $125,200
+Line 8: Net amount converted to Roth in 2025:     $30,000
 
-Line 10: basis ratio:
-  $12,000 prior basis ÷ $125,200 = 0.0958 (about 9.58%)
+Line 9: Line 6 + Line 7 + Line 8:                $125,200
 
-Line 11: basis applied to the distribution:
-  $30,000 × 0.0958 = $2,875 ≈ $3,000 (rounded)
+Line 10: Line 5 ÷ Line 9 = 12,000 ÷ 125,200 = 0.0958 → 0.096
+  (the form asks for at least 3 decimal places)
+
+Line 11: nontaxable part of the conversion:
+  $30,000 × 0.096 = $2,880 (also entered on Line 17)
 
 Line 14: remaining basis:
-  $12,000 − $3,000 = $9,000 carrying to 2026
+  $12,000 − $2,880 = $9,120 carrying to 2026
 ```
 
-(The exact computation has rounding; this approximates the formula. See
-Form 8606 instructions for precise math.)
+(Rounding Line 10 to 4 places instead, 0.0958, gives $2,874 nontaxable and
+$27,126 taxable; either is consistent with the form's instruction.)
 
 ## Reconciliation walkthrough
 
@@ -169,8 +170,8 @@ new in 2025; just did the conversion).
 
 | Source | Amount |
 |--------|--------|
-| Form 1040 Line 4b | $27,000 |
-| Form 8606 Part II Line 18 | $27,000 |
+| Form 1040 Line 4b | $27,120 |
+| Form 8606 Part II Line 18 | $27,120 |
 | 1099-R Box 2a | $30,000 (gross — but the actual taxable portion is
                             computed by 8606, not the 1099-R) |
 
@@ -184,24 +185,24 @@ user's basis. The user's Form 8606 is the authoritative computation.
 
 For pro-rata calculation:
 - Sum of Box 5 across Traditional A + B 5498s = $52,800 + $42,400 =
-  $95,200 (this is the year-end aggregate value for the pro-rata rule)
-- Plus the $30,000 conversion that left during the year = $125,200
-  total for allocation
+  $95,200 (this is the year-end aggregate value, Form 8606 Line 6)
+- Plus the $30,000 conversion during the year (Line 8) = $125,200
+  total for allocation (Line 9)
 
-Form 8606 Line 8 should match $125,200 (allowing for rounding in the
-custodian's reporting).
+Form 8606 Line 6 should match $95,200 and Line 9 $125,200.
 
 ### Step 5 — Confirm basis carryforward
 
-Wei's prior basis was $12,000. After applying $3,000 to this conversion,
-$9,000 of basis remains. Form 8606 Line 14 should show $9,000.
+Wei's prior basis was $12,000. After applying $2,880 to this conversion,
+$9,120 of basis remains. Form 8606 Line 14 should show $9,120.
 
-This $9,000 carries to 2026's Form 8606. If Wei does another conversion
+This $9,120 carries to 2026's Form 8606. If Wei does another conversion
 in 2026, it'll be applied pro-rata against the 2026 aggregate.
 
 ### Step 6 — Verify Box 11 (RMD) is unchecked on all three 5498s
 
-Wei is 51, well below RMD age (73). All Box 11s should be unchecked. The
+Wei is 51, well below RMD age (75 for someone born in 1974, IRC
+§401(a)(9)(C)(v)). All Box 11s should be unchecked. The
 Roth 5498's Box 11 should *always* be unchecked for original Roth
 owners regardless of age.
 
@@ -250,8 +251,8 @@ SSN: XXX-XX-XXXX
 |------|--------|
 | Box 3 ($30,000) ↔ 1099-R Box 1 ($30,000) | ✓ Match |
 | Box 3 ($30,000) ↔ Form 1040 Line 4a ($30,000) | ✓ Match |
-| Form 1040 Line 4b ($27,000) ↔ Form 8606 Part II Line 18 ($27,000) | ✓ Match |
-| Aggregate Trad IRA Box 5 ($95,200) ↔ Form 8606 Line 6 | ✓ Match (within rounding) |
+| Form 1040 Line 4b ($27,120) ↔ Form 8606 Part II Line 18 ($27,120) | ✓ Match |
+| Aggregate Trad IRA Box 5 ($95,200) ↔ Form 8606 Line 6 | ✓ Match |
 | Box 11 unchecked on Roth | ✓ Correct |
 | Box 11 unchecked on both Trads | ✓ Correct (Wei is 51) |
 
@@ -264,7 +265,7 @@ None.
 - [x] Confirm Form 8606 was filed with the 2025 return (Part II
       computed conversion taxable portion; Part I tracked basis
       carryforward)
-- [ ] Wei's remaining basis ($9,000) carries to 2026 Form 8606 Line 2
+- [ ] Wei's remaining basis ($9,120) carries to 2026 Form 8606 Line 2
 - [ ] If Wei does future conversions, apply pro-rata against the
       future-year aggregate (Box 5 of all traditional IRAs)
 - [ ] Continue tracking Box 5 across all IRAs for retirement projection
@@ -272,25 +273,24 @@ None.
 ## Validation summary
 - Math: all checks passed
   - $30,000 conversion ✓ matches across 5498, 1099-R, 1040 Line 4a, 8606 Part II Line 16
-  - $27,000 taxable portion ✓ correctly computed via pro-rata: $30,000 −
-    ($12,000 basis × $30,000 / $125,200 total) ≈ $27,000
+  - $27,120 taxable portion ✓ computed via pro-rata: $30,000 −
+    ($30,000 × 0.096) = $27,120
 - Sanity:
   - Roth IRA Box 11 correctly unchecked (Roth no lifetime RMD)
-  - Wei's basis history: $12,000 prior − $3,000 used = $9,000 carry to 2026
-  - 1099-R distribution code 2 correctly reflects the IRA-to-Roth
-    conversion exception under §72(t)(2)(D)
+  - Wei's basis history: $12,000 prior − $2,880 used = $9,120 carry to 2026
+  - 1099-R distribution code 2 correctly reflects a Roth IRA conversion
+    by a participant under 59½ (1099-R instructions, code 2)
 - Next steps:
-  - Tax owed on $27,000 conversion: ~$5,940 federal at Wei's 22%
+  - Tax owed on $27,120 conversion: ~$5,966 federal at Wei's 22%
     bracket (will appear on her 2025 Form 1040 total tax)
   - Continue annual basis tracking via Form 8606 Line 14
 
 ## Sources cited in this reconciliation
-- IRS Form 5498, Rev. 2025
-- IRS Instructions for Form 5498, Rev. 2025
-- IRS Form 8606, Rev. 2025 — Nondeductible IRAs
-- IRS Form 1099-R, Rev. 2025
-- IRC §72(e)(8) — pro-rata rule for IRA basis recovery
-- IRC §72(t)(2)(D) — Roth conversion exception to early-distribution tax
+- IRS Form 5498 (2025)
+- IRS Instructions for Forms 1099-R and 5498 (2025) — 1099-R code 2 for Roth IRA conversions
+- IRS Form 8606 (2025) — Nondeductible IRAs, Lines 1–18
+- IRS Form 1099-R (2025)
+- IRC §408(d)(1)–(2) — IRA distributions taxed under §72 with all IRAs treated as one contract
 - IRC §408A(c)(5) — Roth IRA RMD exemption for original owner
 - IRS Pub 590-B — Distributions from IRAs
 ```
@@ -301,12 +301,12 @@ None.
 $12,000 total basis?** The pro-rata rule treats all traditional /
 SEP / SIMPLE IRAs as a single pool. Wei's basis of $12,000 is allocated
 across her *aggregate* IRA value of $125,200. The conversion of
-$30,000 represents about 24% of her total IRA value, so she "uses" 24%
-of her basis, or about $3,000. The remaining $9,000 stays as
-unused basis pending future conversions or distributions.
+$30,000 represents about 24% of that total, so she "uses" about 24%
+of her basis: $2,880 after the form's rounding. The remaining $9,120 stays
+as unused basis pending future conversions or distributions.
 
 **Why is the 1099-R Box 2a $30,000 (the gross) when the actual taxable
-amount is $27,000?** The custodian doesn't track the user's basis. Box
+amount is $27,120?** The custodian doesn't track the user's basis. Box
 2a is the custodian's best guess at the taxable amount, often equal to
 Box 1 (the gross). The user's Form 8606 is the authoritative
 calculation. The IRS expects this discrepancy when basis exists.
@@ -315,8 +315,9 @@ calculation. The IRS expects this discrepancy when basis exists.
 checked?** Original Roth IRA owners have no lifetime RMD requirement
 (IRC §408A(c)(5)). If Box 11 were checked on the Roth 5498, it would
 be a custodian error — request a corrected 5498. Inherited Roth IRAs
-do have RMD rules in some cases (depending on death-year rules and
-beneficiary type), so a Box 11 ✓ on an inherited Roth might be correct.
+do have distribution rules for the beneficiary, but custodians are not
+required to report RMDs for inherited IRAs on Form 5498 (2025
+Instructions for Forms 1099-R and 5498, "RMDs").
 
 **Why didn't Wei convert all $80,000 from Account A?** Tax planning.
 Converting $80,000 in one year would push significant taxable income

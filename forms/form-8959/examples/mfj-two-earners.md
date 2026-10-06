@@ -72,12 +72,12 @@ Threshold (Line 5):          $250,000
 
 ## Part V — Withholding Reconciliation
 19. Medicare tax withheld (W-2 Box 6 total):         $4,129
-20. Regular 1.45% Medicare on Line 1 ($284,800 × 1.45%): $4,130
-21. Additional Medicare Tax withheld (19 − 20, floor zero): $0
-22. (Same as Line 21):                               $0
+20. Amount from Line 1:                              $284,800
+21. Regular Medicare withholding (Line 20 × 1.45%):  $4,130
+22. Additional Medicare Tax withheld (19 − 21, floor zero): $0
 23. RRTA Additional Medicare Tax withheld:           $0
-24. Total Additional Medicare Tax withheld:          $0
-    → flows to Form 1040 Line 25c
+24. Total Additional Medicare Tax withholding:       $0
+    → nothing to include on Form 1040 Line 25c
 
 ## Validation summary
 - Math: all checks passed
@@ -85,11 +85,11 @@ Threshold (Line 5):          $250,000
   - MFJ couple with two W-2 earners, neither over $200K from a single employer per IRC §3102(f) → no employer withholding for Additional Medicare Tax
   - Combined wages $284,800 > MFJ threshold $250,000 → $34,800 surtax base × 0.9% = $313 owed
   - Net at filing: Line 18 − Line 24 = $313 owed
-  - Line 19 = $4,129 vs. Line 20 = $4,130: $1 rounding variance across paychecks; consistent with no additional 0.9% withholding by either employer
+  - Line 19 = $4,129 vs. Line 21 = $4,130: $1 whole-dollar rounding variance ($2,704 + $1,425 vs. $4,129.60 rounded up); consistent with no additional 0.9% withholding by either employer
 - Next steps:
   - Schedule 2 Line 11 = $313
   - Form 1040 Line 25c does NOT include any Form 8959 amount (Line 24 = $0)
-  - For 2026 planning: have one spouse update Form W-4 Step 4(c) to add ~$13/biweekly extra federal withholding to absorb the next year's expected surtax (assumes similar income trajectory; recompute in Q1 2026)
+  - For 2026 planning: have one spouse update Form W-4 Step 4(c) to add about $12 per biweekly paycheck ($313 ÷ 26) of extra federal withholding to absorb the next year's expected surtax (assumes similar income trajectory; recompute in Q1 2026)
   - Alternative: file Form 1040-ES quarterly to pay $80/quarter to cover next year's expected $313 surtax
 
 ## Sources cited in this draft
@@ -105,12 +105,12 @@ Threshold (Line 5):          $250,000
 
 **Why does this couple owe at filing when neither made over $200K individually?** IRC §3102(f) only triggers employer withholding when *a single employer* pays *a single employee* more than $200,000 in a calendar year. The MFJ filing threshold is $250,000 of combined household wages. The gap is $50,000 of "unprotected wages" before the household triggers — meaning a couple at $250K combined owes $0 surtax, but at $284,800 combined they owe $313, with no employer-side cushion.
 
-**Why is the planning recommendation "extra W-4 withholding" rather than "ask the employer to start withholding the 0.9%"?** Employers cannot legally withhold the additional 0.9% unless their own payroll to the employee crosses $200K. The W-4 Step 4(c) extra withholding is the lawful workaround — the employee asks the employer for additional flat-dollar federal income tax withholding, which appears in W-2 Box 2 and ultimately settles all federal tax (including the Form 8959 surtax) at filing.
+**Why is the planning recommendation "extra W-4 withholding" rather than "ask the employer to start withholding the 0.9%"?** The employer withholds the 0.9% only on wages it pays above $200,000, and the employee "can't request additional withholding specifically for Additional Medicare Tax" (2025 Instructions for Form 8959). The W-4 Step 4(c) extra withholding is the lawful workaround — the employee asks the employer for additional flat-dollar federal income tax withholding, which appears in W-2 Box 2 and ultimately settles all federal tax (including the Form 8959 surtax) at filing.
 
-**Why does Schedule 2 Line 11 show $313 if Line 21 is $0?** Schedule 2 Line 11 is the *gross* Additional Medicare Tax owed (Form 8959 Line 18). The withholding credit (Form 8959 Line 24) flows separately to Form 1040 Line 25c. The two figures meet at Form 1040 totals — Schedule 2 increases tax, Line 25c decreases tax — and the net effect is what the filer pays. In this couple's case: +$313 (Schedule 2 Line 11), $0 (Form 1040 Line 25c from 8959), so net additional tax owed is $313.
+**Why does Schedule 2 Line 11 show $313 if Line 24 is $0?** Schedule 2 Line 11 is the *gross* Additional Medicare Tax owed (Form 8959 Line 18). The withholding credit (Form 8959 Line 24) flows separately to Form 1040 Line 25c. The two figures meet at Form 1040 totals — Schedule 2 increases tax, Line 25c decreases tax — and the net effect is what the filer pays. In this couple's case: +$313 (Schedule 2 Line 11), $0 (Form 1040 Line 25c from 8959), so net additional tax owed is $313.
 
 **What if the couple had filed MFS?** Each spouse would use $125K threshold. Priya at $186,500 wages owes $186,500 − $125,000 = $61,500 × 0.9% = $554. Jordan at $98,300 wages owes $0 (under $125K). Combined MFS surtax = $554, which is *higher* than MFJ's $313. MFS is rarely beneficial for this couple, but tax software should compute both filing statuses to confirm.
 
-**What if next year Priya gets a raise to $210K (still under MFJ $250K with Jordan's $98K)?** Now Priya's employer is required to withhold 0.9% on the $10K above $200K — an extra $90 from her paycheck. The combined household wages ($308,300) are $58,300 above the MFJ threshold; surtax owed = $525. Employer withheld $90 of the $525. Net at filing: $435 owed. The W-4 extra withholding plan should be revisited.
+**What if next year Priya gets a raise to $210K (Jordan stays at $98,300)?** Now Priya's employer is required to withhold 0.9% on the $10K above $200K — an extra $90 from her paycheck. The combined household wages ($308,300) are $58,300 above the MFJ threshold; surtax owed = $525. Employer withheld $90 of the $525. Net at filing: $435 owed. The W-4 extra withholding plan should be revisited.
 
 **What audit defense do they have?** Both W-2 Box 5 figures match their year-end pay summaries. Both Box 6 figures match the IRC §3102(f) formula (1.45% only, since neither was over $200K from one employer). The Form 8959 reconciliation correctly identifies the gap. The $313 is paid through Form 1040 totals.

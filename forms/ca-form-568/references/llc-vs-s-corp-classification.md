@@ -1,6 +1,6 @@
 # LLC vs. S-Corporation Classification (Form 568 vs. Form 100S)
 
-One of the most common confusions for California LLC owners: when does a California LLC file Form 568, and when does it file Form 100S? The answer turns on **federal tax classification** AND **California's election rules**.
+One of the most common confusions for California LLC owners: when does a California LLC file Form 568, and when does it file Form 100S? The answer turns on **federal tax classification**. California generally treats federal check-the-box elections as California elections and allows no separate state election (2025 Form 568 Booklet, General Information S).
 
 ---
 
@@ -9,7 +9,7 @@ One of the most common confusions for California LLC owners: when does a Califor
 1. **Disregarded entity** (default for SMLLC) — federal tax owner is the single member; LLC has no separate federal tax existence
 2. **Partnership** (default for multi-member LLC) — files federal Form 1065
 3. **C-corporation** (electable via federal Form 8832) — files federal Form 1120
-4. **S-corporation** (electable via federal Form 2553, after first electing corporation classification on Form 8832 or by default for single-member LLC owner) — files federal Form 1120-S
+4. **S-corporation** (electable via federal Form 2553; an eligible entity that timely elects S status is deemed to have elected corporate classification, Treas. Reg. §301.7701-3(c)(1)(v)(C), so a separate Form 8832 is not needed) — files federal Form 1120-S
 
 ---
 
@@ -17,12 +17,12 @@ One of the most common confusions for California LLC owners: when does a Califor
 
 | Federal | Default California treatment | California return |
 |---------|------------------------------|-------------------|
-| Disregarded entity | Disregarded for California (with exceptions) | **Form 568** + owner reports on 540 |
+| Disregarded entity | Disregarded for California (exception: an SMLLC treated as a corporation for California before 1997 that never changed) | **Form 568** + owner reports on the owner's own return |
 | Partnership | Partnership for California | **Form 568** |
 | C-corporation | C-corporation for California | **Form 100** |
-| S-corporation | **California must accept federal S-corp election if Form 2553 filed federally** (R&TC §23800(a)) | **Form 100S** |
+| S-corporation | A corporation with a valid federal S election is an S corporation for California (R&TC §23801(a)) | **Form 100S** |
 
-Critical rule: California **automatically conforms** to a federal S-corp election. The LLC does not need to file a separate California S-corp election form. Once Form 2553 is filed federally, the LLC is an S-corp for California too.
+Critical rule: California **automatically follows** a federal S election. The LLC does not file a separate California S election. Once the federal Form 2553 election is effective, the LLC is an S corporation for California too, and LLCs classified as S corporations file Form 100S (2025 booklet, General Information A).
 
 ---
 
@@ -34,8 +34,8 @@ Critical rule: California **automatically conforms** to a federal S-corp electio
 In both cases:
 - $800 annual tax (R&TC §17941)
 - LLC fee tier (R&TC §17942)
-- Form 568 due 15th day of 3rd month (multi-member) or 4th month (SMLLC) after year-end
-- Federal classification reported on Side 1 box H
+- Form 568 due the 15th day of the 3rd month after year-end (partnership-classified, and SMLLCs owned by pass-through entities) or the 15th day of the 4th month after the close of the owner's taxable year (other SMLLCs) (2025 booklet, General Information E)
+- Disregarded status reported in Question U(1); a copy of any federal Form 8832 is attached for the year the election takes effect (2025 booklet, General Information S)
 
 ---
 
@@ -48,7 +48,7 @@ In this case, the LLC owes:
 - **NO** §17942 LLC fee (the fee is for partnership-classified LLCs, not S-corps)
 - Form 100S due 15th day of 3rd month after year-end (calendar year = March 15)
 
-This is fundamentally different from Form 568. If the user filed federal Form 2553, do not produce Form 568 — redirect to a Form 100S skill (forthcoming).
+This is fundamentally different from Form 568. If the user filed federal Form 2553, do not produce Form 568. This skill does not draft Form 100S; the federal side is [`../../form-1120-s/SKILL.md`](../../form-1120-s/SKILL.md).
 
 ---
 
@@ -70,7 +70,7 @@ Ask the user, in order:
 1. **"Did you file federal Form 8832 to elect to be taxed as a corporation?"**
    - Yes → ask if they then filed Form 2553. If yes, S-corp (Form 100S). If no, C-corp (Form 100).
    - No → continue.
-2. **"Did you file federal Form 2553 to elect S-corp status?"** (LLCs can file Form 2553 directly without Form 8832, per IRS revenue procedure 2013-30)
+2. **"Did you file federal Form 2553 to elect S-corp status?"** (LLCs can file Form 2553 directly without Form 8832, Treas. Reg. §301.7701-3(c)(1)(v)(C))
    - Yes → S-corp (Form 100S).
    - No → continue.
 3. **"How many members does the LLC have?"**
@@ -99,9 +99,9 @@ But the conversion has costs:
 
 ## Edge case: LLC that elected federally but not yet at California level
 
-Historically, California required a separate election to recognize federal S-corp status. **This is no longer true** — under current R&TC §23800(a), California automatically conforms. So an LLC that filed federal Form 2553 is automatically an S-corp for California, even without filing any California-specific form.
+California does not require a separate election to recognize federal S status: under R&TC §23801(a), a corporation with a valid federal S election in effect is an S corporation for California, and under §23801(e) a federal termination terminates the California status too. So an LLC that filed federal Form 2553 is automatically an S corporation for California, even without filing any California-specific form.
 
-**However**: the LLC must still notify the California SOS that its tax classification has changed — failing this can create a mismatch where SOS still thinks the entity is an LLC but FTB taxes it as an S-corp. This isn't fatal but causes friction at audit.
+If the LLC also filed federal Form 8832, attach a copy to the California return for the year the election takes effect (2025 booklet, General Information S). The LLC remains an LLC with the Secretary of State; the tax classification change is reported to the FTB through the return it files, not through an SOS form.
 
 If user filed Form 2553 federally and is now confused which California return to file, the answer is **Form 100S, not Form 568**.
 
@@ -113,8 +113,10 @@ If user filed Form 2553 federally and is now confused which California return to
 - IRC §1361-§1379 — S-corporation rules
 - IRS Form 8832 — Entity Classification Election
 - IRS Form 2553 — Election by a Small Business Corporation
-- Rev. Proc. 2013-30 — LLCs filing Form 2553 directly without Form 8832
-- R&TC §23800(a) — California automatic conformity to federal S-election
+- Treas. Reg. §301.7701-3(c)(1)(v)(C) — a timely S election by an eligible entity is a deemed election to be an association
+- Rev. Proc. 2013-30 — relief for late S and entity-classification elections
+- R&TC §23801(a), (e) — federal S election and termination apply for California
+- 2025 Form 568 Booklet, General Information A and S (check-the-box; no separate California election)
 - R&TC §17941 — California $800 annual LLC tax
 - R&TC §17942 — California LLC fee
 - R&TC §23802 — California S-corp tax (1.5% rate, $800 minimum)

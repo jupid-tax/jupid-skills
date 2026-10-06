@@ -9,8 +9,8 @@ The agent must produce a complete `SKILL.md`-format draft *first*, then pick a f
 ## Channel decision tree
 
 ```
-User has AGI ≤ ~$84,000 and wants free guided software?
-  → IRS Free File (Free File Alliance partners)
+User has AGI ≤ $89,000 (2025 returns) and wants free guided software?
+  → IRS Free File (Free File Alliance partners; https://www.irs.gov/filing/irs-free-file-do-your-taxes-for-free)
     Browser automation: provider-specific. Skip — flows change yearly.
 
 User wants to fill the form directly themselves with no software help?
@@ -26,12 +26,9 @@ User has already paid for tax software (TurboTax, H&R Block, FreeTaxUSA, TaxSlay
 User wants to file on paper?
   → Print Form 1040 + Form 8889 + supporting schedules, sign, mail
     Use Section 3.
-
-User wants to use IRS Direct File?
-  → As of early 2026, Direct File supports HSA / Form 8889 in a limited subset of
-    states (verify the current scope at https://www.irs.gov/filing/irs-direct-file).
-    If supported in the user's state, use Direct File. If not, redirect to FFFF.
 ```
+
+IRS Direct File was not offered in the 2026 filing season; do not route users to it.
 
 ---
 
@@ -39,7 +36,7 @@ User wants to use IRS Direct File?
 
 URL: https://www.irs.gov/e-file-providers/free-file-fillable-forms
 
-**Availability**: late January through mid-October each year. Outside that window, FFFF returns a "season closed" message — fall back to paper or wait.
+**Availability**: opens in late January; for 2025 returns the program closes Oct. 15, 2026 (FFFF page). Outside that window, FFFF returns a "season closed" message — fall back to paper or paid software.
 
 **Account model**: each tax year is a separate FFFF account. Returning users from prior years must register fresh each year.
 
@@ -90,15 +87,15 @@ Agent must have:
 | 12 | (auto-computed) | (verify) |
 | 13 | "HSA deduction" | Part I Line 13 |
 | 14a | "Total distributions" | Part II Line 14a |
-| 14b | "Distributions of excess contributions" | Part II Line 14b |
+| 14b | Rollovers and excess contributions withdrawn by the due date | Part II Line 14b |
 | 14c | (auto-computed) | (verify) |
 | 15 | "Unreimbursed qualified medical expenses" | Part II Line 15 |
 | 16 | (auto-computed) — taxable HSA distributions | Part II Line 16 |
 | 17a | "Exception applies" checkbox | Part II Line 17a |
 | 17b | "Additional 20% tax" | Part II Line 17b |
-| 18 | "Last-month rule" prior-year contributions (Part III) | Part III Line 18 |
-| 19 | "Months of failure" | Part III Line 19 |
-| 20 | (auto-computed) | (verify) |
+| 18 | "Last-month rule" (Part III) | Part III Line 18 |
+| 19 | "Qualified HSA funding distribution" (Part III) | Part III Line 19 |
+| 20 | (auto-computed — Line 18 + Line 19) | (verify) |
 | 21 | (auto-computed — 10% additional tax) | (verify) |
 
    After each field, capture a screenshot for the user's records.
@@ -107,9 +104,10 @@ Agent must have:
    - Open Schedule 1 in FFFF
    - Verify Line 13 (HSA deduction) carries the Form 8889 Line 13 amount automatically. If not, enter manually.
    - Verify Line 8f (Income from Form 8889) carries Form 8889 Line 16 automatically. If not, enter manually.
-10. **Cross-link Schedule 2** (only if Form 8889 Line 17b > 0):
+10. **Cross-link Schedule 2** (only if Form 8889 Line 17b or Line 21 > 0):
     - Open Schedule 2
     - Verify Line 17c carries the 20% additional tax from Form 8889 Line 17b
+    - Verify Line 17d carries the 10% additional tax from Form 8889 Line 21
 11. **If MFJ with two HSAs**: add a second Form 8889 for the spouse — FFFF allows two instances, one per filer SSN. Repeat steps 7–10 for the spouse's draft.
 12. **Attach Form 5329** if excess contributions were not withdrawn — separate FFFF form, complete Part VII (Additional Tax on Excess HSA Contributions).
 13. **Run FFFF's "Check Form" / "Verify"** — resolves math errors and missing required fields. Resolve every flag before submission.
@@ -135,7 +133,7 @@ Agent must have:
 | Symptom | Likely cause | Fix |
 |---------|--------------|-----|
 | "Identity verification failed" | Wrong prior-year AGI | Retrieve from IRS transcript |
-| "Form 8889 Line 3 limit exceeded" | Coverage type or limit wrong | Verify partial-year proration; check 2025 vs 2026 limits |
+| "Form 8889 Line 3 limit exceeded" | Coverage type or limit wrong | Verify the Line 3 worksheet / last-month rule; check 2025 vs 2026 limits |
 | "Schedule 1 Line 13 doesn't match Form 8889 Line 13" | Cross-link broken | Manually enter or remove and re-add Form 8889 |
 | 1099-SA box 1 differs from custodian statement | Late distribution after January 1 | Use 1099-SA value; the IRS matches against 1099-SA |
 | MFA / CAPTCHA | Routine | Pause for user input |
@@ -154,12 +152,12 @@ Most paid software (TurboTax, H&R Block, FreeTaxUSA, TaxSlayer, TaxAct, Cash App
    - "What was your HDHP coverage (self-only or family) on Dec 1?" → Header / Line 1
    - "How much did you contribute directly?" → Line 2
    - "Did your employer contribute (W-2 Box 12 code W)?" → import or type Line 9
-   - "Are you 55 or older?" → triggers Line 7 catch-up
+   - "Are you 55 or older?" → adds $1,000 on Line 3 (unmarried or self-only) or Line 7 (married with family coverage)
    - "Did you receive a 1099-SA?" → Yes if any distribution; enter Box 1 → Line 14a
    - "How much did you spend on qualified medical expenses?" → Line 15
    - "Did you use the last-month rule in a prior year? Did you stay HSA-eligible?" → Part III prompts
 4. After the wizard, most software shows a "Form 8889 summary" — verify each line against the draft. Override anything that disagrees.
-5. Confirm Schedule 1 Line 13 reflects the HSA deduction, Schedule 1 Line 8f reflects taxable distributions, Schedule 2 Line 17c reflects the 20% tax.
+5. Confirm Schedule 1 Line 13 reflects the HSA deduction, Schedule 1 Line 8f reflects taxable distributions and any Part III income, Schedule 2 Line 17c reflects the 20% tax and Line 17d any 10% Part III tax.
 6. If MFJ with two HSAs, the wizard usually asks "Did your spouse also have an HSA?" — answer Yes and repeat the entire HSA flow for the spouse.
 7. Continue through Form 1040 review; pay software fee; e-file.
 
@@ -177,10 +175,9 @@ Order matters — IRS expects this stack from top to bottom:
 
 1. **Form 1040** (signed by all filers, in ink)
 2. **Schedule 1, 2, 3** in order if applicable
-3. **Form 8889** (one per filer with an HSA — two if MFJ with two HSAs)
-4. **Form 5329** (if excess HSA contributions, Part VII)
-5. **All other schedules and forms** in attachment-sequence order printed on each form (top-right corner)
-6. **W-2 Copy B** stapled to the front of Form 1040 (lower-left)
+3. **Form 5329** (Attachment Seq. 29; if excess HSA contributions, Part VII), then **Form 8889** (Seq. 52; one per filer with an HSA — two if MFJ with two HSAs)
+4. **All other schedules and forms** in attachment-sequence order printed on each form (top-right corner)
+5. **W-2 Copy B** stapled to the front of Form 1040 (lower-left)
 
 Single staple in the upper-left corner. Don't paperclip. Don't double-side print.
 

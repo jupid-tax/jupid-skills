@@ -2,6 +2,8 @@
 
 Complete reference for every line on the simplified Form 8995. The form is a single page with 17 numbered lines. Sections below mirror the form layout.
 
+Verified against the **2025 Form 8995** (Created 9/12/25, https://www.irs.gov/pub/irs-pdf/f8995.pdf) and the **2025 Instructions for Form 8995** (Jan 26, 2026, https://www.irs.gov/pub/irs-pdf/i8995.pdf). The 2026 draft (https://www.irs.gov/pub/irs-dft/f8995--dft.pdf, Created 5/1/26) keeps lines 1–14, then adds line 15 (deduction before the minimum), line 16 (minimum deduction for active QBI, IRC §199A(i)), line 17 (deduction), lines 18–19 (carryforwards) and line 20 (ESBT box). Re-check the final revision each year.
+
 ---
 
 ## Header
@@ -16,26 +18,26 @@ Primary filer's SSN (or ITIN). Use the same SSN as on Form 1040.
 
 ---
 
-## Part I — Trade or Business Information (Lines 1a-1e)
+## Line 1 — Trade, business, or aggregation (rows 1i–1v)
 
-The form has 5 row slots. If a filer has more than 5 QBI sources, attach a continuation statement listing the additional sources.
+The form has 5 rows (i through v). If a filer has more than 5 trades or businesses, attach a statement with the name and TIN of each additional one and include their income and loss in the line 2 total (i8995, Line 2).
 
-### Column (i): Trade, business, or aggregation name
+### Column (a): Trade, business, or aggregation name
 
 A short, identifiable name. Examples:
 - Sole prop: business name from Schedule C Line C, or filer's profession if no business name (e.g., "Garcia Design")
 - Partnership K-1: partnership name (e.g., "Acme Marketing LLC")
 - S-corp K-1: S-corp name (e.g., "XYZ Consulting Inc")
-- Aggregated trades (only if a §199A aggregation election was made under Treas. Reg. §1.199A-4): use the aggregation name from the election statement
+- Aggregated trades (Treas. Reg. §1.199A-4): enter the aggregation group name ("Aggregation 1, 2, 3") and leave column (b) blank; attach Schedule B (Form 8995-A) or a similar schedule (i8995, Line 1)
+- Rental real estate under the Rev. Proc. 2019-38 safe harbor: enter each enterprise as identified on the safe-harbor statement ("Enterprise 1, 2, 3")
 
-### Column (ii): Taxpayer identification number
+### Column (b): Taxpayer identification number
 
-- Sole prop with no EIN → filer's SSN
-- Sole prop with EIN → the business EIN
-- Partnership K-1 → the partnership EIN (from the K-1)
-- S-corp K-1 → the S-corp EIN (from the K-1)
+- Business with an EIN → the EIN (a single-member LLC disregarded for tax uses the LLC's EIN)
+- No EIN → filer's SSN or ITIN
+- Partnership / S-corp / trust K-1 → the entity's EIN (from the K-1)
 
-### Column (iii): Qualified business income or (loss)
+### Column (c): Qualified business income or (loss)
 
 This is **not** raw revenue or net profit. It is QBI as defined in IRC §199A(c) and Treas. Reg. §1.199A-3.
 
@@ -46,154 +48,140 @@ QBI = Schedule C Line 31 (net profit/loss)
     − ½ self-employment tax allocable to this Schedule C
     − Self-employed health insurance allocable to this Schedule C
     − Self-employed retirement contributions allocable to this Schedule C
+    − Qualified tips from this business deducted under §224 on Schedule 1-A (2025 and later)
 ```
 
 For a single Schedule C, the entire amount of these adjustments is allocated to it. For multiple Schedule Cs, allocate proportionally to net profit. See [`qbi-adjustments.md`](./qbi-adjustments.md).
 
 **For partnership K-1 sources:**
 
-Use the QBI amount in Box 20 with code Z (Section 199A information). The K-1 statement should explicitly label QBI separately from total partnership income. If the K-1 doesn't break it out, request a corrected statement.
+Use the QBI amount from the Section 199A statement (Box 20, code Z). Then subtract partner-level deductions attributable to that partnership (½ SE tax on its self-employment income, SE health insurance and retirement contributions based on that income, unreimbursed partnership expenses, interest on debt used to buy the interest). If the K-1 doesn't break QBI out, request the statement.
 
 **For S-corp K-1 sources:**
 
-Use the QBI amount in Box 17 with code V (Section 199A information). Same statement requirement as partnership K-1.
+Use the QBI amount from the Section 199A statement (Box 17, code V). If the shareholder owns more than 2% and deducts SE health insurance on Schedule 1 line 17 based on S corporation wages, subtract that deduction.
 
 **For rental real estate:**
 
 Only include if the rental qualifies as a trade or business under either:
 - IRC §162 (general trade or business standard — facts and circumstances)
-- The Section 199A safe harbor in Notice 2019-7 (250+ hours, separate books, contemporaneous records)
+- The Section 199A safe harbor in Rev. Proc. 2019-38 (250+ hours of rental services, separate books, contemporaneous records)
 
 If neither applies, the rental income is not QBI and does not go here.
 
+**Do not include** losses or deductions still suspended by other Code sections (§§163(j), 179, 461(l), 465, 469, 704(d), 1366(d)) or qualified portions of previously suspended losses allowed this year; those go on line 3 (i8995, Line 1).
+
 ### Negative amounts
 
-Column (iii) can be negative for a loss. The Line 2 sum may also be negative — in which case Line 2 is entered as 0 and the loss carries to next year's Line 3.
+Column (c) can be negative for a loss. Line 2 may also be negative; the floor is applied on line 4, and the loss carries to next year through line 16.
 
 ---
 
-## Part I — QBI Component (Lines 2-4)
+## QBI Component (Lines 2–5)
 
 ### Line 2: Total qualified business income or (loss)
 
-Sum of Column (iii) on Lines 1a through 1e.
+Combine column (c) of rows 1i through 1v. The result can be negative. Do not floor it.
 
-**If sum is positive:** enter the sum.
+### Line 3: Qualified business net (loss) carryforward from the prior year
 
-**If sum is negative:** enter 0. The negative amount becomes a "qualified business loss carryforward" — track it for next year's Line 3. Show the carryforward in the workpapers.
-
-### Line 3: Qualified business net (loss) carryforward from prior year
-
-If Line 16 from last year's Form 8995 (or the equivalent on Form 8995-A from last year) was negative, enter that amount as a negative number on Line 3.
+Last year's Form 8995 line 16 (or Schedule C (Form 8995-A) line 6 if last year's return used Form 8995-A), entered as a negative number in parentheses. Also include the qualified portion of previously suspended losses allowed in calculating taxable income this year (i8995, Line 3).
 
 If first-year filer or no prior loss, enter 0.
 
-### Line 4: Total qualified business income component
+### Line 4: Total qualified business income
 
-Line 2 + Line 3. If the result is negative, enter 0 and treat the negative amount as a carryforward to next year.
+Line 2 + Line 3. If zero or less, enter -0-. A net loss means no QBI component this year; the loss carries forward (line 16).
 
----
+### Line 5: Qualified business income component
 
-## Part II — REIT/PTP Component (Lines 5-7, plus 8-9 carryforward mechanics)
-
-### Line 5: Qualified REIT dividends and PTP income
-
-Sum of:
-- **Section 199A dividends from REITs** — Box 5 of Form 1099-DIV (NOT Box 1a, which is ordinary dividends)
-- **Qualified publicly traded partnership (PTP) income** — from PTP K-1 statements; the PTP-issuer reports Section 199A info in the K-1 footnotes
-
-REIT income is reported gross — no §199A adjustments needed (unlike sole prop QBI). PTP income is also reported as the qualified amount per the K-1.
-
-### Line 6: Qualified REIT dividends and PTP (loss) carryforward
-
-If prior year had a net REIT/PTP loss (Line 7 was floored at 0 because Line 5 + Line 6 was negative), the negative amount carries to this year's Line 6.
-
-### Line 7: Total qualified REIT dividends and PTP income
-
-Line 5 + Line 6. If negative, enter 0 and carry the negative to next year's Line 6.
-
-### Lines 8-9 (carryforward mechanics)
-
-The current Form 8995 includes Lines 8 and 9 to handle further REIT/PTP carryforward computation. These lines occasionally shift between revisions:
-
-- **Line 8** — Qualified REIT/PTP component (often = Line 7 with no further reduction)
-- **Line 9** — Loss carryforward used this year (typically 0 unless current-year income is offset by carryforward)
-
-Always consult the latest IRS instructions at `https://www.irs.gov/pub/irs-pdf/i8995.pdf` for the exact line numbering for the tax year being filed.
+Line 4 × 20% (0.20).
 
 ---
 
-## Part III — Combining and Limiting (Lines 10-17)
+## REIT/PTP Component (Lines 6–9)
 
-### Line 10: QBI component (Line 4 × 20%)
-
-Multiply Line 4 by 0.20. Round to the nearest dollar.
-
-### Line 11: REIT/PTP component (Line 7 × 20%)
-
-Multiply Line 7 (or final REIT/PTP figure if Lines 8-9 modified it) by 0.20.
-
-### Line 12: QBI deduction before income limitation
-
-Line 10 + Line 11. This is the maximum potential §199A deduction before applying the taxable income limit.
-
-### Line 13: Taxable income before QBI deduction
-
-This line is conceptually tricky. It is the filer's taxable income computed *as if no QBI deduction were taken*.
-
-**Practical formula** (after Form 1040 is otherwise complete):
-
-```
-Line 13 = Form 1040 Line 15 + Form 1040 Line 13 (the QBI deduction itself)
-```
-
-In other words, take current 1040 taxable income (Line 15) and add back the QBI deduction (Line 13) to recover pre-QBI taxable income.
-
-**Estimating before 1040 is complete:**
-
-```
-Line 13 = AGI (1040 Line 11)
-        − Standard deduction OR itemized deductions (1040 Line 12)
-        (do not subtract QBI on this line — that's what we're computing)
-```
-
-For most simple filers: Line 13 = AGI − $15,000 (single 2025 standard deduction) or AGI − $30,000 (MFJ 2025 standard deduction).
-
-### Line 14: Net capital gain
+### Line 6: Qualified REIT dividends and PTP income or (loss)
 
 Sum of:
-- **Qualified dividends** — Form 1040 Line 3a
-- **Net long-term capital gain** — Schedule D Line 16, if Schedule D is required; otherwise Form 1040 Line 7
+- **Section 199A dividends from REITs** — Box 5 of Form 1099-DIV (NOT Box 1a, which is ordinary dividends). Box 5 shows what "may be eligible"; the shares must have been held more than 45 days (Treas. Reg. §1.199A-3(c)(2)(ii)).
+- **Qualified publicly traded partnership (PTP) income or loss** — from PTP K-1 Section 199A statements
 
-If neither, enter 0.
+Enter income as a positive number and losses as a negative number (i8995, Line 6). No §199A adjustments apply.
 
-The §199A deduction excludes capital gain because long-term capital gains and qualified dividends are already taxed at preferential rates and Congress did not want to compound the benefit.
+### Line 7: Qualified REIT dividends and PTP (loss) carryforward from the prior year
 
-### Line 15: Subtract Line 14 from Line 13
+Last year's Form 8995 line 17 (or Form 8995-A line 40), as a negative number in parentheses. Also include the qualified portion of previously suspended PTP losses allowed this year (i8995, Line 7).
 
-Line 13 − Line 14. This is the income subject to the 20% taxable income limit.
+### Line 8: Total qualified REIT dividends and PTP income
 
-### Line 16: 20% of Line 15 (taxable income limitation)
+Line 6 + Line 7. If zero or less, enter -0-. A negative amount carries forward (line 17).
 
-Line 15 × 0.20. This is the **upper bound** on the §199A deduction. The deduction can never exceed 20% of taxable income (excluding net capital gain).
+### Line 9: REIT and PTP component
 
-### Line 17: Qualified business income deduction
+Line 8 × 20% (0.20).
 
-The lesser of:
-- Line 12 (20% of QBI + REIT/PTP)
-- Line 16 (20% of taxable income excluding capital gain)
+---
 
-This is the final §199A deduction. It flows to **Form 1040, Line 13** (Qualified business income deduction).
+## Combining and Limiting (Lines 10–15)
+
+### Line 10: QBI deduction before the income limitation
+
+Line 5 + Line 9.
+
+### Line 11: Taxable income before qualified business income deduction
+
+Per the 2025 instructions:
+- Form 1040 / 1040-SR: **line 11a minus lines 12e and 13b**
+- Form 1040-NR: line 11a minus lines 12, 13b, and 13c
+- Form 1041: line 17 minus lines 18, 19, and 21
+
+Line 12e is the standard or itemized deduction; line 13b is the Schedule 1-A deductions (qualified tips, qualified overtime, car loan interest, enhanced deduction for seniors). Practical check after Form 1040 is complete: line 11 here = Form 1040 line 15 + line 13a.
+
+For simple filers using the 2025 standard deduction: AGI − $15,750 (single or MFS), − $31,500 (MFJ or QSS), − $23,625 (HOH) (2025 Form 1040 page 2), minus any Schedule 1-A deductions.
+
+### Line 12: Net capital gain, increased by qualified dividends
+
+- **Qualified dividends** — Form 1040 line 3a
+- **plus net capital gain** — if Schedule D is required, the smaller of Schedule D line 15 or line 16; if either is zero or less, add nothing. If Schedule D isn't required, Form 1040 line 7a
+
+If neither, enter 0. The §199A deduction is limited to 20% of taxable income in excess of net capital gain as defined in §1(h), which includes qualified dividends (IRC §199A(a)(2)).
+
+### Line 13: Subtract line 12 from line 11
+
+If zero or less, enter -0-.
+
+### Line 14: Income limitation
+
+Line 13 × 20% (0.20). This is the **upper bound** on the §199A deduction.
+
+### Line 15: Qualified business income deduction
+
+The smaller of:
+- Line 10 (20% of QBI + 20% of REIT/PTP)
+- Line 14 (20% of taxable income excluding net capital gain)
+
+This is the final §199A deduction. It flows to **Form 1040 / 1040-SR / 1040-NR line 13a** (2025), Form 1041 line 20.
+
+---
+
+## Carryforwards (Lines 16–17)
+
+### Line 16: Total qualified business (loss) carryforward
+
+Line 2 + Line 3. If greater than zero, enter -0-. A negative amount carries to next year's line 3 and offsets QBI in later years even if the business that generated it no longer exists (i8995, Line 16).
+
+### Line 17: Total qualified REIT dividends and PTP (loss) carryforward
+
+Line 6 + Line 7. If greater than zero, enter -0-. A negative amount carries to next year's line 7 (i8995, Line 17).
 
 ---
 
 ## After the form
 
 - **Attach Form 8995 to Form 1040** when filing — it is not standalone
-- **Track carryforwards** in the workpapers for next year:
-  - QBI loss carryforward = the negative amount of Line 2 (if any)
-  - REIT/PTP loss carryforward = the negative amount of Line 7 (if any)
-- **Reconcile Line 17 with Form 1040 Line 13** — they must match
+- **Track carryforwards** in the workpapers for next year: line 16 and line 17
+- **Reconcile Line 15 with Form 1040 line 13a** — they must match
 
 ---
 
@@ -201,10 +189,10 @@ This is the final §199A deduction. It flows to **Form 1040, Line 13** (Qualifie
 
 If the user files Form 8995 in consecutive years, verify:
 
-- Line 3 on this year's form = the negative of (Line 2 negative amount carried forward) from last year
-- Line 6 on this year's form = the negative of (Line 7 negative amount carried forward) from last year
+- Line 3 on this year's form = last year's line 16
+- Line 7 on this year's form = last year's line 17
 - Filing status hasn't changed mid-year (if so, document the change)
-- Threshold compliance — taxable income still below threshold
+- Threshold compliance — taxable income still at or below the threshold for the year ($197,300 / $394,600 MFJ for 2025; $201,750 / $201,775 MFS / $403,500 MFJ for 2026)
 
 ---
 
@@ -212,20 +200,24 @@ If the user files Form 8995 in consecutive years, verify:
 
 ### Filer is a beneficiary of a trust or estate with QBI
 
-Trust/estate K-1 (Schedule K-1, Form 1041) reports QBI in Box 14, code I. Treat the same as partnership K-1 — list the trust/estate name in Column (i), the trust/estate EIN in Column (ii), the QBI amount in Column (iii).
+Trust/estate K-1 (Schedule K-1, Form 1041) reports Section 199A information in Box 14, code I. Treat the same as partnership K-1 — list the trust/estate name in column (a), the trust/estate EIN in column (b), the QBI amount in column (c).
 
 ### Filer has §199A aggregation election
 
-If the filer has elected to aggregate two or more trades or businesses under Treas. Reg. §1.199A-4, list the aggregation as a single row in Lines 1a-1e using the aggregation's name. Attach the aggregation election statement to the return per Reg. §1.199A-4(c).
+If the filer aggregates two or more trades or businesses under Treas. Reg. §1.199A-4, list the aggregation as a single row using the aggregation name ("Aggregation 1"), leave column (b) blank, and attach Schedule B (Form 8995-A) or a similar schedule (i8995, Line 1). Aggregations must be reported consistently in later years.
 
 ### Filer has prior-year loss but no current-year QBI
 
-Line 1a-1e will be empty. Enter the loss carryforward on Line 3. Line 4 will be negative — enter 0. The carryforward continues to next year.
+Rows 1i–1v will be empty. Enter the loss carryforward on Line 3. Line 4 = 0, Line 16 = the loss (carries again).
 
-### Filer's total Line 12 = 0 but Line 7 > 0 (only REIT/PTP, no QBI)
+### Only REIT/PTP, no QBI
 
-This is valid. Form 8995 is still filed for the REIT/PTP deduction. Line 4 = 0, Line 7 > 0, Line 10 = 0, Line 11 > 0, Line 12 = Line 11.
+This is valid. Form 8995 is still filed for the REIT/PTP deduction. Line 4 = 0, Line 5 = 0, Line 8 > 0, Line 9 > 0, Line 10 = Line 9.
 
 ### Self-employed filer with multiple Schedule Cs
 
-Each Schedule C is a separate trade or business unless aggregated. List each on its own row in Lines 1a-1e. Allocate the SE tax adjustment proportionally to each business's share of net profit. See [`qbi-adjustments.md`](./qbi-adjustments.md) for the allocation formula.
+Each Schedule C is a separate trade or business unless aggregated. List each on its own row. Allocate the SE tax adjustment proportionally to each business's share of net profit. See [`qbi-adjustments.md`](./qbi-adjustments.md) for the allocation formula.
+
+### Tax year 2026 and later: $400 minimum deduction
+
+For tax years beginning after December 31, 2025, the deduction is the greater of the computed amount or $400 for a taxpayer whose aggregate QBI from all active qualified trades or businesses (material participation under §469(h)) is at least $1,000 (IRC §199A(i), added by P.L. 119-21 §70105; Rev. Proc. 2025-32 §2.12). The 2026 draft form computes it on new lines 15–17. Ask whether the user materially participates; do not assume.

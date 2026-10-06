@@ -8,25 +8,29 @@ The agent must produce a complete `SKILL.md`-format draft *first*, then pick a f
 
 ## Channel decision tree
 
-Form 2210 is unusual in that **the filer does not always have to file it even when a penalty is owed**. The IRS will compute the penalty automatically and bill the filer post-processing. Form 2210 is filed only when:
+Form 2210 is unusual in that **the filer does not always have to file it even when a penalty is owed**. The IRS will compute the penalty automatically and bill the filer post-processing. Form 2210 is filed only when a Part II box applies (2025 Form 2210, page 1):
 
-1. The filer is using Schedule AI (annualized income installment method) to reduce the penalty, OR
-2. The filer is requesting a waiver (Box A, B, or C in Part II), OR
-3. The filer is high-AGI with the 110% prior-year safe harbor and wants to document the calculation, OR
-4. Tax software auto-attaches it (most consumer software does)
+1. Box A — waiver of the entire penalty (page 1 only), OR
+2. Box B — waiver of part of the penalty (figure the penalty), OR
+3. Box C — Schedule AI (annualized income installment method) reduces the penalty, OR
+4. Box D — withholding treated as paid on the dates actually withheld, OR
+5. Box E — joint return for 2024 or 2025 but not both, and line 8 is smaller than line 5 (page 1 only)
+
+Tax software may compute Form 2210 automatically; it should attach the form only in these cases.
 
 ```
 Did the SKILL.md flowchart resolve to "no penalty / no Form 2210 needed"?
   Yes → No filing needed; produce the no-penalty confirmation and stop
   No  → continue
 
-Is the filer using Schedule AI or claiming a waiver?
-  Yes → Form 2210 must be filed; use the channel below
-  No  → Filer can choose: (a) attach Form 2210 (regular method) or (b) let IRS compute
-        Default: let IRS compute (simpler); but verify any penalty estimate flag
-        from tax software so the filer knows what to expect
+Does any Part II box (A–E) apply?
+  Yes → Form 2210 must be filed (page 1 only for A or E alone); use the channel below
+  No  → Don't file Form 2210. Either let IRS compute (leave Form 1040 line 38 blank)
+        or figure the penalty on Form 2210 as a worksheet and enter it on line 38
+        without attaching the form. Default: let IRS compute (simpler); but verify
+        any penalty estimate flag from tax software so the filer knows what to expect
 
-User has AGI ≤ ~$84,000 and wants free guided software?
+User has AGI ≤ $89,000 and wants free guided software?
   → IRS Free File (Free File Alliance partners)
     Browser automation: provider-specific
     Skip — proprietary flows change too often
@@ -52,7 +56,7 @@ User wants to file on paper?
 
 URL: https://www.irs.gov/e-file-providers/free-file-fillable-forms
 
-**Availability**: FFFF is open from late January through mid-October each year. Outside that window, paper or wait.
+**Availability**: FFFF is open from late January through mid-October each year (the 2026 season closes Oct. 15, 2026, per the IRS FFFF page). Outside that window, paper or wait.
 
 **Account model**: each tax year is a separate FFFF account. Returning users from prior years cannot reuse credentials — register fresh each year.
 
@@ -84,14 +88,15 @@ Agent must have:
 |-----------------|------------------|-------------------|
 | Name(s) | "Name(s) shown on return" | matches Form 1040 header |
 | SSN | "Your social security number" | filer SSN |
-| Part I Line 1 | "Current year tax" | Part I Line 1 |
+| Part I Line 1 | Form 1040 line 22 amount | Part I Line 1 |
+| Part I Lines 2–3 | Other taxes; refundable credits | Part I Lines 2–3 |
 | Part I Line 4 | (auto-computed subtotal) | (verify) |
 | Part I Line 5 | (auto-computed: Line 4 × 90%) | (verify) |
 | Part I Line 6 | "Withholding" | Part I Line 6 |
 | Part I Line 7 | (auto-computed) | (verify) |
 | Part I Line 8 | "100% of prior-year tax" or "110% if AGI > $150K" | Part I Line 8 (verify which threshold) |
 | Part I Line 9 | (auto-computed: smaller of Line 5 or Line 8) | (verify) |
-| Part II checkboxes | Box A / B / C waivers | Part II selection (if any) |
+| Part II checkboxes | Box A / B / C / D / E | Part II selection (if any) |
 | Part II explanation | "Explanation" textarea | Written explanation if waiver claimed |
 | Part III quarterly columns | Each quarter's installment / payments / underpayment | Part III table from draft |
 | Part III penalty | (auto-computed if FFFF supports; otherwise manual) | Penalty computation table |
@@ -104,7 +109,7 @@ Agent must have:
    - Each column requires cumulative AGI, deductions, tax computation
    - The annualization factors (4 / 2.4 / 1.5 / 1) are usually pre-applied by FFFF; verify
 
-10. **Verify Form 1040 Line 38**: the penalty amount from Form 2210 should flow here. If filing Form 2210 with a waiver claim that reduces the penalty to zero, Line 38 may show $0 with a "see Form 2210" notation.
+10. **Verify Form 1040 Line 38**: the penalty from Form 2210 line 19 should flow here. With box B, line 19 is the penalty after subtracting the waived amount (shown in parentheses next to line 19). With box A or box E alone, only page 1 is filed, the penalty is not figured, and line 38 is left blank.
 
 11. **Run FFFF's "Check Form" / "Verify" tool** — resolve every flag.
 
@@ -127,16 +132,16 @@ Agent must have:
 - Do not bypass FFFF's verification step
 - Do not store the user's SSN, DOB, or PIN in any log
 - Do not file Form 2210 standalone — it requires Form 1040 as the parent return
-- Do not check Box A/B/C waiver without an attached written explanation
+- Do not check the Box A or B waiver without an attached written explanation
 
 ### Failure modes specific to Form 2210
 
 | Symptom | Likely cause | Fix |
 |---------|--------------|-----|
-| FFFF computes a different penalty than the draft | FFFF using a different penalty rate (the rate updates quarterly; the form draft may use stale rates) | Look up the current-quarter rate per IRS Revenue Ruling and recompute |
-| Schedule AI columns don't accept input | FFFF requires Schedule AI to be enabled via a Part III box on the main form | Enable the "Use annualized income installment method" checkbox first |
-| Penalty calculated despite the de minimis exception ($1,000) | Filer didn't subtract refundable credits from current-year tax on Line 1 | Recompute Line 1 per worksheet |
-| Filer's prior-year tax was zero but FFFF still computes penalty | First-year exception under IRC §6654(d)(1)(B) wasn't checked | Look for the "first-year exception" checkbox; if FFFF doesn't surface it, do not file Form 2210 — let IRS process the return without it |
+| FFFF computes a different penalty than the draft | Draft used a stale rate, or payments were applied in the wrong order | Use the rates printed in the current-year penalty worksheet (2025: 0.07 for every period) and apply payments to the earliest underpayment first |
+| Schedule AI columns don't accept input | Schedule AI is tied to box C in Part II | Check box C first |
+| Penalty calculated despite the de minimis exception ($1,000) | Refundable credits not entered on line 3, or estimated payments expected to count in the test | Enter refundable credits on line 3; line 7 is line 4 minus withholding only |
+| Filer's prior-year tax was zero but FFFF still computes penalty | The IRC §6654(e)(2) exception has no checkbox on Form 2210 | Do not file Form 2210 — let IRS process the return without it and leave line 38 blank |
 
 ---
 
@@ -162,7 +167,7 @@ For users with paid tax software (TurboTax, H&R Block, FreeTaxUSA, TaxSlayer, Ta
    - Different penalty rate (software may have updated; draft may be stale)
 7. Decide whether to attach Form 2210 to the return:
    - Most software defaults to "let IRS compute" if the regular method gives the smallest penalty
-   - Override to attach Form 2210 if claiming Schedule AI or a waiver
+   - Override to attach Form 2210 if claiming Schedule AI or a waiver, or if box D or E applies
 8. Continue through Form 1040 review; software computes Line 38.
 9. Pay the software fee; e-file.
 
@@ -181,7 +186,7 @@ Order matters — IRS expects this stack:
 1. **Form 1040** (signed, in ink)
 2. **Schedule 1, 2, 3** in order if applicable
 3. **Form 2210** with **Schedule AI** stapled behind it (if used)
-4. **Written waiver explanation** (if Box A/B/C checked)
+4. **Written waiver explanation** (if Box A or B checked)
 5. **All other schedules and forms** in attachment-sequence order
 6. **W-2 Copy B** stapled to the front of Form 1040 (lower-left)
 
@@ -224,7 +229,7 @@ After filing (any channel), the user's return moves through:
 
 **Penalty bill timing**:
 - If Form 2210 was attached: penalty is settled with the return
-- If Form 2210 was NOT attached but penalty is owed: IRS issues a CP14 or CP161 notice 4–8 weeks post-acceptance with the penalty amount and a 21-day pay-by date
+- If Form 2210 was NOT attached but penalty is owed: IRS sends a CP30 notice (https://www.irs.gov/individuals/understanding-your-cp30-notice) with the penalty amount, or includes it on a CP14 balance-due notice; no interest is charged on the penalty if it is paid by the date on the bill and the return was filed by April 15 (2025 Instructions for Form 2210)
 - If filer disagrees with IRS-computed penalty: file Form 843 (Claim for Refund and Request for Abatement) with documentation
 
 Status checks:
@@ -248,4 +253,4 @@ These are non-negotiable:
 4. **Always capture submission confirmations** as screenshots stored under the user's account.
 5. **If anything looks wrong** (penalty math disagreement, unexpected screen, MFA failures), **stop and surface the issue**.
 6. **Show the diff** between draft and final FFFF/software state to the user before submission.
-7. **Before claiming a waiver via Box A/B/C**, confirm the filer can substantiate the waiver basis with documentation. The IRS will request supporting evidence (medical records, casualty documentation, retirement letter) if it processes the waiver claim.
+7. **Before claiming a waiver via Box A or B**, confirm the filer can substantiate the waiver basis with documentation. The IRS will request supporting evidence (medical records, casualty documentation, retirement letter) if it processes the waiver claim.

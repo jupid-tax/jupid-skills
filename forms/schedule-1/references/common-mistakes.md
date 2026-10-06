@@ -18,7 +18,7 @@ Real mistakes filers and unsupervised agents make on Schedule 1, ranked by how o
 
 **The mistake**: Filer with $5,000 hobby income on Line 8j deducts $4,000 of hobby expenses to net $1,000.
 
-**Why it happens**: Pre-TCJA, hobby expenses were deductible as miscellaneous itemized deductions on Schedule A. TCJA suspended that through 2025 (verify status for 2026). Many filers don't know.
+**Why it happens**: Pre-TCJA, hobby expenses were deductible as miscellaneous itemized deductions on Schedule A. TCJA disallowed miscellaneous itemized deductions for 2018 onward, and P.L. 119-21 §70110 made that permanent (IRC §67(h)). Many filers don't know.
 
 **Consequence**: $4,000 understated income → $880 tax + accuracy penalty on audit at 22% bracket.
 
@@ -32,7 +32,7 @@ Real mistakes filers and unsupervised agents make on Schedule 1, ranked by how o
 
 **Why it happens**: Confusion about which line catches "self-employment" — the form has both Line 3 (Schedule C result) and Line 8 (other income), and "self-employment" sounds like it could go on either.
 
-**Consequence**: $50,000 phantom income, $7,650 phantom SE tax. CP2000 if caught; significant overpayment if uncaught.
+**Consequence**: $50,000 phantom income and, if it also reaches Schedule SE, about $7,065 of phantom SE tax ($50,000 × 92.35% × 15.3%). CP2000 if caught; significant overpayment if uncaught.
 
 **Fix**: Schedule C net profit goes on Line 3 **only**. Line 8 is for income not on a separate schedule. Cross-check: the sum of all 1099-NECs and 1099-Ks should equal Schedule C Line 1, not double-appear on Schedule 1.
 
@@ -40,13 +40,13 @@ Real mistakes filers and unsupervised agents make on Schedule 1, ranked by how o
 
 ## 4. Reporting state refund as taxable when it isn't
 
-**The mistake**: Filer who took the standard deduction in 2025 reports a $400 state refund on Line 1 in 2026. Or filer who itemized but had the SALT cap maxed by property tax reports the refund as taxable.
+**The mistake**: Filer who took the standard deduction for 2024 reports a $400 state refund received in 2025 on Line 1 of the 2025 return. Or filer who itemized but had the SALT cap maxed by property tax reports the refund as taxable.
 
 **Why it happens**: Form 1099-G Box 2 looks like income. Filers assume any 1099 amount is reportable.
 
-**Consequence**: Phantom income, ~$88-$120 unnecessary tax depending on bracket.
+**Consequence**: Phantom income; $88 of unnecessary tax at the 22% bracket.
 
-**Fix**: Run the tax benefit test (see [`state-refund-taxability.md`](./state-refund-taxability.md)). Standard-deduction filers: Line 1 = $0, always. Itemized filers: check whether SALT cap consumed all of the state income tax deduction.
+**Fix**: Run the tax benefit test (see [`state-refund-taxability.md`](./state-refund-taxability.md)). Standard-deduction filers: Line 1 = $0, always. Itemized filers: check whether the SALT cap consumed the state income tax deduction and whether itemized deductions exceeded the standard deduction by at least the refund.
 
 ---
 
@@ -54,7 +54,7 @@ Real mistakes filers and unsupervised agents make on Schedule 1, ranked by how o
 
 **The mistake**: Filer claims $6,000 SE health insurance on Line 17 for the year, but their spouse had an employer plan available (subsidized) that the family chose not to use.
 
-**Why it happens**: The eligibility test in IRC §162(l)(2)(B) disallows SE health insurance for any month the user **or spouse** was *eligible* for an employer plan — even if they didn't enroll.
+**Why it happens**: The eligibility test in IRC §162(l)(2)(B) disallows SE health insurance for any month the user **or spouse** (or, per the 2025 instructions, a dependent or child under 27) was *eligible* for a subsidized employer plan — even if they didn't enroll.
 
 **Consequence**: Disallowed deduction in audit. The fix is to apportion the premium by month — eligible months only.
 
@@ -104,7 +104,7 @@ Real mistakes filers and unsupervised agents make on Schedule 1, ranked by how o
 
 **Consequence**: Skipping Schedule C means no expense deductions (electricity, equipment, software, professional fees) AND no Schedule SE. Net result: inflated income tax, but missed SE tax (which IRS will assess separately).
 
-**Fix**: If the activity is regular, profit-motive, and would be a trade or business under §162 — it's Schedule C. Line 8v is for **passive** receipt of digital assets (occasional payment, airdrops, small-scale staking, NFT royalties from prior sales). Mining/NFT-creation businesses → Schedule C → Line 3, not 8v.
+**Fix**: If the activity is regular, profit-motive, and would be a trade or business under §162 — it's Schedule C. Line 8v is for ordinary income from digital assets not reported elsewhere (the 2025 instructions name forks, staking, and mining). Mining/NFT-creation businesses → Schedule C → Line 3, not 8v.
 
 ---
 
@@ -112,14 +112,14 @@ Real mistakes filers and unsupervised agents make on Schedule 1, ranked by how o
 
 **The mistake**: Filer received a 1099-K and reports the gross 1099-K amount on Line 8z, treating it as miscellaneous income.
 
-**Why it happens**: The IRS lowered the 1099-K threshold (now $2,000 for 2026 from the original $20,000). More filers are getting forms they've never seen. They guess Line 8 because it looks like a catchall.
+**Why it happens**: The 1099-K threshold was scheduled to fall, and many platforms sent forms for small amounts for 2023–2024. P.L. 119-21 restored the original test: for 2025, a 1099-K is required only when payments exceed $20,000 and transactions exceed 200 (2025 Form 1040 instructions, What's New). Filers who get a form still guess Line 8 because it looks like a catchall.
 
 **Consequence**: Overpayment if the activity was personal items sold at a loss (not taxable at all). Underpayment of SE tax if it was actually self-employment that should be Schedule C → Schedule SE.
 
 **Fix**: Three paths:
 - **Personal items sold at a loss / 1099-K in error** → enter on the dedicated row above Part I (not on Line 8). Reconciles to zero taxable.
 - **Trade or business income** → Schedule C → flows to Line 3. Don't put it on Line 8.
-- **Investment income** (rare on 1099-K) → Schedule D / Form 8949.
+- **Personal item sold at a gain** (or other investment sale) → Form 8949 / Schedule D.
 
 Never put a 1099-K on Line 8z.
 
@@ -129,7 +129,7 @@ Never put a 1099-K on Line 8z.
 
 ### Skipping Line 7 unemployment because "I didn't get the money — it was direct-deposited"
 
-All unemployment compensation is taxable. The 1099-G Box 1 reports it; Line 7 captures it. Pandemic-era exclusions ($10,200 ARPA) are not in effect for 2026.
+All unemployment compensation is taxable. The 1099-G Box 1 reports it; Line 7 captures it. The pandemic-era exclusion ($10,200 ARPA) applied only to 2020.
 
 ### Claiming Line 11 (educator expenses) when not a 900-hour K-12 educator
 
@@ -154,7 +154,7 @@ Every year, some filer fills Line 22 with something. It's reserved for future us
 Before declaring Schedule 1 ready:
 
 - [ ] Run every Part II line — don't skip just because the user "took the standard deduction"
-- [ ] If Line 3 > 0, Schedule SE is in the package and Line 15 has the half-SE-tax amount
+- [ ] If net SE earnings (Line 3 × 92.35%) are $400 or more, Schedule SE is in the package and Line 15 has the half-SE-tax amount
 - [ ] Line 1 only has an amount if user itemized last year AND deducted state income tax AND had marginal benefit
 - [ ] Line 8j hobby income is gross (no expense offset)
 - [ ] Line 8 entries don't double-count Schedule C income that's on Line 3
@@ -162,7 +162,7 @@ Before declaring Schedule 1 ready:
 - [ ] Line 21 student loan interest is capped at $2,500 and within phaseout
 - [ ] Line 19a alimony only if pre-2019 decree, with 19b SSN and 19c date
 - [ ] Required attachments listed (8889, 3903, Sch SE, 2106, 8853)
-- [ ] Line 22 is blank
+- [ ] Line 22 is blank; Line 24z is blank (2025 instructions)
 - [ ] Line 10 = Lines 1 + 2a + 3 + 4 + 5 + 6 + 7 + 9
 - [ ] Line 26 = Lines 11 + 12 + 13 + 14 + 15 + 16 + 17 + 18 + 19a + 20 + 21 + 23 + 25
 
@@ -170,7 +170,7 @@ Before declaring Schedule 1 ready:
 
 ## Sources
 
-- IRS Schedule 1 (Form 1040), 2025 revision
-- IRC §§61, 111, 162(l), 164(f), 183, 221, 223, 4973
-- IRS Publication 525, 535, 969, 970
-- TCJA §11051 (alimony), §11041 (miscellaneous itemized deduction suspension)
+- IRS Schedule 1 (Form 1040), 2025 revision, and the 2025 Instructions for Form 1040
+- IRC §§61, 67(h), 111, 162(l), 164(f), 183, 221, 223, 4973
+- IRS Publication 525, 969, 970, 974; Instructions for Form 7206
+- TCJA (P.L. 115-97) §11051 (alimony), §11045 (miscellaneous itemized deduction suspension); P.L. 119-21 §70110 (made permanent)

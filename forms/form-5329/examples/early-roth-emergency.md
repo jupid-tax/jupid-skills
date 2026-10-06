@@ -51,8 +51,10 @@ Daniel's $20,000 distribution applied to the layers:
 | Conversions | $0 | $0 | $0 |
 | Earnings | $17,000 | $0 | $17,000 |
 
-**Result**: Daniel's entire $20,000 distribution was Roth basis. Line 1
-on Form 5329 Part I = $0. **No Form 5329 is required.**
+**Result**: Daniel's entire $20,000 distribution was Roth basis. Form 8606
+Part III (required for any nonqualified Roth IRA distribution) shows $0 on
+line 25c, so Line 1 on Form 5329 Part I = $0. **No Form 5329 is
+required.**
 
 ## But what if he had taken $35,000 instead?
 
@@ -67,11 +69,13 @@ $20,000). The layers would be:
 
 Now $4,000 of earnings are part of the distribution. These earnings:
 
-- Are includible in income (Form 1040 Line 4b includes the $4,000)
+- Are includible in income (Form 8606 line 25c → Form 1040 Line 4b
+  includes the $4,000)
 - Are subject to the 10% additional tax under §72(t) — Daniel is 28,
   under 59½
 
-So Form 5329 Part I, Line 1 = $4,000.
+So Form 5329 Part I, Line 1 = $4,000 (Form 8606 line 25c; no conversions,
+so no recapture amount).
 
 ### Applying the medical expense exception (code 05)
 
@@ -122,7 +126,8 @@ N/A — no other tax-favored account events for the year
 
 ## Required attachments
 - [ ] Form 1040 (5329 attaches; reports $4,000 earnings on Line 4b)
-- [ ] Form 8606 if required for traditional-IRA basis tracking (N/A here)
+- [ ] Form 8606 Part III (nonqualified Roth IRA distribution: line 19
+      $35,000, line 22 basis $31,000, line 25c $4,000)
 
 ## Validation summary
 - Math: all checks passed
@@ -134,15 +139,18 @@ N/A — no other tax-favored account events for the year
     statements showing 2019-2024 contribution history
 - Next steps:
   - $4,000 earnings reported on Form 1040 Line 4b (taxable)
-  - $4,000 included in AGI; user already in 22% federal bracket → ~$880 income
-    tax on the earnings (separate from §72(t) penalty, which is $0 due to exception)
-  - Daniel should consider rebuilding the Roth basis in future years; the $20,000
-    actual withdrawal cannot be replaced (Roth IRAs have no rollover-back
-    mechanism, only the 60-day rollover for amounts not yet distributed)
+  - $4,000 included in AGI; 2025 taxable income $54,000 − $15,750 standard
+    deduction = $38,250, inside the 12% bracket (Rev. Proc. 2024-40) → ~$480
+    income tax on the earnings (separate from §72(t) penalty, which is $0 due to exception)
+  - Daniel should consider rebuilding the Roth basis in future years; once
+    the 60-day rollover window (one IRA-to-IRA rollover per 12 months) has
+    passed, the withdrawn amount can only be replaced through annual
+    contributions
 
 ## Sources cited in this draft
-- IRS Form 5329, Rev. 2025
-- IRS Instructions for Form 5329, Rev. 2025
+- IRS Form 5329 (2025)
+- IRS Instructions for Form 5329 (2025) — Line 1 (Roth IRA: Form 8606 line 25c), Line 2 exception 05
+- IRS Form 8606 (2025), Part III
 - IRC §72(t)(2)(B) — medical expense exception
 - IRC §408A — Roth IRA rules
 - IRS Pub 590-B — distributions from IRAs (Roth ordering rules)
@@ -168,7 +176,8 @@ the full earnings portion was excepted.
 Because Line 1 is $0. The instructions are clear: file Part I only when
 there's an early distribution includible in income. Daniel's $20,000 was
 all basis. He still reports the $20,000 on Form 1040 Line 4a (gross
-distribution) but Line 4b (taxable amount) is $0. No 5329.
+distribution) but Line 4b (taxable amount) is $0, and files Form 8606
+Part III to show it. No 5329.
 
 **What if Daniel had also made a 2025 Roth contribution after the
 distribution?** It wouldn't change Form 5329 unless his MAGI was above the
@@ -176,9 +185,9 @@ phaseout (it wasn't — $54,000 AGI is well below the $150,000 single
 phaseout threshold for 2025). Just a normal contribution.
 
 **What if Daniel had 1099-R Box 7 code J (early distribution from Roth)?**
-He'd still apply Roth ordering. Box 7 codes are the custodian's signal,
-not the determining factor. If basis covers the distribution, no Form 5329
-needed regardless of Box 7.
+That is the expected code here. He still applies Roth ordering on Form 8606
+Part III. If basis covers the distribution (line 25c = 0), no Form 5329 is
+needed (2025 Instructions for Form 5329, "Who Must File").
 
 **What records should Daniel retain?**
 

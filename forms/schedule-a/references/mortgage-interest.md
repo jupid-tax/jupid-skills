@@ -4,28 +4,30 @@ Mortgage interest is the largest itemized deduction for most homeowners. The pos
 
 - **Acquisition debt cap**: $750,000 (post-Dec 15, 2017) or $1,000,000 (grandfathered) — made permanent by OBBBA
 - **HELOC / home equity loan**: deductible only if proceeds used to buy/build/improve the home that secures the loan — made permanent by OBBBA
-- **Mortgage insurance premiums (Line 8d)**: eliminated 2022-2025, **reinstated for tax year 2026+** by OBBBA, with phaseout at $100K MAGI
+- **Mortgage insurance premiums**: not deductible for 2022–2025 (2025 Schedule A line 8d is "Reserved for future use"); **deductible again for tax years beginning after December 31, 2025** (IRC §163(h)(3)(E) and (F)(i)(III), P.L. 119-21 §70108), with an AGI phase-out from $100,000
 - **Investment interest (Line 9)**: still subject to net-investment-income limitation via Form 4952
 
-This file is the operational reference for Lines 8-10, including the $750K cap math, HELOC use-tracing, refinance rules, points, and the 2026+ PMI deduction.
+This file is the operational reference for Lines 8-10, including the $750K cap math, HELOC use-tracing, refinance rules, points, and the 2026+ mortgage insurance deduction. Verified 2026-10-06 against the 2025 Schedule A and instructions (lines 8–9), Form 1098 (Rev. April 2025), and IRC §163(h) as amended by P.L. 119-21.
 
 ---
 
-## Form 1098 — the source of truth for Line 8a
+## Form 1098 — the starting point for Line 8a
 
-Each lender sends a Form 1098 (Mortgage Interest Statement) by January 31. Boxes:
+Each lender sends a Form 1098 (Mortgage Interest Statement) by January 31. Boxes on Form 1098 (Rev. April 2025):
 
-- **Box 1**: Mortgage interest received from payer in the calendar year
-- **Box 2**: Outstanding mortgage principal as of January 1 (or origination date if newer)
+- **Box 1**: Mortgage interest received from payer(s)/borrower(s)
+- **Box 2**: Outstanding mortgage principal
 - **Box 3**: Mortgage origination date
-- **Box 4**: Refund of overpaid interest (from the lender) — adjusts Line 8a downward
-- **Box 5**: Mortgage insurance premiums (only relevant 2026+; blank for 2025)
+- **Box 4**: Refund of overpaid interest
+- **Box 5**: Mortgage insurance premiums (lenders may report them; not deductible for 2025, deductible with the AGI phase-out for 2026+)
 - **Box 6**: Points paid on purchase of principal residence
-- **Box 7**: Property address (matches Form 1040 address — flag if not)
-- **Box 8**: Number of properties securing the mortgage
-- **Box 11**: Acquisition date (added to support cap-grandfathering since TCJA)
+- **Box 7**: Checkbox — property address same as borrower's address
+- **Box 8**: Address or description of property securing the mortgage
+- **Box 9**: Number of properties securing the mortgage
+- **Box 10**: Other (lenders often use it for real estate taxes paid from escrow)
+- **Box 11**: Mortgage acquisition date
 
-**Line 8a = Box 1 + Box 6** for the typical case. Box 4 (refund) reduces Line 8a or, if it puts Line 8a < 0, the excess is income on Schedule 1.
+**Line 8a = Box 1 + Box 6** for the typical case, limited to the deductible amount (Pub 936). **Box 4 does not reduce Line 8a**: the 2025 instructions say not to reduce the deduction by a refund of overpaid interest and to see Schedule 1 line 8z instead (it is income only to the extent the earlier deduction reduced tax). If the user paid more interest than box 1 shows, enter the larger deductible amount and explain the difference.
 
 ---
 
@@ -51,7 +53,7 @@ Deductible % = min(1, cap / average balance)
 Deductible interest = Box 1 interest × deductible %
 ```
 
-Worked example: A 2020-originated loan with average 2025 balance of $900,000 and Box 1 interest of $42,000:
+Worked example (Pub 936 method, illustrative): A 2020-originated loan with average 2025 balance of $900,000 and Box 1 interest of $42,000:
 
 ```
 Cap            = $750,000
@@ -157,17 +159,17 @@ Refinancing into a longer or shorter term doesn't break the grandfather provisio
 
 **Points reported in Form 1098 box 6** typically already reflect the appropriate treatment per the lender. Verify against closing statement.
 
-**If the user paid off the loan early** (refinance, sale, payoff): any remaining unamortized points are deductible in the year of payoff.
+**If the user paid off the loan early** (refinance, sale, payoff): any remaining unamortized points are deductible in the year of payoff — except when the loan is refinanced with the same lender (see "Mortgage ending early" in Pub 936; 2025 Schedule A instructions, line 8c).
 
 ---
 
-## Line 8d — Mortgage Insurance Premiums (Tax Year 2026+ Only)
+## Mortgage Insurance Premiums (Tax Year 2026+ Only)
 
-The mortgage insurance premium deduction was eliminated for tax years 2022-2025. **OBBBA reinstated it permanently effective tax year 2026.**
+The mortgage insurance premium deduction expired after 2021 (IRC §163(h)(3)(E)(iv)). **P.L. 119-21 §70108 turned it back on permanently for taxable years beginning after December 31, 2025** (new IRC §163(h)(3)(F)(i)(III)).
 
-For tax year 2025 returns: **leave Line 8d blank**. The deduction is unavailable.
+For tax year 2025 returns: line 8d is **"Reserved for future use"** on the 2025 Schedule A. Enter nothing; the premiums are not deductible.
 
-For tax year 2026 returns and later: include qualified mortgage insurance premiums on Line 8d.
+For tax year 2026 returns and later: include deductible qualified mortgage insurance premiums on the line the 2026 Schedule A provides (the 2026 form was not released when this file was verified; confirm the line number).
 
 ### What qualifies
 
@@ -180,20 +182,20 @@ The premium must relate to **acquisition debt** on a qualified residence (main h
 
 ### Phaseout (2026+)
 
-Premium deduction phases out as MAGI rises:
-- **Below $100,000 MAGI ($50,000 MFS)**: full premium deductible
-- **$100,000 to $109,000 MAGI ($50,000-$54,500 MFS)**: phased out 10% per $1,000 over threshold
-- **$109,000+ MAGI ($54,500+ MFS)**: fully phased out, no deduction
+IRC §163(h)(3)(E)(ii): the amount is reduced (not below zero) by 10% for each $1,000 ($500 MFS), or fraction, by which **AGI** exceeds $100,000 ($50,000 MFS):
+- **AGI $100,000 or less ($50,000 MFS)**: full premium deductible
+- **Over $100,000 up to $109,000 ($50,000–$54,500 MFS)**: reduced 10% per $1,000 ($500 MFS) or fraction over the threshold
+- **Over $109,000 ($54,500 MFS)**: fully phased out, no deduction
 
-Verify phaseout indexing in IRS Rev. Proc. for tax year 2026 once published; OBBBA's reinstatement may include indexing.
+The dollar amounts are fixed in the statute (no inflation indexing). Premiums on contracts issued before January 1, 2007 never qualify (IRC §163(h)(3)(E)(iii)).
 
 ### Mortgage insurance prepaid
 
-If the user prepaid PMI at closing (a lump-sum upfront premium), allocate the premium over **84 months or the loan term, whichever is shorter**, and deduct the current year's portion only.
+If the user prepaid PMI at closing (a lump-sum upfront premium), allocate the premium over **84 months or the loan term, whichever is shorter**, and deduct the current year's portion only. IRC §163(h)(4)(F) requires the allocation (VA and Rural Housing Service premiums are excepted) and denies any deduction for the unamortized balance if the mortgage is paid off early; the 84-month convention comes from earlier editions of Pub 936, so confirm it in the 2026 Pub 936 before relying on it.
 
 ### Source
 
-[Form 1098 Box 5](https://www.irs.gov/pub/irs-pdf/f1098.pdf) — the lender reports premiums received. For 2026 returns, this box will populate; for 2025 it remains blank.
+[Form 1098 Box 5](https://www.irs.gov/pub/irs-pdf/f1098.pdf) — the lender reports premiums received. Use it for 2026+ returns; for 2025, ignore it for Schedule A even if filled in.
 
 ---
 
@@ -203,7 +205,7 @@ Interest on debt used to **purchase or carry property held for investment** (tax
 
 Limited to **net investment income** (taxable interest, taxable dividends, short-term capital gains; long-term capital gains and qualified dividends only count if elected at the lower-tax rate).
 
-**Form 4952** is required to compute the limit. Excess investment interest carries forward indefinitely.
+**Form 4952** computes the limit. It is not required if all three are true: investment interest expense is less than investment income from interest and ordinary dividends minus qualified dividends, there are no other deductible investment expenses, and there is no disallowed investment interest carried from 2024 (2025 instructions, line 9). Excess investment interest carries forward indefinitely. Alaska Permanent Fund dividends are not investment income.
 
 NOT investment interest:
 - Margin interest used to buy tax-exempt municipal bonds (never deductible)
@@ -229,7 +231,7 @@ Designation of "the" second home is annual — if the user has 3 homes, pick one
 
 1. **Deducting interest on a HELOC used for non-home purposes** — deductible only for buy/build/improve.
 2. **Deducting interest beyond the $750K acquisition cap** — apply the average-balance method.
-3. **Including PMI on a 2025 return** — Line 8d is for 2026+ only. Leave blank for 2025.
+3. **Including PMI on a 2025 return** — not deductible for 2025; line 8d is "Reserved for future use." Deductible again for 2026+ (AGI phase-out from $100,000).
 4. **Forgetting to amortize points on a refinance** — purchase-points are full-year deductible only on a *purchase* of main home; refinance points amortize.
 5. **Deducting both Line 8a and the same interest on Schedule C** — pick one. If a portion of the home is used for business and the user takes home office on Schedule C, allocate property tax and mortgage interest between Line 8a (personal portion) and Form 8829 (business portion).
 6. **Treating a third home's interest as deductible** — only main + designated second.
@@ -244,10 +246,10 @@ Designation of "the" second home is annual — if the user has 3 homes, pick one
 
 - [IRC §163](https://www.law.cornell.edu/uscode/text/26/163) — Interest
 - [IRC §163(h)](https://www.law.cornell.edu/uscode/text/26/163) — Disallowance of personal interest, with qualified residence interest exception
-- [IRC §163(h)(4)(E)](https://www.law.cornell.edu/uscode/text/26/163) — Mortgage insurance premiums (reinstated 2026+ by OBBBA)
+- [IRC §163(h)(3)(E)–(F), (h)(4)(E)–(F)](https://www.law.cornell.edu/uscode/text/26/163) — Mortgage insurance premiums treated as qualified residence interest (restored for tax years after 2025 by P.L. 119-21 §70108), definition and prepaid premiums
 - [IRS Publication 936](https://www.irs.gov/publications/p936) — Home Mortgage Interest Deduction (definitive guide)
 - [IRS Publication 530](https://www.irs.gov/publications/p530) — Tax Information for Homeowners
 - [Form 1098](https://www.irs.gov/pub/irs-pdf/f1098.pdf) — Mortgage Interest Statement
 - [Form 4952](https://www.irs.gov/pub/irs-pdf/f4952.pdf) — Investment Interest Expense Deduction
 - [Schedule A Instructions](https://www.irs.gov/pub/irs-pdf/i1040sca.pdf) — lines 8-10 guidance
-- One Big Beautiful Bill Act of 2025 — making $750K acquisition cap permanent and reinstating PMI deduction effective 2026+. Verify the public-law citation once enrolled.
+- One Big Beautiful Bill Act, P.L. 119-21 (July 4, 2025), §70108 — made the $750K acquisition cap and the home equity interest disallowance permanent and restored the mortgage insurance deduction for tax years beginning after December 31, 2025

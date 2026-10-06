@@ -24,7 +24,7 @@ A complete walkthrough of Form 8959 for a self-employed consultant with high Sch
 
 Schedule SE Line 6 = $323,225 (the figure after the 92.35% multiplier per IRC §1402(a)(12)).
 
-Note: For Schedule SE Part I, the 12.4% Social Security portion only applies to the first $176,100 (2025 SS wage base; verify for tax year). The 2.9% Medicare portion applies to all $323,225. The Additional Medicare Tax via Form 8959 is on top of the 2.9%, computed via Form 8959 itself.
+Note: For Schedule SE Part I, the 12.4% Social Security portion only applies to the first $176,100 (2025 SS wage base, Schedule SE line 7; $184,500 for 2026 per https://www.ssa.gov/oact/cola/cbb.html). The 2.9% Medicare portion applies to all $323,225. The Additional Medicare Tax via Form 8959 is on top of the 2.9%, computed via Form 8959 itself.
 
 ## The completed Form 8959 draft
 
@@ -63,13 +63,14 @@ Threshold (Line 5):          $200,000
     → flows to Schedule 2 Line 11 → Form 1040 Line 23
 
 ## Part V — Withholding Reconciliation
+(No Medicare wages or RRTA compensation: the instructions say to leave Part V blank. Shown as zeros for the audit trail.)
 19. Medicare tax withheld (W-2 Box 6 total):       $0
-20. Regular 1.45% Medicare on Line 1 ($0 × 1.45%): $0
-21. Additional Medicare Tax withheld (19 − 20, floor zero): $0
-22. (Same as Line 21):                             $0
+20. Amount from Line 1:                            $0
+21. Regular Medicare withholding (Line 20 × 1.45%): $0
+22. Additional Medicare Tax withheld (19 − 21, floor zero): $0
 23. RRTA Additional Medicare Tax withheld:         $0
-24. Total Additional Medicare Tax withheld:        $0
-    → flows to Form 1040 Line 25c
+24. Total Additional Medicare Tax withholding:     $0
+    → nothing to include on Form 1040 Line 25c
 
 ## Validation summary
 - Math: all checks passed
@@ -78,7 +79,7 @@ Threshold (Line 5):          $200,000
   - Schedule SE Line 6 ($323,225) confirmed = Schedule C net profit ($350,000) × 92.35% per IRC §1402(a)(12)
   - Threshold fully available to absorb SE income (Line 11 = full $200K because Line 10 wages = $0)
   - SE surtax base: $323,225 − $200,000 = $123,225; surtax = $1,109
-  - Net at filing: Line 18 − Line 24 = $1,109 owed (in addition to regular Schedule SE tax of 15.3% × $323,225 = $49,453)
+  - Net at filing: Line 18 − Line 24 = $1,109 owed (in addition to regular Schedule SE tax of $31,210: 12.4% × $176,100 + 2.9% × $323,225)
 - Next steps:
   - Schedule 2 Line 11 = $1,109
   - Form 1040 Line 25c does NOT include any Form 8959 amount
@@ -115,17 +116,19 @@ Schedule SE tax (regular SS + Medicare):
 Form 8959 Additional Medicare Tax:
   0.9% × $123,225 = $1,109
 
-Federal income tax (single, ~$350K - $7,003 SE deduction adjustment - $15,000 standard deduction
-  = ~$328,000 taxable income, marginal rate 32% / 35%):
-  Approx. $79,000 federal income tax (bracket-by-bracket calc; exact figure depends on
-  all other income, deductions, credits)
+Federal income tax (single, 2025): $350,000 − $15,605 deduction for half of SE tax
+  = $334,395 AGI − $15,750 standard deduction = $318,645 taxable income
+  (no QBI deduction: consulting is a specified service business and $318,645 is above
+  the $247,300 top of the 2025 phase-in range). Marginal rate 35%.
+  2025 single rate schedule (Rev. Proc. 2024-40): $81,073 federal income tax
+  (assumes no other income, deductions or credits)
 
-Total federal tax: ~$111,300 on $350,000 gross. ~32% effective federal rate.
+Total federal tax: $81,073 + $31,210 + $1,109 = $113,392 on $350,000 of net profit. ~32% effective federal rate.
 ```
 
-The Form 8959 surtax is ~1% of total federal tax — small in dollar terms but easy to miss. Without Form 8959, the IRS would issue a CP2000 notice 12-24 months after filing.
+The Form 8959 surtax is ~1% of total federal tax — small in dollar terms but easy to miss. If it is left off the return, the IRS can propose the missing tax by notice after matching Schedule SE data.
 
-**Why is the planning recommendation "include in quarterly estimates" rather than "increase W-4"?** Sasha has no W-2 employer to set a W-4 with. Her only federal pre-payment mechanism is Form 1040-ES quarterly estimates. The Form 1040-ES worksheet has a line for the Additional Medicare Tax that should be included in her quarterly computation.
+**Why is the planning recommendation "include in quarterly estimates" rather than "increase W-4"?** Sasha has no W-2 employer to set a W-4 with. Her only federal pre-payment mechanism is Form 1040-ES quarterly estimates. On the 2026 Estimated Tax Worksheet, the Additional Medicare Tax is included in line 10, Other taxes (2026 Form 1040-ES instructions); estimated payments can't be designated specifically for it.
 
 **What about Form 2210 underpayment penalty?** If Sasha's total 2025 federal tax (income + SE + Form 8959 surtax) exceeds her 2025 quarterly estimates by more than $1,000 AND her estimates weren't at least 90% of current-year tax or 100% of prior-year tax (110% if prior AGI > $150K), Form 2210 may apply. See the form-2210 skill for the safe harbor analysis.
 

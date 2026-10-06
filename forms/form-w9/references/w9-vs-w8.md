@@ -33,7 +33,7 @@ US person = ANY of:
 - US partnership (formed under US law)
 - US corporation (formed under US law)
 - US LLC (formed in any US state)
-- US estate or domestic trust (defined under §7701(a)(31))
+- US estate or domestic trust (§7701(a)(30)(D)–(E); §7701(a)(31) defines foreign estates and trusts)
 
 ### Who is a "non-resident alien" for W-8BEN purposes?
 
@@ -55,7 +55,7 @@ The requestor treats the user as a non-resident alien. Result:
 
 - **NRA tax withholding (IRC §1441)** — the requestor withholds 30% from gross payments (not 24% BUW)
 - **The user gets a 1042-S, not a 1099-NEC**, at year-end
-- **The user has to file Form 1040-NR or amend to a US return** to recover the over-withholding — cumbersome process
+- **The user claims the withholding on their own Form 1040** (from the Form 1042-S) and fixes the documentation with the payer — cumbersome process
 - **Treaty benefits don't apply** — most US-tax treaties require the claimant to actually be a tax resident of the treaty country, which a US person is not
 
 This mistake is rare but happens with dual citizens, recent green-card holders, or US persons living abroad who confuse "I live abroad" with "I'm a non-resident alien."
@@ -85,7 +85,7 @@ Cases where the agent should NOT proceed without the user clarifying their tax r
 
 4. **H-1B / L-1 visa holder** — usually NRA in year 1 of US presence, often becomes resident alien in year 2+ via substantial presence; depends on days present in US. Verify before completing.
 
-5. **US LLC owned by a foreign person** — LLC itself is a US entity, but if it's an SMLLC default-disregarded, the IRS treats payments as going to the foreign owner. This requires W-8BEN (not W-9), because the disregarded entity transparency means the foreign owner is the actual recipient. SMLLC + S-corp election = entity is taxed as a corporation and gives W-9 (LLC name + LLC's EIN).
+5. **US LLC owned by a foreign person** — LLC itself is a US entity, but if it's an SMLLC default-disregarded, the foreign owner is the payee: the owner gives the appropriate Form W-8 (W-8BEN for an individual), not a W-9, "even if the foreign person has a U.S. TIN" (W-9 instructions, Line 1). If the LLC elected C-corporation status on Form 8832, it is a US corporation and gives a W-9 (LLC name + LLC's EIN). An S election isn't available with a nonresident alien owner (IRC §1361(b)(1)(C)).
 
 6. **US person living abroad full-time** — STILL a US person if US citizen or green-card holder. W-9 (not W-8BEN), regardless of residence.
 
@@ -110,7 +110,7 @@ If the user is a non-resident alien individual, redirect to the (forthcoming) `f
 - IRS form: https://www.irs.gov/pub/irs-pdf/fw8ben.pdf
 - Used to certify foreign status for IRC §1441 withholding purposes
 - May be used to claim a reduced withholding rate under a tax treaty
-- Valid for 3 years from signing (W-9 has no expiration but is often re-collected annually)
+- Generally valid from the signing date through the last day of the third succeeding calendar year (e.g., signed Sept. 30, 2026 → valid through Dec. 31, 2029) unless circumstances change (Instructions for Form W-8BEN, Rev. October 2021). The W-9 has no expiration but is often re-collected annually
 
 ## Form W-8BEN-E (when applicable)
 
@@ -132,4 +132,6 @@ If the user is a foreign entity, redirect to the (forthcoming) `form-w8bene` ski
 - IRC §1441 — Withholding of tax on nonresident aliens
 - IRC §3406 — Backup withholding
 - IRC §6109 — TIN furnishing requirement
-- IRC §7701(a)(31) — Definition of US person and foreign person
+- IRC §7701(a)(30) — Definition of United States person; §7701(a)(31) — foreign estate or trust
+- IRC §1361(b)(1)(C) — S corporation shareholders may not be nonresident aliens
+- Form W-9 (Rev. March 2024), Line 1 "Disregarded entity" (foreign owner uses Form W-8)

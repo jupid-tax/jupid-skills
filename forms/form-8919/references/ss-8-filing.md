@@ -2,9 +2,9 @@
 
 Form SS-8 ("Determination of Worker Status for Purposes of Federal Employment Taxes and Income Tax Withholding") is the IRS's official mechanism for determining whether a worker is an employee or independent contractor.
 
-For Form 8919 codes A and G, an SS-8 filing is **required**. This document walks through the SS-8 filing process so the agent can guide the user through it.
+For Form 8919 code A (determination received) and code G (filed, no reply yet, or no other code fits), an SS-8 filing is **required**. For code H the form says **don't** file Form SS-8. This document walks through the SS-8 filing process so the agent can guide the user through it.
 
-**Legal basis:** IRC §7436; Treasury Regulation §301.7436-1; Form SS-8 instructions.
+**Authority:** Form SS-8 (Rev. December 2023) and Instructions for Form SS-8 (Rev. January 2024), https://www.irs.gov/pub/irs-pdf/iss8.pdf. Re-check the current revision at https://www.irs.gov/forms-pubs/about-form-ss-8.
 
 ---
 
@@ -12,58 +12,64 @@ For Form 8919 codes A and G, an SS-8 filing is **required**. This document walks
 
 - **The worker** (most common)
 - **The firm** (less common)
-- **A third party** (rare; typically auditors or state agencies)
-
-Most Form 8919 filings involve the worker filing SS-8 themselves. The agent should walk the user through the worker-side process.
+Most Form 8919 filings involve the worker filing SS-8 themselves. The agent should walk the user through the worker-side process. If the worker performed services for more than one firm, complete a separate Form SS-8 for each firm (SS-8 instructions, "Instructions for Workers").
 
 ---
 
 ## When to File SS-8
 
-**Best timing:** before or simultaneously with the 1040 that uses Form 8919. Specifically:
+**Deadline for code G:** on or before the date the return with Form 8919 is filed (2025 Form 8919, reason code G). Specifically:
 
 - If the worker discovers misclassification during the tax year (e.g., realizes mid-year), file SS-8 as soon as possible
 - If the worker discovers it during tax season (January-April after year-end), file SS-8 in February so the SS-8 filing date precedes the 1040 filing date
 
-**Why timing matters:** Form 8919 codes A and G both certify on column (e) that SS-8 has been filed. Checking the box without an SS-8 on file is a misrepresentation that can result in disallowance of the 8919 treatment plus accuracy penalties.
+**Why timing matters:** Reason code G states that the worker filed Form SS-8. Entering code G without an SS-8 on file can result in disallowance of the 8919 treatment plus accuracy penalties. (Column (e) of Form 8919 is a separate check for whether a 1099-MISC/NEC was received; it is not an SS-8 checkbox.)
 
-**Statute of limitations:** SS-8 can be filed for any tax year still open under IRC §6501 (general 3-year statute) or §6511 (refund claims, also 3 years). For older years, the SS-8 may be moot if the refund window has closed.
+**Do not delay the return:** "Filing Form SS-8 does not alter the requirement to timely file an income tax return or pay taxes. Do not delay filing your tax return in anticipation of an answer to your Form SS-8 request." (SS-8 instructions, "Instructions for Workers")
+
+**Statute of limitations:** If Form SS-8 is submitted for a tax year whose statute of limitations has expired, a determination letter will not be issued (SS-8 instructions, "When To File"). A determination can only be made for years with open statutes.
 
 ---
 
 ## Where to File SS-8
 
+Mail or fax the completed and signed Form SS-8 and attachments. Do **not** submit it with the tax return; that delays processing (SS-8 instructions, "Where To File").
+
 **Mail to:**
 
 ```
-Department of the Treasury
 Internal Revenue Service
+Form SS-8 Determinations
+P.O. Box 630
 Stop 631
-Holtsville, NY 11742-0631
+Holtsville, NY 11742-0630
 ```
 
-**No e-file path:** As of the 2026 tax year, Form SS-8 must be filed by mail. The IRS does not accept electronic submissions of SS-8.
+**Fax to:** 855-242-4481
 
-**Recommended:** certified mail with return receipt requested. Save the green card and the certified mail tracking number.
+**Signature:** the taxpayer must sign and date the form; a stamped signature or a power of attorney representative's signature is not accepted. An original handwritten signature or an electronic signature (for example, a faxed or digitally signed PDF) is accepted.
 
-**No fee:** SS-8 has no IRS filing fee.
+**Recommended for mail:** certified mail with return receipt requested. Save the receipt and tracking number. For fax, keep the transmission confirmation.
+
+**No fee:** "There is no fee for requesting a Form SS-8 determination letter." (SS-8 instructions, "Fee")
+
+Re-check the address and fax number in the current SS-8 instructions before every filing.
 
 ---
 
 ## How Long Does SS-8 Take?
 
-**Typical timeline:** 6-12 months from the IRS receiving the SS-8 to issuing a determination letter.
+**Timeline:** the IRS says "it may take at least six months to receive a determination" (irs.gov, "Independent contractor (self-employed) or employee?"). Do not promise a shorter or fixed timeframe.
 
-**Process:**
+**Process (SS-8 instructions, "The Form SS-8 Determination Process"):**
 
-1. Worker mails SS-8 with attachments
-2. IRS logs the filing (typically 4-8 weeks after receipt)
-3. IRS sends a copy of SS-8 to the firm with a 30-day response window
-4. Firm responds (or does not respond)
-5. IRS reviews both responses, may request additional information
-6. IRS issues determination letter to both parties
+1. Worker mails or faxes SS-8 with attachments
+2. The IRS acknowledges receipt
+3. The IRS sends blank Forms SS-8 to the other parties (the firm) for completion; some or all of the worker's information may be shared with them
+4. A technician reviews the facts, applies the law, and may ask the worker, the firm, or third parties for more information
+5. The IRS generally issues a formal determination to the firm and sends a copy to the worker
 
-**Result:** A formal letter classifying the worker as employee, contractor, or (rarely) declining to rule.
+**Result:** A determination letter (binding on the IRS if the facts and law don't change), or in some cases an information letter, which is advisory and not binding but can be used by the worker in meeting their federal tax obligations.
 
 ---
 
@@ -83,7 +89,7 @@ The form itself is a multi-page questionnaire covering:
 
 **Attachments to include:**
 
-- Copies of all 1099 forms received from the firm
+- Copies of all Forms 1099-MISC, 1099-NEC, and/or W-2 issued by the firm for all years in question (Part I, line 5). If the worker can't provide them, a letter with a breakdown of earnings per year plus copies of checks, paystubs, or bank statements
 - Copy of any contract or engagement letter
 - Selected emails showing the firm's direction (hours, methods, supervision)
 - Time records or work logs
@@ -99,11 +105,10 @@ The form itself is a multi-page questionnaire covering:
 
 ## What the Firm Sees
 
-The IRS sends the firm a copy of the SS-8 with a cover letter requesting a response. The firm sees:
+The IRS sends the firm a blank Form SS-8 to complete, and "some or all of the information provided on this Form SS-8 may be shared with the other parties listed on page 1" (SS-8 instructions). The Disclosure of Information box on page 1 of Form SS-8 says the same. The firm can therefore learn:
 
 - The worker's name and the period in question
-- The worker's description of the work (their answers to the SS-8 questionnaire)
-- A 30-day window to provide the firm's perspective
+- The worker's description of the work
 
 **This means the worker's relationship with the firm may become strained.** Many workers file SS-8 only after the engagement ends, or accept that the engagement may end as a result of the filing.
 
@@ -117,13 +122,9 @@ This is a real-world consideration the SKILL.md and blog should not gloss over.
 
 ## What If the Firm Doesn't Respond?
 
-If the firm doesn't respond within 30 days, the IRS issues the determination based on the worker's submission alone. This typically results in a determination favorable to the worker (because there's no contradicting information).
+The SS-8 instructions say a firm's failure to respond "will not prevent the IRS from issuing an information letter based on the facts available to it so that the worker can fulfill their federal tax obligations." Do not tell the user a non-response guarantees a favorable result.
 
-If the firm responds with a contrary position, the IRS weighs both submissions and may:
-
-- Rule for the worker (more common in clear cases)
-- Rule for the firm (when the firm shows genuine contractor relationship)
-- Decline to rule (rare; happens when the IRS finds the facts genuinely ambiguous)
+If the firm responds, the IRS weighs both submissions and may rule either way, or issue an information letter instead of a formal determination.
 
 ---
 
@@ -135,10 +136,10 @@ The user has a determination letter ruling them an employee of the firm.
 
 **Implications:**
 
-- Form 8919 with code A is now available for current and future years
-- Prior years may be amendable (Form 1040-X with Form 8919) if within the 3-year statute of limitations
-- The firm now has back FICA exposure (firm's matching share + withholding it failed to do)
-- Section 530 may protect the firm from this back FICA, but does not protect the worker's prior tax positions
+- Form 8919 with code A is now available for years covered by the letter, as long as the facts don't change
+- Prior years may be amendable (Form 1040-X with Form 8919) if the IRC §6511 refund period is open. The worker, not the IRS, is responsible for filing the amended returns (SS-8 instructions)
+- A determination that the worker is an employee "does not necessarily reduce any current or prior tax liability" (SS-8 instructions)
+- Section 530 relief for the firm is not considered in the SS-8 process (SS-8 instructions)
 
 ### Adverse: Worker = Contractor
 
@@ -148,20 +149,21 @@ The user has a determination letter ruling them a contractor.
 
 - Form 8919 cannot be used for this firm
 - If Form 8919 was already filed for the year (with code G), the user must amend to file Schedule SE instead
-- Amendment will assess additional SE tax + interest from the original due date
-- No penalty if the original filing was in good faith based on documented common-law test factors
+- The amendment will assess additional SE tax + interest from the original due date; Form 8919 warns that a worker the IRS doesn't agree is an employee "may be billed for the additional tax, penalties, and interest"
 
-**Appeal:** The user can appeal an adverse determination, typically through Tax Court (IRC §7436). This requires legal counsel and is rarely worth it for low-income amounts.
+**No appeal rights, but reconsideration:** An SS-8 determination is not an examination, so the appeal rights tied to an examination do not apply. The worker can ask the office to reconsider by identifying facts in the original submission that were not fully considered or by submitting new information (SS-8 instructions, "Reconsideration of determination"). Tax Court review under IRC §7436 is available only to the person for whom the services are performed (the firm), in an examination (§7436(b)(1)), not to the worker.
 
-### No Determination
+### No Formal Determination
 
-In rare cases, the IRS declines to rule. This usually happens when:
+The IRS does not issue a determination letter for (SS-8 instructions, "Form SS-8 limitations"):
 
-- The facts are genuinely ambiguous
-- The case involves novel issues the IRS hasn't addressed
-- There's already pending litigation on the same firm/worker relationship
+- Proposed transactions or hypothetical situations
+- Cases involving current worker classification litigation
+- Certain state or local government workers covered by Section 218 questions (only SSA decides those)
+- Business-to-business transactions
+- Other reasons not in the best interests of tax administration
 
-If the IRS declines to rule, the user defaults to good-faith filing under code G (or files Schedule SE if they decide the case isn't strong enough).
+In some cases it issues an information letter instead. If the user receives an information letter stating they are an employee, code C ("other correspondence from the IRS") may fit; ask the user for the letter text before choosing a code.
 
 ---
 
@@ -184,10 +186,11 @@ The agent can help the user draft a cover letter to enclose with SS-8. Sample st
 [Worker address]
 [Date]
 
-Department of the Treasury
 Internal Revenue Service
+Form SS-8 Determinations
+P.O. Box 630
 Stop 631
-Holtsville, NY 11742-0631
+Holtsville, NY 11742-0630
 
 Re: Form SS-8 — Determination of Worker Status
     Worker: [Name], SSN: [last 4 digits only here, full SSN on SS-8 itself]
@@ -221,27 +224,29 @@ Sincerely,
 
 ## Statute of Limitations Considerations
 
-**For Form SS-8 itself:** No statute of limitations on filing SS-8. The IRS will rule on any year regardless of how old.
+**For Form SS-8 itself:** a determination letter will not be issued for a tax year whose statute of limitations has expired (SS-8 instructions, "When To File").
 
-**For tax refund claims based on SS-8 outcome:** IRC §6511 — 3 years from original 1040 filing date or 2 years from tax payment, whichever is later.
+**For tax refund claims based on SS-8 outcome:** IRC §6511 — 3 years from original 1040 filing date or 2 years from tax payment, whichever is later. "Filing Form SS-8 does not prevent the expiration of the time in which a claim for a refund must be filed." To protect a year that is about to close, file a separate Form 1040-X for each year, write "Protective Claim" at the top of page 1, enter the statement the SS-8 instructions prescribe in Explanation of Changes, sign it, and leave the rest blank (SS-8 instructions, "Protecting your statute of limitations on credits and refunds").
 
-**Practical impact:**
+**Practical impact (returns filed on the due date, no extension):**
 
-- 2026 1040 filed April 15, 2027 → can claim refund through April 15, 2030 (assuming no extension)
+- 2026 1040 filed April 15, 2027 → can claim refund through April 15, 2030
 - 2024 1040 filed April 15, 2025 → can claim refund through April 15, 2028
-- 2022 1040 filed April 15, 2023 → can claim refund through April 15, 2026 (CLOSING SOON)
+- 2022 1040 filed April 18, 2023 → the 3-year period ended in April 2026 (closed unless the 2-year-from-payment rule applies)
 
-When the user discovers misclassification, the agent should immediately flag which prior years are still amendable and prioritize SS-8 for the years closest to the statute closing.
+When the user discovers misclassification, the agent should immediately flag which prior years are still amendable and which need a protective claim.
 
 ---
 
 ## Sources
 
-- [Form SS-8](https://www.irs.gov/pub/irs-pdf/fss8.pdf)
+- [Form SS-8 (Rev. December 2023)](https://www.irs.gov/pub/irs-pdf/fss8.pdf)
+- [Instructions for Form SS-8 (Rev. January 2024)](https://www.irs.gov/pub/irs-pdf/iss8.pdf)
 - [About Form SS-8](https://www.irs.gov/forms-pubs/about-form-ss-8)
+- [Independent contractor (self-employed) or employee?](https://www.irs.gov/businesses/small-businesses-self-employed/independent-contractor-self-employed-or-employee) — "at least six months"
 - [IRS Publication 1779](https://www.irs.gov/pub/irs-pdf/p1779.pdf) — Independent Contractor or Employee
 - [IRS Publication 1976](https://www.irs.gov/pub/irs-pdf/p1976.pdf) — Section 530 Employment Tax Relief Requirements
-- IRC §7436 — Judicial review of employment status determinations
+- IRC §7436 — Tax Court review of employment status in an examination; petition only by the service recipient (§7436(b)(1))
 - IRC §6501 — General statute of limitations on assessment
 - IRC §6511 — Statute of limitations on refund claims
 - Section 530 of the Revenue Act of 1978 (P.L. 95-600)

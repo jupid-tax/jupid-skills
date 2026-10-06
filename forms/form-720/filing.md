@@ -2,6 +2,8 @@
 
 How an agent equipped with browser tooling (Playwright, Puppeteer, Selenium, or a hosted browser) can take a completed Form 720 draft and file it. This file is complementary to `SKILL.md`, which produces the draft.
 
+**Verified against:** Instructions for Form 720 (Rev. June 2026) "Where To File", "How To File", "Making a Payment", "Payment of Taxes"; IRS Form 720 e-file FAQ; IRS 720 MeF provider page; Form 8453-EX (Rev. Dec. 2011), on 2026-10-06. Re-check the current instructions before each filing.
+
 The agent must produce a complete `SKILL.md`-format draft *first*, then pick a filing channel from the decision tree below.
 
 ---
@@ -9,35 +11,27 @@ The agent must produce a complete `SKILL.md`-format draft *first*, then pick a f
 ## Channel decision tree
 
 ```
-User has gross excise liability requiring electronic filing per IRS regs?
-  → Mandatory e-file via IRS-authorized provider (MeF — Modernized e-File)
+Does the user want electronic filing (faster acknowledgment, electronic funds withdrawal)?
+  → E-file through an IRS-approved 720 Modernized e-File (MeF) provider.
     Use Section 1.
 
-User is a small filer below mandatory threshold and prefers paper?
-  → Paper filing to IRS Cincinnati or Ogden (varies by state and form type)
-    Use Section 2.
+Does the user prefer paper?
+  → Paper Form 720 is still accepted. Mail to Ogden, UT (Section 2).
 
-User has only a PCORI fee and wants the simplest filing?
-  → Most authorized e-file providers support PCORI-only Form 720 with simple
-    plan-year + covered-lives input. Use Section 1.
+User has only a PCORI fee?
+  → Either channel works. File the Q2 return only; no Q1, Q3, Q4 returns
+    are required for a PCORI-only filer (i720 "How To File").
 ```
 
-**Note**: The IRS does NOT provide a free direct e-file portal for Form 720 (unlike Form 1040's Free File Fillable Forms). All e-filing goes through IRS-authorized third-party providers. The agent picks one.
+E-filing Form 720 is **optional** for every filer; the IRS still accepts paper Forms 720 (IRS Form 720 e-file FAQ). The IRS does NOT provide a free direct e-file portal for Form 720; all e-filing goes through approved providers, which charge a fee.
 
 ---
 
 ## Section 1 — IRS-authorized e-file providers (MeF)
 
-The IRS publishes the list of providers approved for Form 720 MeF at https://www.irs.gov/e-file-providers/modernized-e-file-mef-forms. Common providers include:
+The IRS publishes the list of providers that passed testing for Form 720 MeF, by tax year, at https://www.irs.gov/e-file-providers/720-mef-providers (linked from https://www.irs.gov/etec). The IRS does not endorse any provider and a listing doesn't mean the software supports every schedule.
 
-- **Tax720.com** (PCORI-focused)
-- **ExpressTaxFilings / ExpressTruckTax** (covers Form 720 + Form 2290)
-- **Simple720** (PCORI-focused)
-- **Drake Tax** (professional tax prep software)
-- **CCH Axcess** (professional)
-- **TaxBandits** (multi-form)
-
-**The list and pricing change each year. Always verify against the IRS-published list before filing.**
+**Pick the provider from the current IRS list, not from memory.** Confirm with the user that the provider supports the IRS Nos. and schedules in the draft (e.g., Schedule A, Schedule C, Form 6627 attachments) before entering data.
 
 ### Pre-flight
 
@@ -47,8 +41,8 @@ Agent must have:
 - Filing entity name, EIN, address
 - The completed Form 720 draft from `SKILL.md`
 - For paid providers: payment method (the agent should NOT pay without explicit consent)
-- An EFTPS account for paying the balance due (separate from the e-file provider — the IRS does not accept payment through MeF for Form 720; payment is via EFTPS)
-- Form 8453-EX e-file signature authorization OR an electronic-return-originator (ERO) PIN if the provider supports paperless signatures
+- The payment method for any balance due: electronic funds withdrawal (EFW) through the e-file return, EFTPS, or IRS Direct Pay (i720 "Part III, Line 10"; "Making a Payment")
+- Form 8453-EX (Excise Tax Declaration for an IRS e-file Return) if the provider requires it; it carries the taxpayer declaration and the EFW authorization (Form 8453-EX Part II)
 
 ### Generic provider browser flow
 
@@ -65,12 +59,12 @@ The exact selectors vary by provider. Use label text and human-readable navigati
    - Final return / address change checkboxes
 5. **Enter Part I IRS Numbers**:
    - For each applicable IRS Number, enter the base, rate (often pre-filled by the provider), and tax
-   - The provider may use a wizard ("Do you have indoor tanning income?" → "Do you have foreign insurance?") rather than presenting all 30+ IRS Numbers at once
+   - The provider may use a wizard ("Do you have indoor tanning income?" → "Do you have foreign insurance?") rather than presenting all of the roughly 60 IRS Nos. at once
 6. **Enter Part II IRS Numbers**:
-   - Most relevant for PCORI (IRS No. 133): enter plan-year-end date, average covered lives, counting method
-   - Provider auto-applies the PCORI rate ($3.22 for plan years ending Oct 1, 2024 – Sep 30, 2025; verify next-year rate)
-7. **Enter Schedule A** (semi-monthly liability dates) — only if applicable; PCORI-only filers skip this
-8. **Enter Schedule C** (claims) — if any HVUT credits, fuel-use claims, etc.
+   - Most relevant for PCORI (IRS No. 133): enter plan-year-end date and average covered lives on the right row ($3.47 for plan years ending Oct 1, 2024 – Sep 30, 2025; $3.84 for Oct 1, 2025 – Sep 30, 2026; Notices 2024-83, 2025-61)
+   - Check that the provider applied the rate for the plan year end, not the filing year
+7. **Enter Schedule A** (semimonthly net liability) only if Part I shows a liability; Part II-only filers (PCORI, sport fishing, archery, tanning) skip it
+8. **Enter Schedule C** (claims) only if the return reports a Part I or II liability: fuel nontaxable-use claims, ultimate vendor claims, tire credits. There is no HVUT claim on Form 720.
 9. **Review the auto-generated summary** — the provider computes Part III totals
 10. **Cross-check** every line against the draft. If the provider's numbers disagree with the draft, **stop**; one is wrong.
 11. **Sign electronically**:
@@ -79,15 +73,15 @@ The exact selectors vary by provider. Use label text and human-readable navigati
     - Self-Select PIN (provider-specific)
 12. **Submit** when verified
 13. **Capture the e-file confirmation / submission ID** from the provider
-14. **Pay the balance due via EFTPS** in a separate session (see Section 3 below) — most providers do NOT route payment to IRS
+14. **Pay the balance due**: either EFW selected inside the e-file return (step 4b of Form 8453-EX), or EFTPS / Direct Pay in a separate session (Section 3). Don't file Form 720-V when paying electronically.
 
 ### Failure modes
 
 | Symptom | Likely cause | Fix |
 |---------|--------------|-----|
-| "EIN not found" | EIN is new / not yet in IRS records | Wait 2 weeks after Form SS-4, or call IRS |
+| "EIN not found" | EIN is new or name/EIN mismatch | Confirm the EIN and legal name with the user; call the IRS Business and Specialty Tax Line, 800-829-4933 (i720 "Employer Identification Number") |
 | "Form 720 not yet supported for this quarter" | Filing too early | Wait until form is available (typically a few days after quarter end) |
-| "PCORI rate validation failed" | Wrong rate for the plan-year-end date | Check Notice (e.g., 2024-83 for plan years ending Oct 1 2024 – Sep 30 2025) |
+| "PCORI rate validation failed" | Wrong rate or row for the plan-year-end date | Notice 2024-83 ($3.47, plan years ending Oct 1, 2024 – Sep 30, 2025); Notice 2025-61 ($3.84, Oct 1, 2025 – Sep 30, 2026) |
 | "MeF rejection R0000-XXX" | IRS-side validation error | Read rejection code; common ones: duplicate filing, EIN mismatch, signature missing |
 | Provider charges unexpected fee | Pricing change | Confirm with user before paying |
 
@@ -103,52 +97,45 @@ The exact selectors vary by provider. Use label text and human-readable navigati
 
 ## Section 2 — Paper filing
 
-Some filers prefer or require paper. As of 2026, paper Form 720 is still accepted but mandatory e-file applies for some categories — verify the current Form 720 instructions for the threshold.
+Paper Form 720 is accepted for every filer; there is no e-file mandate for Form 720 (IRS Form 720 e-file FAQ).
 
 ### Assemble the return
 
-1. Print Form 720 (latest revision from https://www.irs.gov/pub/irs-pdf/f720.pdf)
+1. Print Form 720 (current revision from https://www.irs.gov/pub/irs-pdf/f720.pdf; Rev. June 2026 on 2026-10-06)
 2. Fill in all applicable lines per the SKILL.md draft
-3. Sign and date the return (signed by an officer or authorized representative)
-4. Print supporting schedules (Schedule A, C, T as applicable)
-5. Print Form 8453-EX if e-filing requires a paper signature (not applicable for paper return — Form 720 is signed in ink)
+3. Sign and date the return (signed by a person authorized by the entity to sign it)
+4. Complete Schedule A, C, or T only as applicable, and attach Form 6627, 6197, or 7208 when an IRS No. requires it
+5. If additional sheets are attached, put the name and EIN on each sheet
+6. If paying by check or money order, complete Form 720-V and enclose it loose (don't staple)
 
-### Mailing addresses (verify each year)
+### Mailing address
 
-The IRS publishes Form 720 mailing addresses in the form instructions. As of 2025, paper Form 720 with payment goes to:
-
-```
-Internal Revenue Service
-P.O. Box 932500
-Louisville, KY 40293-2500
-```
-
-Without payment:
+The Instructions for Form 720 (Rev. June 2026), "Where To File", list one address:
 
 ```
 Department of the Treasury
 Internal Revenue Service
-Cincinnati, OH 45999-0009
+Ogden, UT 84201-0009
 ```
 
-(These addresses change between years and processing reorganizations. Always verify against the latest i720.pdf before mailing.)
+Private delivery services can't deliver to IRS P.O. boxes; for a designated PDS, use the street address listed at https://www.irs.gov/PDSStreetAddresses. The communications and air transportation uncollected tax report is mailed separately to Cincinnati, OH 45999, not with the return; a first taxpayer's report is filed with Form 720 and a separate copy goes to Cincinnati, OH 45999-0555 (i720 "Uncollected Tax Report", "First taxpayer's report"). Re-check the address in the current instructions before mailing.
 
 ### Mailing best practices
 
-- USPS Certified Mail with Return Receipt for proof of timely filing under IRC §7502
-- Postmark on or before the quarter's due date (Apr 30 / Jul 31 / Oct 31 / Jan 31)
-- Keep a complete photocopy of the entire return
-- Pay the balance due via EFTPS, NOT by check — most business excise tax payments must be electronic per Treasury Reg. §31.6302-1 (for taxpayers above $200K threshold; below that, check is OK)
+- USPS Certified Mail with Return Receipt, or a designated PDS, for proof of timely filing under IRC §7502
+- Postmark on or before the quarter's due date (Apr 30 / Jul 31 / Oct 31 / Jan 31; next business day if the date falls on a weekend or legal holiday)
+- Keep a complete copy of the entire return
+- The balance due on line 10 may be paid by check or money order payable to "United States Treasury" with Form 720-V; write the EIN, "Form 720", and the tax period on it (Form 720-V instructions). Required semimonthly deposits are a different matter: they must be made by electronic funds transfer (i720 "Electronic deposit requirement").
 
 ---
 
 ## Section 3 — Paying the balance due (EFTPS)
 
-Form 720 e-file does NOT include a payment mechanism. The user must pay separately via EFTPS.
+Payment options for line 10 (i720 "Making a Payment"): EFW with an e-filed return, EFTPS, IRS Direct Pay, debit/credit card or digital wallet (provider fee), same-day wire, or check/money order with Form 720-V. EFTPS is also the channel for required semimonthly deposits.
 
 ### Pre-flight
 
-- EFTPS enrollment (5–7 business days lead time for new enrollees)
+- EFTPS enrollment (a new EIN is automatically enrolled; activate it from the separate EFTPS mailing, i720 "Tip"), so start early
 - EFTPS PIN and Internet Password
 - Bank routing + account number
 - The balance due from Part III Line 10 of the draft
@@ -168,16 +155,16 @@ Form 720 e-file does NOT include a payment mechanism. The user must pay separate
 
 ### Semi-monthly deposits (if applicable)
 
-For some Form 720 categories (gasoline, diesel, alcohol, tobacco) with > $2,500 quarterly liability, semi-monthly deposits are required during the quarter — not just at filing. Deposit periods:
+Semimonthly deposits are required for Part I taxes unless the quarter's Part I net liability is $2,500 or less (i720 "Payment of Taxes"). Regular method deposit periods:
 
 | Period | Deposit due |
 |--------|-------------|
-| 1st – 15th of month | 14 days after period end (i.e., 29th–30th of same month) |
-| 16th – end of month | 14 days after period end (i.e., 14th of next month) |
+| 1st – 15th of month | 14th day after period end (generally the 29th of the same month) |
+| 16th – end of month | 14th day after period end (generally the 14th of the next month) |
 
-A taxpayer who incurs liability and fails to deposit by the due date owes a §6656 penalty (2% / 5% / 10% / 15% by lateness). The agent must surface deposit-timing requirements when computing the draft.
+A due date on a Saturday, Sunday, or legal holiday moves to the preceding business day. EFTPS deposits must be initiated by 8:00 p.m. Eastern the day before the due date. September has an additional deposit (in 2026, liability for Sept. 16–26 due Sept. 29). A taxpayer who fails to deposit on time owes the §6656 penalty (2% / 5% / 10% / 15% by lateness). The agent must surface deposit-timing requirements when computing the draft.
 
-PCORI does NOT require semi-monthly deposits — payment is annual with the Q2 return.
+PCORI and other Part II taxes (except the ODC floor stocks tax) do NOT require deposits; payment is made with the return.
 
 ---
 
@@ -186,17 +173,17 @@ PCORI does NOT require semi-monthly deposits — payment is annual with the Q2 r
 After filing (any channel), Form 720 moves through:
 
 1. **Submitted** — sent to IRS
-2. **Accepted** — IRS validates basic structure (e-file: 24–48 hours; paper: 4–6 weeks)
-3. **Posted** — IRS account credited; visible on IRS Online Account
-4. **Closed** — quarter is finalized; any refund issued or balance applied
+2. **Accepted or rejected** — e-file: the provider shows the IRS acknowledgment; paper: no acknowledgment is sent
+3. **Posted** — the return and payment post to the business's IRS account
+4. **Closed** — any refund issued or overpayment applied to the next quarter (line 11b)
 
 Status checks:
 
-- E-file: provider's portal shows acceptance/rejection within 1–2 business days
-- Paper: 4–6 weeks for IRS to acknowledge; verify via IRS Online Account or call PPS line
-- IRS Online Account (business account separate from individual): https://www.irs.gov/payments/online-account
+- E-file: the provider's portal shows acceptance or the rejection code
+- Paper: check the IRS business tax account (https://www.irs.gov/businesses/business-tax-account) or call the Business and Specialty Tax Line, 800-829-4933
+- Keep the EFTPS acknowledgment number or bank record for every payment
 
-The agent should set a follow-up reminder 14 days post-submission to verify acceptance.
+The agent should set a follow-up reminder to verify acceptance and posting.
 
 ---
 

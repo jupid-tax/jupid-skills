@@ -1,8 +1,6 @@
 # Top Schedule A Mistakes
 
-Real mistakes filers make on Schedule A, ranked by how often they trigger IRS notices, audit adjustments, or under-deducting. Each entry has the mistake, the consequence, and the fix.
-
-The IRS audits itemizers at roughly 3-4× the rate of standard-deduction filers. Schedule A line items are the most-questioned section after Schedule C.
+Real mistakes filers make on Schedule A that lead to IRS notices, audit adjustments, or under-deducting. Each entry has the mistake, the consequence, and the fix. Rules verified 2026-10-06 against the 2025 Schedule A and instructions and IRC sections as amended by P.L. 119-21.
 
 ---
 
@@ -12,7 +10,7 @@ The IRS audits itemizers at roughly 3-4× the rate of standard-deduction filers.
 
 **Why it happens**: Either auto-pilot from prior years (when itemized worked) or assumption that "homeowners always itemize." Post-TCJA, many homeowners take the standard deduction, especially in low-tax states.
 
-**Consequence**: You under-deduct. If Line 17 = $25,000 but standard MFJ = $30,000, itemizing costs you $5,000 of deduction = ~$1,100 at 22% bracket.
+**Consequence**: You under-deduct. If Line 17 = $25,000 but standard MFJ = $31,500 (2025), itemizing costs you $6,500 of deduction = ~$1,430 at 22% bracket.
 
 **Fix**: Always run both numbers. Write the standard deduction next to Schedule A Line 17 and compare. See [`standard-vs-itemized-decision.md`](./standard-vs-itemized-decision.md).
 
@@ -22,7 +20,7 @@ The IRS audits itemizers at roughly 3-4× the rate of standard-deduction filers.
 
 **The mistake**: Using the old $10,000 SALT cap on a 2025 or 2026 return; or using the new $40,000 cap on a 2024 return.
 
-**Why it happens**: OBBBA (2025) raised the cap retroactively for 2025 and indexed it through 2029. Many tax software products and reference materials lagged in updating. Some prior-year forms were never updated.
+**Why it happens**: OBBBA (P.L. 119-21 §70120, July 2025) raised the cap for tax years beginning after 2024 and raised it 1% a year through 2029. Reference materials written before July 2025 still show $10,000.
 
 **Consequence**: Either under-deducting (using $10K when $40K applies — leaves up to $30K of deduction on the table) or over-deducting (using $40K on a year before it applied — IRS will adjust and may assess penalties).
 
@@ -30,8 +28,8 @@ The IRS audits itemizers at roughly 3-4× the rate of standard-deduction filers.
 - 2024 and earlier: $10,000 ($5,000 MFS)
 - 2025: $40,000 ($20,000 MFS)
 - 2026: $40,400 ($20,200 MFS)
-- 2027-2029: 1% annual increase
-- 2030: reverts to $10,000
+- 2027-2029: 101% of the prior year's amount
+- 2030 and later: $10,000 ($5,000 MFS)
 
 See [`salt-cap.md`](./salt-cap.md) for the year-by-year table and high-income phaseout.
 
@@ -45,7 +43,7 @@ See [`salt-cap.md`](./salt-cap.md) for the year-by-year table and high-income ph
 
 **Consequence**: IRS adjustment. At $600K MAGI, $100K excess × 30% phaseout = $30K reduction; effective cap = $10K floor. The filer claimed $40K but only $10K was allowed; $30K of disallowed deduction.
 
-**Fix**: For any filer with MAGI > $500K, compute the phaseout: `Excess MAGI × 30%`, subtract from base cap, floor at $10K. See [`salt-cap.md`](./salt-cap.md).
+**Fix**: For any filer with MAGI > $500K ($505K for 2026; half for MFS), run the State and Local Tax Deduction Worksheet: `Excess MAGI × 30%`, subtract from the full cap, floor at $10K, then halve for MFS. See [`salt-cap.md`](./salt-cap.md).
 
 ---
 
@@ -95,7 +93,7 @@ See [`charitable-contributions.md`](./charitable-contributions.md).
 
 **Consequence**: IRS auto-adjusts the deduction down or disallows entirely. Form 8283 isn't optional.
 
-**Fix**: Total non-cash > $500 → Form 8283 Section A. Single item > $5,000 → Form 8283 Section B + qualified appraisal (except publicly traded securities).
+**Fix**: Non-cash deduction > $500 → Form 8283 (Section A for items or groups of $5,000 or less and publicly traded securities). Item or group of similar items > $5,000 → Form 8283 Section B + qualified appraisal (except publicly traded securities).
 
 ---
 
@@ -105,21 +103,21 @@ See [`charitable-contributions.md`](./charitable-contributions.md).
 
 **Why it happens**: User assumes crypto is "publicly traded" since it has live market quotes — and publicly traded securities are exempt from the appraisal requirement.
 
-**Consequence**: IRS Memorandum CCA 202302012 clarified that crypto is NOT publicly-traded-securities for the appraisal exception. Multiple Tax Court cases have disallowed the entire deduction for failing this rule.
+**Consequence**: Chief Counsel Advice CCA 202302012 concluded that crypto is not a publicly traded security for the appraisal exception and upheld disallowance of the deduction where no qualified appraisal was obtained.
 
-**Fix**: For crypto donations > $5,000, get a qualified appraisal. Some platforms (Fidelity Charitable, etc.) handle appraisal for you when you donate through them.
+**Fix**: For crypto donations > $5,000, get a qualified appraisal.
 
 ---
 
-## 9. Putting PMI on Line 8d for a 2025 return
+## 9. Deducting mortgage insurance premiums on a 2025 return
 
-**The mistake**: Including mortgage insurance premiums on Line 8d on a 2025 return.
+**The mistake**: Including mortgage insurance premiums (Form 1098 box 5) on a 2025 Schedule A.
 
-**Why it happens**: OBBBA reinstated the PMI deduction effective tax year 2026+. The deduction was unavailable 2022-2025. Some tax software / reference material conflated the OBBBA enactment year (2025) with the deduction's effective year (2026+).
+**Why it happens**: OBBBA (P.L. 119-21 §70108) restored the deduction for tax years beginning after December 31, 2025. The deduction was unavailable 2022-2025, and on the 2025 form line 8d is "Reserved for future use." Some reference material conflated the enactment year (2025) with the effective year (2026).
 
-**Consequence**: IRS adjustment. PMI premium is non-deductible for 2025 returns regardless of income.
+**Consequence**: IRS adjustment. The premium is non-deductible for 2025 returns regardless of income.
 
-**Fix**: For 2025 returns, leave Line 8d blank. For 2026+ returns, enter PMI premiums (with phaseout starting at $100K MAGI).
+**Fix**: For 2025 returns, enter nothing. For 2026+ returns, deduct the premiums on the line the 2026 form provides, reduced by 10% per $1,000 of AGI over $100,000 ($500 / $50,000 MFS).
 
 See [`mortgage-interest.md`](./mortgage-interest.md).
 
@@ -131,7 +129,7 @@ See [`mortgage-interest.md`](./mortgage-interest.md).
 
 **Why it happens**: Pre-TCJA (before 2018), HELOC interest was deductible regardless of use up to the home equity debt limit. TCJA restricted to buy/build/improve only — many filers haven't updated their tracking.
 
-**Consequence**: 40% of the interest in the example is non-deductible. IRS catches via Form 1098 cross-matching of HELOC balances against Schedule A interest claimed.
+**Consequence**: 40% of the interest in the example is non-deductible. The user must also check the box on line 8 (2025 form) when any mortgage proceeds weren't used to buy, build, or improve the home.
 
 **Fix**: Trace HELOC proceeds. Deductible only if used to buy, build, or substantially improve the home that secures the loan. Document with contractor invoices, bank statements showing the trace. See [`mortgage-interest.md`](./mortgage-interest.md).
 
@@ -141,11 +139,11 @@ See [`mortgage-interest.md`](./mortgage-interest.md).
 
 **The mistake**: User's car was vandalized in their driveway. Or a tree fell on their house in a non-disaster storm. They claim the loss on Line 15.
 
-**Why it happens**: Pre-TCJA, casualty losses were broadly deductible. TCJA (2018) restricted to federally declared disasters only — and OBBBA made this permanent.
+**Why it happens**: Pre-TCJA, casualty losses were broadly deductible. TCJA (2018) restricted them to federally declared disasters. OBBBA (P.L. 119-21 §70109) made the restriction permanent and, for tax years beginning after 2025, also allows losses from State declared disasters.
 
-**Consequence**: Disallowance. Schedule A Line 15 is exclusively for federally declared disaster losses.
+**Consequence**: Disallowance. For 2025, Schedule A line 15 is only for federally declared disaster losses.
 
-**Fix**: Verify the event is in a federally declared disaster zone at [FEMA Disaster Declarations](https://www.fema.gov/disaster/declarations). If not federally declared, the loss is non-deductible on Schedule A. Personal theft losses outside disaster contexts are similarly non-deductible.
+**Fix**: Verify the event is in a federally declared disaster area at [FEMA Disaster Declarations](https://www.fema.gov/disaster/declarations) (2026+: or a State declared disaster under IRC §165(h)(5)(C)). Otherwise the loss is non-deductible on Schedule A. Personal theft losses outside disaster contexts are similarly non-deductible.
 
 For business property (Schedule C, E), casualty losses retain their normal deductibility on Form 4684 separately.
 
@@ -194,9 +192,9 @@ For business property (Schedule C, E), casualty losses retain their normal deduc
 **Consequence**: Over-deducting; IRS catches via the rate not matching Pub 502 / IRC §170(i).
 
 **Fix**: Use the right rate:
-- Business: 70¢ for 2025 (per IRS Notice 2025-5)
-- Medical: 21¢ for 2025
-- Charity: 14¢ (statutory; never indexed)
+- Business: 70¢ for 2025 (IRS Notice 2025-5); 72.5¢ January–June 2026 and 76¢ July–December 2026 (IR-2025-128, IR-2026-29)
+- Medical: 21¢ for 2025; 20.5¢ / 23.5¢ for the two halves of 2026
+- Charity: 14¢ (statutory, IRC §170(i); not indexed)
 
 ---
 
@@ -210,15 +208,15 @@ For business property (Schedule C, E), casualty losses retain their normal deduc
 
 ---
 
-## 17. Forgetting the 0.5% AGI charity floor (tax year 2026+)
+## 17. Forgetting the 0.5% charity floor (tax year 2026+)
 
 **The mistake**: For a 2026 return, user's $200K AGI and $4K of charitable contributions, deducted as $4K.
 
-**Why it happens**: The 0.5% floor is new under OBBBA (IRC §170(p)) and effective tax year 2026+. Many filers and software haven't internalized it.
+**Why it happens**: The 0.5% floor is new under OBBBA (IRC §170(b)(1)(I), P.L. 119-21 §70425) for tax years beginning after 2025.
 
-**Consequence**: Over-deducting by $1,000 (0.5% × $200K). IRS adjusts.
+**Consequence**: Over-deducting by $1,000 (0.5% × $200K contribution base). IRS adjusts.
 
-**Fix**: For tax year 2026+, subtract 0.5% × AGI from the raw charitable total. For tax year 2025 and earlier, no floor applies — full deductibility (subject to AGI ceilings).
+**Fix**: For tax year 2026+, subtract 0.5% of the contribution base (AGI figured without NOL carrybacks) from the allowable charitable total. For tax year 2025 and earlier, no floor applies — full deductibility (subject to AGI ceilings).
 
 See [`charitable-contributions.md`](./charitable-contributions.md).
 
@@ -232,19 +230,19 @@ See [`charitable-contributions.md`](./charitable-contributions.md).
 
 **Consequence**: Double tax benefit attempted. If user excludes from IRA distribution AND deducts on Schedule A, IRS catches and disallows the Schedule A entry.
 
-**Fix**: QCDs are excluded from gross income on **Form 1040 Line 4b**, not deducted on Schedule A. Don't put them on Line 11. The exclusion is a better tax outcome anyway (lowers AGI, indirectly improves multiple Schedule A floors and ceilings).
+**Fix**: QCDs are excluded from gross income on **Form 1040 lines 4a/4b, with the "QCD" box on line 4c checked** (2025 form), not deducted on Schedule A. Don't put them on Line 11. The exclusion lowers AGI, which also helps the medical floor and other AGI-based limits.
 
 ---
 
 ## 19. Including escrow tax payments as mortgage interest
 
-**The mistake**: User's Form 1098 shows $11,800 mortgage interest in box 1 plus $9,500 in box 10 (real estate taxes paid through escrow). User adds these together and puts $21,300 on Line 8a.
+**The mistake**: User's Form 1098 shows $11,800 mortgage interest in box 1 plus $9,500 in box 10 ("Other"; lenders often report escrowed real estate taxes there). User adds these together and puts $21,300 on Line 8a.
 
 **Why it happens**: Form 1098 boxes confuse filers. Property tax shouldn't be on Line 8a.
 
 **Consequence**: Over-deducting interest, under-deducting property tax. May trigger IRS adjustment.
 
-**Fix**: Form 1098 box 1 (interest) → Line 8a. Form 1098 box 6 (points) → Line 8a. Form 1098 box 10 (real estate taxes via escrow) → **Line 5b**. Box 5 (mortgage insurance, 2026+) → Line 8d.
+**Fix**: Form 1098 box 1 (interest) → Line 8a. Form 1098 box 6 (points) → Line 8a. Real estate taxes the lender actually paid from escrow (box 10 or the escrow statement) → **Line 5b**. Box 5 (mortgage insurance) → not deductible for 2025; 2026+ on the line the 2026 form provides.
 
 ---
 
@@ -260,14 +258,11 @@ See [`charitable-contributions.md`](./charitable-contributions.md).
 
 ## 21. Filing Schedule A unnecessarily (when standard wins)
 
-**The mistake**: User itemized $25,000, standard MFJ is $30,000. User files Schedule A anyway.
+**The mistake**: User itemized $25,000, standard MFJ is $31,500 (2025). User files Schedule A anyway.
 
-**Consequence**: Inefficiency only — the IRS uses the standard deduction in this case (Form 1040 Line 12 takes the larger value automatically). But filing Schedule A:
-- Increases audit profile
-- Locks in itemized status if MFS spouse needs to coordinate
-- Wastes time
+**Consequence**: Form 1040 line 12e takes whatever amount the user enters; nothing switches to the larger amount automatically. Entering Schedule A line 17 there loses $6,500 of deduction, and for MFS it affects the spouse's return (IRC §63(c)(6)(A)).
 
-**Fix**: Don't file Schedule A unless Line 17 > standard deduction. Just enter standard deduction on Form 1040 Line 12.
+**Fix**: Don't file Schedule A unless Line 17 > standard deduction, or the user deliberately elects to itemize (line 18, e.g., for state purposes). Otherwise enter the standard deduction on Form 1040 line 12e.
 
 ---
 
@@ -278,7 +273,7 @@ See [`charitable-contributions.md`](./charitable-contributions.md).
 **Consequence**: IRS auto-correspondence requesting the missing form. Delayed processing or notice with penalty.
 
 **Fix**: Always attach the cross-referenced form:
-- Line 9 (investment interest) → Form 4952
+- Line 9 (investment interest) → Form 4952 (unless the three-part exception in the line 9 instructions applies)
 - Line 12 (non-cash charity > $500) → Form 8283
 - Line 15 (casualty/theft) → Form 4684
 
@@ -290,7 +285,7 @@ See [`charitable-contributions.md`](./charitable-contributions.md).
 
 **Why it happens**: Bunching strategy that looks legitimate.
 
-**Consequence**: IRS notice IR-2017-210 disallowed pre-assessment "prepayments." If the tax has not been formally assessed, the payment is a deposit, not a deduction.
+**Consequence**: Disallowance. "Only taxes paid in 2025 and assessed prior to 2026 can be deducted for 2025" (2025 Schedule A instructions, line 5b; IRS news release IR-2017-210). If the tax has not been assessed, the payment is not deductible that year.
 
 **Fix**: Verify the locality has assessed the tax (sent the bill) before the December payment. Many localities assess late in the calendar year, allowing year-end prepayment of the next year's bill that's already on the books.
 
@@ -304,7 +299,7 @@ See [`charitable-contributions.md`](./charitable-contributions.md).
 
 **Consequence**: Either over-deducting (claiming home office on Schedule C plus full mortgage interest on Schedule A — double dip) or under-deducting (missing the home office deduction entirely).
 
-**Fix**: If using home office on Schedule C with regular method, allocate mortgage interest and property tax between Form 8829 (business portion) and Schedule A (personal portion). Don't double-count. See `schedule-c` skill, `home-office.md`.
+**Fix**: If using home office on Schedule C with regular method, allocate mortgage interest and property tax between Form 8829 (business portion) and Schedule A (personal portion). Don't double-count. See [`../../form-8829/SKILL.md`](../../form-8829/SKILL.md) and [`../../schedule-c/references/home-office.md`](../../schedule-c/references/home-office.md).
 
 ---
 
@@ -316,6 +311,6 @@ See [`charitable-contributions.md`](./charitable-contributions.md).
 - [IRS Publication 526](https://www.irs.gov/publications/p526) — Charitable Contributions
 - [IRS Publication 547](https://www.irs.gov/publications/p547) — Casualties, Disasters, and Thefts
 - [IRS Publication 936](https://www.irs.gov/publications/p936) — Home Mortgage Interest Deduction
-- [IRS Notice IR-2017-210](https://www.irs.gov/newsroom/irs-advisory-prepaid-real-property-taxes-may-be-deductible-in-2017-if-assessed-and-paid-in-2017) — prepayment must be assessed
-- IRS Memorandum CCA 202302012 — cryptocurrency appraisal requirement
-- One Big Beautiful Bill Act of 2025 — SALT cap changes, PMI reinstatement (2026+), 0.5% charity floor (2026+)
+- [IR-2017-210](https://www.irs.gov/newsroom/irs-advisory-prepaid-real-property-taxes-may-be-deductible-in-2017-if-assessed-and-paid-in-2017) — IRS news release: prepayment must be assessed
+- Chief Counsel Advice CCA 202302012 — cryptocurrency appraisal requirement
+- One Big Beautiful Bill Act, P.L. 119-21 — §70120 SALT cap (2025+), §70108 mortgage insurance (2026+), §70109 casualty (2026+), §70425 0.5% charity floor (2026+)

@@ -33,9 +33,10 @@ For tax year 2025, Maya has only Schedule C income — no W-2, no K-1, no rental
 
 - Total income: $50,000 (Schedule C) + $0 (other) = $50,000
 - Adjustments to income: $9,232
-- **AGI (Line 11): $40,768**
-- Standard deduction (single, 2025): $15,000
-- **Taxable income before QBI: $25,768**
+- **AGI (Line 11a): $40,768**
+- Standard deduction (single, 2025, line 12e): $15,750
+- Schedule 1-A deductions (line 13b): $0
+- **Taxable income before QBI: $25,018**
 
 (Note: example assumes Maya has no other significant adjustments. Real-world might include HSA, student loan interest, etc.)
 
@@ -62,61 +63,59 @@ QBI = $50,000 (Schedule C Line 31)
 - Name: Maya Garcia
 - SSN: XXX-XX-1234
 
-### Lines 1a-1e
+### Line 1, rows i–v
 
-| (i) Trade/business | (ii) TIN | (iii) QBI |
+| (a) Trade/business | (b) TIN | (c) QBI |
 |--------------------|----------|-----------|
 | Garcia Design | XXX-XX-1234 (Maya's SSN) | $40,768 |
-| (rows 1b-1e blank) | | |
+| (rows 1ii-1v blank) | | |
 
-### Lines 2-4
+### Lines 2-5
 
 - Line 2: $40,768
 - Line 3: $0 (no prior loss)
 - Line 4: $40,768
+- Line 5: $40,768 × 0.20 = $8,154
 
-### Lines 5-9
+### Lines 6-9
 
-- Line 5: $0 (no REIT or PTP)
-- Line 6: $0
+- Line 6: $0 (no REIT or PTP)
 - Line 7: $0
-- Lines 8-9: $0
+- Line 8: $0
+- Line 9: $0
 
-### Lines 10-12
+### Lines 10-17
 
-- Line 10: $40,768 × 0.20 = $8,154
-- Line 11: $0 × 0.20 = $0
-- Line 12: $8,154 + $0 = $8,154
-
-### Lines 13-17
-
-- Line 13: $25,768 (taxable income before QBI deduction)
-- Line 14: $0 (no qualified dividends or LTCG)
-- Line 15: $25,768 − $0 = $25,768
-- Line 16: $25,768 × 0.20 = $5,154
-- Line 17: lesser of $8,154 or $5,154 = **$5,154**
+- Line 10: $8,154 + $0 = $8,154
+- Line 11: $25,018 (taxable income before QBI deduction)
+- Line 12: $0 (no qualified dividends or net capital gain)
+- Line 13: $25,018 − $0 = $25,018
+- Line 14: $25,018 × 0.20 = $5,004
+- Line 15: smaller of $8,154 or $5,004 = **$5,004**
+- Line 16: $0 (no loss carryforward)
+- Line 17: $0
 
 ---
 
 ## Result
 
-Maya's QBI deduction is **$5,154**. This flows to Form 1040 Line 13.
+Maya's QBI deduction is **$5,004**. This flows to Form 1040 line 13a.
 
-**Limiting factor:** Taxable income limit (Line 16). Her actual QBI would have produced an $8,154 deduction, but her taxable income is too low to support it. The $3,000 difference is *not* carried forward — the §199A taxable income limit is hard-capped, no carry.
+**Limiting factor:** Taxable income limit (Line 14). Her actual QBI would have produced an $8,154 deduction, but her taxable income is too low to support it. The $3,150 difference is *not* carried forward — the §199A taxable income limit is hard-capped, no carry.
 
 ---
 
 ## Updated Form 1040
 
 - AGI: $40,768
-- Standard deduction: $15,000
-- QBI deduction: $5,154
-- **Taxable income: $20,614**
-- Federal income tax (2025 single brackets): 10% × $11,925 + 12% × $8,689 = $1,192 + $1,043 = $2,235
+- Standard deduction: $15,750
+- QBI deduction: $5,004
+- **Taxable income: $20,014**
+- Federal income tax (2025 Tax Table, single, $20,000–$20,050): $2,165
 - SE tax: $7,065
-- **Total federal tax: $9,300**
+- **Total federal tax: $9,230**
 
-(Compare to without QBI: federal income tax would be $2,235 + 12% × $5,154 = $2,235 + $619 = $2,854. QBI saved Maya $619.)
+(Compare to without QBI: taxable income $25,018, Tax Table ($25,000–$25,050) $2,765. QBI saved Maya $600.)
 
 ---
 
@@ -124,20 +123,20 @@ Maya's QBI deduction is **$5,154**. This flows to Form 1040 Line 13.
 
 When the filer's taxable income is well below QBI, the §199A deduction is capped. This is common for solo filers in their first profitable years, anyone with significant adjustments to AGI (HSA, retirement, SE health insurance), or anyone with itemized deductions large relative to income.
 
-The agent should surface this in the validation summary: "Your QBI of $40,768 supports an $8,154 deduction, but your taxable income of $25,768 caps the deduction at $5,154 (20% of taxable income excluding capital gain). Future income growth will unlock more of the deduction, up to the threshold."
+The agent should surface this in the validation summary: "Your QBI of $40,768 supports an $8,154 deduction, but your taxable income of $25,018 caps the deduction at $5,004 (20% of taxable income excluding capital gain). Future income growth will unlock more of the deduction, up to the threshold."
 
 ---
 
 ## Validation summary
 
 - Math: all checks passed ✓
-- Threshold: $25,768 well below $241,950 single threshold ✓
+- Threshold: $25,018 well below $197,300 single threshold ✓
 - Sanity:
-  - Line 17 = Line 16 (taxable income limit binding) — surfaced to user
+  - Line 15 = Line 14 (taxable income limit binding) — surfaced to user
   - QBI = 81.5% of Schedule C net profit — within expected 80-95% range ✓
 - Carryforwards: None
 - Next steps:
   - Form 8995 attaches to Form 1040
-  - Line 17 ($5,154) goes to Form 1040 Line 13
+  - Line 15 ($5,004) goes to Form 1040 line 13a
   - Schedule SE (already complete) flows to Schedule 2 Line 4
   - File 1040 by April 15, 2026

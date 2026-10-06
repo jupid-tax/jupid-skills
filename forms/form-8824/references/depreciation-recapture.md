@@ -1,8 +1,8 @@
 # Form 8824 Depreciation Recapture
 
-When the relinquished property had depreciation taken on it (almost every rental), the §1031 deferral does NOT shield the recapture portion to the extent of boot received.
+When the relinquished property had depreciation taken on it (almost every rental), the §1031 deferral does NOT shield the recapture portion to the extent of boot received, and for §1245 property it may not shield it even without boot.
 
-This file explains §1245 vs. §1250 and how recapture flows through Form 8824.
+This file explains §1245 vs. §1250 and how recapture flows through Form 8824. Verified on 2026-10-06 against the 2025 Instructions for Form 8824 (Line 21 and the Taylor/Finley examples) and the 2025 Schedule D instructions.
 
 ---
 
@@ -10,44 +10,45 @@ This file explains §1245 vs. §1250 and how recapture flows through Form 8824.
 
 ### §1245 property
 
-Depreciable personal property and certain depreciable real property (e.g., qualified improvement property with 15-year MACRS).
+Depreciable personal property and certain other property listed in §1245(a)(3). A cost segregation study can put part of a building's basis into §1245 classes; some of those components are still real property for §1031 under Treas. Reg. §1.1031(a)-3 ("§1245 real property" in the Form 8824 instructions).
 
-- Recapture under §1245 is **ordinary income** (top federal rate up to 37%) up to the lesser of:
+- Recapture under §1245 is **ordinary income** up to the lesser of:
   - All depreciation taken, OR
-  - Realized gain
+  - The gain
 - Reported on Form 4797 Part III, then flowed to Part II
 
-In §1031 exchanges, §1245 recapture appears on **Form 8824 Line 21** (ordinary income under recapture rules) up to the boot received. Pre-TCJA this was common (vehicles, equipment); post-TCJA it's rare for real-property §1031 exchanges, except for:
-- Qualified improvement property (QIP) with 15-year MACRS
-- Land improvements (15-year MACRS, §1250 but treated as §1245 for some recapture purposes)
-- Mixed-asset real estate with carve-outs
+In §1031 exchanges, §1245 recapture appears on **Form 8824 Line 21**. It is the smaller of (1) the depreciation allowed or allowable (up to the Line 19 gain) or (2) the Line 20 gain **plus the FMV of non-§1245 like-kind property received** (IRC §1245(b)(4); 2025 instructions, Line 21). So when §1245 real property is exchanged for a building that is all §1250 property, the full §1245 recapture is recognized even if there is little or no boot. Pre-TCJA §1245 recapture was common (vehicles, equipment); post-TCJA it arises mainly from cost-segregated components.
+
+Qualified improvement property (QIP) is §1250 property, not §1245; the instructions' Finley example treats QIP as "section 1250 qualified improvement property".
 
 ### §1250 property
 
 Depreciable real property — buildings, structural components, residential and commercial real estate.
 
-- §1250 "true recapture" (depreciation in excess of straight-line) is ordinary income. Since 1986 most real property uses straight-line MACRS, so true §1250 recapture is **rare**.
-- **Unrecaptured §1250 gain** is the lesser of all straight-line depreciation taken or realized gain. Taxed at a maximum federal rate of **25%** (capital gains, but with a higher cap than the 20%/15%/0% long-term capital gains rates).
-- Reported on Schedule D's **Unrecaptured Section 1250 Gain Worksheet** (in Schedule D instructions).
+- §1250 "additional depreciation" recapture (depreciation in excess of straight-line) is ordinary income and goes on Line 21. Buildings depreciated under MACRS since 1986 use straight-line, so this arises mainly from accelerated or bonus depreciation on §1250 components such as QIP or 15-year land improvements (the Finley example: $35,000 of excess depreciation on QIP).
+- In an exchange, §1250 recapture on Line 21 is the smaller of (1) the additional-depreciation ordinary income a sale would have produced or (2) the larger of the Line 20 gain or the excess of (1) over the FMV of §1250 property received (IRC §1250(d)(4); 2025 instructions, Line 21).
+- **Unrecaptured §1250 gain** is the part of the gain attributable to straight-line depreciation (IRC §1(h)(6)). Taxed at a maximum federal rate of **25%** (IRC §1(h)(1)(E)).
+- Figured on the Schedule D **Unrecaptured Section 1250 Gain Worksheet** (2025 Schedule D instructions, line 19).
 
-In §1031 exchanges, unrecaptured §1250 gain on the boot-attributable portion flows through Form 8824 Line 22 (recognized gain) and is split out on Schedule D as 25%-rate gain.
+In §1031 exchanges, unrecaptured §1250 gain on the boot-attributable portion sits inside Form 8824 Line 22, flows through Form 4797 line 5, and is split out on Schedule D as 25%-rate gain.
 
 ---
 
 ## Recapture in §1031 — the sequencing rule
 
-Per Treas. Reg. §1.1031(d)-1 and Pub. 544:
+Per the 2025 Form 8824 instructions (Lines 21 and 22) and IRC §1(h)(6):
 
 When boot triggers gain recognition, the **recapture is recognized first**:
 
-1. First, recapture (§1245 ordinary or unrecaptured §1250 capital) up to the recognized gain
-2. Then, remaining recognized gain is regular capital gain (long-term if held > 1 year, taxed at 0/15/20%)
+1. First, ordinary recapture on Line 21 (§1245, or §1250 additional depreciation)
+2. Then the rest (Line 22); for a depreciated building, it is unrecaptured §1250 gain up to the straight-line depreciation taken
+3. Anything left is regular long-term gain (taxed at 0/15/20%) if held > 1 year
 
 Example:
 - Relinquished property had $100,000 of straight-line §1250 depreciation taken
 - Realized gain (Line 19) = $295,000
 - Boot received = $50,000
-- Recognized gain (Line 22) = $50,000
+- Recognized gain (Line 23) = $50,000 (Line 21 = $0, Line 22 = $50,000)
 
 Of the $50,000 recognized:
 - All $50,000 is unrecaptured §1250 gain (taxed at up to 25%) — because all $50,000 ≤ $100,000 of accumulated depreciation
@@ -61,16 +62,16 @@ The remaining $50,000 of accumulated depreciation (and $245,000 of total deferre
 
 Line 21 — "Ordinary income under recapture rules. Enter here and on Form 4797, line 16."
 
-Line 21 captures **§1245 ordinary recapture only**. It does NOT capture unrecaptured §1250 (which is capital, not ordinary).
+Line 21 captures **ordinary** recapture: §1245, §1250 additional depreciation, and §1252/1254/1255. It does NOT capture unrecaptured §1250 gain (which is capital gain taxed at up to 25%).
 
-For most rental real-estate §1031 exchanges, Line 21 = **$0**. The recapture, if any, is unrecaptured §1250 gain, reflected on Line 22 and split out via Schedule D's worksheet.
+For most rental real-estate §1031 exchanges with a straight-line building and no cost segregation, Line 21 = **$0**. The recapture, if any, is unrecaptured §1250 gain, reflected on Line 22 and split out via Schedule D's worksheet.
 
-For rare cases where §1245 recapture applies (e.g., the relinquished property included QIP or had cost-segregation studies allocating part of basis to 5/7/15-year MACRS):
+When §1245 or §1250 ordinary recapture applies (cost segregation, bonus or accelerated depreciation on QIP or land improvements):
 
-- Compute §1245 recapture per Form 4797 Part III rules
-- Cap at recognized gain (Line 20)
-- Enter the lesser on Line 21
-- Line 22 = Line 21 + (Line 20 − Line 21) — the residual capital gain portion
+- Compute the recapture a sale would produce per Form 4797 Part III rules
+- Apply the exchange limit: §1245(b)(4) (Line 20 gain + FMV of non-§1245 like-kind property received) or §1250(d)(4) (larger of Line 20 gain or recapture minus FMV of §1250 property received)
+- Enter the result on Line 21 — it can exceed Line 20 (instructions' Taylor example: $50,000 on Line 21 against a $40,000 Line 20)
+- Line 22 = max(Line 20 − Line 21, 0); Line 23 = Line 21 + Line 22
 
 ---
 
@@ -95,8 +96,9 @@ This is a long-term recordkeeping obligation. The agent should remind the user t
 If the user did a cost segregation study on the relinquished property, portions of basis were allocated to 5/7/15-year MACRS (§1245 property) instead of 27.5/39-year §1250.
 
 In a §1031 exchange:
-- §1245 portion of relinquished can be exchanged for §1245 portion of replacement (if allocations match)
-- §1245 portion of relinquished exchanged for §1250 portion of replacement → §1245 recapture is triggered to the extent of the value mismatch (Treas. Reg. §1.1245-4(d)(1))
+- §1245 real property of the relinquished can be exchanged for §1245 property in the replacement; Line 25b then carries that part of the basis
+- §1245 real property of the relinquished exchanged for a replacement that is §1250 property → §1245 recapture is recognized up to the FMV of the non-§1245 property received (IRC §1245(b)(4); Treas. Reg. §1.1245-4(d))
+- Components that are personal property (not real property under Treas. Reg. §1.1031(a)-3) are not like-kind at all: report them on Lines 12-14 as other property given up
 
 This is complex. If the user did a cost segregation study, **flag for CPA review** before finalizing Form 8824. The general skill scope does not cover this nuance.
 
@@ -120,7 +122,7 @@ Most states conform to federal §1031, but state recapture rules may differ:
 
 - Realized gain = 500k − 200k = $300k
 - Boot received = $0
-- Recognized gain (Line 22) = $0
+- Recognized gain (Line 23) = $0
 - Deferred gain = $300k
 - Replacement basis = $200k
 
@@ -134,7 +136,7 @@ The $100k of depreciation history carries into the replacement. When eventually 
 
 - Realized gain = $295k (after $5k exchange expenses, simplified)
 - Boot received (Line 15) = $45k (after $5k expenses)
-- Recognized gain (Line 22) = $45k
+- Recognized gain (Line 23) = $45k (all on Line 22)
 - Of the $45k, all $45k is unrecaptured §1250 gain (taxed at up to 25%) — because $45k ≤ $100k accumulated depreciation
 - Line 21 (§1245 ordinary recapture) = $0
 - Schedule D unrecaptured §1250 gain worksheet = $45k
@@ -148,8 +150,8 @@ User pays federal tax on $45k at up to 25% rate.
 - Replacement: $1M FMV, no cost seg study
 - No boot
 
-- §1245 portion of relinquished was $50k allocated to short-life property; replacement has no matching §1245 carve-out
-- Treas. Reg. §1.1245-4(d)(1) → triggers §1245 recapture to extent of basis allocation mismatch
+- If the 5-year components are §1245 real property under Treas. Reg. §1.1031(a)-3 and the replacement is all §1250 property: Line 21 = smaller of $50k depreciation or ($0 Line 20 gain + $1M FMV of non-§1245 property received) = **$50k ordinary income**, even with no boot; Line 22 = $0; Line 23 = $50k
+- If the 5-year components are personal property (e.g., furniture, appliances), they are not like-kind: they belong on Lines 12-14 as other property given up
 - This is complex; flag for CPA
 
 ---
@@ -157,10 +159,10 @@ User pays federal tax on $45k at up to 25% rate.
 ## Validation
 
 - [ ] If relinquished property had depreciation, accumulated depreciation amount is documented
-- [ ] If §1245 recapture applies, computed per Form 4797 Part III rules, capped at Line 20
-- [ ] Line 21 contains §1245 ordinary recapture only
+- [ ] If §1245 or §1250 ordinary recapture applies, computed per Form 4797 Part III rules and limited per §1245(b)(4) / §1250(d)(4) (not simply capped at Line 20)
+- [ ] Line 21 contains ordinary recapture only (§1245, §1250 additional depreciation, §1252/1254/1255) and matches Form 4797 line 16
 - [ ] Unrecaptured §1250 gain is reflected on Line 22 and on Schedule D's worksheet
-- [ ] Replacement property's depreciation schedule will inherit relinquished's depreciation history (carryover basis = relinquished basis − boot received + recognized gain)
+- [ ] Replacement property's depreciation follows Treas. Reg. §1.168(i)-6: carryover basis over the remaining recovery period of the relinquished property, excess basis as newly placed in service, unless the user elects out under §1.168(i)-6(i) on a timely filed return (2025 Instructions for Form 4562). Total basis = Form 8824 Line 25
 - [ ] If cost segregation was used on relinquished, flagged for CPA review
 
 ---
@@ -169,10 +171,12 @@ User pays federal tax on $45k at up to 25% rate.
 
 - IRC §1245 (recapture of depreciation on certain depreciable property — ordinary income)
 - IRC §1250 (recapture of depreciation on real property — true recapture for accelerated portion)
-- IRC §1(h)(1)(E) — 25% maximum rate on unrecaptured §1250 gain
-- Treas. Reg. §1.1245-4(d)(1) — §1245 in like-kind exchanges
+- IRC §1(h)(1)(E) — 25% maximum rate on unrecaptured §1250 gain; IRC §1(h)(6) — definition
+- IRC §1245(b)(4), §1250(d)(4) — exchange limits on recapture
+- Treas. Reg. §1.1245-4(d) — §1245 in like-kind exchanges
 - Treas. Reg. §1.1250-3(d) — §1250 in like-kind exchanges
 - Treas. Reg. §1.1031(d)-1, §1.1031(d)-2 — basis of replacement
+- 2025 Instructions for Form 8824, Line 21 and the Taylor/Finley examples
 - Form 4797 instructions — Part III recapture computation
 - Schedule D instructions — Unrecaptured §1250 Gain Worksheet
 - Pub. 544 (Sales and Other Dispositions of Assets), Chapter 3 — recapture interaction with §1031

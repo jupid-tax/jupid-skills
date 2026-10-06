@@ -27,29 +27,29 @@ There were no other foreign gifts received by Anna during 2026.
 
 ## Threshold check
 
-- Foreign individuals + foreign estates: aggregate $201,235 > $100,000 ✓
-  → Part IV reporting required for this category
-- Foreign corporations + foreign partnerships: $0; below threshold; no
-  reporting needed
+- Nonresident alien individuals + foreign estates (line 54): $201,235 >
+  $100,000 ✓ → line 54 "Yes"
+- Foreign corporations + foreign partnerships (line 55): $0, below the
+  2026 §6039F threshold of $20,573 (Rev. Proc. 2025-32 §4.47); line 55
+  "No"
 
-Note: an inheritance from a foreign individual's estate is treated as a
-gift from a foreign individual for §6039F purposes. The estate of Maria
-Bianchi is a "foreign estate" under §7701(a)(31)(A); it falls in the
-$100,000 bucket together with foreign individual donors.
+Note: a bequest from a foreign decedent's estate is reported on line 54
+("gifts or bequests from a nonresident alien ... or a foreign estate").
+The estate of Maria Bianchi is a foreign estate (§7701(a)(31)(A)).
 
 ## Currency translation
 
-Spot rate on August 12, 2026: $1.0878/EUR (Federal Reserve H.10 release,
-illustrative).
+Spot rate on August 12, 2026: $1.0878/EUR (illustrative; the agent uses
+the actual rate for the date).
 
-USD value: €185,000 × $1.0878 = $201,243. (Use the bank's recorded
+USD value: €185,000 × $1.0878 = $201,243 (python). (Use the bank's recorded
 credit if it differs slightly from the spot rate; document the
 discrepancy.)
 
 For consistency, Anna uses the **bank's recorded USD credit of $201,235**
 because that's what hit her account. Any small spread between the
-Federal Reserve rate and the bank's rate is the bank's currency
-conversion fee — already netted out.
+published rate and the bank's rate is the bank's currency conversion
+spread — already netted out. Document both.
 
 ## Which Parts apply
 
@@ -64,52 +64,38 @@ Only Part IV is filled.
 ## Filled draft
 
 ```markdown
-# Form 3520 — DRAFT for tax year 2026
+# Form 3520 (Rev. December 2023) — DRAFT for tax year 2026
 
-## Filer identification
-Name: Anna Romano
-Identifying number: 123-45-6789
-Address: 412 Elm Street, Boston, MA 02116
-Filing status: Single
-Country of citizenship: USA
-Initial: Yes
+## Page 1
+A. Initial return: [x]
+B. Filer type: Individual
+C. Counted on Form 8938: No (Anna does not file Form 8938)
+Trigger box checked: Part IV (gifts or bequests from foreign persons)
+1a. Name: Anna Romano           1b. TIN: 123-45-6789
+1c, 1e–1h. Address: 412 Elm Street, Boston, MA 02116, United States
+1d. Spouse's TIN: (blank)
+1i. Joint Form 3520: [ ]   1j. 2-month extension: [ ]
+1k. Income tax return extension: [ ] (check and enter 4868 if she extends)
+2a–4f. (blank — no foreign trust, no decedent filing)
 
-## Parts being filed
-- [ ] Part I
-- [ ] Part II
-- [ ] Part III
-- [x] Part IV — Receipt of gift from foreign person
-
-## Part IV — Gifts/Bequests
-Aggregate from foreign individuals + foreign estates: $201,235
-Threshold: $100,000 (statutory; IRC §6039F(c)(1)(B))
-Aggregate from foreign corporations + foreign partnerships: $0
-Threshold: $19,570 for 2025 (Rev. Proc. 2024-40); 2026 figure verified
-against Form 3520 instructions
-
-| Donor name      | Type            | Country | Date       | Description    | FMV (USD) |
-|-----------------|-----------------|---------|------------|----------------|-----------|
-| Estate of Maria | Foreign estate  | Italy   | 2026-08-12 | Cash bequest   | $201,235  |
-|  Bianchi        |                 |         |            | by will        |           |
-
-Donor address: c/o Studio Notarile Rossi, Via Indipendenza 12,
-40121 Bologna, Italy
-Relationship to filer: Maternal grandmother (decedent)
-
-Line 56 attestations:
-- Donor related to filer: Yes (grandparent)
-- Donor is a CFC or PFIC: N/A (donor is a foreign estate, not a corp)
+## Part IV — Gifts or bequests from foreign persons
+54. More than $100,000 from a nonresident alien or foreign estate: Yes
+| (a) Date of gift or bequest | (b) Description of property received | (c) FMV of property received |
+|-----------------------------|---------------------------------------|------------------------------|
+| 08/12/2026                  | Cash bequest under Italian will (€185,000 wire from estate account) | $201,235 |
+Total: $201,235
+55. Gifts from foreign corporations / partnerships over $20,573: No
+56. Donor acting as nominee or intermediary: No
 
 ## Currency translation
-Source: Bank of America wire credit conversion on 2026-08-12
-Rate: ~$1.0878/EUR (cross-checked against Federal Reserve H.10 release)
-Notes: Bank credit of $201,235 used as authoritative USD value
+Source: Bank of America wire credit on 2026-08-12
+Rate: ~$1.0878/EUR (illustrative)
+Notes: Bank credit of $201,235 used as the USD value; rate source documented
 
 ## Required attachments
-- [ ] None required for Part IV-only filing
-- [ ] Recommended: copy of Italian will or notarized estate distribution
-      letter, showing Anna as a named beneficiary (kept with user's
-      records, not necessarily filed)
+- None required for a Part IV-only filing
+- Recommended for her records (not filed): copy of the Italian will or the
+  notary's estate distribution letter naming Anna, and the wire record
 
 ## Mailing address
 Internal Revenue Service Center
@@ -117,30 +103,28 @@ P.O. Box 409101
 Ogden, UT 84409
 
 ## Validation summary
-- Math: aggregate $201,235 correctly compared against $100,000 threshold
-- Sanity: gift is from an estate (foreign decedent's estate), correctly
-  bucketed with foreign individuals; no anti-abuse flags
+- Math: $201,235 > $100,000 → line 54 required; single bequest over $5,000 listed
+- Line 55 below the 2026 threshold → "No"
+- Sanity: bequest from a foreign estate, correctly on line 54; no nominee
 - Next steps:
-  1. Anna prints, signs in blue ink, mails to Ogden via USPS Certified
-     Mail with Return Receipt by April 15, 2027 (or October 15, 2027 if
-     she extends Form 1040 via Form 4868)
+  1. Anna prints, signs, and mails to Ogden via USPS Certified Mail with
+     Return Receipt by April 15, 2027 (or by October 15, 2027 if she
+     extends Form 1040 with Form 4868 and checks line 1k)
   2. Anna does NOT report this on Form 1040 — gifts and inheritances are
      excluded from gross income under IRC §102
-  3. Anna does NOT file Form 8938 unless the inherited funds are in a
-     foreign financial account at year-end (after wire to US, they're
-     not foreign anymore)
-  4. If the funds had been left in the Italian bank account in Anna's
-     name during 2026, FBAR (FinCEN 114) would apply for any month-end
-     balance > $10,000 — confirm with Anna
+  3. Form 8938: the inheritance sits in a U.S. account, so it is not a
+     specified foreign financial asset
+  4. If the funds had first been deposited to a foreign account in Anna's
+     name, FBAR (FinCEN 114) would apply if the aggregate maximum value of
+     her foreign accounts exceeded $10,000 at any time during 2026 —
+     confirm with Anna
 
 ## Sources cited in this draft
-- IRS Form 3520 (latest revision)
-- IRS Instructions for Form 3520 (latest revision)
+- IRS Form 3520 (Rev. December 2023) and Instructions (Rev. December 2025), Part IV, line 54
+- Rev. Proc. 2025-32 §4.47 (2026 §6039F threshold $20,573)
 - IRC §102 (gifts and inheritances excluded from gross income)
 - IRC §6039F (information returns for gifts from foreign persons)
-- IRC §6677 (penalties for failure to file)
 - IRC §7701(a)(31)(A) (foreign estate definition)
-- Federal Reserve H.10 daily exchange rate report
 ```
 
 ## Why this is straightforward (when it is)
@@ -153,20 +137,22 @@ Ogden, UT 84409
 
 ## Edge cases the agent should flag
 
-- **If funds had stayed in Italy** for any month-end during 2026,
-  FBAR (FinCEN 114) reporting applies for the month of receipt and
-  any subsequent months until the funds are removed from foreign
-  account. Form 8938 may also apply if the year-end balance exceeds
-  the §6038D threshold.
+- **If funds had stayed in an Italian account in Anna's name**, FBAR
+  (FinCEN 114) applies if the aggregate maximum value of her foreign
+  accounts exceeded $10,000 at any time during 2026, and Form 8938 may
+  apply if her specified foreign financial assets exceed the Form 8938
+  thresholds. Ask for the account history.
 - **If Anna inherited real estate** (an Italian apartment), the
-  reporting is similar — list the property by description with FMV in
-  USD as of the date of bequest. Also: the Italian apartment may
-  trigger ongoing FBAR if held in a foreign trust/Fideicomiso, or
-  ongoing 8938 if it's held through a foreign entity.
+  reporting is similar — list the property on line 54 by description with
+  FMV in USD as of the date of the bequest. Directly held foreign real
+  estate is not itself an FBAR or Form 8938 asset; if it is held through
+  a foreign entity, the interest in the entity may be.
 - **If the will named multiple US beneficiaries**, each US beneficiary
-  files their own Form 3520 for their share. Each is independently
-  subject to the $100,000 threshold.
+  tests the $100,000 amount on what they personally received and files
+  their own Form 3520 if it is exceeded.
 - **If the funds came as a series of payments** over months (e.g., the
   Italian estate distributed in three tranches), aggregate the tranches
-  for the threshold check; report each tranche as a separate line in
-  the Part IV table with its own date and FMV.
+  for the threshold check; report each tranche over $5,000 as a separate
+  line 54 row with its own date and FMV.
+- **If gifts also came from other relatives abroad**, aggregate gifts
+  from donors who are related to each other (Instructions, Line 54).

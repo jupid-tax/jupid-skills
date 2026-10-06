@@ -39,7 +39,7 @@ The most common 2026 channels, in rough order:
 
 Before starting the submission, the agent must have:
 
-- [ ] Completed W-4 draft from `SKILL.md` workflow (all five steps)
+- [ ] Completed W-4 draft from `SKILL.md` workflow (all five steps, plus the exempt box decision), on the 2026 Form W-4
 - [ ] User's payroll-platform credentials (the user should authenticate themselves; agent does NOT store passwords)
 - [ ] User's employee ID (sometimes shown on prior pay stub or onboarding email)
 - [ ] User's electronic-signature consent — the platform will ask "I authorize this form" — agent must NOT click without explicit user OK
@@ -48,6 +48,8 @@ Before starting the submission, the agent must have:
 
 ---
 
+The platform menu paths below are typical layouts, not verified against each vendor's current release; vendors rename menus often. Follow the on-screen labels, and compare every field against the 2026 Form W-4 draft (Step 1(c), Step 2(c) checkbox, Step 3, Step 4(a), 4(b), 4(c), the exempt box) before the user signs.
+
 ## Channel: Workday
 
 URL: `https://<company>.myworkday.com`
@@ -55,7 +57,7 @@ URL: `https://<company>.myworkday.com`
 Path:
 1. Log in (user authenticates, agent does NOT touch credentials)
 2. Click profile menu → "Pay" → "Withholding Elections"
-3. Click "Update" next to "Federal Withholding" → "Use 2020 W-4 Form" (default for 2026 forms)
+3. Click "Update" next to "Federal Withholding" and pick the current (2020-or-later design) W-4 if the system offers a choice
 4. Fill out:
    - Filing status (Step 1(c))
    - Multiple Jobs Indicator (Step 2(c) checkbox if applicable)
@@ -152,7 +154,7 @@ Draft → Submitted → Acknowledged → Effective → Verified
 - **Draft**: produced by the SKILL.md workflow, not yet sent
 - **Submitted**: agent (or user) clicked "Submit" / signed the PDF / handed to HR
 - **Acknowledged**: payroll platform shows the new W-4 in the user's profile (instant on most platforms; up to 24h on legacy systems)
-- **Effective**: payroll has applied the change to a pay run (usually next pay period)
+- **Effective**: payroll has applied the change to a pay run. A replacement W-4 must be in effect no later than the start of the first payroll period ending on or after the 30th day after the employer receives it (Pub. 15 (2026), section 9)
 - **Verified**: agent compares the next pay stub's federal withholding amount against the projected number from SKILL.md output. If within ±5%, verified. If off by more than 10%, investigate (common cause: payroll set a future effective date, or the user's wages changed).
 
 ---

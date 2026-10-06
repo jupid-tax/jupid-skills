@@ -9,15 +9,19 @@ The agent must produce a complete `SKILL.md`-format draft *first*, then pick a f
 ## Channel decision tree
 
 ```
-User has AGI ≤ ~$84,000 and wants free guided software?
-  → IRS Free File (Free File Alliance partners)
+User has AGI ≤ $89,000 and wants free guided software?
+  → IRS Free File (Free File Alliance partners; $89,000 AGI limit for the 2026 filing season,
+    https://www.irs.gov/filing/irs-free-file-do-your-taxes-for-free)
     Some Free File providers support Form 8824, others do not. Verify before starting.
     Browser automation: provider-specific. Skip — flows change.
 
 User wants to fill the form directly with no software help?
   → IRS Free File Fillable Forms (FFFF)
     Browser automation: feasible, deterministic.
-    FFFF supports Form 8824. Use Section 1 below.
+    FFFF lists Form 8824 as available (01/26/2026, tax year 2025). Use Section 1 below.
+    FFFF cannot attach documents other than its own forms: if the return needs a
+    Line 11c explanation, a multi-asset exchange statement, or a multiple-exchange
+    summary statement, use paid software or paper instead.
 
 User has paid tax software (TurboTax, H&R Block, FreeTaxUSA, TaxAct)?
   → That software's "Like-Kind Exchanges" or "Sale of Property" section
@@ -26,11 +30,9 @@ User has paid tax software (TurboTax, H&R Block, FreeTaxUSA, TaxAct)?
 User wants paper filing?
   → Print Form 1040 + Form 8824 + Form 4797 (or Sch D), sign, mail
     Use Section 3.
-
-User wants IRS Direct File?
-  → As of early 2026, IRS Direct File does NOT support Form 8824.
-    Redirect to FFFF or paid software. Verify scope at https://www.irs.gov/filing/irs-direct-file each year.
 ```
+
+IRS Direct File was not offered in the 2026 filing season. Do not offer it as a channel.
 
 ---
 
@@ -38,7 +40,7 @@ User wants IRS Direct File?
 
 URL: https://www.irs.gov/e-file-providers/free-file-fillable-forms
 
-**Availability**: late January through mid-October each year. FFFF supports Form 8824 as a 1040 attachment.
+**Availability**: for tax year 2025, FFFF forms opened 01/26/2026 and the program closes Oct. 15, 2026 (https://www.irs.gov/e-file-providers/free-file-fillable-forms). Form 8824 is on the available-forms list (https://www.irs.gov/e-file-providers/list-of-available-free-file-fillable-forms). Known limitation: only one Form 4797 can be added.
 
 ### Pre-flight
 
@@ -47,7 +49,7 @@ Agent must have:
 - The user's permission to log in / register on their behalf
 - Filer's full legal name, SSN, date of birth, mailing address, prior-year AGI (for IRS identity verification)
 - The completed Form 8824 draft from `SKILL.md`
-- The completed Form 4797 (or Schedule D) reflecting Line 22 recognized gain
+- The completed Form 4797 (or Schedule D) reflecting Line 21 and Line 22
 - Form 1040 inputs (filing status, dependents, W-2s if any)
 - Documentation retained (not filed) for audit defense:
   - QI exchange agreement
@@ -78,14 +80,16 @@ Agent must have:
 | 5 | "Date like-kind property you received was identified" | Part I Line 5 |
 | 6 | "Date you actually received the like-kind property" | Part I Line 6 |
 | 7 | "Was the exchange of property given up or received made with a related party..." Yes/No | Part I Line 7 |
-| 8 | "Name of related party" | Part II Line 8 (if 7=Yes) |
-| 9 | "Relationship to you" | Part II Line 9 |
-| 10 | Yes/No — disposed during this year | Part II Line 10 |
-| 11 | Exception checkbox(es) | Part II Line 11 |
+| 8 | "Name of related party", "Relationship to you", "Related party's identifying number", address | Part II Line 8 (if 7=Yes) |
+| 9 | Yes/No — related party disposed of property received from you | Part II Line 9 |
+| 10 | Yes/No — you disposed of property you received | Part II Line 10 |
+| 11a–11c | Exception checkbox(es) | Part II Line 11 |
 | 12 | "FMV of other property given up" | Part III Line 12 |
+| 12a | Description of other property given up | Part III Line 12a |
 | 13 | "Adjusted basis of other property given up" | Part III Line 13 |
 | 14 | (auto-computed) | (verify equals draft Line 14) |
 | 15 | "Cash received, FMV of other property received, plus net liabilities..." | Part III Line 15 |
+| 15a | Description of other property received | Part III Line 15a |
 | 16 | "FMV of like-kind property you received" | Part III Line 16 |
 | 17 | (auto-computed) | (verify) |
 | 18 | "Adjusted basis of like-kind property you gave up..." | Part III Line 18 |
@@ -96,11 +100,12 @@ Agent must have:
 | 23 | (auto-computed) | (verify Line 23) |
 | 24 | (auto-computed) | (verify Line 24 = deferred gain) |
 | 25 | (auto-computed) | (verify Line 25 = basis of replacement) |
+| 25a–25c | Basis allocated to §1250 / §1245-type / intangible like-kind property | Part III Lines 25a–25c |
 
-8. **Add Form 4797** (if Line 22 > 0 and property was business-use real estate):
+8. **Add Form 4797** (if Line 21 or Line 22 > 0 and property was used in a trade or business, including rentals):
    - Click "Add a Form / Schedule" → search "4797"
-   - Recognized gain from 8824 Line 22 enters Form 4797 Part III if §1250 recapture, otherwise Part I or II depending on holding period
-9. **Or add Schedule D + Form 8949** if the relinquished property was held as investment and not for trade/business use
+   - Form 8824 Line 21 goes on Form 4797 line 16; Line 22 goes on Form 4797 line 5 (§1231, held more than 1 year) or line 16 (held 1 year or less)
+9. **Or add Schedule D** if the relinquished property was a capital asset held for investment: Line 22 goes on Schedule D line 4 (short-term) or line 11 (long-term); no Form 8949 entry
 10. **Run FFFF "Check Form" / "Verify"** — it flags math errors and missing required fields
 11. **Cross-check** every auto-computed field against the draft. If FFFF and draft disagree, **stop**; one of the two is wrong.
 12. **Save the return** — FFFF stores progress server-side
@@ -123,8 +128,8 @@ Agent must have:
 | Symptom | Likely cause | Fix |
 |---------|--------------|-----|
 | FFFF auto-compute Line 19 disagrees with draft | Boot calculation in Line 15 or basis in Line 18 misallocated | Recompute draft per `references/boot-rules.md` |
-| "Form 4797 amount doesn't match Form 8824 Line 22" | Wrong gain-recognition form chosen | Use 4797 if business-use real property; Sch D + 8949 if investment-only |
-| FFFF rejects "related-party Part II incomplete" | Line 7 set to Yes but Lines 8-11 missing | Fill Part II or change Line 7 to No (but only if accurate) |
+| "Form 4797 amount doesn't match Form 8824 Line 22" | Wrong gain-recognition form chosen | Use 4797 (line 5 or 16) if business-use real property; Schedule D (line 4 or 11) if a capital asset |
+| FFFF rejects "related-party Part II incomplete" | Line 7 set to Yes but Lines 8-10 missing | Fill Part II or change Line 7 to No (but only if accurate) |
 | State return rejects (CA) | Missing Form 3840 | File CA FTB 3840 separately each year until deferred gain is recognized |
 
 ---
@@ -158,13 +163,9 @@ For users with paid tax software:
 Stack order (top to bottom):
 
 1. **Form 1040** (signed)
-2. **Schedule 1, 2, 3** if applicable
-3. **Schedule D** (if Line 22 flows to Sch D) OR **Form 4797** (if Line 22 flows to 4797)
-4. **Form 8824** (the like-kind exchange itself)
-5. **Form 8949** (if Sch D used)
-6. **All other schedules and forms** in attachment-sequence order (top-right corner of each form)
-7. **W-2 Copy B** stapled to the front of Form 1040
-8. **1099s with federal withholding** also stapled
+2. **All schedules and forms in attachment-sequence order** (the "Attachment Sequence No." in the top-right corner of each form). For this exchange the relevant ones are Schedule D (Sequence No. 12), Form 4797 (No. 27), and Form 8824 (No. 109), after Schedules 1, 2, 3 and any others with lower numbers
+3. **Supporting statements** (Line 11c explanation, multi-asset or multiple-exchange statement) after the forms, with name and identifying number on each page
+4. **W-2 Copy B** attached to the front of Form 1040, plus Forms W-2G and 1099-R if tax was withheld
 
 Single staple in upper-left corner. No paper clips. Letter paper, full size, single-sided.
 

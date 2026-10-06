@@ -56,15 +56,15 @@ All Column B values are nonzero — no SLCSP lookup needed.
 | 3 | Household income | $42,000 |
 | 4 | FPL (HH of 1, 48 states+DC, 2024 FPL) | $15,060 |
 | 5 | Income % of FPL = 42,000 ÷ 15,060 × 100, rounded down | 278% |
-| 7 | Applicable Figure (interpolated, 250% → 300% under ARPA/IRA: 0.0400 + (28/50) × 0.0200) | 0.0512 (5.12%) |
-| 8a | Annual contribution = 42,000 × 0.0512 | $2,150 |
-| 8b | Monthly contribution = 2,150 ÷ 12 | $179 |
+| 7 | Applicable Figure (2025 Table 2 at 278: 0.0400 + (28/50) × 0.0200) | 0.0512 (5.12%) |
+| 8a | Annual contribution = 42,000 × 0.0512, rounded | $2,150 |
+| 8b | Monthly contribution = 2,150 ÷ 12, rounded | $179 |
 
-(Verify exact applicable figure against current Form 8962 Table 2; this example uses interpolation.)
+(0.0512 is the value printed in Table 2 of the 2025 Form 8962 instructions for 278%.)
 
 ### Part II — Annual Calculation (Line 11)
 
-Lisa's coverage and APTC didn't change all year, so Line 10 = Yes → Line 11 (annual).
+Lisa was enrolled all 12 months with the same enrollment premium and the same SLCSP premium every month and no allocation, so Line 10 = Yes → Line 11 (annual).
 
 | Line | Description | Amount |
 |------|-------------|--------|
@@ -82,10 +82,10 @@ Lisa's coverage and APTC didn't change all year, so Line 10 = Yes → Line 11 (a
 | Line | Description | Amount |
 |------|-------------|--------|
 | 27 | Excess APTC = 4,560 − 2,890 | $1,670 |
-| 28 | Repayment limit (Single, 200–300% FPL, 2025 Pub 974 Table 5) | $975 |
+| 28 | Repayment limit (Single, 200–300% FPL, 2025 Form 8962 instructions Table 5) | $975 |
 | 29 | Excess APTC repayment = lesser of 1,670 or 975 | $975 |
 
-**Result: Lisa owes back $975** to the IRS via Schedule 2 Line 1a. The remaining $695 of excess APTC is forgiven under the repayment cap.
+**Result: Lisa owes back $975** to the IRS via Schedule 2 Line 1a. The remaining $695 of excess APTC is forgiven under the repayment cap. On a 2026 return the same excess would be repaid in full: there is no repayment limitation for tax years after 2025 (P.L. 119-21 §71305).
 
 ## Validation
 
@@ -99,7 +99,7 @@ Lisa's coverage and APTC didn't change all year, so Line 10 = Yes → Line 11 (a
 
 1. Form 8962 attached to Form 1040
 2. Schedule 2 Line 1a = $975 (Excess APTC repayment) → adds to total tax
-3. Form 1040 Line 23 (Total Schedule 2 amount) increases by $975
+3. Schedule 2 Line 3 → Form 1040 Line 17 increases by $975
 4. Lisa pays $975 with the return (or it reduces her refund by $975)
 5. Lisa keeps Form 1095-A in her records (NOT attached to return)
 
@@ -107,4 +107,4 @@ Lisa's coverage and APTC didn't change all year, so Line 10 = Yes → Line 11 (a
 
 Lisa's income drift from $30,000 estimate to $42,000 actual cost her $975 in cash plus the loss of additional PTC she would have received at the lower income. Updating the Marketplace mid-year — every time a new client signed on or her rates increased — would have either increased her contribution share monthly (smoothing the year-end repayment) or, if her income spike came late, at least reduced the excess APTC accruing.
 
-For self-employed filers with volatile income, real-time AGI tracking (e.g., via Jupid) is the difference between a small expected payment and a surprise tax bill.
+For self-employed filers with volatile income, tracking year-to-date income against the Marketplace estimate is the difference between a small expected payment and a surprise tax bill.

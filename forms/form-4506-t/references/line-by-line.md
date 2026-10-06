@@ -1,12 +1,12 @@
 # Form 4506-T Line-by-Line Reference
 
-Complete lookup for every field on Form 4506-T. Use this when the agent needs to confirm what goes where or troubleshoot a rejected request.
+Complete lookup for every field on Form 4506-T (Rev. April 2025), built from the form text; the instructions are on page 2 of the form. Re-check https://www.irs.gov/forms-pubs/about-form-4506-t for a newer revision before use. Use this when the agent needs to confirm what goes where or troubleshoot a rejected request.
 
 ---
 
-## Top of form — Form number requested
+## Tax form number (entered on line 6)
 
-Just below the header, the form has a field labeled "Tip — Use Form 4506-T to order a transcript or other return information free of charge."
+The top of the form carries a tip pointing to the online tools and 800-908-9946; there is no form-number field there. The form number goes on **line 6** ("Enter the tax form number here (1040, 1065, 1120, etc.)"), one form number per request.
 
 The user enters the **form number** they originally filed:
 - **1040** — most common (individual)
@@ -18,9 +18,9 @@ The user enters the **form number** they originally filed:
 - **1120-S** — S-corporation
 - **990** — exempt organization
 
-Enter the form number in the field provided. Some IRS instructions specify "Form 1040" while the form just shows "1040" — match what the form layout asks.
+Enter the number as the form shows it ("1040", "1065", "1120").
 
-If requesting a Wage and Income Transcript (Line 8), the form number is informational; the W&I transcript covers all third-party-reported income forms regardless.
+Line 8 (W-2/1099/1098/5498 series transcript) is a separate request; the line 6 form number does not limit which information returns appear on it.
 
 ---
 
@@ -28,22 +28,22 @@ If requesting a Wage and Income Transcript (Line 8), the form number is informat
 
 ### Line 1a — Name shown on tax return
 
-Filer's full legal name as it appeared on the original tax return.
+Name as it appeared on the tax return. For a joint return, the name shown first.
 
 - Include **first, middle initial (or full middle name), last name**
 - Include **suffix** if used on the return (Jr., Sr., II, III)
 - For an entity (corporation, partnership), enter the entity's legal name
 
-**Critical**: must match the return EXACTLY. If the filer's name has changed (marriage, divorce, court order) since the return was filed, use the name as it appeared on the return, not the current name. The IRS matches by SSN-name combination and rejects mismatches.
+**Critical**: use the name as it appeared on the return. If the filer's name has changed since (marriage, divorce, court order), still use the return name on line 1a, put the current name on line 3, and sign with both names (form page 2, "Individuals").
 
 ### Line 1b — First taxpayer's social security number, ITIN, or EIN
 
-Nine digits. Format with dashes: XXX-XX-XXXX (SSN/ITIN) or XX-XXXXXXX (EIN).
+Nine digits: XXX-XX-XXXX (SSN/ITIN) or XX-XXXXXXX (EIN).
 
-- For individual returns: SSN or ITIN
-- For entity returns: EIN
+- For individual returns: the first SSN or ITIN shown on the return — including a Form 1040 with Schedule C (form page 2, "Line 1b")
+- For business returns: EIN
 
-The IRS uses the taxpayer ID as the primary key for transcript retrieval. A typo here is fatal.
+The IRS uses the taxpayer ID to find the account. A typo here sinks the request.
 
 ---
 
@@ -57,19 +57,19 @@ If the return was not joint, leave Line 2a blank.
 
 ### Line 2b — Second SSN or ITIN
 
-Spouse's nine-digit ID, with dashes.
+Spouse's nine-digit SSN or ITIN.
 
-For joint returns, **both** spouses are considered taxpayers, and **both** must sign Form 4506-T to authorize transcript release. A spouse not signing the form cannot get the joint transcript on their own — they would need to file a separate Form 4506-T or use Form 2848.
+Transcripts of jointly filed returns may be furnished to either spouse, and only one signature is required (form page 2, "Individuals"; the signature block says "at least one spouse must sign").
 
 ---
 
-## Line 3 — Current name, address (including apt., room, or suite no.), city, state, and ZIP code
+## Line 3 — Current name, address (including apt., room, suite, or inmate no.), city, state, and ZIP code
 
-Where the IRS will mail the transcript **if Line 5 is blank**.
-
-- Use the user's current mailing address
+- Use the user's current address; include a P.O. box here if used; an incarcerated filer includes the inmate number
 - For an entity, use the entity's current address
 - This does NOT have to match the address on the most recent return — that's Line 4
+
+**Delivery:** since July 2019 the IRS mails Form 4506-T transcripts only to the taxpayer's **address of record**. If the user moved and has not changed the address with the IRS, the form says to file Form 8822 (Form 8822-B for a business address) — otherwise the transcript goes to the old address on file.
 
 If the user moved since the last return, Line 3 = current address, Line 4 = prior return address.
 
@@ -77,42 +77,30 @@ If the user moved since the last return, Line 3 = current address, Line 4 = prio
 
 ## Line 4 — Previous address shown on the last return filed if different from line 3
 
-Required ONLY if the user moved since the most recent return.
+Required ONLY if the address on the last return filed differs from line 3.
 
 - Format: street, city, state, ZIP
-- The IRS uses Line 4 to verify identity by matching against their records
-- If the user has not moved since the last return, leave Line 4 blank (or write "Same as Line 3")
+- If the user has not moved since the last return, leave Line 4 blank
 
-A common rejection cause: user moved 3 years ago, last return was filed at the new address, but they think Line 4 should be the prior-prior address. The rule is: Line 4 = address on the **most recent return filed**. If the most recent return was filed from the current address (Line 3), Line 4 is blank.
+A common error: the user moved 3 years ago, filed the last return at the new address, but thinks Line 4 should be the prior-prior address. The rule is: Line 4 = address on the **last return filed**. If the last return was filed from the current address (Line 3), Line 4 is blank.
 
 ---
 
-## Line 5 — Customer file number (third-party)
+## Line 5 — Customer file number (if applicable)
 
-If the user wants the IRS to mail the transcript directly to a third party, fill Line 5 with:
-- **Third party's name** (lender, school, agency)
-- **Third party's address** (street, city, state, ZIP)
-- **Third party's telephone**
-- **Customer file number** (loan number, school ID, file ID — provided by the third party; up to 10 characters)
+Optional. Enter up to **10 numeric characters** to create a customer file number that prints on the transcript (transcripts mask the SSN, so this number helps the user or a lender match the transcript to a file). It must not contain an SSN; if the user enters an SSN, a name, or both, the IRS will not input it and the transcript shows the generic "9999999999" (form page 2, "Line 5").
 
-The customer file number helps the third party route the incoming transcript to the right user file.
+Line 5 is NOT a third-party mailing block. Since July 2019 the IRS no longer mails transcripts to third parties; it mails them only to the taxpayer's address of record. A lender or other third party that needs transcripts directly must use the Income Verification Express Service (IVES) with Form 4506-C (form, "What's New").
 
-If Line 5 is blank, IRS mails to Line 3 address.
-
-**Security flag**: filling Line 5 sends sensitive tax data to a third party. Confirm:
-- The user explicitly authorizes this third-party delivery
-- The third party's address is verified (call to confirm if uncertain)
-- The customer file number is correct
-
-If the third party's address is wrong, the transcript goes to a stranger. Tax data is highly sensitive (SSN, AGI, income breakdown). Wrong-address mailing is a privacy incident.
+A lender's loan number that contains letters or dashes ("PNM-2026-04571") cannot be used as is; use only its digits (up to 10) or leave line 5 blank.
 
 ---
 
 ## Line 6 — Transcript requested
 
-Form number — usually "1040" — entered in the prompt at the top of Line 6.
+Form number — usually "1040" — entered in the prompt at the top of Line 6. Enter only one tax form number per request.
 
-Then check exactly ONE of the boxes:
+Then check ONE of the boxes (the form does not say multiple boxes are rejected, but one transcript type per form keeps the request clean; use 6c to get return and account data together):
 
 ### 6a. Return Transcript
 
@@ -130,9 +118,9 @@ Does NOT show:
 - Penalty / interest charges
 - Detailed payment history
 
-**Available**: current tax year and 3 prior tax years. Older years require Account Transcript or Record of Account.
+**Available**: the current year and returns processed during the prior 3 processing years (form line 6a). Older years: Account Transcript.
 
-**Most common use**: mortgage applications, student loan applications, business loan applications. Lenders specifically request "Tax Return Transcript" because it confirms the income shown to them by the borrower.
+**Most common use**: mortgage applications and business loan applications; irs.gov says a tax return transcript "usually meets the needs of lending institutions offering mortgages".
 
 ### 6b. Account Transcript
 
@@ -143,30 +131,30 @@ Filing date, marital status, AGI, taxable income, plus return-related transactio
 - Refunds issued
 - Notices sent
 
-**Available**: many years back (10+ for some accounts). Use when the user needs deep history or needs to confirm IRS account activity.
+**Available**: "for most returns" (form line 6b). Online: current and nine prior tax years; by mail or phone: current and three prior; older years only via Form 4506-T (irs.gov "Transcript types for individuals and ways to order them").
 
 **Most common use**: disputing an IRS balance, verifying payment history, audit defense.
 
 ### 6c. Record of Account
 
-Combines 6a + 6b in one document. Available for current year + 3 prior tax years.
+Combines 6a + 6b in one document. Available for current year + 3 prior tax years. The form suggests requesting it when unsure which transcript is needed.
 
 **Most common use**: when the user needs both the original return data and account activity for a specific year (e.g., responding to a CP2000 notice).
-
-Pick one. Multiple-checked forms get rejected.
 
 ---
 
 ## Line 7 — Verification of Non-filing
 
-A letter from the IRS stating they have no record of a Form 1040 (or other specified form) filed for the requested year(s).
+A letter from the IRS stating it has no record of a processed Form 1040-series return for the requested year as of the date of the request. It does not say whether the user was required to file (irs.gov transcript types page).
+
+**Availability**: current-year requests only after June 15; no restriction on prior years (form line 7).
 
 **Most common use**:
-- FAFSA: parents or students who didn't file taxes need a Verification of Non-filing Letter to prove they had no filing requirement
+- FAFSA verification, when the school asks for it. For IRS non-filers the 2025–26 FSA Handbook (Application and Verification Guide, Ch. 4) accepts a signed non-filing statement plus W-2s, so confirm the school specifically wants the IRS letter
 - Immigration: visa applications and green card processes sometimes require proof of non-filing for specific years
 - Court proceedings: divorce, child support, bankruptcy may require this
 
-Available for any year where the user did not file (the IRS confirms absence of return). If the user did file but it was rejected or never processed, the letter still says "no record" — which may be misleading.
+If the user filed but the return was rejected or never processed, the letter still says "no record" — which may be misleading.
 
 Check this box only when the user genuinely did not file. Do not check it for years where the user filed (use Return or Account Transcript instead).
 
@@ -188,9 +176,9 @@ Shows third-party-reported income data for the requested year:
 - 5498 (IRA contributions)
 - Etc.
 
-**Available**: last 10 years.
+**Available**: up to 10 years (form line 8); online, the current and nine prior tax years. State or local W-2 information is not included; for W-2 data needed for Social Security purposes, the form points to SSA at 1-800-772-1213.
 
-**Important timing**: third parties report this data to the IRS by January 31 of the following year, but the IRS doesn't always have the data immediately. Wage and Income Transcripts for the current year are usually NOT available until **mid-summer** (June-July) of the following year. For the most current year's data, the user must wait.
+**Important timing**: irs.gov says information for the current processing year is generally available online in the first week of February but shows only documents already filed with the IRS, so it may be incomplete early in the year. The form's line 8 text is more conservative: current-year information is generally not available until the year after it is filed. For a request in the first months of the year, warn the user the transcript may be incomplete.
 
 **Most common use**: replacing lost W-2 / 1099 documents to prepare a tax return; verifying that all income was reported on a return; dealing with identity theft claims (showing the user what was reported to IRS in their name).
 
@@ -200,53 +188,51 @@ The Wage and Income Transcript shows **what was reported**, not necessarily what
 
 ## Line 9 — Year or period requested
 
-Up to **4 years** per Form 4506-T. For more, file additional 4506-T forms.
+The form has **four** date slots. For more periods, file additional 4506-T forms.
 
-Format: usually MM/DD/YYYY (the IRS uses fiscal-year-end dates). For calendar-year filers, use 12/31/YYYY.
+Format: MM/DD/YYYY, the end date of the tax year or period (calendar year, fiscal year, or quarter; enter each quarter for quarterly returns). For calendar-year filers, use 12/31/YYYY.
 
 Example for tax year 2024: 12/31/2024.
 
 For fiscal-year filers (rare for individuals; some entities), use the entity's fiscal year-end date (e.g., 06/30/2024).
 
-If requesting a period that doesn't yet exist (i.e., the year hasn't ended), the IRS will reject. If requesting a year before the user's filing history begins, the IRS will return a Verification of Non-filing for that year (which may not be what the user wanted).
+If requesting a period that has not ended or a return that has not been processed, there is nothing to transcribe yet; wait (see https://www.irs.gov/individuals/transcript-availability).
 
 ---
 
 ## Signature section
 
+### Authority checkbox
+
+"Signatory attests that he/she has read the attestation clause and upon so reading declares that he/she has the authority to sign the Form 4506-T." This box **must be checked**; the form will not be processed if it is unchecked (form page 2, Caution).
+
 ### Taxpayer signature
 
-- The person whose name is on Line 1 must sign
-- For joint returns, BOTH spouses sign (or use Line 5 third-party with appropriate authorization)
-- Wet signature on paper, OR electronic signature acceptable to IRS via specific approved channels (limited)
+- The taxpayer on line 1a or 2a signs; on a joint return, at least one spouse must sign
+- Sign exactly as the name appeared on the return; if the name changed, also sign the current name
+- Corporations: an officer with authority to bind the corporation, a person designated by the board, or an officer/employee on written request of a principal officer; a 1%-or-more shareholder may request with documentation
+- Partnerships: any person who was a member during any part of the period on line 9
+- Estates, trusts, dissolved corporations, insolvent taxpayers, heirs: see IRC §6103(e); heirs, next of kin, or beneficiaries must establish a material interest
+- Entities other than individuals attach the authorization document (e.g., letter from the principal officer, letters testamentary)
+- A representative signs only if Form 2848 line 5 delegates that authority; attach the Form 2848
 
-The signature certifies under penalty of perjury that:
-- The signer is authorized to request the transcript
-- The information on the form is true and correct
-
-False signatures are a federal crime. Never let an agent generate a faux signature.
+The signature declares the signer is the taxpayer or a person authorized to obtain the information. Never let an agent generate a faux signature.
 
 ### Date
 
-Date of signature. Per current Form 4506-T instructions, signature is valid for 120 days. If older than 120 days when the IRS receives the form, it will be rejected. Always sign close to submission.
+The IRS must receive Form 4506-T within 120 days of the date signed or it will be rejected. Sign close to submission, after all applicable lines are completed ("Do not sign this form unless all applicable lines have been completed").
 
 ### Phone
 
-Daytime telephone where the IRS can reach the user with questions. Use a number the user actually answers.
-
-### Print/type name
-
-Same as signed name, but printed legibly so a clerk can read it.
+"Phone number of taxpayer on line 1a or 2a." Use a number the user actually answers.
 
 ### Title
 
-Only required if Line 1a is an entity (corporation, trust, partnership, estate). Enter the signer's title (President, CEO, Trustee, Executor, General Partner, etc.).
+Only if Line 1a is a corporation, partnership, estate, or trust. Enter the signer's title (President, Trustee, Executor, General Partner, etc.). Leave blank for individuals.
 
-For individual filers, leave the title blank.
+### Spouse's signature
 
-### Spouse signature
-
-If joint return, spouse signs separately with own date, printed name. Both signatures within 120 days of submission.
+Optional on a joint return (one spouse's signature is enough). If the spouse signs, the spouse dates it too.
 
 ---
 
@@ -264,24 +250,23 @@ If joint return, spouse signs separately with own date, printed name. Both signa
 ## Validation checklist
 
 - [ ] Line 1a name matches return exactly
-- [ ] Line 1b SSN/ID is 9 digits with correct dashes
+- [ ] Line 1b SSN/ITIN/EIN is 9 digits and is the first number shown on the return
 - [ ] Lines 2a/2b filled if joint, blank if not
-- [ ] Line 3 current address is complete and accurate
-- [ ] Line 4 = prior return address if user moved; otherwise blank
-- [ ] Line 5 third-party (if used) has accurate address; user authorized this delivery
-- [ ] Form number entered correctly (1040, 1040-SR, etc.)
-- [ ] Exactly ONE transcript type box checked (6a, 6b, 6c, 7, or 8)
-- [ ] Line 9 year(s) formatted correctly (12/31/YYYY for calendar-year filers)
-- [ ] Up to 4 years requested
-- [ ] Signature, date, phone, printed name complete
-- [ ] Spouse signature complete if joint
-- [ ] Signature within 120 days of expected IRS receipt
+- [ ] Line 3 current address is complete; Form 8822 filed if the IRS address of record is out of date
+- [ ] Line 4 = last-return address if different from line 3; otherwise blank
+- [ ] Line 5 (if used) is ≤10 digits, no SSN, no name
+- [ ] One form number on line 6 (1040, 1040-SR, etc.)
+- [ ] One transcript type box checked (6a, 6b, 6c, 7, or 8)
+- [ ] Line 9 period(s) as MM/DD/YYYY (12/31/YYYY for calendar-year filers), no more than four
+- [ ] Authority checkbox checked; signature, date, phone complete; title + authorization document for entities
+- [ ] IRS will receive the form within 120 days of the signature date
 
 ---
 
 ## Sources
 
-- IRS Form 4506-T, current revision (instructions on page 2 of the form)
+- IRS Form 4506-T (Rev. April 2025), instructions on page 2 of the form
+- Transcript types and ways to order them: https://www.irs.gov/individuals/transcript-types-and-ways-to-order-them
 - About Form 4506-T: https://www.irs.gov/forms-pubs/about-form-4506-t
 - IRC §6103 — confidentiality and disclosure of tax returns
 - IRS RAIVS (Return and Income Verification Services) — back-office processing

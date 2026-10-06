@@ -23,7 +23,7 @@ With aggregation, the combined entity has $450,000 QBI and $250,000 W-2 → much
 
 ### Test 1: Common ownership
 
-The same person, or group of persons, must own (directly or by attribution under §267(b) or §707(b)) at least **50%** of each business in the aggregation. Family attribution: spouses, children, grandchildren, parents (§267(c)(4)).
+The same person, or group of persons, must own (directly or by attribution under §267(b) or §707(b)) at least **50%** of each business in the aggregation. Family under §267(c)(4): brothers and sisters, spouse, ancestors, and lineal descendants.
 
 ### Test 2: Ownership for the majority of the year
 
@@ -31,7 +31,7 @@ The 50% common ownership must exist for the majority of the tax year, including 
 
 ### Test 3: Same tax year
 
-All businesses being aggregated must use the same tax year. Most are calendar-year; if any is fiscal-year, aggregation is more restricted.
+All businesses being aggregated must use the same tax year end (2025 i8995-A, Aggregation, test 1).
 
 ### Test 4: None is an SSTB
 
@@ -51,9 +51,9 @@ The businesses must share at least TWO of the following three:
 
 ## How to elect
 
-The election is made on **Schedule B of Form 8995-A** by listing each business and the satisfied factors. There is no separate election form.
+The aggregation is reported on **Schedule B (Form 8995-A)**: a description of the aggregated businesses and the factors met, changes from the prior year, and each business's QBI, W-2 wages, and UBIA (lines 1–4). There is no separate election form. Complete Schedule B every year the aggregation is used; failure to disclose may cause the businesses to be disaggregated (2025 i8995-A, Aggregation).
 
-The election must be reported on the original return (not amended); failure to report on the original return = no election for that year.
+An individual generally may not first aggregate on an amended return (Treas. Reg. §1.199A-4(c)(1); the 2018 tax year was the exception). Ask the user to confirm before relying on an amended-return aggregation.
 
 ---
 
@@ -78,7 +78,7 @@ The taxpayer can ADD new businesses to the aggregation in future years, but cann
   - W-2 wages: $0 (no employees; managed by Business 1)
   - UBIA: $1,500,000 (cost basis of rental buildings, excluding land)
 
-**Owner:** Same individual owns 100% of both. Filing MFJ. Taxable income before QBI: $700,000 (above MFJ threshold $483,900, well above phase-in top — full W-2/UBIA limit applies).
+**Owner:** Same individual owns 100% of both. Filing MFJ. Taxable income before QBI: $700,000 (2025: above the $394,600 MFJ threshold and the $494,600 top of the phase-in range — full W-2/UBIA limit applies).
 
 ### Without aggregation:
 

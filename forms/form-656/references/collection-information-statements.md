@@ -61,7 +61,7 @@ Employer name and address, pay period (weekly, bi-weekly, monthly, other), owner
 
 Notes:
 
-- The $11,980 on line (7) equals the 2026 levy exemption for fuel, provisions, furniture, and household personal effects under IRC §6334(a)(2) (Rev. Proc. 2025-32, §3.49). The form subtracts it once from the total of (7a) through (7c), not only from art and jewelry.
+- The $11,980 on line (7) equals the 2026 levy exemption for fuel, provisions, furniture, and household personal effects under IRC §6334(a)(2) (Rev. Proc. 2025-32, §4.49). The form subtracts it once from the total of (7a) through (7c), not only from art and jewelry.
 - The $1,000 and $3,450 allowances apply only to individuals and only after the IRS determines the taxpayer cannot full pay from equity, an installment agreement, or both (Form 656-B, page 1; IRM 5.8.5.7; IRM 5.8.5.12). Use them for the offer; drop them for the full-pay screen.
 - IRM 5.8.5.12: the $3,450 exclusion is for vehicles used for work, the production of income, or the welfare of the family; one vehicle for a single taxpayer, two for joint taxpayers.
 - IRM 5.8.5.4.1: × .8 is the normal quick sale value. The IRS may use a different percentage, or full value when an asset is being sold to fund the offer (then actual sale price less costs of sale and expected tax).
@@ -90,7 +90,7 @@ Do not repeat personal assets from Section 3.
 | — | Notes receivable yes/no (attach list); accounts receivable including e-payment, factoring, bartering, online auction accounts yes/no (attach list with age and amount) | Attach lists; no line value |
 | **Box B** | Available Business Equity in Assets | (8) + (11) |
 
-**Line (10) handling.** The form names a deduction but prints no figure. IRM 5.8.5.16 says a statutory levy exemption applies to an individual's tools used in a trade or business, that it is updated annually, and that it is not available to LLC, partnership, or corporation property. The 2026 amount under IRC §6334(a)(3) (books and tools necessary for the taxpayer's trade, business, or profession) is $5,990 (Rev. Proc. 2025-32, §3.49). This figure is derived, not printed:
+**Line (10) handling.** The form names a deduction but prints no figure. IRM 5.8.5.16 says a statutory levy exemption applies to an individual's tools used in a trade or business, that it is updated annually, and that it is not available to LLC, partnership, or corporation property. The 2026 amount under IRC §6334(a)(3) (books and tools necessary for the taxpayer's trade, business, or profession) is $5,990 (Rev. Proc. 2025-32, §4.49). This figure is derived, not printed:
 
 1. If line (9) is 0, line (10) has no effect; note that and move on.
 2. If line (9) is above 0, tell the user the line (10) figure is derived from Rev. Proc. 2025-32 and not printed on the form, show Box B and the offer amount both with $5,990 and with $0 on line (10), and let the user decide (ask them to confirm with the IRS Pre-Qualifier, the Individual Online Account offer calculator, or a representative). Record the choice in the validation summary.

@@ -1,233 +1,243 @@
-# Example: Two-Member LLC at $400K Gross Receipts ($900 LLC Fee Tier)
+# Example: Two-Member LLC at $401,200 of California Income ($900 LLC Fee Tier)
 
-A two-member California LLC operating a marketing agency, partnership-classified federally. Hits the first non-zero LLC fee tier ($250K-$499,999 → $900 fee). Includes both members as California residents (no nonresident complexity), so this is a clean mid-tier example.
+A two-member California LLC operating a marketing agency, partnership-classified federally. Hits the first non-zero LLC fee tier ($250,000–$499,999 → $900 fee). Both members are California residents (no nonresident complexity), so this is a clean mid-tier example. Line numbers are from the 2025 Form 568 and 2025 Form 1065; math checked in Python.
 
 ## The filers
 
 - **LLC name**: Pacific Marketing Partners LLC
 - **Members**: Jordan Reyes (60%, CA resident, San Francisco) and Sam Ortiz (40%, CA resident, Los Angeles)
-- **Entity**: California-formed LLC, formed January 2022 (so AB-85 exemption was used in year 1 — but irrelevant for 2024 filing)
-- **California SOS file number**: `202206543210`
-- **Federal EIN**: 87-9876543
+- **Entity**: California-formed LLC, formed January 15, 2022 (its first taxable year fell in the AB 85 window — irrelevant for 2025)
+- **California SOS file number**: `202206543210` (placeholder)
+- **FEIN**: 87-9876543 (placeholder)
 - **Federal classification**: Partnership (default for multi-member; no Form 8832 / 2553 filed)
-- **Tax year**: 2024 (filing in 2025)
-- **Federal Form 1065 already filed** by March 15, 2025
+- **Taxable year**: 2025 (filing in 2026)
+- **Federal Form 1065**: drafted; due March 16, 2026
 
 ## Inputs gathered
 
-### Income (federal Form 1065 already drafted)
+### Income (federal Form 1065)
 - Gross receipts: $400,000
 - COGS: $0 (service business)
-- Other income (interest on business savings): $1,200
-- Total federal income (Form 1065 Line 8): $401,200
+- Interest on the business savings account: $1,200 (portfolio income, federal Schedule K line 5 — not in ordinary income)
 
-### Expenses (federal Form 1065)
-- Salaries to subcontractors: $90,000
+### Expenses (federal Form 1065 page 1)
+- Contract labor (subcontractors): $90,000
 - Office rent: $24,000
 - Software subscriptions: $18,000
 - Professional fees: $12,000
-- Travel and meals (50% deductible): $6,000
-- Equipment depreciation (federal §179 = $40,000 on a $40,000 server purchase, full federal §179): $40,000
+- Meals (deductible 50% portion): $6,000
 - Other operating expenses: $35,000
-- Total federal deductions (1065 Line 21): $225,000
-- Federal ordinary income (1065 Line 22): $401,200 − $225,000 = $176,200
+- Total deductions (Form 1065, line 22): $185,000
+- Ordinary business income (Form 1065, line 23): $400,000 − $185,000 = **$215,000**
 
-### California-source: 100% (single-state operation)
+### Equipment
+- Server purchased and placed in service in 2025: $40,000 (5-year property). Federal §179 election = $40,000 (2025 federal limit $2,500,000; 2025 Instructions for Form 4562). §179 is separately stated on federal Schedule K line 12, not deducted in ordinary income.
+
+### California-source: 100% (business wholly within California)
 
 ## Step-by-step workflow execution
 
 ### Step 1 — Confirm California nexus and entity classification
 
-Pacific Marketing Partners formed in California → automatic Form 568 obligation. Multi-member, partnership-classified → Form 568 (not 100/100S).
+Pacific Marketing Partners was formed in California → Form 568 obligation. Multi-member, partnership-classified → Form 568 (not 100/100S).
 
-### Step 2 — Pay or confirm $800 annual tax (Form 3522)
+### Step 2 — Pay or confirm $800 annual tax (FTB 3522)
 
-LLC paid $800 via Form 3522 on April 10, 2024 (timely). Will record on Line 7.
+LLC paid the 2025 $800 with Web Pay on April 10, 2025 (due April 15, 2025). Goes on line 8.
 
 ### Step 3 — Determine if the LLC fee applies
 
-Schedule IW Total Income = $400,000 (gross receipts; service business, COGS = $0; plus interest income).
+Schedule IW (all California):
+- Line 1a (Schedule B line 3, gross profit): $400,000
+- Line 1b (cost of goods sold): $0
+- Line 7 (subtotal): $400,000
+- Line 10 (California interest, Schedule K line 5): $1,200
+- Line 17 (total California income): **$401,200**
 
-Actually, the §17942 definition is gross receipts + COGS, so:
-- Schedule IW Line 1 (gross receipts): $400,000
-- Schedule IW Line 2 (COGS): $0
-- Schedule IW Line 4 (other income): $1,200
-- Total: $401,200
+Tier: $250,000–$499,999 → **LLC fee = $900**
 
-Tier: $250,000-$499,999 → **LLC fee = $900**
+(The $1,200 of interest counts toward line 17 but doesn't move the tier.)
 
-(Note: the additional $1,200 in interest income doesn't push the LLC above $500K; tier remains the same.)
+### Step 4 — Pay or confirm FTB 3536
 
-### Step 4 — Pay or confirm Form 3536
-
-LLC paid Form 3536 on June 14, 2024 (timely). Estimated fee was $900 (matched 2023 actual). Will record on Line 8.
-
-This estimate happens to be exactly right since 2024 actual fee is also $900 → no underpayment, no penalty.
+The 2024 fee was $900. The LLC paid a $900 estimate with Web Pay on June 13, 2025 (due June 16, 2025, because June 15 fell on a Sunday). The 2025 fee is also $900, so there is no balance and no penalty. Even if the fee had come in higher, paying at least the 2024 fee by the 6th-month date meets the R&TC §17942(d)(2) safe harbor.
 
 ### Step 5 — Filing deadline
 
-Multi-member, partnership-classified → Form 568 due **March 15, 2025** for tax year 2024 (matches federal Form 1065).
+Partnership-classified → 15th day of the 3rd month → **March 16, 2026** (March 15, 2026 is a Sunday). Automatic 7-month extension to October 15, 2026.
 
 ### Step 6 — Schedule K and member K-1s
 
-#### California adjustments to federal income
+#### California adjustments to federal amounts
 
 | Item | Federal | California | Adjustment |
 |------|---------|------------|------------|
-| Federal ordinary income | $176,200 | -- | -- |
-| §179 deduction over $25K cap | $40,000 | $25,000 + ($15,000 × 20% MACRS Year 1 = $3,000) = $28,000 | Add back $40,000 − $28,000 = **$12,000** |
-| §168(k) bonus depreciation | $0 (already fully §179'd) | $0 | None |
-| §163(j) interest cap | not triggered | -- | -- |
-| §199A QBI | (at member level on 1040, not 1065) | -- | -- |
+| §179 expense (Schedule K line 12) | $40,000 | $25,000 (2025 FTB 3885L line 1; §179 property $40,000 < $200,000 threshold) | −$15,000 |
+| Depreciation on the remaining $15,000 basis | $0 (fully expensed federally) | 5-year MACRS, half-year: 20% × $15,000 = $3,000 on FTB 3885L → Schedule B line 17 | Ordinary income −$3,000 |
+| §168(k) bonus depreciation | $0 (not used) | $0 | None |
+| §199A | Member level (Form 1040), not on Form 1065 | Not on Form 568 | None |
 
-California adjusted ordinary income: $176,200 + $12,000 add-back = **$188,200**
+Net effect on the members' California income compared with federal: +$15,000 (smaller §179) − $3,000 (extra depreciation) = **+$12,000**.
 
-#### Schedule K (568) totals
+#### Schedule K (568)
 
-| K Line | Item | Amount |
-|--------|------|--------|
-| 1 | Ordinary business income | $188,200 (after CA adjustment) |
-| 5 | Interest income | $1,200 |
-| ... | (other lines $0) | -- |
-| 12 | §179 deduction | $25,000 (CA cap) |
-| ... | (other deductions $0) | -- |
+| K Line | Item | (b) Federal K (1065) | (c) CA adjustment | (d) California |
+|--------|------|------------|------------|-----------|
+| 1 | Ordinary income from trade or business | $215,000 | −$3,000 | $212,000 |
+| 5 | Interest income | $1,200 | $0 | $1,200 |
+| 12 | §179 expense | $40,000 | −$15,000 | $25,000 |
+| 21a | Total distributive income/payment items (1 + 5 − 12) | $176,200 | +$12,000 | $188,200 |
 
-#### K-1 (568) per member
+#### K-1 (568) per member (column (d), California)
 
 Jordan Reyes (60%):
-- Ordinary income share: $112,920
-- Interest share: $720
-- §179 share: $15,000
+- Ordinary income: $127,200
+- Interest: $720
+- §179: $15,000
 
 Sam Ortiz (40%):
-- Ordinary income share: $75,280
-- Interest share: $480
-- §179 share: $10,000
+- Ordinary income: $84,800
+- Interest: $480
+- §179: $10,000
 
 ### Step 7 — Apportionment
 
-100% California-source. No Schedule R required.
+Business wholly within California. Question M(1) "No"; no Schedule R.
 
 ### Step 8 — Nonresident members
 
-Both Jordan and Sam are California residents. No Form 3832, no Form 592 needed. Schedule T not required.
+Both Jordan and Sam are California residents. No FTB 3832, no Schedule T, no withholding.
 
 ### Step 9 — Compute the bottom line
 
 ```
-Form 568 Line 1 (Total income from Schedule IW):  $401,200
-Form 568 Line 2 (LLC fee, $250K-$499,999 tier):   $900
-Form 568 Line 3 (2024 annual LLC tax):            $800
-Form 568 Line 4 (nonresident tax):                $0
-Form 568 Line 5 (partnership-level tax):          $0
-Form 568 Line 6 (Total tax and fee):              $1,700
-Form 568 Line 7 (Form 3522 prepaid):              $800
-Form 568 Line 8 (Form 3536 prepaid):              $900
-Form 568 Line 11 (Total payments):                $1,700
-Form 568 Line 12 (Tax/fee due or overpayment):    $0
+Line 1  (Total income from Schedule IW):     $401,200
+Line 2  (LLC fee, $250K–$499,999 tier):          $900
+Line 3  (2025 annual LLC tax):                   $800
+Line 4  (PTE elective tax):                        $0
+Line 5  (Nonconsenting nonresident tax):           $0
+Line 6  (Partnership level tax):               (blank)
+Line 7  (Total tax and fee):                   $1,700
+Line 8  (Paid with FTB 3522 + 3536):           $1,700
+Line 12 (Total payments):                      $1,700
+Line 14 (Payments balance):                    $1,700
+Line 16 (Tax and fee due):                         $0
+Line 17 (Overpayment):                             $0
+Line 21 (Total amount due):                        $0
 ```
 
 ### Step 10 — Validation
 
-- ☑ Math: Line 6 = $0 + $800 + $0 + $0... wait, Line 2 is $900. So Line 6 = $900 + $800 + $0 + $0 = $1,700. Pass.
-- ☑ Math: Schedule IW total = $401,200; flows to Line 1. Pass.
-- ☑ Math: Member K-1 shares sum to Schedule K totals. Jordan 60% + Sam 40% = 100%. Ordinary $112,920 + $75,280 = $188,200. Pass.
-- ☑ Sanity: Schedule IW total $401,200 is well within $250K-$499K tier (no boundary risk).
-- ☑ Sanity: §179 add-back of $12,000 documented; matches MACRS Year 1 calculation.
+- ☑ Math: Line 7 = $900 + $800 + $0 + $0 + $0 = $1,700. Line 8 = $800 + $900 = $1,700. Line 16 = $0. Pass.
+- ☑ Math: Schedule IW line 17 = $400,000 + $0 + $1,200 = $401,200 → line 1. Pass.
+- ☑ Math: K-1 shares sum to Schedule K column (d): ordinary $127,200 + $84,800 = $212,000; interest $720 + $480 = $1,200; §179 $15,000 + $10,000 = $25,000. Two K-1s = Question K (2). Pass.
+- ☑ Sanity: $401,200 is $98,800 below the $500,000 boundary (no boundary risk).
+- ☑ Sanity: §179 limited to $25,000 and the $15,000 excess depreciated on FTB 3885L.
 
 ### Step 11 — Deliverable
 
 ```markdown
-# California Form 568 — DRAFT for tax year 2024
+# California Form 568 — DRAFT for taxable year 2025
 
-## LLC identification
+## Identification (Side 1)
 A. SOS file number:                       202206543210
-B. Federal EIN:                           87-9876543
-C. Principal business activity:           Marketing agency
-D. Principal product/service:             Brand strategy and digital marketing
-E. Date business started in CA:           01/15/2022
-F. Total assets EOY:                      $58,000
-G. Sales:                                 $400,000
-H. Boxes checked:                         [none — not initial / final / amended]
-I. Number of members:                     2
-J. Federal classification election:       N/A (partnership default)
+B. FEIN:                                  87-9876543
+E. Accounting method:                     Cash
+F. Date business started in CA:           01/15/2022
+G. Total assets EOY:                      $58,000 (from Schedule L)
+H. Boxes checked:                         none (not initial / final / amended / protective)
+I(1)–I(3):                                No / No / No
 
-## Side 1 — Tax and Fee
-Line 1.  Total income (from Sched IW):                $401,200
-Line 2.  LLC fee ($250K-$499K tier):                    $900
-Line 3.  2024 annual LLC tax:                           $800
-Line 4.  Nonconsenting nonresident tax:                   $0
-Line 5.  Partnership-level tax:                           $0
-Line 6.  Total tax and fee:                           $1,700
+## Side 1 — Tax, fee, and payments
+Line 1.  Total income from Schedule IW:        $401,200
+Line 2.  LLC fee:                                 $900
+Line 3.  Annual LLC tax:                          $800
+Line 4.  PTE elective tax:                          $0
+Line 5.  Nonconsenting nonresident tax:             $0
+Line 6.  Partnership level tax:                (blank)
+Line 7.  Total tax and fee:                     $1,700
+Line 8.  Paid with FTB 3537 / 3522 / 3536:      $1,700
+Line 9.  PTE elective tax payments:                 $0
+Line 10. Prior-year overpayment credited:           $0
+Line 11. Withholding:                               $0
+Line 12. Total payments:                        $1,700
+Line 13. Use tax:                                   $0
+Line 14. Payments balance:                      $1,700
+Line 15. Use tax balance:                           $0
+Line 16. Tax and fee due:                           $0
+Line 17. Overpayment:                               $0
+Line 18. Credited to 2026:                          $0
+Line 19. Refund:                                    $0
+Line 20. Penalties and interest:                    $0
+Line 21. Total amount due:                          $0
 
-## Side 1 — Payments
-Line 7.  Form 3522 ($800) prepaid:                      $800
-Line 8.  Form 3536 prepaid:                             $900
-Line 9.  Withholding:                                     $0
-Line 10. Prior-year overpayment applied:                  $0
-Line 11. Total payments:                              $1,700
-Line 12. Tax/fee due or overpayment:                      $0
+## Questions (Side 2–3)
+J. PBA code / activity / product:   541800 / Marketing agency / Brand strategy and digital marketing
+K. Maximum members:                 2
+M(1) Schedule R:                    No
+P(1)/P(2) nonresident members:      No / No
+U(1) Disregarded:                   No
+GG(2) First year doing business in CA: No
 
-## Schedule IW — Income Worksheet
-IW Line 1. Gross receipts (CA-source):              $400,000
-IW Line 2. Cost of goods sold (CA):                       $0
-IW Line 3. Subtract Line 2 from 1:                  $400,000
-IW Line 4. Other income (interest):                   $1,200
-IW Line 7. Total → Form 568 Line 1:                 $401,200
+## Schedule IW
+1a $400,000 · 1b $0 · 2a–6 $0 · 7 $400,000 · 8a–9c $0 · 10 $1,200 · 11–16 $0
+17 $401,200 → Side 1, line 1
 
 ## Schedule K (568) summary
-| K Line | Item | Federal | CA Adjustment | CA Total |
-|--------|------|---------|---------------|----------|
-| 1 | Ordinary business income | $176,200 | +$12,000 (§179 add-back) | $188,200 |
-| 5 | Interest income | $1,200 | -- | $1,200 |
-| 12 | §179 deduction | $40,000 | -$15,000 (CA cap) | $25,000 |
+| K Line | Item | (b) Federal | (c) CA adjustment | (d) California |
+|--------|------|-------------|-------------------|----------------|
+| 1 | Ordinary income | $215,000 | −$3,000 (FTB 3885L depreciation on $15,000) | $212,000 |
+| 5 | Interest income | $1,200 | $0 | $1,200 |
+| 12 | §179 expense | $40,000 | −$15,000 (CA limit $25,000) | $25,000 |
 
 ## Schedule K-1 (568) per member
-| Member | SSN | % | Ordinary income | Interest | §179 | CA resident | Form 3832 |
-|--------|-----|---|-----------------|----------|------|-------------|-----------|
-| Jordan Reyes | XXX-XX-XXXX | 60 | $112,920 | $720 | $15,000 | Yes | N/A |
-| Sam Ortiz    | XXX-XX-XXXX | 40 | $75,280  | $480 | $10,000 | Yes | N/A |
+| Member | TIN | % | Ordinary income | Interest | §179 | CA resident | FTB 3832 |
+|--------|-----|---|-----------------|----------|------|-------------|----------|
+| Jordan Reyes | XXX-XX-XXXX | 60 | $127,200 | $720 | $15,000 | Yes | N/A |
+| Sam Ortiz    | XXX-XX-XXXX | 40 | $84,800  | $480 | $10,000 | Yes | N/A |
 
-## Required attachments
-- [x] Form 3522 ($800 paid April 10, 2024)
-- [x] Form 3536 ($900 paid June 14, 2024)
-- [ ] Form 3832 (not applicable; both members are CA residents)
-- [ ] Form 592 / 592-B (not applicable; no nonresident members)
-- [ ] Schedule R (not applicable; 100% CA-source)
-- [x] Federal Form 1065 + Schedule K-1s (filed by March 15, 2025)
-- [ ] Schedule L, M-1, M-2 (not required: receipts ≥ $250K but assets < $1M; verify which threshold applies — under 2024 instructions, receipts ≥ $250K triggers L, so include)
+## Payments and attachments
+- [x] 2025 FTB 3522 ($800) — Web Pay, April 10, 2025
+- [x] 2025 FTB 3536 ($900) — Web Pay, June 13, 2025
+- [ ] FTB 3832 — not applicable (both members CA residents)
+- [ ] Form 592-Q / 592-PTE / 592-B — not applicable (no nonresident members)
+- [ ] Schedule R — not applicable (100% California)
+- [x] FTB 3885L (depreciation and California §179)
+- [x] Schedules L, M-1, M-2 and Item G — required: federal Form 1065 Schedule B Question 4a ("total receipts less than $250,000") is "No"
 
 ## Validation summary
 - Math: all checks passed
 - Sanity:
-  - §179 add-back of $12,000 documented
+  - §179 limited to $25,000; $15,000 excess depreciated ($3,000 in 2025)
   - All members CA residents → no nonresident complexity
-  - Schedule IW within tier ($401,200 < $500K boundary)
+  - Schedule IW within tier ($401,200 < $500,000)
 - Next steps:
-  - Each member files California Schedule CA(540) reflecting their K-1 (568) share
-  - Members claim §179 deductions per their share on their personal returns
-  - 2025 Form 3522 ($800) due April 15, 2025
-  - 2025 Form 3536 (estimated fee) due June 15, 2025 — recommend $900 again unless revenue is on a clear growth path
-  - 2025 Form 568 due March 15, 2026
+  - Each member reports the K-1 (568) amounts on their California return (California §179 and depreciation differ from federal)
+  - 2026 FTB 3522 ($800) due April 15, 2026
+  - 2026 FTB 3536 estimate due June 15, 2026 — paying at least $900 (the 2025 fee) by then avoids the estimate penalty even if 2026 crosses $500,000
+  - 2025 Form 568 due March 16, 2026 (October 15, 2026 on extension); 2026 Form 568 due March 15, 2027
 
 ## Sources cited in this draft
-- California Form 568, Rev. 2024
-- California Form 568 Booklet, Rev. 2024
-- R&TC §17941 (annual LLC tax)
-- R&TC §17942(a)(1) (LLC fee, $250K-$499K tier = $900)
-- R&TC §17255 (California §179 cap = $25,000)
-- R&TC §17024 (California IRC conformity, including non-conformity to §168(k))
+- 2025 Form 568 and 2025 Form 568 Booklet (General Information E, F; Schedule IW; Schedule L)
+- 2025 Form 1065 (lines 22–23; Schedule B Question 4)
+- 2025 FTB 3885L (§179 $25,000 / $200,000; no §168(k))
+- 2025 Instructions for Form 4562 (federal §179 $2,500,000)
+- R&TC §17941, §17942(a)(1), §17942(d)(2), §18567, §18633.5
 ```
 
 ## Why each non-obvious choice
 
-**Why does the §179 limit hit $25,000 instead of federal $1,250,000?** California explicitly does not conform to federal §179 expansion. The $25,000 cap has been in place under R&TC §17255 / §24356. The $15,000 excess is depreciated under MACRS over the asset's useful life (5 years for typical equipment).
+**Why does California allow only $25,000 of §179 instead of the federal $2,500,000?** California does not conform to the enhanced federal §179 expensing; its limit is $25,000 with a $200,000 investment threshold (2025 FTB 3885L; R&TC §17255). The remaining $15,000 of basis is depreciated over the asset's California recovery period.
 
-**Why is the LLC fee $900 and not $0?** Schedule IW Total Income ($401,200) exceeds $250,000. The tier table jumps from $0 to $900 at $250K. Pacific Marketing Partners is squarely in that tier.
+**Why does ordinary income change by only $3,000?** §179 is not part of ordinary business income; it passes through separately on Schedule K line 12. The ordinary-income difference is only the extra California depreciation on the $15,000 that California would not expense.
 
-**What if Jordan moved to Texas mid-year?** This is the "year of partial residency" complication. Generally, if a member is a California resident at any point during the year and has California-source income, they're treated as a California resident for that income. Mid-year moves require pro-rata allocation between the resident and nonresident period. Out of scope for this skill — flag and consult a CPA.
+**Why is the LLC fee $900 and not $0?** Schedule IW line 17 ($401,200) exceeds $250,000. The tier table jumps from $0 to $900 at $250,000.
 
-**Why is interest income $1,200 included in Schedule IW?** Schedule IW captures all California-source income, not just operating revenue. Interest on a business savings account is California-source if the LLC is doing business in California. Add it.
+**Why is interest income included in Schedule IW?** Schedule IW counts all California-source income items (line 10 is interest), not just operating revenue. For an LLC whose business is wholly within California, everything is assigned to California.
+
+**Why are Schedules L, M-1, M-2 required?** The shortcut applies only if federal Form 1065 Schedule B Questions 4a–4c are all "Yes" and the LLC has 10 or fewer members (2025 booklet, Schedule L). Question 4a requires total receipts under $250,000; this LLC had $400,000.
+
+**What if Jordan moved to Texas mid-year?** Then Jordan is a part-year resident and possibly a nonresident member at year-end, which raises the FTB 3832 / Schedule T question and 7% withholding on distributions after the move. Residency is fact-specific (FTB Pub. 1031) — flag it and refer to a CPA.
 
 **Why no Schedule R?** Single-state operation. Schedule R applies only when income must be apportioned across states.
 
@@ -235,10 +245,10 @@ IW Line 7. Total → Form 568 Line 1:                 $401,200
 
 The LLC's audit defense:
 1. SOS confirms California formation
-2. Federal Form 1065 cross-references all income
-3. §179 add-back documented; matches MACRS Year 1 on $15,000 excess
-4. Schedule IW computed using gross-receipts-plus-COGS (or equivalent for service business)
-5. Both members CA residents — no Form 3832 needed
-6. Form 3522 + 3536 timely paid; Form 568 timely filed
+2. Federal Form 1065 cross-references all income and the §179 election
+3. FTB 3885L shows the $25,000 California §179 and the $3,000 depreciation on the $15,000 excess
+4. Schedule IW built from gross receipts plus interest
+5. Both members CA residents — no FTB 3832 needed
+6. FTB 3522 and FTB 3536 timely paid; Form 568 timely filed
 
-This is a clean mid-tier filing. The most fragile piece is the §179 add-back computation — keep the MACRS schedule for Year 1 onwards in the audit file.
+This is a clean mid-tier filing. The most fragile piece is the California depreciation schedule — keep FTB 3885L and the asset's California basis for every later year.

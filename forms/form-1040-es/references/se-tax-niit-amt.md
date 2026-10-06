@@ -25,7 +25,7 @@ The **SS wage base** caps the 12.4% Social Security portion. Above the cap, only
 |------|-------------|--------|
 | 2024 | $168,600 | SSA |
 | 2025 | $176,100 | SSA |
-| 2026 | TBD (announced ~Oct 2025) | SSA — verify |
+| 2026 | $184,500 | SSA; 2026 Form 1040-ES SE worksheet line 5 |
 
 The agent must verify the current year's wage base before computing. Source: https://www.ssa.gov/oact/cola/cbb.html.
 
@@ -33,7 +33,7 @@ The agent must verify the current year's wage base before computing. Source: htt
 
 If the taxpayer also has W-2 wages, the SS wage base is **shared**. The SE tax SS portion only applies to SE earnings up to `(wage_base − W-2_SS_wages_already_taxed)`. Schedule SE Part I Line 8 handles this.
 
-Example: 2025 wage base $176,100. Taxpayer has $200,000 W-2 wages and $50,000 SE income.
+Example: 2026 wage base $184,500. Taxpayer has $200,000 W-2 wages and $50,000 SE income.
 - W-2 wages already at wage base
 - SE 12.4% SS portion = 0% (wage base fully consumed)
 - SE 2.9% Medicare portion = 2.9% × (0.9235 × $50,000) = $1,339
@@ -146,22 +146,22 @@ Reported on **Line 5** of the 1040-ES worksheet via Form 6251.
 AMT is a parallel tax system that disallows certain deductions and preferences. After the TCJA (effective 2018), AMT affects far fewer filers than before — primarily:
 
 - Households with significant Incentive Stock Option (ISO) exercises with held shares (the "bargain element" is an AMT preference item)
-- Households with very high state tax write-offs (now capped at $10K SALT, so this trigger is rare)
+- Households with very high state and local tax deductions (the SALT cap rose to $40,000 for 2025 and $40,400 for 2026 under P.L. 119-21, so this trigger is back)
 - Very high private activity municipal bond interest
 
-### AMT exemption (2025)
+### AMT exemption (2026 — the year being estimated)
 
 | Filing status | AMT exemption | Phase-out begins | Phase-out complete |
 |---------------|---------------|------------------|--------------------|
-| Single, HOH | $88,100 | $626,350 | $878,750 |
-| MFJ, QW | $137,000 | $1,252,700 | $1,800,700 |
-| MFS | $68,500 | $626,350 | $900,350 |
+| Single, HOH | $90,100 | $500,000 | $680,200 |
+| MFJ, QW | $140,200 | $1,000,000 | $1,280,400 |
+| MFS | $70,100 | $500,000 | $640,200 |
 
-(Source: Rev. Proc. 2024-40 for 2025. Verify 2026 figures.)
+(Source: Rev. Proc. 2025-32 §4.10; from 2026 the exemption phases out at 50 cents per dollar. 2025 for comparison: $88,100 / $137,000 / $68,500, phase-out from $626,350 / $1,252,700, complete at $978,750 / $1,800,700 / $900,350 — Rev. Proc. 2024-40.)
 
 ### AMT rates
 
-- 26% on AMTI up to $239,100 (2025) over the exemption
+- 26% on the first $244,500 (2026; $122,250 MFS) of AMTI over the exemption ($239,100 for 2025)
 - 28% on AMTI above that
 
 ### Most filers' AMT calc
@@ -196,7 +196,7 @@ For a Schedule C filer with $100,000 net profit, no other wages, MFJ filing:
 
 - Line 9 (SE tax):
   - SE earnings = 0.9235 × $100,000 = $92,350
-  - SS portion: 0.124 × $92,350 = $11,451 (under 2025 wage base $176,100)
+  - SS portion: 0.124 × $92,350 = $11,451 (under 2026 wage base $184,500)
   - Medicare portion: 0.029 × $92,350 = $2,678
   - SE tax = $14,129
 - Line 10 (Other):

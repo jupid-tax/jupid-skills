@@ -39,12 +39,13 @@ Existing entity (filed Schedule C in prior years), calendar tax year, 2026 elect
 
 ```
 Tax year start:  01/01/2026
-Deadline:        01/01/2026 + 2 months 15 days = 03/15/2026
+Deadline:        01/01/2026 + 2 months 15 days = 03/15/2026 (a Sunday,
+                 so 03/16/2026 under IRC §7503; plan on 03/13/2026)
 Today:           01/15/2026
-Status:          On time (60 days of cushion)
+Status:          On time (59 days to 03/15/2026)
 ```
 
-Standard election. Part IV not required.
+Timely election: no Rev. Proc. 2013-30 header, item I blank, Part IV blank.
 
 ---
 
@@ -76,17 +77,19 @@ Decisively in favor of electing. Proceed.
 ```
 Role:           Senior IT consultant (own client work, sales, project management)
 BLS SOC code:   15-1252 (Software Developers) — closest match
-2024 BLS median (national):  $130,160
+May 2025 OEWS national median:  $135,980 (BLS series OEUN000000000000015125213)
 Geographic:     Delaware, mid-cost — no upward adjustment
 Hours/week:     ~45 (down-adjust from full 40hr baseline by 12.5%? No, no adjustment for working > 40)
 Experience:     12 years senior — modest upward adjustment but offset by:
 Mix:            ~60% billable consulting, 40% sales/admin/non-billable
-                Pure billable rate × hours would imply $130-150K wage equivalent;
+                Pure billable rate × hours would imply $135-150K wage equivalent;
                 non-billable mix reduces effective comp basis
 Documented final salary: $80,000
 
 Defense:
-- Below national BLS median by ~$50K — conservative posture
+- Below national BLS median by ~$56K. Note: this cuts both ways; the memo
+  must explain why $80K is what an unrelated firm would pay for his mix of
+  duties (IRS reasonable-compensation factors)
 - Documented hours/role split
 - Non-coastal mid-tier client base (lower billable rates)
 - Memo signed and dated 12/15/2025, before 2026 starts
@@ -101,43 +104,44 @@ Marcus signs the reasonable-comp memo and keeps it in his records.
 ## Step 5 — Form 2553 draft
 
 ```
-HEADER (no Part IV — on-time election; no banner needed)
+HEADER: none (timely election)
 
-PART I — ELECTION INFORMATION
+PART I — ELECTION INFORMATION (Form 2553, Rev. December 2017)
 
-A. Name of corporation:               Chen Consulting, LLC
-B. Address:                           1234 Market Street, Suite 200
+Name:                                 Chen Consulting, LLC
+Address:                              1234 Market Street, Suite 200
                                       Wilmington, DE 19801
-C. Employer Identification Number:    12-3456789
-D. Date incorporated:                 06/15/2023
-E. State of incorporation:            DE
-F. Election effective date:           01/01/2026
-G. Contact: Marcus Chen, 1234 Market Street, Suite 200,
-            Wilmington, DE 19801, (302) 555-1234
-H. Name change:                       (blank — no change)
-I. Tax year:
+A. Employer identification number:    12-3456789
+B. Date incorporated:                 06/15/2023
+C. State of incorporation:            DE
+D. Name/address changed after EIN:    (blank, no change)
+E. Effective for tax year beginning:  01/01/2026
+F. Selected tax year:
    [X] (1) Calendar year
    [ ] (2) Fiscal year ending
-   [ ] (3) 52-53 week year
-   [ ] (4) Other
+   [ ] (3) 52-53-week year, December
+   [ ] (4) 52-53-week year, other month
+G. >100 shareholders box:             (blank)
+H. Contact: Marcus Chen, Sole Member, (302) 555-1234
+I. Late election explanation:         (blank, timely)
 
-J. Officer signature:  Marcus Chen
-   Title:              Sole Member
-   Date:               01/15/2026
+Signature of officer:  Marcus Chen (handwritten)
+Title:                 Sole Member
+Date:                  01/15/2026
 
-SHAREHOLDER CONSENT STATEMENT
+PAGE 2 — SHAREHOLDERS' CONSENTS
 
-| # | J. Name & address     | K. Sig.   | L. Date     | M. Shares & dates  | N. SSN     |
-|---|-----------------------|-----------|-------------|---------------------|------------|
-| 1 | Marcus Chen           | M. Chen   | 01/15/2026  | 100% from 06/15/2023| XXX-XX-1234|
-|   | 1234 Market St, #200  |           |             |                     |            |
-|   | Wilmington, DE 19801  |           |             |                     |            |
+| # | J. Name & address     | K. Signature / date   | L. Ownership / acquired | M. SSN      | N. Tax yr ends |
+|---|-----------------------|-----------------------|-------------------------|-------------|----------------|
+| 1 | Marcus Chen           | M. Chen / 01/15/2026  | 100% / 06/15/2023       | XXX-XX-1234 | 12/31          |
+|   | 1234 Market St, #200  |                       |                         |             |                |
+|   | Wilmington, DE 19801  |                       |                         |             |                |
 
-(Marcus is single, not in community-property state — no spouse signature required.)
+(Marcus is single, not in a community-property state: no spouse consent required.)
 
-PART II — Selection of Fiscal Tax Year:    Skip (calendar year)
+PART II — Selection of Fiscal Tax Year:    Skip (item F box 1)
 PART III — QSST Election:                  Skip (no trust shareholder)
-PART IV — Late Election Relief:            Skip (on time)
+PART IV — Late Classification Reps:        Skip (timely; no late classification election)
 ```
 
 ---
@@ -146,12 +150,13 @@ PART IV — Late Election Relief:            Skip (on time)
 
 ```
 □ Eligibility: PASS
-□ Timing: ON TIME (60 days cushion)
+□ Timing: ON TIME (59 days of cushion)
 □ Consents: 1 of 1 shareholders signed
 □ Math: 100% ownership confirmed
-□ Sanity warnings: Salary at $80K is 53% of net profit — reasonable
-                   (Watson factors documented)
-□ Form completeness: A-J complete, Line I Box 1 checked, Parts II-IV blank
+□ Sanity warnings: Salary at $80K is 53% of net profit; IRS factors documented
+                   in the memo
+□ Form completeness: name, address, A-F and H complete; F box (1) checked;
+                     G and I blank; Parts II-IV blank; officer signature present
 ```
 
 Ready to file.
@@ -165,11 +170,11 @@ Marcus chooses **fax** to Kansas City service center (DE is east-coast).
 ```
 Service center:   Kansas City, MO (855-887-7734) — DE is in Kansas City zone
 Date faxed:       01/16/2026, 10:42 AM
-Pages sent:       2 (Form 2553 page 1 + page 2)
+Pages sent:       4 (all form pages; pages 3-4 blank)
 Fax confirmation: SUCCESSFUL — saved as PDF in records
 ```
 
-Marcus does not also mail. The fax confirmation is the proof of filing.
+Marcus does not also mail. He keeps the original signed form and the fax report; the CP261 will be the proof of acceptance (a fax report is not on the instructions' list of acceptable proof of filing).
 
 ---
 
@@ -178,7 +183,7 @@ Marcus does not also mail. The fax confirmation is the proof of filing.
 ```
 Day 1   (01/16): Filed via fax
 Day 30  (02/15): No CP261 yet — normal, keep waiting
-Day 52  (03/09): CP261 acknowledgment letter received in mail
+Day 52  (03/09): CP261 acceptance notice received in mail
                   S-corp effective 01/01/2026 ✓
                   Marcus saves the CP261 letter permanently
 ```
@@ -195,12 +200,15 @@ By 01/01/2026 (or as soon as CP261 arrives, whichever is later):
 □ Federal income tax withholding via W-4 (Marcus elects standard withholding)
 □ FICA: 7.65% employer + 7.65% employee = 15.3% combined on $80K = $12,240/yr
 □ Federal unemployment (FUTA): 0.6% on first $7,000 = $42/yr
-□ DE state unemployment (SUTA): rate ~ 0.3% on first $14,500 = ~$44/yr
+□ DE state unemployment (SUTA): rate and wage base set by the Delaware
+  Division of Unemployment Insurance; ASK the user for the assigned rate
 □ Quarterly Form 941 filings (Apr 30, Jul 31, Oct 31, Jan 31)
 □ Annual Form 940 (Jan 31, 2027)
 □ W-2 to Marcus (Jan 31, 2027)
 □ Form 1120-S annual return (Mar 15, 2027) — replaces Schedule C
-□ Schedule K-1 to Marcus showing $70K distribution + $80K wages
+□ Schedule K-1 to Marcus: box 1 ordinary business income (profit after his
+  $80K wages and the employer payroll taxes) and box 16 code D distributions;
+  the $80K wages go on his W-2, not the K-1
 □ Marcus's 2026 Form 1040 reports K-1 income on Schedule E (not Schedule C)
 ```
 
@@ -210,9 +218,9 @@ By 01/01/2026 (or as soon as CP261 arrives, whichever is later):
 
 Delaware automatically conforms to federal S-corp election. No separate state form required.
 
-DE does impose a $300 annual franchise tax on LLCs (not S-corp specific) — Marcus pays this regardless of tax election.
+DE does impose a $300 annual tax on LLCs (not S-corp specific); Marcus pays this regardless of tax election.
 
-If Marcus had been in NY, NJ, AR, or LA, a separate state form would be required (see [`../references/state-conformity.md`](../references/state-conformity.md)).
+If Marcus had been in NY or AR, a separate state election would be required; NJ needs a registration and consent step (see [`../references/state-conformity.md`](../references/state-conformity.md)).
 
 ---
 
@@ -232,8 +240,8 @@ At higher profits, savings grow proportionally (capped at SS wage base).
 
 ## Lessons / what went right
 
-1. **Filed early** (60 days before deadline) — no time pressure, no late-relief paperwork
-2. **Reasonable-salary memo prepared in advance** — Watson-factors documented before any payroll began
+1. **Filed early** (about two months before the deadline) — no time pressure, no late-relief paperwork
+2. **Reasonable-salary memo prepared in advance** — IRS factors documented before any payroll began
 3. **Single channel chosen** (fax) — clean confirmation, no duplicate-filing risk
 4. **CP261 saved** — proof of S-corp status for future state, banking, and audit interactions
 5. **Post-election setup queued** — payroll provider, quarterly filings, annual 1120-S all on calendar

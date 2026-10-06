@@ -10,7 +10,7 @@ Box 5 / Box 11 / Box 12 interactions, and reconciliation against the
 - **Name**: Robert Tanaka
 - **Age**: 73 (turned 73 on August 22, 2025)
 - **Filing status**: Married Filing Jointly
-- **Tax year**: 2025 (Form 5498s received May 2026)
+- **Tax year**: 2025 (Form 5498s furnished by June 1, 2026)
 - **Spouse**: Same age, no impact on Robert's RMD (Robert's spouse has
   her own IRAs and is computing her own RMD)
 - **Accounts**:
@@ -21,8 +21,9 @@ Box 5 / Box 11 / Box 12 interactions, and reconciliation against the
 
 ## What Robert did during 2025
 
-This is Robert's first RMD year. He turned 73 in August 2025, triggering
-the RMD requirement starting with tax year 2025.
+This is Robert's first RMD year. He reached 72 in 2024 (after 2022), so
+his applicable age is 73 (IRC §401(a)(9)(C)(v)); turning 73 in August
+2025 triggers the RMD requirement starting with 2025.
 
 He has two options for the first-year RMD timing:
 1. Take the 2025 RMD by **December 31, 2025** (most common)
@@ -56,7 +57,7 @@ Distribution period factor (Uniform Lifetime Table, age 73): **26.5**
 Robert took $20,400 from his Fidelity Traditional IRA on November 15,
 2025 (rounding up slightly for safety). He took nothing from Schwab.
 
-## The Forms 5498 received in May 2026
+## The Forms 5498 received by June 1, 2026
 
 ### Fidelity Traditional IRA 5498
 
@@ -75,7 +76,7 @@ Box 5   FMV of account on 12/31/2025:       $295,400 (after $20,400
 Box 7   IRA type:                           ✓ IRA
 Box 11  RMD required for next year:         ✓
 Box 12a RMD date:                           12/31/2026
-Box 12b RMD amount:                         $11,592 (Fidelity's
+Box 12b RMD amount:                         $11,584 (Fidelity's
                                                      calculation:
                                                      $295,400 ÷ 25.5
                                                      factor for age 74)
@@ -131,9 +132,11 @@ RECIPIENT: Robert Tanaka
 
 Box 1   Gross distribution:                 $20,400
 Box 2a  Taxable amount:                     $20,400
-Box 4   Federal income tax withheld:        $4,080 (20% withholding;
-                                                    Robert can elect
-                                                    or decline)
+Box 4   Federal income tax withheld:        $4,080 (20% rate Robert
+                                                    elected on Form W-4R;
+                                                    the default for a
+                                                    nonperiodic IRA
+                                                    payment is 10%)
 Box 7   Distribution code:                  7 (normal distribution
                                                 — Robert is 73)
 IRA/SEP/SIMPLE checkbox:                    ✓
@@ -177,7 +180,7 @@ RMD that was already taken, we need:
 - Factor (age 73): 26.5
 - 2025 RMD: $537,000 ÷ 26.5 = $20,264
 
-Robert took $20,400. ✓ Within $1 of computed RMD; satisfied. (Slight
+Robert took $20,400. ✓ $136 above the computed RMD; satisfied. (Slight
 overage gives a small buffer against custodian-recordkeeping
 differences.)
 
@@ -200,13 +203,12 @@ For 2026 RMD planning:
 - Factor (age 74, Uniform Lifetime Table): 25.5
 - 2026 RMD: $533,300 ÷ 25.5 = $20,914
 
-Sum of all three Box 12b values: $11,592 + $7,600 + $1,729 = $20,921
+Sum of all three Box 12b values: $11,584 + $7,600 + $1,729 = $20,913
 
-These differ slightly from the agent's $20,914 calculation. The
-custodian's amounts in Box 12b are computed using each custodian's
-slightly different rounding. Total is close enough; Robert can take
-$20,914 (his agent-computed aggregate) or $20,921 (custodian sum) and
-either is fine.
+This differs by $1 from the agent's $20,914 calculation because each
+custodian rounds its own account ($11,584.31, $7,600.00, $1,729.41).
+Robert should take at least $20,914 (the aggregate, rounded up) to be
+safe.
 
 ### Step 6 — Aggregation rule check
 
@@ -250,7 +252,7 @@ Age: 73 (turned 73 on 08/22/2025; first RMD year)
 | 7 | IRA type | IRA |
 | 11 | RMD required next year | ✓ |
 | 12a | RMD date | 12/31/2026 |
-| 12b | RMD amount | $11,592 |
+| 12b | RMD amount | $11,584 |
 
 ### Schwab Traditional
 | Box | Label | Amount |
@@ -296,8 +298,8 @@ Age: 73 (turned 73 on 08/22/2025; first RMD year)
 | Aggregate 12/31/2025 Box 5 (sum across all 5498s) | $533,300 |
 | Distribution period factor (age 74) | 25.5 |
 | Computed 2026 RMD (aggregate) | $20,914 |
-| Sum of custodian Box 12b values | $20,921 |
-| Difference (rounding) | $7 (immaterial) |
+| Sum of custodian Box 12b values | $20,913 |
+| Difference (rounding) | $1 (immaterial) |
 
 Robert should plan to take ~$20,914 in 2026 from any one or combination
 of the three accounts before 12/31/2026.
@@ -336,8 +338,8 @@ None.
   - Robert continues annual RMDs; consider automating
 
 ## Sources cited in this reconciliation
-- IRS Form 5498, Rev. 2025
-- IRS Instructions for Form 5498, Rev. 2025
+- IRS Form 5498 (2025)
+- IRS Instructions for Forms 1099-R and 5498 (2025)
 - IRC §401(a)(9) — RMD rules
 - IRC §408(a)(6) — IRA RMD application
 - SECURE 2.0 Act §107 — RMD age 73 (applies to those reaching 73 in
@@ -373,13 +375,13 @@ decreases (you're projected to live fewer years), so the RMD is a
 larger fraction of the account. The IRS Uniform Lifetime Table
 publishes the factor for each age.
 
-**Why is custodian-computed Box 12b ($20,921 sum) close to but not
+**Why is custodian-computed Box 12b ($20,913 sum) close to but not
 exactly matching the agent's computation ($20,914)?** Custodians
-compute using their internal records; the agent computes from Box 5.
-These should match, but rounding (typically to the nearest cent or
-dollar) and intra-day timing of the year-end value can create small
-differences. For amounts under ~$50, this is normal and not worth
-investigating.
+compute each account separately from the same December 31 value
+(Box 5) and round per account; the agent divides the aggregate. A
+difference of a dollar or two is rounding. A larger gap means one
+custodian used a different balance or factor — check it against Box 5
+and the Uniform Lifetime Table before relying on Box 12b.
 
 **Why no Form 8606?** Robert has no nondeductible basis. All his IRA
 contributions over the years (when he was working) were either
@@ -388,11 +390,15 @@ neither generates basis. Form 8606 is only needed when there's
 nondeductible basis.
 
 **What if Robert had missed his 2025 RMD?** He'd be subject to Form 5329
-Part IX. The penalty would be 25% of the shortfall (or 10% if corrected
-within 2 years per SECURE 2.0 §302). A waiver request under §4974(d)
-would likely be approved given Robert is a first-year RMD filer who
-might reasonably have been confused about the requirement. See the
-form-5329 skill `examples/missed-rmd-waiver.md` for that walkthrough.
+Part IX. The tax would be 25% of the shortfall, reduced to 10% if he
+takes the missed amount and files a return reflecting the tax within
+the correction window (generally through the end of the second tax year
+after the year the tax is imposed; SECURE 2.0 §302, IRC §4974(e)). For a
+first-year RMD the tax year is the one containing the April 1 deadline.
+The IRS can waive the tax under §4974(d) if the shortfall was due to
+reasonable error and he is taking reasonable steps to remedy it (2025
+Instructions for Form 5329, Part IX). See the form-5329 skill
+`examples/missed-rmd-waiver.md` for that walkthrough.
 
 **What records should Robert retain?**
 

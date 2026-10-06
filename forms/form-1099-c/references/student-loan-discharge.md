@@ -1,97 +1,78 @@
 # Student Loan Discharge — IRC §108(f)
 
-Federal tax treatment of canceled student loans is layered: several **permanent** exclusions exist for specific discharge categories, and a **temporary, broad** exclusion under ARPA covered all federal student loan discharges in tax years 2021-2025. The 2026 status of the broad exclusion must be verified before filing.
+Federal tax treatment of canceled student loans is layered: a few **permanent** exclusions exist for specific situations, a **temporary, broad** exclusion under ARPA covered discharges after Dec. 31, 2020 and before Jan. 1, 2026, and for discharges **after 2025** P.L. 119-21 (One Big Beautiful Bill Act) §70119 rewrote §108(f)(5) as a permanent exclusion for death and total and permanent disability discharges only.
 
-This file maps each sub-rule, lists the 1099-C handling for each, and flags the year-aware items.
+Sources checked on 2026-10-06: IRC §108(f) text and notes (law.cornell.edu); Pub. 4681 (2025), "Student Loans"; Instructions for Forms 1099-A and 1099-C (Rev. April 2025), What's New; Notice 2022-1.
 
----
-
-## Permanent exclusions under §108(f)
-
-These exclusions apply year after year regardless of legislative extensions. If the discharge fits one of these categories, the canceled amount is excluded automatically — usually with **no Form 982 required**.
-
-### §108(f)(1) — Public Service Loan Forgiveness (PSLF)
-
-**Scope:** Discharges under the William D. Ford Federal Direct Loan Program PSLF rules: 10 years of qualifying payments while employed full-time at a qualifying public-service employer.
-
-**Treatment:** Excluded from income. **No Form 982 required.** The borrower simply does not report the canceled amount on the 1040.
-
-**Practical note:** PSLF discharges typically don't generate a 1099-C because the Department of Education's loan servicer treats them as forgivable under §108(f)(1). If a 1099-C is issued in error, the borrower can either (a) claim the exclusion under §108(f)(1) and document the discharge as PSLF, or (b) request the servicer issue a corrected 1099-C with $0 in Box 2.
-
-### Teacher loan cancellation
-
-**Scope:** Discharge under the Teacher Loan Forgiveness Program (5 years of full-time teaching at a low-income school) and similar teacher-targeted programs in §108(f)(2)/(4).
-
-**Treatment:** Excluded. No Form 982 required.
-
-### Death or total and permanent disability discharge (TPD)
-
-**Scope:** Federal student loans discharged because the borrower died or became totally and permanently disabled. TPD discharges are codified under HEA §437(a) and tax-treated under §108(f)(5)(A)(i).
-
-**Treatment:** Excluded. No Form 982 required.
-
-**Note:** Pre-2018 TPD discharges were sometimes taxable; the TCJA made them permanently excludable.
-
-### Closed-school discharge / borrower defense
-
-**Scope:** Discharge because the school closed before the borrower could complete their program (HEA §437(c)) or because the school engaged in misconduct (borrower defense under §455(h)).
-
-**Treatment:** Excluded. No Form 982 required.
-
-### Certain other federal programs
-
-Several additional federal programs (Indian Health Service Loan Repayment Program, NHSC Loan Repayment, state-funded loan repayment programs for clinicians serving in shortage areas) have specific exclusions in §108(f)(2)-(4). Each is excluded automatically if the criteria are met.
+This file maps each sub-rule, lists the 1099-C handling for each, and flags the date-dependent items.
 
 ---
 
-## ARPA temporary broad exclusion — §108(f)(5)
+## Exclusions that don't depend on the discharge year
 
-The **American Rescue Plan Act of 2021** added a temporary subsection making **all** federal student loan discharges federally tax-free for tax years 2021 through 2025.
+If the discharge fits one of these, the canceled amount is excluded. **No Form 982** — Form 982 is for §108(a) exclusions, and Pub. 4681 treats student loans under "Exceptions".
 
-### Scope (2021-2025)
+### §108(f)(1) — Work-requirement cancellation (e.g., PSLF)
 
-§108(f)(5) covered discharges of:
+**Scope:** The loan was made by a qualified lender (U.S. or a state agency, certain tax-exempt public-benefit hospitals, or an educational organization under the conditions in Pub. 4681) and its terms cancel all or part of it if the borrower works for a certain period, in certain professions, for any of a broad class of employers (Pub. 4681). Public Service Loan Forgiveness fits this pattern.
 
-- Federal Direct Loans
-- Federal Family Education Loans (FFEL) held by ED
-- Perkins Loans
-- Loans made under federal programs to students attending eligible institutions
-- Private student loans **only** if discharged in connection with student loan forgiveness (e.g., post-school-closure consolidation)
+**Not covered:** cancellation by an educational organization or 501(c)(3) organization because of services the borrower performed for that organization (§108(f)(3); Pub. 4681 caution).
 
-### Treatment (2021-2025)
+**Treatment:** Excluded from income. The borrower simply does not report the canceled amount.
 
-Excluded from federal income. The form-mechanics question (Form 982 needed?) is unsettled — the IRS has not consistently required Form 982 for ARPA exclusions because the statutory exclusion is automatic. Conservative practice: include Form 982 Part I Line 1e (or follow current Form 982 instructions for the tax year being filed) when the canceled amount is large or when the borrower wants an explicit paper trail.
+**Practical note:** If a 1099-C is issued for a qualifying discharge, the borrower can claim the exclusion and keep the program documentation, or ask the servicer for a corrected 1099-C.
 
-### 2026 status — verify before filing
+### §108(f)(4) — Student loan repayment assistance
 
-As of the tax-year 2026 last-verified date in SKILL.md, **the broad ARPA exclusion under §108(f)(5) is scheduled to sunset on December 31, 2025.** Congress has not yet (as of the verification date) extended the broad exclusion into 2026.
+Payments made to the borrower under the National Health Service Corps Loan Repayment Program, a state education loan repayment program eligible for funds under the Public Health Service Act, or any other state loan repayment or forgiveness program intended to increase health services in underserved or shortage areas (Pub. 4681). Interest paid with those payments isn't deductible.
 
-**Agent action for any 2026 student loan discharge:**
+### Death or total and permanent disability (TPD)
 
-1. Check the IRS's current guidance: https://www.irs.gov/forms-pubs/about-form-982 and https://www.irs.gov/publications/p4681
-2. Check recent legislative updates — search for "student loan tax exclusion 2026" and IRS announcements
-3. If the broad exclusion has been extended → claim it
-4. If the broad exclusion has lapsed → fall back to the permanent §108(f)(1)-(4) sub-rules; if none apply, fall back to §108(a)(1)(B) insolvency
-5. Always test insolvency as a backup — borrowers eligible for student loan discharge are often insolvent
+**Scope:** Discharge on account of the death or total and permanent disability of the student — under HEA §437(a) or (d) or the parallel Part D benefit, §464(c)(1)(F), or otherwise — of a student loan or a private education loan (§108(f)(5) as amended by P.L. 119-21 §70119).
 
-**For tax years 2021-2025**, the ARPA broad exclusion was in effect; treat any federal student loan discharge in those years as excluded.
+**Treatment:**
+- Discharges in 2018–2025: excluded (TCJA rule, then the broader ARPA rule).
+- Discharges **after Dec. 31, 2025**: excluded under the rewritten §108(f)(5), **but only if the taxpayer's SSN is on the return**; the SSN must be valid for employment and issued before the return due date (§108(f)(5)(C); Pub. 4681 What's New).
+
+---
+
+## ARPA broad exclusion — discharges after 2020 and before 2026
+
+The **American Rescue Plan Act of 2021** (P.L. 117-2, §9675) made a broad range of education-loan discharges federally tax-free if the discharge happened **after Dec. 31, 2020 and before Jan. 1, 2026**.
+
+### Scope
+
+Per Pub. 4681 and Notice 2022-1, the rule covered:
+
+- Loans for postsecondary educational expenses made, insured, or guaranteed by the United States, a state or territory (or political subdivision), or an eligible educational institution — whether provided through the school or directly to the borrower
+- Private education loans (as defined in the Truth in Lending Act)
+- Loans from an educational organization described in §170(b)(1)(A)(ii)
+- Loans from a §501(a) tax-exempt organization to refinance a student loan
+
+The reason for the discharge didn't matter (income-driven repayment forgiveness, closed school, borrower defense, settlements), subject to the exception for discharges for services to the lender.
+
+### Treatment
+
+Excluded from federal income. **No Form 982.** Notice 2022-1 told lenders and servicers not to file Form 1099-C for these discharges; if one arrived anyway, the borrower excludes the amount and keeps the discharge notice.
+
+### Discharges after 2025
+
+The broad rule expired: the Instructions for Forms 1099-A and 1099-C (Rev. April 2025) say the §108(f)(5) student loan relief "expires on December 31, 2025", and P.L. 119-21 replaced §108(f)(5) with the death/TPD rule only. For a discharge on or after Jan. 1, 2026 that isn't work-requirement (§108(f)(1)), repayment-assistance (§108(f)(4)), or death/TPD:
+
+1. Treat it as canceled-debt income (Schedule 1 Line 8c for a personal loan)
+2. Test §108(a)(1)(B) insolvency — borrowers getting student-loan relief are often insolvent
+3. Test §108(a)(1)(A) bankruptcy if there was a title 11 discharge
+4. Re-check https://www.irs.gov/forms-pubs/about-form-982 and IRS.gov for later legislation before filing
 
 ---
 
 ## State tax treatment
 
-State conformity to federal §108(f) varies. Even where federal tax-free, **some states tax canceled student loans**. As of 2025, states known to tax canceled student loan debt for at least some categories included:
-
-- Mississippi (taxed certain federal forgiveness)
-- North Carolina (mixed; check current statute)
-- Indiana (some categories)
-- Wisconsin (mixed)
-
-State conformity rules change frequently. The agent should:
+State conformity to federal §108(f) varies, and some states tax canceled student loans that are federally excluded. Rules change often. The agent should:
 
 1. Identify the borrower's state of residence
-2. Check whether the state conforms to §108(f) for the tax year being reported
-3. If the state does not conform, the canceled amount is reportable on the state return even if federally excluded
+2. Check whether the state conforms to §108(f) for the year of discharge (state revenue department)
+3. If the state does not conform, the canceled amount may be reportable on the state return even if federally excluded
 
 This reference is federal-focused. For state analysis, refer the user to a state-tax practitioner or the state's department of revenue.
 
@@ -99,60 +80,55 @@ This reference is federal-focused. For state analysis, refer the user to a state
 
 ## How to claim — by category
 
-| Sub-rule | Form 982 needed? | What box | What line |
-|----------|------------------|----------|-----------|
-| §108(f)(1) PSLF | No | — | — (just don't report) |
-| Teacher cancellation | No | — | — |
-| Death/TPD discharge | No | — | — |
-| School closure / borrower defense | No | — | — |
-| §108(f)(5) ARPA broad (2021-2025) | Conservative: Yes | Per current Form 982 instructions | Line 2 = canceled amount |
-| §108(a)(1)(B) insolvency fallback | Yes | 1b | Line 2 = capped by insolvency |
-| §108(a)(1)(A) bankruptcy fallback | Yes | 1a | Line 2 = canceled amount |
+| Sub-rule | Form 982 needed? | Where it shows |
+|----------|------------------|----------------|
+| §108(f)(1) work requirement (e.g., PSLF) | No | Not reported |
+| §108(f)(4) repayment assistance | No | Not reported |
+| Death / TPD, discharged 2021–2025 | No | Not reported |
+| Death / TPD, discharged after 2025 | No | Not reported; SSN must be on the return |
+| ARPA broad rule, discharged after 2020 and before 2026 | No | Not reported |
+| §108(a)(1)(B) insolvency fallback | Yes | Form 982 box 1b; Line 2 capped by insolvency |
+| §108(a)(1)(A) bankruptcy fallback | Yes | Form 982 box 1a; Line 2 = discharged amount |
 
 ---
 
 ## 1099-C handling
 
-The Department of Education and federal loan servicers generally **do not** issue 1099-Cs for permanent §108(f)(1)-(4) exclusions because the IRS has issued guidance directing servicers not to treat those as reportable cancellations. If the borrower receives a 1099-C from a federal servicer for a PSLF or TPD discharge, the form is likely an error.
+For 2021–2025 discharges under the ARPA rule, lenders were directed not to file a 1099-C (Notice 2022-1). A 1099-C received for such a discharge is likely an error; the amount is still excluded.
 
-For the ARPA broad exclusion, servicers' practices varied during 2021-2025. Some issued 1099-Cs (forcing the borrower to claim the exclusion); others did not. Either way, the federal tax treatment is the same: excluded.
-
-**Private student loan discharges** (refinanced loans, private student loans canceled outside the federal system) are **not** covered by §108(f). They are governed by the general §108 rules — typically tested under §108(a)(1)(B) insolvency or §108(a)(1)(A) bankruptcy.
+For discharges after 2025 that aren't covered by §108(f), expect a 1099-C from the lender if the amount is $600 or more, and report or exclude it under the general §108 rules.
 
 ---
 
 ## Workflow for a student loan 1099-C
 
-1. **Identify the loan type** — federal Direct, FFEL, Perkins, private?
-2. **Identify the discharge category** — PSLF, teacher, TPD, school closure, borrower defense, ARPA broad, other?
-3. **Map to the right exclusion** — see the table above
-4. **Year-aware check** — for ARPA, confirm the year; for 2026, verify extension status
-5. **Federal handling** — claim the right exclusion (with or without Form 982)
-6. **State handling** — flag for the user; refer to state tax resource
+1. **Identify the loan type** — federal, state, school, private education loan, refinance?
+2. **Identify the discharge category** — work requirement (PSLF), repayment assistance, death/TPD, other (IDR forgiveness, closed school, borrower defense, settlement)?
+3. **Check the discharge date** — before Jan. 1, 2026 (ARPA rule available) or after 2025 (only §108(f)(1), (4), and death/TPD)?
+4. **Map to the right exclusion** — see the table above
+5. **Federal handling** — claim the exclusion (no Form 982) or fall back to insolvency / bankruptcy (Form 982)
+6. **State handling** — flag for the user; refer to the state's revenue department
 
 ---
 
 ## Common mistakes
 
-1. **Treating all student loan discharges as taxable** — most permanent §108(f) categories are auto-excluded; many borrowers overpay because they don't know.
-2. **Treating private student loan discharges as ARPA-excluded** — private loans are not in §108(f) scope unless discharged in connection with school closure / borrower defense; default to insolvency.
-3. **Skipping Form 982 when conservative practice would attach it** — for ARPA discharges, the agent should follow the Form 982 instructions for the specific tax year. When in doubt, attach Form 982 with the appropriate box and a note.
-4. **Ignoring state tax** — some states tax canceled student loans even when federally excluded. Flag this.
-5. **Assuming ARPA continues into 2026** — verify the legislative status. As of the SKILL.md last-verified date, the broad exclusion is scheduled to sunset 2025-12-31.
+1. **Treating all student loan discharges as taxable** — the 2021–2025 ARPA rule and the permanent sub-rules exclude many discharges.
+2. **Assuming the ARPA rule covers a 2026 discharge** — it applies only to discharges before Jan. 1, 2026.
+3. **Omitting the SSN for a post-2025 death/TPD exclusion** — the rewritten §108(f)(5) requires it.
+4. **Attaching Form 982 for a §108(f) exclusion** — Form 982 is for §108(a); §108(f) exclusions need none.
+5. **Ignoring state tax** — some states tax canceled student loans even when federally excluded. Flag this.
 
 ---
 
 ## Sources
 
-- IRC §108(f) — student loan discharge exclusions, all sub-rules
-- IRC §108(f)(5) — ARPA broad exclusion (added by ARPA 2021, sunset 2025-12-31 absent extension)
-- HEA §437 (20 U.S.C. §1087) — TPD and closed-school discharge authority
-- HEA §455(h) — borrower defense
-- 34 CFR §685.219 — PSLF program regulations
-- IRS Notice 2022-1 — discharged student loan debt under federal programs (transitional ARPA guidance)
-- IRS Tax Topic 431 — canceled debt
-- [Publication 4681](https://www.irs.gov/publications/p4681) — Chapter 1, student loan discharge section
+- IRC §108(f)(1), (3), (4), (5) — student loan rules; §108(f)(5) as amended by P.L. 119-21 §70119 (effective for discharges after Dec. 31, 2025)
+- ARPA 2021 (P.L. 117-2), §9675 — broad rule for discharges after Dec. 31, 2020 and before Jan. 1, 2026
+- [Notice 2022-1](https://www.irs.gov/pub/irs-drop/n-22-01.pdf) — no 1099-C for ARPA-excluded discharges
+- [Publication 4681 (2025)](https://www.irs.gov/publications/p4681) — "Student Loans" (exceptions), What's New (SSN requirement)
+- [Instructions for Forms 1099-A and 1099-C (Rev. April 2025)](https://www.irs.gov/pub/irs-pdf/i1099ac.pdf) — What's New
+- HEA §437 (20 U.S.C. §1087) — death and disability discharge authority
 - [Federal Student Aid: Loan Forgiveness](https://studentaid.gov/manage-loans/forgiveness-cancellation)
-- ARPA 2021 (Public Law 117-2), §9675
 
-**Year-aware:** Verify the 2026 status of §108(f)(5) at the IRS website and via legislative tracking before filing any 2026 student loan discharge.
+**Year-aware:** for any discharge after 2025, re-check §108(f) for later legislation before filing.

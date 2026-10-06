@@ -28,7 +28,7 @@ A complete walkthrough of a freelance writer who received four Form 1099-NECs fr
 | DataFlow invoices | $11,500 | Reconciled |
 | DevDocs invoices | $8,750 | Reconciled |
 | Cloud Wave invoices | $3,200 | Reconciled |
-| Stripe direct invoices (separate small clients) | $9,400 | Stripe will issue 1099-K |
+| Stripe direct invoices (separate small clients) | $9,400 | 1099-K only if Stripe's reporting threshold is met (more than $20,000 and 200 transactions for third-party network payments); report either way |
 | Two cash clients (sub-threshold each) | $1,200 | No 1099, but Lena reports |
 | **Total gross 2026 income** | **$58,050** | |
 
@@ -49,20 +49,20 @@ Per [`payee-classification.md`](../references/payee-classification.md) and IRC �
 
 | Source category | Amount |
 |----------------|--------|
-| Sum of all 1099-NECs Box 1 | $47,450 |
-| Stripe 1099-K Box 1a | $9,400 |
+| Sum of all 1099-NECs Box 1a | $47,450 |
+| Stripe payouts (no 1099-K expected below the threshold) | $9,400 |
 | Cash payments (no 1099) | $1,200 |
 | **Schedule C Line 1 (gross receipts)** | **$58,050** |
 
 Lena reports the **full $58,050** on Schedule C Line 1, not the $47,450 sum of 1099-NECs alone. The IRS expects gross receipts to include ALL income — 1099-reported and not.
 
-The cross-check: Schedule C Line 1 ≥ sum of all 1099s (47,450 NEC + 9,400 K = $56,850). Lena's $58,050 exceeds this, which is correct (she had $1,200 of cash that wasn't on any 1099).
+The cross-check: Schedule C Line 1 ≥ sum of all 1099s received ($47,450 of 1099-NECs, plus any 1099-K if one arrives). Lena's $58,050 exceeds this, which is correct ($9,400 of Stripe income and $1,200 of cash weren't on any 1099-NEC).
 
 ## Box 4 federal withholding handling
 
 All four 1099-NECs have Box 4 = $0 (no backup withholding; Lena had valid W-9s on file with each client).
 
-If Box 4 had been > $0 on any 1099-NEC, Lena would total the Box 4 amounts and report on **Form 1040 Line 25c** (federal income tax withheld from forms 1099). For 2026, Line 25c gets credit for all withholding from 1099-series forms.
+If Box 4 had been > $0 on any 1099-NEC, Lena would total the Box 4 amounts and report them on the Form 1040 line for withholding from Form(s) 1099 (**line 25b** on the 2025 Form 1040; confirm the line on the 2026 form).
 
 ## State income reconciliation
 
@@ -84,7 +84,7 @@ E. Address: Same as Form 1040
 F. Accounting method: Cash
 G. Material participation: Yes
 H. Started this year: No
-I. Paid any individual $600+: No
+I. Made payments requiring Form(s) 1099: No
 J. (N/A — I=No)
 
 ## Part I — Income
@@ -105,17 +105,17 @@ J. (N/A — I=No)
 
 ## Sources cited
 - Four 1099-NECs received from clients (TechCorp, DataFlow, DevDocs, Cloud Wave)
-- Stripe 1099-K for direct invoice clients
+- Stripe payout records for direct invoice clients (1099-K only if the platform's threshold is met)
 - IRC §162 (trade or business deduction)
 - IRC §1402 (SE tax for trade-or-business income)
 ```
 
 ## Validation summary
 
-- **Math**: Schedule C Line 1 ($58,050) ≥ sum of all 1099s ($56,850). Difference = $1,200 cash, confirmed.
+- **Math**: Schedule C Line 1 ($58,050) ≥ sum of 1099-NECs ($47,450). Difference = $9,400 Stripe + $1,200 cash, confirmed.
 - **Sanity**:
   - All four 1099-NECs reconcile to Lena's records exactly. No discrepancies.
-  - No backup withholding (Box 4 = $0 on all). No Form 1040 Line 25c entries from 1099s.
+  - No backup withholding (Box 4 = $0 on all). No Form 1040 Line 25b entries from 1099s.
   - State boxes consistent with each client's location.
 - **Next steps**:
   - Schedule SE: net SE income = $45,600 × 92.35% = $42,112; SE tax = $42,112 × 15.3% = $6,443
@@ -135,8 +135,8 @@ J. (N/A — I=No)
 **What if a client never sent a 1099-NEC despite paying $4,000?** Lena still reports the $4,000 as income on Schedule C Line 1. Income is taxable regardless of whether the payer fulfilled their reporting obligation. (The payer faces a separate penalty for non-compliance under IRC §6721.)
 
 ## Sources cited
-- IRS Form 1099-NEC, Rev. 2026
-- IRS Instructions for Forms 1099-MISC and 1099-NEC, Rev. 2026
+- IRS Form 1099-NEC, Rev. December 2026
+- IRS Instructions for Forms 1099-MISC and 1099-NEC, Rev. December 2026
 - IRC §162 (trade or business expenses), §1402 (SE tax), §6041 (1099 reporting)
 - IRS Schedule C, Rev. 2026 (https://www.irs.gov/pub/irs-pdf/f1040sc.pdf)
 - IRS Instructions for Schedule C, Rev. 2026 (https://www.irs.gov/pub/irs-pdf/i1040sc.pdf)

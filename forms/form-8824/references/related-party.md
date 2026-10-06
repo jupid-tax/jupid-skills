@@ -46,8 +46,9 @@ When in doubt, ask the user to describe the relationship and apply §267(b) care
 If the user exchanges property with a related party AND either party disposes of the received property within **2 years** after the date of the last transfer in the exchange:
 
 - The original §1031 deferral is **un-done**
-- Gain is recognized on the original exchange in the year of the disqualifying disposition
-- Reported on Form 8824 of the year of disposition (with a note explaining the recognition)
+- Gain or loss on the original exchange is taken into account as of the date of the disqualifying disposition (IRC §1031(f)(1))
+- Reported on Form 8824 for the year of disposition: Part II with Line 9 or Line 10 = Yes, then Part III, reporting the deferred gain or (loss) from Line 24 as if the exchange had been a sale
+- Either party's disposition triggers recognition for the user: Line 9 covers the related party's disposition, Line 10 the user's own
 
 ### "Date of last transfer"
 
@@ -55,29 +56,32 @@ In a delayed exchange, this is the later of Line 4 (relinquished transfer) or Li
 
 ### Three exceptions (IRC §1031(f)(2))
 
-1. **Death of either party** — natural causes during the 2-year window do not trigger recognition. Estate continues to hold the inherited property with stepped-up basis.
-2. **Compulsory or involuntary conversion** — if the received property is condemned, destroyed, or otherwise involuntarily converted, §1033 governs the new property and §1031 deferral is preserved.
-3. **No tax-avoidance purpose** — if the user can establish to the IRS's satisfaction that neither the original exchange nor the disposition had as one of its principal purposes the avoidance of federal income tax. This is a high evidentiary bar; relies on documentation, business reasons, and timing.
+1. **Death of either party** (Line 11a) — a disposition after the death of either related party does not trigger recognition.
+2. **Compulsory or involuntary conversion** (Line 11b) — a disposition by involuntary conversion (within §1033) does not count, but only if the exchange occurred before the threat or imminence of the conversion.
+3. **No tax-avoidance purpose** (Line 11c) — if the user can establish to the IRS's satisfaction that neither the original exchange nor the disposition had as one of its principal purposes the avoidance of federal income tax. Attach an explanation. The instructions say tax avoidance generally won't be seen as a principal purpose for a disposition in a nonrecognition transaction, an exchange where the related parties get no tax advantage from shifting basis, or an exchange of undivided interests that leaves each party holding a whole property or a larger undivided interest.
+
+The 2-year period is suspended for any period in which the holder's risk of loss is substantially diminished (IRC §1031(g); 2025 instructions, "Tolling of holding period").
 
 ---
 
 ## Form 8824 reporting requirements
 
-When Line 7 = Yes (related-party exchange), Part II becomes mandatory:
+When Line 7 = Yes (related-party exchange, directly or indirectly), Part II becomes mandatory (2025 Form 8824):
 
-- **Line 8** — Name, address, and SSN/EIN/ITIN of related party
-- **Line 9** — Relationship to user
-- **Line 10** — Yes/No: did either party dispose of the received property during this tax year?
-- **Line 11** — If Line 10 = Yes, check the applicable exception (death, involuntary conversion, no tax-avoidance) or recognize gain currently
+- **Line 8** — Name of related party, relationship to you, related party's identifying number, and address
+- **Line 9** — Yes/No: during this tax year (and before 2 years after the last transfer), did the related party sell or dispose of any part of the like-kind property received from you (or an intermediary)?
+- **Line 10** — Yes/No: during this tax year (and before 2 years after the last transfer), did you sell or dispose of any part of the like-kind property you received?
+- **Line 11** — If Line 9 or 10 = Yes, check the applicable exception (11a death, 11b involuntary conversion, 11c no tax-avoidance purpose with explanation) or complete Part III and report the deferred gain now
 
 ### Annual reporting requirement
 
-The IRS expects Form 8824 to be filed in the year of original exchange AND, if appropriate, in any year of subsequent disposition during the 2-year window.
+File Form 8824 for the year of the exchange AND for each of the 2 years following the year of a related party exchange (2025 instructions, "When To File").
 
-If a subsequent disposition triggers recognition under §1031(f), the user files an updated Form 8824 in the year of disposition with:
-- Same exchange details (Lines 1-9 from prior year)
-- Line 10 = Yes
-- Line 11 = exception or recognized gain
+In each following year:
+- Complete Parts I and II (same exchange details on Lines 1-8)
+- If Lines 9 and 10 are both "No", stop; Part III is not required
+- If Line 9 or 10 is "Yes" and a Line 11 exception applies, check it, attach any required explanation, and stop
+- If Line 9 or 10 is "Yes" and no exception applies, complete Part III and report the Line 24 deferred gain or (loss) on this year's return
 
 ---
 
@@ -85,9 +89,9 @@ If a subsequent disposition triggers recognition under §1031(f), the user files
 
 ### Indirect related-party exchange via QI
 
-IRS Letter Ruling 9748006 and subsequent guidance: if the user uses a QI to exchange with what appears to be an unrelated party, but the QI then arranges for the replacement to come from a related party, the 2-year rule still applies (substance-over-form).
+An exchange made with a related party through an intermediary (a QI or EAT), or by a disregarded entity owned by the user or a related party, is a related-party exchange (2025 instructions, Line 7).
 
-This includes "swap-and-drop" structures and similar techniques. The IRS scrutinizes them.
+An exchange structured to avoid the related-party rules is not a like-kind exchange (IRC §1031(f)(4)). The common case: the user transfers the relinquished property to a QI and receives replacement property that a related party sold into the exchange for cash or other non-like-kind property (Rev. Rul. 2002-83). Unless a Line 11 exception applies, do not file Form 8824 for it; report the disposition of the property given up as a sale (2025 Form 8824, Note under line 7).
 
 ### Partnerships and S-corps as related parties
 
@@ -115,15 +119,14 @@ Net effect: family unit extracted cash with little tax. §1031(f) prevents this 
 - Brother A owns rental property in Phoenix; Brother B owns rental property in Tucson
 - They exchange via QI in March 2025
 - Neither disposes within 2 years (i.e., by March 2027)
-- Form 8824 filed for 2025: Line 7 = Yes, Part II completed, Line 10 = No
-- No further Form 8824 required (assuming both continue holding past 2027)
+- Form 8824 filed for 2025: Line 7 = Yes, Part II completed, Lines 9 and 10 = No, Part III completed
+- Form 8824 filed again for 2026 and 2027: Parts I and II only, Lines 9 and 10 = No, stop
 
 ### Example B: Brother-to-brother, one disposes within 2 years
 
 - Same setup, but Brother A sells the Tucson property in October 2026 (≈ 19 months after exchange)
-- Brother A's 2026 return: Form 8824 with Line 7 = Yes, Line 10 = Yes, Line 11 = no exception
-- Brother A recognizes the entire deferred gain from 2025 in 2026 (in addition to any new gain from the 2026 sale)
-- Brother B's deferral may also be unwound depending on the structure — file Form 8824 to recognize for his side as well, if applicable
+- Brother A's 2026 return: Form 8824 with Line 7 = Yes, Line 9 = No, Line 10 = Yes, no Line 11 exception; Part III reports his Line 24 deferred gain from 2025 in 2026 (in addition to any new gain from the 2026 sale)
+- Brother B's 2026 return: Form 8824 with Line 9 = Yes (the related party disposed), no exception; Part III reports his own deferred gain in 2026 (IRC §1031(f)(1)(C)(i))
 
 ### Example C: Death exception
 
@@ -145,7 +148,8 @@ Net effect: family unit extracted cash with little tax. §1031(f) prevents this 
 - [ ] Related party's SSN/EIN provided (the IRS uses this to track the other side)
 - [ ] Relationship correctly characterized (family, controlled entity, partnership, etc.)
 - [ ] If user is filing within 2 years of the original exchange, agent reminds user that any disposition before the 2-year mark un-does the deferral
-- [ ] If a disposition occurred within 2 years, Line 10 = Yes and gain is recognized (or one of the three exceptions checked on Line 11)
+- [ ] Form 8824 is calendared for each of the 2 years after the exchange year
+- [ ] If a disposition occurred within 2 years, Line 9 or Line 10 = Yes and the Line 24 deferred gain is reported (or one of the three exceptions checked on Line 11)
 - [ ] Constructive ownership applied per IRC §267(c) — family ownership is aggregated
 
 ---
@@ -154,7 +158,7 @@ Net effect: family unit extracted cash with little tax. §1031(f) prevents this 
 
 If the exchange is between related parties, surface the 2-year obligation prominently in the deliverable's "Next steps" section. Phrase it as:
 
-> ⚠ Related-party exchange flag: §1031(f) requires both you and [related party] to hold the received properties for at least 2 years (until [date]). Any disposition before that date — by either party — generally un-does the deferral and triggers gain recognition on the original exchange in the year of disposition. Exceptions: death, involuntary conversion, or non-tax-avoidance disposition (the third requires IRS approval).
+> ⚠ Related-party exchange flag: §1031(f) requires both you and [related party] to hold the received properties for at least 2 years (until [date]). Any disposition before that date — by either party — generally un-does the deferral and triggers gain recognition on the original exchange in the year of disposition. Exceptions: death, involuntary conversion, or a disposition you can show had no tax-avoidance purpose (attach an explanation; the IRS decides). Form 8824 is also due with your return for each of the next 2 years.
 
 The user should set a calendar reminder for the 2-year date.
 
@@ -167,6 +171,7 @@ The user should set a calendar reminder for the 2-year date.
 - IRC §707(b)(1) — partnership related parties
 - IRC §267(c) — constructive ownership
 - IRC §1031(f)(2) — exceptions (death, involuntary conversion, non-tax-avoidance)
-- Form 8824 instructions, Part II
-- IRS Letter Ruling 9748006 — indirect related-party exchanges
+- IRC §1031(f)(4) — transactions structured to avoid the rule; IRC §1031(g) — tolling
+- 2025 Instructions for Form 8824, "When To File", Line 7, Lines 11a-11c
+- Rev. Rul. 2002-83 — related party sells replacement property into the exchange through a QI
 - Pub. 544 — narrative explanation

@@ -2,214 +2,231 @@
 
 Complete lookup for every line on Form 1116. Use when the agent needs to confirm where a number belongs or what a line means. One Form 1116 covers exactly one income category (basket); separate forms for each basket the user has.
 
+Verified against the **2025 Form 1116** (created 9/16/25) and the **2025 Instructions for Form 1116** (Dec 23, 2025). Line numbers change between revisions; re-check the current form at https://www.irs.gov/forms-pubs/about-form-1116 before using this map for a later year.
+
 ## Header
 
 | Line | Field | What goes here | Notes |
 |------|-------|----------------|-------|
 | (top) | Name | Filer's legal name | Match Form 1040 |
-| (top) | SSN/ITIN | Filer's identifier | Or trust EIN if Form 1041 |
-| a | §951A category (GILTI) | Checkbox | Rare for individuals; mostly CFC shareholders |
-| b | Foreign branch category | Checkbox | Post-TCJA; mostly business filers |
-| c | Passive category income | Checkbox | Most 1099-DIV/INT box 7 income |
-| d | General category income | Checkbox | Wages, SE, business income |
-| e | §901(j) sanctioned country | Checkbox | Currently Iran, North Korea, Sudan; verify list |
-| f | Income re-sourced by treaty | Checkbox | Treaty-specific reclassification |
-| g | Lump-sum distributions | Checkbox | Qualified retirement distribution |
-| h | Paid OR Accrued | Radio | Accrual election binding for future years (IRC §905(a)) |
-| i | Resident country code | 2-letter ISO code | Use IRS country code list |
+| (top) | Identifying number | SSN/ITIN as shown on the return | Or trust/estate EIN if Form 1041 |
+| a | Section 951A category income | Checkbox | GILTI inclusions of US shareholders of CFCs |
+| b | Foreign branch category income | Checkbox | Business profits attributable to QBUs in foreign countries |
+| c | Passive category income | Checkbox | Most income behind foreign tax in 1099-DIV box 7 / 1099-INT box 6 |
+| d | General category income | Checkbox | Wages, SE, active business income |
+| e | Section 901(j) income | Checkbox | Sanctioned countries; 2025 list in Pub. 514: Iran, Libya (waiver), North Korea, Sudan, Syria |
+| f | Certain income re-sourced by treaty | Checkbox | Separate Form 1116 per treaty country |
+| g | Lump-sum distributions | Checkbox | Foreign-source pension lump sum taxed using Form 4972 |
+| h | Resident of (name of country) | Country name | The filer's country of residence (United States for a US-resident investor) |
 
-Only one of a-g is checked per Form 1116. If the filer has income in multiple baskets, file one Form 1116 per basket.
+Only one of a-g is checked per Form 1116. If the filer has income in multiple baskets, file one Form 1116 per basket. Paid/Accrued is not in the header: it is the (j)/(k) checkbox in Part II.
 
 ---
 
-## Part I — Foreign-source taxable income (this category)
+## Part I — Taxable income or loss from sources outside the US (for the category checked)
 
-### Line 1a — Gross income from sources outside the US
+### Line i — Foreign country or US territory
 
-Per-country columns (A, B, C). Each column gets the gross foreign-source income from that country, in this category, in USD.
+One column (A, B, C) per country or territory; attach additional sheets for more than three. The "Total" column adds A, B, and C. Special labels from the instructions:
+
+- **RIC** — income passed through from a mutual fund or other regulated investment company, totaled in one column
+- **863(b)** — section 863(b) income (partly US, partly foreign), one column
+- **951A** — section 951A inclusions, one column
+- **HTKO** — high-taxed passive income moved to another category (negative on the passive form, positive on the other form)
+- **909 income** — income from a prior-year foreign tax credit splitting event
+
+### Line 1a — Gross income from sources within the country shown
+
+Gross income in this category, from that country, in USD, even if the foreign country doesn't tax it. Identify the type on the dotted line ("Wages", "Dividends").
 
 | Belongs here | Belongs elsewhere |
 |--------------|-------------------|
-| Foreign wages (general basket) | US-source wages even if paid by a foreign employer (treaty-based sourcing rules apply) |
+| Foreign wages (general basket), not excluded on Form 2555 | Earned income excluded on Form 2555 (never on line 1a) |
 | Foreign dividends, interest (passive) | US-source dividends from a US company (no FTC) |
-| Foreign rental net income (passive) | Foreign income excluded under §911 (FEIE — must NOT appear here) |
-| Foreign capital gains (passive) | Income re-sourced by treaty (basket f, separate 1116) |
-| Foreign royalties (passive, usually) | |
-| Foreign SE income (general) | |
+| Foreign rents and royalties (usually passive) | Income re-sourced by treaty (basket f, separate 1116) |
+| Foreign capital gains (passive), after any rate adjustment | Foreign capital losses (line 5) |
+| Foreign SE / business gross receipts less cost of goods sold (general) | |
 
-**Critical**: If the filer used Form 2555 to exclude wage income, the excluded amount does NOT go on Line 1a. Only the non-excluded portion appears here.
+Foreign qualified dividends and capital gain distributions go on line 1a after the rate adjustment (× 0.4054 at 15%, × 0.5405 at 20%, omitted at 0%) unless the filer uses the adjustment exception. See [`qualified-dividend-adjustment.md`](./qualified-dividend-adjustment.md).
 
-### Line 1b — Compensation for services performed abroad
+### Line 1b — Alternative-basis checkbox
 
-Subset of Line 1a. Only fill if the filer has wages on Line 1a; this line breaks out the compensation portion.
+A checkbox, not an amount. Check it only if **all** apply: line 1a is compensation for services as an employee; total employee compensation from all sources is $250,000 or more; and an alternative basis (Pub. 514) was used to source it. Attach the statement the instructions require (name/SSN, items, basis, computation, comparison with the time basis).
 
-### Line 2 — Definitely related deductions
+### Line 2 — Expenses definitely related to line 1a
 
-Deductions definitely related to the income on Line 1a.
+Attach a statement listing them. No interest expense on line 2 (interest goes on 4a/4b).
 
 | Belongs here | Belongs elsewhere |
 |--------------|-------------------|
-| Investment expenses tied to foreign dividends (custodian fees) | Investment expenses tied to US dividends |
-| Foreign business expenses (Schedule C reductions for foreign SE income) | Domestic business expenses |
-| Allocable depreciation on foreign-used assets | |
+| Business expenses of foreign SE income (supplies, travel for the foreign engagement) | Expenses of US-source income (not on Form 1116 at all) |
+| State and local income taxes related to foreign-source income | Interest expense (lines 4a/4b) |
+| Investment expenses tied to the foreign income | Deductions related to Form 2555-excluded income |
 
-### Line 3a — Itemized or standard deduction (pro-rata portion)
+### Line 3a — Certain itemized deductions or standard deduction
 
-Deductions not definitely related — they get apportioned.
+If itemizing: medical expenses (Schedule A line 4), general sales taxes, real estate taxes for the home, and state and local personal property taxes. Don't include more state and local tax than Schedule A line 5e allows. If not itemizing: the standard deduction.
 
-- If itemizing: enter Schedule A total (less items already on Line 2 or Line 4)
-- If standard deduction: enter the standard deduction amount
+### Line 3b — Other deductions
 
-### Line 3b — Other deductions (not definitely related)
+Deductions not definitely related to any specific income, e.g., Schedule 1 (Form 1040) Part II adjustments. Do not include the Schedule 1-A line 37 senior deduction. The Schedule 1-A line 30 car loan interest deduction goes on line 4b instead. Attach a statement.
 
-Charitable contributions if itemizing; certain above-the-line deductions if not specifically allocable.
+### Line 3c — Add lines 3a and 3b
 
-### Line 3c — Sum of 3a + 3b
+### Line 3d — Gross foreign source income
 
-### Line 3d — Gross foreign-source income (this category, all countries)
-
-This is the same as the sum across columns on Line 1a (less any exclusions).
+Gross foreign-source income in this category. Include foreign earned income excluded on Form 2555; exclude other exempt income. Use amounts before any qualified dividend / capital gain adjustment. "Gross income" means gross receipts less cost of goods sold, gains before losses, and other income before deductions.
 
 ### Line 3e — Gross income from all sources
 
-Worldwide gross income — total income before deductions, US + foreign.
+Worldwide gross income, US and foreign, all categories, same definition as 3d (including Form 2555-excluded income). The same amount goes on line 3e of every Form 1116 the filer files. Nonresident aliens include non-effectively-connected income on both 3d and 3e.
 
-### Line 3f — Allocation ratio = 3d ÷ 3e
+### Line 3f — Divide line 3d by line 3e
 
-Round to 6 decimal places. This is the share of pro-rata deductions allocated to foreign-source income.
+Round to at least four decimal places (0.8756782 → 0.8757). Not more than 1.
 
-### Line 3g — 3c × 3f
-
-The foreign share of pro-rata deductions.
+### Line 3g — Multiply line 3c by line 3f
 
 ### Line 4a — Home mortgage interest
 
-If itemizing and the user has a home mortgage, the interest is allocated under Reg. §1.861-9. Most individuals use the asset method (not gross income method) — see Pub. 514 for the worked formula.
+If gross foreign-source income (including Form 2555-excluded income) is $5,000 or less, all interest can be allocated to US-source income and lines 4a/4b are 0. Otherwise use the Worksheet for Home Mortgage Interest: (gross foreign-source income of this type, excluding Form 2555 income) ÷ (gross income from all sources, excluding Form 2555 income), at least four decimals, × Schedule A line 8e.
 
-### Line 4b — Allocated to foreign sources
+### Line 4b — Other interest expense
 
-The foreign-source allocation of Line 4a.
+Investment interest, trade or business interest, passive activity interest, student loan interest, and qualified passenger vehicle loan interest, apportioned by the **asset method** (adjusted basis of assets producing foreign vs. US income). Same $5,000 threshold as line 4a for US citizens, resident aliens, and domestic estates. Example from the instructions: $2,000 of investment interest, $60,000 of $100,000 asset basis produces foreign income → $1,200 on line 4b.
 
 ### Line 5 — Losses from foreign sources
 
-Foreign-source losses reduce this basket's income. Net losses across all baskets recharacterize income in later years per IRC §904(f). For most individual filers without complex loss-carryover situations, this line is 0.
+Foreign-source losses in this category, including foreign capital losses after the Worksheet A/B adjustments.
 
-### Line 6 — Total deductions
+### Line 6 — Add lines 2, 3g, 4a, 4b, and 5
 
-= Line 2 + Line 3g + Line 4b + Line 5
+### Line 7 — Subtract line 6 from line 1a
 
-### Line 7 — Foreign-source taxable income
-
-= Line 1a − Line 6
-
-This is the numerator of the §904 limitation fraction.
+Enter here and on line 15.
 
 ---
 
 ## Part II — Foreign taxes paid or accrued
 
-Two-block structure: foreign taxes withheld at source on (A) dividends, (B) rents/royalties, (C) interest, (D) other; plus a separate "Other foreign taxes paid or accrued" block. By country letter.
+Check one box: **(j) Paid** or **(k) Accrued**. A cash-basis filer can choose accrued only on a timely filed original return, never on an amended return, and must then credit taxes in the year they accrue on all future returns.
 
 | Column | What goes here |
 |--------|---------------|
-| Country code | Country letter from Part I header |
-| Date paid OR accrued | If "Paid" elected: the actual payment date. If "Accrued": the year-end date. |
-| Foreign currency | Original currency amount |
-| Conversion rate | Spot rate (paid) or yearly average (accrued) |
-| In US dollars | The translated USD amount |
+| Country line A/B/C | Same order as the Part I columns |
+| (l) Date paid or accrued | Payment or accrual date; "1099 taxes" when the tax is reported in USD on a 1099; "909 taxes" for released splitter taxes |
+| (m) Dividends, (n) Rents and royalties, (o) Interest — foreign currency | Taxes withheld at source, in the foreign currency |
+| (p) Other foreign taxes paid or accrued — foreign currency | e.g., income tax on wages or business profits |
+| (q)–(t) | The same four items in US dollars |
+| (u) Total | Add columns (q) through (t) |
 
-### Line 8 — Total foreign taxes
+### Line 8 — Add lines A through C, column (u)
 
-Sum of all USD amounts. This is the total creditable foreign tax for this basket this year.
+Enter here and on line 9. Translation rules: taxes paid use the rate on the date paid (or withheld); accrued taxes use the average rate for the year to which they relate, with the exceptions in [`currency.md`](./currency.md). Attach an explanation of the conversion.
 
-**Foreign taxes that do NOT go on Line 8**:
+**Foreign taxes that do NOT go on Line 8** (2025 i1116, "Foreign Taxes Not Eligible for a Credit"):
 
-- Foreign penalties or interest on tax (not creditable per IRC §901(b))
-- Withholding on US-source income (not foreign tax)
-- Taxes voluntarily paid above legal liability (over-withholding the user could refund)
-- Soak-up taxes that depend on FTC availability (Reg. §1.901-2(c))
-- Foreign value-added tax (VAT, GST) on consumption — not an income tax
-- Foreign social security tax IF the country has a Totalization Agreement with the US (split between countries)
+- Interest and penalties
+- Tax not legally owed or eligible for refund (including withholding above the treaty rate)
+- Withholding on US-source income
+- Taxes paid to sanctioned countries
+- Taxes on dividends or other income that fail the 16-day holding period, or for which related payments must be made
+- Foreign value-added tax (VAT, GST) and other non-income taxes (Reg. §1.901-2)
+- Foreign social security tax covered by a totalization agreement
 
-See [`non-creditable-taxes.md`](./non-creditable-taxes.md) for the full list.
-
----
-
-## Part III — Computing the credit (the §904 limitation)
-
-### Line 9 — Foreign taxes (= Line 8)
-
-### Line 10 — Carryback / carryforward
-
-Prior-year unused FTC for this basket. Carryback 1 year + carryforward 10 years (IRC §904(c)). The user must track this manually across years; the IRS doesn't compute it.
-
-### Line 11 — Total available
-
-= Line 9 + Line 10
-
-### Line 12 — Reduction in foreign taxes (boycott)
-
-If the filer participated in an international boycott (IRC §999), reduce here. Almost always 0 for individuals.
-
-### Line 13 — Net foreign taxes available
-
-= Line 11 − Line 12
-
-### Line 14 — Foreign-source taxable income (= Line 7)
-
-### Line 15 — Adjustments
-
-The qualified-dividend / long-term capital gain rate adjustment. When the filer has foreign QD or LTCG taxed at preferential US rates (0%/15%/20%), the §904 limitation must be adjusted downward to prevent over-claiming the credit (the foreign income is already getting a US rate benefit).
-
-Mechanics: multiply foreign QD / LTCG by a ratio based on the rate differential, and subtract from Line 14. See [`qualified-dividend-adjustment.md`](./qualified-dividend-adjustment.md) for the worked formula.
-
-If the user has no QD or LTCG (or the de-minimis exemption applies — under $20,000 of foreign QD+LTCG in some years), Line 15 is 0.
-
-### Line 16 — (reserved)
-
-### Line 17 — Adjusted foreign-source taxable income
-
-= Line 14 − Line 15
-
-### Line 18 — Total taxable income
-
-From Form 1040 Line 15 (with adjustments). For 2025/2026, this is the line where the IRS asks for the user's worldwide taxable income before personal exemption (no longer applicable post-TCJA, but the form line still says "before personal exemption" historically).
-
-### Line 19 — Limitation ratio
-
-= Line 17 ÷ Line 18, rounded to 6 decimals, capped at 1.000000.
-
-### Line 20 — Limitation amount
-
-= Line 19 × Form 1040 tax before credits (Line 16 of the 1040, with §904(b)(2) adjustments)
-
-### Line 21 — Foreign tax credit, this category
-
-= Lesser of Line 13 or Line 20.
-
-If Line 13 > Line 20: the user has unused FTC for this basket. The excess carries back 1 year (file an amended return for the prior year if the prior year had limitation room) and carries forward 10 years (IRC §904(c)).
+See [`non-creditable-taxes.md`](./non-creditable-taxes.md) for the full list. Taxes on Form 2555-excluded income are entered here but removed on line 12.
 
 ---
 
-## Part IV — Summary (only on the summary 1116 if multiple baskets)
+## Part III — Figuring the credit
 
-When the user has multiple baskets, each basket's 1116 contains Lines 1-21. ONE of those 1116s is designated the "summary" and contains Part IV.
+### Line 9 — Enter the amount from line 8
 
-### Lines 22-32 — Credits from separate Parts III
+### Line 10 — Carryover and carrybacks
 
-Enter Line 21 from each basket's 1116 here, by basket.
+Carryover from Schedule B (Form 1116), line 3, column (xiv), plus any carryback to this year. Attach Schedule B for the category if there is a carryover in or a new carryover generated this year; if an amount is entered but Schedule B isn't required, check the box. Leave blank for section 951A category income (no carryovers). Carryback 1 year, carryforward 10 years (IRC §904(c)).
 
-### Line 33 — Total credit
+### Line 11 — Add lines 9 and 10
 
-Sum of Lines 22-32.
+### Line 12 — Reduction in foreign taxes (enter as a negative)
 
-### Line 34 — (reduction; rare for individuals)
+- Taxes allocable to foreign earned income and housing amounts excluded on Form 2555 (fraction in the instructions)
+- Taxes on Puerto Rico income exempt from US tax; American Samoa income excluded on Form 4563
+- Combined foreign oil and gas income; foreign mineral income with percentage depletion
+- 10% reduction for failure to file Form 5471 or Form 8865
+- Taxes specifically attributable to international boycott operations (otherwise use line 34)
+- Taxes related to a foreign tax credit splitting event (§909)
 
-### Line 35 — Final FTC
+### Line 13 — Taxes reclassified under high tax kickout
 
-= Smaller of Line 33 or US tax before credits (Form 1040 Line 16).
+Negative on the passive category form, positive on the other category's form.
 
-This is the number that goes on **Schedule 3 Line 1** of Form 1040 — the actual FTC the filer claims.
+### Line 14 — Combine lines 11, 12, and 13
+
+Total foreign taxes available for credit.
+
+### Line 15 — Enter the amount from line 7
+
+If zero or a loss, the category generally has no credit, but line 16 must still be completed.
+
+### Line 16 — Adjustments to line 15
+
+In this order, with an attached computation: (1) §461(l) disallowed business loss; (2) allocation of foreign losses among categories; (3) allocation of a US-source loss; (4) recapture of overall foreign loss accounts; (5) recapture of separate limitation loss accounts; (6) recapture of overall domestic loss accounts. Usually 0 for filers without losses.
+
+### Line 17 — Combine lines 15 and 16
+
+If zero or less, skip line 18 and enter 0 on line 19.
+
+### Line 18 — Taxable income for the limitation
+
+Individuals: Form 1040 (or 1040-SR/1040-NR) line 11b minus line 14, plus Schedule 1-A line 37 (the senior deduction is added back for 2025-2028). Estates and trusts: taxable income without the exemption deduction. If zero or less, enter 0 on lines 18 and 19. If the filer has qualified dividends or capital gains and line 5 of the Qualified Dividends and Capital Gain Tax Worksheet is greater than zero while line 23 is less than line 24, use the Worksheet for Line 18 unless the adjustment exception applies.
+
+### Line 19 — Divide line 17 by line 18
+
+"1" if line 17 is more than line 18; "0" if line 18 is zero.
+
+### Line 20 — Regular tax against which the credit is allowed
+
+Individuals: Form 1040 line 16 plus Schedule 2 (Form 1040) line 1z, less any Form 4972 tax on line 16. Regular tax only (IRC §26(b)(1)); no SE tax, no NIIT. Form 1041: Schedule G lines 1a and 1d. Category g uses the lump-sum worksheet; category e leaves line 20 blank. Adjust for Form 8978 if filed.
+
+### Line 21 — Multiply line 20 by line 19 (maximum credit)
+
+### Line 22 — Increase in limitation (§960(c))
+
+Only for distributions of previously taxed CFC earnings with an excess limitation account. Usually 0.
+
+### Line 23 — Add lines 21 and 22
+
+### Line 24 — Smaller of line 14 or line 23
+
+The credit for this category; enter on the matching line of Part IV. If line 23 is smaller than line 14, the excess is a carryback/carryover (Schedule B).
+
+---
+
+## Part IV — Summary of separate credits from Parts III
+
+For 2025, Part IV must be completed even when filing only one Form 1116. With several forms, complete it on the one with the largest line 24 (not on a category e or g form, unless the only forms are e and g), and attach the others.
+
+| Line | Content |
+|------|---------|
+| 25 | Credit for taxes on section 951A category income |
+| 26 | Credit for taxes on foreign branch category income |
+| 27 | Credit for taxes on passive category income |
+| 28 | Credit for taxes on general category income |
+| 29 | Credit for taxes on section 901(j) income |
+| 30 | Credit for taxes on certain income re-sourced by treaty |
+| 31 | Credit for taxes on lump-sum distributions |
+| 32 | Add lines 25 through 31 |
+| 33 | Smaller of line 20 or line 32 |
+| 34 | Reduction for international boycott operations (factor method) |
+| 35 | Line 33 − line 34: the foreign tax credit → Schedule 3 (Form 1040) line 1; Form 1041 Schedule G line 2a; Form 990-T Part III line 1a |
+
+---
+
+## Schedules B and C (Form 1116)
+
+- **Schedule B (Form 1116), Rev. December 2022** — Foreign Tax Carryover Reconciliation; one per category with a carryover; line 3 column (xiv) feeds Form 1116 line 10.
+- **Schedule C (Form 1116), Rev. December 2025** — Foreign Tax Redeterminations that occurred this year and relate to prior years; one per category. Also filed annually while a provisional credit for contested taxes (Form 7204) is open.
 
 ---
 
@@ -217,18 +234,16 @@ This is the number that goes on **Schedule 3 Line 1** of Form 1040 — the actua
 
 ### High-tax kickout (HTK)
 
-Income that would normally be passive but bears foreign tax at a high rate is "kicked out" of the passive basket and reclassified as general (IRC §904(d)(2)(F), Reg. §1.904-4(c)). High-tax means foreign tax exceeds the highest US tax rate that would apply to the income. For passive dividends taxed at, say, 30% in source country, this rule may apply.
+Passive income is "high-taxed" when the foreign taxes on it (after allocating expenses) exceed the highest US tax that could be imposed on it (Reg. §1.904-4(c)). That income moves to the other category: enter it in an "HTKO" column on line 1a (negative on the passive form, positive on the other form), move the related deductions on line 6 the same way, and move the related taxes on line 13. The agent should ask whether any foreign passive income bore foreign tax above the top US rate; if so, evaluate HTK.
 
-When HTK applies, the income moves from the passive 1116 to the general 1116. This often surprises filers because their broker categorized it as passive on the 1099. The agent should ask whether any foreign passive income bore foreign tax above the US qualified-dividend rate; if so, evaluate HTK.
+### Look-through rules for CFC payments
 
-### Lookthrough rules for CFC dividends
+Dividends, interest, rents, and royalties from a CFC in which the filer is a 10%-or-more US shareholder are passive only to the extent attributable to the CFC's passive income (Reg. §1.904-5). Route to a CPA.
 
-Dividends from CFCs (§1248) and certain partnerships look through to the underlying basket of the entity's income. Most retail individual filers don't encounter this; route to a CPA.
+### §904(f) and §904(g) loss accounts
 
-### §904(f) overall foreign loss recapture
-
-If the filer had a net foreign-source loss in a prior year that reduced US-source income, later foreign-source income gets recharacterized as US-source until the loss is recovered. Track the §904(f) account. Out of scope for this skill; CPA referral.
+Foreign losses that offset US income create overall foreign loss accounts; US losses that offset foreign income create overall domestic loss accounts. Both are recaptured through line 16 in later years. Out of scope for this skill; CPA referral.
 
 ### Estate / trust filers
 
-Form 1116 attaches to Form 1041 instead of 1040. The §904 limitation uses the trust/estate's taxable income; otherwise mechanics are similar. Distributable net income (DNI) considerations may shift the credit to beneficiaries via Schedule K-1.
+Form 1116 attaches to Form 1041. Line 18 is taxable income without the exemption deduction; line 20 is Schedule G lines 1a and 1d; line 35 goes to Schedule G line 2a. The no-Form-1116 election is not available to estates or trusts.

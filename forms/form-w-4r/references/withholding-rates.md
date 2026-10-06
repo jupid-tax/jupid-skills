@@ -1,6 +1,6 @@
 # Withholding rates on Form W-4R — defaults, mandatory minimums, and overrides
 
-Form W-4R sets the federal income tax withholding rate on a nonperiodic distribution. The right rate depends on whether the distribution is an **eligible rollover distribution (ERD)** or **other nonperiodic** under IRC §3405.
+Form W-4R sets the federal income tax withholding rate on a nonperiodic payment or an eligible rollover distribution. The right rate depends on whether the payment is an **eligible rollover distribution (ERD)** or an **other nonperiodic payment** under IRC §3405. Verified 2026-10-06 against the 2026 Form W-4R (rates, Marginal Rate Tables, Examples 1–2), Pub. 505 (2026) chapter 1 and Pub. 575 (2025).
 
 This reference covers the rate mechanics in depth.
 
@@ -12,67 +12,58 @@ This reference covers the rate mechanics in depth.
 
 Authority: IRC §3405(c).
 
-**Default and mandatory minimum: 20%.** Withholding cannot be reduced below 20% on an ERD paid to the participant.
+**Default rate and floor: 20%** of the taxable amount. "You can't choose withholding at a rate of less than 20% (including '-0-')" (2026 Form W-4R, page 2).
 
-The recipient may **increase** the rate above 20% via Form W-4R Line 2 — up to 100%. Common reasons to increase:
+The recipient may **increase** the rate above 20% on line 2 — up to 100%. Common reasons to increase:
 
-- Recipient is in a high marginal bracket and 20% would under-withhold
-- Recipient wants to "front-load" withholding to avoid quarterly estimates
-- Recipient has other income (capital gains, business income) and wants the distribution withholding to cover it
+- Recipient's marginal rate is above 20%
+- Recipient is under 59½ and wants the §72(t) 10% additional tax covered
+- Recipient wants this withholding to cover tax on other income that has no withholding
 
-The recipient may **NOT** decrease below 20% on the W-4R. Even if Line 2 is left blank or "0" is entered, the payor will apply 20% by force of §3405(c).
+"Don't give Form W-4R to your payer unless you want more than 20% withheld." A blank line 2 or a "0" leaves the 20% in place.
 
-**The only way to avoid 20% withholding on an ERD**: do a **direct trustee-to-trustee rollover**. The funds are transferred directly between qualified plans / IRAs without the participant taking constructive receipt. No withholding applies because the money never reaches the participant. The transferring trustee codes the Form 1099-R with **Code G** (direct rollover) and reports $0 federal withholding.
+**The only way to avoid the 20% on an ERD**: a **direct rollover** to another plan or an IRA. "There is no withholding" on a direct rollover (Pub. 575 (2025), Table 1; IRC §3405(c)(2)). The plan reports it on Form 1099-R with **code G**.
 
-### Regime B — Other nonperiodic distribution
+Exceptions where no withholding is required even when paid to the participant: ERDs from the same plan totaling less than $200 for the year; a distribution consisting solely of employer securities plus $200 or less cash; the net unrealized appreciation part of employer securities (Pub. 575 (2025)).
+
+### Regime B — Other nonperiodic payment
 
 Authority: IRC §3405(b).
 
-**Default: 10%.** Applied if Form W-4R Line 2 is blank.
+**Default: 10%.** Applied if no W-4R is given or line 2 is blank.
 
-The recipient may **increase or decrease** the rate from 0% to 100%. The 10% is a default, not a mandatory minimum.
+The recipient may enter any whole-number rate from 0 to 100. To opt out, enter "-0-". The choice stays in effect for future payments from the same plan or IRA until changed (form, page 1; Pub. 505 (2026)).
 
-To opt out entirely (0% withholding), enter "0" on Line 2.
+Limits on going below 10%:
 
-To request a higher rate (e.g., 22% to match the marginal bracket), enter the desired percentage.
+- **Delivered outside the U.S.**: "Generally, you are not permitted to elect to have federal income tax withheld at a rate of less than 10% (including '-0-') on any payments to be delivered outside the United States and its territories" (form, page 2). A U.S. citizen or resident alien can opt out only by giving the payer a U.S. or territory home address (Pub. 505 (2026); Pub. 575 (2025)).
+- **No SSN / incorrect SSN**: if the recipient doesn't give the payer an SSN, or the IRS notifies the payer it is incorrect, the payer withholds 10% and can't honor a lower rate (form, page 2 Note).
 
 ---
 
 ## Which distributions are ERDs vs. other nonperiodic?
 
-This is the most important classification call. The wrong call leads to wrong default rate, wrong recipient expectations, and possible payor error.
+Full classification, with the form's non-ERD list and the wage and no-form cases: [`distribution-types.md`](./distribution-types.md). Short version:
 
-### ERDs (20% mandatory)
+### ERDs (20%)
 
-Under IRC §402(c) (definition) and IRC §3405(c) (withholding):
+- Lump-sum or partial cash-out from a 401(k), profit-sharing, money purchase, or ESOP plan paid to the participant
+- 403(b) or governmental 457(b) distribution paid to the participant
+- Defined benefit lump-sum cash-out
+- Surviving spouse's rollover-eligible distribution from a deceased participant's plan
 
-- **Lump-sum distribution from a 401(k) plan** to participant after separation from service
-- **Partial 401(k) distribution** to participant (cash withdrawal, not rollover)
-- **Distribution from a profit-sharing plan, money-purchase plan, ESOP** (cash, not stock)
-- **403(b) plan distribution** to participant after separation
-- **457(b) governmental plan distribution** to participant
-- **Defined benefit lump-sum cash-out** (rare, but happens for small accrued benefits)
-- **Surviving spouse rollover-eligible distribution** from a deceased participant's qualified plan (paid to spouse, then rolled over)
+### Other nonperiodic (10% default)
 
-### NOT ERDs — other nonperiodic (10% default)
+- **IRA distributions** (traditional, SEP, SIMPLE), including IRA distributions payable on demand
+- **RMDs**, **hardship distributions**, **substantially equal payment series**, **corrective distributions** (not ERDs; §402(c)(4); Pub. 575 (2025))
+- The form's other non-ERD items: PLESA distributions, domestic abuse victim distributions, qualified disaster recovery distributions, qualified birth or adoption distributions, qualified long-term care distributions, emergency personal expense distributions
+- Nonperiodic commercial annuity payments
 
-Under IRC §402(c)(4) — items excluded from ERD definition:
+### Not W-4R at all
 
-- **IRA distributions** (Traditional, SEP, SIMPLE) — IRA distributions are not ERDs (IRA-to-IRA transfers exist but use different mechanics; a cash IRA withdrawal is "other nonperiodic")
-- **Required Minimum Distributions (RMDs)** — explicitly excluded from ERD definition
-- **Hardship withdrawals from a 401(k)** — excluded because hardship distributions are not eligible to be rolled over
-- **Substantially equal periodic payments (SEPP)** under §72(t)(2)(A)(iv) — series of substantially equal payments
-- **Severance** (when treated as nonperiodic and not as wages)
-- **ESOP cash distribution after a §1042 election** — special case
-- **Distributions to a non-spouse beneficiary** — generally NOT ERDs (with an exception for inherited IRAs being rolled to another inherited IRA via direct trustee-to-trustee transfer)
-- **Excess contributions / excess deferrals returned** — corrective distribution, not ERD
-
-### Periodic (use W-4P, not W-4R)
-
-Under IRC §3405(a):
-
-- **Pension annuity payments** — monthly / quarterly / annual scheduled payments for life or for more than one year
-- **Substantially equal periodic payments under §72(t)** — though this is a §72(t) construct, the withholding form depends on whether the payments span more than one year (if yes, periodic → W-4P; if not, nonperiodic → W-4R)
+- **Periodic payments** (installments over more than 1 year) → W-4P (IRC §3405(a))
+- **Wages, including severance pay** → W-4 (Pub. 15 (2026): severance payments are wages)
+- **Nonresident aliens and foreign estates** → Pub. 515 / Pub. 519
 
 ---
 
@@ -80,31 +71,31 @@ Under IRC §3405(a):
 
 ### To increase ERD withholding above 20%
 
-Enter the desired percentage on W-4R Line 2 (e.g., "22" for 22%, "37" for 37%).
+Enter the desired whole number on line 2 (e.g., "24", "34").
 
-The payor applies the higher rate to the gross distribution. Example: $50,000 ERD with W-4R Line 2 = "30":
+The payer applies the rate to the taxable amount. Example: $50,000 fully taxable ERD with line 2 = "30":
 
 - Gross distribution: $50,000
 - Federal withholding: $50,000 × 30% = $15,000
 - Net to recipient: $35,000
 
-Form 1099-R reports gross $50,000, federal withholding $15,000.
+Form 1099-R reports box 1 $50,000, box 4 $15,000.
 
 ### To opt out of nonperiodic withholding (other than ERD)
 
-Enter "0" on W-4R Line 2.
+Enter "-0-" on line 2 (U.S. or territory home address on file).
 
-Example: $20,000 IRA cash withdrawal with W-4R Line 2 = "0":
+Example: $20,000 IRA cash withdrawal with line 2 = "-0-":
 
 - Gross distribution: $20,000
 - Federal withholding: $0
 - Net to recipient: $20,000
 
-The recipient is responsible for paying the tax on the $20,000 via Form 1040 (or quarterly estimates if needed to avoid §6654 underpayment penalty).
+The recipient still owes the tax on the $20,000 (and may need estimated tax to avoid a §6654 penalty).
 
 ### To set a custom nonperiodic rate
 
-Enter any percentage 0–100 on W-4R Line 2. Example: $30,000 IRA cash withdrawal with W-4R Line 2 = "22" (matching the recipient's marginal bracket):
+Any whole number 0–100. Example: $30,000 IRA cash withdrawal with line 2 = "22":
 
 - Gross distribution: $30,000
 - Federal withholding: $30,000 × 22% = $6,600
@@ -112,23 +103,41 @@ Enter any percentage 0–100 on W-4R Line 2. Example: $30,000 IRA cash withdrawa
 
 ---
 
-## Rate selection by income bracket (informational)
+## Rate selection: the form's Marginal Rate Tables (2026)
 
-For 2026 federal income tax brackets (single filer, ordinary income):
+Printed on page 1 of the 2026 Form W-4R. "Add your income from all sources and use the column that matches your filing status." Each threshold equals the 2026 bracket start plus the 2026 standard deduction (Rev. Proc. 2025-32 §§4.01, 4.14; checked in python).
 
-| Marginal bracket | Bracket boundary (single) | Reasonable W-4R rate |
-|------------------|---------------------------|----------------------|
-| 10% | $0 – $11,925 | 0% (low total income; covered by standard deduction) |
-| 12% | $11,925 – $48,475 | 0–10% (depending on other income) |
-| 22% | $48,475 – $103,350 | 10–22% |
-| 24% | $103,350 – $197,300 | 22–24% |
-| 32% | $197,300 – $250,525 | 24–32% |
-| 35% | $250,525 – $626,350 | 32–35% |
-| 37% | $626,350+ | 35–37% |
+| Rate for every dollar more | Single or MFS: total income over | MFJ or QSS: total income over | HoH: total income over |
+|---|---|---|---|
+| 0% | $0 | $0 | $0 |
+| 10% | $16,100 | $32,200 | $24,150 |
+| 12% | $28,500 | $57,000 | $41,850 |
+| 22% | $66,500 | $133,000 | $91,600 |
+| 24% | $121,800 | $243,600 | $129,850 |
+| 32% | $217,875 | $435,750 | $225,900 |
+| 35% | $272,325 | $544,650 | $280,350 |
+| 37% | $656,700 (MFS: $400,450) | $800,900 | $664,750 |
 
-(2026 brackets are estimates pending IRS release; verify against IRS Rev. Proc. for the actual year. 2025 brackets shown are placeholder approximations — re-verify before relying.)
+### The form's two-step method
 
-The recipient's actual marginal rate depends on filing status, total taxable income, and any phase-outs / credits. The above is a starting guide.
+1. **Step 1**: rate for total income **not including** the payment.
+2. **Step 2**: rate for total income **plus** the taxable amount of the payment.
+3. Same → enter it. Form Example 1 (single, $20,000 payment, $70,000 other income): both 22% → enter "22".
+4. Different → (amount in lower bracket × lower rate) + (amount in higher bracket × higher rate), ÷ taxable amount, round up to the next whole number. Form Example 2 (single, $20,000 payment, $60,000 other income): $6,500 × 12% = $780; $13,500 × 22% = $2,970; $3,750 ÷ $20,000 = 18.75% → enter "19".
+5. Simpler alternative (may over-withhold): the rate for total income including the payment.
+
+If the payment spans more than two bands, extend the split to every band it crosses.
+
+### When the tables are wrong for the user
+
+The tables assume the tax on all other income is already covered by other withholding or estimated tax ("If the appropriate amount of tax on those sources of income has not been paid... enter a rate that is greater than the rate in the Marginal Rate Tables"). They also don't model:
+
+- Social Security benefits that become taxable because of the payment (Pub. 915)
+- The additional standard deduction for age 65+ or blind ($1,650 married / $2,050 unmarried for 2026, Rev. Proc. 2025-32 §4.14(3)) and the Schedule 1-A senior deduction (up to $6,000 per eligible person, 2025–2028; P.L. 119-21)
+- Capital gains and qualified dividends taxed at 0/15/20%
+- Credits
+
+In those cases build a with/without projection on the 2026 rate schedule and divide the extra tax by the taxable amount (worked in [`../examples/ira-lump-sum-withdrawal.md`](../examples/ira-lump-sum-withdrawal.md)). Show the math; let the user choose.
 
 ---
 
@@ -136,52 +145,45 @@ The recipient's actual marginal rate depends on filing status, total taxable inc
 
 ### Roth IRA distribution
 
-If the Roth distribution is **qualified** (account ≥ 5 years old AND distribution after age 59½, after death, after disability, or for first-home purchase up to $10K), the distribution is **not taxable**. No withholding applies; W-4R typically not needed.
-
-If the distribution is **non-qualified** (account < 5 years OR participant under 59½ etc.), the **earnings portion** is taxable. The earnings are subject to default 10% withholding under §3405(b). The basis (contributions) is not taxable and not subject to withholding. Most custodians treat the distribution per the ordering rules: contributions out first (basis, no tax, no withholding), conversions next (potentially taxable if 5-year rule for conversions not met), earnings last (taxable, withholding applies).
+Withholding applies only to the taxable part; "There will be no withholding on any part of a distribution where it is reasonable to believe that it won't be includible in gross income" (Pub. 575 (2025)). A **qualified** Roth distribution (5-year period met AND age 59½, death, disability, or first home up to $10,000; IRC §408A(d)(2)) is not taxable, so no withholding applies. A **nonqualified** distribution can have a taxable earnings part (ordering rules in Pub. 590-B: contributions first, then conversions, then earnings). Ask the custodian how it withholds.
 
 ### Roth conversion
 
-A Roth conversion (Traditional → Roth IRA) is a taxable event: the converted amount is income in the year of conversion. Withholding via W-4R is technically allowed but **strongly discouraged** because:
+A traditional IRA → Roth IRA conversion is a taxable IRA distribution (reported on Form 1099-R even when done trustee-to-trustee), so the 10% default applies unless the recipient elects otherwise. Points to put to the user (ask; don't decide for them):
 
-- Withholding from the Traditional IRA reduces the amount converted to Roth
-- The withheld amount is itself a taxable distribution (and may be subject to §72(t) penalty if recipient is under 59½)
+- Any amount withheld is not converted, so less ends up in the Roth
+- The withheld amount is a distribution; if the user is under 59½ it can also be subject to the §72(t) 10% additional tax (Pub. 590-B)
+- Paying the tax from other funds with estimated tax keeps the full amount in the Roth
 
-Best practice: convert with **0% withholding via W-4R**, then pay the tax via Form 1040-ES from non-IRA cash. This keeps the full converted amount in the Roth and avoids accidental §72(t) penalty.
+A direct rollover of pre-tax plan money to a Roth IRA is not subject to withholding at all (Pub. 575 (2025), "Rollovers to Roth IRAs"; Table 1).
 
-### §72(t) early-withdrawal penalty (separate from W-4R)
+### §72(t) additional tax (not in the default rates)
 
-If the recipient is under 59½ (or applicable exception age), the additional 10% penalty under §72(t) applies to the taxable distribution. **W-4R does NOT withhold for §72(t).** The recipient pays the §72(t) penalty separately on Form 5329.
+If the recipient is under 59½ and no exception applies, IRC §72(t) adds 10% of the taxable amount, reported on Schedule 2 (Form 1040) line 8 (Form 5329 when required). The W-4R default rates and the Marginal Rate Tables don't include it. Withholding is a credit against total tax, so the recipient can add 10 points to line 2 or pay estimated tax.
 
-If the recipient elects 22% on W-4R for a $30,000 IRA distribution at age 40 with no exception:
+If the recipient elects 22% on a $30,000 IRA distribution at age 40 with no exception:
 
 - Federal income tax withholding: $6,600
-- §72(t) penalty: $3,000 (10% of $30,000) — NOT withheld; paid by recipient on Form 5329
-- Net to recipient before §72(t): $23,400
-- Net to recipient after §72(t) paid at filing: $20,400 (effectively)
+- §72(t) additional tax: $3,000 (10% of $30,000) — not withheld at 22%; due with the return
+- Net to recipient: $23,400; after paying the $3,000 at filing: $20,400
 
-Common mistake: recipient assumes 22% covers everything; ends up owing $3,000 plus underpayment penalty at filing.
+Common mistake: recipient assumes 22% covers everything; ends up owing $3,000 plus any underpayment penalty.
 
 ### State withholding
 
-W-4R covers federal only. State income tax withholding on retirement distributions is governed by state law, varies widely:
-
-- **No state income tax**: AK, FL, NV, NH, SD, TN, TX, WA, WY (no state withholding required)
-- **Mandatory state withholding states**: CA, CT, KS, MA, ME, MI, MN, NE, NC, OK, OR, VT, VA — state-specific rates and forms
-- **Voluntary state withholding states**: most others — recipient can elect
-
-The payor's distribution-request form usually has a separate state-tax section. Coordinate with the payor on state-specific requirements.
+W-4R covers federal only. State withholding on retirement distributions is set by state law and varies (some states default to or require withholding for residents; some have no income tax). The payer's distribution request usually has a separate state section. Ask the payer which state rules it applies; do not guess.
 
 ---
 
 ## Summary
 
-| Distribution type | Default withholding | Min | Max |
+| Payment type | Default withholding | Min | Max |
 |-------------------|---------------------|-----|-----|
 | Eligible rollover distribution (ERD) | 20% | 20% | 100% |
-| Other nonperiodic | 10% | 0% | 100% |
+| Other nonperiodic | 10% | 0% (10% if delivered outside the U.S.) | 100% |
 | Periodic | (use W-4P, not W-4R) | — | — |
-| Direct trustee-to-trustee rollover | 0% (no withholding; W-4R not needed) | 0% | 0% |
-| Roth qualified distribution | (typically no withholding; W-4R not needed) | — | — |
+| Wages, including severance | (use W-4, not W-4R) | — | — |
+| Direct rollover / trustee-to-trustee transfer | none (W-4R not needed) | — | — |
+| Payment reasonably believed nontaxable (e.g., qualified Roth) | none | — | — |
 
-The recipient's job: classify the distribution correctly, then pick the right rate within the allowed range.
+The recipient's job: classify the payment correctly, then pick a rate within the allowed range.

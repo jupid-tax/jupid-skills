@@ -3,43 +3,65 @@
 The 10% additional tax under IRC §72(t) on distributions before age 59½
 has a long list of statutory exceptions. Each exception removes a portion
 of the early distribution from the taxable base on Form 5329 Part I,
-Line 2. The user enters the amount excepted *and* the two-digit code from
-the Form 5329 instructions.
+Line 2. The user enters the amount excepted *and* the two-digit exception
+number from the Form 5329 instructions (01–23; **99 if more than one
+applies**). Numbers verified against the 2025 Instructions for Form 5329
+(Nov 19, 2025), Line 2; re-check each year at
+https://www.irs.gov/forms-pubs/about-form-5329.
 
 The IRS does not require documentation up front. It will request it in a
 CP2000 notice or audit. The user should retain proof.
 
 ---
 
-## Quick reference: codes 01-14
+## Quick reference: exception numbers 01-23 and 99
 
-| Code | Exception | Account types | Documentation to retain |
+| No. | Exception | Account types | Documentation to retain |
 |------|-----------|---------------|--------------------------|
-| 01 | Separation from service after age 55 | Qualified plans only (401(k), 403(b), 457(b)). **Not IRAs.** | Termination letter showing date of separation and age at separation |
-| 02 | SoSEPP — substantially equal periodic payments | All §72(t) accounts | SoSEPP calculation worksheet, custodian's confirmation of the schedule |
-| 03 | Disability | All | Physician's statement of total and permanent disability per §72(m)(7) |
-| 04 | Beneficiary distributions after death | All | Death certificate, beneficiary designation showing user as beneficiary |
-| 05 | Medical expenses > 7.5% of AGI | All | Medical receipts, AGI from same year's 1040 |
-| 06 | IRS levy | All | IRS levy notice (Form 668-A or similar) |
-| 07 | Higher education expenses | **IRAs only** (not 401(k)) | Form 1098-T, receipts for required books/supplies, enrollment confirmation |
-| 08 | First-time homebuyer | **IRAs only**, $10,000 lifetime cap | Closing documents (HUD-1 / Closing Disclosure), proof user did not own a principal residence in prior 2 years |
-| 09 | Reservist called to active duty (180+ days) | All | Military orders showing call to active duty |
-| 10 | Birth or adoption | All, $5,000 per child cap | Birth certificate or adoption decree |
-| 11 | Domestic abuse victim | All | Self-certification + corroborating documents (police report, court order, etc.); $10K or 50% of vested balance, lesser, per SECURE 2.0 §314 — verify cap each year |
-| 12 | Terminal illness | All | Physician's certification that condition is reasonably expected to result in death within 84 months |
-| 13 | Federally declared disaster | All | FEMA declaration covering user's residence; per-disaster cap (typically $22,000) per IRS Notice |
-| 14 | Emergency personal expense | All | Self-certification of unforeseeable or immediate financial need; $1,000 cap, once per year, per SECURE 2.0 §115 |
+| 01 | Separation from service in or after the year the user reaches 55 (50 for qualified public safety employees and private sector firefighters, or 25 years of service, if earlier) | Qualified plans only (401(k), 403(b), etc.). **Not IRAs.** | Termination letter showing date of separation and age at separation |
+| 02 | SoSEPP — substantially equal periodic payments | All §72(t) accounts (employer plan: after separation) | SoSEPP calculation worksheet, custodian's confirmation of the schedule |
+| 03 | Total and permanent disability | All | Physician's statement of total and permanent disability per §72(m)(7) |
+| 04 | Death | All except modified endowment contracts | Death certificate, beneficiary designation showing user as beneficiary |
+| 05 | Unreimbursed medical expenses paid during the year minus 7.5% of AGI | All | Medical receipts, AGI from same year's 1040 |
+| 06 | Alternate payee under a QDRO | Qualified plans only, not IRAs | The QDRO |
+| 07 | Health insurance premiums while unemployed | **IRAs only** | Unemployment compensation records, premium receipts |
+| 08 | Qualified higher education expenses | **IRAs only** (not 401(k)) | Form 1098-T, receipts for required books/supplies, enrollment confirmation |
+| 09 | First home purchase | **IRAs only**, $10,000 lifetime cap | Closing documents (HUD-1 / Closing Disclosure), proof user did not own a principal residence in prior 2 years |
+| 10 | IRS levy | Qualified retirement plans | IRS levy notice |
+| 11 | Qualified reservist on active duty at least 180 days | All | Military orders showing call to active duty |
+| 12 | Distribution coded 1, J, or S but received at 59½ or older | All | 1099-R and proof of date of birth |
+| 13 | Section 457 plan distribution not from a qualified-plan rollover | 457 plans | Plan statement |
+| 14 | Employer plan distribution under a pre-March 1, 1986 written election | Employer plans | The election |
+| 15 | Dividends on section 404(k) stock | ESOPs | Plan statement |
+| 16 | Annuity distributions allocable to investment before August 14, 1982 | Annuity contracts | Contract records |
+| 17 | Phased retirement annuity payments (federal employees) | Federal plans | OPM records |
+| 18 | Permissible withdrawal under §414(w) (automatic enrollment) | Employer plans | Plan notice |
+| 19 | Qualified birth or adoption distribution, within 1 year, up to $5,000 per taxpayer per birth or adoption | All applicable plans | Statement with the child's name, age, and TIN (attach to Form 5329) |
+| 20 | Terminal illness | All | Physician's certification that condition is reasonably expected to result in death within 84 months |
+| 21 | Corrective distribution of the income on excess contributions by the due date including extensions | IRAs and plans | Custodian's return-of-excess confirmation, 1099-R (code 8 or P) |
+| 22 | Domestic abuse victim, within 1 year of the abuse | All applicable plans | Self-certification to the plan; lesser of $10,300 (2025; $10,500 for 2026) or 50% of the vested balance |
+| 23 | Emergency personal expense | All applicable plans | Self-certification of unforeseeable or immediate financial need; one per calendar year, lesser of $1,000 or the vested balance over $1,000 |
+| 99 | More than one exception applies | — | Records for each |
+
+Sources: 2025 Instructions for Form 5329, Line 2; Pub. 590-B (2025) for the
+19, 22, and 23 limits; Notice 2025-67 for the 2026 domestic abuse limit.
+
+**Qualified disaster recovery distributions** (up to $22,000 per disaster,
+Pub. 590-B (2025), chapter 3) are not entered on Form 5329 at all; they go
+on Form 8915-F and are not subject to the 10% tax.
 
 ---
 
 ## Notes on common exceptions
 
-### Code 01 — Separation from service after age 55 (qualified plans only)
+### Code 01 — Separation from service in or after the year of age 55 (qualified plans only)
 
-The "rule of 55" applies only to distributions from a 401(k), 403(b), or
-governmental 457(b). It does **not** apply to IRAs. If a user separated
-from service at 55+, took the 401(k) balance as a direct distribution
-(not rolled to an IRA), and is now under 59½, code 01 applies.
+The "rule of 55" applies only to distributions from a qualified employer
+plan (401(k), 403(b)). It does **not** apply to IRAs. (Governmental 457(b)
+distributions not from a qualified-plan rollover are covered by code 13
+instead.) If a user separated from service in or after the year they
+turned 55, took the 401(k) balance as a direct distribution (not rolled to
+an IRA), and is now under 59½, code 01 applies.
 
 Critical: if the 401(k) was rolled to an IRA before the distribution,
 code 01 does **not** apply — the rollover converted the account to an IRA
@@ -79,14 +101,14 @@ deduction. The user does **not** need to itemize on Schedule A to claim the
 Example: AGI $80,000, threshold $6,000. User had $15,000 in unreimbursed
 medical expenses. Exception amount = $15,000 − $6,000 = $9,000.
 
-### Code 07 — Higher education (IRAs only)
+### Code 08 — Higher education (IRAs only)
 
 Qualified higher education expenses for the user, spouse, or any child or
 grandchild, paid in the same year as the distribution. Reduce the
 exception by any tax-free scholarships and by amounts paid with §529 or
 Coverdell distributions.
 
-### Code 08 — First-time homebuyer (IRAs only, $10,000 lifetime)
+### Code 09 — First-time homebuyer (IRAs only, $10,000 lifetime)
 
 "First-time" means the user (and spouse, if applicable) did not own a
 principal residence in the 2-year period ending on the date of acquisition.
@@ -97,49 +119,49 @@ the test and each has an IRA, each can withdraw $10,000).
 Distribution must be used within 120 days for the home purchase, or
 returned to the IRA.
 
-### Code 10 — Birth or adoption
+### Code 19 — Birth or adoption
 
-$5,000 per filer per qualifying birth or adoption event. Must be taken
-within 1 year of the birth or finalized adoption. Can be repaid to the
-plan as a rollover within 3 years.
+$5,000 per taxpayer per qualifying birth or adoption. Must be taken
+within 1 year of the birth or finalized adoption. Can be repaid to an
+eligible retirement plan within the 3-year period beginning the day after
+the distribution (Pub. 590-B (2025)). Attach a statement with the child's
+name, age, and TIN.
 
-### Code 11 — Domestic abuse (SECURE 2.0 §314, 2024+)
+### Code 22 — Domestic abuse (SECURE 2.0 §314, 2024+)
 
-The lesser of $10,000 or 50% of the user's vested account balance. User
-self-certifies; no documentation required by the custodian. The
+The lesser of $10,300 for 2025 ($10,500 for 2026, Notice 2025-67) or 50%
+of the vested balance (Pub. 590-B (2025)). Taken within 1 year of the
+abuse; the user self-certifies to the plan (Notice 2024-55). The
 distribution may be repaid within 3 years.
 
-Verify the dollar cap is current; statute calls for inflation indexing.
+### Qualified disaster recovery distributions (no Form 5329 code)
 
-### Code 13 — Federally declared disaster
+Up to $22,000 per qualified disaster (Pub. 590-B (2025), chapter 3), made
+on or after the first day of the incident period and before the date 180
+days after the applicable date, to someone whose main home was in the
+disaster area and who had an economic loss. Report on Form 8915-F, not on
+Form 5329; the 10% tax does not apply.
 
-Up to $22,000 per qualified disaster (the cap was $22,000 under SECURE 2.0
-§331; verify against the most recent IRS Notice for the specific disaster).
-The distribution must be made within 180 days of the disaster declaration.
-Eligible only for filers whose principal residence was in the disaster
-area.
+### Code 23 — Emergency personal expense (SECURE 2.0 §115)
 
-### Code 14 — Emergency personal expense (SECURE 2.0 §115)
-
-$1,000 per year, once per calendar year. May be repaid within 3 years; if
-repaid, the user can claim the exception again only after a 3-year period
-or after repayment is complete, whichever is earlier.
+One per calendar year, the lesser of $1,000 or the vested balance over
+$1,000. May be repaid within 3 years. No further emergency distribution in
+the following 3 calendar years unless the earlier one is repaid or later
+contributions at least equal the unrepaid amount (Pub. 590-B (2025)).
 
 ---
 
 ## When the user qualifies for multiple exceptions
 
-If different portions of Line 1 fall under different exceptions, enter
-each amount with its code in the description column on Line 2.
+If different portions of Line 1 fall under different exceptions, enter the
+total excepted amount on Line 2 and **exception number 99** (2025
+Instructions, Line 2). Keep a worksheet showing each piece.
 
-Example: user took $30,000 from a traditional IRA. $12,000 went to
-unreimbursed medical expenses (code 05 amount $9,000 after 7.5% AGI
-threshold), $10,000 to a first-time home purchase (code 08), and $11,000
-for general living. Line 2 = $9,000 + $10,000 = $19,000. Line 3 = $30,000
-− $19,000 = $11,000. Line 4 = $11,000 × 10% = $1,100.
-
-The user lists "05: $9,000; 08: $10,000" in the Line 2 code column (per
-the instructions).
+Example: user took $30,000 from a traditional IRA. Unreimbursed medical
+expenses gave a code 05 amount of $9,000 after the 7.5% AGI threshold,
+$10,000 went to a first-time home purchase (code 09), and $11,000 was for
+general living. Line 2 = $9,000 + $10,000 = $19,000 with number 99. Line 3
+= $30,000 − $19,000 = $11,000. Line 4 = $11,000 × 10% = $1,100.
 
 ---
 
@@ -150,16 +172,21 @@ matters for Form 5329 Part I:
 
 1. **Regular Roth contributions first** — always come out tax-free and
    penalty-free, regardless of age or 5-year rules
-2. **Conversion contributions next**, oldest first — tax-free always; 10%
-   penalty applies if under 59½ AND the conversion is less than 5 years old
+2. **Conversion contributions next**, oldest first (taxable portion of
+   each conversion before the nontaxable portion) — tax-free always; the
+   taxable portion is a "recapture amount" subject to the 10% tax if under
+   59½ AND the conversion was made in the 5-year window (2021 through 2025
+   for a 2025 distribution; 2025 Instructions for Form 5329, Line 1)
 3. **Earnings last** — tax-free if "qualified" (5-year holding + age 59½ or
    other qualifying event); otherwise taxable AND subject to 10% penalty
    if under 59½
 
-The agent must apply this ordering before computing Line 1. A common
-error: a 30-year-old who took $20,000 from a Roth IRA where they
-contributed $30,000 over the years has Line 1 = 0 (the entire $20,000 is
-basis, comes out tax- and penalty-free). No 5329 needed.
+The agent must apply this ordering before computing Line 1 (Form 8606 Part
+III does the math; Line 1 starts from Form 8606 line 25c). A common error:
+a 30-year-old who took $20,000 from a Roth IRA where they contributed
+$30,000 over the years has Line 1 = 0 (the entire $20,000 is basis, comes
+out tax- and penalty-free). No 5329 needed, but Form 8606 Part III is
+still filed for a nonqualified Roth distribution.
 
 ---
 

@@ -8,19 +8,16 @@ This playbook covers the browser-automation workflow for filing Form 8962. Form 
 
 ```
 Did the taxpayer have only Marketplace coverage and otherwise simple return (W-2, 1099, basic deductions)?
-├── YES, AGI under $84,000 (2025 FFFFile-eligible) → IRS Free File partner software (TaxSlayer, OLT, etc.)
-├── YES, AGI any amount, comfortable with forms → IRS Free File Fillable Forms (FFFF)
+├── YES, AGI $89,000 or less (2025 returns) → IRS Free File partner software (https://www.irs.gov/filing/irs-free-file-do-your-taxes-for-free; each partner sets its own eligibility)
+├── YES, AGI any amount, comfortable with forms → IRS Free File Fillable Forms (FFFF; for 2025 returns it closes Oct. 15, 2026, https://www.irs.gov/e-file-providers/free-file-fillable-forms)
 └── NO (Schedule C, complex investments, etc.)
     ├── Use paid software (TurboTax, H&R Block, FreeTaxUSA, TaxAct, Cash App Taxes)
     └── For maximum control: paper filing (Form 1040 + Form 8962 by mail)
-
-Is taxpayer in a state where IRS Direct File is available for tax year 2025?
-└── States with Direct File 2025: AZ, CA, CT, FL, ID, IL, KS, ME, MD, MA, NV, NJ, NM, NY, NC, OR, PA, SD, TN, TX, WA, WI, WY
-    Note: Direct File DOES support Form 8962 for tax year 2025 (added in expansion)
-    Verify current state list and supported forms at directfile.irs.gov before recommending
 ```
 
-For most users with Marketplace coverage and self-employment income (the typical Jupid customer), recommend FreeTaxUSA (paid software, free federal, $14.99 state) — it handles Schedule C + Form 8962 + Form 8889 cleanly and lets the agent walk through field-by-field verification before submission.
+IRS Direct File was not offered in the 2026 filing season; do not route users to it.
+
+For users with Marketplace coverage and self-employment income, pick software that supports Schedule C, Form 8962, and Form 8889 and shows each form for field-by-field verification before submission.
 
 ---
 
@@ -31,7 +28,7 @@ Before initiating filing, the agent must have:
 - [ ] Form 1095-A in the user's possession (PDF or paper)
 - [ ] All Part III amounts entered into the Form 8962 draft this skill produced
 - [ ] Tax family size confirmed
-- [ ] Modified AGI computed and reconciled with Form 1040 Line 11
+- [ ] Modified AGI computed and reconciled with Form 1040 Line 11a
 - [ ] State of residence confirmed (drives FPL table)
 - [ ] Filing status confirmed (MFS exception flagged if applicable)
 - [ ] Shared policy allocation completed (if applicable)
@@ -62,6 +59,7 @@ The IRS Free File Fillable Forms layout for Form 8962 mirrors the paper form. Ma
 | Annual contribution | Line 8a |
 | Monthly contribution | Line 8b |
 | Allocation Yes/No | Line 9 |
+| Filing status exception (MFS only) | Line A checkbox |
 | Annual or monthly | Line 10 |
 | Annual amounts (if Line 10 = Yes) | Line 11 (a) through (f) |
 | Monthly amounts (if Line 10 = No) | Lines 12–23, columns (a)–(f) |
@@ -69,8 +67,10 @@ The IRS Free File Fillable Forms layout for Form 8962 mirrors the paper form. Ma
 | Total APTC | Line 25 |
 | Net PTC | Line 26 |
 | Excess APTC | Line 27 |
-| Repayment limit | Line 28 |
+| Repayment limit (2025 Table 5; blank at 400%+ and for 2026) | Line 28 |
 | Excess APTC repayment | Line 29 |
+| Shared-policy allocations | Part IV, Lines 30–34 |
+| Year-of-marriage election | Part V, Lines 35–36 |
 
 After Form 8962 is completed:
 - Line 26 amount → Form 1040 Schedule 3 Line 9 (Net PTC, refundable)
@@ -120,7 +120,7 @@ If the user prefers paper:
 1. Print Form 1040 with Schedule 1, 2, 3 as needed
 2. Print Form 8962 (signed copy)
 3. Do NOT attach Form 1095-A — keep it in personal records
-4. Mail to the IRS address for the user's state (varies; see Form 1040 instructions back cover)
+4. Mail to the IRS address for the user's state and whether a payment is enclosed (https://www.irs.gov/filing/where-to-file-paper-tax-returns-with-or-without-a-payment)
 5. Use certified mail with return receipt for proof of filing date
 
 Allow 6-8 weeks for paper return processing vs. 3 weeks for e-file with direct deposit.

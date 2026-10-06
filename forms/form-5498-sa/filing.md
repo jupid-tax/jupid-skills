@@ -1,6 +1,6 @@
 # Form 5498-SA — Filing Workflow (Form 1040-X Amendment)
 
-This playbook covers what an agent does when reconciliation between Form 5498-SA and Form 8889 reveals a filer error that requires amending the original return via Form 1040-X.
+This playbook covers what an agent does when reconciliation between Form 5498-SA and Form 8889 reveals a filer error that requires amending the original return via Form 1040-X. The full Form 1040-X line map and channel rules live in the [`form-1040-x`](../form-1040-x/SKILL.md) skill (Form 1040-X, Rev. December 2025); this file covers only the HSA-specific parts.
 
 **Important:** Form 5498-SA itself is **not filed by the account holder**. The custodian files it with the IRS. This document covers the *downstream* filing the account holder may need to do (Form 1040-X with a corrected Form 8889) when reconciliation fails due to a filer error.
 
@@ -14,8 +14,8 @@ Use this tree to decide whether the discrepancy requires an amendment.
 Did the reconciliation fail?
 ├── No → file the 5498-SA with tax records; STOP
 └── Yes → diagnose the cause:
-    ├── Prior-year contribution split across two 5498-SAs
-    │   → not a filer error; pull both years' forms; STOP
+    ├── Prior-year contribution (Box 3 of this year's form; Box 2 of next year's)
+    │   → not a filer error; apply the Box 3 adjustments; STOP
     ├── December check timing (custodian credited next year)
     │   → not a filer error; document the explanation; STOP
     ├── Custodian clerical error
@@ -27,8 +27,8 @@ Did the reconciliation fail?
         │   → file Form 1040-X to claim additional deduction
         ├── Over-reported deduction (claimed too much)
         │   → file Form 1040-X to repay tax + interest
-        └── Excess contribution that wasn't withdrawn
-            → file Form 5329 + 1040-X for excise tax
+        └── Excess contribution that wasn't withdrawn by the due date
+            → file Form 5329 (with Form 1040-X if the original return is already filed)
 ```
 
 ---
@@ -37,9 +37,9 @@ Did the reconciliation fail?
 
 You must file Form 1040-X if any of the following:
 
-1. **You missed a deductible HSA contribution on Form 8889 Line 2** that 5498-SA Box 2 (or prior year's Box 3) confirms was made — claim the additional deduction
+1. **You missed a deductible HSA contribution on Form 8889 Line 2** that 5498-SA Box 2 (or that year's Box 3) confirms was made — claim the additional deduction
 2. **You claimed an HSA deduction that wasn't actually contributed** — repay the tax owed plus interest
-3. **You over-contributed and didn't withdraw the excess by the extended filing deadline** — file Form 5329 with Form 1040-X to compute and pay the 6% excise tax
+3. **You over-contributed and didn't withdraw the excess by the due date including extensions** — file Form 5329 with Form 1040-X to compute and pay the 6% excise tax. If you withdraw within 6 months of the original due date after a timely return, the amended return is marked "Filed pursuant to section 301.9100-2" instead (2025 Instructions for Form 8889, Line 13)
 4. **Form 8889 Line 9 was wrong because W-2 Box 12 code W was wrong** and a corrected W-2c has been issued — re-derive Line 13 deduction with corrected Line 9
 
 You do **not** need Form 1040-X if:
@@ -52,9 +52,9 @@ You do **not** need Form 1040-X if:
 
 ## Filing channels for Form 1040-X
 
-### IRS Direct File (electronic, recent years only)
+### E-file through tax software (recent years)
 
-The IRS now accepts e-filed Form 1040-X for tax years 2019 and later through participating tax software. Check current support at [https://www.irs.gov/filing/free-file-do-your-federal-taxes-for-free](https://www.irs.gov/filing/free-file-do-your-federal-taxes-for-free).
+Form 1040-X can be e-filed through tax software for recent tax years (https://www.irs.gov/filing/file-an-amended-return); up to three amended returns per tax year can be e-filed (Amended return FAQs). IRS Direct File was not offered in the 2026 filing season and is not an amendment channel. Free File Fillable Forms cannot prepare an amended return (https://www.irs.gov/filing/irs-free-file-do-your-taxes-for-free).
 
 Workflow:
 
@@ -64,17 +64,16 @@ Workflow:
 4. Form 1040-X auto-populates the difference in Column B (net change) and Column C (correct amount)
 5. Software generates a new Schedule 1 and Form 8889 to attach
 6. E-file with explanation of changes ("Reconciled HSA contributions per Form 5498-SA Box 2 = $X,XXX from custodian. Original Form 8889 Line 2 of $X,XXX was understated by $X,XXX.")
-7. Wait for IRS acknowledgment (typically 24-72 hours)
+7. Wait for IRS acknowledgment of the transmission
 
-### Paper filing (older years)
+### Paper filing (older years or when software can't e-file)
 
-For tax years before 2019, Form 1040-X must be paper-filed. Print:
+Assemble per the Instructions for Form 1040-X (Rev. December 2025), as summarized in the [`form-1040-x`](../form-1040-x/SKILL.md) skill's `filing.md`:
 
-- Form 1040-X
-- Corrected Form 8889
-- Corrected Schedule 1
-- Copy of Form 5498-SA showing the contribution
-- Cover letter explaining the change
+- Form 1040-X with the Part II explanation
+- Behind it, the completed and updated Form 1040 for that year
+- Behind that, the corrected Schedule 1 and Form 8889 in attachment-sequence order
+- Do not attach the Form 5498-SA, a cover letter, or a copy of the original return unless the IRS asks; keep them with the records
 
 Mail to the address listed in the Form 1040-X instructions for the taxpayer's state. Use certified mail with return receipt.
 
@@ -86,19 +85,21 @@ TurboTax, H&R Block, FreeTaxUSA, TaxAct, and similar all support Form 1040-X. Ag
 
 ## Field-by-field map: Form 1040-X for HSA correction
 
-Form 1040-X has three columns: Original (A), Net Change (B), Correct (C). For an HSA-only correction:
+Form 1040-X (Rev. December 2025) has three columns: Original (A), Net Change (B), Correct (C). For an HSA-only correction:
 
 | Line | Field | Original (A) | Net Change (B) | Correct (C) |
 |------|-------|--------------|----------------|-------------|
 | 1 | Adjusted gross income | <original AGI> | (HSA deduction change, sign flipped) | <new AGI> |
-| 2 | Itemized or standard deduction | (no change unless interaction) | $0 | (same as A) |
-| 3 | Qualified business income deduction | (re-derive if AGI change affects it) | (computed) | (computed) |
-| 4 | Taxable income | (line 1 − line 2 − line 3) | (computed) | (computed) |
-| 5 | Tax | (re-derive from corrected taxable income) | (computed) | (computed) |
+| 2 | Itemized or standard deduction | (no change unless an AGI-based limit moves) | $0 | (same as A) |
+| 3 | Subtract line 2 from line 1 | (computed) | (computed) | (computed) |
+| 4a | Qualified business income deduction | (re-derive if AGI change affects it) | (computed) | (computed) |
+| 4b | Schedule 1-A deductions (2025 and later) | (re-derive if MAGI change affects them) | (computed) | (computed) |
+| 5 | Taxable income | (line 3 − lines 4a and 4b) | (computed) | (computed) |
+| 6 | Tax | (re-derive from corrected taxable income) | (computed) | (computed) |
 | ... | ... | ... | ... | ... |
-| 18 | Amount you owe (or refund) | (final tax owed/refunded) | (computed) | (computed) |
+| 20 / 22 | Amount you owe / refund | | | (computed) |
 
-The HSA deduction change flows: Form 8889 Line 13 → Schedule 1 Line 13 → Form 1040 Line 10 (Adjustments to income) → AGI on Form 1040 Line 11.
+The HSA deduction change flows: Form 8889 Line 13 → Schedule 1 Line 13 → Form 1040 Line 10 (Adjustments to income) → AGI on Form 1040 Line 11a (2025; Line 11 for 2024). Check every other line in the [`form-1040-x`](../form-1040-x/SKILL.md) skill's line map, since an AGI change can move credits and other taxes.
 
 **Always attach** the corrected Form 8889 and Schedule 1 to Form 1040-X, even if e-filing.
 
@@ -118,7 +119,7 @@ Before submitting Form 1040-X, the agent must verify:
 - [ ] Bank records for direct HSA contributions
 - [ ] Corrected Form 8889 has been recomputed with new Line 2 and/or Line 9
 - [ ] Schedule 1 Line 13 reflects the new Form 8889 Line 13
-- [ ] AGI on Form 1040 Line 11 reflects the change
+- [ ] AGI on Form 1040 Line 11a (2025) reflects the change
 - [ ] Tax owed (or refund) has been recomputed for the new AGI
 - [ ] Statute of limitations not expired: Form 1040-X must be filed within 3 years of the original return's filing date or 2 years of the tax payment, whichever is later
 - [ ] User has reviewed and explicitly authorized the amendment
@@ -135,7 +136,7 @@ Authorized to submit
 Submitted
     ↓ (IRS receives)
 Accepted (IRS acknowledged receipt)
-    ↓ (IRS processes — typical 16+ weeks for paper, 8-12 weeks e-file)
+    ↓ (IRS processes — generally 8 to 12 weeks, up to 16 weeks)
 Processed
     ├── Refund issued (if AGI decreased and tax overpaid)
     └── Notice issued
@@ -143,7 +144,7 @@ Processed
         └── Other — review notice; may require additional documentation
 ```
 
-The agent should set expectations: Form 1040-X processing is slow. The IRS prioritizes original returns over amendments. Refunds from amendments take 16+ weeks even when e-filed.
+The agent should set expectations: Form 1040-X processing is slow. The IRS says to allow 8 to 12 weeks, and up to 16 weeks in some cases; status shows in Where's My Amended Return about 3 weeks after submission (https://www.irs.gov/filing/wheres-my-amended-return).
 
 ---
 

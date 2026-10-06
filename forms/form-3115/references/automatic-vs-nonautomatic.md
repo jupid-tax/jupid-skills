@@ -1,6 +1,6 @@
 # Automatic vs. Non-Automatic Consent
 
-The single most consequential decision in filing Form 3115. Get it right and the change is deemed-consented and free. Get it wrong and the IRS rejects, and the change requires advance consent with an $11,500+ user fee and 6-12 months of waiting.
+The single most consequential decision in filing Form 3115. Get it right and the change is deemed-consented and free. Get it wrong and the change may require advance consent with a $13,225 user fee (reduced to $3,450 or $9,775 for gross income under $400,000 or $10 million; Rev. Proc. 2026-1, Appendix A) and a wait for the IRS letter.
 
 ---
 
@@ -8,12 +8,12 @@ The single most consequential decision in filing Form 3115. Get it right and the
 
 | Aspect | Automatic consent | Non-automatic (advance consent) |
 |--------|-------------------|----------------------------------|
-| Procedure | Rev. Proc. 2024-23 (or successor) | Rev. Proc. 2015-13 (general procedural) |
-| Filing deadline | Return due date including extensions | Last day of year of change (with 6-month grace under Reg. §1.446-1(e)(3)(i) for some) |
-| Where filed | Original with return + duplicate to Ogden | Single copy to IRS national office (Washington DC area) |
-| User fee | None | ~$11,500 (Rev. Proc. 2025-1; verify 2026) |
+| Procedure | Rev. Proc. 2015-13 + List of Automatic Changes (Rev. Proc. 2025-23, as modified by 2025-28) | Rev. Proc. 2015-13 + Rev. Proc. 2026-1 |
+| Filing deadline | Original with the timely filed return (incl. extensions); signed copy to Ogden no later than that | During the year of change (Rev. Proc. 2015-13 §6.03(2)); late only in unusual and compelling circumstances (Reg. §301.9100-3) |
+| Where filed | Original with return + signed copy to Ogden (mail or fax) | IRS National Office, Washington DC (mail, secure fax, or encrypted email; Rev. Proc. 2026-1 §9.05) |
+| User fee | None | $13,225; $3,450 / $9,775 reduced (Rev. Proc. 2026-1, App. A) |
 | IRS review | None — consent deemed granted | Branch reviews, may request more info, can deny |
-| Time to consent | Immediate (filed = consented) | 6-12+ months for letter ruling |
+| Time to consent | Consent deemed on proper filing | After IRS review (can take many months) |
 | Audit protection | Yes (subject to exceptions) | Yes |
 | Reversibility | The change is committed once filed | The change requires the consent letter before being effective |
 
@@ -24,10 +24,10 @@ The single most consequential decision in filing Form 3115. Get it right and the
 ```
 Step 1 — Does the change have a DCN in the current Rev. Proc.?
 
-  Look up the change in Rev. Proc. 2024-23 (or successor). Match by:
+  Look up the change in Rev. Proc. 2025-23 (or a later list). Match by:
     - Type of change (overall method, depreciation, inventory, etc.)
     - Specific item (the affected asset/account/category)
-    - Direction of change (cash → accrual, FIFO → LIFO, etc.)
+    - Direction of change (cash → accrual, LIFO → FIFO, etc.; adopting LIFO is Form 970, not 3115)
 
   If no DCN matches: → NON-AUTOMATIC (Section 2)
 
@@ -35,17 +35,21 @@ Step 1 — Does the change have a DCN in the current Rev. Proc.?
 
 Step 2 — Are any "Section 5" exclusions present?
 
-  Per Rev. Proc. 2015-13 Section 5, automatic consent is NOT available if:
+  Per Rev. Proc. 2015-13 §5.01(1), automatic consent is NOT available if
+  (unless the DCN's section waives the rule):
 
-  a) The change is for the same item that was previously changed within
-     the 5 prior tax years (the "5-year rule")
-  b) The taxpayer is currently under IRS examination, and the change is to
-     an item under exam
-  c) The taxpayer's prior return is before Appeals or in federal court for
-     the same issue
-  d) The taxpayer is a "tax shelter" (Code §448(d)(3))
-  e) The taxpayer is in the final year of business
-  f) Other specific exclusions per Rev. Proc.
+  a) A change for the same item was requested or made within the 5 tax
+     years ending with the year of change (§5.01(1)(f), §5.05)
+  b) An overall method change was requested or made within those 5 years
+     (§5.01(1)(e), §5.04)
+  c) The year of change is the final year of the trade or business
+     (§5.01(1)(d), §5.03) — waived for DCN 7
+  d) A §381(a) liquidation or reorganization occurs in the year of change
+     (§5.01(1)(c))
+  e) Under examination: automatic changes are generally still available,
+     but with limits (§5.01(1)(a); §8.02 audit protection; Form 3115
+     lines 6-7) — see "Under examination" below
+  f) The DCN section's own conditions are not met
 
   If any apply: → NON-AUTOMATIC
 
@@ -54,13 +58,15 @@ Step 2 — Are any "Section 5" exclusions present?
 Step 3 — Verify the DCN's specific conditions
 
   Each DCN in Rev. Proc. has its own conditions. Examples:
-    - DCN 7 (impermissible to permissible depreciation): requires that the
-      taxpayer is changing for an asset placed in service before the year
-      of change
-    - DCN 32 (cash to accrual, voluntary): the taxpayer must have used cash
-      method for at least 2 years
-    - DCN 233 (cash to accrual, §448): mandatory for entities crossing the
-      $30M 3-year average gross receipts threshold
+    - DCN 7 (impermissible to permissible depreciation, §6.01): property
+      placed in service before the year of change, impermissible method
+      used in the 2 preceding tax years (or 1-year property), not excluded
+      by §6.01(1)(c)
+    - DCN 122 / 257 (cash to accrual, §15.01): 257 if made in the mandatory
+      §448 year (C corporation, partnership with a C corporation partner,
+      or tax shelter failing the §448(c) test: $31M for 2025, $32M for
+      2026); 122 otherwise
+    - DCN 233 (§15.17): small business taxpayer changing TO the cash method
 
   If conditions fail: → NON-AUTOMATIC (or change can't be made)
 
@@ -75,38 +81,44 @@ These are the most common method changes for small businesses (verify in current
 
 ### Overall method changes (Schedule A)
 
-| DCN | Description |
-|-----|-------------|
-| 32 | Cash to accrual, voluntary (small business) |
-| 33 | Accrual to cash, small business under §448(c) thresholds |
-| 233 | Cash to accrual, mandatory for entities crossing §448 limits |
-| 235 | Cash to accrual for personal service corporations |
+| DCN | Description | Rev. Proc. 2025-23 |
+|-----|-------------|--------------------|
+| 122 | Cash (or accrual-for-inventory/cash hybrid) to an overall accrual method, other than in the mandatory §448 year | §15.01 |
+| 257 | Cash to accrual in the mandatory §448 year | §15.01 |
+| 233 | Small business taxpayer changing to the overall cash method | §15.17 |
+| 259 | Small business taxpayer changing to accrual for inventory and cash for all other items | §15.17 |
 
-### Inventory changes (Schedule D)
+### Inventory and UNICAP changes (Schedules C and D)
 
-| DCN | Description |
-|-----|-------------|
-| 21 | LIFO method (multiple sub-DCNs depending on direction and sub-method) |
-| 22 | UNICAP §263A adoption |
-| 23 | UNICAP allocation method change |
+| DCN | Description | Rev. Proc. 2025-23 |
+|-----|-------------|--------------------|
+| 137 | Permissible methods of identification and valuation of inventories | §22.10 |
+| 230 | From currently deducting inventories to permissible inventory methods | §22.17 |
+| 260 / 261 | Small business taxpayer §471(c) inventory methods | §22.18 |
+| 56 | Change from the LIFO inventory method | §23.01 |
+| 22 / 23 | Certain UNICAP methods used by resellers / producers | §12.01 / §12.02 |
+| 234 | Small business taxpayer exception from §263A | §12.16 |
+
+Adopting LIFO is made on Form 970 with the return, not Form 3115 (Form 970 instructions; Reg. §1.472-3).
 
 ### Depreciation changes (Schedule E)
 
-| DCN | Description |
-|-----|-------------|
-| 7 | Impermissible to permissible depreciation method (most common) |
-| 88 | Late §168(g) election (ADS) |
-| 89 | Late §168(k) opt-out election |
+| DCN | Description | Rev. Proc. 2025-23 |
+|-----|-------------|--------------------|
+| 7 | Impermissible to permissible depreciation or amortization (most common) | §6.01 |
+| 8 | Permissible to permissible depreciation (no §481(a) adjustment) | §6.02 |
+| 245 | Certain late elections under §168 or revocation of certain elections (only those listed) | §6.19 |
 
-### Specific item changes
+### Other common items
 
-| DCN | Description |
-|-----|-------------|
-| 14 | Bad debt method (specific charge-off vs. reserve) |
-| 16 | Long-term contract method |
-| 184 | UNICAP exempt small business under §263A(i) |
+| DCN | Description | Rev. Proc. 2025-23 |
+|-----|-------------|--------------------|
+| 5 | Bad debts: reserve method to specific charge-off method | §4.01 |
+| 236 | Small business taxpayer exceptions for certain long-term contracts | §19.01 |
+| 223 | Start-up expenditures | §10.01 |
+| 265 / 273 / 274 | Research or experimental expenditures (TCJA §174; OBBBA §174A; foreign) | §7.01–7.03 as modified by Rev. Proc. 2025-28 |
 
-**Verify the specific DCN number in the current Rev. Proc. before filing.** DCN renumbering happens periodically (Rev. Proc. 2018-31, then 2019-43, then 2022-14, then 2024-23 — each version may add, remove, or renumber DCNs).
+**Verify the specific DCN number in the current list before filing.** Each list (Rev. Proc. 2022-14, 2023-24, 2024-23, 2025-23) adds, removes or reassigns DCNs.
 
 ---
 
@@ -121,19 +133,17 @@ Same item interpretation:
 - Same revenue or expense category (for overall method changes)
 - Same inventory (for inventory changes)
 
-Example: in 2022, the taxpayer changed the inventory method from FIFO to specific identification. In 2025, the taxpayer wants to change to LIFO. Same item (inventory). 2025 is within 5 years of 2022 → automatic consent not available; must file non-automatic.
+Example: in 2022, the taxpayer changed the inventory method from FIFO to specific identification. In 2025, the taxpayer wants to change back to FIFO (DCN 137). Same item (inventory). 2022 is within the 5 tax years ending with 2025 → automatic consent not available unless the DCN section waives the rule; otherwise file non-automatic.
 
 ### Under examination
 
-If the IRS is currently auditing the taxpayer, and the issue under audit relates to the method being changed, automatic consent is not available. The taxpayer must:
+A taxpayer under examination can generally still file an automatic change, but (Rev. Proc. 2015-13 §§3.08, 6.03(3), 8.02; i3115 lines 6–8 and 25):
 
-1. Obtain consent from the IRS area office (often via the audit team)
-2. File Form 3115 within 30 days of the audit team's consent (or 90 days, depending on the change)
-3. Include the area office's consent letter with the Form 3115 filing
+1. Answer Form 3115 lines 6a–6d (and 8a–8d for Appeals/court) and give a copy of the Form 3115 to the examining agent (or Appeals officer / government counsel)
+2. Audit protection for prior years may not apply unless a category on line 7b applies (3-month window, 120-day window, method not before the director, negative adjustment, CAP, etc.); if the method is an issue under consideration, the change may not give audit protection
+3. A positive §481(a) adjustment is taken into account over 2 tax years instead of 4, unless one of those window categories applies
 
-If the IRS is auditing unrelated issues, automatic consent is generally still available — but the taxpayer must:
-- Disclose the audit on Line 9 of Part II
-- Verify under Rev. Proc. 2015-13 that the specific change being made is not affected
+When the facts are close, refer the user to a CPA: the agent should not decide audit-protection questions.
 
 ### Tax shelter
 
@@ -146,7 +156,7 @@ Most solo filers are NOT tax shelters; the rule mainly affects investor-driven p
 
 ### Final year of business
 
-If the year of change is also the final year of business, the entire §481(a) adjustment is recognized in that year (acceleration rule). Some DCNs are still available; others aren't. Verify per the specific DCN.
+Automatic consent is generally not available if the year of change is the final year of the trade or business (Rev. Proc. 2015-13 §5.03), unless the DCN section waives the rule (DCN 7 does). Separately, if the taxpayer ceases the trade or business during an adjustment period, the remaining §481(a) balance is taken into account in the year of cessation (§7.03(4)).
 
 ---
 
@@ -160,12 +170,12 @@ Common scenarios:
 4. **Specific change requires advance consent** per Rev. Proc. (some changes are designated non-automatic by the IRS).
 
 Non-automatic filings:
-- Filed by year-end of the year of change (or grace period)
-- $11,500+ user fee per Rev. Proc. 2025-1 (verify 2026 — typically published in January)
+- Filed during the year of change (Rev. Proc. 2015-13 §6.03(2)); no general grace period
+- $13,225 user fee, or $3,450 / $9,775 reduced (Rev. Proc. 2026-1, Appendix A; the annual successor revenue procedure is published each January)
 - IRS National Office in Washington DC processes
-- Taxpayer waits for letter ruling (6-12+ months typical)
-- Until the ruling is received, taxpayer continues using the OLD method
-- After ruling, taxpayer applies new method retroactively to year of change via §481(a)
+- Taxpayer waits for the letter / consent agreement
+- Until the ruling is received, the taxpayer continues using the OLD method
+- After the ruling, the taxpayer implements the new method for the year of change, with the §481(a) adjustment
 
 ---
 
@@ -173,7 +183,7 @@ Non-automatic filings:
 
 For most small-business changes:
 - Automatic consent costs: time to research DCN + duplicate copy mailing
-- Non-automatic costs: $11,500 user fee + tax professional fees + 6-12 months of uncertainty
+- Non-automatic costs: $13,225 user fee (or reduced fee) + tax professional fees + months of uncertainty
 
 Solo filers and small businesses should almost always use automatic consent if available. The exceptions are typically driven by exam status or the 5-year rule.
 
@@ -188,12 +198,13 @@ But delay isn't always possible — for §448 cash-method limits, the change is 
 
 ## Citations
 
-- Rev. Proc. 2024-23: comprehensive list of automatic accounting method changes (verify successor for current year)
+- Rev. Proc. 2025-23 (as modified by Rev. Proc. 2025-28): current list of automatic accounting method changes (check for a successor)
 - Rev. Proc. 2015-13: general procedural rules for method changes (still controlling, with periodic modifications)
-- Rev. Proc. 2025-1: annual user fee schedule (verify 2026 successor)
+- Rev. Proc. 2026-1: user fee schedule (Appendix A) and Form 3115 addresses (§§9.05–9.06)
 - IRC §446: general rule for accounting methods
 - IRC §448: cash method limitation
 - IRC §263A: UNICAP rules
 - IRC §481: adjustments required by changes
-- Reg. §1.446-1(e)(3)(i): 6-month grace period for some non-automatic changes
+- Reg. §1.446-1(e)(3)(i): consent requirement; Reg. §§301.9100-2, 301.9100-3: extensions of time (automatic 6-month extension for automatic changes; discretionary relief otherwise)
+- Form 970 and Reg. §1.472-3: adopting LIFO
 - IRS Pub. 538: Accounting Periods and Methods

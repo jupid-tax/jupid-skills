@@ -27,7 +27,7 @@ For items > $2,500 with useful life > 1 year, Section 179 lets the user deduct u
 |----------|-------------------|------------------|--------|
 | 2024 | $1,220,000 | $3,050,000 | Rev. Proc. 2023-34 |
 | 2025 | $2,500,000 | $4,000,000 | P.L. 119-21 §70306 (replaced Rev. Proc. 2024-40's $1,250,000 / $3,130,000); 2025 Form 4562 instructions, Lines 1 and 3 |
-| 2026 | $2,560,000 | $4,090,000 | Rev. Proc. 2025-32 §3.24 |
+| 2026 | $2,560,000 | $4,090,000 | Rev. Proc. 2025-32 §4.24 |
 
 The limit is reduced dollar-for-dollar above the phase-out threshold (irrelevant for solo filers in practice). Solo filers almost never hit the limit.
 

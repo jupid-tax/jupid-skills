@@ -1,4 +1,6 @@
-# Example — 65-year-old taking $50K Traditional IRA distribution; opt up via W-4R
+# Example — 65-year-old taking $50K Traditional IRA distribution; rate set by projection
+
+All 2026 figures: Rev. Proc. 2025-32 (brackets, standard deduction, $1,650 additional deduction for a married filer 65+, 0% capital gain band to $98,900 MFJ), P.L. 119-21 senior deduction ($6,000 per eligible person, 2025–2028), the Social Security Benefits Worksheet in the Form 1040 instructions, and the 2026 Form W-4R. Math checked in python.
 
 ## Scenario
 
@@ -6,13 +8,14 @@
 
 **Distribution**: $50,000 cash withdrawal from his Traditional IRA at Fidelity
 
-**Purpose**: Robert is retired and lives off Social Security ($30,000/year) plus IRA withdrawals. He's withdrawing $50,000 in 2026 to pay for his daughter's wedding. He wants to set the right withholding so he doesn't owe a big tax bill (or get a §6654 underpayment penalty) at filing time.
+**Purpose**: Robert is retired and lives off Social Security ($30,000/year) plus IRA withdrawals. He's withdrawing $50,000 in 2026 to pay for his daughter's wedding. He wants withholding close to the tax so he neither owes a big bill (or a §6654 underpayment penalty) nor waits a year for a large refund.
 
 **Key facts**:
-- Robert is 65, so **no §72(t) early-withdrawal penalty** applies (he's past 59½)
-- Filing status: Married Filing Jointly (his wife Sarah is 64, also retired, no income)
-- Distribution is from a Traditional IRA → **other nonperiodic** under IRC §3405(b)
-- **Default withholding: 10%** ($5,000); recipient can choose 0–100%
+- Robert is 65, so **no §72(t) additional tax** applies (he's past 59½)
+- Filing status: Married Filing Jointly (his wife Sarah is 64 at the end of 2026, also retired, no income, not yet claiming Social Security); both have SSNs valid for employment
+- Distribution is from a Traditional IRA, no basis (no Form 8606 history) → **other nonperiodic** under IRC §3405(b)
+- **Default withholding: 10%** ($5,000); Robert can choose any whole-number rate 0–100 (he has a U.S. home address)
+- No other withholding and no estimated payments for 2026
 
 ---
 
@@ -20,51 +23,54 @@
 
 Walked the decision tree:
 
-1. Roth qualified distribution? No — Traditional IRA.
-2. Direct trustee-to-trustee rollover? No — cash to Robert.
-3. Wages? No.
-4. Periodic? No — one-time withdrawal.
-5. ERD? No — IRA distribution, not from a qualified plan / 403(b) / 457(b) governmental plan.
-6. → **Other nonperiodic**. W-4R, default 10%, opt 0–100%.
+1. Wages or severance? No.
+2. Nonresident alien? No.
+3. Direct rollover / trustee-to-trustee transfer? No — cash to Robert.
+4. Reasonably believed nontaxable (qualified Roth)? No — Traditional IRA.
+5. Periodic? No — one-time withdrawal (and IRA distributions payable on demand are nonperiodic, per the form).
+6. ERD? No — IRA distribution, not from a qualified plan / 403(b) / governmental 457(b).
+7. → **Other nonperiodic**. W-4R, default 10%, any rate 0–100.
 
 ---
 
-## Step 2 — Estimate marginal bracket and total tax liability
+## Step 2 — Project the tax caused by the withdrawal
 
 Robert's 2026 income picture:
 
 | Source | Amount |
 |--------|--------|
 | Social Security (Robert) | $30,000 |
-| Social Security (Sarah) | $0 (Sarah filed for benefits but suspended; not yet drawing) |
+| Social Security (Sarah) | $0 (not yet claiming) |
 | IRA distribution (this withdrawal) | $50,000 |
-| Other ordinary income | $0 |
-| Capital gains / qualified dividends | $1,500 (from a small taxable brokerage account) |
-| **Gross income** | **$81,500** |
+| Ordinary (nonqualified) dividends | $300 |
+| Long-term capital gains | $1,200 (small taxable brokerage account) |
 
-Social Security taxability: With provisional income of $30,000/2 + $50,000 + $1,500 = $66,500 (above the $44,000 MFJ threshold), up to 85% of SS is taxable. Estimated taxable SS: $25,500 (85% of $30,000).
+**Social Security taxability** (Social Security Benefits Worksheet, MFJ base amounts $32,000 / $44,000): provisional income = $15,000 (half of benefits) + $50,000 + $300 + $1,200 = $66,500. Excess over $32,000 = $34,500; over $44,000 = $22,500. Taxable = smaller of 85% × $30,000 = $25,500 or [85% × $22,500 + smaller of $6,000 or $15,000] = $19,125 + $6,000 = **$25,125**.
 
 | Item | Amount |
 |------|--------|
-| Taxable SS | $25,500 |
+| Taxable Social Security | $25,125 |
 | IRA distribution (fully taxable; basis $0) | $50,000 |
-| Taxable ordinary dividends | $300 (assumed) |
-| Long-term capital gains | $1,200 (qualified, separate rate) |
-| **AGI** | **$77,000** |
-| Less: 2026 standard deduction (MFJ, both 65+) | $32,300 (estimate; verify against IRS Rev. Proc.) |
-| Taxable income (ordinary) | $44,700 |
+| Ordinary dividends | $300 |
+| Long-term capital gains | $1,200 |
+| **AGI** | **$76,625** |
+| Less: 2026 standard deduction (MFJ $32,200 + $1,650 for Robert, 65) | $33,850 |
+| Less: senior deduction (Schedule 1-A; Robert only; MAGI under $150,000) | $6,000 |
+| **Taxable income** | **$36,775** (ordinary $35,575 + LTCG $1,200) |
 
-Federal tax on $44,700 ordinary (MFJ 2026 brackets — estimate):
+Federal tax on $35,575 ordinary income (2026 MFJ: 10% to $24,800, 12% to $100,800):
 
-- 10% on first $23,850 = $2,385
-- 12% on next $20,850 = $2,502
-- **Ordinary tax: $4,887**
+- 10% on first $24,800 = $2,480
+- 12% on next $10,775 = $1,293
+- **Ordinary tax: $3,773**
 
-Plus tax on $1,200 LTCG at 0% (MFJ taxable income < $96,700, 2026 estimate) = $0
+Tax on the $1,200 LTCG: 0% (taxable income under the $98,900 MFJ 0% band).
 
-**Estimated total federal tax: ~$4,887**
+**Estimated total federal tax: $3,773.**
 
-Marginal bracket: 12% (on the next dollar of ordinary income).
+Without the withdrawal, provisional income would be $16,500 (under $32,000), so none of the Social Security would be taxable and taxable income would be $0. **The whole $3,773 is caused by the withdrawal: 7.55% of $50,000 → round up to 8%.**
+
+Why not just use the Marginal Rate Tables on the form? The simpler table approach (total income with the payment, $76,625 → MFJ band $57,000–$133,000) gives 12%. The tables assume the basic standard deduction only; they don't include Robert's $1,650 age-65 amount, the $6,000 senior deduction, or the way the withdrawal makes Social Security taxable, so here they overstate the rate.
 
 ---
 
@@ -72,20 +78,19 @@ Marginal bracket: 12% (on the next dollar of ordinary income).
 
 Robert's options:
 
-| W-4R rate | Withholding amount | Net to Robert | Tax owed at filing |
-|-----------|---------------------|---------------|---------------------|
-| 0% | $0 | $50,000 | ~$4,887 |
-| 10% (default) | $5,000 | $45,000 | ($4,887 − $5,000) = +$113 refund |
-| 12% (matches marginal bracket) | $6,000 | $44,000 | ($4,887 − $6,000) = +$1,113 refund |
-| 22% | $11,000 | $39,000 | ($4,887 − $11,000) = +$6,113 refund (over-withheld) |
+| Line 2 | Withholding | Net to Robert | At filing (tax $3,773) |
+|--------|-------------|---------------|------------------------|
+| -0- | $0 | $50,000 | owes $3,773 |
+| 8 (projection) | $4,000 | $46,000 | refund $227 |
+| blank (10% default) | $5,000 | $45,000 | refund $1,227 |
+| 12 (table, simpler method) | $6,000 | $44,000 | refund $2,227 |
+| 22 | $11,000 | $39,000 | refund $7,227 |
 
-Robert's preference: he doesn't want to owe at filing AND doesn't want to over-withhold (tying up cash until refund). The **10% default** is close to the right rate.
+Robert's preference: he doesn't want to owe at filing AND doesn't want to over-withhold. At "-0-" he would owe $3,773, which is more than $1,000 with no withholding, so a §6654 penalty could apply unless his 2025 tax was low enough for the prior-year safe harbor (ask before relying on that).
 
-A more precise calculation: marginal rate is 12%, but average tax rate on the distribution (factoring standard deduction absorption and the 10% bracket) is about 9–10%. The 10% default is well-calibrated.
+**Robert chooses: 8 on line 2.**
 
-**Robert chooses: 10% (leaves Line 2 blank, accepting the default).**
-
-Alternatively, if Robert wants to buffer slightly against under-withholding (and accept a small refund), he can enter "12" on Line 2. He goes with the default.
+Alternatively, if Robert wants a cushion against a larger-than-expected tax, he can leave line 2 blank and accept the 10% default ($1,227 refund). He goes with 8.
 
 ---
 
@@ -94,103 +99,99 @@ Alternatively, if Robert wants to buffer slightly against under-withholding (and
 ```
 # Form W-4R — DRAFT
 
-## Filing summary
+## Filing summary (not on the form)
 - Recipient:                 Robert Tanaka
-- SSN:                       XXX-XX-XXXX
-- Payor:                     Fidelity Brokerage Services LLC
+- Payer and account:         Fidelity, Traditional IRA ****4821
 - Payment type:              Other nonperiodic (Traditional IRA distribution)
-- Distribution amount:       $50,000
-- Elected withholding rate:  10% (default; Line 2 blank)
-- Default rate that would apply if blank: 10%
-- Tax year of distribution:  2026
+- Payment / taxable amount:  $50,000 / $50,000
+- Elected withholding rate:  8% (line 2 = 8)
+- Default rate that would apply without a W-4R: 10%
+- Tax year of payment:       2026
 
-## Form W-4R (printable)
+## Form W-4R (2026) entries
 
-Withholding Certificate for Nonperiodic Payments and Eligible Rollover Distributions
-For tax year 2026
+1a  First name and middle initial: Robert           Last name: Tanaka
+1b  Social security number: XXX-XX-XXXX
+    Address: [Robert's home address]
+    City or town, state, and ZIP code: [city, state, ZIP]
+2   Rate: 8 %
+    Signature: Robert Tanaka        Date: 04/15/2026
 
-Step 1 — Personal Information
-Name:                Robert Tanaka
-Social Security number: XXX-XX-XXXX
-Address:             [Robert's home address]
-City, state, ZIP:    [city, state, ZIP]
-
-Step 2 — Withholding Rate
-1a. Payor name:      Fidelity Brokerage Services LLC
-1b. Payor address:   [Fidelity's address per Robert's most recent IRA statement]
-
-2.  Rate: ____ %  [LEFT BLANK — default 10% applies]
-
-Step 3 — Sign Here
-Signature: Robert Tanaka
-Date:      04/15/2026
+## Rate computation
+- Tax with the withdrawal: $3,773; without: $0
+- $3,773 ÷ $50,000 = 7.55% → rounded up to 8
+- Marginal Rate Table (simpler method) would give 12; not used because the tables
+  ignore the age-65 and senior deductions and the Social Security interaction
 
 ## Required actions
 - [X] Robert signs and dates the form
-- [X] Form delivered to Fidelity (via Fidelity's portal, distribution-request workflow)
+- [X] Form delivered to Fidelity (portal distribution-request workflow)
 - [X] Robert retains a copy
 
 ## Validation summary
 - Classification: PASS — Other nonperiodic
-- Rate within allowed range: PASS (blank = 10% default; in 0-100 range)
-- Recipient ID matches payor records: PASS
+- Rate within allowed range: PASS (8, whole number, 0–100; U.S. address on file)
+- Recipient ID matches payer records: PASS
 
 ## Estimated tax impact
-- Distribution:                            $50,000
-- Withholding at 10%:                       $5,000
-- After-withholding cash to Robert:        $45,000
-- Estimated additional federal tax owed
-  at filing given marginal rate ~12%:      ($113) refund (very close to break-even)
+- Taxable amount:                           $50,000
+- Withholding at 8%:                        $4,000
+- After-withholding cash to Robert:         $46,000
+- Projected tax caused by the withdrawal:   $3,773 → about $227 refund
 
 ## Reminders
-- §72(t) 10% early-withdrawal penalty: N/A — Robert is 65 (past 59½)
-- State income tax withholding: separate state form via Fidelity
-- Form 1099-R issued by Fidelity in January 2027; reconcile on Robert's 2026 Form 1040
-- Sarah's 2026 SS suspension: re-evaluate for 2027 (delaying SS to age 66 increases her
-  benefit by ~6.7%/year; coordinate with overall retirement income plan)
+- §72(t) additional tax: N/A — Robert is 65 (past 59½)
+- The 8% election generally carries over to future payments from this IRA until
+  he submits a new W-4R (2026 Form W-4R, page 1)
+- State income tax withholding: separate state election in Fidelity's request; ask
+  Fidelity which state rules apply
+- Form 1099-R from Fidelity in early 2027: IRA distribution on 2026 Form 1040 line 4a/4b,
+  box 4 withholding on line 25b (line numbers per the 2025 form; re-check on the 2026 form)
 
 ## Sources cited in this draft
-- IRS Form W-4R (2026 revision)
+- IRS Form W-4R (2026), page 2 (nonperiodic payments, line 2, Marginal Rate Tables method)
 - IRC §3405(b) (other nonperiodic — 10% default)
 - IRC §72 (taxation of distributions from retirement accounts)
-- IRS Pub. 590-B (Distributions from IRAs)
-- IRS Pub. 915 (Social Security and Equivalent Railroad Retirement Benefits)
+- Rev. Proc. 2025-32 §§4.01, 4.03, 4.14 (2026 brackets, capital gain bands, standard deduction)
+- P.L. 119-21 (senior deduction, Schedule 1-A)
+- IRS Pub. 590-B (Distributions from IRAs); Pub. 915 / Form 1040 instructions (Social Security Benefits Worksheet)
 ```
 
 ---
 
 ## Filing channel
 
-Robert delivers W-4R via Fidelity's participant portal:
+Robert delivers the W-4R election through Fidelity's online withdrawal request (menu names are typical, not verified; follow the screen labels):
 
 1. Logs in at fidelity.com
-2. Goes to "Move money" → "Withdraw money"
-3. Selects his Traditional IRA → "Withdraw cash"
-4. Enters distribution amount: $50,000
-5. **Federal tax withholding section**: portal pre-checks "10% default"
-6. Robert leaves the default; alternatively could click "Use a different rate"
-7. State withholding: Robert lives in CA — CA mandatory state withholding applies; CA default is 1% of distribution but Robert can elect higher. Robert leaves CA default for now.
-8. Direct deposit to his linked checking account
-9. E-signs (typed name + acknowledgment + 2FA code)
-10. Confirmation: distribution scheduled for 4/16/2026; net $44,500 (after $5,000 federal + $500 CA state) to checking
+2. Opens the withdrawal request for his Traditional IRA
+3. Enters distribution amount: $50,000
+4. **Federal tax withholding section**: the portal pre-selects the 10% default
+5. Robert chooses a different rate and enters 8
+6. State withholding: completes the separate state election shown on the request (asks Fidelity about his state's rules)
+7. Direct deposit to his linked checking account
+8. E-signs (typed name + acknowledgment + 2FA code)
+9. Confirmation: distribution scheduled; net $46,000 before any state withholding
 
-Form 1099-R will be issued in January 2027.
+Form 1099-R will be issued in early 2027.
 
 ---
 
 ## What Robert should also do
 
-- [X] Set a Form 1040 reminder for spring 2027 to reconcile (expects a small refund or near-zero balance)
-- [X] If he plans similar IRA withdrawals in future years, evaluate whether to set up automatic 10% withholding on all withdrawals (Fidelity supports this) vs. file W-4R per distribution
-- [X] Consider whether IRA withdrawal timing could be optimized — e.g., spreading the $50,000 across two tax years (December 2026 + January 2027) to manage the SS taxable threshold. With $50,000 in one year, 85% of SS is taxable; with $25,000/year split, less SS may be taxable. But the wedding is in 2026, so cash flow drives the decision.
+- [X] Set a Form 1040 reminder for spring 2027 to reconcile (expects a small refund)
+- [X] Remember the 8% election stays on file for later withdrawals from this IRA; submit a new W-4R if the next withdrawal's tax picture differs
+- [X] Timing note to raise, not decide: a withdrawal split across two tax years changes how much Social Security becomes taxable each year. The wedding is in 2026, so cash flow drives the decision.
 
 ---
 
 ## Sources cited in this draft
 
-- IRS Form W-4R (2026 revision)
+- IRS Form W-4R (2026)
 - IRC §3405(b) (other nonperiodic — 10% default)
 - IRC §72 (taxation of distributions)
+- Rev. Proc. 2025-32 (2026 inflation adjustments)
+- P.L. 119-21 (senior deduction)
 - IRS Pub. 590-B (IRA Distributions)
 - IRS Pub. 915 (Social Security taxation)
-- IRC §6654 (estimated tax — N/A here, withholding satisfies safe harbor)
+- IRC §6654 (estimated tax — withholding at 8% covers the projected tax)

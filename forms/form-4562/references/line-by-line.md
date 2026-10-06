@@ -16,9 +16,9 @@ Complete lookup for every line on Form 4562. Use this when the agent needs to co
 
 | Line | Field | Rule | Source |
 |------|-------|------|--------|
-| 1 | Maximum amount | $2,500,000 for 2025; $2,560,000 for 2026 | IRC §179(b)(1) as amended by P.L. 119-21 §70306; 2025 Form 4562 instructions, Line 1; Rev. Proc. 2025-32 §3.24 |
+| 1 | Maximum amount | $2,500,000 for 2025; $2,560,000 for 2026 | IRC §179(b)(1) as amended by P.L. 119-21 §70306; 2025 Form 4562 instructions, Line 1; Rev. Proc. 2025-32 §4.24 |
 | 2 | Total cost of §179 property placed in service | Sum of cost (after business-use %) of all assets eligible for §179, even those not elected | |
-| 3 | Threshold cost of §179 property | $4,000,000 for 2025; $4,090,000 for 2026 | IRC §179(b)(2); 2025 Form 4562 instructions, Line 3; Rev. Proc. 2025-32 §3.24 |
+| 3 | Threshold cost of §179 property | $4,000,000 for 2025; $4,090,000 for 2026 | IRC §179(b)(2); 2025 Form 4562 instructions, Line 3; Rev. Proc. 2025-32 §4.24 |
 | 4 | Reduction in limitation | max(0, Line 2 − Line 3) | Phase-out: dollar-for-dollar above threshold |
 | 5 | Dollar limitation for tax year | max(0, Line 1 − Line 4); married filing separately: 50% of result | Married filing separately allocates the dollar limit; consult IRC §179(b)(4) |
 | 6 | (a) Description / (b) Cost / (c) Elected cost | Per asset row | Cost (column b) is **business-use-adjusted**: $40K truck × 80% = $32K; not full cost |

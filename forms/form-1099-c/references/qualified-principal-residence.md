@@ -1,6 +1,6 @@
 # Qualified Principal Residence Indebtedness — IRC §108(a)(1)(E)
 
-The qualified principal residence indebtedness (QPRI) exclusion lets a borrower exclude **up to $750,000** ($375,000 MFS) of canceled mortgage debt on their main home. This was introduced by the Mortgage Forgiveness Debt Relief Act of 2007, originally for 2007-2009, and has been extended repeatedly. **It is not permanent** — the agent must verify the exclusion is in effect for the tax year being reported.
+The qualified principal residence indebtedness (QPRI) exclusion lets a borrower exclude **up to $750,000** ($375,000 MFS) of canceled mortgage debt on their main home. This was introduced by the Mortgage Forgiveness Debt Relief Act of 2007 and extended repeatedly. **It is not permanent:** it applies only to debt discharged **before January 1, 2026**, or discharged under an arrangement entered into and evidenced in writing before January 1, 2026 (IRC §108(a)(1)(E); Form 982 instructions, Line 1e; Pub. 4681 (2025) What's New). As of 2026-10-06 Congress has not extended it.
 
 This file covers the legal scope, what counts as "qualified" indebtedness, the limit, the basis-reduction trade-off, and the year-by-year extension history.
 
@@ -8,9 +8,9 @@ This file covers the legal scope, what counts as "qualified" indebtedness, the l
 
 ## The rule
 
-**IRC §108(a)(1)(E):** Gross income does not include any amount that would otherwise be includable by reason of the discharge of qualified principal residence indebtedness, **subject to the limit and the year-aware sunset**.
+**IRC §108(a)(1)(E):** Gross income does not include any amount that would otherwise be includable by reason of the discharge of qualified principal residence indebtedness which is discharged (i) before January 1, 2026, or (ii) subject to an arrangement entered into and evidenced in writing before January 1, 2026.
 
-**Qualified principal residence indebtedness (QPRI)** under §108(h)(2) is defined as **acquisition indebtedness** (§163(h)(3)(B), with the substitution of "$750,000" for "$1,000,000") with respect to the borrower's **principal residence**.
+**Qualified principal residence indebtedness (QPRI)** under §108(h)(2) is **acquisition indebtedness** (§163(h)(3)(B), with "$750,000 ($375,000" substituted for discharges after 2020) with respect to the borrower's **principal residence**.
 
 In plain English: the debt must be (a) used to buy, build, or substantially improve the borrower's main home, and (b) secured by the same home.
 
@@ -21,9 +21,13 @@ In plain English: the debt must be (a) used to buy, build, or substantially impr
 - **$750,000** for most filers
 - **$375,000** for married filing separately
 
-These are the limits effective for tax years after 2017 (TCJA reduced from the prior $2,000,000 / $1,000,000 limits). Borrowers with cancellations in earlier years used higher limits — out of scope; consult the year-specific Pub 4681.
+These limits apply to discharges after 2020 and before 2026; the Consolidated Appropriations Act, 2021 (P.L. 116-260 §114(b)) cut them from $2,000,000 / $1,000,000 (Form 982 instructions, Line 1e; IRC §108(h)(2) notes).
 
-The limit is on the **canceled QPRI**, not on the underlying mortgage balance. A borrower with a $900,000 mortgage who has $200,000 forgiven can exclude the full $200,000 (well under the $750,000 limit). A borrower with a $900,000 mortgage who has $800,000 forgiven can exclude $750,000 and must report $50,000 unless another exclusion (e.g., insolvency) covers the remainder.
+The limit is on **how much of the debt counts as QPRI**, and the **ordering rule** (§108(h)(4)) then excludes only the part of the discharge that exceeds the loan's nonqualified portion (measured immediately before the discharge):
+
+- A borrower with a $900,000 all-acquisition mortgage has $750,000 of QPRI and $150,000 of nonqualified debt. If $200,000 is forgiven, only $50,000 ($200,000 − $150,000) is excludable under §108(a)(1)(E); the other $150,000 is income unless another exclusion (e.g., insolvency) covers it.
+- If $800,000 of that loan is forgiven, $650,000 ($800,000 − $150,000) is excludable.
+- IRS examples: a $1,000,000 loan with $800,000 of QPRI and $300,000 discharged → $100,000 excludable (Form 982 instructions); Pub. 4681 Example 3 (cash-out refinance of $110,000, $115,000 canceled) → $5,000 excludable.
 
 ---
 
@@ -46,21 +50,20 @@ The limit is on the **canceled QPRI**, not on the underlying mortgage balance. A
 
 ### Mixed-use debts
 
-When a HELOC was partially used for home improvement (qualified) and partially for non-housing purposes (not qualified), apportion the canceled amount between the two and exclude only the qualified portion. Pub 4681 Worksheet 1 in Chapter 1 walks through this allocation.
+When a HELOC was partially used for home improvement (qualified) and partially for non-housing purposes (not qualified), the nonqualified part absorbs the discharge first under the ordering rule; only the excess is excludable. Pub. 4681, "Qualified Principal Residence Indebtedness" (Example 3), walks through it.
 
 ---
 
 ## What counts as "principal residence"
 
-The same definition as IRC §121 (the home-sale exclusion):
+Pub. 4681 and the Form 982 instructions: "Your main home is the one in which you live most of the time. You can have only one main home at any one time." §108(h)(5) points to the §121 meaning of principal residence.
 
-- The home where the borrower **actually lived as their main home**
-- A house, condo, co-op, mobile home, or houseboat the borrower used as their primary dwelling
-- The borrower must have lived there for the **majority of the relevant period**
+- A house, condo, co-op, mobile home, or houseboat the borrower used as their main home
+- A second home, vacation home, or rental property does **not** qualify, even if the borrower owns no other home
 
-A second home, vacation home, or rental property does **not** qualify, even if the borrower owns no other home.
+If the borrower moved out before the discharge (e.g., rented the home out while it was under water), ask for dates and flag the principal-residence question for a CPA.
 
-Timing: the home must be the borrower's principal residence at the time of the debt's cancellation **or at the time the debt was incurred** (for acquisition debt that was used to buy/build/improve the home that became the principal residence).
+Also excluded from QPRI treatment: a discharge for services performed for the lender, or on account of any factor not directly related to a decline in the home's value or the borrower's financial condition (§108(h)(3); Form 982 instructions).
 
 ---
 
@@ -68,18 +71,16 @@ Timing: the home must be the borrower's principal residence at the time of the d
 
 **Form 982** is required.
 
-1. Check **Box 1e** (Discharge of qualified principal residence indebtedness)
-2. Enter the excluded amount on **Line 2** (capped at $750,000 / $375,000 MFS)
-3. Reduce the basis of the principal residence on **Line 10b** by the excluded amount
+1. Check **Box 1e** (Discharge of qualified principal residence indebtedness) — not in a title 11 case (use 1a); an insolvent borrower may elect 1b instead
+2. Enter the excludable amount on **Line 2** (after the ordering rule, within the $750,000 / $375,000 MFS limit)
+3. **If the borrower still owns the home after the discharge**, enter on **Line 10b** the smaller of the excluded amount or the home's basis. After a foreclosure or short sale, there is no Line 10b entry.
 4. Attach Form 982 to the 1040
-
-The basis reduction on Line 10b is **mandatory** — see "Trade-off: basis reduction" below.
 
 ---
 
 ## Trade-off: basis reduction
 
-§108(h)(1) requires the borrower to **reduce the basis of the principal residence** by the excluded amount. The reduction is reported on Form 982 Line 10b.
+§108(h)(1) requires the borrower to **reduce the basis of the principal residence** (but not below zero) by the excluded amount. Pub. 4681 and the Form 982 instructions apply this when the borrower **continues to own the home**; the reduction is reported on Form 982 Line 10b.
 
 **Practical effect:** when the borrower later sells the home, the lower basis means a larger gain (or smaller loss). For most borrowers, this gain is absorbed by the §121 exclusion ($250,000 single, $500,000 married filing jointly). For high-equity homes where §121 doesn't fully cover the gain, the §108(h)(1) basis reduction can produce taxable gain on sale.
 
@@ -96,33 +97,30 @@ These records are needed when the home is sold, which may be many years after th
 
 ## Year-by-year extension history
 
-| Period | Status | Authority |
-|--------|--------|-----------|
-| 2007-2012 | Original enactment | Mortgage Forgiveness Debt Relief Act of 2007 |
-| 2013 | Extended | American Taxpayer Relief Act of 2012 |
-| 2014 | Extended | Tax Increase Prevention Act of 2014 |
-| 2015-2016 | Extended | PATH Act 2015 |
-| 2017 | Lapsed (then retroactively extended) | Bipartisan Budget Act of 2018 |
-| 2018-2019 | Extended | Further Consolidated Appropriations Act 2020 |
-| 2020 | Extended | Taxpayer Certainty and Disaster Tax Relief Act 2019 |
-| 2021-2025 | Extended | Consolidated Appropriations Act 2021 (extended through 2025) |
-| 2026+ | **Verify before filing** | TBD |
+Recent amendments to the §108(a)(1)(E) cutoff date (IRC §108 notes, law.cornell.edu):
 
-The pattern: Congress has extended this exclusion repeatedly, often retroactively. **It has never been allowed to permanently lapse**, but the extension is not automatic. Any 2026+ filing requires the agent to confirm the current status.
+| Amendment | Effect |
+|-----------|--------|
+| P.L. 114-113 (2015) | Discharges before Jan. 1, 2017, plus the written-arrangement rule |
+| P.L. 115-123 (2018) | Through 2017 |
+| P.L. 116-94 (Dec. 2019) | Through 2020 |
+| P.L. 116-260 §114 (Dec. 2020) | Through 2025; limit cut to $750,000 / $375,000 for discharges after 2020 |
+| After 2025 | **Not extended** as of 2026-10-06 (Pub. 4681 (2025) What's New: QPRI "cannot be excluded from income for discharges completed or discharge agreements entered into after December 31, 2025") |
+
+Congress has extended the exclusion retroactively before (e.g., 2017 by P.L. 115-123), so re-check before filing any 2026 discharge, but do not assume an extension.
 
 ---
 
 ## Year-aware status — verify before relying
 
-**As of the tax-year 2026 last-verified date in SKILL.md:**
+**As of 2026-10-06:**
 
-- The §108(a)(1)(E) exclusion was extended through **December 31, 2025**.
-- Congress has not yet (as of the last-verified date) extended the exclusion into 2026.
-- Verify the 2026 status before filing any 2026 mortgage cancellation.
+- The §108(a)(1)(E) exclusion covers debt discharged **before January 1, 2026**, or under a written arrangement entered into before that date.
+- Ask for the discharge date and, for a 2026 discharge, whether a written workout / short-sale / modification agreement was signed before Jan. 1, 2026 (keep a copy).
 
-**If extended for 2026:** claim normally per the rules above.
+**2025 discharge or pre-2026 written arrangement:** claim per the rules above.
 
-**If not extended for 2026:** test §108(a)(1)(B) insolvency as the fallback. Many borrowers with mortgage cancellations in foreclosure are also insolvent; insolvency may cover all or part of the canceled amount.
+**Other 2026 discharges:** no QPRI exclusion unless later legislation says otherwise; test §108(a)(1)(B) insolvency as the fallback. Many borrowers with mortgage cancellations in foreclosure are also insolvent; insolvency may cover all or part of the canceled amount.
 
 **Where to verify:**
 
@@ -142,7 +140,7 @@ When the cancellation accompanies a foreclosure, the borrower may have **two** t
 
 The §108(a)(1)(E) exclusion only applies to the **cancellation-of-debt** piece, not to the gain on disposition. If the foreclosure sale price is less than the borrower's basis, there's no gain — only a loss (which may be deductible for business property but not personal-residence loss). If the sale price is greater than basis, there's gain — typically absorbed by §121 if §121 applies.
 
-For nonrecourse mortgage debt (Box 5 = No), there's no separate cancellation-of-debt income — the entire deficiency is folded into the disposition. §108(a)(1)(E) is moot for nonrecourse.
+For nonrecourse mortgage debt (Box 5 = No) discharged in a foreclosure, the amount realized is the full outstanding debt, so there's no separate cancellation-of-debt income from the foreclosure (Pub. 4681, Chapter 2). §108(a)(1)(E) is moot there. (A nonrecourse principal reduction while the borrower keeps the home is still canceled debt.)
 
 ---
 
@@ -162,9 +160,9 @@ For nonrecourse mortgage debt (Box 5 = No), there's no separate cancellation-of-
 
 1. **Claiming QPRI on a vacation home or rental property** — not principal residence, doesn't qualify.
 2. **Claiming QPRI on HELOC proceeds used for non-housing** — the HELOC must have been used for qualified purposes.
-3. **Forgetting basis reduction** — Line 10b on Form 982 is mandatory; missing it can trigger an IRS inquiry.
-4. **Exceeding the $750,000 / $375,000 cap** — split the canceled amount: cap-eligible portion on Form 982, remainder needs a different exclusion or is income.
-5. **Not verifying the year-status** — applying QPRI to a year where the exclusion has lapsed and is not yet retroactively extended produces a faulty exclusion claim.
+3. **Getting Line 10b wrong** — required when the borrower keeps the home; not entered after a foreclosure or short sale.
+4. **Ignoring the ordering rule and the $750,000 / $375,000 limit** — the nonqualified part of the loan absorbs the discharge first; only the excess is excludable.
+5. **Claiming QPRI for a 2026 discharge** — not allowed unless under a written arrangement entered into before Jan. 1, 2026.
 6. **Treating recourse and nonrecourse the same** — the foreclosure interaction differs; for nonrecourse there is no §108 cancellation income, so §108(a)(1)(E) is irrelevant.
 
 ---
@@ -172,12 +170,12 @@ For nonrecourse mortgage debt (Box 5 = No), there's no separate cancellation-of-
 ## Sources
 
 - IRC §108(a)(1)(E) — qualified principal residence indebtedness exclusion
-- IRC §108(h) — definitions and limits, basis reduction
+- IRC §108(h) — basis reduction (h)(1), definition and limit (h)(2), exceptions (h)(3), ordering rule (h)(4), principal residence (h)(5)
 - IRC §163(h)(3)(B) — acquisition indebtedness definition
 - IRC §121 — sale of principal residence exclusion (related)
-- [Publication 4681](https://www.irs.gov/publications/p4681) — Chapter 1, QPRI section, including Worksheet 1 for mixed-use allocation
+- [Publication 4681 (2025)](https://www.irs.gov/publications/p4681) — What's New; QPRI section (Example 3, ordering rule); Reduction of Tax Attributes
 - [Publication 523](https://www.irs.gov/publications/p523) — Selling Your Home (basis tracking)
 - [Form 982](https://www.irs.gov/pub/irs-pdf/f982.pdf) and [Instructions](https://www.irs.gov/pub/irs-pdf/i982.pdf)
-- Mortgage Forgiveness Debt Relief Act of 2007 (P.L. 110-142) and subsequent extensions
+- Mortgage Forgiveness Debt Relief Act of 2007 (P.L. 110-142); P.L. 116-260 §114 (through 2025, $750,000 limit)
 
-**Year-aware:** Verify the 2026 status of §108(a)(1)(E) at the IRS website before filing any 2026 mortgage cancellation.
+**Year-aware:** as of 2026-10-06 the exclusion ended for discharges after 2025; re-check https://www.irs.gov/forms-pubs/about-form-982 for later legislation before filing any 2026 mortgage cancellation.

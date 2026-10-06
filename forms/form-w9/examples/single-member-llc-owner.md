@@ -36,13 +36,13 @@ Decision tree (`references/tax-classification-decisions.md`, Section B.1):
 2. Has she filed Form 2553 or Form 8832? **No.**
 3. Is the LLC owned by one person or multiple? **One** — Maya is the sole member.
 
-Result: **Single-member LLC, no corporate election → default disregarded entity → Line 3a = "Individual/sole proprietor or single-member LLC."**
+Result: **Single-member LLC, no corporate election → default disregarded entity → Line 3a = the owner's box, "Individual/sole proprietor"** (Form W-9 Rev. March 2024: a disregarded entity checks the box for its owner's classification).
 
 The agent confirms back to Maya: "You're filling this out as Individual/sole proprietor, using your personal SSN — not your LLC's EIN. Your LLC has its own EIN, but the IRS treats your LLC as part of you for income tax. Right?" Maya: "Right."
 
 ### Step 4 — TIN selection
 
-Per `references/tin-selection.md`: SMLLC default → owner's SSN.
+Per `references/tin-selection.md`: SMLLC default → owner's SSN (or the owner's own EIN, if she had one as a sole proprietor; never the LLC's EIN).
 
 Maya has both:
 - Personal SSN: `XXX-XX-1234`
@@ -60,9 +60,9 @@ She enters her SSN.
 2. Business name / disregarded entity name:    Garcia Design LLC
 
 ## Tax classification (Line 3)
-3a. Federal tax classification:                Individual/sole proprietor or single-member LLC
+3a. Federal tax classification:                Individual/sole proprietor
     (If LLC) Tax classification letter:        n/a (LLC box NOT checked)
-3b. (FATCA pass-through indicator):            blank
+3b. Foreign partners, owners, or beneficiaries: blank (not a partnership, trust, or estate)
 
 ## Exemptions (Line 4) — usually blank
 Exempt payee code:                             blank
@@ -94,7 +94,7 @@ Verification of requestor legitimacy:          Existing signed SOW; portal link 
 
 **Why is Line 1 "Maya Garcia" and not "Garcia Design LLC"?** Line 1 is "the name on your income tax return." Maya files Form 1040 with Schedule C — there is no separate LLC tax return because the IRS treats the SMLLC as disregarded. The name the IRS will match against the TIN is the name on the 1040. That's "Maya Garcia." If Maya wrote "Garcia Design LLC" on Line 1 and her SSN in Part I, the IRS TIN-matching system would fail (LLC name doesn't match an SSN's name record). Acme would receive a CP2100 / "B" notice and would have to apply 24% backup withholding until Maya sent a corrected W-9.
 
-**Why is Line 3a "Individual/sole proprietor" and not "Limited liability company"?** This is the single most-misfiled box on Form W-9. The W-9 form's Line 3a explicitly bundles "Individual/sole proprietor or single-member LLC" into the same checkbox. The "Limited liability company" checkbox is only for LLCs that have made a corporate tax election (S-corp or C-corp) OR multi-member LLCs. Maya's LLC has done neither. Checking the LLC box and writing "S" or leaving the letter blank would create a category mismatch that, again, fails IRS TIN matching.
+**Why is Line 3a "Individual/sole proprietor" and not "Limited liability company"?** This is the single most-misfiled box on Form W-9. The March 2024 revision says a disregarded LLC "should check the appropriate box for the tax classification of its owner"; Maya is an individual, so "Individual/sole proprietor". The "LLC" checkbox is only for LLCs that have made a corporate tax election (S-corp or C-corp) OR multi-member LLCs taxed as partnerships. Maya's LLC has done neither. Checking the LLC box and writing "S" or leaving the letter blank would create a category mismatch that, again, fails IRS TIN matching.
 
 **Why is Part I her SSN, not the LLC's EIN — even though the LLC has an EIN?** Because the LLC is disregarded for federal income tax. The IRS doesn't have a Schedule C or Form 1040 filed under the LLC's EIN — those filings happen under Maya's SSN. The LLC's EIN exists in IRS records only for federal employment taxes (if Maya had employees), some excise taxes, and IRS communication when Maya opens accounts in the LLC's name. For 1099-NEC matching, the IRS expects the SSN of the person on Schedule C — Maya's. **The trap**: Maya checks "Limited liability company" + "S" (because she's heard S-corps are tax-advantageous) + writes her LLC's EIN. The W-9 fails IRS TIN matching → 24% backup withholding starts on her next Acme payment.
 
@@ -102,7 +102,7 @@ Verification of requestor legitimacy:          Existing signed SOW; portal link 
 
 **Why is Line 4 blank?** Sole proprietors and single-member LLC owners are NEVER exempt from backup withholding under IRC §3406. Code 5 (Corporations) does not apply because Maya is filing as Individual/sole proprietor for tax purposes, not as a corporation. Sole props ALWAYS leave Line 4 blank.
 
-**Why is Adobe Sign the right delivery channel?** Acme's vendor portal already supports Adobe Sign with audit trails meeting IRS Pub 1345 standards (signer identity verified by email + IP + timestamp; tamper-evident document seal). This satisfies the W-9 electronic-signature requirement. Maya should NOT email a scanned W-9 PDF over plain email — the form contains her full legal name + SSN, which is identity-theft-grade data.
+**Why is Adobe Sign the right delivery channel?** Acme's vendor portal runs the W-9 through Adobe Sign with an audit trail (signer identity verified by email + IP + timestamp; tamper-evident document seal). That is how Acme meets the requester-system rules for electronic W-9s (Instructions for the Requester of Form W-9, Rev. March 2024, "Electronic Submission of Forms W-9"). Maya should NOT email a scanned W-9 PDF over plain email — the form contains her full legal name + SSN, which is identity-theft-grade data.
 
 ## What if Maya had made an S-corp election?
 
@@ -133,7 +133,7 @@ If Maya had brought in a co-owner (e.g., her partner Joel as a 50/50 LLC member)
 
 Acme stores Maya's W-9 in their vendor master record. Through 2026, Acme tracks total payments to Garcia Design LLC. At year-end:
 
-- **If total payments ≥ $2,000** (the new OBBBA threshold for tax year 2026 per IRC §6041 as amended by OBBBA Section 112201): Acme files **Form 1099-NEC** by January 31, 2027, reporting the total in Box 1. Payee name on the 1099 = "Maya Garcia" (Line 1 of W-9), payee TIN = Maya's SSN (Part I). Maya gets a copy.
+- **If total payments ≥ $2,000** (the threshold for payments made in 2026, P.L. 119-21 §70433): Acme files **Form 1099-NEC** by February 1, 2027 (January 31 is a Sunday), reporting the total in Box 1a. Payee name on the 1099 = "Maya Garcia" (Line 1 of W-9), payee TIN = Maya's SSN (Part I). Maya gets a copy.
 - **If total payments < $2,000**: No 1099-NEC required, but Maya still owes income tax + self-employment tax on the income. Maya must self-report on her Schedule C.
 - **No backup withholding**: Maya's W-9 is on file with a valid name + matching TIN, certified, and Item 2 not struck. Acme pays gross.
 
@@ -151,9 +151,9 @@ Maya then uses the 1099-NEC (or her own records if no 1099 issued) to file her 2
 - IRS Form W-9 (Rev. March 2024)
 - IRS Instructions for Form W-9 (Rev. March 2024)
 - IRC §3406 (backup withholding, 24% rate)
-- IRC §6041 (information return reporting; threshold $2,000 effective 2026 per OBBBA Section 112201)
+- IRC §6041 / §6041A (information return reporting; $2,000 for payments after Dec. 31, 2025 per P.L. 119-21 §70433)
 - IRC §6109 (TIN furnishing requirement)
-- IRC §7701(a)(31) (definition of US person; SMLLC default treatment)
-- IRS Publication 1345 (e-signature standards for tax forms)
+- IRC §7701(a)(30) (definition of US person)
+- IRS Instructions for the Requester of Form W-9 (Rev. March 2024), Electronic Submission of Forms W-9
 - Treasury Reg. §301.7701-3 (SMLLC default classification — disregarded entity)
 - Companion Jupid blog: [What Is a W-9 Form? Guide for Freelancers and Independent Contractors 2026](https://jupid.com/blog/what-is-a-w9-form-guide-2026)

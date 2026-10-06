@@ -11,8 +11,9 @@ The agent picks a filing channel from the decision tree below, then executes the
 ## Channel decision tree
 
 ```
-User has AGI ≤ ~$84,000 and wants free guided software?
+User has AGI ≤ $89,000 (2026 filing season) and wants free guided software?
   → IRS Free File (Free File Alliance partners)
+    Source: https://www.irs.gov/e-file-do-your-taxes-for-free
     Browser automation: provider-specific (TaxAct Free, FreeTaxUSA, etc.)
     Skip — proprietary flows change too often for deterministic automation.
 
@@ -29,14 +30,9 @@ User has already paid for tax software (TurboTax, H&R Block, FreeTaxUSA)?
 User wants to file on paper?
   → Print Form 1040 + Schedule 1 + supporting schedules, sign, mail
     Use Section 3.
-
-User wants to use IRS Direct File?
-  → Note: IRS Direct File supports a subset of scenarios. Schedule 1 simple cases
-    (unemployment income, student loan interest, educator expenses) are typically
-    supported; Schedule C / Schedule SE flows in Direct File depend on the year's
-    rollout. Check current scope before automating.
-    See https://www.irs.gov/filing/irs-direct-file
 ```
+
+IRS Direct File was not offered in the 2026 filing season (the irs.gov Direct File page returns 404 as of 2026-10-06). Do not offer it as a channel.
 
 ---
 
@@ -44,7 +40,7 @@ User wants to use IRS Direct File?
 
 URL: https://www.irs.gov/e-file-providers/free-file-fillable-forms
 
-**Availability**: FFFF is open from late January through mid-October each year. Outside that window, fall back to paper or wait.
+**Availability**: FFFF opens in late January; for the 2026 season it closes Oct. 15, 2026 (irs.gov FFFF page, reviewed 24-Sep-2026). Outside that window, fall back to paper or wait. FFFF prepares a federal return only, has limited error checking, and does not support every form; check the forms-and-limitations list first.
 
 **Account model**: each tax year is a separate FFFF account.
 
@@ -58,6 +54,7 @@ Agent must have:
 - Form 1040 inputs (filing status, dependents, W-2s if any, etc.) — Schedule 1 alone isn't a return
 - All supporting schedules and forms (Schedule C, Schedule SE, Form 8889, Form 3903, Form 2106, Form 8853 — whichever apply)
 - An email address the user controls
+- A 10-digit U.S. cell phone number that can receive SMS (required to create an FFFF account)
 - An IP address the user is willing to file from
 
 ### Browser flow
@@ -123,7 +120,7 @@ The agent navigates and interacts deterministically. Stable selectors are listed
 | 22 | (always blank) | (skip) |
 | 23 | "Archer MSA deduction" | Part II Line 23 |
 | 24a-24k | Sub-line text fields for each adjustment type | Part II Lines 24a-24k |
-| 24z | "Other adjustments — list type and amount" | Part II Line 24z |
+| 24z | "Other adjustments" | Leave blank (2025 instructions) |
 | 25 | (auto-computed) | Verify equals draft Line 25 |
 | 26 | (auto-computed) | Verify equals draft Line 26 |
 
@@ -199,7 +196,7 @@ For users with paid tax software (TurboTax, H&R Block, FreeTaxUSA, TaxSlayer, Ta
 
 ## Section 3 — Paper filing
 
-Sometimes paper is the right answer (FFFF closed, complex return, identity-theft concerns).
+Sometimes paper is the right answer (FFFF closed, complex return, identity-theft concerns). The 2025 Form 1040 instructions list mailing addresses by state at the end of the booklet; use them for returns filed in 2026.
 
 ### Assemble the return
 
@@ -260,7 +257,7 @@ After filing, the user's return moves through:
 Status checks:
 
 - E-file: usually Accepted within 24-48 hours
-- Paper: 4-8 weeks for Acceptance acknowledgment
+- Paper: no acceptance acknowledgment; refund status is generally available about 4 weeks after mailing (2025 Form 1040 instructions, Refund Information)
 - Refund tracking: https://www.irs.gov/refunds
 - Account transcript: https://www.irs.gov/individuals/get-transcript
 
