@@ -2,7 +2,9 @@
 
 Complete lookup for every field on Form W-7. Use this when the agent needs to confirm where information goes.
 
-Line numbers below are from the latest revision of Form W-7 at <https://www.irs.gov/pub/irs-pdf/fw7.pdf>. Verify against the current form before filing — the IRS occasionally renumbers lines.
+Line numbers below are from **Form W-7 (Rev. December 2024)** and the **Instructions for Form W-7 (Rev. December 2024)**, the current revisions on irs.gov as of 2026-10-06 (<https://www.irs.gov/pub/irs-pdf/fw7.pdf>). Re-check <https://www.irs.gov/forms-pubs/about-form-w-7> for a newer revision before filing — the IRS occasionally renumbers lines.
+
+General rule from the instructions: enter "N/A" on every section of a line that does not apply. Don't leave any section blank (line 4, for example, needs three entries).
 
 ---
 
@@ -19,7 +21,7 @@ If renewing, the previously issued ITIN must be entered on Line 6f.
 
 ### Reason for submitting Form W-7
 
-Check **exactly one** of (a) through (h). This is the most consequential field on the form. Picking the wrong code is the #1 rejection reason. See [`reason-codes.md`](./reason-codes.md) for the decision tree.
+Check the one box of (a) through (h) that best explains the reason, even for renewals. Box a, and box f when claiming an exception, also require box h. This is the most consequential field on the form. See [`reason-codes.md`](./reason-codes.md) for the decision tree.
 
 | Box | Description | Common applicants |
 |-----|-------------|-------------------|
@@ -32,16 +34,17 @@ Check **exactly one** of (a) through (h). This is the most consequential field o
 | (g) | Dependent/spouse of a nonresident alien holding a U.S. visa | Less common; dependents of NRA visa holders |
 | (h) | Other (must specify) | FIRPTA seller, beneficiary of estate or trust, etc. |
 
-Additional sub-questions appear depending on the box checked:
-- (d), (e): name and SSN of primary U.S. citizen/resident alien
-- (g): visa type held by primary alien
-- (h): explanation of "Other" basis
+Additional entries depend on the box checked:
+- (d): relationship to the U.S. citizen/resident alien on the dotted line
+- (d), (e): full name and SSN or ITIN of the U.S. citizen/resident alien on the dotted line
+- (g): attach a copy of the applicant's visa; date of entry on line 6d
+- (h): description of the reason, or the exception designation (e.g., "Exception 1d-Pension Income", "Exception 3-Mortgage Interest", "Exception 5, T.D. 9363")
 
 ### Treaty country and treaty article
 
-If applying under a tax treaty (often boxes (a), (e), (f)), enter the country and the specific treaty article. Example: "Canada, Article XV" for Canadian residents claiming the U.S.-Canada tax treaty's dependent personal services exemption.
+"Additional information for a and f": if claiming a treaty benefit under box (a) or (f), enter the treaty country and the specific treaty article number. Example: "Canada, Article XV" for Canadian residents claiming the U.S.-Canada tax treaty's dependent personal services exemption. The treaty country must match the country on line 3.
 
-For non-treaty applications, leave blank.
+For non-treaty applications, enter N/A.
 
 ---
 
@@ -53,29 +56,29 @@ If a single document doesn't match Line 1a exactly, the IRS rejects.
 
 ## Line 1b — Name at birth (if different)
 
-Enter the applicant's name at birth if it differs from Line 1a. Common cases: maiden name (changed at marriage), legal name change.
+Enter the applicant's name as it appears on the birth certificate if it differs from Line 1a. Common cases: maiden name (changed at marriage), legal name change.
 
-If same as Line 1a, leave blank.
+If same as Line 1a, enter N/A.
 
 ---
 
 ## Line 2 — Mailing address
 
-Where the IRS sends correspondence (CP-565 / CP-566 letters) and the ITIN.
+Where the IRS sends notices (CP565 / CP566 / CP567) and returns original documents.
 
-Constraints:
+Constraints (Instructions for Form W-7, line 2):
 - Must be where the applicant **actually receives mail**
-- Cannot be a P.O. Box outside the U.S. (foreign P.O. Box not accepted in some cases — verify on instructions; foreign physical address is fine)
-- Cannot be a third party's office (CPA, attorney, employer) — the IRS rejects these to prevent identity-linking issues
-- For incarcerated applicants, the prison's mailing address is acceptable
+- If the U.S. Postal Service won't deliver to the physical location, a USPS P.O. box is allowed; a P.O. box owned by a private firm is not
+- No P.O. box or "in care of" (c/o) address if line 3 shows only a country name — the application may be rejected
+- The IRS updates its address records from line 2 only if a tax return is attached; otherwise file Form 8822 for a changed home address
 
 Foreign address fully acceptable.
 
 ## Line 3 — Foreign address
 
-If different from mailing address, enter the applicant's foreign (home country) address. Used for IRS records.
+Enter the complete foreign (non-U.S.) address in the country where the applicant permanently or normally resides, **even if it is the same as line 2** (re-enter it). No P.O. box, no c/o address.
 
-If same as mailing address, leave blank.
+If the applicant relocated to the U.S. and no longer has a permanent foreign residence, enter only the name of the foreign country where they last resided. Exception: reason (b) requires the complete foreign address of the most recent residence. A treaty claim requires the treaty country to match line 3.
 
 ---
 
@@ -84,9 +87,10 @@ If same as mailing address, leave blank.
 | Sub-field | Format |
 |-----------|--------|
 | Date of birth | MM/DD/YYYY |
-| Place of birth | City, State (or province), Country |
+| Country of birth | Required |
+| City and state or province | Optional (enter if available) |
 
-City and country are required; state/province if applicable in the home country. If the applicant doesn't know the city (e.g., orphaned, refugee), they enter "Unknown" with a note.
+The birth country must be recognized as a foreign country by the U.S. Department of State (Pub 1915).
 
 ## Line 5 — Gender
 
@@ -104,61 +108,60 @@ Country (or countries — list both for dual nationals). Use the formal name (e.
 
 If the applicant has a tax ID from their home country, enter it. Optional but reduces friction; the IRS uses it to cross-reference if a treaty issue arises.
 
-If none, leave blank or enter "None".
+If none, enter N/A.
 
-### 6c — Type of U.S. visa (if any)
+### 6c — Type of U.S. visa (if any), number, and expiration date
 
-For applicants who entered the U.S. on a visa: enter visa type (F-1, J-1, B-1, B-2, M-1, etc.) and expiration date.
+Enter only U.S. nonimmigrant visa information: USCIS classification, visa number, and expiration date in MM/DD/YYYY (e.g., "F-1/F-2 123456 05/31/2027"). Attach copies of any I-20/I-94.
 
-For applicants without a U.S. visa or undocumented residents: leave blank.
+For applicants without a U.S. visa: enter N/A.
 
-### 6d — Identification document(s)
+### 6d — Identification document(s) submitted, and date of entry
 
-This is where the applicant lists the documents they're submitting to prove identity and foreign status.
+Check the box for the document type (Passport / Driver's license/State I.D. / USCIS documentation / Other) and complete:
 
 | Sub-field | Description |
 |-----------|-------------|
-| Type | Passport / Birth certificate / National ID card / etc. |
-| Issued by | Country (or U.S. state) issuing the document |
-| Number | Document number (passport number, etc.) |
-| Expiration | Document expiration date (or "N/A" if no expiration) |
+| Issued by | Country, U.S. state, or other issuer |
+| Number | Document number (if any) |
+| Exp. date | Document expiration date, MM/DD/YYYY |
+| Date of entry into the United States | Complete date the applicant entered the U.S. for the purpose of the ITIN request, MM/DD/YYYY; "Never entered the United States" if never entered |
 
-If submitting two documents, fill out one row per document. The form has space for two — the applicant can add an attachment if more.
+Enter only the **first** document on this line. For additional documents, attach a separate sheet with the same information and the applicant's name and "Form W-7" at the top.
+
+A passport (or certified copy) needs no other document for identity and foreign status; enter its visa information on 6c and include the U.S. visa pages if a visa is required. A passport with no U.S. date of entry is not stand-alone for dependents who must prove U.S. residency.
 
 See [`identification-documents.md`](./identification-documents.md) for the 13 acceptable types.
 
-### 6e — Date of entry into the United States
+### 6e — Previously received an ITIN or IRSN?
 
-For nonresident aliens: the date of most recent entry to the U.S. on the visa being used. For applicants who never entered the U.S. (e.g., Exception 4 FIRPTA sellers operating from abroad), enter "N/A".
+Check "Yes" if the applicant ever received an ITIN and/or an Internal Revenue Service Number (IRSN) and complete line 6f. Check "No/Don't know" if never issued or the number is unknown, and skip 6f. Renewals must answer this line.
 
-### 6f — Other information
+### 6f — ITIN and/or IRSN and name under which it was issued
 
-Catchall for additional info:
-- Previous ITIN (for renewal applications) — enter the 9-digit ITIN
-- IRSN (Internal Revenue Service Number) if the IRS previously assigned one — temporary placeholder, less common today
-- Any spouse / dependent linkage info
+Enter the ITIN and/or IRSN and the first, middle, and last name under which it was issued. List additional IRSNs on a separate sheet with the applicant's name and "Form W-7" at the top. Renewals must enter the previously assigned ITIN and the name it was applied under; if the legal name changed, attach the marriage certificate or court order.
 
----
+### 6g — Name of college/university or company
 
-## Line 7 — Signature and date
-
-Applicant signs and dates the form. For minors, a parent or court-appointed guardian signs and indicates relationship.
-
-Phone number for IRS to contact the applicant. Best practice: provide a phone the applicant can answer (mobile preferred over landline; international numbers acceptable).
-
-For minors, the parent/guardian's phone is acceptable.
+Box (f) applicants: name of the educational institution, city and state, and length of stay in the U.S. Applicants temporarily in the U.S. for business: company name, city and state, and length of stay. Otherwise N/A.
 
 ---
 
-## CAA / AA section (if using one)
+## Signature and date (no line number)
 
-If submitting via a Certifying Acceptance Agent or Acceptance Agent:
+The applicant signs and dates the form and gives a phone number; the signature must be original. A parent or court-appointed guardian may sign for a dependent under 18 who can't sign (print name, check relationship box; attach court papers for a guardian). Any other delegate needs Form 2848. A spouse can't sign for a spouse unless the Power of attorney box is checked and Form 2848 is attached. An applicant who can't sign makes a mark in front of a witness, who also signs.
 
-- AA / CAA prints name, signs, dates
-- AA / CAA enters their **AA / CAA tracking number** (8 digits)
-- AA / CAA office address and phone
+---
 
-The CAA additionally completes Form W-7 (COA) — Certificate of Accuracy — separately; that goes in the package.
+## Acceptance Agent's Use ONLY (if using one)
+
+If submitting via a Certifying Acceptance Agent or Acceptance Agent, the agent completes this block:
+
+- Signature, date, phone, fax
+- Name and title, name of company, EIN, PTIN
+- **Office code**: the eight-digit office code issued by the ITIN Program Office
+
+The CAA additionally completes Form W-7 (COA) — Certificate of Accuracy (current revision August 2025) — and includes it in the package.
 
 ---
 
@@ -166,17 +169,17 @@ The CAA additionally completes Form W-7 (COA) — Certificate of Accuracy — se
 
 1. **Name mismatch between W-7 and identification documents** → rejected. The W-7 name must match exactly. If passport says "JOSE LUIS HERNANDEZ-LOPEZ", the W-7 cannot say "Jose Luis Hernandez Lopez" without the hyphen — it must match.
 2. **Date format inconsistency** → use MM/DD/YYYY everywhere on the form (U.S. style)
-3. **Mailing address that's a third party** (CPA office, attorney's address) → rejected
+3. **Blank sections** instead of "N/A" → application suspended or rejected for incomplete information (Pub 1915)
 4. **Reason code (a-h) and supporting evidence don't match** → rejected
-5. **Incomplete Line 6d** (e.g., missing document expiration date) → may be rejected or trigger a CP-566 information request
+5. **Incomplete Line 6d** (e.g., missing document expiration date or date of entry) → may be rejected or trigger a CP566 information request
 6. **Foreign date format** (DD/MM/YYYY) on Line 4 → causes confusion; convert to U.S. format
 
 ---
 
 ## Citation summary
 
-- IRS Form W-7 (latest revision): <https://www.irs.gov/pub/irs-pdf/fw7.pdf>
-- IRS Instructions for Form W-7: <https://www.irs.gov/pub/irs-pdf/iw7.pdf>
+- IRS Form W-7 (Rev. December 2024): <https://www.irs.gov/pub/irs-pdf/fw7.pdf>
+- IRS Instructions for Form W-7 (Rev. December 2024): <https://www.irs.gov/pub/irs-pdf/iw7.pdf>
 - IRS Pub 1915: <https://www.irs.gov/pub/irs-pdf/p1915.pdf>
 - IRC §6109 — TIN requirements
 - Treas. Reg. §301.6109-1(d)(3) — ITIN issuance

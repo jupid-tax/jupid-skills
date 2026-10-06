@@ -33,10 +33,10 @@ IRC §179 lets a taxpayer expense the full cost of qualifying business property 
 |----------|----------------------------|------------------------------|---------------------|--------|
 | 2023 | $1,160,000 | $2,890,000 | $28,900 | Rev. Proc. 2022-38 |
 | 2024 | $1,220,000 | $3,050,000 | $30,500 | Rev. Proc. 2023-34 |
-| 2025 | $1,250,000 | $3,130,000 | $31,300 | Rev. Proc. 2024-40 |
-| 2026 | TBD (announced ~Oct 2025 by IRS) | TBD | TBD | Verify before filing |
+| 2025 | $2,500,000 | $4,000,000 | $31,300 | P.L. 119-21 §70306 (dollar limit and threshold, superseding Rev. Proc. 2024-40's $1,250,000 / $3,130,000); Rev. Proc. 2024-40 (SUV cap); 2025 Form 4562 instructions, Lines 1 and 3 |
+| 2026 | $2,560,000 | $4,090,000 | $32,000 | Rev. Proc. 2025-32 §3.24; Pub. 946 (2025), What's New for 2026 |
 
-**Heavy SUV cap** applies to vehicles >6,000 lbs and ≤14,000 lbs GVWR with a cargo area ≤6 ft (most large SUVs and pickup trucks fall here unless the bed is long enough). The §179 deduction is capped at the heavy-SUV figure even when the taxpayer is well under the dollar limit.
+**Heavy SUV cap** applies to vehicles >6,000 lbs and ≤14,000 lbs GVWR with a cargo area under 6 ft (most large SUVs and pickup trucks fall here unless the bed is long enough). The §179 deduction is capped at the heavy-SUV figure even when the taxpayer is well under the dollar limit.
 
 ---
 
@@ -118,7 +118,7 @@ Year 2:
 - The asset is converted to personal use
 - The asset is given away (gifted, abandoned without disposition gain)
 
-The recapture amount = §179 deduction taken − cumulative MACRS depreciation that *would have been* allowed if §179 had not been elected. Reported on **Form 4797 Part IV**, then ordinary income on Form 1040 Line 8 (via Schedule 1).
+The recapture amount = §179 deduction taken − cumulative MACRS depreciation that *would have been* allowed if §179 had not been elected. Figured on **Form 4797 Part IV** (column (a) for non-listed §179 property, column (b) for listed property under §280F(b)(2)); Line 35 is reported as "other income" on the same form or schedule where the deduction was taken (Schedule C Line 6 for a sole proprietor, subject to SE tax), per the 2025 Form 4797 instructions, Line 35.
 
 The recapture year's Form 4562 must show the asset returning to MACRS straight-line over the remaining recovery period.
 
@@ -130,15 +130,15 @@ Vehicle expensed at 80% business use in year 1. Year 3, business use drops to 40
 
 ## Election mechanics
 
-The §179 election is made on Form 4562 Line 6 by listing the asset and elected cost. There's no separate election form. The election must be on a **timely-filed return** (including extensions). It can be revoked or modified on an amended return within 3 years of the original due date without IRS consent (IRC §179(c)(2)).
+The §179 election is made on Form 4562 Line 6 (or Line 26 column (i) for listed property) by listing the asset and elected cost. There's no separate election form. The election is made on Form 4562 filed with the **original return** for the year the property was placed in service (whether or not filed on time) or with an **amended return** filed within the time prescribed by law (2025 Form 4562 instructions, Part I, Election). It can be revoked or modified on an amended return within that period without IRS consent (IRC §179(c)(2)); once made, a revocation is irrevocable.
 
 ---
 
 ## Listed-property §179
 
-Listed property (vehicles, computers <100% business) §179 lives in **Part V** (Lines 25–29), not Part I. The total §179 from Part V Line 29 then carries to Part I Line 7 to prevent double-counting.
+Listed property (vehicles and other listed property; computers only if placed in service before 2018) §179 lives in **Part V** (Line 26 column (i), totaled on Line 29), not Part I. The total §179 from Part V Line 29 then carries to Part I Line 7 to prevent double-counting.
 
-Heavy SUV (>6,000 lbs GVWR) §179 is capped at the year's heavy-SUV figure ($31,300 for 2025; verify 2026), not the full dollar limit. The remainder of the SUV's basis can take bonus depreciation (which is uncapped for heavy SUVs, post-2018) and then MACRS.
+Heavy SUV (>6,000 lbs GVWR) §179 is capped at the year's heavy-SUV figure ($31,300 for 2025; $32,000 for 2026), not the full dollar limit. The remainder of the SUV's basis can take bonus depreciation (which is uncapped for heavy SUVs, post-2018) and then MACRS.
 
 Cars and light trucks (≤6,000 lbs GVWR) are subject to §280F luxury auto caps; §179 amount is then constrained by the luxury cap. See `listed-property.md`.
 
@@ -152,7 +152,7 @@ Both can fully expense an asset in year one. Differences:
 |--------|------|-----------------|
 | Income-limited? | Yes (Line 11) | No |
 | Can create a loss? | No | Yes |
-| Dollar cap? | Yes ($1.25M for 2025) | No |
+| Dollar cap? | Yes ($2.5M for 2025; $2.56M for 2026) | No |
 | Property limits? | Tangible personal + QIP + off-the-shelf software | Tangible personal + QIP + computer software |
 | Heavy SUV cap? | Yes ($31,300) | No (post-2018) |
 | Recapture if business use drops? | Yes, §280F(b)(2) | Yes, §280F(b)(2) |
@@ -188,6 +188,8 @@ The agent should remind the user that the federal §179 deduction may differ fro
 - IRC §179(b)(5): heavy SUV cap ($25,000 base, indexed for inflation)
 - IRC §179(d)(2): related-party exclusion
 - IRC §179(d)(10): recapture
-- Rev. Proc. 2024-40: 2025 inflation adjustments
+- P.L. 119-21 §70306: §179 limit $2,500,000 and threshold $4,000,000 for tax years beginning after 2024
+- Rev. Proc. 2024-40: 2025 heavy SUV cap ($31,300)
+- Rev. Proc. 2025-32 §3.24: 2026 inflation adjustments ($2,560,000 / $4,090,000 / $32,000)
 - IRS Pub. 946: How to Depreciate Property (Chapter 2 covers §179 in depth)
 - Form 4562 Instructions: line-by-line for Part I

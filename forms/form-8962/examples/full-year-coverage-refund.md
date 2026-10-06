@@ -1,6 +1,6 @@
 # Example: Low-Income Freelancer with Full-Year Coverage — PTC Refund
 
-A complete walkthrough of Form 8962 for a single freelancer with full-year marketplace coverage whose actual income ended up *lower* than estimated. Result: Premium Tax Credit > APTC received, producing a refundable Net PTC on Schedule 3 Line 9.
+A complete walkthrough of Form 8962 for a single freelancer with full-year marketplace coverage whose actual income ended up *lower* than estimated. Result: Premium Tax Credit > APTC received, producing a refundable Net PTC on Schedule 3 Line 9. The example does not claim the self-employed health insurance deduction; if the filer claims it, run the Pub 974 iterative or simplified calculation first, because that deduction changes AGI.
 
 ## The filer
 
@@ -23,11 +23,11 @@ Sara's actual 2025 income (slow year):
 - Schedule C expenses: $7,800
 - Schedule C net profit: $28,400
 - Bank interest: $50
-- Half-of-SE-tax adjustment: $2,008 (from Schedule SE)
-- AGI = $28,400 + $50 − $2,008 = **$26,442**
+- Half-of-SE-tax adjustment: $2,006 (Schedule SE: $28,400 × 0.9235 × 15.3% = $4,012.79; × 50% = $2,006.40, rounded)
+- AGI = $28,400 + $50 − $2,006 = **$26,444**
 - Tax-exempt interest: $0
 - Non-taxable SS: $0
-- MAGI for PTC = AGI = **$26,442**
+- MAGI for PTC = AGI = **$26,444**
 
 ### Tax family
 
@@ -36,7 +36,7 @@ Sara's actual 2025 income (slow year):
 
 ### % of FPL
 
-- Line 5 = ($26,442 / $15,060) × 100 = 175.6% → rounded down to **175%**
+- Line 5 = ($26,444 / $15,060) × 100 = 175.6% → rounded down to **175%**
 
 ### Form 1095-A data
 
@@ -68,11 +68,11 @@ Annual totals:
 | Line | Value | Computation |
 |------|-------|-------------|
 | 1 | 1 | Tax family size |
-| 2a | $26,442 | Sara's MAGI |
+| 2a | $26,444 | Sara's MAGI |
 | 2b | $0 | No dependents |
-| 3 | $26,442 | Line 2a + Line 2b |
+| 3 | $26,444 | Line 2a + Line 2b |
 | 4 | $15,060 | 2024 FPL, 48+DC, family size 1 |
-| 5 | 175% | (26,442 / 15,060) × 100 = 175.6%, rounded down |
+| 5 | 175% | (26,444 / 15,060) × 100 = 175.6%, rounded down |
 
 ### Line 7 — Applicable figure (2025 IRA table, 175% FPL)
 
@@ -90,7 +90,7 @@ applicable_figure = 0.00 + (175 − 150) / (200 − 150) × (0.02 − 0.00)
 
 | Line | Value | Computation |
 |------|-------|-------------|
-| 8a | $264 | $26,442 × 0.0100 (rounded) |
+| 8a | $264 | $26,444 × 0.0100 (rounded) |
 | 8b | $22 | $264 / 12 |
 
 ### Part II — Annual calculation (Line 11)
@@ -128,9 +128,9 @@ Your social security number: XXX-XX-XXXX
 
 ## Part I — Annual and Monthly Contribution Amount
 1.  Tax family size:                                      1
-2a. Modified AGI of taxpayer:                             $26,442
+2a. Modified AGI of taxpayer:                             $26,444
 2b. Dependents' modified AGI:                             $0
-3.  Household income:                                     $26,442
+3.  Household income:                                     $26,444
 4.  Federal poverty line (FPL) for family size:           $15,060
 5.  Household income as % of FPL (rounded down):          175 %
 6.  (Reserved):                                           —
@@ -139,7 +139,7 @@ Your social security number: XXX-XX-XXXX
 8b. Monthly contribution amount:                          $22
 
 ## Part II — Premium Tax Credit Claim and Reconciliation of APTC
-9.  Did you allocate policy amounts? Yes / No:            No
+9.  Allocating policy amounts or using Part V? Yes / No:  No
 10. Annual calculation? Yes / No:                         Yes
 
 11. Annual calculation:
@@ -166,7 +166,7 @@ Your social security number: XXX-XX-XXXX
 
 ## Routing
 - Line 26 → Schedule 3 Line 9 (refundable PTC):           $1,404
-- Line 29 → Schedule 2 Line 2:                            $0
+- Line 29 → Schedule 2 Line 1a:                           $0
 
 ## Required attachments
 - [x] Form 8962 attached to Form 1040
@@ -174,10 +174,11 @@ Your social security number: XXX-XX-XXXX
 
 ## Validation summary
 - Math:
-  - Line 3 = $26,442 + $0 = $26,442 ✓
-  - Line 5 = (26,442 / 15,060) × 100 = 175.6% → 175% ✓ (rounded down)
+  - Line 3 = $26,444 + $0 = $26,444 ✓
+  - Line 5 = (26,444 / 15,060) × 100 = 175.6% → 175% ✓ (rounded down)
   - Line 7 = 0.00 + (25/50) × 0.02 = 0.0100 ✓
-  - Line 8a = 26,442 × 0.0100 = $264.42 → $264 (rounded) ✓
+  - Line 8a = 26,444 × 0.0100 = $264.44 → $264 (rounded) ✓
+  - Line 8b = 264 / 12 = $22 ✓
   - Line 11d = max(0, 4,608 − 264) = $4,344 ✓
   - Line 11e = min(4,752, 4,344) = $4,344 ✓
   - Line 24 = $4,344 ✓
@@ -187,31 +188,32 @@ Your social security number: XXX-XX-XXXX
   - 2024 HHS FPL used (correct for 2025 return)
   - 48+DC table used (Oregon)
   - Family size 1 matches Form 1040 (no dependents)
-  - MAGI $26,442 = AGI (no tax-exempt interest, no SS, no foreign income)
+  - MAGI $26,444 = AGI (no tax-exempt interest, no SS, no foreign income)
 - Sanity:
   - Line 5 = 175% within expected range (above Medicaid threshold for non-expansion situations; eligible for PTC)
-  - Net PTC $1,404 makes sense — Sara's actual income was $11,558 lower than estimate, so APTC was under-paid
+  - Net PTC $1,404 makes sense — Sara's actual income was $11,556 lower than estimate, so APTC was under-paid
   - Annual method correct (no changes during year)
 
 ## Sources cited in this draft
 - IRS Form 8962, Rev. 2025
 - IRS Instructions for Form 8962, Rev. 2025
-- IRS Pub 974 (Premium Tax Credit), 2025 edition, Table 1 and Table 2
+- IRS Pub 974 (Premium Tax Credit), 2025 edition
+- Form 8962 instructions (2025), Table 1-1 (FPL) and Table 2 (applicable figure)
 - HHS 2024 Poverty Guidelines (used for 2025-tax-year PTC)
 - IRC §36B (PTC)
 - IRC §36B(b)(3)(A) (applicable figure)
-- IRC §36B(d)(3)(C) (FPL determination date — prior-year HHS guidelines)
+- IRC §36B(d)(3)(B) (FPL determination date — prior-year HHS guidelines)
 - IRC §36B(c)(1) (eligibility)
 - IRA 2022 Section 12001 (extension of ARPA modification through 2025)
 ```
 
 ## Why each non-obvious choice
 
-**Why is the Net PTC refundable?** PTC is a refundable credit under IRC §36B(d)(2) — even if the filer has $0 income tax liability, they receive the credit as a refund. This is unlike many other tax credits that only reduce tax owed (non-refundable).
+**Why is the Net PTC refundable?** PTC is a refundable credit (IRC §36B sits in subpart C, "Refundable Credits", of part IV of subchapter A; Schedule 3 Line 9 is in Part II, Other Payments and Refundable Credits) — even if the filer has $0 income tax liability, they receive the credit as a refund. This is unlike many other tax credits that only reduce tax owed (non-refundable).
 
-**Why doesn't Sara owe Schedule 2 Line 2?** Lines 26 and 29 are mutually exclusive. When PTC > APTC (entitled to more than received), Line 26 is positive and Line 29 is zero. When APTC > PTC (received more than entitled), Line 27 is positive and Line 29 may be capped repayment.
+**Why doesn't Sara owe Schedule 2 Line 1a?** Lines 26 and 29 are mutually exclusive. When PTC > APTC (entitled to more than received), Line 26 is positive and Line 29 is zero. When APTC > PTC (received more than entitled), Line 27 is positive and Line 29 may be capped repayment.
 
-**Why use annual method?** All four conditions for annual were met: same family size, same SLCSP, same eligibility, single tax family, full-year coverage. Annual is simpler and produces the same result.
+**Why use annual method?** The Line 10 conditions were met: enrolled all 12 months, same enrollment premium every month, same SLCSP every month (and no Part IV allocation). Annual is simpler and produces the same result.
 
 **Why is MAGI = AGI here?** Sara has no tax-exempt municipal bond interest, no Social Security benefits, and no foreign earned income exclusion. So MAGI = AGI without adjustments.
 
@@ -224,8 +226,8 @@ Your social security number: XXX-XX-XXXX
 Her audit defense would be:
 
 1. Form 1095-A from healthcare.gov showing actual monthly APTC of $245
-2. Schedule C documentation supporting net profit of $28,400
+2. Schedule C and Schedule SE documentation supporting net profit of $28,400 and the $2,006 adjustment
 3. Form 8962 worksheet showing FPL calculation with 2024 HHS table
-4. Pub 974 Table 2 reference for 2025 applicable figure at 175% FPL
+4. Form 8962 instructions Table 2 reference for 2025 applicable figure at 175% FPL
 5. AGI reconciliation: Schedule C profit + interest − half-SE-tax adjustment
 6. Bank statements for the year showing income deposits matching Schedule C

@@ -33,16 +33,16 @@ IRC §168(c) and Pub. 946 Chapter 3 give recovery periods:
 
 Residential = building where ≥80% of gross rental income is from dwelling units (per IRC §168(e)(2)(A)). Single-family homes, duplexes, apartment buildings — all residential rental at 27.5 years.
 
-## The Form 4562 entry (Part III Section A)
+## The Form 4562 entry (Part III Section B)
 
 ```
-19h Residential rental property:
+19i Residential rental property:
    (b) Month/year placed in service: 10/2025
    (c) Basis for depreciation: $300,000
    (d) Recovery period: 27.5 yrs
    (e) Convention: MM (mid-month)
    (f) Method: SL (straight-line)
-   (g) Depreciation: $2,425
+   (g) Depreciation: $2,274
 ```
 
 ### Mid-month convention math
@@ -81,7 +81,7 @@ The full table runs years 1-29 because the first and last years are partial; yea
 - **§179 not allowed** for real property (other than QIP). Residential rental building doesn't qualify.
 - **Bonus depreciation not allowed** for residential rental (recovery period >20 years; not QIP). Building doesn't qualify.
 
-So no Part I (§179) and no Part II (bonus) entries for the building. Only Part III Section A (MACRS).
+So no Part I (§179) and no Part II (bonus) entries for the building. Only Part III Section B (MACRS, Line 19i).
 
 ## What Priya could §179 / bonus on
 
@@ -104,20 +104,21 @@ If Priya bought $4,000 of new appliances when placing the property in service, t
    (g) (depending on §179 / bonus elections)
 
 §179: not available (passive rental)
-Bonus: 100% if elected (post-Jan 19, 2025 OBBBA)
+Bonus: 100% unless she elects out (acquired after Jan 19, 2025, OBBBA)
 ```
 
-If Priya elects bonus on the appliances: Year 1 deduction = $4,000.
+If Priya does not elect out of bonus for the 5-year class: Year 1 deduction = $4,000 (Line 14).
 
 ## Form 4562 Part IV summary (building only — no appliances example)
 
 ```
 21. Listed property (from Line 28):              $0
-22. Total (Lines 12+14+15+16+17+19+20+21):       $2,273  (rounded from table)
-23. §263A capitalization:                         $0
+22. Total (Lines 12+14+15+16+17+19+20+21):       $2,274  (Table A-6 value)
+23a. §263A(f) interest capitalized:              $0
+23b. Other §263A costs capitalized:              $0
 ```
 
-Line 22 = $2,273 → flows to **Schedule E Line 18** (depreciation expense for this rental property).
+Line 22 = $2,274 → flows to **Schedule E Line 18** (depreciation expense for this rental property).
 
 ## Schedule E year 1 (rough)
 
@@ -129,13 +130,13 @@ Schedule E expenses:
   Insurance:                                     $300
   Utilities (during rental period, tenant paid most): $0
   Repairs (after placed in service):              $200
-  Depreciation (Form 4562 Line 22):              $2,273
-  Total:                                         $8,373
+  Depreciation (Form 4562 Line 22):              $2,274
+  Total:                                         $8,374
 
-Net rental income/loss:                          ($1,373) loss
+Net rental income/loss:                          ($1,374) loss
 ```
 
-The $1,373 loss is subject to passive activity rules (IRC §469). For Priya:
+The $1,374 loss is subject to passive activity rules (IRC §469). For Priya:
 - She actively participates (selects tenants, sets rent, approves repairs)
 - AGI is $140K W-2 + spouse income; if combined AGI is under $100K, full $25,000 special allowance (loss can offset wages); phases out from $100K-$150K AGI
 - Above $150K AGI, the $25K allowance is gone and the loss is suspended (carries forward to offset future passive income or until disposition)

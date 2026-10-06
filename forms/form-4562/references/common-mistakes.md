@@ -14,10 +14,10 @@ Real mistakes filers make on Form 4562, ranked by how often they trigger IRS not
 - Claiming §179 in the current year
 - Claiming bonus depreciation
 - Claiming MACRS depreciation on assets placed in service in the current year
-- Claiming any depreciation on listed property (vehicles, computers <100% business)
+- Claiming any depreciation on a vehicle or other listed property (regardless of when placed in service)
 - Claiming amortization that began in the current year
 
-It is NOT required if the only depreciation is on prior-year MACRS assets (with no current-year additions and no listed property). Small operational ambiguity exists for "continuing depreciation only" — when in doubt, attach.
+It is NOT required if the only depreciation is on prior-year MACRS assets (with no current-year additions and no listed property) and the return is not a corporate return other than Form 1120-S (2025 Form 4562 instructions, Who Must File). Small operational ambiguity exists for "continuing depreciation only" — when in doubt, attach.
 
 ---
 
@@ -45,7 +45,7 @@ It is NOT required if the only depreciation is on prior-year MACRS assets (with 
 
 **The mistake**: $50,000 passenger sedan, 100% business use. User elects §179 $50,000 + bonus $0. Expects $50,000 first-year deduction.
 
-**Consequence**: §280F luxury auto cap applies. 2025 first-year cap with bonus is ~$20,400. Excess $29,600 stuck in basis until post-recovery-period.
+**Consequence**: §280F luxury auto cap applies. 2025 first-year cap with bonus is $20,200 (Rev. Proc. 2025-16). Excess $29,800 stuck in basis until post-recovery-period.
 
 **Fix**: Pre-compute the §280F cap before electing §179. For passenger autos, the cap usually makes §179 + bonus pointless — the cap binds before either election helps. Consider: lease the sedan instead, or buy a >6,000 lb GVWR vehicle.
 
@@ -57,13 +57,13 @@ It is NOT required if the only depreciation is on prior-year MACRS assets (with 
 
 **Consequence**: §179 capped at $31,300 (2025) under IRC §179(b)(5). Excess must be bonus or MACRS.
 
-**Fix**: §179 = $31,300, bonus depreciation = $48,700 (100% in 2025 post-Jan 19 under OBBBA). Total year 1 = $80,000 — fully expensed but properly split between §179 and bonus.
+**Fix**: §179 = $31,300, bonus depreciation = $48,700 (100% for property acquired after Jan 19, 2025, under OBBBA). Total year 1 = $80,000 — fully expensed but properly split between §179 and bonus.
 
 ---
 
 ## 6. Listed property with ≤50% business use — claiming §179 or bonus
 
-**The mistake**: User claims §179 on a computer used 40% for business.
+**The mistake**: User claims §179 on a passenger car used 40% for business.
 
 **Consequence**: Listed property with ≤50% business use cannot use §179, bonus, or accelerated MACRS (IRC §280F(b)(1)). Must use ADS straight-line over the longer ADS recovery period. IRS will adjust on audit.
 
@@ -115,7 +115,7 @@ It is NOT required if the only depreciation is on prior-year MACRS assets (with 
 
 **The mistake**: User puts §197 amortization on Line 22 with depreciation. Line 22 flows to Schedule C Line 13.
 
-**Consequence**: Amortization belongs on Line 44 and flows to Schedule C Line 27a (with Part V breakdown), not Line 13. Misclassification distorts NAICS-based ratios that the IRS uses to flag returns.
+**Consequence**: Amortization belongs on Line 44 and flows to Schedule C Line 27b on the 2025 form (with Part V breakdown), not Line 13. Misclassification distorts NAICS-based ratios that the IRS uses to flag returns.
 
 **Fix**: Form 4562 splits depreciation (Lines 14–22) from amortization (Lines 42–44) for a reason. Each flows to a different income tax return line. Track them separately on the asset register.
 
@@ -131,13 +131,13 @@ It is NOT required if the only depreciation is on prior-year MACRS assets (with 
 
 ---
 
-## 13. Vehicle Form 4562 Part V Line 30a ≠ Schedule C Line 9 mileage
+## 13. Vehicle Form 4562 Part V Line 30 ≠ Schedule C Part IV Line 44a mileage
 
-**The mistake**: User claims 1,800 business miles on Schedule C Line 9 but writes 12,000 business miles on Form 4562 Part V Line 30a.
+**The mistake**: User claims 1,800 business miles on Schedule C Part IV Line 44a but writes 12,000 business miles on Form 4562 Part V Line 30.
 
 **Consequence**: Internal inconsistency; IRS notices. The same vehicle used for the same business should have the same business mileage on both forms.
 
-**Fix**: For taxpayers using actual expenses (so Form 4562 is needed), the same business miles substantiate both depreciation and the actual-expense % used on Schedule C. Reconcile before filing.
+**Fix**: For taxpayers using actual expenses (so Form 4562 is needed), the same business miles substantiate both depreciation and the actual-expense % used on Schedule C. Reconcile before filing. Schedule C Part IV is completed only when the business is not required to file Form 4562 (2025 Schedule C, Part IV heading); when Form 4562 is filed, report the vehicle on Form 4562 Part V instead.
 
 For taxpayers using standard mileage rate, Form 4562 Part V is generally NOT filled out for that vehicle (the mileage rate already includes a depreciation component). The exception: if Form 4562 is required for other reasons (other assets, listed property), the vehicle still needs Part V Section B mileage but no Section A depreciation.
 

@@ -23,11 +23,12 @@ Does the applicant want to make an in-person appointment with the IRS?
     → No mailing of originals
     → Limited TAC locations; appointment-only
     → Free; good if a TAC is geographically convenient
+    → Alternative: a VITA site with ITIN services (free; staffed by CAAs; limited U.S. locations)
 
 Does the applicant prefer to mail original documents directly to the IRS?
   → Mail with originals (Section 3)
-    → IRS holds originals 60 days, returns by mail
-    → Risk: original passport in transit for ~7-11 weeks
+    → IRS returns originals by mail within 60 days
+    → Risk: original passport away from the applicant until then
     → Free, simple, but high stakes for the applicant
 
 Does the applicant have certified copies from the issuing authority?
@@ -69,29 +70,30 @@ Agent must have:
    - Original identification documents
    - The supporting tax return (signed)
 4. **The CAA**:
-   - Verifies original documents in person
+   - Verifies original documents (or certified copies) in person
    - Completes a Form W-7 (COA) — Certificate of Accuracy — signing as a CAA
-   - Sends the W-7 + tax return + certified document copies (the CAA's certification, not the originals) to the IRS Austin ITIN Operation
+   - Sends the W-7 + tax return + copies of the documents (with the COA, not the originals) to the IRS Austin ITIN Operation
    - Returns originals to the applicant immediately
-5. **Wait 7-11 weeks** for IRS processing
-6. **Receive CP-565** (assignment letter with new ITIN) at the mailing address on Line 2 of the W-7
+5. **Wait**: allow 7 weeks; 9-11 weeks if submitted January 15 through April 30 or from overseas
+6. **Receive CP565** (ITIN assigned) at the mailing address on Line 2 of the W-7; the CAA also receives copies of client ITIN notices
 
 ### CAA fees
 
-CAAs charge $100-$300+ depending on complexity. Some CAAs are part of larger CPA firms that bundle ITIN service with tax return preparation; others are standalone. The fee is paid by the applicant; the IRS does not charge.
+CAA fees are set by each CAA (the IRS charges nothing for an ITIN). Some CAAs are part of larger CPA firms that bundle ITIN service with tax return preparation; others are standalone. The fee is paid by the applicant; the IRS does not charge.
 
 ### Why CAA is the recommended option
 
 - Originals stay with applicant (no mail risk)
 - CAA does the work of mailing the package correctly
 - CAA's certification reduces IRS rejection rate (CAAs have a vested interest in clean submissions)
-- For dependents under 18: CAAs can certify originals for the entire family in one visit
+- Primary and secondary applicants (and dependents' passports and birth certificates) can be handled in one visit
 
 ### What CAAs cannot do
 
 - Issue an ITIN themselves (only the IRS can)
 - Speed up IRS processing
 - Override SSN eligibility — if the applicant qualifies for SSN, the CAA must redirect
+- Authenticate foreign military ID cards, or any dependent's document other than a passport or birth certificate (those must be mailed as originals or certified copies)
 
 ---
 
@@ -104,7 +106,8 @@ TACs are physical IRS offices in major cities. A subset of TACs are designated a
 - Find a TAC: <https://www.irs.gov/help/contact-your-local-irs-office>
 - Confirm the TAC is **ITIN-authentication-capable** (not all TACs are)
 - Schedule appointment via 844-545-5640 (TAC scheduling line) — appointments only; no walk-ins
-- Schedule 4-8 weeks ahead of time during peak season (Jan-April)
+- It may take several weeks to get an appointment (IRS "How to apply for an ITIN" page); schedule early in peak season (January 15 - April 30)
+- For dependents, TACs verify passports, national ID cards, and birth certificates; dependents' medical and school records must be mailed with the package
 
 ### Workflow
 
@@ -118,8 +121,8 @@ TACs are physical IRS offices in major cities. A subset of TACs are designated a
    - IRS staff verifies and stamps the W-7 application
    - IRS staff returns originals on the spot
    - The W-7 + tax return is submitted internally
-4. **Wait 7-11 weeks** for IRS processing
-5. **Receive CP-565** at the Line 2 address
+4. **Wait**: allow 7 weeks; 9-11 weeks if submitted January 15 through April 30
+5. **Receive CP565** at the Line 2 address
 
 ### TAC pros
 
@@ -138,7 +141,7 @@ TACs are physical IRS offices in major cities. A subset of TACs are designated a
 
 ## Section 3 — Mail with originals
 
-The applicant mails their original passport (or other ID documents) along with the W-7 and tax return to the IRS Austin ITIN Operation. The IRS holds the originals up to 60 days, then returns them by mail.
+The applicant mails their original passport (or other ID documents) along with the W-7 and tax return to the IRS Austin ITIN Operation. The IRS returns the originals to the line 2 address within 60 days.
 
 ### Mailing address
 
@@ -149,7 +152,7 @@ P.O. Box 149342
 Austin, TX 78714-9342
 ```
 
-This address is **specific to W-7 submissions**. It is NOT the same as the regular 1040 mailing address. Mailing the package to the regular 1040 address will cause delays of 8+ weeks because the IRS will manually re-route.
+This address is **specific to W-7 submissions**. It is NOT the same as the regular 1040 mailing address. The W-7 instructions say not to use the mailing address in the instructions for your tax return; the return is processed after it is mailed as part of the application package to this address.
 
 ### Workflow
 
@@ -159,18 +162,20 @@ This address is **specific to W-7 submissions**. It is NOT the same as the regul
    - Federal tax return (if not exception) signed and complete
    - Any supporting evidence for an exception
 2. **Make photocopies of every document** for the applicant's records
-3. **Use a trackable, signature-on-delivery method** — USPS Priority Mail Express or a private carrier with delivery confirmation (FedEx, UPS). The address above accepts USPS only — for FedEx/UPS, use the **physical** address:
+3. **Use a trackable, signature-on-delivery method** — USPS Priority Mail Express or a private carrier with delivery confirmation (FedEx, UPS). The P.O. box above is for U.S. Postal Service mail — for a private delivery service, use this street address (Instructions for Form W-7, "Where To Apply"):
 
 ```
 Internal Revenue Service
 ITIN Operation
-3651 S Interregional Hwy 35
-Austin, TX 78741
+Mail Stop 6090-AUSC
+3651 S. Interregional, Hwy 35
+Austin, TX 78741-0000
 ```
 
-4. **Wait 7-11 weeks**
-5. **IRS returns originals** by mail (usually 60 days from receipt, separately from the ITIN letter)
-6. **Receive CP-565** with new ITIN
+   The applicant may include a prepaid Express Mail or courier envelope for faster, secure return of original documents.
+4. **Wait**: allow 7 weeks; 9-11 weeks if submitted January 15 through April 30 or from overseas
+5. **IRS returns originals** by mail (within 60 days, separately from the ITIN notice)
+6. **Receive CP565** with new ITIN
 
 ### Pros
 
@@ -180,8 +185,8 @@ Austin, TX 78741
 
 ### Cons
 
-- Original passport away from applicant for ~7-11 weeks
-- Risk of loss in transit (USPS reports ~0.4% package loss; the consequence here is severe)
+- Original passport away from applicant for up to 60 days after processing
+- Risk of loss in transit (the consequence here is severe)
 - IRS sometimes returns originals separately and at different times from the ITIN letter
 - Cannot travel internationally during the wait if the passport is the document submitted
 - If the IRS rejects (e.g., wrong reason code, document insufficient), originals come back but the applicant must re-apply with corrections
@@ -213,8 +218,8 @@ Examples of acceptable certifications:
    - Birth certificate: order from issuing vital records agency
 2. Assemble the package (W-7 + certified copies + tax return)
 3. Mail to IRS Austin ITIN Operation (Section 3 address)
-4. Wait 7-11 weeks
-5. Receive CP-565
+4. Wait: allow 7 weeks; 9-11 weeks if submitted January 15 through April 30 or from overseas
+5. Receive CP565
 
 ### Pros
 
@@ -225,13 +230,13 @@ Examples of acceptable certifications:
 
 - Obtaining certified copies takes time (embassies are slow)
 - Costs $20-$100 per document depending on issuing country
-- Easy to get rejected if applicant submits notarized copies by mistake (see common mistake #1 in [`references/common-mistakes.md`](./references/common-mistakes.md))
+- Easy to get rejected if applicant submits notarized copies by mistake (see [`references/identification-documents.md`](./references/identification-documents.md))
 
 ---
 
 ## Section 5 — Acceptance Agent (AA, not CAA)
 
-An Acceptance Agent reviews the W-7 for completeness but does NOT certify documents. The applicant still must mail originals or certified copies.
+An Acceptance Agent helps complete the W-7 and mails the package, but does NOT authenticate documents: it must submit original documents or certified copies from the issuing agency to the IRS for all applicants (Instructions for Form W-7, "Through an acceptance agent").
 
 This option is rare today — most professionals are CAAs (which is more useful) or aren't ITIN agents at all. AAs are sometimes embassies, certain financial institutions, or specific government offices in some countries.
 
@@ -260,17 +265,17 @@ After submission via any channel:
 
 1. **Received** — IRS Austin logged the package (no notification to applicant)
 2. **In process** — IRS staff reviewing W-7 and documents
-3. **Approved** — ITIN issued; CP-565 letter mailed
-4. **Rejected** — ITIN denied; CP-566 letter mailed with reason code
-5. **Information needed** — IRS sends a request for additional info; applicant has 60 days to respond
+3. **Approved** — ITIN issued; CP565 notice mailed
+4. **Information needed** — CP566 notice; applicant has 45 days from the notice date to reply, or the application is rejected
+5. **Rejected** — CP567 notice; the return is processed without an ITIN and the applicant must reapply (attach a copy of the return)
 
-If 11 weeks have passed with no response, call:
-- Inside U.S.: 1-800-908-9982
-- International: 267-941-1000
+If 7 weeks (9-11 weeks in peak season or from overseas) have passed with no response, call:
+- Inside U.S.: 800-829-1040
+- Outside the U.S.: 267-941-1000 (not toll-free)
 
-The IRS does **not** confirm receipt by email or text. Applicants must wait for the CP-565 / CP-566 letter, or call to check status.
+The IRS does **not** confirm receipt by email or text. Applicants must wait for the CP565 / CP566 / CP567 notice, or call to check status.
 
-### Common rejection reasons (CP-566 codes)
+### Common rejection reasons (CP567)
 
 - Wrong reason code (a-h) selected
 - Document not on the Pub 1915 list of 13 acceptable documents

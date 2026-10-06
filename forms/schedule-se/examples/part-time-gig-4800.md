@@ -18,18 +18,16 @@ A walkthrough of Schedule SE for a low-earning gig worker — over the $400 thre
 
 Jordan's bookkeeping app exported a Schedule C for the year:
 - DoorDash gross earnings: $3,200
-- Instacart gross earnings: $4,100
+- Instacart gross earnings: $5,100
 - Mileage deduction: 4,200 miles × $0.70/mi = $2,940
 - Phone (business %): $360
 - Other supplies: $200
 
 ```
-Schedule C Line 1: $7,300
+Schedule C Line 1: $8,300
 Schedule C Line 28 (expenses): $3,500
-Schedule C Line 31 (net profit): $3,800
+Schedule C Line 31 (net profit): $4,800
 ```
-
-Wait — the prompt says $4,800 SE income. Let me adjust to use that figure as the Schedule C net profit:
 
 | Source | Amount |
 |--------|--------|
@@ -172,7 +170,7 @@ Social security number: XXX-XX-XXXX
 6.  Net earnings from SE (4c + 5b):              $4,433
 
 7.  SS wage base for 2025:                       $176,100
-8a. Total W-2 SS wages (Box 3):                  $42,000
+8a. Total W-2 SS wages + tips (Boxes 3 + 7):     $42,000
 8b. Unreported tip income:                       $0
 8c. Wages from Form 8919:                        $0
 8d. Sum 8a + 8b + 8c:                            $42,000
@@ -184,8 +182,8 @@ Social security number: XXX-XX-XXXX
 13. Deductible half (12 × 0.5):                  $340
 
 ## Part II — Optional Methods
-Section A — Farm Optional Method:                Not elected
-Section B — Non-Farm Optional Method:            Not elected (W-2 already provides 4 SS credits)
+15. Farm optional method:                        Not elected
+17. Nonfarm optional method:                     Not elected (W-2 already provides 4 SS credits)
 
 ## Required attachments
 - [x] Schedule C (Line 2 source)

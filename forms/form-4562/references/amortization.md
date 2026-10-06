@@ -86,7 +86,7 @@ Year 2026 (12 months):                          $467
 ...
 ```
 
-The $5,000 first-year deduction goes on Schedule C Line 27a (with itemization on Part V Line 48 as "Start-up costs — current expense"). The $194 amortization goes on Form 4562 Part VI Line 42, then carries to Schedule C Line 27a as "Amortization of start-up costs §195".
+The $5,000 first-year deduction goes on Schedule C Line 27b (2025 form; itemized on Part V Line 48 as "Start-up costs — current expense"). The $194 amortization goes on Form 4562 Part VI Line 42, then carries to Schedule C Line 27b as "Amortization of start-up costs §195". (On the 2025 Schedule C, Line 27a is the energy efficient commercial buildings deduction; other expenses moved to Line 27b.)
 
 ---
 
@@ -97,20 +97,19 @@ The $5,000 first-year deduction goes on Schedule C Line 27a (with itemization on
 
 Same structure as §195: $5,000 first-year deduction with phase-out at $50K, excess amortized over 180 months.
 
-These rules apply to entity-level returns (1120, 1120-S, 1065). Sole proprietors and SMLLCs don't have §248/§709 items because they have no separate organizational costs. (LLC formation fees go on Schedule C Line 27a as legal fees, not amortized.)
+These rules apply to entity-level returns (1120, 1120-S, 1065). Sole proprietors and SMLLCs don't have §248/§709 items because they have no separate organizational costs. (LLC formation fees go on Schedule C Line 17 as legal fees, not amortized.)
 
 ---
 
-## §174 — research and experimental expenditures
+## §174 / §174A — research and experimental expenditures
 
-Post-TCJA changes (effective 2022), research expenditures must be capitalized and amortized:
+For tax years beginning in 2022 through 2024, TCJA required R&E to be capitalized: domestic over 5 years, foreign over 15 years. OBBBA (P.L. 119-21) added §174A for domestic R&E paid or incurred in tax years beginning after December 31, 2024 (2025 Form 4562 instructions, What's New and Line 42):
 
-- Domestic R&E: 5-year SL amortization
-- Foreign R&E: 15-year SL amortization
+- Domestic R&E: deductible currently as a business expense, OR elect to capitalize and amortize ratably over 60 months or more (starting the month benefits are first realized), OR elect 10-year amortization under §59(e)
+- Foreign R&E: still capitalized and amortized over 15 years (§174), starting at the midpoint of the tax year
+- Unamortized 2022–2024 domestic amounts and the small-business retroactive option: follow Rev. Proc. 2025-28; ASK the user which treatment they chose and do not pick one
 
-This was a TCJA change from immediate deduction. Multiple legislative attempts to revert to immediate expensing have been made; **verify current rules** — OBBBA 2025 may have addressed this; check the latest IRS guidance.
-
-§174 amortization is reported on Form 4562 Part VI similarly to §197 — IRC code "174" in column (d), amortization period in column (e).
+Amortization of R&E is reported on Form 4562 Part VI — IRC code "174" or "174A" in column (d), amortization period in column (e).
 
 ---
 
@@ -162,12 +161,12 @@ Line 43: aggregate amortization for all intangibles whose amortization began **b
 Line 44 = Line 42 + Line 43.
 
 Line 44 flows to:
-- Schedule C Line 27a, listed in Part V Line 48 (sole prop / SMLLC)
+- Schedule C Line 27b (2025 form), listed in Part V Line 48 (sole prop / SMLLC)
 - Schedule E Line 18 for rental real estate
 - Schedule F Line 32 for farm
 - Form 1120 Line 26
-- Form 1120-S Line 19
-- Form 1065 Line 20
+- Form 1120-S Line 20
+- Form 1065 Line 21
 
 Note: Form 4562 has a separate flow for amortization vs. depreciation. Line 22 (total depreciation) and Line 44 (total amortization) end up on different lines of the income tax return.
 
@@ -191,7 +190,7 @@ Note: Form 4562 has a separate flow for amortization vs. depreciation. Line 22 (
 - IRC §195: start-up costs
 - IRC §248: corporate organizational costs
 - IRC §709: partnership organizational costs
-- IRC §174: research and experimental expenditures
+- IRC §174 and §174A: research and experimental expenditures; Rev. Proc. 2025-28
 - IRC §167(f): software and other intangibles
 - Reg. §1.197-2: §197 intangibles
 - Reg. §1.195-1: start-up cost election

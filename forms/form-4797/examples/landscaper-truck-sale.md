@@ -51,11 +51,11 @@ The entire $15,000 gain is §1245 recapture (ordinary). Depreciation taken ($28,
 
 | Line | Field | Value |
 |------|-------|-------|
-| 30 | Column A total recapture | $15,000 |
-| 31 | Sum across columns | $15,000 |
-| 32 | To Part II Line 13 | **$15,000** |
+| 30 | Total gains, all columns (Line 24) | $15,000 |
+| 31 | Total recapture (25b, 26g, 27c, 28b, 29b) → Part II Line 13 | **$15,000** |
+| 32 | Line 30 − Line 31 → Part I Line 6 | $0 |
 
-Residual §1231 gain (Line 24 − Line 32) = $15,000 − $15,000 = **$0** → no entry on Part I Line 6.
+Residual §1231 gain (Line 32 = Line 30 − Line 31) = $15,000 − $15,000 = **$0** → no entry on Part I Line 6.
 
 ---
 
@@ -82,11 +82,12 @@ No Schedule D Line 11 entry from this Form 4797.
 | 10 | Ordinary (≤1 year) | $0 |
 | 11 | Net §1231 loss from Part I | $0 |
 | 12 | §1231 gain recharacterized by lookback | $0 |
-| 13 | Recapture from Part III Line 32 | **$15,000** |
-| 14 | Other ordinary | $0 |
-| 18 | Total ordinary (Lines 10-17) | **$15,000** |
+| 13 | Gain from Part III Line 31 | **$15,000** |
+| 14-16 | Form 4684, Form 6252, Form 8824 ordinary amounts | $0 |
+| 17 | Combine Lines 10 through 16 | **$15,000** |
+| 18b | To Schedule 1, Line 4 | **$15,000** |
 
-The $15,000 flows to **Schedule 1 Line 4** ("Other gains or losses — from Form 4797") → **Form 1040 Line 8**.
+The $15,000 flows from Line 18b to **Schedule 1 Line 4** ("Other gains or losses — from Form 4797") → **Form 1040 Line 8**.
 
 ---
 

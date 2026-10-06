@@ -2,7 +2,7 @@
 
 Complete lookup for every line on Form 941. Use this when the agent needs to confirm where a payroll item belongs or what a line means.
 
-The IRS revises Form 941 most tax years (often in March). Line numbers are stable but residual COVID-era credit lines (11b–11f, 13b–13z) shift labels. Always verify line labels against the most recent revision at https://www.irs.gov/pub/irs-pdf/f941.pdf.
+Verified against **Form 941 (Rev. March 2026)** and the Instructions for Form 941 (Rev. March 2026), which the IRS expects to use for all four quarters of 2026. The 2026 revision has no COVID-era credit lines (no 5a(i)/5a(ii), 11a–11g, or 13a–13g; those exist only on Form 941-X for 2020–2021 quarters), adds an "Aggregate Return Filers Only" box, and splits line 15 into 15a–15e for direct-deposit refunds. Re-check the next revision at https://www.irs.gov/forms-pubs/about-form-941.
 
 ## Header
 
@@ -13,6 +13,7 @@ The IRS revises Form 941 most tax years (often in March). Line numbers are stabl
 | Trade name | DBA, if applicable | Blank if same as legal name |
 | Address | Where the IRS mails notices | Address change → file Form 8822-B (not on 941) |
 | Quarter check box | 1 (Jan–Mar), 2 (Apr–Jun), 3 (Jul–Sep), 4 (Oct–Dec) | Match to the calendar quarter; do not use fiscal year |
+| Aggregate Return Filers Only | Section 3504 agent / CPEO / other third party | New in Rev. March 2026; leave blank when filing for your own business |
 
 ---
 
@@ -44,16 +45,16 @@ Total federal-income-tax wages paid this quarter. Generally the same as Box 1 wa
 | Tips (also reported separately on Line 5b) | Workers' compensation benefits |
 | Taxable reimbursements (e.g., commuting allowance over IRS limit) | Qualified retirement plan distributions |
 
-Pretax deductions: §125 cafeteria plan (health, dental, FSA, dependent care up to limit), §401(k) traditional deferrals, §403(b), §457(b), §132 transit/parking up to monthly cap. These reduce Line 2 (federal income tax wages) but **do not** reduce Line 5a / 5c (FICA wages) — except §125 cafeteria plan, which does reduce both.
+Pretax deductions: §401(k) traditional deferrals, §403(b), and §457(b) reduce Line 2 (federal income tax wages) but **do not** reduce Line 5a / 5c (FICA wages). §125 cafeteria plan benefits (health, dental, health FSA, dependent care up to limit) and §132(f) qualified transit/parking up to the monthly cap reduce **both** Line 2 and the FICA wages (Pub. 15-B).
 
 ### Line 3 — Federal income tax withheld
 
 Sum of all FIT withholding from this quarter's paychecks. Includes:
 
 - Regular W-4 withholding
-- Supplemental wage withholding (bonuses, commissions, severance) — flat 22% if separately identified, or aggregate method
-- Backup withholding on W-2 wages (rare)
-- Voluntary withholding on sick pay paid by third party (if employer is the payer of record)
+- Supplemental wage withholding (bonuses, commissions, severance) — flat 22% if separately identified (37% on supplemental wages over $1 million), or aggregate method
+- Not backup withholding or withholding on pensions, annuities, or gambling winnings — those go on Form 945 (Instructions for Form 941, Rev. March 2026)
+- Federal income tax withheld by a third-party payer of sick pay stays off Line 3
 
 If an employee claims exempt on Form W-4 (very narrow eligibility), $0 withheld but they still appear in Line 1 and 2.
 
@@ -65,7 +66,7 @@ Check **only if** all wages this quarter are exempt from both SS and Medicare. R
 - Employer is a religious organization with §3121(w) election
 - Wages are paid to a child under age 18 by a parent's sole proprietorship (FICA-exempt under §3121(b)(3))
 
-If checked, skip Lines 5a–5e.
+If checked, go to Line 6.
 
 ### Line 5a — Taxable Social Security wages
 
@@ -73,23 +74,13 @@ If checked, skip Lines 5a–5e.
 |---|------------------|----------------|
 | 5a | SS wages this quarter, capped at YTD wage base | Column 1 × 0.124 |
 
-**Wage base**: $176,100 for 2025 (SSA Press Release 2024-XX). Verify 2026 at https://www.ssa.gov/oact/cola/cbb.html — typically announced in October of the prior year.
+**Wage base**: $184,500 for 2026 (Instructions for Form 941, Rev. March 2026, What's New; https://www.ssa.gov/oact/cola/cbb.html). It was $176,100 for 2025. SSA announces the next year's figure each October.
 
 The 12.4% combines:
 - Employer SS tax: 6.2% (IRC §3111(a))
 - Employee SS tax: 6.2% (IRC §3101(a))
 
 Per-employee cap mechanics: Once an employee's YTD SS wages reach the wage base in any quarter, additional wages are SS-exempt for the rest of the calendar year. Restart at $0 in January.
-
-### Line 5a(i) — Qualified sick leave wages (FFCRA / ARPA)
-
-Default $0 for 2026 quarters. The Families First Coronavirus Response Act (FFCRA) and American Rescue Plan Act (ARPA) sick-leave credits expired September 30, 2021. Lines 5a(i) and 5a(ii) remain on the form so retroactive 941-X corrections can use them.
-
-If $0, multiplier is 0.062 (employer-only SS, since the credit covered the employee share).
-
-### Line 5a(ii) — Qualified family leave wages
-
-Same as 5a(i). Default $0. Multiplier 0.062.
 
 ### Line 5b — Taxable Social Security tips
 
@@ -157,55 +148,37 @@ Default $0 unless these specific situations apply.
 Line 10 = Line 6 + Line 7 + Line 8 + Line 9
 ```
 
-### Line 11a — Qualified small business payroll tax credit for increasing research activities
+### Line 11 — Qualified small business payroll tax credit for increasing research activities
 
-If the employer is a qualified small business (gross receipts < $5M for current year and no gross receipts for any year before the 5-year window) and elected on Form 6765 to apply up to $500,000 of §41 R&D credit against payroll tax: enter the amount from Form 8974 here. See [`r-and-d-payroll-credit.md`](./r-and-d-payroll-credit.md).
+If the employer is a qualified small business (gross receipts < $5M for current year and no gross receipts for any year before the 5-year window) and elected on Form 6765 to apply up to $500,000 of §41 R&D credit against payroll tax: enter the amount from Form 8974 line 17 here and attach Form 8974. See [`r-and-d-payroll-credit.md`](./r-and-d-payroll-credit.md).
 
-### Lines 11b through 11f — Residual COVID-era credits
+This is the only credit line on the Rev. March 2026 form. COVID-era credits (FFCRA/ARPA leave credits, ERC, COBRA premium assistance) are corrected only on Form 941-X for the original 2020–2021 quarters. P.L. 119-21 §70605(d) bars the IRS from allowing or refunding ERC claims for Q3/Q4 2021 filed after January 31, 2024 (IRS Fact Sheet 2025-07).
 
-These lines reference FFCRA sick-leave credits, ARPA family-leave credits, employee retention credit (ERC). All expired:
-- Sick/family leave credit: expired September 30, 2021
-- ERC: ended for most employers September 30, 2021 (recovery startup businesses had until December 31, 2021)
-
-Default $0. The lines persist on the form for 941-X retroactive corrections — and for completed 941-X claims, the IRS continues to process and audit ERC claims aggressively (see Notice 2021-49 and ongoing IRS enforcement campaigns).
-
-### Line 11g — Total nonrefundable credits
-
-Sum of 11a–11f.
-
-### Line 12 — Total taxes after credits
+### Line 12 — Total taxes after adjustments and nonrefundable credits
 
 ```
-Line 12 = Line 10 − Line 11g
+Line 12 = Line 10 − Line 11   (not below zero)
 ```
 
-### Line 13a — Total deposits this quarter
+### Line 13 — Total deposits for this quarter
 
-Sum of all federal tax deposits made via EFTPS during this quarter. Each deposit has a date and amount; the user must reconcile against EFTPS confirmation numbers.
-
-### Lines 13b through 13z — Refundable COVID credits
-
-Same residual structure as 11b–11f. Default $0.
-
-### Line 13g — Total deposits + refundable credits
-
-Sum of 13a + 13b + ... + 13z.
+Sum of all federal tax deposits made for this quarter (EFTPS, IRS Direct Pay, or IRS business tax account), including any overpayment applied from a prior quarter and overpayments applied from Form 941-X, 941-X (PR), or 944-X filed in the current quarter. Each deposit has a date and amount; reconcile against confirmation numbers.
 
 ### Line 14 — Balance due
 
 ```
-If Line 12 > Line 13g:  Line 14 = Line 12 − Line 13g
+If Line 12 > Line 13:  Line 14 = Line 12 − Line 13
 ```
 
-If > $0: pay with the return (check + Form 941-V payment voucher) OR pay via EFTPS. Late payment triggers FTD penalty + interest.
+If > $0: pay electronically (EFTPS, IRS Direct Pay, or business tax account). The 2026 instructions ask for electronic payment under EO 14247; Form 941-V with a check is limited to the cases printed on Form 941-V (Line 12 under $2,500 for the current or prior quarter, or a monthly depositor's accuracy-of-deposits payment). An amount that should have been deposited and is paid with the return draws a failure-to-deposit penalty.
 
-### Line 15 — Overpayment
+### Lines 15a–15e — Overpayment
 
 ```
-If Line 13g > Line 12:  Line 15 = Line 13g − Line 12
+If Line 13 > Line 12:  Line 15a = Line 13 − Line 12
 ```
 
-Elect to **apply to next return** (recommended for ongoing employers) OR **request refund** (slow — 6+ weeks).
+Line 15b: check **apply to next return** OR **refund** (if neither or both are checked, the IRS generally applies it to the next return). Lines 15c–15e: routing number, checking/savings, account number for a direct-deposit refund (new in Rev. March 2026 under EO 14247; a refund requested without them may be delayed). Never make entries on both Line 14 and Line 15a.
 
 ---
 
@@ -213,14 +186,13 @@ Elect to **apply to next return** (recommended for ongoing employers) OR **reque
 
 Pick **exactly one** box.
 
-### Box 1 — Liability under $2,500 + no $100K rule trigger
+### Box 1 — Line 12 under $2,500 + no $100K rule trigger
 
 Eligible if:
-- Total Line 12 for current quarter < $2,500, AND
-- Line 12 for *prior* quarter was also < $2,500, AND
-- No single-day liability ≥ $100,000 occurred (next-day deposit rule, IRS Reg. §31.6302-1(c)(3))
+- Line 12 for the current quarter < $2,500, OR Line 12 for the *prior* quarter was < $2,500, AND
+- No $100,000 next-day deposit obligation was incurred during the current quarter (IRS Reg. §31.6302-1(c)(3))
 
-If eligible: pay the entire Line 14 with the return. No daily/monthly schedule entries.
+If eligible: the balance may be paid with a timely filed return. Exception printed on the form: if the prior quarter was under $2,500 but this quarter's Line 12 is $100,000 or more, still complete the monthly schedule (monthly depositor) or attach Schedule B (semi-weekly). If unsure the current quarter will stay under $2,500 (and the prior quarter wasn't under $2,500), deposit on schedule (Pub. 15, section 11).
 
 ### Box 2 — Monthly schedule depositor
 
@@ -248,13 +220,9 @@ See [`deposit-schedules.md`](./deposit-schedules.md) for full mechanics.
 
 Check if the employer permanently stopped paying wages this quarter and won't have to file in the future. Provide the final wage-paid date. Triggers IRS final-return processing.
 
-### Line 18a — Seasonal employer
+### Line 18 — Seasonal employer
 
-Check if the employer doesn't have to file 941 every quarter (e.g., resort hotel, agricultural processor). Marks the IRS to skip dunning notices for off-season quarters. The employer must still file every quarter when wages are paid.
-
-### Line 18b — (newer revisions) Recovery Startup Business indicator for ERC
-
-Was relevant for 2021 ERC. Default unchecked for 2026 quarters.
+Check if the employer doesn't have to file 941 every quarter (e.g., resort hotel, agricultural processor). Marks the IRS to skip dunning notices for off-season quarters. The employer must still file every quarter when wages are paid, checking Line 18 on each return filed. (Rev. March 2026 has only Lines 17 and 18 in Part 3.)
 
 ---
 

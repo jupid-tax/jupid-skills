@@ -1,6 +1,6 @@
 # Example: Divorced Parents Sharing a Marketplace Policy — Part IV Allocation
 
-A complete walkthrough of Form 8962 when a couple held a shared marketplace policy at the start of the year, divorced mid-year, and now files separately. Each ex-spouse must reconcile their allocated share of the policy under Reg. §1.36B-4. Result: Part IV completed, with each filer computing PTC on an agreed allocation percentage.
+A complete walkthrough of Form 8962 when a couple held a shared marketplace policy at the start of the year, divorced mid-year, and now files separately. Each ex-spouse must reconcile their allocated share of the policy under Treas. Reg. §1.36B-4(b)(3) (Allocation Situation 1 in the 2025 Form 8962 instructions). Result: Part IV completed, with each filer computing PTC on an agreed allocation percentage.
 
 ## The filers
 
@@ -16,7 +16,7 @@ Daniel and Rachel were married through 2024, divorced June 30, 2025. From Januar
 
 For the **Jan–Jun joint policy**, the marketplace issued **one Form 1095-A** in Daniel's name (he was the primary subscriber). The form shows Jan–Jun monthly amounts; Jul–Dec are blank because the policy terminated June 30.
 
-Because Daniel and Rachel are now in separate tax families, each must report a portion of that shared policy on their own Form 8962. They negotiated and agreed on a **50/50 allocation** for Jan–Jun. (If they could not agree, the default under Reg. §1.36B-4(a)(1)(ii)(B) would be 50/50 anyway, but having a written agreement avoids dispute.)
+Because Daniel and Rachel are now in separate tax families, each must report a portion of that shared policy on their own Form 8962. They negotiated and agreed on a **50/50 allocation** for Jan–Jun. (If they could not agree, the default under Treas. Reg. §1.36B-4(b)(3) would be 50/50 anyway, but having a written agreement avoids dispute.)
 
 ## Inputs gathered (Daniel's return)
 
@@ -100,22 +100,24 @@ applicable_figure = 0.06 + (387 − 300) / (400 − 300) × (0.085 − 0.06)
 | 8a | $4,768 | $58,290 × 0.0818 (rounded) |
 | 8b | $397 | $4,768 / 12 |
 
-### Part IV — Allocation (Lines 30–33)
+### Part IV — Allocation (Lines 30–34)
 
 Daniel completes one allocation entry for the shared Jan–Jun policy.
 
 | Field | Value |
 |-------|-------|
-| 30a — Other tax family's SSN | Rachel's SSN |
-| 30b — Allocation start month | January |
-| 30c — Allocation stop month | June |
-| 30d — Premium percentage | 50% |
-| 30e — SLCSP percentage | 50% |
-| 30f — APTC percentage | 50% |
+| 30(a) — Policy number | From Form 1095-A line 2 |
+| 30(b) — SSN of other taxpayer | Rachel's SSN |
+| 30(c) — Allocation start month | 01 |
+| 30(d) — Allocation stop month | 06 |
+| 30(e) — Premium percentage | 0.50 |
+| 30(f) — SLCSP percentage | 0.50 |
+| 30(g) — APTC percentage | 0.50 |
+| 34 — All allocations completed? | Yes |
 
 ### Part II — Monthly calculation, applying the allocation
 
-For Jan–Jun, Daniel uses **50% of each 1095-A column**. For Jul–Dec, no marketplace coverage, so the rows are zero.
+For Jan–Jun, Daniel uses **50% of each 1095-A column**. For Jul–Dec, no marketplace coverage, so the rows are blank.
 
 Daniel's allocated monthly amounts (Jan–Jun):
 - Allocated premium: $1,520 × 50% = $760
@@ -131,7 +133,7 @@ Daniel's allocated monthly amounts (Jan–Jun):
 | Apr (15) | $760 | $720 | $397 | $323 | $323 | $490 |
 | May (16) | $760 | $720 | $397 | $323 | $323 | $490 |
 | Jun (17) | $760 | $720 | $397 | $323 | $323 | $490 |
-| Jul–Dec (18–23) | $0 | $0 | $0 | $0 | $0 | $0 |
+| Jul–Dec (18–23) | blank | blank | blank | blank | blank | blank |
 
 Each row's Col d = max(0, Col b − Col c) = max(0, 720 − 397) = $323.
 Each row's Col e = min(Col a, Col d) = min(760, 323) = $323.
@@ -144,12 +146,12 @@ Each row's Col e = min(Col a, Col d) = min(760, 323) = $323.
 | 25 | $2,940 | Sum Col f Jan–Jun: 6 × $490 |
 | 26 | — | (skip; Line 25 > Line 24) |
 | 27 | $1,002 | Line 25 − Line 24 |
-| 28 | $1,625 | Pub 974 Table 5: 387% FPL, Single row (300%–400%) = $1,625 |
+| 28 | $1,625 | 2025 instructions Table 5: 387% FPL, Single, 300–<400 = $1,625 |
 | 29 | $1,002 | min($1,002, $1,625) |
 
-→ **Schedule 2 Line 2 = $1,002** (excess APTC repayment, below the cap)
+→ **Schedule 2 Line 1a = $1,002** (excess APTC repayment, below the cap)
 
-The cap doesn't bind here (raw excess of $1,002 is less than the $1,625 single-filer cap), so Daniel repays the full $1,002.
+The cap doesn't bind here (raw excess of $1,002 is less than the $1,625 single-filer cap), so Daniel repays the full $1,002. On a 2026 return there would be no cap at all (P.L. 119-21 §71305).
 
 ## The completed Form 8962 draft (Daniel's return)
 
@@ -173,7 +175,7 @@ Your social security number: XXX-XX-XXXX
 8b. Monthly contribution amount:                          $397
 
 ## Part II — Premium Tax Credit Claim and Reconciliation of APTC
-9.  Did you allocate policy amounts? Yes / No:            Yes
+9.  Allocating policy amounts or using Part V? Yes / No:  Yes
 10. Annual calculation? Yes / No:                         No
 
 11. (skip; using monthly method)
@@ -184,35 +186,37 @@ Your social security number: XXX-XX-XXXX
 15. April       a. $760  b. $720  c. $397  d. $323  e. $323  f. $490
 16. May         a. $760  b. $720  c. $397  d. $323  e. $323  f. $490
 17. June        a. $760  b. $720  c. $397  d. $323  e. $323  f. $490
-18. July        all zeros (no marketplace coverage)
-19. August      all zeros
-20. September   all zeros
-21. October     all zeros
-22. November    all zeros
-23. December    all zeros
+18. July        blank (no marketplace coverage)
+19. August      blank
+20. September   blank
+21. October     blank
+22. November    blank
+23. December    blank
 
 24. Total Premium Tax Credit:                             $1,938
 25. Advance payment of PTC:                               $2,940
-26. Net Premium Tax Credit:                               $0    (Line 25 > Line 24)
+26. Net Premium Tax Credit:                               (blank; Line 25 > Line 24)
 27. Excess APTC (Line 25 − Line 24):                      $1,002
-28. Repayment limitation (Pub 974 Table 5,
-    Single at 387% FPL → 300%-400%):                      $1,625
+28. Repayment limitation (2025 instructions Table 5,
+    Single at 387% FPL → 300–<400):                       $1,625
 29. Excess APTC repayment (lesser of 27 or 28):           $1,002
-    → enter on Schedule 2 Line 2
+    → enter on Schedule 2 Line 1a
 
 ## Part IV — Allocation of Policy Amounts (line 30, first/only entry)
-30a. Other tax family SSN:                                Rachel Park's SSN
-30b. Allocation start month:                              01
-30c. Allocation stop month:                               06
-30d. Premium % allocated to taxpayer:                     50%
-30e. SLCSP % allocated to taxpayer:                       50%
-30f. APTC % allocated to taxpayer:                        50%
+30(a). Policy number:                                     <Form 1095-A line 2>
+30(b). SSN of other taxpayer:                             Rachel Park's SSN
+30(c). Allocation start month:                            01
+30(d). Allocation stop month:                             06
+30(e). Premium percentage:                                0.50
+30(f). SLCSP percentage:                                  0.50
+30(g). APTC percentage:                                   0.50
+34.    All allocations completed?                         Yes
 
 ## Part V — Year of marriage                              (not applicable)
 
 ## Routing
 - Line 26 → Schedule 3 Line 9:                            $0
-- Line 29 → Schedule 2 Line 2 (excess APTC repayment):    $1,002
+- Line 29 → Schedule 2 Line 1a (excess APTC repayment):   $1,002
 
 ## Required attachments
 - [x] Form 8962 attached to Form 1040
@@ -245,11 +249,12 @@ Your social security number: XXX-XX-XXXX
 ## Sources cited in this draft
 - IRS Form 8962, Rev. 2025
 - IRS Instructions for Form 8962, Rev. 2025
-- IRS Pub 974, 2025 edition, Tables 1, 2, 5
+- IRS Pub 974, 2025 edition
+- Form 8962 instructions (2025), Tables 1-1, 2, 3, 5 and Part IV (Allocation Situation 1)
 - HHS 2024 Poverty Guidelines
-- IRC §36B (PTC), §36B(b)(3)(A) (applicable figure), §36B(c)(2)(C) (allocation),
-  §36B(d)(3)(C) (FPL determination), §36B(f)(2)(B) (repayment limitation)
-- Reg. §1.36B-4(a)(1)(ii) (shared-policy allocation rules and 50/50 default)
+- IRC §36B (PTC), §36B(b)(3)(A) (applicable figure),
+  §36B(d)(3)(B) (FPL determination), §36B(f)(2)(B) (repayment limitation, tax years before 2026)
+- Treas. Reg. §1.36B-4(b)(3) (allocation for spouses who divorce during the year; 50/50 default)
 - IRA 2022 Section 12001 (ARPA modification extended through 2025)
 ```
 
@@ -257,17 +262,17 @@ Your social security number: XXX-XX-XXXX
 
 **Why must each ex-spouse file their own Form 8962?** Once Daniel and Rachel divorced, they became two separate tax families. Each tax family that had any month of coverage on a shared marketplace policy must complete its own Form 8962, allocate the shared months, and reconcile its allocated APTC. The 1095-A is issued to the policyholder (Daniel) but the tax obligation follows the tax family.
 
-**Why 50/50?** Daniel and Rachel agreed to it. Reg. §1.36B-4(a)(1)(ii)(A) says any percentage from 0% to 100% is allowed if both ex-spouses agree, as long as the percentages sum to 100% across all tax families on the policy. If they could not agree, the default under Reg. §1.36B-4(a)(1)(ii)(B) is 50/50.
+**Why 50/50?** Daniel and Rachel agreed to it. Treas. Reg. §1.36B-4(b)(3) allows former spouses to allocate in any proportion, as long as all items use the same proportion and the shares sum to 100%. If they could not agree, the default under the same paragraph is 50/50.
 
-**Why does the percentage need to be the same for premiums, SLCSP, and APTC?** Form 8962 Part IV lets the parties pick separate percentages for each of the three columns, but in practice they almost always pick one number for all three. Picking different percentages for different columns invites disputes and IRS scrutiny.
+**Why does the percentage need to be the same for premiums, SLCSP, and APTC?** For spouses who divorce during the year, the rule requires one percentage for all three amounts (Treas. Reg. §1.36B-4(b)(3); 2025 instructions, Allocation Situation 1: "you must allocate all three amounts using the same percentage"). Part IV has three columns because other situations (e.g., married filing separately, no APTC) use only some of them.
 
-**Why does Rachel's Part IV mirror Daniel's?** They allocated 50/50, so Rachel's Form 8962 will show 50% allocated to her for the same Jan–Jun months. The two filings must be consistent — IRS systems cross-check both returns. If Daniel claims 50% and Rachel claims 70%, both will get correspondence audits.
+**Why does Rachel's Part IV mirror Daniel's?** They allocated 50/50, so Rachel's Form 8962 will show 0.50 allocated to her for the same Jan–Jun months. The two filings must be consistent and sum to 100%. If Daniel claims 50% and Rachel claims 70%, expect IRS correspondence on both returns.
 
 **Why is the children's coverage on the Jan–Jun policy not split out separately?** The children were dependents of one parent each post-divorce, but for the Jan–Jun policy period (when they were married and one tax family), the policy covered the whole household. The allocation handles the full policy, not per-person. Rachel claims the children on her 2025 return; her allocation captures their share through the 50% split.
 
-**Why does Daniel use the Single (not MFJ) cap?** Daniel files Single for 2025 (divorced as of June 30; the IRS uses marital status on December 31 for the full year). Pub 974 Table 5 cap for Single at 300%–400% FPL is $1,625. The MFJ cap of $3,250 does not apply because they did not file jointly.
+**Why does Daniel use the Single (not MFJ) cap?** Daniel files Single for 2025 (divorced as of June 30; the IRS uses marital status on December 31 for the full year). The 2025 Form 8962 instructions Table 5 cap for Single at 300–<400% FPL is $1,625. The $3,250 "any other filing status" cap does not apply because Daniel files Single.
 
-**Why is monthly method required?** Annual method requires the same family composition, same SLCSP, and same eligibility for all 12 months. Daniel's family changed (divorced, children left his tax family) and his coverage ended mid-year. Multiple triggers for monthly.
+**Why is monthly method required?** Annual method requires 12 months of enrollment with the same premium and SLCSP every month, and completing Part IV always requires Line 10 = No. Daniel's coverage ended mid-year and he completed Part IV.
 
 ## What if Daniel were audited?
 
@@ -279,4 +284,4 @@ His audit defense would be:
 4. Rachel's matching Form 8962 Part IV showing 50% allocation (filed separately, but cross-references)
 5. W-2 supporting $58,200 wages and AGI reconciliation
 6. Employer coverage offer letter for July showing transition off marketplace
-7. Pub 974 Table 5 reference for the $1,625 single-filer cap
+7. 2025 Form 8962 instructions Table 5 reference for the $1,625 single-filer cap

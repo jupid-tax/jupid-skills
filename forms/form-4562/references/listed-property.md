@@ -11,7 +11,7 @@ IRC §280F(d)(4) listed-property classes:
 1. **Passenger automobiles** — any 4-wheeled vehicle made for use on public streets, ≤6,000 lbs unloaded GVWR (or ≤6,000 lbs GVWR for trucks/vans)
 2. **Other transportation property** — boats, planes, motorcycles (when used for entertainment/recreation context)
 3. **Property generally used for entertainment, recreation, or amusement** — rare for solo filers
-4. **Computers and peripheral equipment** — unless used at a regular business establishment >50% of the time. (Per TCJA, this listed-property treatment for computers was REMOVED for property placed in service after 2017 — verify current IRS guidance; many practitioners and IRS instructions still treat computers as listed property out of caution).
+4. **Computers and peripheral equipment placed in service before 2018** — TCJA removed computers from listed property for property placed in service after 2017; the 2025 Form 4562 instructions (Lines 26 and 27) list "computers and peripheral equipment placed in service before 2018" as the only computer listed property.
 
 The rules below apply to listed property for the year placed in service and throughout the recovery period.
 
@@ -43,7 +43,7 @@ IRC §274(d) and Reg. §1.274-5 require for listed property:
 Requirement: a **contemporaneous written log**. "Contemporaneous" means at or near the time of use; reconstruction after the fact is allowed but viewed skeptically by the IRS.
 
 Methods that meet the bar:
-- Mileage tracking app (Jupid, MileIQ, Hurdlr) with date/destination/purpose
+- Mileage log app with date/destination/purpose
 - Spreadsheet updated weekly
 - Calendar entries with travel notes
 - Receipts with notes
@@ -61,16 +61,16 @@ Form 4562 Part V Lines 24a/24b are the substantiation declaration. Answer truthf
 
 The IRS publishes annual caps on the maximum first-year depreciation (including §179 + bonus + MACRS) for passenger autos. The caps are inflation-adjusted via Revenue Procedure each year.
 
-Schedule for passenger autos placed in service in 2025 (Rev. Proc. 2024-13 / Rev. Proc. 2024-40 — verify):
+Schedule for passenger autos placed in service in 2025 (Rev. Proc. 2025-16, Tables 1 and 2; 2025 Form 4562 instructions, Table 2):
 
 | Year | Cap with bonus | Cap without bonus |
 |------|----------------|--------------------|
-| 1 | ~$20,400 | ~$12,400 |
-| 2 | ~$19,800 | ~$19,800 |
-| 3 | ~$11,900 | ~$11,900 |
-| 4 and after | ~$7,160 | ~$7,160 |
+| 1 | $20,200 | $12,200 |
+| 2 | $19,600 | $19,600 |
+| 3 | $11,800 | $11,800 |
+| 4 and after | $7,060 | $7,060 |
 
-**Verify the exact 2025 figures** in IRS Rev. Proc. 2024-13 (or the equivalent annual updating procedure). 2026 figures will be published late 2025.
+Placed in service in 2026 (Rev. Proc. 2026-15, Tables 1 and 2): $20,300 with bonus / $12,300 without in year 1; $19,800; $11,900; $7,160. Re-verify each year in that year's Rev. Proc. and the Form 4562 instructions.
 
 The cap is applied **after** computing the un-capped §179 + bonus + MACRS. Excess is carried forward and depreciated post-recovery-period at the year-4-and-after rate until fully recovered.
 
@@ -85,9 +85,9 @@ Adjusted basis:                 $50,000
 Bonus attempted:                $0       (after §179 fills basis)
 MACRS year 1:                   $0
 
-§280F year 1 cap (with bonus):  $20,400
-First-year deduction:           $20,400  ← capped
-Excess held over:               $29,600  ← recovers post-recovery-period
+§280F year 1 cap (with bonus):  $20,200
+First-year deduction:           $20,200  ← capped
+Excess held over:               $29,800  ← recovers post-recovery-period
 ```
 
 The luxury auto cap is the most-overlooked rule for solo filers buying expensive sedans for business. The vehicle's full cost gets recovered eventually, but spread over many more years than 5.
@@ -98,15 +98,15 @@ The luxury auto cap is the most-overlooked rule for solo filers buying expensive
 
 Vehicles with GVWR >6,000 lbs are NOT passenger autos for §280F purposes. They escape the luxury auto caps. They are still listed property and require >50% business use.
 
-**§179 cap for heavy SUVs**: IRC §179(b)(5) caps §179 at $31,300 for 2025 (verify 2026). This cap applies to:
+**§179 cap for heavy SUVs**: IRC §179(b)(5) caps §179 at $31,300 for 2025 and $32,000 for 2026 (Rev. Proc. 2024-40; Rev. Proc. 2025-32). This cap applies to:
 - Sport utility vehicles
 - Vehicles with gross vehicle weight rating >6,000 lbs and ≤14,000 lbs
-- Cargo bed ≤6 feet in interior length
+- Cargo bed under 6 feet in interior length
 
 Vehicles that are NOT subject to the heavy SUV §179 cap (and can §179 the full cost subject to general dollar limit):
 - Vehicles with cargo bed ≥6 feet (long-bed pickups)
 - Vehicles >14,000 lbs GVWR (commercial trucks)
-- Vehicles with seating for ≥9 passengers behind the driver (transit-style vans)
+- Vehicles designed to seat more than nine persons behind the driver's seat (transit-style vans)
 - Vehicles with cargo area separated from driver compartment, no seats behind driver, no body section protruding more than 30 inches ahead of windshield (delivery vans, ambulances, hearses)
 
 After §179 ($31,300 cap for SUV), the remaining basis can take 100% bonus depreciation (uncapped for heavy SUVs), so a $80,000 heavy SUV at 100% business use can fully expense in year 1:
@@ -118,7 +118,7 @@ Adjusted basis:                 $80,000
 
 §179 (heavy SUV cap):           $31,300
 Adjusted basis after §179:      $48,700
-Bonus (100% in 2025 post-Jan 19): $48,700
+Bonus (100%, acquired after Jan 19, 2025): $48,700
 MACRS year 1:                   $0
 Total year 1:                   $80,000
 ```
@@ -129,7 +129,7 @@ This is the "Hummer loophole" / "Section 179 for trucks" pattern. It's legitimat
 
 ## Standard mileage vs. actual expenses for vehicles
 
-A taxpayer using the **standard mileage rate** (Notice annually; 70¢/mile for 2025 per Notice 2025-5; 2026 verify) does NOT report depreciation on Form 4562 for the vehicle. The mileage rate already includes a depreciation component.
+A taxpayer using the **standard mileage rate** (Notice annually; 70¢/mile for 2025 per Notice 2025-5; for 2026, 72.5¢ for January 1 – June 30 per Notice 2026-10 and 76¢ for July 1 – December 31 per Announcement 2026-11, I.R.B. 2026-29) does NOT report depreciation on Form 4562 for the vehicle. The mileage rate already includes a depreciation component.
 
 A taxpayer using **actual expenses** must:
 - Track all vehicle costs (gas, insurance, repairs, lease, etc.) and apply business-use %
@@ -160,12 +160,12 @@ S-corp owners who are also employees of their own S-corp may need to report pers
 
 1. **Claiming >50% business use without a log** — audit risk, deduction often disallowed
 2. **Claiming 100% business use of a sole vehicle** — IRS skeptical when the household has only one car
-3. **Forgetting the §280F cap on a sedan** — taxpayer expects $50,000 deduction, gets $20,400
+3. **Forgetting the §280F cap on a sedan** — taxpayer expects $50,000 deduction, gets $20,200 (2025)
 4. **Forgetting the heavy SUV §179 cap** — taxpayer §179s the full $80,000 truck cost, but §179 capped at $31,300; remainder must be bonus or MACRS
 5. **Using §179 + bonus then dropping business use to 40%** — recapture; reported on Form 4797
 6. **Combining standard mileage with actual depreciation** — double-counting; mileage rate already includes depreciation
-7. **Counting commuting miles as business miles** — not business; Line 30b separates them
-8. **Treating a computer used 60% personally as listed property eligible for §179** — fails >50% business use; must use ADS SL
+7. **Counting commuting miles as business miles** — not business; Line 31 separates them
+8. **Claiming §179 on a computer used 60% personally** — §179 requires more than 50% business use in the year placed in service (Pub. 946, chapter 2); depreciate the business portion under MACRS instead. A computer placed in service after 2017 is not listed property, so ADS is not forced
 
 ---
 
@@ -178,7 +178,8 @@ S-corp owners who are also employees of their own S-corp may need to report pers
 - IRC §274(d): substantiation requirement
 - Reg. §1.274-5: substantiation rules
 - Reg. §1.280F-2T: passenger auto rules
-- Rev. Proc. 2024-13 and Rev. Proc. 2024-40: 2025 inflation adjustments for §280F caps and §179(b)(5) heavy SUV cap
-- Notice 2025-5: 2025 standard mileage rate (70¢)
+- Rev. Proc. 2025-16: §280F caps for passenger automobiles placed in service in 2025; Rev. Proc. 2026-15 for 2026
+- Rev. Proc. 2024-40 and Rev. Proc. 2025-32: §179(b)(5) heavy SUV cap for 2025 ($31,300) and 2026 ($32,000)
+- Notice 2025-5: 2025 standard mileage rate (70¢); Notice 2026-10 and Announcement 2026-11 (I.R.B. 2026-29): 2026 rates (72.5¢ Jan–Jun, 76¢ Jul–Dec)
 - IRS Pub. 463: Travel, Gift, and Car Expenses (vehicle substantiation)
 - IRS Pub. 946: How to Depreciate Property (Chapter 5 covers listed property)

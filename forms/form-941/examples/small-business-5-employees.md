@@ -77,11 +77,9 @@ Quarter:                     [ ] 1  [X] 2  [ ] 3  [ ] 4
  1. Employees on pay period including June 12:        5
  2. Wages, tips, other compensation:                  $67,090.00
  3. Federal income tax withheld:                      $7,560.00
- 4. [ ] Check if line 2 wages not subject to SS/Medicare
+ 4. [ ] Check if no wages are subject to SS/Medicare
 
  5a. Taxable SS wages:           $70,800.00 × 0.124 = $8,779.20
- 5a(i). Sick leave wages:        $0.00 × 0.062 = $0.00
- 5a(ii). Family leave wages:     $0.00 × 0.062 = $0.00
  5b. Taxable SS tips:            $0.00 × 0.124 = $0.00
  5c. Taxable Medicare wages:     $70,800.00 × 0.029 = $2,053.20
  5d. Add'l Medicare wages:       $0.00 × 0.009 = $0.00
@@ -94,17 +92,13 @@ Quarter:                     [ ] 1  [X] 2  [ ] 3  [ ] 4
  9.  Tips & group-term life adjustment:               $0.00
 10.  Total taxes after adjustments:                   $18,392.40
 
-11a. Qualified small business R&D credit (Form 8974): $0.00
-11b–f. (Residual COVID credit lines):                 $0.00
-11g. Total nonrefundable credits:                     $0.00
-12.  Total taxes after credits:                       $18,392.40
+11.  Qualified small business R&D credit (Form 8974): $0.00
+12.  Total taxes after adjustments and credits:       $18,392.40
 
-13a. Total deposits this quarter:                     $12,991.20
-13b–z. (Residual COVID refundable credits):           $0.00
-13g. Total:                                           $12,991.20
+13.  Total deposits for this quarter:                 $12,991.20
 
-14.  Balance due (12 − 13g):                          $5,401.20
-15.  Overpayment:                                     —
+14.  Balance due (12 − 13):                           $5,401.20
+15a. Overpayment:                                     —
 
 ## Part 2 — Deposit Schedule (Line 16)
 [ ] Box 1: Liability < $2,500
@@ -131,38 +125,37 @@ Signature: __________
 ## Required attachments
 - [ ] Schedule B — N/A (monthly depositor)
 - [ ] Form 8974 — N/A
-- [ ] Form 945-A — N/A
 
 ## Validation summary
 - Math: all checks passed
   - Line 5a col 2 = 70,800 × 0.124 = 8,779.20 ✓
   - Line 5c col 2 = 70,800 × 0.029 = 2,053.20 ✓
   - Line 6 = 7,560 + 10,832.40 = 18,392.40 ✓
-  - Line 12 − Line 13g = 18,392.40 − 12,991.20 = 5,401.20 ✓
+  - Line 12 − Line 13 = 18,392.40 − 12,991.20 = 5,401.20 ✓
   - Line 16 monthly totals: 3 × $6,130.80 = $18,392.40 ✓ matches Line 12
 - Sanity:
   - Line 14 = $5,401.20 — large balance due. Confirm: deposits totaled $12,991.20 but liability was $18,392.40. Why the gap?
     - Possible cause: deposit amounts were rounded down or omitted some withholding
-    - Recommend: review June deposit. If June pay was slightly higher than estimated, FTD penalty risk (5% if 6-15 days late, 10% if 16+)
+    - Each month's required deposit was $6,130.80 but only $4,330.40 was deposited: a $1,800.40 shortfall per month, far above the accuracy-of-deposits tolerance (greater of $100 or 2%). FTD penalty applies to each shortfall by days late: April's (due May 15) and May's (due June 15) are more than 15 days late at July 31 → 10%; June's (due July 15) → 5% if made up by July 30, 10% if paid July 31 (IRC §6656; Pub. 15, section 11)
   - All other checks within normal ranges
 - Next steps:
-  - Pay $5,401.20 balance via EFTPS by July 31, 2026 (or with the return via Form 941-V check)
-  - Late deposits penalty (FTD) likely on June liability — consider IRS waiver request if first occurrence
-  - File Q3 2026 941 by October 31, 2026
-  - File Form 940 (FUTA) annually by January 31, 2027
-  - File W-2s for all 5 employees + W-3 transmittal by January 31, 2027 (SSA Business Services Online)
+  - Deposit the $5,401.20 shortfall electronically (EFTPS, IRS Direct Pay, or business tax account) as soon as possible; Line 12 is $2,500 or more, so Form 941-V with a check is not the right channel (Form 941-V; Instructions for Form 941, Rev. March 2026, line 14)
+  - FTD penalty likely on all three monthly shortfalls — consider first-time abatement / reasonable-cause request (Form 843) after the notice
+  - File Q3 2026 941 by November 2, 2026 (October 31 is a Saturday)
+  - File Form 940 (FUTA) by February 1, 2027 (January 31, 2027 is a Sunday)
+  - File W-2s for all 5 employees + W-3 transmittal by February 1, 2027 (SSA Business Services Online)
 
 ## Sources cited in this draft
 - IRS Form 941, Rev. March 2026
 - IRS Instructions for Form 941, Rev. March 2026
 - IRC §3101 (employee FICA), §3111 (employer FICA), §3402 (FIT withholding)
 - Pub. 15 (Employer's Tax Guide), 2026 edition
-- SSA Annual Wage Base — $176,100 for 2025; verify 2026 announcement
+- SSA contribution and benefit base — $184,500 for 2026
 ```
 
 ## Why each non-obvious choice
 
-**Why Line 2 ($67,090) ≠ Line 5a col 1 ($70,800)?** Pretax 401(k) deferrals reduce federal income tax wages but not Social Security or Medicare wages. The $3,710 difference is exactly the four employees' aggregate 401(k) contributions for the quarter. §125 health is the same for both ($900), so it cancels.
+**Why Line 2 ($67,090) ≠ Line 5a col 1 ($70,800)?** Pretax 401(k) deferrals reduce federal income tax wages but not Social Security or Medicare wages. The $3,710 difference is exactly the three participating employees' aggregate 401(k) contributions for the quarter. §125 health is the same for both ($900), so it cancels.
 
 **Why monthly depositor and not Box 1?** Quarterly Line 12 = $18,392.40 is far above the $2,500 de minimis. Lookback period was $38,200 < $50,000 → monthly. If lookback had exceeded $50K, Box 3 (semi-weekly) would apply with Schedule B attached.
 
@@ -178,4 +171,4 @@ Signature: __________
 3. Form W-4s on file for each employee (substantiates Line 3 logic)
 4. §125 plan documents (substantiates Line 2 reduction)
 5. 401(k) plan documents (substantiates Line 2 reduction)
-6. State withholding return cross-references (CA / TX have no income tax → no state withholding here)
+6. State withholding return cross-references (Texas has no state income tax → no state withholding here)

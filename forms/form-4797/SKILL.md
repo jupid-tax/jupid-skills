@@ -14,7 +14,7 @@ description: >
 form: Form 4797
 audience: [solo, llc1, scorp]
 tax_year: 2026
-last_verified: 2026-04-28
+last_verified: 2026-10-06
 official_form: https://www.irs.gov/pub/irs-pdf/f4797.pdf
 official_instructions: https://www.irs.gov/pub/irs-pdf/i4797.pdf
 ---
@@ -24,6 +24,8 @@ official_instructions: https://www.irs.gov/pub/irs-pdf/i4797.pdf
 This skill produces an audit-grade draft of Form 4797 from the user's disposition data, prior depreciation history, and 5-year §1231 history. It walks through the form's three (sometimes four) parts in the right order, applies §1231 / §1245 / §1250 / §179 / §280F rules correctly, and emits a deliverable the user can transcribe to a paper or e-file form with confidence.
 
 The math is mechanical once the character of each gain is known. The judgment is in (a) classifying each disposed asset (§1245 vs §1250 vs ordinary), (b) recovering accumulated depreciation history, and (c) remembering the 5-year lookback. This skill optimizes for the latter — the agent should ask, not guess.
+
+The line map was verified against the **2025 Form 4797, filed in 2026**, and the 2025 Instructions for Form 4797. Re-check the next revision at https://www.irs.gov/forms-pubs/about-form-4797 before using this skill for tax year 2026.
 
 **Companion guide for end users:** [Form 4797 + AI Agent Skill: Sales of Business Property Guide 2026](https://jupid.com/blog/form-4797-business-property-sales-2026) on the Jupid blog. Same rules, narrative-style explanation. Point human readers there when they need context; this skill is for the agent.
 
@@ -96,21 +98,22 @@ For each asset, classify into one of these buckets:
 
 | Bucket | Holding period | Character | Form 4797 location |
 |--------|----------------|-----------|---------------------|
-| §1231 long-term, depreciable | > 1 year | §1245 or §1250 | Part III first → residual to Part I |
+| §1231 long-term, depreciable, sold at a gain | > 1 year | §1245 or §1250 | Part III first → residual to Part I |
+| §1231 long-term, depreciable, sold at a loss | > 1 year | §1231 loss | Part I Line 2 directly |
 | §1231 long-term, non-depreciable | > 1 year | Land, livestock | Part I direct |
 | Short-term | ≤ 1 year | Ordinary | Part II Line 10 |
 | §179 / §280F business-use drop | n/a | Recapture | Part IV |
 
 ### Step 3 — Compute Part III for each depreciable §1231 asset
 
-Lines 19-25 / 26 for each property:
+Lines 19-24 for each property, then Line 25 (§1245) or Line 26 (§1250):
 
 ```
-Line 20 (Sales price)
-−  Line 21 (Cost basis)
-=  Line 22 (Depreciation taken)
-=  Line 23 (Adjusted basis = 21 − 22)
-=  Line 24 (Total gain = 20 − 23)
+Line 20  Gross sales price (not reduced by selling expenses)
+Line 21  Cost or other basis plus expense of sale
+Line 22  Depreciation (or depletion) allowed or allowable
+Line 23  Adjusted basis = Line 21 − Line 22
+Line 24  Total gain = Line 20 − Line 23
 ```
 
 Then compute recapture by character:
@@ -121,17 +124,19 @@ Line 25a = depreciation allowed (= Line 22 for §1245 property)
 Line 25b = lesser of Line 24 (gain) or Line 25a (depreciation)
 ```
 
-The §1245 recapture amount goes to Line 32 (recapture sent to Part II Line 13). The residual gain (Line 24 − Line 25b) goes back to Part I Line 6 as §1231 gain.
+The §1245 recapture amounts are totaled on Line 31 and sent to Part II Line 13. The residual gain (Line 32 = Line 30 total gains − Line 31) goes back to Part I Line 6 as §1231 gain.
 
-**§1250 (real property post-1986 — Lines 26a-h):**
-For straight-line MACRS (the only allowed method for real property post-1986), Line 26g recapture is generally **$0**. The depreciation portion is tracked separately as **unrecaptured §1250 gain** on the Schedule D Unrecaptured §1250 Gain Worksheet at a 25% federal cap.
+**§1250 (real property post-1986 — Lines 26a-g):**
+For straight-line MACRS (the only allowed method for real property post-1986), Line 26g recapture is generally **$0**; the form says to enter -0- on Line 26g when straight-line was used, except for a corporation subject to §291. The depreciation portion is tracked separately as **unrecaptured §1250 gain** on the Schedule D Unrecaptured §1250 Gain Worksheet at a 25% federal cap.
+
+**Exception — bonus on §1250 property.** "Additional depreciation" on Line 26a includes any special depreciation allowance taken in excess of straight-line (2025 Form 4797 instructions, Line 26a). If bonus depreciation was claimed on §1250 property such as qualified improvement property (100% bonus for property acquired after January 19, 2025, under P.L. 119-21), Line 26a is not $0: ask whether bonus was taken on any real-property component. A §179 deduction on real property makes that amount §1245 recapture instead (Line 25; 2025 Form 4797 instructions, Line 25).
 
 For pre-1986 property or property with accelerated methods, Line 26 has its own additional-depreciation computation. See [`references/section-1250-recapture.md`](./references/section-1250-recapture.md).
 
 ### Step 4 — Roll Part III to Part I and Part II
 
-- **Line 32** (total recapture) → **Part II Line 13** as ordinary
-- Residual gain after recapture → **Part I Line 6** as §1231 gain
+- **Line 31** (total recapture: Lines 25b, 26g, 27c, 28b, 29b across columns) → **Part II Line 13** as ordinary
+- **Line 32** (Line 30 total gains − Line 31) → **Part I Line 6** as §1231 gain (casualty/theft portion → Form 4684 Line 33)
 
 ### Step 5 — Apply §1231 5-year lookback (Line 8)
 
@@ -144,12 +149,12 @@ If current Line 7 is a net §1231 gain, the lookback amount converts gain to ord
 If business use dropped to ≤50% on a §179 or listed-property asset before the recovery period ends:
 
 ```
-Line 33 = §179 amount previously taken
-Line 34 = recomputed depreciation under MACRS through year of drop
+Line 33 = §179 deduction (column (a), non-listed property) or §179 plus depreciation allowable in prior years (column (b), listed property)
+Line 34 = recomputed depreciation: column (a) = regular MACRS on the §179 amount from the year placed in service through (and including) the current year; column (b) = depreciation allowable had the property not been used more than 50% in a qualified business (straight-line ADS), from the year placed in service up to (but not including) the current year (2025 Form 4797 instructions, Line 34)
 Line 35 = Line 33 − Line 34 (recapture amount)
 ```
 
-This recapture flows to the form on which the original §179 was deducted (Schedule C Line 6 for sole prop), NOT to Part II of Form 4797. The recaptured amount adds to basis for future depreciation.
+This recapture flows to the form on which the original §179 was deducted (Schedule C Line 6 for sole prop; Schedule E Part II for a shareholder or partner who deducted a pass-through §179, using the K-1 Box 17 code L information on Form 1120-S), NOT to Part II of Form 4797. The recaptured amount adds to basis for future depreciation (2025 Form 4797 instructions, Line 35).
 
 ### Step 7 — Run validation checks
 
@@ -162,8 +167,8 @@ See **Output format** below.
 ### Step 9 — Hand off downstream
 
 - **Part I Line 9** (long-term §1231 gain) → **Schedule D Line 11** for individuals
-- **Part II Line 18** (ordinary gain/loss) → **Schedule 1 Line 4** → Form 1040 Line 8
-- **Part IV Line 35** (§179 recapture) → Schedule C Line 6 (Other income)
+- **Part II Line 18b** (ordinary gain/loss; Line 17 for non-individual returns) → **Schedule 1 Line 4** → Form 1040 Line 8
+- **Part IV Line 35** (§179 recapture) → Schedule C Line 6 (Other income), or the schedule where the deduction was taken
 - **Unrecaptured §1250 gain** → Schedule D Unrecaptured §1250 Gain Worksheet
 - If installment sale → coordinate with **Form 6252**
 - If casualty/theft → **Form 4684** first, then conclusions flow to Form 4797
@@ -182,12 +187,14 @@ For the full reference, load [`references/line-by-line.md`](./references/line-by
 
 | Line | What goes here |
 |------|----------------|
-| 1 | Year and Forms 1099-S info (real estate transactions reported to IRS) |
-| 2 | Per-property §1231 gains/losses for non-depreciable property (land, livestock held for breeding, etc.) |
-| 3 | Gain from §1231 portion of installment sales (Form 6252 carryover) |
-| 4 | §1231 gain from Form 4684 (casualty/theft) |
-| 5 | §1231 gain from §1231 property held in like-kind exchanges with boot (Form 8824) |
-| 6 | Residual §1231 gain from Part III (after recapture is removed) |
+| 1a | Gross proceeds reported on Forms 1099-B or 1099-S (or substitute statement) that are included on Line 2, 10, or 20 |
+| 1b | Gain included on Lines 2, 10, and 24 from partial dispositions of MACRS assets |
+| 1c | Loss included on Lines 2 and 10 from partial dispositions of MACRS assets |
+| 2 | Per-property §1231 gains/losses not reported in Part III: non-depreciable property (land, certain livestock) and depreciable property sold at a loss |
+| 3 | Gain from Form 4684, Line 39 (casualty/theft) |
+| 4 | §1231 gain from installment sales (Form 6252, Line 26 or 37) |
+| 5 | §1231 gain or loss from like-kind exchanges (Form 8824) |
+| 6 | Gain from Line 32 (Part III residual, other than casualty or theft) |
 | 7 | Combine Lines 2 through 6 — net §1231 result |
 | 8 | 5-year lookback — non-recaptured net §1231 losses from prior 5 years |
 | 9 | Excess of Line 7 over Line 8 — flows to Schedule D Line 11 as long-term capital gain |
@@ -196,35 +203,35 @@ For the full reference, load [`references/line-by-line.md`](./references/line-by
 
 | Line | What goes here |
 |------|----------------|
-| 10 | Ordinary gains/losses on property held 1 year or less; pass-through K-1 ordinary items |
+| 10 | Ordinary gains and losses not included on Lines 11-16, including property held 1 year or less and §1244 small business stock losses |
 | 11 | If Line 7 (Part I) is a net loss, the loss amount is entered here as ordinary |
-| 12 | §1231 gain recharacterized as ordinary by the 5-year lookback (= Line 8 if current Line 7 is a gain) |
-| 13 | Recapture from Part III Line 32 |
-| 14 | Other ordinary gains/losses |
-| 15 | Ordinary loss from §1244 small business stock |
-| 16 | Ordinary gain from §1244 small business stock recapture (rare) |
-| 17 | Combined |
-| 18 | Total ordinary — flows to Schedule 1 Line 4 |
+| 12 | Gain from Line 7, or the Line 8 amount, recharacterized as ordinary by the 5-year lookback |
+| 13 | Gain from Part III Line 31 (recapture) |
+| 14 | Net gain or loss from Form 4684, Lines 31 and 38a |
+| 15 | Ordinary gain from installment sales (Form 6252, Line 25 or 36) |
+| 16 | Ordinary gain or loss from like-kind exchanges (Form 8824) |
+| 17 | Combine Lines 10 through 16 |
+| 18a / 18b | Individuals only: 18a = Form 4684 income-producing-property loss portion (to Schedule A Line 16); 18b = Line 17 redetermined without 18a, to Schedule 1 Line 4 |
 
 ### Part III — Recapture Computation (Lines 19-32)
 
-Columns A/B/C/D for up to 4 properties on one page. Lines 19-24 establish the gain. Lines 25-30 compute recapture by section:
+Columns A/B/C/D for up to 4 properties on one page. Lines 19-24 establish the gain. Lines 25-29 compute recapture by section:
 
 - **Line 25** — §1245 recapture (personal property)
-- **Line 26** — §1250 recapture (real property)
+- **Line 26** — §1250 recapture (real property), Lines 26a-26g
 - **Line 27** — §1252 recapture (farmland soil/water expenses)
 - **Line 28** — §1254 recapture (oil, gas, mineral, geothermal)
 - **Line 29** — §1255 recapture (cost-share payments)
-- **Line 30** — Total per-column recapture
-- **Line 31** — Sum across columns
-- **Line 32** — Recapture sent to Part II Line 13
+- **Line 30** — Total gains for all properties (Line 24, columns A-D)
+- **Line 31** — Total recapture (Lines 25b, 26g, 27c, 28b, 29b, columns A-D) → Part II Line 13
+- **Line 32** — Line 30 − Line 31 → Part I Line 6 (casualty/theft portion → Form 4684 Line 33)
 
 ### Part IV — §179 and §280F Recapture (Lines 33-35)
 
 | Line | What goes here |
 |------|----------------|
-| 33 | §179 deduction previously taken |
-| 34 | Recomputed depreciation under MACRS |
+| 33 | §179 expense deduction or depreciation allowable in prior years (column (a) §179 for non-listed property; column (b) §280F(b)(2) for listed property) |
+| 34 | Recomputed depreciation: column (a) regular MACRS through and including the current year; column (b) straight-line ADS up to but not including the current year |
 | 35 | Difference — recapture amount, reported on the form where §179 was originally claimed |
 
 ---
@@ -238,13 +245,14 @@ Before declaring the form ready, run these checks. Surface anything that fails �
 - [ ] Each Part III column: Line 23 = Line 21 − Line 22; Line 24 = Line 20 − Line 23
 - [ ] §1245 recapture (Line 25b) = lesser of Line 24 or Line 25a
 - [ ] §1250 recapture (Line 26g) is appropriately computed (typically $0 for post-1986 SL MACRS)
-- [ ] Line 31 = sum of Line 30 across columns
-- [ ] Line 32 = Line 31 − any recapture going to other forms (rare)
-- [ ] Part II Line 13 = Part III Line 32
-- [ ] Part I Line 6 = sum of (Line 24 − recapture) across all §1231 depreciable properties in Part III
+- [ ] Line 30 = sum of Line 24 across columns
+- [ ] Line 31 = sum of Lines 25b, 26g, 27c, 28b, 29b across columns
+- [ ] Line 32 = Line 30 − Line 31
+- [ ] Part II Line 13 = Part III Line 31
+- [ ] Part I Line 6 = Part III Line 32 (portion other than casualty or theft)
 - [ ] Part I Line 7 = sum of Lines 2 through 6
 - [ ] Part I Line 9 = Line 7 − Line 8 (if Line 7 ≥ Line 8 and both positive)
-- [ ] Part II Line 18 = sum of Lines 10 through 17
+- [ ] Part II Line 17 = sum of Lines 10 through 16; Line 18b = Line 17 minus any Line 18a amount (individuals)
 
 ### Sanity checks
 
@@ -254,7 +262,7 @@ Surface a warning, do not block, if any of these are true:
 - [ ] Filer reports a §1231 gain without checking 5-year lookback → ask explicitly about prior §1231 losses
 - [ ] Building sold without separating §1245 components (appliances, carpets, removable equipment) → ask if cost segregation was used; if so, Part III must split
 - [ ] §179 was taken in a prior year and business use is now ≤50% but Part IV is not completed → recapture required even without sale
-- [ ] Sales price + selling expenses don't reconcile with HUD-1 / 1099-S → request settlement statement
+- [ ] Sales price + selling expenses don't reconcile with HUD-1 / 1099-S → request settlement statement; Line 1a must equal the 1099-S/1099-B gross proceeds included on Lines 2, 10, and 20
 - [ ] Holding period is exactly 1 year → not §1231 (§1231 requires more than 1 year); goes to Part II Line 10
 - [ ] Asset was inherited — basis is stepped-up under IRC §1014 and recapture clock effectively resets; verify decedent date-of-death FMV
 - [ ] Rental property but filer never reported on Schedule E → fact-check whether it was actually held for rental; if personal-use vacation home, different rules apply
@@ -262,11 +270,11 @@ Surface a warning, do not block, if any of these are true:
 ### Cross-form checks
 
 - [ ] If Part I Line 9 > 0, ensure Schedule D Line 11 reflects the amount
-- [ ] If Part II Line 18 ≠ 0, ensure Schedule 1 Line 4 reflects the amount
+- [ ] If Part II Line 18b ≠ 0, ensure Schedule 1 Line 4 reflects the amount
 - [ ] If Part III contains §1250 property with depreciation, ensure Schedule D Unrecaptured §1250 Gain Worksheet is completed
 - [ ] If Part IV §179 recapture, ensure it appears on Schedule C Line 6 (sole prop) or equivalent
 - [ ] Form 4562 prior years reconcile to Line 22 depreciation columns
-- [ ] Form 6252 (installment) is consistent with Part I Line 3 if applicable
+- [ ] Form 6252 (installment) is consistent with Part I Line 4 (§1231 gain from Form 6252 Line 26 or 37) and Part II Line 15 if applicable
 
 ---
 
@@ -281,13 +289,18 @@ The agent's deliverable is a **filled draft** the user can transcribe. Format:
 Name(s) shown on return: <name>
 Identifying number: <SSN/EIN>
 
+## Line 1a-1c
+1a. Gross proceeds from Forms 1099-B/1099-S included on Lines 2, 10, or 20: $
+1b. Gain from partial dispositions of MACRS assets: $
+1c. Loss from partial dispositions of MACRS assets: $
+
 ## Part I — §1231 (Property Held > 1 Year)
 | Line | Description | Acquired | Sold | Sales Price | Depreciation | Cost+Imp | Gain/Loss |
 |------|-------------|----------|------|-------------|--------------|----------|-----------|
 | 2    | <each property>           |          |      | $           | $            | $        | $         |
-| 3    | Installment sale §1231 gain                                                    | $         |
-| 4    | Form 4684 §1231 gain                                                           | $         |
-| 5    | §1231 boot from like-kind exchange                                             | $         |
+| 3    | Gain from Form 4684, Line 39                                                   | $         |
+| 4    | §1231 gain from installment sales (Form 6252)                                  | $         |
+| 5    | §1231 gain or loss from like-kind exchanges (Form 8824)                        | $         |
 | 6    | §1231 gain from Part III                                                       | $         |
 | 7    | Combined net §1231 gain/loss                                                   | $         |
 | 8    | 5-year lookback (non-recaptured prior §1231 losses)                            | $         |
@@ -298,26 +311,30 @@ Identifying number: <SSN/EIN>
 | 10   | Ordinary (≤1 year held)                                                         | $         |
 | 11   | Net §1231 loss from Part I Line 7 (if loss)                                     | $         |
 | 12   | §1231 gain recharacterized by lookback                                          | $         |
-| 13   | Recapture from Part III Line 32                                                 | $         |
-| 14-17| Other ordinary                                                                  | $         |
-| 18   | Total ordinary → Schedule 1 Line 4                                              | $         |
+| 13   | Gain from Part III Line 31                                                      | $         |
+| 14   | Form 4684, Lines 31 and 38a                                                     | $         |
+| 15   | Ordinary gain from installment sales (Form 6252)                                | $         |
+| 16   | Ordinary gain or loss from like-kind exchanges (Form 8824)                      | $         |
+| 17   | Combine Lines 10 through 16                                                     | $         |
+| 18a  | Form 4684 income-producing property loss (individuals)                          | $         |
+| 18b  | Line 17 redetermined → Schedule 1 Line 4                                        | $         |
 
 ## Part III — Recapture
 | Line | A: <prop1> | B: <prop2> | C: <prop3> | D: <prop4> |
 |------|-----------|-----------|-----------|-----------|
 | 19   | description |
 | 20   | sales price |
-| 21   | cost basis |
+| 21   | cost or other basis plus expense of sale |
 | 22   | depreciation |
 | 23   | adjusted basis |
 | 24   | total gain |
 | 25a  | §1245 dep allowed |
 | 25b  | §1245 recapture (lesser of 24 or 25a) |
-| 26a-g| §1250 recapture (typically $0 post-1986 SL) |
+| 26a-g| §1250 recapture (typically $0 post-1986 SL with no bonus) |
 | 27-29| §1252/§1254/§1255 (rare) |
-| 30   | column total |
-| 31   | sum of Line 30 |
-| 32   | to Part II Line 13 |
+| 30   | total gains, all columns (Line 24) |
+| 31   | total recapture → Part II Line 13 |
+| 32   | Line 30 − Line 31 → Part I Line 6 |
 
 ## Part IV — §179 / §280F Recapture (if applicable)
 | Line | Description | Section 179 | §280F Listed |
@@ -385,7 +402,7 @@ Authoritative sources used by this skill. Always re-verify against the IRS site 
 - [Publication 537](https://www.irs.gov/publications/p537) — Installment Sales
 - [Publication 551](https://www.irs.gov/publications/p551) — Basis of Assets
 - IRC §1231 (property used in trade or business), §1245 (personal property recapture), §1250 (real property recapture), §1(h)(1)(E) (25% unrecaptured §1250 cap), §179(d)(10) (§179 recapture on business-use drop), §280F(b)(2) (listed-property recapture), §1016(a)(2) (allowed-or-allowable depreciation), §1252/§1254/§1255 (specialty recapture)
-- Rev. Proc. 2024-40 — §179 limit for tax year 2025 ($1,250,000)
+- P.L. 119-21 §70306 — §179 limit for tax years beginning in 2025 ($2,500,000; Rev. Proc. 2024-40's $1,250,000 was superseded), relevant to §179 recapture history; §70301 — 100% bonus for property acquired after January 19, 2025
 - IRS Reg. §1.1402(a)-6 — Form 4797 gains excluded from self-employment income
 
 ## Disclaimer

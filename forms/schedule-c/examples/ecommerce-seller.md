@@ -55,14 +55,14 @@ Priya makes candles. She has materials, labor (just herself — not deductible),
 | Bookkeeper (12 months × $150) | Line 11 (Contract labor) | $1,800 |
 | Liability + product insurance for candles | Line 15 (Insurance) | $480 |
 | Business credit card interest | Line 16b (Interest) | $190 |
-| CPA fees + Jupid + Etsy seller's tax tools | Line 17 (Legal & prof) | $720 |
+| CPA fees + bookkeeping software + Etsy seller's tax tools | Line 17 (Legal & prof) | $720 |
 | Office paper, printer ink for shipping labels | Line 18 (Office expense) | $240 |
 | Rent for 200 sq ft of dedicated workshop space at the local maker space | Line 20b (Rent — other) | $4,800 |
 | Equipment repair (broken candle melter pot replaced) | Line 21 (Repairs) | $180 |
 | Shipping supplies (boxes, tape, packing peanuts — NOT inventory because they don't become part of the product) | Line 22 (Supplies) | $1,420 |
 | LLC franchise tax (Delaware annual) + state business license | Line 23 (Taxes & licenses) | $310 |
-| Outbound shipping costs paid through Etsy (USPS/UPS for orders shipped) | Line 27a (Other) | $5,800 |
-| Online courses (candle-making advanced techniques) | Line 27a (Other) | $290 |
+| Outbound shipping costs paid through Etsy (USPS/UPS for orders shipped) | Line 27b (Other) | $5,800 |
+| Online courses (candle-making advanced techniques) | Line 27b (Other) | $290 |
 
 ### Home office
 
@@ -79,7 +79,7 @@ Just the 84 business miles (one delivery to a wholesale buyer). Standard mileage
 
 ## Header
 A. Principal business: Online sales of handmade candles
-B. Business code: 339999 (All other miscellaneous manufacturing) — chosen because Priya makes the products
+B. Business code: 339900 (Other miscellaneous mfg.) — chosen because Priya makes the products
 C. Business name: Priya Patel Candle Co LLC
 D. EIN: 88-XXXXXXX
 E. Address: Same as Form 1040
@@ -121,7 +121,8 @@ J. Will file required 1099-NEC: Yes
 24b. Deductible meals (50%):       $0
 25. Utilities:                     $0       (workshop utilities included in Line 20b lease)
 26. Wages:                         $0
-27a. Other expenses (Part V):      $6,090
+27a. Energy efficient commercial bldgs: $0
+27b. Other expenses (Part V):      $6,090
 28. Total expenses:                $27,839
 
 ## Part II totals
@@ -151,12 +152,12 @@ J. Will file required 1099-NEC: Yes
 47a. Have evidence:                Yes
 47b. Written:                      Yes (single-trip log)
 
-## Part V — Other Expenses (detail of Line 27a)
+## Part V — Other Expenses (detail of Line 27b)
 | Description                                | Amount  |
 |---------------------------------------------|---------|
 | Outbound shipping (USPS/UPS via Etsy)       | $5,800  |
 | Continuing education (candle technique courses) | $290 |
-| **Total (Line 48 = Line 27a)**              | $6,090  |
+| **Total (Line 48 = Line 27b)**              | $6,090  |
 
 ## Required attachments
 - [ ] Form 4562 — Not required
@@ -166,13 +167,13 @@ J. Will file required 1099-NEC: Yes
 ## Validation summary
 - Math: all checks passed
   - Part III: 19,850 − 4,200 = 15,650 ✓ matches Line 4
-  - Line 28 = sum of 8-27a ✓
+  - Line 28 = sum of 8-27b ✓
   - Line 29 = Line 7 − Line 28 ✓
   - Line 31 = Line 29 − Line 30 ✓
 - Sanity:
   - COGS ratio: 21% of gross sales — consistent with handmade goods
   - Operating expense ratio: 38% of gross income — typical for inventory-based e-commerce with paid shipping
-  - Line 27a is 22% of total expenses — high, but legitimately driven by outbound shipping which has nowhere better to go
+  - Line 27b is 22% of total expenses — high, but legitimately driven by outbound shipping which has nowhere better to go
   - 1099-NEC required for bookkeeper (over $600)
 - Next steps:
   - Schedule SE: 92.35% × $30,271 = $27,955 × 15.3% = $4,277 SE tax
@@ -189,13 +190,13 @@ J. Will file required 1099-NEC: Yes
 
 ## Why each non-obvious choice
 
-**Why is outbound shipping on Line 27a, not COGS?** This one trips up many filers. Inventoriable costs (those that go into Part III) include freight-in (cost to ship raw materials to Priya). Freight-out (shipping finished products to customers) is an operating expense, not COGS. Line 27a is the most common home for outbound shipping — it could also defensibly go on Line 22 (Supplies) if the shipping supplies are negligible. Line 27a keeps it cleanly visible.
+**Why is outbound shipping on Line 27b, not COGS?** This one trips up many filers. Inventoriable costs (those that go into Part III) include freight-in (cost to ship raw materials to Priya). Freight-out (shipping finished products to customers) is an operating expense, not COGS. Line 27b is the most common home for outbound shipping — it could also defensibly go on Line 22 (Supplies) if the shipping supplies are negligible. Line 27b keeps it cleanly visible.
 
-**Why are wax and glass jars on Line 38 (Materials), not Line 22 (Supplies)?** They become part of the finished product. That's the COGS test. Shipping boxes don't become part of the candle — they ship the candle — so those go on Line 22 (or Line 27a if pure outbound shipping cost).
+**Why are wax and glass jars on Line 38 (Materials), not Line 22 (Supplies)?** They become part of the finished product. That's the COGS test. Shipping boxes don't become part of the candle — they ship the candle — so those go on Line 22 (or Line 27b if pure outbound shipping cost).
 
 **Why Line 39 (Other costs) for shop pots and thermometers?** Items consumed in production that aren't materials per se. Tools costing under $2,500 each that wear out fit here under the de minimis safe harbor.
 
-**Why business code 339999 (manufacturing) instead of 454110 (electronic shopping)?** Priya makes the products. The IRS expects manufacturers to have higher COGS than retailers. Code 339999 aligns the audit benchmark with her actual cost structure. If she were drop-shipping or reselling someone else's candles, 454110 would be correct.
+**Why business code 339900 (manufacturing) instead of a retail code?** Priya makes the products. The IRS expects manufacturers to have higher COGS than retailers. Code 339900 aligns the audit benchmark with her actual cost structure. If she were drop-shipping or reselling someone else's candles, she would use the retail code for her main product, 459990 (All other miscellaneous retailers, including candle retailers): the 2025 IRS chart has no separate code for online sellers (the old 454110 is gone), and nonstore retailers pick the code for the primary product sold.
 
 **Why is Etsy's 1099-K $48,200 if she had returns?** 1099-K reports gross transactions, not net of refunds. Refunds go on Line 2 separately. Her Line 1 should match the gross 1099-K total (plus the wholesale check), and refunds reduce the total via Line 2.
 

@@ -146,7 +146,7 @@ Social security number: XXX-XX-XXXX
 6.  Net earnings from SE (4c + 5b):              $46,175
 
 7.  SS wage base for 2025:                       $176,100
-8a. Total W-2 SS wages (Box 3):                  $0
+8a. Total W-2 SS wages + tips (Boxes 3 + 7):     $0
 8b. Unreported tip income:                       $0
 8c. Wages from Form 8919:                        $0
 8d. Sum 8a + 8b + 8c:                            $0
@@ -158,8 +158,8 @@ Social security number: XXX-XX-XXXX
 13. Deductible half (12 × 0.5):                  $3,533
 
 ## Part II — Optional Methods
-Section A — Farm Optional Method:                Not elected
-Section B — Non-Farm Optional Method:            Not elected
+15. Farm optional method:                        Not elected
+17. Nonfarm optional method:                     Not elected
 
 ## Required attachments
 - [x] Schedule C (Line 2 source)
@@ -190,7 +190,7 @@ Section B — Non-Farm Optional Method:            Not elected
 
 **Why no Form 8959?** Additional Medicare Tax kicks in only when wages + SE earnings exceed $200K (single). Daniel's combined total is $46,175 — well below.
 
-**Why is the deductible half ($3,533) so important?** At Daniel's marginal income tax rate (likely 22% federal in 2025 for $46K AGI), the §164(f) deduction saves him $3,533 × 0.22 = $777 in income tax. Skipping it would be an unforced error.
+**Why is the deductible half ($3,533) so important?** Daniel's AGI is about $46,467 ($50,000 − $3,533); after the $15,750 2025 standard deduction for single filers, taxable income is about $30,700 before any QBI deduction, which sits in the 12% bracket for 2025 (2025 Tax Table, Instructions for Form 1040). The §164(f) deduction saves him roughly $3,533 × 0.12 = $424 in income tax. Skipping it would be an unforced error.
 
 **What's Daniel's effective SE tax rate?** $7,065 / $50,000 = 14.13%. That's the canonical SE tax rate net of the 0.9235 factor: 0.9235 × 0.153 = 0.1413 = 14.13%. This applies to any pure-SE filer below the wage base with no W-2 wages.
 

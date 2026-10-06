@@ -8,7 +8,7 @@ Source: 26 CFR §301.7701-1, §301.7701-2, §301.7701-3.
 
 ## The "eligible entity" concept
 
-26 CFR §301.7701-3(a) defines an "eligible entity" as a business entity that is **not** classified as a corporation by §301.7701-2(b). In short, an entity is eligible if it has classification flexibility. Entities that are classified as corporations by definition cannot elect.
+26 CFR §301.7701-3(a) defines an "eligible entity" as a business entity that is **not** classified as a corporation under §301.7701-2(b)(1), (3), (4), (5), (6), (7), or (8). In short, an entity is eligible if it has classification flexibility. Entities that are classified as corporations by definition cannot elect. (An entity that is a corporation only because it elected association status under (b)(2) remains eligible and can elect again, subject to the 60-month rule.)
 
 ---
 
@@ -85,9 +85,9 @@ The list is country-specific. Examples (incomplete — verify against the curren
 | Spain | Sociedad Anónima (SA) |
 | Sweden | Publika Aktiebolag |
 | Switzerland | Aktiengesellschaft (AG) |
-| Thailand | Bristat Mahachon Chamkad |
+| Thailand | Borisat Chamkad (Mahachon) |
 | Turkey | Anonim Şirket |
-| Ukraine | Vidkrite Aktsionerne Tovaristvo |
+| Ukraine | Aktsionerne Tovaristvo Vidkritogo Tipu |
 | United Kingdom | Public Limited Company (PLC) |
 | Venezuela | Sociedad Anónima |
 
@@ -97,16 +97,16 @@ If the entity is on the list, the agent must stop and tell the user the entity c
 
 ### Trusts, estates, REITs, RICs, and statutory exceptions
 
-Per §301.7701-3(a), the following are NOT eligible entities:
+The following cannot use Form 8832 (sources in parentheses):
 
-- Trusts (governed by §301.7701-4)
-- Estates
-- Real Estate Investment Trusts (REITs) — IRC §856
-- Regulated Investment Companies (RICs) — IRC §851
-- Real Estate Mortgage Investment Conduits (REMICs)
-- Insurance companies
-- State-chartered banks insured by the FDIC
-- Joint-stock companies / associations (per §301.7701-2(b)(3)–(7))
+- Trusts and estates — not business entities (§301.7701-2(a); §301.7701-4)
+- Real Estate Investment Trusts (REITs) — an eligible entity that elects REIT status under §856(c)(1) is deemed to have elected association status (§301.7701-3(c)(1)(v)(B)); the Form 8832 instructions say not to file Form 8832 for a REIT
+- Entities exempt under §501(a) — deemed association election (§301.7701-3(c)(1)(v)(A)); the instructions say not to file Form 8832
+- Regulated Investment Companies (RICs) — IRC §851 (a RIC must be a domestic corporation; out of scope for this skill)
+- Real Estate Mortgage Investment Conduits (REMICs) — classified under §860A, not the check-the-box rules
+- Insurance companies (§301.7701-2(b)(4))
+- State-chartered banks insured by the FDIC (§301.7701-2(b)(5))
+- State-law joint-stock companies / associations (§301.7701-2(b)(3)); entities wholly owned by a state or foreign government (§301.7701-2(b)(6))
 
 If the entity is in any of these categories, Form 8832 is not the right form.
 
@@ -131,7 +131,7 @@ If the entity is in any of these categories, Form 8832 is not the right form.
 If the entity has filed a Form 8832 within the last 60 months and the prior election was NOT a "newly-formed entity initial classification" election, a new election is generally blocked. See [`sixty-month-rule.md`](./sixty-month-rule.md).
 
 Two exceptions:
-- **>50% ownership change**: IRS may waive on showing of more than 50% change in ownership since the prior effective date. Discretionary; requires explanation.
+- **>50% new ownership**: the IRS may permit an earlier change **by private letter ruling** if more than 50% of the ownership interests, as of the new effective date, are owned by persons who owned no interest on the filing date or effective date of the prior election. Discretionary; not claimed on Form 8832.
 - **First-election exception**: a prior election by a newly-formed entity effective on the date of formation does not count as a "change" — Line 2b on Form 8832.
 
 ---
@@ -153,14 +153,17 @@ FDIC-insured bank?
 ├── Yes → CANNOT elect via Form 8832; different rules govern.
 └── No → Continue
 
-Has the entity filed a Form 8832 in the last 60 months?
-├── No → ELIGIBLE. Proceed to Line 1 box (a) initial classification.
+Has the entity filed an election with an effective date in the last 60 months?
+├── No → ELIGIBLE. Line 1 box (a) only if this is a newly formed entity
+│        electing effective on formation; otherwise box (b) change
+│        (a change from the default classification is still a change).
 └── Yes → Was that prior election the "newly-formed entity initial
           classification" election (Line 2b)?
           ├── Yes → ELIGIBLE; the prior election does not count.
           │          Proceed to Line 1 box (b) change.
-          └── No → 60-month rule blocks unless 50%-ownership-change
-                    exception applies. See sixty-month-rule.md.
+          └── No → 60-month rule blocks unless the IRS grants a private
+                    letter ruling under the >50% new-ownership exception.
+                    See sixty-month-rule.md.
 ```
 
 ---
@@ -169,7 +172,7 @@ Has the entity filed a Form 8832 in the last 60 months?
 
 ### Spouses owning a multi-member LLC in a community-property state
 
-Per Rev. Proc. 2002-69, a "qualified entity" that is an LLC owned solely by spouses in a community-property state can be treated as a single-owner entity (disregarded). If the spouses elect this treatment, Box 6(c) (single-owner disregarded) is available; otherwise Box 6(b) (partnership) is the default.
+Per Rev. Proc. 2002-69 §4, for a "qualified entity" owned solely by spouses as community property (and not treated as a corporation), the IRS accepts the spouses' reporting position: disregarded entity or partnership. No Form 8832 is filed to make that choice; a change in reporting position is treated as a conversion of the entity (§4.03). Ask the user which position the spouses have reported.
 
 ### Husband-wife unincorporated business in non-community-property state
 
@@ -183,7 +186,7 @@ An eligible entity that has been formed but has not yet started business is stil
 
 A Series LLC (Delaware, Nevada, etc.) and its protected series are each treated as a separate entity for federal tax classification under proposed regs (Prop. Reg. §301.7701-1(a)(5), 75 Fed. Reg. 55,699 (Sept. 14, 2010)). Each series can have its own classification. If the user is filing Form 8832 for a series LLC, confirm whether they're electing for the master LLC, a specific series, or all of them — each requires a separate Form 8832.
 
-The proposed regulations have not been finalized as of 2026-04-29; verify against the current regulatory status before filing.
+The proposed regulations have not been finalized as of 2026-10-06 (the current eCFR text of §301.7701-1 has no series rule); verify against the current regulatory status before filing.
 
 ### Disregarded entity electing to be regarded for excise tax / employment tax
 

@@ -6,11 +6,11 @@ The 10 most common audit-trip and IRS-notice mistakes on Schedule SE, with citat
 
 ## 1. Filing Schedule SE when net earnings are below $400
 
-**Mistake**: Filer attaches Schedule SE with Line 4a < $400 and Line 12 = $0, treating the form as informational.
+**Mistake**: Filer attaches Schedule SE with Line 4c < $400 and Line 12 = $0, treating the form as informational.
 
 **Why it's wrong**: Schedule SE is not required when net SE earnings are below $400 (IRC §1402(b)). Filing it anyway clutters the return; some tax software flags it as an error.
 
-**Fix**: Remove Schedule SE if Line 4a < $400 AND no optional method is elected. Keep Schedule C / F separately — the income still flows to Form 1040 even without SE tax.
+**Fix**: Remove Schedule SE if Line 4c < $400 AND no optional method is elected AND there is no church employee income of $108.28 or more. Keep Schedule C / F separately — the income still flows to Form 1040 even without SE tax.
 
 **Exception**: If electing an optional method to keep accruing SS credits, Schedule SE IS required even with low earnings.
 
@@ -38,7 +38,7 @@ The 10 most common audit-trip and IRS-notice mistakes on Schedule SE, with citat
 
 **Why it's wrong**: The W-2 wages already consumed $120K of the SS wage base via FICA. The remaining base on Line 9 should be $176,100 − $120,000 = $56,100 (2025), and SE earnings get the SS portion only up to that remaining base.
 
-**Fix**: Always pull W-2 Box 3 from every W-2 the filer received and sum on Line 8a. Even if the filer thinks "the W-2 doesn't matter for SE," it does — through Lines 8 and 9.
+**Fix**: Always pull W-2 Box 3 (Social Security wages) and Box 7 (Social Security tips) from every W-2 the filer received, add any railroad retirement (tier 1) compensation, and sum on Line 8a. Even if the filer thinks "the W-2 doesn't matter for SE," it does — through Lines 8 and 9.
 
 **Worst case**: filer with $200K W-2 wages already exceeds the wage base. Line 9 = 0. SS portion of SE tax = 0. Filer only owes Medicare 2.9% on SE earnings.
 
@@ -76,13 +76,13 @@ The 10 most common audit-trip and IRS-notice mistakes on Schedule SE, with citat
 
 **Mistake**: Filer is a US citizen living abroad with $100K in Schedule C income. They claim the Form 2555 foreign earned income exclusion ($100K excluded from regular income tax) and reduce Schedule SE Line 2 to $0.
 
-**Why it's wrong**: IRC §911(d)(4) explicitly states the Form 2555 exclusion does NOT reduce SE tax. The filer owes SE tax on the full $100K even though they owe no income tax on it.
+**Why it's wrong**: IRC §1402(a)(11) states the §911(a)(1) exclusion does not apply when figuring net earnings from self-employment. The filer owes SE tax on the full $100K even though they owe no income tax on it.
 
-**Fix**: Report full SE earnings on Line 2 unreduced. Note in the deliverable: "Foreign earned income subject to SE tax per IRC §911(d)(4)."
+**Fix**: Report full SE earnings on Line 2 unreduced. Note in the deliverable: "Foreign earned income subject to SE tax per IRC §1402(a)(11)."
 
 **Exception**: If the filer has a totalization agreement Certificate of Coverage from a foreign country, they may exclude the covered SE income.
 
-**Citation**: IRC §911(d)(4); Schedule SE Instructions, "Foreign Earned Income."
+**Citation**: IRC §1402(a)(11); Schedule SE Instructions, "U.S. Citizens or Resident Aliens Living Outside the United States."
 
 ---
 
@@ -90,11 +90,11 @@ The 10 most common audit-trip and IRS-notice mistakes on Schedule SE, with citat
 
 **Mistake**: Filer has $5K net SE earnings and elects the non-farm optional method to claim 4 SS credits. But they had no SE earnings in any of the prior 3 years.
 
-**Why it's wrong**: Non-farm optional method requires net SE earnings ≥ $400 in 2 of the prior 3 years (IRC §1402(l)). The filer fails the regularity test.
+**Why it's wrong**: Non-farm optional method requires net SE earnings ≥ $400 in 2 of the prior 3 years (IRC §1402(h); Schedule SE instructions, Part II). The filer fails the regularity test.
 
 **Fix**: Remove the optional method election. The filer pays SE tax on the actual $5K × 0.9235 = $4,617 base.
 
-**Citation**: IRC §1402(l); Schedule SE Part II Section B Line 16.
+**Citation**: IRC §1402(h); Schedule SE Part II, lines 16–17.
 
 ---
 
@@ -102,11 +102,11 @@ The 10 most common audit-trip and IRS-notice mistakes on Schedule SE, with citat
 
 **Mistake**: Filer has used the non-farm optional method in 5 prior tax years. Their 6th attempt is rejected by the IRS.
 
-**Why it's wrong**: Lifetime cap of 5 elections under IRC §1402(l)(2). The 6th invocation is invalid.
+**Why it's wrong**: Lifetime cap of 5 years under IRC §1402(a) (flush language after paragraph (17)). The 6th invocation is invalid.
 
-**Fix**: Remove the election. Suggest filer pull a Social Security earnings statement (https://www.ssa.gov/myaccount/) to track prior elections — the SSA records reflect any year the optional method was used.
+**Fix**: Remove the election. Ask the filer to check prior-year Schedule SE copies (Part II line 17) or account transcripts to count prior elections; the SSA earnings statement shows credited earnings but not the method used.
 
-**Citation**: IRC §1402(l)(2).
+**Citation**: IRC §1402(a) (flush language); Schedule SE instructions, Part II.
 
 ---
 
@@ -118,7 +118,7 @@ The 10 most common audit-trip and IRS-notice mistakes on Schedule SE, with citat
 
 **Fix**: Check Schedule 2 Line 4 = Schedule SE Line 12 before submitting. Tax software does this automatically; paper / FFFF filers must verify.
 
-**Citation**: Form 1040 Instructions, Schedule 2 Part I.
+**Citation**: Schedule SE line 12; Schedule 2 (Form 1040), Part II, line 4.
 
 ---
 
@@ -140,7 +140,7 @@ The 10 most common audit-trip and IRS-notice mistakes on Schedule SE, with citat
 
 **Mistake**: Filer has $300K W-2 + $50K SE in 2025. They compute Schedule SE correctly but forget Form 8959.
 
-**Why it's wrong**: The Additional Medicare Tax of 0.9% applies on wages + SE earnings above $200K (single) / $250K (MFJ) / $125K (MFS). Schedule SE does not handle this — Form 8959 does. Missing it underpays by ~$1,350 in this example.
+**Why it's wrong**: The Additional Medicare Tax of 0.9% applies on wages + SE earnings above $200K (single) / $250K (MFJ) / $125K (MFS). Schedule SE does not handle this — Form 8959 does. In this example (single), Form 8959 line 7 = ($300,000 − $200,000) × 0.9% = $900 (the employer withholds this) and line 13 = $46,175 × 0.9% = $416 (the $200,000 threshold is fully used by wages), so total Additional Medicare Tax is ~$1,316. Missing the form drops the $416 SE portion and the reconciliation of the $900 withheld.
 
 **Fix**: When Schedule SE Line 6 + W-2 Box 5 (Medicare wages) > the threshold, attach Form 8959. This is also a common audit trigger because the IRS cross-matches W-2 Box 5 with SE earnings.
 
@@ -154,9 +154,9 @@ The 10 most common audit-trip and IRS-notice mistakes on Schedule SE, with citat
 
 **Why it's wrong**: Statutory employees have FICA withheld at the W-2 stage. They deduct business expenses on Schedule C but do NOT owe SE tax on those earnings.
 
-**Fix**: Schedule C net profit from statutory-employee income is excluded from Schedule SE Line 2. If the filer has only statutory-employee Schedule C income, no Schedule SE is needed.
+**Fix**: Schedule C net profit from statutory-employee income is excluded from Schedule SE Line 2; the statutory-employee Social Security wages and tips go on Line 8a. If the filer has only statutory-employee Schedule C income, no Schedule SE is needed.
 
-**Citation**: IRC §3121(d)(3); Schedule SE Instructions, "Statutory Employees."
+**Citation**: IRC §3121(d)(3); Schedule SE Instructions, "Statutory Employee Income."
 
 ---
 
@@ -164,9 +164,9 @@ The 10 most common audit-trip and IRS-notice mistakes on Schedule SE, with citat
 
 | # | Mistake | Form line | Fix |
 |---|---------|-----------|-----|
-| 1 | SE filed below $400 | Line 4a | Remove SE unless optional method |
+| 1 | SE filed below $400 | Line 4c | Remove SE unless optional method or church employee income |
 | 2 | Skipping 0.9235 | Line 4a | Multiply Line 3 × 0.9235 |
-| 3 | W-2 Box 3 omitted | Line 8a | Pull from every W-2 |
+| 3 | W-2 Boxes 3 and 7 omitted | Line 8a | Pull from every W-2 |
 | 4 | Both spouses on one form | Header | One Schedule SE per SE-earning spouse |
 | 5 | Limited partner Box 14 | Line 2 | Exclude unless guaranteed payments |
 | 6 | Form 2555 reduced SE | Line 2 | Don't reduce; FEIE doesn't apply |

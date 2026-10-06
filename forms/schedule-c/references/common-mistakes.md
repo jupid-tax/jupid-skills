@@ -40,7 +40,7 @@ Real mistakes filers make on Schedule C, ranked by how often they trigger IRS no
 
 **Consequence**: In audit, the IRS often disallows the entire Line 9 deduction. Reconstruction logs are accepted skeptically; "I drove a lot" is not.
 
-**Fix**: Use an app (Jupid, MileIQ, Hurdlr) or a simple spreadsheet. Log: date, destination, business purpose, miles. Update at least weekly. If the user already missed the log for prior months, reconstruct from calendar entries and document the reconstruction.
+**Fix**: Use a mileage log app or a simple spreadsheet (a contemporaneous written log). Log: date, destination, business purpose, miles. Update at least weekly. If the user already missed the log for prior months, reconstruct from calendar entries and document the reconstruction.
 
 ---
 
@@ -124,9 +124,9 @@ A $1,800 laptop is under the de minimis $2,500 threshold — expense it on Line 
 
 A roof replacement is an improvement, not a repair — capitalize it. Patching the roof is a repair — Line 21.
 
-### 15. Forgetting Part V detail for Line 27a
+### 15. Forgetting Part V detail for Line 27b
 
-Putting a lump sum on Line 27a without itemizing Part V (Line 48). The IRS expects Part V to detail every expense aggregated into 27a. Tax software handles this, but paper filers and some DIY users miss it.
+Putting a lump sum on Line 27b without itemizing Part V (Line 48). The IRS expects Part V to detail every expense aggregated into 27b. Tax software handles this, but paper filers and some DIY users miss it.
 
 ### 16. Mismatched Part IV vehicle dates
 

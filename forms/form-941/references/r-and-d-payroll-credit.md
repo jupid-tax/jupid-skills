@@ -1,6 +1,6 @@
-# R&D Payroll Tax Credit (Form 8974, Form 941 Line 11a)
+# R&D Payroll Tax Credit (Form 8974, Form 941 Line 11)
 
-How a qualified small business (QSB) applies its §41 Research & Development credit against employer FICA via Form 8974, flowing to Form 941 Line 11a.
+How a qualified small business (QSB) applies its §41 Research & Development credit against employer FICA via Form 8974 (Rev. December 2024), flowing to Form 941 Line 11 (Rev. March 2026).
 
 Authority: IRC §41 (R&D credit), §3111(f) (payroll credit election), §41(h) (QSB election); Form 8974 instructions.
 
@@ -20,7 +20,7 @@ It does **not** offset:
 - Additional Medicare withholding (Line 5d)
 - FUTA (Form 940)
 
-Once the credit's portion is applied to Form 941 Line 11a, it reduces the quarterly tax on Line 12.
+The credit is applied first against the employer share of Social Security tax (up to $250,000 per quarter), then against the employer share of Medicare tax; any remainder carries to the next quarter (Instructions for Form 8974, Rev. December 2024). Once applied on Form 941 Line 11, it reduces the quarterly tax on Line 12.
 
 ---
 
@@ -50,13 +50,13 @@ The §41 credit = (Qualified Research Expenses (QREs) for current year × applic
 
 ### Step 2 — Make the §41(h) election
 
-On the **timely-filed** (including extensions) income tax return, complete Form 6765 Section D ("Qualified Small Business Payroll Tax Election"). Specify the dollar amount of credit to apply against payroll (capped at $500K).
+On the **timely-filed** (including extensions) original income tax return, complete Form 6765 (Rev. December 2024) Section D ("Qualified Small Business Payroll Tax Election and Payroll Tax Credit"): check line 33a, enter the elected amount on line 34 (not more than $500,000); line 36 is the amount carried to Form 8974, Part 1, column (e).
 
-Critical: This election must be made on a timely-filed return. Late returns or amendments cannot make the election retroactively (IRC §41(h)(4)(B)(ii); Notice 2017-23 was rescinded; current rule is strict).
+Critical: The Instructions for Form 8974 say the payroll tax credit "must be elected on an original income tax return that is timely filed (including extensions)" (IRC §41(h)(4)(B)). Without that return on file, Form 8974 can't be filed.
 
 ### Step 3 — File Form 8974 with the first 941 of the quarter starting after the income tax return is filed
 
-Form 8974 calculates the portion of the elected credit usable against the current quarter's employer FICA (Line 11a feeds from Form 8974 Line 12).
+Form 8974 calculates the portion of the elected credit usable against the current quarter's employer FICA (Form 941 Line 11 = Form 8974 Line 17).
 
 Timing: The credit can be applied starting with the **first calendar quarter that begins after the income tax return making the election is filed**. Example:
 
@@ -70,7 +70,7 @@ Don't try to apply the credit to a quarter that started before the election was 
 
 If the full election amount can't be used in one quarter (because employer FICA on Line 5a col 2 + Line 5c col 2 + Line 5b col 2 isn't enough), the unused portion carries forward to subsequent 941 quarters indefinitely until used up.
 
-The cap on Line 11a per quarter = employer share of FICA (employer's 6.2% SS + 1.45% Medicare). Form 8974 enforces this cap.
+The cap on Line 11 per quarter = employer share of Social Security tax (up to $250,000) plus employer share of Medicare tax. Form 8974 enforces this cap.
 
 ---
 
@@ -78,21 +78,25 @@ The cap on Line 11a per quarter = employer share of FICA (employer's 6.2% SS + 1
 
 Form 8974 is attached to Form 941 each quarter the credit is being applied.
 
+Line map from Form 8974 (Rev. December 2024):
+
 | Line on 8974 | What it is |
 |--------------|-----------|
-| 1 | Election amount from Form 6765 Section D |
-| 2 | Credit used in prior quarters |
-| 3 | Available credit this quarter (Line 1 − Line 2) |
-| 4 | Form 941 Line 5a column 2 + Line 5b column 2 |
-| 5 | Multiply Line 4 × 0.5 (employer share of SS, computed as half of column 2 since column 2 is combined 12.4%) |
-| 6 | Form 941 Line 5c column 2 |
-| 7 | Multiply Line 6 × 0.5 (employer share of Medicare) |
-| 8 | Total employer FICA available for offset (Line 5 + Line 7) |
-| 9 | Credit applied this quarter = min(Line 3, Line 8, $250,000 SS portion / $250,000 Medicare portion limits if applicable) |
-| 10–12 | Allocation between SS and Medicare portions |
-| 12 | Total credit applied → Form 941 Line 11a |
+| Part 1, lines 1–5 | One row per income tax return with an election: (a) period end, (b) return type, (c) date filed, (d) EIN on Form 6765, (e) Form 6765 line 36 amount, (f) credit taken in previous periods, (g) remaining credit = (e) − (f) |
+| 6 | Total of lines 1(g)–5(g) |
+| 7 | Amount from line 6(g) |
+| 8 | Form 941 Line 5a, column 2 |
+| 9 | Form 941 Line 5b, column 2 |
+| 10 | Line 8 + Line 9 |
+| 11 | Line 10 × 50% (employer share of Social Security tax) |
+| 12 | Credit against employer Social Security tax: smaller of Line 7 or Line 11, not more than $250,000 |
+| 13 | Line 7 − Line 12 |
+| 14 | Form 941 Line 5c, column 2 |
+| 15 | Line 14 × 50% (employer share of Medicare tax) |
+| 16 | Credit against employer Medicare tax: smaller of Line 13 or Line 15 |
+| 17 | Total credit (Line 12 + Line 16) → Form 941 Line 11 |
 
-The dual cap matters: prior to ARPA / IRA changes, the credit applied only against SS tax. Now it splits between SS and Medicare based on Line 8 mechanics.
+Before the IRA changes (tax years beginning before 2023) the credit applied only against Social Security tax and the election cap was $250,000.
 
 ---
 
@@ -102,7 +106,7 @@ The dual cap matters: prior to ARPA / IRA changes, the credit applied only again
 2. **Trying to apply the credit to FIT withholding (Line 3).** It only offsets employer FICA.
 3. **Applying the credit before the 941 quarter that begins after election year's income tax filing date.** Timing matters — pick the right quarter.
 4. **Claiming > $500K in a single year.** Cap is $500,000 (post-IRA 2022). Earlier years had $250,000 cap.
-5. **Forgetting to attach Form 8974.** Form 8974 is required every quarter Line 11a is used.
+5. **Forgetting to attach Form 8974.** Form 8974 is required every quarter Line 11 is used.
 6. **Misclassifying business as QSB.** The 5-year gross-receipts lookback excludes many companies that think they qualify.
 7. **Counting employee FICA toward the offset cap.** Only employer share counts.
 8. **Letting the carryforward expire.** It doesn't expire (no statutory limit), but if the business stops paying wages or stops being a QSB, the credit may be stranded.
@@ -129,16 +133,16 @@ Q2 2026 payroll:
 - Total Line 5e: $39,780
 - Employer share: $32,240 × 0.5 + $7,540 × 0.5 = $19,890
 
-Form 8974 Line 9 (credit applied this quarter) = min($80,000, $19,890) = $19,890.
+Form 8974: Line 11 = $32,240 × 50% = $16,120; Line 12 = min($80,000, $16,120) = $16,120; Line 13 = $63,880; Line 15 = $7,540 × 50% = $3,770; Line 16 = min($63,880, $3,770) = $3,770; Line 17 = $19,890.
 
-Form 941 Line 11a = $19,890. Carryforward to Q3: $80,000 − $19,890 = $60,110.
+Form 941 Line 11 = $19,890. Carryforward to Q3: $80,000 − $19,890 = $60,110.
 
-Q3 2026 (assume same wages): Line 11a = $19,890. Carryforward = $40,220.
-Q4 2026: Line 11a = $19,890. Carryforward = $20,330.
-Q1 2027: Line 11a = $19,890. Carryforward = $440.
-Q2 2027: Line 11a = $440. Done.
+Q3 2026 (assume same wages): Line 11 = $19,890. Carryforward = $40,220.
+Q4 2026: Line 11 = $19,890. Carryforward = $20,330.
+Q1 2027: Line 11 = $19,890. Carryforward = $440.
+Q2 2027: Line 11 = $440. Done.
 
-Total credit used: $80,000 over 5 quarters. Each quarter's Line 12 reduced by Line 11a amount, lowering deposit liability.
+Total credit used: $80,000 over 5 quarters. Each quarter's Line 12 reduced by the Line 11 amount, lowering deposit liability.
 
 ---
 
@@ -152,4 +156,4 @@ Total credit used: $80,000 over 5 quarters. Each quarter's Line 12 reduced by Li
 - [Form 8974](https://www.irs.gov/pub/irs-pdf/f8974.pdf)
 - [Instructions for Form 8974](https://www.irs.gov/pub/irs-pdf/i8974.pdf)
 - Inflation Reduction Act of 2022, §13902 (raised cap from $250K to $500K)
-- IRS Notice 2017-23 (original procedural guidance — partially superseded; verify current rules)
+- IRS Notice 2017-23 (original procedural guidance); Instructions for Form 8974 (Rev. December 2024) for current procedure

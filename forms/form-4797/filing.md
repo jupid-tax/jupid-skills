@@ -24,14 +24,14 @@ Form 4797 cannot be filed standalone — it is always attached to Form 1040 (ind
 
 ```
 Is the user an individual filing Form 1040?
-├── Yes → AGI ≤ $84,000 (2025 threshold)?
+├── Yes → AGI ≤ $89,000 (2025 returns; irs.gov/filing/irs-free-file-do-your-taxes-for-free)?
 │   ├── Yes → IRS Free File guided software (most providers support 4797)
 │   └── No → Free File Fillable Forms (FFFF), paid commercial software, or paper
 └── No → Partnership (1065) / S-corp (1120-S) / C-corp (1120)?
     └── Use commercial pro-prep software (Drake, Lacerte, ProSeries, ATX, UltraTax)
 ```
 
-**IRS Direct File** — Confirm whether Form 4797 is supported in the user's state for the current tax year. As of TY2025, Direct File supports limited W-2 + simple credits only. If Form 4797 is needed, Direct File is generally NOT a viable channel.
+**IRS Direct File** — Not available: the IRS did not offer Direct File in the 2026 filing season (TY2025 returns); the 2026 filing-season release lists Free File, Free File Fillable Forms, MilTax, and VITA/TCE. Use one of the channels below.
 
 **Free File Fillable Forms (FFFF)** is the most common channel for self-filers with Form 4797. It is digital paper — no calculations, but it transmits to the IRS e-file system.
 
@@ -50,8 +50,8 @@ After signing in, navigate: **Add a Form → Form 4797**.
 - Identifying number → SSN (or EIN if filing for an entity)
 
 **Part I (Lines 1-9)**
-- Line 1 → Year and 1099-S info if applicable
-- Line 2 columns (a)-(g) → for each non-depreciable §1231 asset
+- Lines 1a-1c → 1099-B/1099-S gross proceeds included on Lines 2, 10, 20; partial-disposition gain/loss
+- Line 2 columns (a)-(g) → for each non-depreciable §1231 asset and each depreciable asset held over 1 year sold at a loss
 - Line 6 → residual §1231 gain from Part III (FFFF auto-pulls if Part III is filled correctly)
 - Line 7 → FFFF auto-sums Lines 2-6
 - Line 8 → manual entry (FFFF does not track lookback)
@@ -61,23 +61,24 @@ After signing in, navigate: **Add a Form → Form 4797**.
 - Line 10 → short-term ordinary
 - Line 11 → from Part I Line 7 (if loss)
 - Line 12 → from Line 8 if Line 7 is positive
-- Line 13 → FFFF auto-pulls from Part III Line 32
-- Line 18 → FFFF auto-sums
+- Line 13 → FFFF auto-pulls from Part III Line 31
+- Line 17 → FFFF auto-sums Lines 10-16; Line 18b → Schedule 1 Line 4
 
 **Part III (Lines 19-32)**
 - Each disposed depreciable asset gets a column (A, B, C, D)
 - Line 25b: enter manually as min(Line 24, Line 25a)
 - Line 26 §1250: most filers post-1986 enter $0 in Line 26g
-- Line 32 → FFFF auto-sums
+- Line 30 (total gains) and Line 31 (total recapture → Line 13) → FFFF auto-sums
+- Line 32 = Line 30 − Line 31 → Part I Line 6
 
 **Part IV (Lines 33-35)**
 - Only complete if §179 / §280F recapture applies
-- Line 35 amount must also be entered on Schedule C Line 6 (or 1040 Line 8 for non-Schedule-C filers)
+- Line 35 amount must also be entered as other income on the form or schedule where the deduction was taken (Schedule C Line 6 for a sole proprietor; Schedule E Part II for a pass-through §179)
 
 ### Common FFFF gotchas
 
 - **No calculations.** FFFF won't compute §1245 recapture for you. Compute it offline and enter the final number.
-- **Sub-total fields auto-fill but are sometimes wrong.** Always verify Line 7, Line 18, Line 31, Line 32 against your draft.
+- **Sub-total fields auto-fill but are sometimes wrong.** Always verify Line 7, Line 17, Line 18b, Line 30, Line 31, Line 32 against your draft.
 - **Schedule D linkage.** After saving Form 4797, navigate to Schedule D Line 11 and verify Part I Line 9 amount carried over. FFFF does not always cross-link.
 - **Unrecaptured §1250 Gain Worksheet.** FFFF does not include this worksheet — you must compute the 25%-cap amount externally and adjust Schedule D Line 19 manually.
 

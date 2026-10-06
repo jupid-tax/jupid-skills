@@ -133,11 +133,13 @@ Line 13 = $28,531 × 0.5 = $14,266  (rounded; exact: $14,265.50)
 
 Because Priya's wages + SE earnings exceed $200,000 (single threshold), she owes an additional 0.9% Medicare tax on the excess.
 
-Per Form 8959:
-- Line 4 (SE earnings × 0.9235) = $230,875 (matches Schedule SE Line 6)
-- Line 5 (Medicare threshold for single filer) = $200,000
-- Line 6 (excess) = $230,875 − $200,000 = $30,875
-- Line 7 (Additional Medicare Tax) = $30,875 × 0.009 = $277.88 → $278
+Per Form 8959 (2025), Part II:
+- Line 8 (Schedule SE line 6) = $230,875
+- Line 9 (threshold for single filer) = $200,000
+- Line 10 (Medicare wages from line 4) = $0
+- Line 11 (line 9 − line 10) = $200,000
+- Line 12 (line 8 − line 11) = $230,875 − $200,000 = $30,875
+- Line 13 (Additional Medicare Tax on SE income) = $30,875 × 0.009 = $277.88 → $278
 
 Form 8959 is a **separate form**, not part of Schedule SE. Flag for the user.
 
@@ -163,7 +165,7 @@ Social security number: XXX-XX-XXXX
 6.  Net earnings from SE (4c + 5b):              $230,875
 
 7.  SS wage base for 2025:                       $176,100
-8a. Total W-2 SS wages (Box 3):                  $0
+8a. Total W-2 SS wages + tips (Boxes 3 + 7):     $0
 8b. Unreported tip income:                       $0
 8c. Wages from Form 8919:                        $0
 8d. Sum 8a + 8b + 8c:                            $0
@@ -175,18 +177,20 @@ Social security number: XXX-XX-XXXX
 13. Deductible half (12 × 0.5):                  $14,266
 
 ## Part II — Optional Methods
-Section A — Farm Optional Method:                Not elected
-Section B — Non-Farm Optional Method:            Not elected
+15. Farm optional method:                        Not elected
+17. Nonfarm optional method:                     Not elected
 
 ## Required attachments
 - [x] Schedule C (Line 2 source)
 - [x] Form 8959 — REQUIRED (combined wages + SE > $200K single threshold)
 
 ## Form 8959 quick computation (separate form, not part of Schedule SE)
-Line 4 (SE × 0.9235):                            $230,875
-Line 5 (single threshold):                       $200,000
-Line 6 (excess):                                 $30,875
-Line 7 (Additional Medicare Tax 0.9%):           $278
+Line 8 (Schedule SE line 6):                     $230,875
+Line 9 (single threshold):                       $200,000
+Line 10 (Medicare wages, line 4):                $0
+Line 11 (line 9 − line 10):                      $200,000
+Line 12 (line 8 − line 11):                      $30,875
+Line 13 (Additional Medicare Tax 0.9%):          $278
 
 Form 8959 Line 18 ($278) flows to Schedule 2 Line 11.
 

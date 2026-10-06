@@ -29,7 +29,7 @@ Audit-trip mistakes the agent should surface as warnings during validation. Each
 - Line 5a col 1 contribution: $50,000
 - Line 5c col 1 contribution: $50,000
 
-Conversely, §125 cafeteria plan (health, dental, FSA, dependent care, transit/parking) reduces **both** FIT and FICA wages.
+Conversely, §125 cafeteria plan benefits (health, dental, health FSA, dependent care) and §132(f) transit/parking reduce **both** FIT and FICA wages.
 
 ---
 
@@ -37,13 +37,13 @@ Conversely, §125 cafeteria plan (health, dental, FSA, dependent care, transit/p
 
 **Symptom**: An executive's SS wages on Line 5a continue to accrue past the wage base.
 
-**Rule**: Once any employee's YTD SS wages reach the annual wage base ($176,100 for 2025; verify 2026), additional wages paid that calendar year are **SS-exempt**. Medicare continues with no cap.
+**Rule**: Once any employee's YTD SS wages reach the annual wage base ($184,500 for 2026; $176,100 for 2025), additional wages paid that calendar year are **SS-exempt**. Medicare continues with no cap.
 
 **Authority**: IRC §3121(a)(1); SSA Annual Contribution and Benefit Base.
 
 **Fix**: Track YTD SS wages per employee. Stop SS withholding when an employee crosses the base. Continue Medicare withholding (and Additional Medicare 0.9% if YTD comp > $200K).
 
-Example: Executive earning $250K. By Q3 they cross $176,100 SS base. Q3 partial SS wages = the headroom amount; Q4 SS wages = $0. Medicare wages = full quarterly comp every quarter.
+Example: Executive earning $250K. By Q3 they cross the $184,500 SS base (2026). Q3 partial SS wages = the headroom amount; Q4 SS wages = $0. Medicare wages = full quarterly comp every quarter.
 
 ---
 
@@ -167,14 +167,14 @@ If the EIN truly doesn't exist for this entity, the user shouldn't be filing 941
 
 ---
 
-## 12. Mixing FFCRA / ARPA leave credit lines on a current 2026 quarter
+## 12. Using old COVID-era credit lines on a 2026 quarter
 
-**Symptom**: User populates Lines 5a(i), 5a(ii), 11b–11f, or 13b–13z on a 2026 quarter return.
+**Symptom**: User or software populates Lines 5a(i), 5a(ii), 11b–11g, or 13b–13g on a 2026 quarter return.
 
-**Rule**: FFCRA / ARPA sick-leave and family-leave credits expired **September 30, 2021**. Any leave wages or credits past that date are not allowed unless retroactively claimed via 941-X for an open tax year (limited window).
+**Rule**: Those lines do not exist on Form 941 (Rev. March 2026); Line 11 (Form 8974 R&D credit) is the only credit line. FFCRA / ARPA sick-leave and family-leave credits ended for leave taken after **September 30, 2021** and are corrected only on Form 941-X for the original quarter. Forms 941 for 2020 and 2021 are treated as filed April 15 of the following year, so the 3-year period for 2021 quarters generally closed April 15, 2025 (Instructions for Form 941-X, Rev. April 2026, says several 941-X lines are now reserved because the period of limitations has generally expired).
 
-**Authority**: ARPA §9641 (sunset date); Notice 2021-24.
+**Authority**: ARPA §9641 (sunset date); Notice 2021-24; Instructions for Form 941-X (Rev. April 2026).
 
-**Fix**: For 2026 quarters, default these lines to $0. If the user genuinely has FFCRA-period sick leave wages they want to claim, use 941-X for the appropriate 2020 / 2021 quarter, not the current quarter — and verify the §6511 statute of limitations hasn't expired.
+**Fix**: Leave them off the 2026 return. Do not prepare a new FFCRA or ERC claim without a CPA confirming an open period of limitations.
 
-The Employee Retention Credit (ERC) similarly ended Sept 30, 2021 (recovery startup businesses had Q4 2021). The IRS continues to aggressively audit ERC claims; new ERC claims via 941-X face heightened scrutiny.
+The Employee Retention Credit (ERC) similarly ended Sept 30, 2021 (recovery startup businesses had Q4 2021). P.L. 119-21 §70605(d) bars the IRS from allowing or refunding ERC claims for Q3/Q4 2021 filed after January 31, 2024 (IRS Fact Sheet 2025-07).

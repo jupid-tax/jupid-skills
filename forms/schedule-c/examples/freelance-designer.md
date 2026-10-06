@@ -37,13 +37,13 @@ Maya's bookkeeping app exported these transactions for the year. Each has been m
 | Section 179: new $2,200 laptop | Line 13 (Depreciation) via Form 4562 | $2,200 |
 | Professional liability insurance | Line 15 (Insurance) | $720 |
 | Business credit card interest | Line 16b (Interest, other) | $180 |
-| CPA + Jupid subscription | Line 17 (Legal & professional) | $640 |
+| CPA + bookkeeping software subscription | Line 17 (Legal & professional) | $640 |
 | Printer ink, paper, USB drives | Line 18 (Office expense) | $310 |
 | Wacom tablet, color-calibration tools (each <$2,500) | Line 22 (Supplies) | $1,440 |
 | DBA filing renewal | Line 23 (Taxes & licenses) | $95 |
 | Conference travel: flight + hotel for one out-of-state client visit | Line 24a (Travel) | $1,250 |
 | Client lunches × 50% | Line 24b (Meals) | $385 |
-| Adobe CC, Figma, Notion, ChatGPT (each itemized in Part V) | Line 27a (Other expenses) | $1,820 |
+| Adobe CC, Figma, Notion, ChatGPT (each itemized in Part V) | Line 27b (Other expenses) | $1,820 |
 
 ### Home office
 
@@ -52,7 +52,10 @@ Maya's bookkeeping app exported these transactions for the year. Each has been m
 - Maya picks **simplified method** for record-keeping ease
 - Calculation: 120 × $5 = $600
 
-### Vehicle (Part IV details)
+### Vehicle (reported on Form 4562 Part V, not Schedule C Part IV)
+
+Because Maya files Form 4562 for the §179 laptop, the 2025 Schedule C instructions (Line 9, "Information on your vehicle") send the vehicle information to Form 4562 Part V instead of Schedule C Part IV. With the standard mileage rate she completes only lines 24a, 24b, columns (a)–(c) of Section A, and Section B.
+
 
 - Maya's car was first used for business on January 8, 2025 (start of tax year)
 - 2,400 total miles for the year
@@ -67,8 +70,8 @@ Maya's bookkeeping app exported these transactions for the year. Each has been m
 Maya bought a $2,200 MacBook Pro on March 14, 2025. She uses it 100% for design work. She elects §179 on Form 4562:
 
 - Form 4562 Part I, Line 6: $2,200 (cost) × 100% (business use) = $2,200
-- Section 179 within annual limit ($1,250,000 for 2025)
-- Form 4562 Line 12 (carryover) = $0; Line 13 → flows to Schedule C Line 13
+- Section 179 within annual limit ($2,500,000 for 2025)
+- Form 4562 Line 12 (§179 deduction) = $2,200; Line 13 (carryover) = $0; Line 22 → flows to Schedule C Line 13
 
 Her Section 179 is well within her business income, so no carryover.
 
@@ -79,7 +82,7 @@ Her Section 179 is well within her business income, so no carryover.
 
 ## Header
 A. Principal business: Freelance graphic design
-B. Business code: 541430 (Graphic design services)
+B. Business code: 541400 (Specialized design services, including graphic design)
 C. Business name: Maya Lopez Design LLC
 D. EIN: 87-XXXXXXX
 E. Address: Same as Form 1040
@@ -100,7 +103,7 @@ J. Will file required 1099-NEC: Yes
 
 ## Part II — Expenses
  8. Advertising:                   $2,400
- 9. Car and truck:                 $1,260   (1,800 mi × $0.70 — see Part IV)
+ 9. Car and truck:                 $1,260   (1,800 mi × $0.70 — see Form 4562 Part V)
 10. Commissions and fees:          $2,452   (Stripe 2.9%)
 11. Contract labor:                $1,800   (illustrator subcontractor)
 12. Depletion:                     $0
@@ -121,7 +124,8 @@ J. Will file required 1099-NEC: Yes
 24b. Deductible meals (50%):       $385
 25. Utilities:                     $0       (home office, captured in Line 30)
 26. Wages:                         $0
-27a. Other expenses (Part V):      $1,820
+27a. Energy efficient commercial bldgs: $0
+27b. Other expenses (Part V):      $1,820
 28. Total expenses:                $16,952
 
 ## Part II totals
@@ -133,16 +137,21 @@ J. Will file required 1099-NEC: Yes
    N/A (service business)
 
 ## Part IV — Vehicle
-43. Date placed in service:        01/08/2025
-44a. Business miles:               1,800
-44b. Commuting miles:              0
-44c. Other miles:                  600
-45. Available for personal use:    Yes
-46. Another vehicle available:     Yes (partner's vehicle)
-47a. Have evidence:                Yes (contemporaneous log)
-47b. Written:                      Yes (phone calendar entries)
+   Not completed: Form 4562 is required for this business, so the vehicle goes on Form 4562 Part V.
 
-## Part V — Other Expenses (detail of Line 27a)
+## Form 4562 Part V (standard mileage vehicle)
+24a. Evidence to support business use:   Yes (contemporaneous log)
+24b. Evidence written:                    Yes (phone calendar entries)
+26.  (a) Car  (b) 01/08/2025  (c) 75% business use (1,800 ÷ 2,400); columns (d)–(i) left blank
+30.  Business miles:                     1,800
+31.  Commuting miles:                    0
+32.  Other personal miles:               600
+33.  Total miles:                        2,400
+34.  Available for personal use off duty: Yes
+35.  Used primarily by a >5% owner:      Yes (Maya)
+36.  Another vehicle available:          Yes (partner's vehicle)
+
+## Part V — Other Expenses (detail of Line 27b)
 | Description                              | Amount  |
 |-------------------------------------------|---------|
 | Adobe Creative Cloud (annual)             | $720    |
@@ -152,7 +161,7 @@ J. Will file required 1099-NEC: Yes
 | iCloud + Google One storage (business %)  | $144    |
 | Industry publications (Communication Arts)| $96     |
 | Bank service charges                      | $140    |
-| **Total (Line 48 = Line 27a)**            | $1,820  |
+| **Total (Line 48 = Line 27b)**            | $1,820  |
 
 ## Required attachments
 - [x] Form 4562 (Line 13 = $2,200)
@@ -163,7 +172,7 @@ J. Will file required 1099-NEC: Yes
 - Math: all checks passed
 - Sanity:
   - Expense ratio: 20% — typical for service business solo
-  - Line 27a ratio: 11% of total expenses — within normal range
+  - Line 27b ratio: 11% of total expenses — within normal range
   - Business mileage 1,800 — modest; consistent with Maya's work-from-home setup
 - Next steps:
   - File Schedule SE: 92.35% × $66,983 = $61,860 net earnings × 15.3% ≈ $9,464 SE tax
@@ -175,7 +184,7 @@ J. Will file required 1099-NEC: Yes
 - IRS Form 1040 Schedule C, Rev. 2025
 - IRS Instructions for Schedule C, Rev. 2025
 - IRC §162 (ordinary and necessary business expenses)
-- IRC §179 + Rev. Proc. 2024-40 (2025 §179 limit $1.25M)
+- IRC §179 as amended by P.L. 119-21 §70306 (2025 §179 limit $2.5M; 2025 Schedule C instructions, What's New)
 - Notice 2025-5 (2025 standard mileage rate 70¢)
 ```
 
@@ -185,16 +194,16 @@ J. Will file required 1099-NEC: Yes
 
 **Why §179 the laptop instead of MACRS?** Maya's net profit absorbs the $2,200 deduction this year. §179 gives her the full deduction now. MACRS would spread it over 5+ years; with a 22% federal bracket, she'd save $484 in tax this year vs. ~$96/year over 5 years. Time value of money favors §179.
 
-**Why business code 541430 specifically?** The IRS Schedule C instructions list 541430 for "graphic design services." It's specific, matches what Maya actually does, and the IRS expense benchmarks for that code align with her ratios.
+**Why business code 541400 specifically?** The 2025 Schedule C instructions list 541400 for "Specialized design services (including interior, industrial, graphic, & fashion design)". The chart has no separate graphic-design code (NAICS 541430 is not on the IRS list), so 541400 is the most specific code that matches what Maya actually does.
 
 **Why didn't Maya put Stripe fees on Line 8 (Advertising)?** Payment processor fees are a cost of being paid, not a marketing cost. Line 10 (Commissions and fees) is the IRS instruction's specific home for them.
 
-**Why is internet in Line 27a as part of "iCloud + Google One storage" instead of Line 25 Utilities?** Maya works from home. Home office utilities (including internet) are inside Line 30 simplified method calculation by design — the simplified method bundles utilities. If she had a separate non-home office, internet there would go on Line 25.
+**Why is internet in Line 27b as part of "iCloud + Google One storage" instead of Line 25 Utilities?** Maya works from home. Home office utilities (including internet) are inside Line 30 simplified method calculation by design — the simplified method bundles utilities. If she had a separate non-home office, internet there would go on Line 25.
 
 **What if Maya had been audited?** Her audit defense would be:
 1. Income matches all 1099s plus documented cash deposits in her business bank account
 2. Mileage log substantiates Line 9
-3. Business credit card statements substantiate Lines 8, 10, 18, 22, 27a
+3. Business credit card statements substantiate Lines 8, 10, 18, 22, 27b
 4. Subcontractor 1099-NEC filed for Line 11
 5. Form 4562 attached for Line 13
 6. Home office: dedicated 120 sq ft documented with photos showing it's used exclusively for design work

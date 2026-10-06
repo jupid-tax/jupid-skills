@@ -56,12 +56,12 @@ Monthly deposits via EFTPS:
 |----------------|---------|--------------------|--------------------------|--------------------|--------------------------|---------------|--------------|
 | January | $580.00 | $413.35 | $96.67 | $413.35 | $96.67 | $1,600.04 | February 17, 2026* |
 | February | $580.00 | $413.35 | $96.67 | $413.35 | $96.67 | $1,600.04 | March 16, 2026* |
-| March | $580.00 | $413.31 | $96.66 | $413.31 | $96.66 | $1,599.94 | April 15, 2026 |
-| **Total** | **$1,740.00** | **$1,240.01** | **$290.00** | **$1,240.01** | **$290.00** | **$4,800.02** | |
+| March | $580.00 | $413.29 | $96.66 | $413.29 | $96.66 | $1,599.90 | April 15, 2026 |
+| **Total** | **$1,740.00** | **$1,239.99** | **$290.00** | **$1,239.99** | **$290.00** | **$4,799.98** | |
 
 *Feb 15 was a Sunday → next banking day Feb 17 (Monday after Presidents' Day). March 15 was a Sunday → March 16 (Monday).
 
-(Roughly: $20,000 × 0.124 = $2,480 total SS, split $1,240 employer + $1,240 employee. $20,000 × 0.029 = $580 total Medicare, split $290 / $290.)
+(Per paycheck: $6,667 × 6.2% = $413.35 and × 1.45% = $96.67; $6,666 × 6.2% = $413.29 and × 1.45% = $96.66. On the form, $20,000 × 0.124 = $2,480 total SS and $20,000 × 0.029 = $580 total Medicare, so the form's employee half is $1,530.00 while $1,529.99 was actually withheld.)
 
 ## The completed Form 941 draft
 
@@ -80,11 +80,9 @@ Quarter:                     [X] 1  [ ] 2  [ ] 3  [ ] 4
  1. Employees on pay period including March 12:       1
  2. Wages, tips, other compensation:                  $20,000.00
  3. Federal income tax withheld:                      $1,740.00
- 4. [ ] Check if line 2 wages not subject to SS/Medicare
+ 4. [ ] Check if no wages are subject to SS/Medicare
 
  5a. Taxable SS wages:           $20,000.00 × 0.124 = $2,480.00
- 5a(i). Sick leave wages:        $0.00 × 0.062 = $0.00
- 5a(ii). Family leave wages:     $0.00 × 0.062 = $0.00
  5b. Taxable SS tips:            $0.00 × 0.124 = $0.00
  5c. Taxable Medicare wages:     $20,000.00 × 0.029 = $580.00
  5d. Add'l Medicare wages:       $0.00 × 0.009 = $0.00
@@ -92,30 +90,26 @@ Quarter:                     [X] 1  [ ] 2  [ ] 3  [ ] 4
  5f. §3121(q) Notice and Demand:                      $0.00
  6.  Total taxes before adjustments:                  $4,800.00
 
- 7.  Fractions-of-cents adjustment:                   $0.02
+ 7.  Fractions-of-cents adjustment:                   −$0.01
  8.  Sick pay third-party adjustment:                 $0.00
  9.  Tips & group-term life adjustment:               $0.00
-10.  Total taxes after adjustments:                   $4,800.02
+10.  Total taxes after adjustments:                   $4,799.99
 
-11a. Qualified small business R&D credit (Form 8974): $0.00
-11b–f. (Residual COVID credit lines):                 $0.00
-11g. Total nonrefundable credits:                     $0.00
-12.  Total taxes after credits:                       $4,800.02
+11.  Qualified small business R&D credit (Form 8974): $0.00
+12.  Total taxes after adjustments and credits:       $4,799.99
 
-13a. Total deposits this quarter:                     $4,800.02
-13b–z. (Residual COVID refundable credits):           $0.00
-13g. Total:                                           $4,800.02
+13.  Total deposits for this quarter:                 $4,799.98
 
-14.  Balance due:                                     $0.00
-15.  Overpayment:                                     $0.00
+14.  Balance due:                                     $0.01  (under $1: no payment required)
+15a. Overpayment:                                     —
 
 ## Part 2 — Deposit Schedule (Line 16)
 [ ] Box 1: Liability < $2,500
 [X] Box 2: Monthly depositor
        Month 1 (January):  $1,600.04
        Month 2 (February): $1,600.04
-       Month 3 (March):    $1,599.94
-       Total = Line 12:    $4,800.02
+       Month 3 (March):    $1,599.91
+       Total = Line 12:    $4,799.99
 [ ] Box 3: Semi-weekly depositor
 
 ## Part 3 — Business closure / seasonal
@@ -134,28 +128,27 @@ Signature: __________
 ## Required attachments
 - [ ] Schedule B — N/A (monthly depositor)
 - [ ] Form 8974 — N/A
-- [ ] Form 945-A — N/A
 
 ## Validation summary
 - Math: all checks passed
   - Line 5a col 2 = 20,000 × 0.124 = 2,480.00 ✓
   - Line 5c col 2 = 20,000 × 0.029 = 580.00 ✓
   - Line 6 = 1,740 + 3,060 = 4,800.00 ✓
-  - Line 7 = +0.02 fractions adjustment (per-paycheck rounding accumulated to $0.02 over 3 months)
-  - Line 10 = 4,800.02 ✓
-  - Line 12 − Line 13g = 0 ✓ (deposits exactly matched liability)
-  - Line 16 monthly totals = 1,600.04 + 1,600.04 + 1,599.94 = 4,800.02 ✓
+  - Line 7 = −0.01 fractions adjustment (employee share actually withheld $1,529.99 vs. $1,530.00 on the form)
+  - Line 10 = 4,800.00 − 0.01 = 4,799.99 ✓
+  - Line 12 − Line 13 = 4,799.99 − 4,799.98 = 0.01 → Line 14; under $1, so no payment is required (Instructions for Form 941, line 14)
+  - Line 16 monthly totals = 1,600.04 + 1,600.04 + 1,599.91 = 4,799.99 ✓ (the one-cent employer-share rounding is placed in Month 3 so the total equals Line 12)
 - Sanity:
   - Line 5a col 1 = Line 2 ($20,000): consistent — no pretax deductions
   - Line 5c col 1 = Line 5a col 1 = $20,000: consistent — no SS cap hit
   - Line 5d = $0: no Additional Medicare (YTD comp $20K << $200K threshold)
-  - Line 14 = $0: deposits exactly matched liability — clean filing
+  - Line 14 = $0.01: rounding only — clean filing
   - Reasonable compensation reminder: $80K annual W-2 + $50K projected distributions (via $12,500/quarter) — keep documentation of industry comp survey + corporate minute book to defend in audit
 - Next steps:
   - File Q2 2026 941 by July 31, 2026 (assuming same wage cadence)
-  - At year-end: file Form 940 (FUTA) by January 31, 2027 (S-corp owner-employee subject to FUTA — single-employer, $7,000 wage base, $42 max FUTA per year per employee)
-  - File W-2 + W-3 by January 31, 2027 (Box 1 = $80,000; Box 3 SS = $80,000; Box 5 Medicare = $80,000)
-  - Form 1120-S (corporate return) for tax year 2026 due March 15, 2027 → reports total wages on Line 8 (Salaries and wages); reasonable comp specifically called out on Line 7 if applicable
+  - At year-end: file Form 940 (FUTA) by February 1, 2027 (January 31, 2027 is a Sunday; S-corp owner-employee subject to FUTA — $7,000 wage base, $42 max FUTA per year per employee after the full 5.4% state credit)
+  - File W-2 + W-3 by February 1, 2027 (Box 1 = $80,000; Box 3 SS = $80,000; Box 5 Medicare = $80,000)
+  - Form 1120-S (corporate return) for tax year 2026 due March 15, 2027 → the shareholder-officer's wages go on Line 7 (Compensation of officers), not Line 8 (Salaries and wages)
   - At Form 1120-S filing: Schedule K-1 to owner shows W-2 wages separately from K-1 distributions
 
 ## Sources cited in this draft
@@ -177,7 +170,7 @@ Signature: __________
 
 **Why are FIT and FICA wages identical ($20,000)?** No pretax deductions in Q1 (no §125 cafeteria, no 401(k) deferrals). When the owner sets up a SEP-IRA at year-end, those employer contributions don't reduce W-2 wages (SEP is employer-funded, not deferral). If the owner had set up a solo 401(k) with elective deferral, that would reduce Line 2 only.
 
-**Why is the fractions-of-cents adjustment $0.02?** Per-paycheck FICA computed in cents accumulates rounding error. Over three monthly paychecks, the difference between (sum-of-rounded-amounts) and (rounded-sum) totals $0.02. Form 941 line 7 absorbs this. Always small, always within ±$1.
+**Why is the fractions-of-cents adjustment −$0.01?** Per-paycheck FICA is rounded to cents. The employee share actually withheld over three paychecks ($1,239.99 SS + $290.00 Medicare) is one cent less than half of the form's column 2 ($1,530.00). Line 7 adjusts only the employee share (Instructions for Form 941, line 7). Always small.
 
 **Why doesn't the $12,000 distribution appear anywhere on 941?** Distributions are not wages. The owner's basis decreases by $12,000, the corporation's retained earnings decreases by $12,000, but no payroll mechanic touches it. Reported on Schedule K-1 (Form 1120-S) at year-end, taxed to the owner as part of pass-through ordinary income (or capital gain to the extent of distributions in excess of basis under IRC §1368(b)).
 
@@ -191,7 +184,7 @@ The IRS has won several recent cases (Watson, Sean McAlary, etc.) reclassifying 
 
 **Audit defense for Q1 941:**
 1. Payroll register showing the three $6,667 (approx.) paychecks
-2. EFTPS deposit confirmations matching the three monthly amounts
+2. EFTPS deposit confirmations matching the three monthly amounts ($1,600.04, $1,600.04, $1,599.90)
 3. Form W-4 on file
 4. Bank statement showing wage transfers from corporate to personal account
 5. Reasonable compensation documentation (separate file)

@@ -11,7 +11,7 @@ The agent must produce a complete `SKILL.md`-format draft *first*, then pick a f
 The user picks the channel; if undecided, default to **IRS Free File Fillable Forms (FFFF)** — Schedule SE attaches cleanly there with deterministic field labels.
 
 ```
-User has AGI ≤ ~$84,000 and wants free guided software?
+User has AGI ≤ $89,000 (tax year 2025, per irs.gov/freefile) and wants free guided software?
   → IRS Free File (Free File Alliance partners)
     Browser automation: provider-specific.
     Schedule SE is computed automatically by the wizard once Schedule C is filled.
@@ -33,9 +33,10 @@ User wants to file on paper?
     Use Section 3.
 
 User wants to use IRS Direct File?
-  → Note: as of early 2026, IRS Direct File supports limited Schedule C / SE
-    scenarios. Check current scope before automating.
-    See https://www.irs.gov/filing/irs-direct-file
+  → Not available: the IRS did not list Direct File among the 2026 filing-season
+    free options (Tax Tip 2026-08 lists Free File, Free File Fillable Forms,
+    MilTax, VITA/TCE), and https://www.irs.gov/filing/irs-direct-file returns
+    404 as of 2026-10-06. Route the user to another channel.
 ```
 
 ---
@@ -90,7 +91,7 @@ The agent navigates and interacts deterministically. Stable selectors are listed
 | 5b | (auto-computed: 5a × 0.9235) | Verify |
 | 6 | (auto-computed: 4c + 5b) | Verify |
 | 7 | (pre-printed: SS wage base for the year) | Match the figure for the year |
-| 8a | "Total social security wages and tips (W-2 Box 3)" | Part I Line 8a |
+| 8a | "Total social security wages and tips (W-2 Boxes 3 and 7)" | Part I Line 8a |
 | 8b | "Unreported tips subject to social security tax" | Part I Line 8b |
 | 8c | "Wages subject to SS tax from Form 8919" | Part I Line 8c |
 | 8d | (auto-computed) | Verify |
@@ -104,8 +105,9 @@ The agent navigates and interacts deterministically. Stable selectors are listed
 
 9. **Part II (only if optional method elected)**:
    - Click "Schedule SE Part II"
-   - Section A (farm) — fill Lines 14, 15
-   - Section B (non-farm) — fill Lines 16, 17
+   - Line 14 is pre-printed ($7,240 for 2025)
+   - Farm optional method — fill Line 15
+   - Nonfarm optional method — fill Line 17 (Line 16 = Line 14 − Line 15)
    - Verify the elected amount flows back to Line 4b
 
 10. **Cross-check Schedule SE outputs feed Schedule 2 and Schedule 1**:
@@ -131,7 +133,7 @@ The agent navigates and interacts deterministically. Stable selectors are listed
 ### What the agent should NOT do
 
 - Do not submit Schedule SE in isolation — it always travels with Form 1040
-- Do not file Schedule SE if Line 4a < $400 and no optional method is elected
+- Do not file Schedule SE if Line 4c < $400, no optional method is elected, and there is no church employee income of $108.28 or more
 - Do not file Schedule SE for a spouse with no SE income (each spouse needs their own only if they have SE earnings)
 - Do not store the user's SSN, DOB, or PIN in any log or transcript
 
@@ -139,9 +141,9 @@ The agent navigates and interacts deterministically. Stable selectors are listed
 
 | Symptom | Likely cause | Fix |
 |---------|--------------|-----|
-| "Schedule SE not allowed — Line 4a below $400" | Filer doesn't owe SE tax | Remove Schedule SE from the package |
+| "Schedule SE not allowed — Line 4c below $400" | Filer doesn't owe SE tax | Remove Schedule SE from the package |
 | "Line 12 disagrees with Schedule 2 Line 4" | Stale auto-link after editing inputs | Save and reopen; force recompute |
-| "Line 8a exceeds Line 7" | W-2 SS wages > wage base (rare, multi-employer) | Confirm W-2 Box 3 is the correct figure (some employers report capped wages already) |
+| "Line 8a exceeds Line 7" | W-2 SS wages > wage base (rare, multi-employer) | Confirm W-2 Boxes 3 and 7 are the correct figures (some employers report capped wages already); skip Lines 8b–10 and go to Line 11 |
 | "Form 8959 required" warning | Combined wages + SE > Additional Medicare Tax threshold | Add Form 8959 to the return |
 | Optional method election rejected | User does not meet 2-of-3 prior years rule (non-farm) | Remove the election; verify prior-year SE earnings |
 
@@ -176,8 +178,8 @@ The IRS expects this stack from top to bottom:
 
 1. **Form 1040** (signed in ink)
 2. **Schedule 1, 2, 3** in order (Schedule 2 picks up SE tax via Line 4)
-3. **Schedule C** (signed)
-4. **Schedule SE** (one per spouse with SE income; signed if required)
+3. **Schedule C** (no separate signature; the Form 1040 signature covers it)
+4. **Schedule SE** (one per spouse with SE income)
 5. **Form 4562** (if Schedule C Line 13 > 0)
 6. **Form 8829** (if Schedule C Line 30 used regular method)
 7. **All other schedules and forms** in attachment-sequence order printed on each form (top-right corner)
@@ -235,7 +237,7 @@ The agent should remind the filer:
 - Q4 due January 15 of the following year
 - Estimate = (expected SE tax + expected income tax − expected withholding) ÷ 4
 
-Form 1040-ES has its own skill — see the (forthcoming) `form-1040-es` skill for full coverage.
+Form 1040-ES has its own skill — see [`../form-1040-es/SKILL.md`](../form-1040-es/SKILL.md) for full coverage.
 
 ---
 

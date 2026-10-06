@@ -1,16 +1,16 @@
 # Annual vs. Monthly Calculation Method
 
-Form 8962 Line 10 asks: "Did you and the other family members listed in Part II have the same applicable figure each month?" Yes → annual method (Line 11). No → monthly method (Lines 12–23). The decision changes how the form is filled and which math runs.
+Form 8962 Line 10 reads: "See the instructions to determine if you can use line 11 or must complete lines 12 through 23." Yes → annual method (Line 11). No → monthly method (Lines 12–23). The decision changes how the form is filled and which math runs.
 
 ## Default rule
 
-Annual method is allowed only when **all** of the following are true:
+Per the 2025 Form 8962 instructions (Line 10), check "Yes" (annual) only if **all** of the following apply for each qualified health plan anyone in the tax family was enrolled in:
 
-1. Tax family size was the same all 12 months (no birth, no death, no marriage, no divorce, no dependent change)
-2. Filer was eligible for marketplace coverage in every month during which they had marketplace coverage (no Medicare enrollment mid-year, no employer coverage offer accepted mid-year, no Medicaid enrollment)
-3. The applicable SLCSP (Form 1095-A Column B) is the same for all months that had coverage
-4. The policy was not shared between two tax families during any month
-5. There was no change in federal poverty line determination (rare; can happen if filer moved between state groups)
+1. Enrolled in the plan for all 12 months of the year (fewer than 12 months → "No")
+2. The enrollment premium (Form 1095-A Part III column A) was the same every month
+3. The correct applicable SLCSP premium (column B) was the same every month. If the 1095-A SLCSP may be wrong (no APTC paid, or an unreported change in circumstances such as a newborn, a family member gaining other MEC, a death, or a move), determine the correct SLCSP per Pub 974 or HealthCare.gov/Tax-Tool first
+
+Also check "No" if Part IV was completed (instructions, Part IV). The factors below (family size changes, eligibility changes, shared policies) matter because they usually change the premium or the correct SLCSP for some months.
 
 If any item is false, **monthly method is required**.
 
@@ -56,7 +56,7 @@ Form 8962 Lines 12–23 each represent one calendar month. For each month:
 | (e) Premium Tax Credit allowed | min(Column a, Column d) |
 | (f) Advance Premium Tax Credit | Form 1095-A Column C for that month |
 
-For months without coverage, all columns are zero.
+For months without coverage, leave the row blank (if columns (a) and (b) are blank, leave column (c) blank; 2025 instructions, Lines 12 Through 23, Column (c)).
 
 Sum Column E across all 12 rows to get Line 24 (Total PTC). Sum Column F to get Line 25 (Total APTC).
 

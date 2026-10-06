@@ -75,7 +75,7 @@ Other costs incurred to *produce* goods:
 - Manufacturing utilities (separately metered, if any)
 
 Do NOT put here:
-- Shipping out to customers (Line 8 advertising/Line 27a Other)
+- Shipping out to customers (Line 8 advertising/Line 27b Other)
 - Storage rent (Line 20b)
 - Office supplies (Line 18)
 
@@ -127,16 +127,16 @@ This is the most-confused decision in Schedule C. Rules of thumb:
 **Goes in Part II (Operating expenses):**
 - Costs to *run the business* but not make the product (rent, utilities, advertising)
 - Materials *consumed by the business* but not part of the product (cleaning supplies, office paper)
-- Shipping *out* to customers (Line 27a is the usual home — though some businesses split: outbound freight on Line 27a, postage stamps for letters on Line 18)
+- Shipping *out* to customers (Line 27b is the usual home — though some businesses split: outbound freight on Line 27b, postage stamps for letters on Line 18)
 - Selling expenses (commissions on Line 10, marketing on Line 8)
 
 When in doubt, ask: "Would the user have bought this if they made zero sales?" If yes, it's an operating expense (Part II). If the cost only exists because they made the product, it's COGS (Part III).
 
 ## UNICAP rules (IRC §263A)
 
-Most small businesses are exempt under the IRC §263A(i) "small business taxpayer" exception (gross receipts ≤ $30M for 2025, indexed annually). Solo filers are virtually always exempt.
+Most small businesses are exempt under the IRC §263A(i) "small business taxpayer" exception (average annual gross receipts of $31 million or less for 2025 per the 2025 Schedule C instructions; $32 million for 2026 per Rev. Proc. 2025-32). Solo filers are virtually always exempt.
 
-If the user has gross receipts > $30M and produces or resells goods, UNICAP rules require capitalizing more costs into inventory (e.g., a portion of indirect costs). That's a CPA-territory situation — don't try to handle it in this skill; flag it and recommend professional help.
+If the user has gross receipts above that threshold and produces or resells goods, UNICAP rules require capitalizing more costs into inventory (e.g., a portion of indirect costs). That's a CPA-territory situation — don't try to handle it in this skill; flag it and recommend professional help.
 
 ## Inventory on hand: the audit risk
 

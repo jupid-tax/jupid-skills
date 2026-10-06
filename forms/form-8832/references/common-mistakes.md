@@ -8,11 +8,11 @@ The 10 most-repeated mistakes filers make on Form 8832, with citations and fixes
 
 **Pattern**: SMLLC owner wants S-corp tax treatment. Files Form 8832 (electing C-corp) and then Form 2553 (electing S-corp).
 
-**Why it's wrong**: Rev. Proc. 2013-30 § 4 explicitly provides that an eligible entity electing S-corp via Form 2553 is **deemed** to have made the corresponding entity classification election. Form 8832 is unnecessary and adds a paper trail with no benefit.
+**Why it's wrong**: Treas. Reg. §301.7701-3(c)(1)(v)(C) provides that an eligible entity that timely elects S status on Form 2553 is **deemed** to have elected association classification, and the Form 8832 instructions ("Who Must File") say not to file Form 8832 for an entity electing S status. A separately filed Form 8832 is unnecessary, and if it is accepted while the S election fails, the entity is left a C corporation.
 
-**Fix**: File Form 2553 alone, citing Rev. Proc. 2013-30. The IRS treats this as both an entity classification change AND an S-corp election in one filing.
+**Fix**: File Form 2553 alone when the corporate classification and the S election start on the same date. For a late election, Rev. Proc. 2013-30 §5.03 covers both elections on Form 2553. File Form 8832 first only if the entity wants a C-corp period before the S election.
 
-**Citation**: Rev. Proc. 2013-30 § 4; IRS Form 2553 Instructions ("LLC")
+**Citation**: Treas. Reg. §301.7701-3(c)(1)(v)(C); Form 8832 instructions, "Who Must File"; Rev. Proc. 2013-30 §§4.01(1), 5.03; IRS Form 2553 Instructions
 
 ---
 
@@ -20,23 +20,23 @@ The 10 most-repeated mistakes filers make on Form 8832, with citations and fixes
 
 **Pattern**: Owner wants effective date of January 1 (start of tax year). Files Form 8832 in May (4 months later). Leaves Part II blank.
 
-**Why it's wrong**: The 75-day window in §301.7701-3(c)(1)(iii) is hard-coded. Anything earlier requires Late Election Relief (Part II) under Rev. Proc. 2009-41. Without Part II, the IRS will accept the filing but use the postmark date as the effective date — typically not what the entity wanted.
+**Why it's wrong**: The 75-day window in §301.7701-3(c)(1)(iii) is hard-coded. Anything earlier requires Late Election Relief (Part II) under Rev. Proc. 2009-41. Without Part II, the regulation makes the election effective 75 days before the filing date — not January 1, and typically not what the entity wanted.
 
-**Fix**: Either (a) accept the postmark date as the effective date, or (b) re-file with Part II completed under Rev. Proc. 2009-41 with a reasonable-cause statement.
+**Fix**: Either (a) accept an effective date 75 days before the filing date, or (b) re-file with Part II completed under Rev. Proc. 2009-41 with a reasonable-cause statement (and the top-of-form Rev. Proc. 2009-41 box checked).
 
 **Citation**: 26 CFR §301.7701-3(c)(1)(iii); Rev. Proc. 2009-41 § 4.
 
 ---
 
-## Mistake 3 — Missing owner consents on Line 11
+## Mistake 3 — Missing owner consents on the Consent Statement
 
 **Pattern**: Multi-member LLC files Form 8832 with only the manager's signature. Other members do not sign.
 
-**Why it's wrong**: Form 8832 Line 11 requires "Each member, manager, and owner who has an ownership interest in the entity at the time of the election" to sign — OR an officer/manager authorized under state law to sign on behalf of all owners with documented authority. Without all signatures or documented authority, the IRS may reject (CP278 missing-consent) or the election may be challenged in audit.
+**Why it's wrong**: The Consent Statement (unnumbered, below line 10) must be signed by "Each member of the electing entity who is an owner at the time the election is filed" — OR by "Any officer, manager, or member of the electing entity who is authorized (under local law or the organizational documents) to make the election," who represents that authority under penalties of perjury. For a retroactive effective date, former owners from the effective date to the filing date must also sign. Without the required signatures, the IRS may deny the election (CP278) or it may be challenged in audit.
 
-**Fix**: Re-file with all owner signatures. Or, if the manager has clear state-law authority, attach the operating agreement excerpt or a board resolution authorizing the manager to make federal tax elections on behalf of all members.
+**Fix**: Re-file with all owner signatures. Or have a manager with clear authority under local law or the operating agreement sign for the entity, and keep the operating agreement excerpt or resolution in the file.
 
-**Citation**: 26 CFR §301.7701-3(c)(2); Form 8832 Line 11 instructions.
+**Citation**: 26 CFR §301.7701-3(c)(2); Form 8832 instructions, "Consent statement and signature(s)".
 
 ---
 
@@ -47,8 +47,8 @@ The 10 most-repeated mistakes filers make on Form 8832, with citations and fixes
 **Why it's wrong**: 26 CFR §301.7701-3(c)(1)(iv) blocks re-elections for 60 months. The IRS will issue CP278 rejection. The entity loses the desired effective date and may have to wait until the original effective date + 60 months.
 
 **Fix**:
-- **Option 1**: Wait until the 60-month period expires (entity may pre-file up to 12 months in advance once eligible)
-- **Option 2**: Document a >50% ownership change since the prior effective date and file with an attached statement claiming the exception
+- **Option 1**: Wait until the 60-month period expires, then file (do not pre-file: line 2a looks back 60 months from the filing date)
+- **Option 2**: If persons who held no interest at the prior election now own more than 50%, request a private letter ruling permitting the change (not an attached statement on Form 8832)
 - **Option 3**: Live with the C-corp classification and consider an S-corp overlay election (Form 2553) — that election is separate and not blocked by §301.7701-3(c)(1)(iv)
 
 **Citation**: 26 CFR §301.7701-3(c)(1)(iv).
@@ -101,11 +101,11 @@ The 10 most-repeated mistakes filers make on Form 8832, with citations and fixes
 
 **Pattern**: Filer mails Form 8832 to the closest IRS office, or to a service center based on memory rather than the current "Where to File" table.
 
-**Why it's wrong**: Form 8832 has only two service centers (Kansas City and Ogden), and the routing depends on the entity's principal place of business. Mailing to the wrong center delays processing — IRS will eventually forward, but it adds weeks. The "filing date" remains the postmark, so the timing rules are still satisfied, but the entity may not receive CP277/CP278 within the typical 60-day window.
+**Why it's wrong**: Form 8832 goes to one of two service centers (Kansas City or Ogden; foreign and possession filers use Ogden, UT 84201-0023), and the routing depends on the entity's principal business, office, or agency. Mailing to the wrong center delays processing. Worse, the §7502 timely-mailing rule applies only to an envelope "properly addressed" to the office where the document must be filed (Treas. Reg. §301.7502-1(c)(1)(i)), so a misaddressed form may be treated as filed only when the correct center receives it, which can push the 75-day window or the Rev. Proc. 2009-41 deadline.
 
-**Fix**: Re-verify the service center against the "Where to File" table on Form 8832 page 6 before mailing. If foreign principal place of business, Kansas City is the routing.
+**Fix**: Re-verify the service center against the "New Mailing Address" page at the front of the current f8832.pdf and the IRS [Where to file your taxes for Form 8832](https://www.irs.gov/filing/where-to-file-your-taxes-for-form-8832) page before mailing. The table printed in the 2013 instructions (form page 5) is out of date. A foreign country or U.S. possession routes to Ogden, UT 84201-0023.
 
-**Citation**: Form 8832 (Rev. Dec 2013), "Where to File" table on page 6.
+**Citation**: Form 8832 (Rev. Dec 2013), IRS mailing-address update (PDF page 1); IRS "Where to file your taxes for Form 8832".
 
 ---
 
@@ -132,7 +132,7 @@ See [`late-relief.md`](./late-relief.md) for full reasonable-cause language patt
 
 **Pattern**: Entity files Form 8832 federally, then files state income tax returns based on the federal classification, assuming state law conforms.
 
-**Why it's wrong**: Some states (notably California, New York, New Jersey, Pennsylvania) have separate rules or require separate elections. A federal-only Form 8832 may not change state classification — the entity could be a C-corp federally and a partnership for state purposes, or vice versa.
+**Why it's wrong**: States differ. Some have separate rules or require separate state elections; others follow the federal classification but still impose their own entity-level taxes or fees. California, for example, follows the federal classification by statute (R&TC §23038(b)(2)(B)) but still applies its LLC annual tax and fee to a disregarded LLC. Do not assume the state result.
 
 **Fix**: After filing Form 8832 federally, confirm state conformity with the state department of revenue:
 
@@ -143,7 +143,7 @@ See [`late-relief.md`](./late-relief.md) for full reasonable-cause language patt
 
 This is a state-by-state question. The skill does not handle state filings; surface the question to the user and recommend confirmation with the state DOR or state-tax counsel.
 
-**Citation**: State-specific. Common references: California R&TC §23038, NY Tax Law §658, NJ N.J.S.A. §54:10A-15.
+**Citation**: State-specific. Example: California R&TC §23038(b)(2)(B) (follows federal classification). Confirm other states with the state revenue department.
 
 ---
 
@@ -156,10 +156,10 @@ Run through this before declaring a Form 8832 draft ready:
 - [ ] Box 6 election target is consistent with single/multi-owner status (Line 3)
 - [ ] Effective date (Line 8) is within 75 days back / 12 months forward of filing date — OR Part II is completed
 - [ ] If Line 2a = Yes, Line 2b is honestly answered (don't inflate prior-election status to evade 60-month rule)
-- [ ] All owner signatures collected (Line 11) — OR documented officer/manager authority
+- [ ] All owner signatures collected on the Consent Statement — OR an authorized officer/manager/member signs
 - [ ] Service center selected from current "Where to File" table
-- [ ] Form 2553 NOT being filed simultaneously for an LLC seeking S-corp (use Form 2553 alone per Rev. Proc. 2013-30)
+- [ ] Form 8832 NOT being filed alongside Form 2553 for an LLC seeking S-corp from the same date (use Form 2553 alone; Treas. Reg. §301.7701-3(c)(1)(v)(C))
 - [ ] §301.7701-3(g) deemed-transaction consequences reviewed with CPA
 - [ ] State conformity question surfaced to user
 - [ ] If Part II: reasonable-cause statement is fact-specific (not boilerplate)
-- [ ] If Part II: consistent-returns declaration signed under penalties of perjury
+- [ ] If Part II: Rev. Proc. 2009-41 box checked at top; Part II declaration signed by the entity and each affected person

@@ -94,11 +94,11 @@ See [`references/1231-lookback.md`](./1231-lookback.md) for the full mechanics.
 
 **What happens:** Filer sells equipment for $100K with $20K down and $80K in seller financing over 4 years. Reports the full gain on Form 4797 in year 1.
 
-**Why it's wrong:** Installment method (IRC §453) defers recognition of gain to the years payments are received — but **§1245 and §1250 recapture is recognized in full in the year of sale**, even if cash hasn't been received. Only the residual §1231 gain spreads over the installment period.
+**Why it's wrong:** Installment method (IRC §453) defers recognition of gain to the years payments are received — but **§1245 and §1250 recapture (including §179 and §291) is recognized in full in the year of sale**, even if cash hasn't been received (Form 6252 instructions, Line 12). The residual gain spreads over the installment period.
 
 **Audit catch:** Form 6252 (Installment Sale Income) reconciliation against Form 4797.
 
-**Fix:** Recognize ALL §1245 / §1250 / §1252 / §1254 / §1255 recapture in year 1 on Form 4797 Part II (via Part III Line 32). Spread only the residual §1231 gain across years using Form 6252. The §1231 portion that's deferred shows up on Form 4797 Line 3 in subsequent years.
+**Fix:** Recognize all §1245 / §1250 recapture in the year of sale: Form 4797 Part III Line 31 → Form 6252 Line 12 and Form 4797 Line 13; enter "N/A" on Form 4797 Line 32 for that property (Form 6252 instructions, Line 12). §1252 / §1254 / §1255 recapture is different: it is reported through Form 6252 Line 25 → Form 4797 Line 15, capped each year at Form 6252 Line 24, with any excess reported in later years until all of it has been reported (Form 6252 instructions, Line 25). The installment-method §1231 gain for trade or business property held more than 1 year goes from Form 6252 Line 26 to Form 4797 **Line 4** in the year of sale and each later year (Form 6252 instructions, Line 26; 2025 Form 4797, Line 4).
 
 ---
 

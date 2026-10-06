@@ -9,10 +9,10 @@ Schedule 2 is a router. Every nonzero line corresponds to an upstream form that 
 | Likely answer | Next step |
 |---------------|-----------|
 | Yes, exercised ISOs and held the shares past year-end | Compute Form 6251. Bargain element = (FMV at exercise − strike) × shares; this is an AMT preference. |
-| Yes, large state and local taxes deducted (>$10K) | Compute Form 6251. SALT add-back is the most common AMT trigger after TCJA's $10K SALT cap. |
+| Yes, large state and local taxes deducted | Compute Form 6251. Taxes deducted on Schedule A are added back on Form 6251 line 2a; for 2025 the regular-tax SALT cap is $40,000 ($20,000 MFS), reduced above $500,000 of income (2025 Schedule A line 5e). |
 | No clear AMT preference items | Skip Form 6251 unless your tax software flags AMT. |
 
-→ Result of Form 6251 Line 11 → **Schedule 2 Line 1**.
+→ Result of Form 6251 Line 11 → **Schedule 2 Line 2**.
 
 ### Did you receive Form 1095-A from a Health Insurance Marketplace?
 
@@ -22,8 +22,8 @@ Schedule 2 is a router. Every nonzero line corresponds to an upstream form that 
 | Yes, claimed marketplace coverage but paid full premium (no APTC) | Compute Form 8962 to claim PTC at filing. |
 | No (covered by employer / Medicare / Medicaid / no insurance) | Skip Form 8962 entirely. |
 
-→ If Form 8962 Line 29 > 0 (excess APTC repayment) → **Schedule 2 Line 2**.
-→ If Form 8962 Line 26 > 0 (refundable PTC) → **Schedule 3 Line 9** (NOT Schedule 2).
+→ If Form 8962 Line 29 > 0 (excess APTC repayment) → **Schedule 2 Line 1a**. For 2026 and later returns there is no repayment cap (IRS PTC Q&A, Q31).
+→ If Form 8962 Line 26 > 0 (net PTC) → **Schedule 3 Line 9** (NOT Schedule 2).
 
 These two outcomes are mutually exclusive — every Form 8962 either generates a repayment OR a credit, never both.
 
@@ -45,7 +45,7 @@ Half of SE tax is also deductible on Schedule 1 Line 15 — handled separately.
 | Trigger | Result |
 |---------|--------|
 | Cash tips received but not reported on the daily / monthly tip report to employer | Form 4137. Result → **Schedule 2 Line 5**. |
-| All tips reported to employer (W-2 Box 7) | Skip. |
+| All tips reported to employer (W-2 Box 7) | Skip Form 4137. If the employer could not collect FICA on reported tips (W-2 box 12 codes A and B) → **Schedule 2 Line 13**. |
 
 ### Were you treated as an independent contractor by an employer when you should have been an employee?
 
@@ -61,6 +61,7 @@ Form 8919 also flags the misclassification to the IRS for SS-8 follow-up.
 | Trigger | Form 5329 part | Result |
 |---------|----------------|--------|
 | IRA / 401(k) / 403(b) distribution before age 59½ without an exception | Part I (10% under §72(t)) | → Line 8 |
+| Taxable distribution from a Coverdell ESA, 529 plan, or ABLE account | Part II | → Line 8 |
 | Excess traditional IRA contribution | Part III (6% under §4973) | → Line 8 |
 | Excess Roth IRA contribution | Part IV (6% under §4973) | → Line 8 |
 | Excess Coverdell contribution | Part V (6% under §4973) | → Line 8 |
@@ -75,18 +76,16 @@ Form 8919 also flags the misclassification to the IRS for SS-8 follow-up.
 | 2025 trigger | Result |
 |--------------|--------|
 | Cash wages ≥ $2,800 to any one household employee in 2025 (FICA threshold) | Compute Schedule H. |
-| Cash wages ≥ $1,000 in any calendar quarter to all household employees combined (FUTA threshold) | Compute Schedule H. |
+| Federal income tax withheld at a household employee's request | Compute Schedule H. |
+| Cash wages ≥ $1,000 in any calendar quarter of 2024 or 2025 to all household employees combined (FUTA threshold) | Compute Schedule H. |
 
 → Result of Schedule H Line 8 (or Line 26) → **Schedule 2 Line 9**.
 
-The 2026 FICA threshold is announced ~October 2025 by SSA; verify before filing.
+The 2026 FICA threshold is $3,000 per household employee (https://www.ssa.gov/oact/cola/CovThresh.html).
 
 ### Did you claim the original 2008 first-time homebuyer credit?
 
-| Trigger | Result |
-|---------|--------|
-| Yes, claimed credit on 2008 return (refundable up to $7,500) and still owe annual installments | Form 5405 → Line 10 ($500/year for 15 years; most filers' obligation ended 2023) |
-| Claimed in 2009 or 2010 (different credit, no repayment unless home sold within 3 years) | Generally no repayment due |
+Line 10 is "Reserved for future use" on the 2025 Schedule 2. The 15 annual installments of the 2008 credit ended with 2024 returns (Form 5405, Rev. November 2024, sends the last one to the 2024 Schedule 2 line 10). Do not place a homebuyer-credit amount on the 2025 form; if the user insists one is owed, refer them to a CPA.
 
 ### Did your wages + SE earnings exceed the Additional Medicare Tax threshold?
 
@@ -104,8 +103,8 @@ The W-2 employer also withholds 0.9% on wages > $200,000 single (regardless of f
 
 | Filing status | 2026 threshold (statutory, not indexed) | Action |
 |--------------|-----------------------------------------|--------|
-| Single / HoH / QSS | $200,000 | If exceeded AND have net investment income, Form 8960 |
-| MFJ | $250,000 | If exceeded AND have net investment income, Form 8960 |
+| Single / HoH | $200,000 | If exceeded AND have net investment income, Form 8960 |
+| MFJ / QSS | $250,000 | If exceeded AND have net investment income, Form 8960 |
 | MFS | $125,000 | If exceeded AND have net investment income, Form 8960 |
 
 Investment income includes interest, dividends, capital gains, rental and royalty (passive), non-qualified annuities, passive business income.
@@ -116,7 +115,7 @@ Investment income includes interest, dividends, capital gains, rental and royalt
 
 | Trigger | Result |
 |---------|--------|
-| Filer made a §965(h) election in 2017 to pay the transition tax in 8 annual installments | Form 965-A. Final installment for most filers was 2025. Verify before populating Lines 13/20. |
+| Filer made a §965(h) election in 2017 to pay the transition tax in 8 annual installments | Form 965-A → **Line 20** (not added into Line 21). Final installment for most filers was 2025. Verify before populating Line 20. |
 | No US shareholder interest in CFC or §965-eligible foreign corp | Skip. |
 
 ### Other recapture / additional-tax events?
@@ -125,12 +124,14 @@ If the filer mentions any of the following, route to Line 17 sub-item:
 
 | Event | Sub-line | Source |
 |-------|----------|--------|
-| Non-qualified HSA distribution | 17c (or 17m via Form 8889 Line 17b) | Form 8889 |
-| Non-qualified ABLE distribution | 17k | (per current-year instructions) |
-| Recapture of education credit, EV credit, residential energy credit | 17a | computation per credit form |
-| §72(p) loan from qualified plan deemed distribution | 17i | computation |
-| Look-back interest under §167(g) or §460(b) | 17h | computation |
-| Recapture of charitable deduction (fractional interest in tangible property) | 17f | computation |
+| Non-qualified HSA distribution | 17c | Form 8889 Line 17b |
+| HSA testing-period failure (didn't remain an eligible individual) | 17d | Form 8889 Line 21 |
+| Non-qualified ABLE, Coverdell ESA, or 529 distribution | Line 8 (not Line 17) | Form 5329 Part II |
+| Clean vehicle credit transferred to a dealer, must be repaid | 1b / 1c | Schedule A (Form 8936) |
+| Recapture of new markets, employer childcare facilities, or Form 4255 credits | 17a | Form 8874 / 8882 / 4255 |
+| Golden parachute payment (W-2 box 12 code K) | 17k | Form W-2 |
+| Look-back interest under §167(g) or §460(b) | 17n | Form 8866 / 8697 |
+| Recapture of charitable deduction (fractional interest in tangible property) | 17g | computation |
 
 See [`line-17-subitems.md`](./line-17-subitems.md) for the full list.
 
@@ -144,6 +145,6 @@ Always compute upstream forms before Schedule 2:
 4. **Form 8960** (depends on AGI from rest of return + investment income from Schedule B/D/E)
 5. **Form 5329** (depends on 1099-R distribution data + IRA contribution data)
 6. **Form 6251** (depends on full Form 1040 calculation; computed last among AMT-relevant forms)
-7. **Schedule H, 4137, 8919, 5405, 8611, 965-A, 8889** as triggered
+7. **Schedule H, 4137, 8919, 8611, 965-A, 8889, 4255, Schedule A (Form 8936)** as triggered
 
 Schedule 2 is filled *after* all upstream forms because every line is a transcription, not a computation.

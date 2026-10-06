@@ -53,7 +53,7 @@ Regardless of the assigned schedule, if accumulated unpaid tax on any single day
 
 ### Exception — De minimis ($2,500 quarterly)
 
-If total Line 12 for the quarter < $2,500 *and* prior quarter Line 12 < $2,500, deposits are not required — pay the balance with the return (Line 14 amount). This is Box 1 on Line 16. Most very-small employers (1-2 employees, low wages) use this.
+If Line 12 is less than $2,500 for the current quarter *or* was less than $2,500 for the prior quarter, and no $100,000 next-day obligation arose in the current quarter, deposits are not required — the balance may be paid with a timely filed return (Line 14 amount). This is Box 1 on Line 16. If you're unsure the current quarter will stay under $2,500 (and the prior quarter wasn't under $2,500), deposit on schedule to avoid the failure-to-deposit penalty (Pub. 15, section 11, "Payment with return").
 
 ---
 
@@ -82,11 +82,11 @@ Deposits are due based on the day wages were paid:
 | Wednesday, Thursday, Friday | Following Wednesday |
 | Saturday, Sunday, Monday, Tuesday | Following Friday |
 
-Special rule: if the deposit period spans a federal holiday, three banking days are added to the deposit due date.
+Special rule: semi-weekly depositors always have at least 3 business days after the close of the semi-weekly period to deposit. If any of those 3 weekdays is a legal holiday, add one day for each holiday (e.g., Friday payday + Monday holiday → the Wednesday deposit moves to Thursday). Any deposit due on a non-business day is timely if made the next business day (Pub. 15, section 11).
 
 ### Where to deposit
 
-All deposits must be electronic via **EFTPS** (Electronic Federal Tax Payment System). Paper coupons (Form 8109) were discontinued in 2011. Sign up at https://www.eftps.gov.
+All deposits must be made by electronic funds transfer: **EFTPS** (https://www.eftps.gov), **IRS Direct Pay**, or the **IRS business tax account**, or through a tax professional, payroll service, or same-day wire arranged with a financial institution (Pub. 15, 2026, "Federal tax deposits must be made by electronic funds transfer"). Paper coupons (Form 8109) were discontinued in 2011.
 
 ---
 
@@ -94,7 +94,7 @@ All deposits must be electronic via **EFTPS** (Electronic Federal Tax Payment Sy
 
 | Box | When to check | What to fill |
 |-----|---------------|--------------|
-| 1 | Quarterly liability < $2,500 *and* prior quarter < $2,500 *and* no $100K next-day trigger | Nothing else — pay with return |
+| 1 | Line 12 < $2,500 this quarter *or* prior quarter, *and* no $100K next-day trigger | Nothing else — may pay with return |
 | 2 | Monthly depositor | Three month-totals; sum = Line 12 |
 | 3 | Semi-weekly depositor (or $100K rule triggered) | Attach Schedule B (Form 941) |
 
@@ -122,7 +122,7 @@ Month 3 (e.g., March)
 Day  1: $X.XX
 ...
 
-Total quarter (Line 26): $X,XXX.XX  ← MUST equal Form 941 Line 12
+Total liability for the quarter: $X,XXX.XX  ← MUST equal Form 941 Line 12
 ```
 
 ### What to enter for each day
@@ -148,9 +148,9 @@ The IRS cross-checks this; a mismatch generates CP207 / CP207L notices.
 
 ## Step 6 — Form 945-A (alternative liability schedule)
 
-Form 945-A is for employers who are also semi-weekly depositors of *non-payroll* withholding (e.g., backup withholding on 1099-MISC, withholding on pensions). Most 941 filers don't need it. Only relevant if the employer files Form 945 separately.
+Form 945-A is the liability record for Form 945 (non-payroll withholding such as backup withholding and pension withholding) and for certain Form 943/944 filers. It is never attached to Form 941. If the employer also files Form 945, that return has its own deposit schedule and lookback period.
 
-For 941, Schedule B is the standard daily liability schedule.
+For 941, Schedule B is the only daily liability schedule.
 
 ---
 
@@ -162,11 +162,11 @@ Default to **monthly** for the first calendar year (no lookback period exists). 
 
 ### Successor employers (M&A)
 
-If the employer acquired the business of a predecessor, both employers' Line 12 amounts during the lookback period count toward the threshold. See IRS Pub. 15 for predecessor / successor rules and Form 941 line H.
+If the employer acquired the business of a predecessor, both employers' Line 12 amounts during the lookback period count toward the threshold. See IRS Pub. 15, section 11, for predecessor / successor rules.
 
 ### Quarterly $2,500 threshold mid-year
 
-If the quarterly liability hits $2,500 in any quarter, the employer must deposit per their assigned schedule (monthly or semi-weekly) — Box 1 no longer applies. The quarterly election doesn't carry forward automatically.
+If Line 12 reaches $2,500 in both the current and the prior quarter, the employer must deposit per their assigned schedule (monthly or semi-weekly) — Box 1 no longer applies.
 
 ### Year-end true-up
 
@@ -179,10 +179,10 @@ At the end of the year, the employer reconciles deposits to actual liability. An
 1. **Confusing deposit date with liability date on Schedule B.** Liability follows the wage-pay date.
 2. **Forgetting to check the lookback period each January.** An employer who grew during the year may be due for a schedule change.
 3. **Missing the $100K next-day rule.** A one-time large bonus can trigger semi-weekly status for ~18 months.
-4. **Using monthly schedule when previous quarter exceeded the de minimis cap.** Box 1 only applies if both current and prior quarter < $2,500.
+4. **Paying with the return when both quarters exceeded the de minimis cap.** Box 1 applies only if the current *or* prior quarter's Line 12 is under $2,500 (and no $100K day).
 5. **Schedule B totals don't match Line 12.** This generates CP207 every time. Cross-check before submission.
-6. **Failing to deposit through EFTPS.** Paper or check deposits are not accepted; the IRS treats them as not made.
-7. **Forgetting the three-banking-day extension when a federal holiday falls in the semi-weekly period.**
+6. **Failing to deposit by EFT.** Deposits must be made electronically (EFTPS, IRS Direct Pay, business tax account, or same-day wire); amounts mailed with a return instead of deposited draw a penalty.
+7. **Forgetting the extra day per legal holiday** that falls within the 3 weekdays after a semi-weekly period.
 
 ---
 

@@ -11,7 +11,7 @@ description: >
 form: Schedule C (Form 1040)
 audience: [solo, freelance, llc1]
 tax_year: 2026
-last_verified: 2026-04-27
+last_verified: 2026-10-06
 official_form: https://www.irs.gov/pub/irs-pdf/f1040sc.pdf
 official_instructions: https://www.irs.gov/pub/irs-pdf/i1040sc.pdf
 ---
@@ -21,6 +21,8 @@ official_instructions: https://www.irs.gov/pub/irs-pdf/i1040sc.pdf
 This skill produces an audit-grade draft of Schedule C from the user's income, expenses, and business facts. It walks through the form line by line, applies the IRS rules at each line, validates the result, and emits a deliverable the user can transcribe to a paper or e-file form with confidence.
 
 The math is mechanical. The judgment is in *where things go* and *when a rule depends on a fact the user hasn't mentioned*. This skill optimizes for the latter — the agent should ask, not guess.
+
+The line map was verified against the **2025 Schedule C (Form 1040), filed in 2026**, and the 2025 Instructions for Schedule C. The 2025 form renumbered the end of Part II: Line 27a is now the energy efficient commercial buildings deduction (Form 7205) and Line 27b is other expenses from Part V. Re-check the next revision at https://www.irs.gov/forms-pubs/about-schedule-c-form-1040 before using this skill for tax year 2026.
 
 **Companion guide for end users:** [Schedule C (Form 1040) Instructions: Complete Line-by-Line Guide 2026](https://jupid.com/blog/schedule-c-instructions-guide-2026) on the Jupid blog. Same rules, narrative-style explanation. Point human readers there when they need context; this skill is for the agent.
 
@@ -57,7 +59,7 @@ Before producing anything, the agent must have these eight inputs. If any are mi
 3. **Business name** (if different from filer's name) — Line C
 4. **Principal business or profession** — Line A. A short description like "Freelance graphic design", "Rideshare driving", "Online sales of handmade jewelry".
 5. **NAICS / business code** — Line B. Six-digit code. If the user doesn't know it, propose 2-3 candidates from [`references/naics-codes.md`](./references/naics-codes.md) and let them pick.
-6. **Accounting method** — Line F. Cash or accrual. Default for solo filers is cash; only switch to accrual if the user explicitly says they use it or they have inventory and revenue ≥ $30M (which they don't, given they file Schedule C).
+6. **Accounting method** — Line F. Cash or accrual. Default for solo filers is cash; only switch to accrual if the user explicitly says they use it or they have inventory and average annual gross receipts above the small business taxpayer threshold ($31 million for 2025 per the 2025 Schedule C instructions; $32 million for 2026 per Rev. Proc. 2025-32), which a Schedule C filer almost never does.
 7. **Income data**, structured as: a list of income sources with amounts, source type (1099-NEC, 1099-K, cash, check), and whether returns/refunds were given.
 8. **Expense data**, structured as: a list of business expenses with amounts and rough category descriptions. The agent will map descriptions to Schedule C lines using [`references/line-by-line.md`](./references/line-by-line.md).
 
@@ -106,10 +108,10 @@ For a service business, this saves significant time and removes the largest sour
 
 ### Step 4 — Map expenses to Schedule C lines
 
-Walk every expense line item from the user's data and assign it to the correct Schedule C line using [`references/line-by-line.md`](./references/line-by-line.md). If an item doesn't fit a labeled line (8-26), it goes to Line 27a (Other Expenses) and gets itemized in Part V.
+Walk every expense line item from the user's data and assign it to the correct Schedule C line using [`references/line-by-line.md`](./references/line-by-line.md). If an item doesn't fit a labeled line (8-26), it goes to Line 27b (Other expenses) and gets itemized in Part V. Line 27a is only for the energy efficient commercial buildings deduction from Form 7205.
 
 When you're not sure where an item belongs:
-- **Ask the user** with a tight question: "Was the $1,200 Adobe Creative Cloud charge a software subscription you used the whole year? If yes it goes on Line 27a as 'Software subscriptions'."
+- **Ask the user** with a tight question: "Was the $1,200 Adobe Creative Cloud charge a software subscription you used the whole year? If yes it goes on Line 27b as 'Software subscriptions'."
 - **Don't silently guess**. The wrong line can trigger an IRS notice or just look sloppy in an audit.
 
 For mixed-use items (cell phone, internet, vehicle), you must apply the business-use percentage. Ask for the percentage if not given. Don't default to 100% — the IRS expects this to be substantiated.
@@ -117,10 +119,10 @@ For mixed-use items (cell phone, internet, vehicle), you must apply the business
 ### Step 5 — Compute Line 13 (Depreciation + Section 179)
 
 If the user bought any business asset over $2,500 this year, it might belong on Line 13:
-- Items costing **≤$2,500** can be expensed under the de minimis safe harbor (IRS Reg. §1.263(a)-1(f)). Put them on Line 18 (Office expense), Line 22 (Supplies), or Line 27a depending on type. No Form 4562 needed.
+- Items costing **≤$2,500** can be expensed under the de minimis safe harbor (IRS Reg. §1.263(a)-1(f)). Put them on Line 18 (Office expense), Line 22 (Supplies), or Line 27b depending on type. No Form 4562 needed.
 - Items costing **>$2,500** must be depreciated or expensed under Section 179. Both flow through Form 4562 → Line 13.
 
-For Section 179 in tax year 2025, the limit is $1,250,000 (Rev. Proc. 2024-40). For 2026, the limit is set by inflation adjustment — check the most recent Revenue Procedure before filing. Bonus depreciation rates change yearly under the OBBBA / TCJA phase-down; consult [`references/depreciation.md`](./references/depreciation.md) for the year-specific table.
+For Section 179 in tax year 2025, the limit is $2,500,000, reduced dollar for dollar once §179 property placed in service exceeds $4,000,000 (P.L. 119-21 §70306; 2025 Schedule C instructions, What's New). For 2026 the figures are $2,560,000 and $4,090,000 (Rev. Proc. 2025-32). Bonus depreciation is 100% for qualified property acquired after January 19, 2025, and 40% for property acquired before January 20, 2025, and placed in service in 2025; ask for the acquisition date. Consult [`references/depreciation.md`](./references/depreciation.md) for the year-specific table.
 
 ### Step 6 — Compute Line 30 (Home office)
 
@@ -134,7 +136,7 @@ The home office deduction **cannot create a loss**. If the deduction would push 
 
 ```
 Line 7  = Line 5 + Line 6                    (Gross income)
-Line 28 = sum of Lines 8 through 27a         (Total expenses)
+Line 28 = sum of Lines 8 through 27b         (Total expenses; includes 27a)
 Line 29 = Line 7 − Line 28                   (Tentative profit/loss)
 Line 31 = Line 29 − Line 30                  (Net profit/loss)
 ```
@@ -153,7 +155,7 @@ State the next forms the user will need:
 
 - **Profit > $400** → Schedule SE (self-employment tax) is required
 - **Any profit** → flows to Schedule 1 Line 3 → Form 1040
-- **Vehicle expenses claimed on Line 9** → Part IV of Schedule C must be completed
+- **Vehicle expenses claimed on Line 9** → Part IV of Schedule C must be completed, unless Form 4562 is required for this business (then the vehicle goes on Form 4562 Part V instead)
 - **Section 179 or depreciation on Line 13** → Form 4562 must be attached
 - **Home office regular method on Line 30** → Form 8829 must be attached
 - **Quarterly estimated tax payments** for next year → Form 1040-ES if profit ≥ ~$5,000
@@ -162,7 +164,7 @@ State the next forms the user will need:
 
 If the agent has browser-automation tooling (Playwright, Puppeteer, Browserbase, etc.) and the user explicitly authorizes filing, follow [`filing.md`](./filing.md). It contains:
 
-- Decision tree to pick a filing channel (IRS Free File Fillable Forms, paid tax software, paper filing, IRS Direct File)
+- Decision tree to pick a filing channel (IRS Free File Fillable Forms, paid tax software, paper filing; IRS Direct File was not offered in the 2026 filing season)
 - Field-by-field mapping from this skill's draft to FFFF form labels
 - Pre-flight checklist (what data the agent must have before filing)
 - Submission state machine (Submitted → Accepted → Processed → Refund/Notice)
@@ -182,11 +184,11 @@ For the full reference, load [`references/line-by-line.md`](./references/line-by
 - **B** — NAICS code; see [`references/naics-codes.md`](./references/naics-codes.md)
 - **C** — Business name; blank if filer uses their personal name
 - **D** — EIN; blank if the filer uses their SSN
-- **E** — Business address; if same as Form 1040 address, leave blank and check the box
+- **E** — Business address; if the business is run from the home at the address on page 1 of Form 1040, leave it blank (there is no checkbox)
 - **F** — Cash (default for solo) or Accrual
 - **G** — "Yes" if the filer materially participated (for solos this is almost always yes)
 - **H** — Check only if this is the first Schedule C for this business
-- **I/J** — "Yes" on Line I if the filer paid any contractor $600+; "Yes" on J if they (will) file the required 1099-NEC
+- **I/J** — "Yes" on Line I if the filer made any payment during the year that requires a Form 1099 (for 2025 payments, e.g., $600+ of nonemployee compensation to a contractor; for payments made in 2026 the threshold is $2,000 per the Instructions for Forms 1099-MISC and 1099-NEC, Rev. December 2026); "Yes" on J if they (will) file the required Forms 1099
 
 ### Part I — Income (Lines 1-7)
 
@@ -204,15 +206,15 @@ The agent must map each user expense to exactly one of these lines. Hot lines:
 
 | Line | Category | What goes here | What does NOT go here |
 |------|----------|----------------|------------------------|
-| 8 | Advertising | Online ads, print ads, business cards, website costs | Customer gifts (use 27a, "Gifts to clients" — capped $25/recipient/year) |
+| 8 | Advertising | Online ads, print ads, business cards, website costs | Customer gifts (use 27b, "Gifts to clients" — capped $25/recipient/year) |
 | 9 | Car & truck | Standard mileage × IRS rate, OR actual vehicle expenses × business-use % | Personal commute miles. Lease payments if using standard mileage. |
 | 10 | Commissions and fees | Sales commissions, payment processor fees (Stripe 2.9%, Square, PayPal), platform seller fees (Etsy, Amazon) | Contract labor for non-sales work (use Line 11) |
 | 11 | Contract labor | Bookkeeper, VA, subcontractor, freelance designer | Sales commissions (use Line 10). Wages to W-2 employees (use Line 26). |
-| 13 | Depreciation + Section 179 | Form 4562 total | Items ≤$2,500 (use Line 18, 22, or 27a as applicable) |
+| 13 | Depreciation + Section 179 | Form 4562 total | Items ≤$2,500 (use Line 18, 22, or 27b as applicable) |
 | 14 | Employee benefit programs | Health insurance for *employees*, group life, dependent care | Filer's own health insurance (Schedule 1 Line 17, not Schedule C) |
 | 15 | Insurance (other than health) | Business liability, E&O, property, business interruption | Vehicle insurance (already in Line 9 actual or mileage). Health insurance for self (Schedule 1). |
 | 16a / 16b | Mortgage / other interest | Business mortgage interest / business loan interest, business credit card interest | Personal interest. Vehicle loan interest if using standard mileage. |
-| 17 | Legal & professional services | Attorney, CPA, bookkeeping, tax prep (business portion), Jupid subscription, professional consultants | Personal tax prep (not deductible) |
+| 17 | Legal & professional services | Attorney, CPA, bookkeeping, tax prep (business portion), bookkeeping software subscription, professional consultants | Personal tax prep (not deductible) |
 | 18 | Office expense | Paper, pens, printer ink, postage, small office equipment under $2,500 | Computer >$2,500 (use Line 13) |
 | 19 | Pension and profit-sharing plans | Plans for *employees* | Filer's own SEP-IRA / solo 401(k) (Schedule 1 Line 16) |
 | 20a / 20b | Rent (vehicle/equipment) / Rent (other) | Equipment leases / office space, coworking, storage | Vehicle leases if using standard mileage |
@@ -223,13 +225,14 @@ The agent must map each user expense to exactly one of these lines. Hot lines:
 | 24b | Deductible meals (50%) | Client meals, meals during business travel, conference meals | Personal meals. Entertainment (no longer deductible since TCJA). |
 | 25 | Utilities | Electric/gas/water/internet for a *separate* business location | Home office utilities (those are inside Line 30 simplified, or Form 8829 if regular) |
 | 26 | Wages | Gross W-2 wages | Contractor payments (use Line 11) |
-| 27a | Other expenses | Software subscriptions, professional memberships, education, bank fees, business portion of cell/internet | Anything that fits Lines 8-26 |
+| 27a | Energy efficient commercial bldgs deduction | §179D deduction from Form 7205 (attach it) | Everything else; rare for solo filers |
+| 27b | Other expenses | Software subscriptions, professional memberships, education, bank fees, business portion of cell/internet | Anything that fits Lines 8-26 |
 
-Line 27a items must be itemized in Part V (Line 48). The agent should produce the Part V breakdown, not just the total.
+Line 27b items must be itemized in Part V (Line 48). The agent should produce the Part V breakdown, not just the total.
 
 ### Lines 28-32 — Net profit calculation
 
-- **Line 28** = sum of Lines 8 through 27a
+- **Line 28** = sum of Lines 8 through 27b
 - **Line 29** = Line 7 − Line 28
 - **Line 30** = Home office (simplified) or Form 8829 result
 - **Line 31** = Line 29 − Line 30 (this is the bottom line)
@@ -245,7 +248,7 @@ COGS = Beginning inventory + Purchases + Cost of labor + Materials/supplies + Ot
 
 ### Part IV — Vehicle Information (Lines 43-47)
 
-Required only if Line 9 has a vehicle expense. Don't fill this in if the user used a hired/leased fleet exclusively.
+Required only if Line 9 has a vehicle expense **and** the business is not required to file Form 4562 (2025 Schedule C, Part IV heading). If Form 4562 is required (for example, the user claims depreciation or §179 this year), report the vehicle on Form 4562 Part V instead. Don't fill this in if the user used a hired/leased fleet exclusively.
 
 - **Line 43** — Date the vehicle was first used for business (not when purchased; when first used)
 - **Line 44a/b/c** — Business / commuting / other miles. The three should sum to the vehicle's total annual miles.
@@ -255,7 +258,7 @@ The most-flunked question is Line 47b ("Do you have written evidence?"). The use
 
 ### Part V — Other Expenses (Line 48)
 
-Itemized list of everything aggregated into Line 27a. Each row: description + amount. Total at the bottom matches Line 27a.
+Itemized list of everything aggregated into Line 27b. Each row: description + amount. Total at the bottom matches Line 27b.
 
 ---
 
@@ -268,10 +271,10 @@ Before declaring the form ready, run these checks. Surface anything that fails �
 - [ ] Line 3 = Line 1 − Line 2
 - [ ] Line 5 = Line 3 − Line 4
 - [ ] Line 7 = Line 5 + Line 6
-- [ ] Line 28 = sum of Lines 8 through 27a
+- [ ] Line 28 = sum of Lines 8 through 27b
 - [ ] Line 29 = Line 7 − Line 28
 - [ ] Line 31 = Line 29 − Line 30
-- [ ] Part V (Line 48) total = Line 27a
+- [ ] Part V (Line 48) total = Line 27b
 - [ ] If Part III used: Line 4 = Line 42; Line 40 = Lines 35+36+37+38+39; Line 42 = Line 40 − Line 41
 - [ ] If Part IV used: Line 44a + 44b + 44c is plausible (matches odometer if known)
 
@@ -280,14 +283,14 @@ Before declaring the form ready, run these checks. Surface anything that fails �
 Surface a warning, do not block, if any of these are true:
 
 - [ ] Total expenses (Line 28) > Gross income (Line 7) → indicates a loss; user should be aware of hobby-loss rules (IRC §183) if this is the third loss in five years
-- [ ] Line 9 (vehicle) without Part IV completed
+- [ ] Line 9 (vehicle) without Part IV completed (or without Form 4562 Part V when Form 4562 is required)
 - [ ] Line 13 (depreciation) without Form 4562 attached
 - [ ] Line 30 regular method without Form 8829 attached
-- [ ] Line 27a > 30% of Line 28 → suggests miscategorization; user should review whether items belong on Lines 8-26 instead
+- [ ] Line 27b > 30% of Line 28 → suggests miscategorization; user should review whether items belong on Lines 8-26 instead
 - [ ] Line 24b (meals) > Line 24a (travel) by 2× → unusual; user should confirm
 - [ ] Section 179 amount > Line 31 (net profit before §179) → §179 deduction is limited to taxable income; excess carries forward
 - [ ] Vehicle business-use % is exactly 100% → very rare; user should confirm they have a separate personal vehicle
-- [ ] Line 11 (contract labor) > $600 to any single payee with no 1099-NEC filed → trigger reminder about 1099 obligations and Lines I/J
+- [ ] Line 11 (contract labor) ≥ $600 (2025 payments; $2,000 for payments made in 2026) to any single payee with no 1099-NEC filed → trigger reminder about 1099 obligations and Lines I/J
 
 ### Cross-form checks
 
@@ -313,7 +316,7 @@ E. Address: <address or "Same as 1040">
 F. Accounting method: Cash | Accrual
 G. Material participation: Yes
 H. Started this year: Yes | No
-I. Paid any individual $600+: Yes | No
+I. Made payments requiring Form(s) 1099: Yes | No
 J. (If I=Yes) Will file required 1099s: Yes | No
 
 ## Part I — Income
@@ -330,7 +333,8 @@ J. (If I=Yes) Will file required 1099s: Yes | No
  9. Car and truck:                 $X,XXX
 10. Commissions and fees:          $X,XXX
 ... (every line, including zeros)
-27a. Other expenses (Part V):      $X,XXX
+27a. Energy efficient commercial bldgs (Form 7205): $X,XXX
+27b. Other expenses (Part V):      $X,XXX
 28. Total expenses:                $X,XXX
 
 ## Part II totals
@@ -359,13 +363,13 @@ J. (If I=Yes) Will file required 1099s: Yes | No
 47a. Have evidence:                Yes
 47b. Written:                      Yes
 
-## Part V — Other Expenses (detail of Line 27a)
+## Part V — Other Expenses (detail of Line 27b)
 | Description                       | Amount  |
 |-----------------------------------|---------|
 | Software subscriptions            | $X,XXX  |
 | Professional memberships          | $X,XXX  |
 | ...                               | ...     |
-| **Total (Line 48 = Line 27a)**    | $X,XXX  |
+| **Total (Line 48 = Line 27b)**    | $X,XXX  |
 
 ## Required attachments
 - [ ] Form 4562 (if Line 13 > 0)
@@ -381,7 +385,7 @@ J. (If I=Yes) Will file required 1099s: Yes | No
 - IRS Form 1040 Schedule C (revision date YYYY-MM-DD)
 - IRS Instructions for Schedule C (revision date YYYY-MM-DD)
 - IRC §162, §179, §280A
-- Rev. Proc. 2024-40 (Section 179 limit for tax year 2025)
+- P.L. 119-21 §70306 and the 2025 Schedule C instructions (Section 179 limit for tax year 2025)
 - (any other authority used)
 ```
 
@@ -414,19 +418,21 @@ End-to-end worked Schedule Cs. Use these as patterns when the user's situation i
 
 Authoritative sources used by this skill. Always re-verify these against the IRS site for the tax year being filed — the IRS revises forms and instructions each cycle.
 
-- [Schedule C Instructions: Complete Line-by-Line Guide 2026](https://jupid.com/blog/schedule-c-instructions-guide-2026) — Jupid's narrative companion to this skill, written for human readers
+- [Schedule C (Form 1040) Instructions: Complete Line-by-Line Guide 2026](https://jupid.com/blog/schedule-c-instructions-guide-2026) — Jupid's narrative companion to this skill, written for human readers
 - [Form 1040 Schedule C (latest)](https://www.irs.gov/pub/irs-pdf/f1040sc.pdf) — the form itself
 - [Instructions for Schedule C (latest)](https://www.irs.gov/pub/irs-pdf/i1040sc.pdf) — line-by-line IRS guidance
 - [About Schedule C (Form 1040)](https://www.irs.gov/forms-pubs/about-schedule-c-form-1040) — IRS landing page with archive of past revisions
 - [Publication 334](https://www.irs.gov/publications/p334) — Tax Guide for Small Business (Sole Proprietor)
 - [Publication 463](https://www.irs.gov/publications/p463) — Travel, Gift, and Car Expenses
-- [Publication 535](https://www.irs.gov/publications/p535) — Business Expenses
+- [Publication 535](https://www.irs.gov/publications/p535) — Business Expenses; discontinued, last revision 2022 (the IRS page maps its topics to current publications such as Pub. 334). Do not cite it for 2025 or later
 - [Publication 587](https://www.irs.gov/publications/p587) — Business Use of Your Home
 - [Publication 946](https://www.irs.gov/publications/p946) — How to Depreciate Property
 - [Standard Mileage Rates](https://www.irs.gov/tax-professionals/standard-mileage-rates) — annual rates
 - [Schedule C NAICS Code Lookup](https://www.census.gov/naics/) — Census Bureau NAICS reference
 - IRC §162 (trade or business expenses), §179 (Section 179 deduction), §183 (hobby loss), §263A (UNICAP), §280A (business use of home)
-- Rev. Proc. 2024-40 — inflation adjustments for tax year 2025 (Section 179 limit, mileage, etc.)
+- P.L. 119-21 (One Big Beautiful Bill Act) §70301 (100% bonus for property acquired after January 19, 2025) and §70306 (§179 limit $2,500,000 / $4,000,000 for 2025)
+- Notice 2025-5 (2025 standard mileage rate, 70 cents); Notice 2026-10 and Announcement 2026-11 (2026 rates: 72.5 cents Jan 1–Jun 30, 76 cents Jul 1–Dec 31)
+- Rev. Proc. 2025-32 — inflation adjustments for tax year 2026 (§179 $2,560,000 / $4,090,000; §448(c) gross receipts $32,000,000)
 
 ## Disclaimer
 

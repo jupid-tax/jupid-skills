@@ -11,7 +11,7 @@ The agent must produce a complete `SKILL.md`-format draft *first*, then pick a f
 The user picks the channel. If they don't know, default to **IRS Free File Fillable Forms (FFFF)** — it's the canonical "fill out the form online" option directly with the IRS, free, and the field labels match the paper form 1:1, which makes browser automation deterministic.
 
 ```
-User has AGI ≤ ~$84,000 and wants free guided software?
+User has AGI ≤ $89,000 (2025 returns; irs.gov/filing/irs-free-file-do-your-taxes-for-free) and wants free guided software?
   → IRS Free File (Free File Alliance partners)
     Browser automation: provider-specific (TaxAct Free, FreeTaxUSA, etc.)
     Skip — proprietary flows change too often for deterministic automation.
@@ -32,9 +32,9 @@ User wants to file on paper?
     Use Section 3.
 
 User wants to use IRS Direct File?
-  → Note: as of early 2026, IRS Direct File supports limited Schedule C scenarios.
-    Check current scope before automating. If unsupported, redirect to FFFF or paper.
-    See https://www.irs.gov/filing/irs-direct-file
+  → IRS Direct File was not offered in the 2026 filing season (the IRS
+    filing-season release lists Free File, Free File Fillable Forms, MilTax, and
+    VITA/TCE; the Direct File pages on irs.gov return 404). Redirect to FFFF or paper.
 ```
 
 ---
@@ -119,7 +119,8 @@ The agent navigates and interacts deterministically. Stable selectors are listed
 | 24b | "Deductible meals" | Part II Line 24b |
 | 25 | "Utilities" | Part II Line 25 |
 | 26 | "Wages (less employment credits)" | Part II Line 26 |
-| 27a | "Other expenses (from line 48)" | Part II Line 27a |
+| 27a | "Energy efficient commercial bldgs deduction (attach Form 7205)" | Part II Line 27a (usually $0) |
+| 27b | "Other expenses (from line 48)" | Part II Line 27b |
 | 28 | (auto-computed) | (verify) |
 | 29 | (auto-computed) | (verify) |
 | 30 | "Expenses for business use of your home" | Line 30 (with method indicator) |
@@ -132,12 +133,12 @@ The agent navigates and interacts deterministically. Stable selectors are listed
    - Click "Schedule C Part III" tab/expand
    - Fill Lines 33 (radio for inventory method), 34 (Yes/No radio), 35–41 (numeric)
    - Line 42 auto-computes
-10. **Part IV (Vehicle) — only if Line 9 > 0 and not depreciating on Form 4562**:
+10. **Part IV (Vehicle) — only if Line 9 > 0 and Form 4562 is not required for this business for any reason** (otherwise the vehicle goes on Form 4562 Part V):
     - Fill Lines 43 (date), 44a–44c (mileage breakdown), 45–47 (Yes/No radios)
-11. **Part V (Other Expenses) — only if Line 27a > 0**:
+11. **Part V (Other Expenses) — only if Line 27b > 0**:
     - Click "Add row" for each Part V item
     - Each row: Description (text) + Amount (numeric)
-    - Sum at Line 48 must match Line 27a
+    - Sum at Line 48 must match Line 27b
 12. **Attach related forms** if the draft requires them:
     - Form 4562 if Line 13 > 0 — separate FFFF form, fill before final submission
     - Form 8829 if Line 30 used regular method — separate FFFF form

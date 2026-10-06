@@ -1,12 +1,12 @@
-# Federal Poverty Level (FPL) Tables for Form 8962
+# Federal Poverty Line (FPL) Tables for Form 8962
 
-PTC eligibility and the applicable figure depend on household income as a percentage of the Federal Poverty Level. Form 8962 Line 4 is the FPL value for the filer's tax family size and state group.
+PTC eligibility and the applicable figure depend on household income as a percentage of the federal poverty line. Form 8962 Line 4 is the FPL value for the filer's tax family size and state group.
 
 ## Critical year rule
 
 **Form 8962 uses prior-year HHS poverty guidelines.** For tax year **2025** (returns filed 2026), use the **2024** HHS poverty guidelines. For tax year **2026**, use the **2025** HHS guidelines (published January 2025).
 
-Source citation: IRC §36B(d)(3)(C) — "Federal Poverty Level" is the most recently published HHS guidelines as of **the first day of the regular open enrollment period**. For 2025 plan year, that's November 2024 → use 2024 HHS table.
+Source citation: IRC §36B(d)(3)(B) — the poverty line used is the most recently published poverty line as of **the 1st day of the regular enrollment period** for coverage during the calendar year. For the 2025 plan year, that's November 2024 → use the 2024 HHS table (2025 Form 8962 instructions, Line 4: "For 2025, the 2024 federal poverty lines are used").
 
 ## State groups
 
@@ -16,11 +16,11 @@ HHS publishes three FPL tables:
 - **Alaska** — higher (cost of living adjustment)
 - **Hawaii** — higher (cost of living adjustment)
 
-The filer uses the table for the state where they were enrolled in marketplace coverage on the first day of the open enrollment period, regardless of mid-year moves.
+Check the box for the state of residence during the tax year (Form 8962 Line 4: a Alaska, b Hawaii, c other 48 states and DC). If the filer moved during the year and lived in Alaska and/or Hawaii, or joint filers lived in different states, use the table with the higher dollar amounts (2025 Form 8962 instructions, Line 4).
 
 ## 2024 HHS Poverty Guidelines (use for tax year 2025 returns)
 
-Per HHS, 2024 guidelines published January 2024:
+Per HHS, 2024 guidelines published January 17, 2024 (89 FR 2961), reproduced as Tables 1-1, 1-2, 1-3 in the 2025 Form 8962 instructions:
 
 ### 48 Contiguous + DC
 
@@ -72,9 +72,49 @@ https://aspe.hhs.gov/topics/poverty-economic-mobility/poverty-guidelines
 
 The 2025 HHS guidelines were published January 2025. The agent must look up the exact values from the HHS source rather than assume an inflation factor — HHS publishes a discrete table each year.
 
-**2025 FPL values (verify before final filing):**
+Per HHS, 2025 guidelines published January 17, 2025 (90 FR 5917). Under §36B(d)(3)(B) these are the guidelines in effect on November 1, 2025, the first day of open enrollment for 2026 coverage. The 2026 Form 8962 instructions had not been released on 2026-10-06; confirm these values against their Tables 1-1 to 1-3 before filing a 2026 return.
 
-The 2025 update increased each family-size value by approximately the cost-of-living factor used for that year. Always pull from HHS.gov, not from secondary sources, because rounding differs.
+### 48 Contiguous + DC 2025
+
+| Family size | 100% FPL |
+|------------:|---------:|
+| 1 | $15,650 |
+| 2 | $21,150 |
+| 3 | $26,650 |
+| 4 | $32,150 |
+| 5 | $37,650 |
+| 6 | $43,150 |
+| 7 | $48,650 |
+| 8 | $54,150 |
+| Each additional | +$5,500 |
+
+### Alaska 2025
+
+| Family size | 100% FPL |
+|------------:|---------:|
+| 1 | $19,550 |
+| 2 | $26,430 |
+| 3 | $33,310 |
+| 4 | $40,190 |
+| 5 | $47,070 |
+| 6 | $53,950 |
+| 7 | $60,830 |
+| 8 | $67,710 |
+| Each additional | +$6,880 |
+
+### Hawaii 2025
+
+| Family size | 100% FPL |
+|------------:|---------:|
+| 1 | $17,990 |
+| 2 | $24,320 |
+| 3 | $30,650 |
+| 4 | $36,980 |
+| 5 | $43,310 |
+| 6 | $49,640 |
+| 7 | $55,970 |
+| 8 | $62,300 |
+| Each additional | +$6,330 |
 
 ## How to compute FPL for tax family size > 8
 
@@ -105,4 +145,4 @@ For the most current FPL values, always cross-check at:
 
 https://aspe.hhs.gov/topics/poverty-economic-mobility/poverty-guidelines
 
-HHS publishes the new guidelines in January of each year. The Form 8962 instructions for that tax year include the relevant prior-year table in the appendix.
+HHS publishes the new guidelines in January of each year. The Form 8962 instructions for the tax year print the relevant prior-year table as Tables 1-1, 1-2, and 1-3 under Line 4.

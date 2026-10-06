@@ -17,7 +17,7 @@ description: >
 form: Schedule SE (Form 1040)
 audience: [solo, freelance, llc1]
 tax_year: 2026
-last_verified: 2026-04-29
+last_verified: 2026-10-06
 official_form: https://www.irs.gov/pub/irs-pdf/f1040sse.pdf
 official_instructions: https://www.irs.gov/pub/irs-pdf/i1040sse.pdf
 ---
@@ -28,7 +28,7 @@ This skill produces an audit-grade draft of Schedule SE from the user's net self
 
 The math is mostly mechanical — multiply by 0.9235, then by 0.153 (or split into 12.4% Social Security + 2.9% Medicare with a wage-base cap on the SS portion). The judgment is in *whether the income is SE-eligible*, *whether the user has W-2 wages that consume part of the Social Security wage base*, and *whether the optional methods apply*. This skill optimizes for those decisions — the agent should ask, not guess.
 
-**Companion guide for end users:** [Schedule SE Instructions: Complete Self-Employment Tax Guide 2026](https://jupid.com/blog/schedule-se-instructions-guide-2026) on the Jupid blog. Same rules, narrative-style explanation. Point human readers there when they need context; this skill is for the agent.
+**Companion guide for end users:** [Schedule SE (Form 1040) Instructions: Self-Employment Tax Guide 2026](https://jupid.com/blog/schedule-se-instructions-guide-2026) on the Jupid blog. Same rules, narrative-style explanation. Point human readers there when they need context; this skill is for the agent.
 
 ---
 
@@ -65,11 +65,11 @@ Before producing anything, the agent must have these inputs. If any are missing,
    - Schedule C Line 31 net profit (most common)
    - Schedule F Line 34 net profit
    - Schedule K-1 (Form 1065) Box 14 Code A (general partner / LLC member share of SE earnings)
-   - Church employee income (Form W-2 Box 1 with Box 14 noted as church wages — see Part II Section B)
-4. **W-2 wages received in the same year.** Needed because Form W-2 Box 3 (Social Security wages) consumes the SS wage base. If the user has both a W-2 job AND self-employment income, the SS portion of SE tax is reduced (or eliminated) by the wages already subject to FICA. Ask: "Did you also receive a W-2 in [tax year]? If yes, what's in Box 3 (Social Security wages)?"
+   - Church employee income (Form W-2 wages from a church or qualified church-controlled organization that elected out of employer FICA; Part I lines 5a–5b)
+4. **W-2 wages received in the same year.** Needed because Form W-2 Box 3 (Social Security wages) and Box 7 (Social Security tips), plus any railroad retirement (tier 1) compensation, consume the SS wage base (Schedule SE line 8a). If the user has both a W-2 job AND self-employment income, the SS portion of SE tax is reduced (or eliminated) by the wages already subject to FICA. Ask: "Did you also receive a W-2 in [tax year]? If yes, what's in Box 3 (Social Security wages) and Box 7 (Social Security tips)?"
 5. **Optional method election.** Ask only if Schedule C / F income is unusually low and the user wants to qualify for or maintain Social Security credit accrual: "Do you want to use the farm or non-farm optional method to elect into a higher SE tax base for Social Security credit purposes? Most filers say no."
-6. **Prior-year self-employment.** Only relevant for the non-farm optional method — the user must have had net SE earnings of at least $400 in 2 of the prior 3 years to qualify (IRC §1402(l)).
-7. **Church employee income (Form W-2 with no FICA withheld).** Rare — applies to certain religious organizations that have elected out of FICA under IRC §3121(w). If the user has W-2 wages from such an employer, those go to Part II Section B and use a separate computation.
+6. **Prior-year self-employment.** Only relevant for the non-farm optional method — the user must have had net SE earnings of at least $400 in 2 of the 3 tax years immediately before this one to qualify (IRC §1402(h); Schedule SE instructions, Part II).
+7. **Church employee income (Form W-2 with no FICA withheld).** Rare — applies to certain religious organizations that have elected out of FICA under IRC §3121(w). If the user has W-2 wages from such an employer, those go on Part I line 5a (line 5b = line 5a × 0.9235; if less than $100, enter -0-).
 
 ---
 
@@ -96,22 +96,22 @@ Church employee W-2 income (Sec B):      $X,XXX  (handled separately)
 
 Sum of the first three goes to Part I Line 2 (or Line 1a/1b for farmers).
 
-### Step 3 — Determine if Part I Section A short form or Section B long form applies
+### Step 3 — Determine which parts of the form apply
 
 The 2020 Schedule SE redesign merged the short and long forms into a single form, but the structure still distinguishes scenarios:
 
-- **Part I** — standard SE tax computation (almost everyone)
-- **Part II Section A** — farm optional method (farm income < $9,840 for 2025; verify 2026 threshold)
-- **Part II Section B** — non-farm optional method (non-farm income < $7,103 for 2025; verify 2026 threshold) AND church employee income computation
+- **Part I** (lines A, 1a–13) — standard SE tax computation (almost everyone), including church employee income on lines 5a–5b
+- **Part II lines 14–15** — farm optional method (2025: gross farm income $10,860 or less, or net farm profits less than $7,840; verify the next year's form)
+- **Part II lines 16–17** — nonfarm optional method (2025: net nonfarm profits less than $7,840 and less than 72.189% of gross nonfarm income; verify the next year's form)
 
 Pick Part I for the typical solo / freelance filer.
 
 ### Step 4 — Compute Part I Line 3 (sum of SE earnings)
 
 ```
-Line 1a = Schedule F Line 34 net farm profit (or 0)
-Line 1b = Conservation Reserve Program payments excluded from SE under IRC §1402(a)(1) (rare; usually 0)
-Line 2  = Schedule C Line 31 + K-1 Box 14 Code A
+Line 1a = Schedule F Line 34 net farm profit + farm partnership K-1 Box 14 Code A (or 0)
+Line 1b = taxable CRP payments (Schedule F line 4b or K-1 Box 20 Code AQ), entered as a NEGATIVE, only if the user was receiving Social Security retirement or disability benefits (usually 0)
+Line 2  = Schedule C Line 31 + nonfarm K-1 Box 14 Code A
 Line 3  = Line 1a + Line 1b + Line 2
 ```
 
@@ -123,22 +123,20 @@ Line 4a = Line 3 × 0.9235
 
 The 0.9235 factor (= 1 − 0.0765) approximates removing the "employer's share" of FICA from the SE base. It mathematically gives the self-employed filer parity with W-2 employees, who only pay FICA on 100% of their wage but whose employer pays a separate 7.65%. See IRC §1402(a)(12).
 
-If Line 4a is **less than $400**, no SE tax is due. Stop and document. Otherwise continue.
+If line 3 is zero or less, Line 4a = Line 3 (no multiplier). If Line 4c (Line 4a + Line 4b) is **less than $400**, no SE tax is due: stop and document. Exception: with church employee income, enter -0- on Line 4c and continue to Line 5a.
 
 ### Step 6 — Add optional method amounts if elected (Lines 4b, 4c, 5a, 5b)
 
-If the user elected farm or non-farm optional method (Step 1), add the elected amount per Part II Section A or B. Most filers skip this; if you do skip, Line 4c = Line 4a.
+If the user elected the farm and/or nonfarm optional method (Step 1), Line 4b = Part II line 15 + line 17. The optional-method amount is NOT multiplied by 0.9235. Most filers skip this; if you do skip, Line 4c = Line 4a. If there is church employee income, Line 5b = Line 5a × 0.9235 (enter -0- if less than $100).
 
 ### Step 7 — Compute Line 7 (SS wage base for the year)
 
-For tax year 2025, Line 7 prints "$176,100" — this is the Social Security wage base set by SSA each fall (verify the 2026 figure when the SSA announces it, typically late October 2025; the 2026 figure prints on the form itself once revised).
-
-The 2026 Schedule SE form will state the 2026 wage base on Line 7 directly. **Always read it from the form**, do not hardcode.
+For tax year 2025, Line 7 prints "$176,100" — this is the Social Security wage base set by SSA each fall. SSA set the 2026 base at $184,500 (https://www.ssa.gov/oact/cola/cbb.html); use it for 2026 estimates. The 2026 Schedule SE (filed in 2027) will print the 2026 figure on Line 7. **Always read it from the form for the year being filed**, do not hardcode.
 
 ### Step 8 — Subtract W-2 SS wages already subject to FICA (Line 8a + 8b + 8c)
 
 ```
-Line 8a = Total W-2 Social Security wages (W-2 Box 3) for the same filer this year
+Line 8a = Total W-2 Social Security wages and tips (W-2 Boxes 3 + 7) + railroad retirement (tier 1) compensation for the same filer this year. If $176,100 or more (2025), skip 8b–10 and go to Line 11
 Line 8b = Unreported tips subject to SS tax (from Form 4137; usually 0)
 Line 8c = Wages subject to SS tax from Form 8919 (uncollected SS on misclassified worker; usually 0)
 Line 8d = 8a + 8b + 8c
@@ -216,18 +214,18 @@ For the full reference, load [`references/line-by-line.md`](./references/line-by
 
 | Line | Field | Source |
 |------|-------|--------|
-| 1a | Net farm profit | Schedule F Line 34 |
-| 1b | CRP payments excluded | IRC §1402(a)(1); usually 0 |
+| 1a | Net farm profit | Schedule F Line 34 + farm K-1 Box 14 Code A |
+| 1b | Taxable CRP payments, entered as a negative, only if receiving SS retirement/disability benefits | Schedule F line 4b or K-1 Box 20 Code AQ; usually 0 |
 | 2 | Net non-farm profit | Schedule C Line 31 + K-1 Box 14 Code A |
 | 3 | Sum (Line 1a + 1b + 2) | Computed |
 | 4a | Line 3 × 0.9235 | Computed |
-| 4b | Optional method amount (farm) | Part II Section A; 0 if not elected |
-| 4c | Combined (4a + 4b) | Computed |
+| 4b | Optional method amounts | Part II line 15 + line 17; 0 if not elected |
+| 4c | Combined (4a + 4b) | Computed; if less than $400, stop (unless church employee income) |
 | 5a | Church employee income | Form W-2 (church-electing-out-of-FICA only) |
-| 5b | Line 5a × 0.9235 | Computed |
+| 5b | Line 5a × 0.9235 | Computed; enter -0- if less than $100 |
 | 6 | Net earnings from SE (4c + 5b) | Computed |
 | 7 | SS wage base for the year | Pre-printed on form (verify each year) |
-| 8a | W-2 SS wages | W-2 Box 3 |
+| 8a | W-2 SS wages and tips + RRTA tier 1 compensation | W-2 Boxes 3 + 7 |
 | 8b | Unreported tip income subject to SS | Form 4137; usually 0 |
 | 8c | Wages subject to SS from Form 8919 | Usually 0 |
 | 8d | 8a + 8b + 8c | Computed |
@@ -237,22 +235,22 @@ For the full reference, load [`references/line-by-line.md`](./references/line-by
 | 12 | Line 10 + Line 11 | Total SE tax → Schedule 2 Line 4 |
 | 13 | Line 12 × 0.5 | Deductible half → Schedule 1 Line 15 |
 
-### Part II — Optional Methods + Church Employee Income
+### Part II — Optional Methods (lines 14–17)
 
-Three sections, all opt-in:
+Both methods are opt-in. Line 14 prints the maximum: $7,240 for 2025.
 
-**Section A — Farm Optional Method.** Available if (gross farm income < $9,840 OR net farm profit < $7,103) for 2025; verify thresholds for the year being filed. Filer reports the lesser of $6,560 or 2/3 of gross farm income as Line 4b. Used to maintain Social Security credits when farm income is too low to otherwise generate them.
+**Farm optional method (line 15).** Available if gross farm income was $10,860 or less OR net farm profits were less than $7,840 (2025; verify thresholds for the year being filed). Line 15 = the smaller of 2/3 of gross farm income (not less than zero) or $7,240; it is included on Line 4b. No limit on the number of years. Skip Lines 1a and 1b when using it.
 
-**Section B — Non-Farm Optional Method.** Available if (net non-farm earnings < $7,103) for 2025; verify thresholds. Requires net SE earnings ≥ $400 in 2 of the prior 3 years (IRC §1402(l)). Limit: can be elected at most 5 times in a lifetime. Filer reports 2/3 of gross non-farm income (cap $6,560 for 2025) as Line 4b.
+**Nonfarm optional method (lines 16–17).** Available only if net nonfarm profits were less than $7,840 AND less than 72.189% of gross nonfarm income (2025), and the user had net SE earnings of at least $400 in 2 of the 3 prior years (IRC §1402(h)). Usable for only 5 years in a lifetime (IRC §1402(a), flush language). Line 16 = Line 14 − Line 15; Line 17 = the smaller of 2/3 of gross nonfarm income (not less than zero) or Line 16; it is included on Line 4b. Skip Line 2 when using it.
 
-**Section B (also) — Church Employee Income.** For W-2 wages from a church that has elected out of FICA under IRC §3121(w). Different from the optional methods. The wages go on Line 5a, get multiplied by 0.9235 on Line 5b, and flow to Line 6.
+**Church employee income is in Part I, not Part II.** W-2 wages from a church that has elected out of FICA under IRC §3121(w) go on Line 5a, get multiplied by 0.9235 on Line 5b (enter -0- if less than $100), and flow to Line 6. File Schedule SE if church employee income is $108.28 or more.
 
 See [`references/optional-methods.md`](./references/optional-methods.md) for the threshold table and election rules.
 
 ### Special filers (foreign earned income, partnership, multi-state)
 
 See [`references/special-filers.md`](./references/special-filers.md) for:
-- Foreign earned income exclusion (Form 2555) — the exclusion does NOT reduce SE tax (IRC §911(d)(4))
+- Foreign earned income exclusion (Form 2555) — the exclusion does NOT reduce SE tax (IRC §1402(a)(11))
 - Partnership earnings — only general partner / LLC manager-member share is SE; limited partner share is not (IRC §1402(a)(13))
 - Multi-state — SE tax is federal; state SE / city SE rules vary (NYC UBT, etc.)
 
@@ -267,7 +265,7 @@ Before declaring the form ready, run these checks. Surface anything that fails �
 - [ ] Line 3 = Line 1a + Line 1b + Line 2
 - [ ] Line 4a = Line 3 × 0.9235 (rounded to nearest dollar)
 - [ ] Line 4c = Line 4a + Line 4b
-- [ ] Line 5b = Line 5a × 0.9235 (or 0)
+- [ ] Line 5b = Line 5a × 0.9235 (0 if the result is less than $100)
 - [ ] Line 6 = Line 4c + Line 5b
 - [ ] Line 8d = Line 8a + Line 8b + Line 8c
 - [ ] Line 9 = max(0, Line 7 − Line 8d)
@@ -280,11 +278,11 @@ Before declaring the form ready, run these checks. Surface anything that fails �
 
 Surface a warning, do not block, if any of these are true:
 
-- [ ] Line 4a < $400 → Schedule SE not required (no SE tax) unless using an optional method
+- [ ] Line 4c < $400 → Schedule SE not required (no SE tax) unless using an optional method or the user has church employee income of $108.28 or more
 - [ ] Line 8a > Line 7 → user already exceeded SS wage base from W-2; Line 9 should be 0; Line 10 should be 0
 - [ ] User has W-2 wages AND SE income totaling > $200K (single) / $250K (MFJ) / $125K (MFS) → Form 8959 (Additional Medicare Tax) is required and not handled by Schedule SE
 - [ ] Schedule C Line 31 differs from Line 2 input → reconcile (the agent should pull from Schedule C, not re-enter)
-- [ ] Optional method elected with net non-farm earnings ≥ $7,103 → ineligible; remove the election
+- [ ] Nonfarm optional method elected with net nonfarm profits of $7,840 or more, or 72.189% or more of gross nonfarm income (2025) → ineligible; remove the election
 - [ ] Optional method (non-farm) elected for 5th lifetime time → election no longer available
 - [ ] Joint return with SE income from both spouses but only one Schedule SE drafted → second spouse needs a separate Schedule SE
 
@@ -323,7 +321,7 @@ Social security number: <SSN>
 6.  Net earnings from SE (4c + 5b):              $X,XXX
 
 7.  SS wage base for [year]:                     $XXX,XXX  (per IRS form)
-8a. Total W-2 SS wages (Box 3):                  $XX,XXX
+8a. Total W-2 SS wages + tips (Boxes 3 + 7):     $XX,XXX
 8b. Unreported tip income:                       $0
 8c. Wages from Form 8919:                        $0
 8d. Sum 8a + 8b + 8c:                            $XX,XXX
@@ -335,8 +333,10 @@ Social security number: <SSN>
 13. Deductible half (12 × 0.5):                  $X,XXX
 
 ## Part II — Optional Methods (only if elected)
-Section A — Farm Optional Method:                Not elected
-Section B — Non-Farm Optional Method:            Not elected
+14. Maximum income for optional methods:         $7,240 (2025; per form)
+15. Farm optional method:                        Not elected
+16. Line 14 − Line 15:                           (only if nonfarm method elected)
+17. Nonfarm optional method:                     Not elected
 
 ## Required attachments
 - [ ] Schedule C (if Line 2 from Schedule C)
@@ -388,7 +388,7 @@ End-to-end worked Schedule SEs. Use these as patterns when the user's situation 
 
 Authoritative sources used by this skill. Always re-verify these against the IRS site for the tax year being filed — the IRS revises the form and the SS wage base each cycle.
 
-- [Schedule SE Instructions: Complete Self-Employment Tax Guide 2026](https://jupid.com/blog/schedule-se-instructions-guide-2026) — Jupid's narrative companion to this skill, written for human readers
+- [Schedule SE (Form 1040) Instructions: Self-Employment Tax Guide 2026](https://jupid.com/blog/schedule-se-instructions-guide-2026) — Jupid's narrative companion to this skill, written for human readers
 - [Schedule SE (Form 1040)](https://www.irs.gov/pub/irs-pdf/f1040sse.pdf) — the form itself
 - [Instructions for Schedule SE](https://www.irs.gov/pub/irs-pdf/i1040sse.pdf) — line-by-line IRS guidance
 - [About Schedule SE (Form 1040)](https://www.irs.gov/forms-pubs/about-schedule-se-form-1040) — IRS landing page with archive of past revisions
@@ -396,7 +396,7 @@ Authoritative sources used by this skill. Always re-verify these against the IRS
 - [Publication 533](https://www.irs.gov/publications/p533) — Self-Employment Tax (legacy; now folded into Pub 334 and the Schedule SE instructions)
 - [Self-Employment Tax overview](https://www.irs.gov/businesses/small-businesses-self-employed/self-employment-tax-social-security-and-medicare-taxes) — IRS topic page
 - [Social Security Administration — Contribution and Benefit Base](https://www.ssa.gov/oact/cola/cbb.html) — annual wage base announcements
-- IRC §1401 (SE tax rates), §1402 (definition of SE earnings), §1402(a)(12) (0.9235 factor), §1402(a)(13) (limited-partner exclusion), §1402(b) ($400 threshold), §1402(l) (non-farm optional method), §164(f) (deductible half), §3121(w) (church FICA election)
+- IRC §1401 (SE tax rates), §1402 (definition of SE earnings), §1402(a)(11) (foreign earned income exclusion does not apply), §1402(a)(12) (0.9235 factor), §1402(a)(13) (limited-partner exclusion), §1402(a) flush language (optional methods; 5-year nonfarm limit), §1402(b) ($400 threshold), §1402(h) (regular basis test), §1402(l) (optional-method upper and lower limits), §164(f) (deductible half), §3121(w) (church FICA election)
 - Form 8959 — Additional Medicare Tax (separate skill / form for high earners)
 
 ## Disclaimer

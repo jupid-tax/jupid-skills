@@ -1,6 +1,6 @@
 # Schedule C Line-by-Line Reference
 
-Complete lookup for every line on Schedule C. Use this when the agent needs to confirm where an expense belongs or what a line means.
+Complete lookup for every line on Schedule C. Use this when the agent needs to confirm where an expense belongs or what a line means. Verified against the 2025 Schedule C (Form 1040) and its 2025 instructions; re-check each new revision at https://www.irs.gov/forms-pubs/about-schedule-c-form-1040.
 
 ## Header (identifies you and the business)
 
@@ -9,14 +9,14 @@ Complete lookup for every line on Schedule C. Use this when the agent needs to c
 | (top) | Name | Filer's legal name (not business name) | Even if the user has a DBA |
 | (top) | SSN | Filer's SSN | Or ITIN if no SSN |
 | A | Principal business or profession | Plain English: "Freelance graphic design", "Online sales of jewelry" | One line, ~50 chars |
-| B | Business code | 6-digit NAICS code | See [naics-codes.md](./naics-codes.md) |
+| B | Business code | 6-digit code from the Principal Business or Professional Activity Codes chart in the Schedule C instructions (NAICS-based but often broader) | See [naics-codes.md](./naics-codes.md) |
 | C | Business name | DBA or trade name | Blank if user uses their personal name |
 | D | EIN | 9-digit Employer ID Number | Blank → use SSN. Get free at IRS.gov/EIN. |
-| E | Business address | Where the business operates | If same as Form 1040 home address: blank, check the box |
+| E | Business address | Where the business operates (street address, not a P.O. box) | If the business is run from the home at the Form 1040 page 1 address, leave blank; there is no checkbox |
 | F | Accounting method | Cash / Accrual / Other | Cash for ~99% of solo filers |
 | G | Material participation | Yes / No | Yes for owner-operated businesses |
 | H | Started this year | Checkbox | Only if first Schedule C for this business |
-| I | Paid any individual ≥ $600 | Yes / No | Triggers 1099-NEC obligation |
+| I | Made any payment during the year that requires a Form 1099 | Yes / No | For 2025 payments, e.g., nonemployee compensation of $600 or more; for payments made in 2026 the threshold is $2,000 (Instructions for Forms 1099-MISC and 1099-NEC, Rev. December 2026, What's New) |
 | J | (If I=Yes) Will file required 1099s | Yes / No | Honest answer; informs the IRS |
 
 ---
@@ -26,7 +26,7 @@ Complete lookup for every line on Schedule C. Use this when the agent needs to c
 | Line | Field | What goes here | What does NOT go here |
 |------|-------|----------------|------------------------|
 | 1 | Gross receipts or sales | All gross income from the business: 1099-NEC + 1099-K + cash + checks + crypto + barter at FMV | Income reported on other schedules (W-2 wages, partnership K-1 income, rental income on Schedule E) |
-| 2 | Returns and allowances | Refunds and price adjustments given to customers | Bad debts (those go on Line 27a if cash basis, or are deducted differently on accrual) |
+| 2 | Returns and allowances | Refunds and price adjustments given to customers | Bad debts (those go on Line 27b if cash basis, or are deducted differently on accrual) |
 | 3 | (= Line 1 − Line 2) | Computed |  |
 | 4 | Cost of goods sold | From Part III, Line 42. Service businesses: 0 | Day-to-day operating costs (those are Lines 8-27) |
 | 5 | (= Line 3 − Line 4) | Computed |  |
@@ -43,8 +43,8 @@ Complete lookup for every line on Schedule C. Use this when the agent needs to c
 
 | Belongs here | Belongs elsewhere |
 |--------------|-------------------|
-| Online ads (Google, Meta, LinkedIn, X, TikTok) | Customer gifts (27a, capped $25/recipient/year per IRC §274(b)) |
-| Print advertising | Trade show booth fees if part of travel (24a + 27a split) |
+| Online ads (Google, Meta, LinkedIn, X, TikTok) | Customer gifts (27b, capped $25/recipient/year per IRC §274(b)) |
+| Print advertising | Trade show booth fees if part of travel (24a + 27b split) |
 | Business cards, brochures, flyers | Sponsorships of sports teams (sometimes; depends on if it's truly advertising or charitable) |
 | Website hosting, domain, design (if not capitalized) | Major website rebuild capitalized as a long-term asset (Line 13 via Form 4562) |
 | Promotional materials | |
@@ -57,7 +57,7 @@ Two options — pick one and stick with it for the year:
 **Standard mileage**: business miles × IRS rate.
 - 2024 rate: 67 cents/mile
 - 2025 rate: 70 cents/mile
-- 2026 rate: announced by IRS in late 2025 — verify at https://www.irs.gov/tax-professionals/standard-mileage-rates
+- 2026 rate: 72.5 cents/mile for January 1 – June 30 (Notice 2026-10) and 76 cents/mile for July 1 – December 31 (Announcement 2026-11, I.R.B. 2026-29); split 2026 business miles by date. Re-verify at https://www.irs.gov/tax-professionals/standard-mileage-rates
 
 If using standard mileage, you can also deduct: parking fees while on business, tolls, business-use portion of vehicle interest (16b) and personal property tax on the vehicle (23). You cannot also deduct gas, repairs, insurance, depreciation, or lease payments — those are bundled into the rate.
 
@@ -67,7 +67,7 @@ Switching: you can switch from standard to actual in any year, but if you starte
 
 Always require: contemporaneous mileage log with date, destination, business purpose, miles. Without it, the deduction is hard to defend.
 
-If Line 9 > 0, Part IV must be completed.
+If Line 9 > 0, Part IV must be completed unless the business is required to file Form 4562; then the vehicle information goes on Form 4562 Part V instead (2025 Schedule C, Part IV heading).
 
 ### Line 10 — Commissions and fees
 
@@ -90,7 +90,7 @@ If Line 9 > 0, Part IV must be completed.
 | Cleaning services for office | |
 | Web developer (one-off project) | |
 
-If the user paid any individual contractor $600+ in the year, they must file Form 1099-NEC for that contractor. Note this on Line I/J of the header.
+If the user paid any individual contractor $600+ in 2025 ($2,000+ for payments made in 2026), they must file Form 1099-NEC for that contractor. Note this on Line I/J of the header.
 
 ### Line 12 — Depletion
 
@@ -101,10 +101,10 @@ Only for natural-resource extraction (oil, gas, timber, minerals). Almost never 
 The Form 4562 total. See [`depreciation.md`](./depreciation.md) for the year-by-year limits and recapture rules.
 
 Quick rules:
-- Items ≤ $2,500: expense under de minimis safe harbor; put on Lines 18, 22, or 27a
+- Items ≤ $2,500: expense under de minimis safe harbor; put on Lines 18, 22, or 27b
 - Items > $2,500 with useful life > 1 year: depreciate or §179 via Form 4562
 - §179 is limited to taxable business income; excess carries forward
-- Listed property (vehicles, computers, cell phones) has stricter substantiation requirements
+- Listed property (vehicles and other transportation property; computers only if placed in service before 2018; cell phones are not listed property) has stricter substantiation requirements
 
 ### Line 14 — Employee benefit programs
 
@@ -149,7 +149,7 @@ The owner's own benefits go elsewhere:
 | Tax software subscription (business use %) | |
 | Professional consultants | |
 | Trade or professional association dues | |
-| Jupid subscription, QuickBooks, FreshBooks | |
+| Bookkeeping or accounting software subscription | |
 
 ### Line 18 — Office expense
 
@@ -249,7 +249,11 @@ Gross W-2 wages paid to employees. Report before withholding. The employer FICA 
 
 If the user has no W-2 employees (solo or only contractors), this is zero.
 
-### Line 27a — Other expenses
+### Line 27a — Energy efficient commercial buildings deduction
+
+New position on the 2025 form: the §179D deduction from Form 7205 (attach the form). Almost never used by solo filers. Do not put other expenses here.
+
+### Line 27b — Other expenses
 
 Catchall for anything that doesn't fit Lines 8-26. Common items:
 
@@ -264,11 +268,11 @@ Catchall for anything that doesn't fit Lines 8-26. Common items:
 - Business publications and subscriptions (NYT for a journalist, Adweek for a marketer, etc.)
 - Conference fees (registration, not travel/meals)
 
-Each Line 27a item must be itemized on Part V, Line 48.
+Each Line 27b item must be itemized on Part V, Line 48.
 
 ### Line 28 — Total expenses
 
-Sum of Lines 8 through 27a.
+Sum of Lines 8 through 27b (Line 27a included).
 
 ### Line 29 — Tentative profit or loss
 
@@ -313,12 +317,12 @@ See [`vehicle.md`](./vehicle.md).
 
 ## Part V — Other Expenses (Line 48)
 
-Itemized list of everything in Line 27a. Format:
+Itemized list of everything in Line 27b. Format:
 
 | Description | Amount |
 |-------------|--------|
 | <name of expense> | <amount> |
 | ... | ... |
-| **Total** | <Line 27a> |
+| **Total** | <Line 27b> |
 
 The IRS doesn't require receipts attached, but the user should retain them. The description should be specific enough to defend in audit ("Adobe Creative Cloud annual subscription" not "software").

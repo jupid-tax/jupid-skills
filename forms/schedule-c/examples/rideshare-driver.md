@@ -78,13 +78,13 @@ Plus Line 16b: $212
 | Uber commission (~25% of fares; reported gross on 1099, deducted here) | Line 10 (Commissions/fees) | $5,950 |
 | DoorDash commission (~10%) | Line 10 (Commissions/fees) | $740 |
 | Roadside assistance (AAA) | Line 15 (Insurance) | $96 |
-| Cell phone × 70% business use | Line 25 (Utilities — phone) or Line 27a | $560 |
-| Snacks and water for passengers | Line 27a (Other) | $185 |
-| Rideshare-required dashcam ($120, expensed under de minimis) | Line 27a (Other) | $120 |
+| Cell phone × 70% business use | Line 25 (Utilities — phone) or Line 27b | $560 |
+| Snacks and water for passengers | Line 27b (Other) | $185 |
+| Rideshare-required dashcam ($120, expensed under de minimis) | Line 27b (Other) | $120 |
 | Phone mount and charger | Line 22 (Supplies) | $48 |
 | Car washes (business portion 81.4%) | Line 9 (already inside standard mileage) | $0 separately |
 
-Note: Carlos uses standard mileage, so gas/repairs/insurance/depreciation are inside the rate. His vehicle insurance is *not* on Line 15 — it's bundled into the per-mile rate. Roadside assistance is a separate non-vehicle policy, so it's Line 15 (or Line 27a; either is defensible).
+Note: Carlos uses standard mileage, so gas/repairs/insurance/depreciation are inside the rate. His vehicle insurance is *not* on Line 15 — it's bundled into the per-mile rate. Roadside assistance is a separate non-vehicle policy, so it's Line 15 (or Line 27b; either is defensible).
 
 ### No home office
 
@@ -139,7 +139,8 @@ J. (skipped)
 24b. Deductible meals (50%):       $0
 25. Utilities:                     $560      (cell phone × 70% business)
 26. Wages:                         $0
-27a. Other expenses (Part V):      $305
+27a. Energy efficient commercial bldgs: $0
+27b. Other expenses (Part V):      $305
 28. Total expenses:                $35,391
 
 ## Part II totals
@@ -161,12 +162,12 @@ J. (skipped)
 47a. Have evidence:                Yes (Hurdlr app + receipts)
 47b. Written:                      Yes (digital log)
 
-## Part V — Other Expenses (detail of Line 27a)
+## Part V — Other Expenses (detail of Line 27b)
 | Description                          | Amount |
 |---------------------------------------|--------|
 | Passenger snacks and water            | $185   |
 | Dashcam (under de minimis $2,500)     | $120   |
-| **Total (Line 48 = Line 27a)**        | $305   |
+| **Total (Line 48 = Line 27b)**        | $305   |
 
 ## Required attachments
 - [ ] Form 4562 — Not required (no §179 or depreciation; standard mileage)
@@ -197,7 +198,7 @@ J. (skipped)
 
 **Why not deduct gas and repairs separately?** Carlos chose standard mileage. Gas, repairs, insurance, depreciation, and oil are inside the 70¢/mile rate. Deducting them again would be double-dipping.
 
-**Why is vehicle insurance on Line 15 ($96) but not the regular auto insurance ($2,100)?** Auto insurance is bundled into standard mileage. AAA roadside is a separate optional service Carlos buys outside of his auto policy — so it's a legitimate Line 15 (or Line 27a) item.
+**Why is vehicle insurance on Line 15 ($96) but not the regular auto insurance ($2,100)?** Auto insurance is bundled into standard mileage. AAA roadside is a separate optional service Carlos buys outside of his auto policy — so it's a legitimate Line 15 (or Line 27b) item.
 
 **Why isn't Line 24a (Travel) used?** Carlos drives in his local metro area. He's not "away from home" overnight. Local driving is Line 9, not Line 24a.
 

@@ -17,11 +17,11 @@ A converted garage used only for the business? Exclusive — qualifies.
 
 ## When the home office disqualifies
 
-The user must operate as a sole proprietor or single-member LLC. Employees can no longer deduct home office expenses (TCJA eliminated unreimbursed employee business expenses through 2025; check status for 2026).
+The user must operate as a sole proprietor or single-member LLC. Employees can no longer deduct home office expenses: IRC §67(h) disallows miscellaneous itemized deductions for tax years beginning after 2017, and P.L. 119-21 §70110 removed the 2025 end date, so this also applies for 2026 and later.
 
 Also disqualifying:
 - Renting the space *to* the employer (special anti-abuse rules)
-- Using the space < 50% of the time on average (not a hard rule, but the IRS gets suspicious)
+- Using the space only incidentally or occasionally for business: the regular use test requires use on a regular basis, judged on all facts and circumstances (Pub. 587 (2025), Regular Use). There is no percentage-of-time threshold; ask how often the space is used for business
 
 ## Method 1 — Simplified
 
@@ -127,7 +127,7 @@ Annual rent: $24,000          → $24,000 × 13.33% = $3,200
 Renter's insurance: $300      → $300 × 13.33% = $40
 Electric: $1,800              → $1,800 × 13.33% = $240
 Internet: $720 (50% biz use)* → $720 × 50% × 13.33% = $48 (* internet is split twice: business % then home-office %)
-                                Actually for internet, simpler: deduct business-use % of internet on Line 27a directly,
+                                Actually for internet, simpler: deduct business-use % of internet on Line 27b directly,
                                 not through Form 8829. Pick one or the other; don't double-count.
 
 Schedule C Line 30: ~$3,480 (rent + insurance + utilities; no depreciation as renter)
@@ -146,7 +146,7 @@ Schedule C Line 30: ~$3,480 (rent + insurance + utilities; no depreciation as re
 
 ## Year-to-year switching
 
-The user can switch methods year over year. There's no irrevocability. But:
+The user chooses the method each tax year. The election to use the simplified method is made on a timely filed, original return, and the choice for a tax year is irrevocable once made; switching between the simplified method and actual expenses in a later year is not a change in accounting method and needs no IRS consent (Pub. 587 (2025), Electing the Simplified Method). But:
 
 - Switching from regular to simplified: any prior-year depreciation is "frozen" — it stays in the basis and recaptures at sale, but no current-year impact
 - Switching from simplified to regular: ordinary; just compute the new number on Form 8829

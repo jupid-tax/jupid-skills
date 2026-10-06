@@ -10,16 +10,16 @@ IRC §168(k) lets a taxpayer deduct a percentage of an asset's adjusted basis in
 
 | Year placed in service | TCJA original | OBBBA 2025 modification |
 |------------------------|----------------|--------------------------|
-| 2017 (Q4 only, post-Sept 27) | 50% / 100% (new vs. used) | n/a |
+| 2017 | 50% if acquired before Sept 28, 2017; 100% if acquired after Sept 27, 2017 | n/a |
 | 2018–2022 | 100% | n/a |
 | 2023 | 80% | n/a |
 | 2024 | 60% | n/a |
-| 2025 (pre-Jan 19) | 40% | 40% (no OBBBA effect) |
-| 2025 (post-Jan 19) | n/a | **100% (OBBBA)** |
-| 2026 | 20% (TCJA) | **100% (OBBBA — verify)** |
-| 2027+ | 0% (TCJA) | TBD |
+| 2025, property acquired before Jan 20, 2025 | 40% | 40% (no OBBBA effect) |
+| 2025, property acquired after Jan 19, 2025 | n/a | **100% (OBBBA)**; election to use 40% for the first tax year ending after Jan 19, 2025 |
+| 2026 | 20% (TCJA) | **100% for property acquired after Jan 19, 2025** |
+| 2027+ | 0% (TCJA) | **100% for property acquired after Jan 19, 2025** (no end date) |
 
-**OBBBA 2025** (One Big Beautiful Bill Act) made bonus depreciation permanent at 100% for property placed in service after January 19, 2025. **Verify the current-year rate** at https://www.irs.gov/businesses/small-businesses-self-employed/depreciation-and-amortization-cost-recovery before filing — legislative changes can recur.
+**OBBBA 2025** (One Big Beautiful Bill Act, P.L. 119-21 §70301) made bonus depreciation permanent at 100% for qualified property **acquired** (and placed in service) after January 19, 2025. The acquisition date (binding written contract date), not the placed-in-service date, decides 40% vs. 100% (2025 Form 4562 instructions, Line 14; Pub. 946 (2025), chapter 3). **Verify the current-year rate** at https://www.irs.gov/businesses/small-businesses-self-employed/depreciation-and-amortization-cost-recovery before filing — legislative changes can recur.
 
 ---
 
@@ -45,7 +45,7 @@ What does NOT qualify:
 2. Apply bonus depreciation: rate × (cost − §179 elected)
 3. Apply MACRS to the remaining basis: (cost − §179 − bonus) depreciated over the recovery period
 
-Example for a $50,000 5-year asset placed in service in 2025 (post-Jan 19):
+Example for a $50,000 5-year asset acquired and placed in service in 2025 after January 19:
 
 ```
 Cost:                                  $50,000
@@ -69,7 +69,7 @@ A taxpayer can elect *out* of bonus depreciation for an entire asset class under
 - Is made on a written statement attached to the timely-filed return
 - Identifies the class of property (3-year, 5-year, 7-year, 10-year, 15-year, 20-year, QIP, or any other class)
 - Applies to **all** assets in that class placed in service in the tax year — can't pick and choose individual assets
-- Is irrevocable without IRS consent (the consent process is via Form 3115)
+- Is irrevocable without IRS consent, which requires a private letter ruling request (Reg. §1.168(k)-2(f)(5)); a taxpayer who filed timely without the election can still make it on an amended return filed within 6 months of the due date (excluding extensions), marked "Filed pursuant to section 301.9100-2" (2025 Form 4562 instructions, Line 14)
 
 **Why opt out**: a taxpayer expecting to be in a much higher tax bracket later (or with state-conformity issues) may prefer slower depreciation. Solo filers rarely opt out.
 
@@ -168,7 +168,7 @@ ADS can be **elected** (irrevocable for that class in that year) or **required**
 
 ## Bonus on listed property
 
-Listed property used >50% for business qualifies for bonus depreciation, subject to §280F luxury auto caps (for cars/light trucks). The bonus computation appears on Part V Line 25 and is then carried to Part II Line 16.
+Listed property used >50% for business qualifies for bonus depreciation, subject to §280F luxury auto caps (for cars/light trucks). The bonus computation appears on Part V Line 25, is totaled on Line 28, and carries to Part IV Line 21 (not Part II).
 
 For heavy SUVs (>6,000 lbs GVWR), bonus is uncapped post-2018 — the §280F luxury auto limits don't apply. This is why heavy SUVs are tax-favored: §179 up to $31,300 (2025), then 100% bonus on the remainder, can fully expense a $80,000 truck in year 1.
 

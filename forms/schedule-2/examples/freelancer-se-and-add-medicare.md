@@ -70,7 +70,7 @@ But IRC §1411(c)(2) excludes income from active trades or businesses. Priya's c
 - No early IRA distributions
 - No household employees
 - No first-time homebuyer credit
-- All Lines 1, 2, 5, 6, 7, 8, 9, 10, 13, 14, 15, 16, 17, 18, 20 = $0
+- All Lines 1a–1z, 2, 5, 6, 7, 8, 9, 13, 14, 15, 16, 17, 18, 19, 20 = $0; Line 10 is reserved
 
 ## The completed Schedule 2 draft
 
@@ -82,10 +82,12 @@ Name(s) shown on Form 1040: Priya Shah
 Your social security number: XXX-XX-XXXX
 
 ## Part I — Tax
- 1.  Alternative minimum tax. Attach Form 6251:           $0
- 2.  Excess advance premium tax credit repayment.
+ 1a. Excess advance premium tax credit repayment.
      Attach Form 8962:                                    $0
- 3.  Add lines 1 and 2. Enter here and on Form 1040,
+ 1b–1y. Other additions to tax:                           $0
+ 1z. Add lines 1a through 1y:                             $0
+ 2.  Alternative minimum tax. Attach Form 6251:           $0
+ 3.  Add lines 1z and 2. Enter here and on Form 1040,
      1040-SR, or 1040-NR, line 17:                        $0
 
 ## Part II — Other Taxes
@@ -99,22 +101,21 @@ Your social security number: XXX-XX-XXXX
  8.  Additional tax on IRAs or other tax-favored accounts.
      Attach Form 5329 if required:                        $0
  9.  Household employment taxes. Attach Schedule H:       $0
-10.  Repayment of first-time homebuyer credit:            $0
+10.  Reserved for future use:                             —
 11.  Additional Medicare Tax. Attach Form 8959:           $394
 12.  Net investment income tax. Attach Form 8960:         $152
-13.  Section 965 net tax liability:                       $0
+13.  Uncollected SS/Medicare tax on tips or GTL:          $0
 14.  Interest on installment income (residential lots
      and timeshares):                                     $0
 15.  Interest on deferred tax on installment sales
      > $150,000:                                          $0
 16.  Recapture of low-income housing credit:              $0
 17.  Other additional taxes:                              $0
-18.  Total Other Additional Taxes (17a–17z):              $0
-19.  Reserved for future use:                             —
+18.  Total additional taxes (17a–17z):                    $0
+19.  Recapture of net EPE from Form 4255:                 $0
 20.  Section 965 installment from Form 965-A:             $0
-21.  Add lines 4, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,
-     and 18. Enter here and on Form 1040, 1040-SR, or
-     1040-NR, line 23:                                    $29,452
+21.  Add lines 4, 7 through 16, 18, and 19. Enter here
+     and on Form 1040 or 1040-SR, line 23:                $29,452
 
 ## Form 1040 routing
 Form 1040 Line 17 (from Schedule 2 Line 3):               $0
@@ -127,9 +128,9 @@ Form 1040 Line 23 (from Schedule 2 Line 21):              $29,452
 
 ## Validation summary
 - Math:
-  - Line 3 = $0 + $0 = $0 ✓
+  - Line 3 = $0 (Line 1z) + $0 = $0 ✓
   - Line 7 = $0 + $0 = $0 ✓
-  - Line 21 = $28,906 + $0 + $0 + $0 + $0 + $394 + $152 + $0 + $0 + $0 + $0 + $0 = $29,452 ✓
+  - Line 21 = $28,906 + $0 + $0 + $0 + $0 + $394 + $152 + $0 + $0 + $0 + $0 + $0 + $0 = $29,452 ✓
 - Cross-form: Schedule SE, 8959, 8960 attached
 - Sanity:
   - SE tax $28,906 on $243,804 SE earnings = 11.86% effective (capped SS portion + uncapped Medicare) — within expected range

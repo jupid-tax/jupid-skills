@@ -1,10 +1,10 @@
 # Schedule 2 Line-by-Line Reference
 
-Complete lookup for every line on Schedule 2 (Form 1040). Use this when the agent needs to confirm what amount belongs on a line and which upstream form sources it.
+Complete lookup for every line on Schedule 2 (Form 1040). Use this when the agent needs to confirm what amount belongs on a line and which upstream form sources it. Line map verified against the **2025 Schedule 2 (created 5/8/25) and the 2025 Instructions for Form 1040**, filed in 2026; re-check the next revision at https://www.irs.gov/forms-pubs/about-schedule-2-form-1040.
 
 The form has two parts:
 
-- **Part I — Tax** (Lines 1–3) → totals to **Form 1040 Line 17**
+- **Part I — Tax** (Lines 1a–3) → totals to **Form 1040 Line 17**
 - **Part II — Other Taxes** (Lines 4–21) → totals to **Form 1040 Line 23**
 
 All amounts originate from upstream forms or worksheets. Schedule 2 is a transcription target, not a calculation.
@@ -20,24 +20,9 @@ For MFJ returns, only the *primary* filer's SSN — same as Form 1040 page 1.
 
 ---
 
-## Part I — Tax (Lines 1–3) → Form 1040 Line 17
+## Part I — Tax (Lines 1a–3) → Form 1040 Line 17
 
-### Line 1 — Alternative minimum tax
-
-| Field | Detail |
-|-------|--------|
-| Source form | Form 6251 |
-| Source line | Form 6251 Line 11 |
-| IRC | §55, §59 |
-| Threshold trigger | Form 6251 worksheet shows tentative minimum tax > regular tax |
-| Common triggers | ISO exercise (the bargain element is an AMT preference), large state and local tax deduction (added back for AMT), large miscellaneous itemized deductions (pre-TCJA — most no longer relevant), depreciation method differences, private activity bond interest |
-| 2025 AMT exemption | Single/HoH: $88,100; MFJ: $137,000; MFS: $68,500 (Rev. Proc. 2024-40). Phaseout starts at $626,350 single / $1,252,700 MFJ. |
-| 2026 AMT exemption | Set by inflation adjustment in fall 2025 Revenue Procedure — verify before filing. |
-| OBBBA 2025 changes | Permanent AMT exemption increases retained from TCJA; verify exact phaseout thresholds for 2026 against current Revenue Procedure. |
-
-If Line 1 > 0, Form 6251 must be attached.
-
-### Line 2 — Excess advance premium tax credit repayment
+### Line 1a — Excess advance premium tax credit repayment
 
 | Field | Detail |
 |-------|--------|
@@ -45,19 +30,58 @@ If Line 1 > 0, Form 6251 must be attached.
 | Source line | Form 8962 Line 29 |
 | IRC | §36B |
 | Trigger | Filer received APTC during the year (reported on Form 1095-A) and reconciliation shows actual income made them entitled to *less* PTC than was advanced |
-| Repayment limitation | Capped per Pub 974 Table 5 if AGI is below 400% of FPL. Above 400% FPL, limitation may not apply (verify post-IRA / post-OBBBA rules for 2026). |
-| Routing alternative | If Form 8962 instead shows *unused* PTC (Line 26 > 0), that goes on **Schedule 3 Line 9** as a refundable credit, NOT Schedule 2 Line 2. The two can never both be nonzero. |
+| Repayment limitation (2025 returns) | Capped per Table 5 of the 2025 Form 8962 instructions if household income is below 400% of FPL: $375 / $750 (under 200%), $975 / $1,950 (200%–under 300%), $1,625 / $3,250 (300%–under 400%) for single / other filing statuses; no cap at 400% or more. |
+| Repayment limitation (2026 and later) | None. P.L. 119-21 removed the cap for tax years beginning after Dec. 31, 2025 (IRS Premium Tax Credit Q&A, Q31). |
+| Routing alternative | If Form 8962 instead shows net PTC (Line 26 > 0), that goes on **Schedule 3 Line 9** as a refundable credit, NOT Schedule 2. The two can never both be nonzero. |
 
-If Line 2 > 0, Form 8962 must be attached.
+If Line 1a > 0, Form 8962 must be attached.
+
+### Lines 1b–1c — Repayment of clean vehicle credits transferred to a dealer
+
+| Field | Detail |
+|-------|--------|
+| Source | Schedule A (Form 8936): Part II (new vehicle) → Line 1b; Part IV (previously owned vehicle) → Line 1c; amount from Part I line 4a |
+| Trigger | User transferred the credit to a registered dealer at purchase and no longer qualifies (e.g., income above the limit) |
+
+### Lines 1d–1f — Elective payment election (EPE) items
+
+| Line | Source |
+|------|--------|
+| 1d | Recapture of net EPE: Form 4255, line 2a, column (l) |
+| 1e | Excessive payments on gross EPE: Form 4255, column (n)(1); check the box for the Form 4255 line |
+| 1f | 20% excessive payment: Form 4255, column (n)(3); check the box |
+
+### Line 1y — Other additions to tax
+
+Items listed in the 2025 Schedule 2 instructions, each identified by a code: "ARPCR" (recapture of the alternative fuel vehicle refueling property credit, Form 8911), "EPE8933", "NEPE8933", "EPGEPE", "6418(g)(2)".
+
+### Line 1z — Add Lines 1a through 1y
+
+Computed only.
+
+### Line 2 — Alternative minimum tax
+
+| Field | Detail |
+|-------|--------|
+| Source form | Form 6251 |
+| Source line | Form 6251 Line 11 |
+| IRC | §55, §59 |
+| Threshold trigger | Form 6251 shows tentative minimum tax (line 9) greater than line 10 (Form 1040 line 16 tax + Schedule 2 line 1z − Schedule 3 line 1) |
+| Common triggers | ISO exercise (the bargain element is an AMT adjustment), state and local taxes deducted on Schedule A (added back on Form 6251 line 2a; the standard deduction is added back too), depreciation method differences, private activity bond interest |
+| 2025 AMT exemption | Single/HoH: $88,100; MFJ/QSS: $137,000; MFS: $68,500. Phaseout starts at $626,350 single and MFS / $1,252,700 MFJ (2025 Form 6251 and instructions; Rev. Proc. 2024-40). 26% rate on the first $239,100 ($119,550 MFS) of line 6. |
+| 2026 AMT exemption | Single/HoH: $90,100; MFJ/QSS: $140,200; MFS: $70,100. Phaseout starts at $500,000 single and MFS / $1,000,000 MFJ, and the exemption phases out at 50 cents per dollar (complete at $680,200 / $1,280,400 / $640,200). 28% rate above $244,500 ($122,250 MFS). Source: Rev. Proc. 2025-32 §4.10, reflecting P.L. 119-21. |
+| 2025 form change | Form 6251 line 1 is split into 1a/1b (the Schedule 1-A senior deduction is added back) — 2025 Instructions for Form 6251, What's New. |
+
+If Line 2 > 0, Form 6251 must be attached.
 
 ### Line 3 — Total Part I
 
 | Field | Detail |
 |-------|--------|
-| Computation | Line 1 + Line 2 (plus any 1a–1z sub-lines per current-year form revision) |
+| Computation | Line 1z + Line 2 |
 | Routes to | Form 1040, 1040-SR, or 1040-NR Line 17 |
 
-Verify the destination line on Form 1040 against the current-year revision; the line number has been stable since the 2018 redesign but could shift.
+Verify the destination line on Form 1040 against the current-year revision.
 
 ---
 
@@ -72,7 +96,7 @@ Verify the destination line on Form 1040 against the current-year revision; the 
 | IRC | §1401 |
 | Rate | 15.3% on net SE earnings up to the SS wage base (12.4% Social Security + 2.9% Medicare); 2.9% Medicare-only on SE earnings above the SS wage base |
 | 2025 SS wage base | $176,100 (SSA announcement October 2024) |
-| 2026 SS wage base | Announced ~October 2025 — verify before filing |
+| 2026 SS wage base | $184,500 (https://www.ssa.gov/oact/cola/cbb.html) |
 | Threshold | Required if net SE earnings ≥ $400 |
 | Half-of-SE-tax adjustment | Half of Schedule 2 Line 4 is deductible above-the-line on Schedule 1 Line 15 |
 
@@ -85,7 +109,7 @@ If Line 4 > 0, Schedule SE must be attached.
 | Source form | Form 4137 |
 | Source line | Form 4137 Line 13 |
 | IRC | §3101 (employee share of FICA) |
-| Trigger | Filer received tips not reported to the employer (so employer didn't withhold FICA on them); the employee owes the missing FICA share |
+| Trigger | Filer received cash tips of $20 or more in a month that were not reported to the employer (so employer didn't withhold FICA on them); the employee owes the missing FICA share. Tips reported to the employer but not fully withheld on are Line 13, not Line 5. |
 
 If Line 5 > 0, Form 4137 must be attached.
 
@@ -124,23 +148,15 @@ If Line 8 > 0, Form 5329 must be attached.
 | Source form | Schedule H |
 | Source line | Schedule H Line 8 (or Line 26 if applicable) |
 | IRC | §3510, §3102 |
-| Trigger | Filer paid a household employee (nanny, housekeeper, eldercare worker) cash wages above the FICA threshold ($2,800 in 2025; verify 2026) OR ≥ $1,000 in any quarter triggering FUTA |
-| 2025 FICA threshold | $2,800 per employee per year (Notice 2024-90 / SSA announcement) |
-| 2026 FICA threshold | Verify against 2026 IRS announcement |
+| Trigger | Filer paid any one household employee cash wages of $2,800 or more in 2025, withheld federal income tax at the employee's request, OR paid total cash wages of $1,000 or more in any calendar quarter of 2024 or 2025 (FUTA) |
+| 2025 FICA threshold | $2,800 per employee per year (2025 Schedule 2 instructions, line 9; SSA coverage thresholds) |
+| 2026 FICA threshold | $3,000 per employee per year (https://www.ssa.gov/oact/cola/CovThresh.html) |
 
 If Line 9 > 0, Schedule H must be attached.
 
-### Line 10 — Repayment of first-time homebuyer credit
+### Line 10 — Reserved for future use
 
-| Field | Detail |
-|-------|--------|
-| Source form | Form 5405 |
-| Source line | Form 5405 Line 16 |
-| IRC | §36 (now repealed for new credits; repayment provisions remain) |
-| Trigger | Filer claimed the original 2008 first-time homebuyer credit (refundable up to $7,500 with 15-year interest-free repayment) and owes the annual installment of $500. The 2008 credit was unique — 2009/2010 credits had no repayment unless the home was sold within 3 years. |
-| Note | Repayment ends after 15 installments; most filers' obligation expired after 2023. Only filers who claimed in 2008 and still owe partial installments report here. |
-
-If Line 10 > 0, Form 5405 must be attached.
+On the 2025 revision Line 10 is "Reserved for future use." Through 2024 returns it carried the repayment of the 2008 first-time homebuyer credit (Form 5405, Rev. November 2024, directs the amount to the 2024 Schedule 2 line 10); the 15 annual installments ended with 2024 returns. Leave blank. If a user insists they owe a homebuyer-credit repayment, stop and refer them to a CPA.
 
 ### Line 11 — Additional Medicare Tax
 
@@ -162,21 +178,19 @@ If Line 11 > 0, Form 8959 must be attached.
 | Source line | Form 8960 Line 17 |
 | IRC | §1411 |
 | Rate | 3.8% on the lesser of (a) net investment income or (b) MAGI above threshold |
-| Thresholds (statutory, not indexed) | Single / HoH / QSS: $200,000; MFJ / QSS-with-spouse: $250,000; MFS: $125,000 |
+| Thresholds (statutory, not indexed) | Single / HoH: $200,000; MFJ / QSS: $250,000; MFS: $125,000 (filers with Form 2555 use lower AGI screens; see the 2025 Schedule 2 instructions, line 12) |
 | Investment income includes | Interest, dividends, capital gains, rental and royalty income (passive), non-qualified annuities, business income from passive activities |
 | Investment income excludes | Wages, SE income from active trades, distributions from qualified retirement plans, IRA distributions, tax-exempt interest, Social Security benefits |
 
 If Line 12 > 0, Form 8960 must be attached.
 
-### Line 13 — Section 965 deferred foreign income transition tax
+### Line 13 — Uncollected social security and Medicare or RRTA tax on tips or group-term life insurance
 
 | Field | Detail |
 |-------|--------|
-| Source form | Form 965-A |
-| IRC | §965 |
-| Trigger | TCJA-era transition tax on accumulated foreign earnings; most original obligations have been paid via 8-year installment schedule (2017–2025). Final installment for many filers was 2025. Verify current-year applicability. |
-
-If Line 13 > 0 or Line 20 > 0, Form 965-A must be attached.
+| Source | Form W-2 box 12, codes A and B (tips) or M and N (group-term life insurance for former employees) |
+| IRC | §3101, §3102 |
+| Trigger | The employer could not collect the employee share of FICA/RRTA on reported tips or on group-term life insurance coverage, and reported the uncollected amounts on the W-2 |
 
 ### Line 14 — Interest on installment income from sale of certain residential lots and timeshares
 
@@ -196,7 +210,7 @@ If Line 13 > 0 or Line 20 > 0, Form 965-A must be attached.
 
 | Field | Detail |
 |-------|--------|
-| Source form | Form 8611 |
+| Source form | Form 8611 (line 14) |
 | IRC | §42 |
 | Trigger | Filer claimed §42 LIHTC and the property failed compliance during the recapture period. |
 
@@ -210,23 +224,27 @@ See [`line-17-subitems.md`](./line-17-subitems.md) for the complete sub-item lis
 
 Computed: sum of Lines 17a through 17z.
 
-### Line 19 — Reserved for future use
+### Line 19 — Recapture of net EPE from Form 4255
 
-Leave blank.
+| Field | Detail |
+|-------|--------|
+| Source | Form 4255, line 1d, column (l) — recapture of net elective payment election amount related to the Form 3468, Part IV credit |
+| Trigger | Rare for individuals |
 
 ### Line 20 — Section 965 net tax liability installment from Form 965-A
 
 | Field | Detail |
 |-------|--------|
 | Source | Form 965-A |
-| Note | This is the *current installment* and is paid separately. Verify whether the current-year form revision rolls Line 20 into Line 21 (it has not in recent revisions; Section 965 installment is tracked separately on a different IRS account). |
+| IRC | §965 |
+| Note | The *current installment* of a §965(h) election. It is not added into Line 21 (2025 form: "Add lines 4, 7 through 16, 18, and 19"). If Line 20 > 0, Form 965-A must be attached. |
 
 ### Line 21 — Total Part II
 
 | Field | Detail |
 |-------|--------|
-| Computation | Line 4 + Line 7 + Line 8 + Line 9 + Line 10 + Line 11 + Line 12 + Line 13 + Line 14 + Line 15 + Line 16 + Line 18 |
-| Excludes | Line 20 (Section 965 installment is paid separately, not added to general income tax due) |
-| Routes to | Form 1040, 1040-SR, or 1040-NR Line 23 |
+| Computation | Line 4 + Lines 7 through 16 + Line 18 + Line 19 (Line 10 is reserved and blank) |
+| Excludes | Line 20 (Section 965 installment) |
+| Routes to | Form 1040 or 1040-SR Line 23; Form 1040-NR Line 23b |
 
 Always verify the exact Line 21 formula against the current-year form revision — line numbering in Part II has shifted in past revisions.

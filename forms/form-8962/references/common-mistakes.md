@@ -6,9 +6,9 @@ The most frequent audit-trip mistakes filers and their software make on Form 896
 
 **The mistake**: For a 2025 return, filer uses 2025 HHS poverty guidelines (e.g., $15,650 for family of 1) on Line 4 instead of 2024 guidelines ($15,060).
 
-**Why it's wrong**: IRC §36B(d)(3)(C) defines FPL as the most recent HHS guidelines published as of the **first day of the open enrollment period** for the plan year. For 2025 plan year, that's November 2024 → use 2024 HHS table.
+**Why it's wrong**: IRC §36B(d)(3)(B) uses the most recently published poverty line as of the **1st day of the regular enrollment period** for coverage during the calendar year. For 2025 plan year, that's November 2024 → use 2024 HHS table.
 
-**Citation**: IRC §36B(d)(3)(C); Pub 974 Chapter 2.
+**Citation**: IRC §36B(d)(3)(B); 2025 Form 8962 instructions, Line 4.
 
 **Correction**: Always use prior-year HHS guidelines. 2025 returns → 2024 FPL; 2026 returns → 2025 FPL.
 
@@ -18,7 +18,7 @@ The most frequent audit-trip mistakes filers and their software make on Form 896
 
 **Why it's wrong**: Tax family size = filer + spouse + people *claimed as dependents* on Form 1040. An adult child not claimed is in their own tax family.
 
-**Citation**: IRC §36B(d)(1)(B); Pub 974 Chapter 2.
+**Citation**: IRC §36B(d)(1); 2025 Form 8962 instructions, Line 1.
 
 **Correction**: Count only filer + spouse + claimed dependents. Reduce Line 1 accordingly. Reduce Line 4 (FPL) accordingly.
 
@@ -26,7 +26,7 @@ The most frequent audit-trip mistakes filers and their software make on Form 896
 
 **The mistake**: Filer's 17-year-old dependent worked a part-time job and chose to file a return to claim a small refund of withholding. Filer adds the dependent's MAGI ($4,000) to Line 2b.
 
-**Why it's wrong**: Line 2b includes only dependents who are **required** to file, not those who chose to file optionally. A 17-year-old earning $4,000 in W-2 wages is below the filing requirement threshold (~$15,000 for 2025 single dependents under 65 with only earned income).
+**Why it's wrong**: Line 2b includes only dependents who are **required** to file, not those who chose to file optionally. A 17-year-old earning $4,000 in W-2 wages is below the filing requirement threshold (for 2025, a single dependent under 65 and not blind must file if earned income was over $15,750; 2025 Form 1040 instructions, Chart B).
 
 **Citation**: IRC §36B(d)(2)(A)(ii); Pub 501 (filing requirements).
 
@@ -46,9 +46,9 @@ The most frequent audit-trip mistakes filers and their software make on Form 896
 
 **The mistake**: Two divorced parents share a marketplace policy for their child. Each files Form 8962 independently. Parent A allocates 70/30; Parent B allocates 60/40.
 
-**Why it's wrong**: Both filers must use the **same allocation percentages**. The IRS cross-checks Forms 8962 between the two SSNs and issues notices when they disagree.
+**Why it's wrong**: Both filers must use **matching allocation percentages** that sum to 100%. Mismatched allocations can lead to IRS correspondence on both returns.
 
-**Citation**: Treas. Reg. §1.36B-4(c).
+**Citation**: Treas. Reg. §1.36B-4(a)(1)(ii)(B) and (b)(3); 2025 Form 8962 instructions, Part IV.
 
 **Correction**: Coordinate the allocation between the parents before either files. Both Forms 8962 must show identical allocation percentages.
 
@@ -56,21 +56,21 @@ The most frequent audit-trip mistakes filers and their software make on Form 896
 
 **The mistake**: Filer married mid-year. Pre-marriage and post-marriage SLCSP differ. Filer uses annual method (Line 10 = Yes) and files.
 
-**Why it's wrong**: Annual method requires same SLCSP, family size, and eligibility every month. Marriage changes family size mid-year, forcing monthly method.
+**Why it's wrong**: Annual method requires enrollment all 12 months with the same enrollment premium and the same applicable SLCSP premium every month. A mid-year marriage usually changes the SLCSP for some months (the instructions say a marriage in a month other than December may make the SLCSP differ), forcing monthly method.
 
-**Citation**: IRC §36B(b)(2); Form 8962 Instructions Line 10.
+**Citation**: Form 8962 Instructions Line 10 and Line 11, Column (b).
 
 **Correction**: Switch to monthly method (Line 10 = No). Fill Lines 12–23 with month-specific amounts. Consider Part V (alternative calculation for year of marriage) if it produces a more favorable result.
 
 ## 7. Missing the repayment limitation cap
 
-**The mistake**: Filer at 250% FPL (single) had $4,200 excess APTC. Preparer enters $4,200 on Schedule 2 Line 2 without checking Line 28.
+**The mistake**: Filer at 250% FPL (single) on a 2025 return had $4,200 excess APTC. Preparer enters $4,200 on Schedule 2 Line 1a without checking Line 28.
 
-**Why it's wrong**: Pub 974 Table 5 caps the repayment for filers below 400% FPL. For 2025, single at 250% FPL: cap = $975. The filer should owe $975, not $4,200. Skipping Line 28 overpays by $3,225.
+**Why it's wrong**: Table 5 in the 2025 Form 8962 instructions caps the repayment for filers below 400% FPL. For 2025, single at 250% FPL: cap = $975. The filer should owe $975, not $4,200. Skipping Line 28 overpays by $3,225. (For 2026 returns there is no cap at any income: P.L. 119-21 §71305.)
 
-**Citation**: IRC §36B(f)(2)(B); Pub 974 Table 5.
+**Citation**: IRC §36B(f)(2)(B); 2025 Form 8962 instructions Table 5.
 
-**Correction**: Always compute Line 28 from Pub 974 Table 5. Line 29 = lesser of Line 27 or Line 28.
+**Correction**: For 2025 and earlier, always compute Line 28 from the instructions' Table 5. Line 29 = lesser of Line 27 or Line 28.
 
 ## 8. Filing Form 1040 without Form 8962 when 1095-A was received
 
@@ -80,15 +80,15 @@ The most frequent audit-trip mistakes filers and their software make on Form 896
 
 **Citation**: IRC §36B(f); Form 8962 Instructions "Who Must File".
 
-**Correction**: Always file Form 8962 if APTC > 0 on Form 1095-A. Failure to reconcile (FTR) status also blocks APTC eligibility for the next plan year.
+**Correction**: Always file Form 8962 if APTC > 0 on Form 1095-A. Failure to reconcile (FTR) can also lead the Marketplace to deny APTC for a later plan year.
 
 ## 9. Reporting the wrong applicable figure for the year
 
-**The mistake**: For a 2024 return, preparer uses 2024 applicable figure table (with IRA modifications) but for a 2026 return uses the same IRA-modified table.
+**The mistake**: For a 2025 return, preparer uses the 2025 applicable figure table (with IRA modifications) and then reuses the same IRA-modified table for a 2026 return.
 
-**Why it's wrong**: IRA modifications expire after tax year 2025 unless extended. For 2026, verify whether IRA was extended. If not, the pre-IRA table applies and the 400% FPL cliff returns.
+**Why it's wrong**: IRA modifications apply only to tax years beginning before January 1, 2026, and no extension had been enacted as of 2026-10-06. For 2026, the Rev. Proc. 2025-25 table applies (2.10% to 9.96%), the 400% FPL cliff returns, and there is no repayment cap.
 
-**Citation**: IRC §36B(b)(3)(A) (statutory base); ARPA §9661 (2021–2022 modification); IRA §12001 (2021–2025 extension); post-IRA legislation (verify).
+**Citation**: IRC §36B(b)(3)(A) (statutory base); ARPA §9661 (2021–2022 modification); IRA §12001 (2021–2025 extension); Rev. Proc. 2025-25; P.L. 119-21 §71305.
 
 **Correction**: Always cross-check the applicable figure table against the current-year Pub 974 and Form 8962 instructions. Don't reuse a prior year's table.
 
@@ -96,11 +96,11 @@ The most frequent audit-trip mistakes filers and their software make on Form 896
 
 **The mistake**: Filer treats APTC paid by the marketplace as if it were federal income tax withholding (Form 1040 Line 25c).
 
-**Why it's wrong**: APTC is paid by Treasury directly to the insurer; it is not income tax withholding from the filer's wages. Form 1040 Line 25c is for W-2 Box 2 + 1099 federal withholding, not APTC.
+**Why it's wrong**: APTC is paid by Treasury directly to the insurer; it is not income tax withholding from the filer's wages. Form 1040 Lines 25a–25c report federal income tax withheld from Forms W-2, Forms 1099, and other forms, not APTC.
 
-**Citation**: Form 1040 Instructions Line 25c.
+**Citation**: 2025 Form 1040, Lines 25a–25c, and instructions.
 
-**Correction**: APTC reconciles via Form 8962 only. The result lands on Schedule 3 Line 9 (refundable PTC) or Schedule 2 Line 2 (excess APTC repayment). It does not appear on Line 25c.
+**Correction**: APTC reconciles via Form 8962 only. The result lands on Schedule 3 Line 9 (refundable PTC) or Schedule 2 Line 1a (excess APTC repayment). It does not appear on Line 25c.
 
 ## 11. Not coordinating SLCSP across multiple 1095-A forms
 
@@ -118,6 +118,6 @@ The most frequent audit-trip mistakes filers and their software make on Form 896
 
 **Why it's wrong**: IRC §36B(c)(1)(C) generally bars PTC for MFS filers. Exception: domestic abuse or spousal abandonment victims may file MFS and claim PTC if they meet the Pub 974 criteria.
 
-**Citation**: IRC §36B(c)(1)(C); Pub 974 Chapter 1 (MFS exception).
+**Citation**: IRC §36B(c)(1)(C); Treas. Reg. §1.36B-2(b)(2)(ii); 2025 Form 8962 instructions, Married taxpayers (Exception 2) and Victims of domestic abuse or spousal abandonment.
 
-**Correction**: Verify the filer qualifies for the abuse / abandonment exception before claiming PTC on MFS. If qualifying, attach a written statement to the return per Pub 974. If not qualifying, the filer is ineligible for PTC (and may need to repay all APTC, subject to the cap).
+**Correction**: Verify the filer qualifies for the abuse / abandonment exception (Exception 2) before claiming PTC on MFS. If qualifying, check the box on line A of Form 8962; do not attach documentation of the abuse or abandonment (keep it in records). If not qualifying, the filer is ineligible for PTC (and must repay the allocated APTC, subject to the Table 5 cap for 2025; no cap for 2026).

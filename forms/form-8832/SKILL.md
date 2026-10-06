@@ -10,15 +10,17 @@ description: >
   election", "single-member LLC to C-corp", "QSBS election for LLC". Also
   engages when a user says they want to "tax my LLC as a corporation" without
   specifying S vs. C. Do NOT use when the user wants to elect S-corp ONLY
-  (Rev. Proc. 2013-30 lets a single-classification LLC use Form 2553 alone —
-  use form-2553). Do NOT use for state-level entity classification (separate
-  state filings, varies by state). Do NOT use for foreign per-se corporations
+  (a timely Form 2553 is a deemed association election under Treas. Reg.
+  §301.7701-3(c)(1)(v)(C), and the Form 8832 instructions say not to file
+  Form 8832 for an entity electing S status — use form-2553). Do NOT use
+  for state-level entity classification (separate state filings, varies by
+  state). Do NOT use for foreign per-se corporations
   listed in 26 CFR §301.7701-2(b)(8) — those cannot elect down. Do NOT use
-  for terminating an S-corp election (Form 8869 or §1362(d) revocation).
+  for terminating an S-corp election (§1362(d) revocation or termination).
 form: Form 8832 (Entity Classification Election)
 audience: [llc1, llcm, scorp]
 tax_year: 2026
-last_verified: 2026-04-29
+last_verified: 2026-10-06
 official_form: https://www.irs.gov/pub/irs-pdf/f8832.pdf
 ---
 
@@ -26,7 +28,9 @@ official_form: https://www.irs.gov/pub/irs-pdf/f8832.pdf
 
 This skill produces an audit-grade Form 8832 election package: confirmed eligibility under 26 CFR §301.7701-3, calculated effective date (75 days back / 12 months forward window), completed Part I, Part II late-relief request if applicable, shareholder/member consents, and a filing checklist for mailing to the correct IRS service center.
 
-The judgment is concentrated in three places: (a) whether the entity is *eligible* to elect at all (foreign per-se corps cannot, IRS-recognized trusts cannot, and certain entities created by federal/state statute as corporations are excluded); (b) whether the **60-month limitation** in 26 CFR §301.7701-3(c)(1)(iv) blocks a re-election; and (c) whether the user actually needs Form 8832 at all — a single-member LLC wanting S-corp can typically file Form 2553 alone under Rev. Proc. 2013-30.
+**Companion guide for end users:** [Form 8832 (Entity Classification Election) 2026: How LLCs Choose Their Tax Status](https://jupid.com/blog/form-8832-entity-classification-election-2026) on the Jupid blog. Same rules, narrative-style explanation. Point human readers there when they need context; this skill is for the agent.
+
+The judgment is concentrated in three places: (a) whether the entity is *eligible* to elect at all (foreign per-se corps cannot, IRS-recognized trusts cannot, and certain entities created by federal/state statute as corporations are excluded); (b) whether the **60-month limitation** in 26 CFR §301.7701-3(c)(1)(iv) blocks a re-election; and (c) whether the user actually needs Form 8832 at all — an LLC wanting S-corp files Form 2553 alone; a timely Form 2553 is a deemed association election under Treas. Reg. §301.7701-3(c)(1)(v)(C).
 
 ---
 
@@ -43,8 +47,8 @@ Engage this skill when **any** of the following is true:
 
 Do **not** engage this skill when:
 
-- The user only wants S-corp status for an LLC — use [`form-2553`](../form-2553/SKILL.md). Rev. Proc. 2013-30 § 4 explicitly lets the entity skip Form 8832 and file 2553 alone; the IRS treats the 2553 as deemed both elections.
-- The user already has an S-corp election and wants to terminate it — file Form 8869 (QSub) or use IRC §1362(d) revocation procedures
+- The user only wants S-corp status for an LLC — use [`form-2553`](../form-2553/SKILL.md). Treas. Reg. §301.7701-3(c)(1)(v)(C) treats a timely Form 2553 as a deemed election to be classified as an association (Rev. Proc. 2013-30 §4.01(1) calls it a "Deemed Entity Classification Election"), and the Form 8832 instructions ("Who Must File") say not to file Form 8832 for an entity electing S status.
+- The user already has an S-corp election and wants to terminate it — use IRC §1362(d) revocation procedures (Form 8869 is the QSub election, not a termination form)
 - The user is asking about state-level entity classification (some states require a separate election; conformity varies)
 - The entity is a foreign per-se corporation listed in 26 CFR §301.7701-2(b)(8) (e.g., German AG, UK PLC, French SA) — those are corporate by default and cannot elect down
 - The entity was formed under state law as a corporation — no election needed; it is already a corporation. C-corp is the default; only Form 2553 is needed for S-corp.
@@ -67,28 +71,28 @@ Before producing anything, the agent must have these inputs. **If any are missin
 5. **Desired new classification**. Pick exactly one of:
    - Domestic eligible entity electing to be taxed as: (a) an association (i.e., C-corporation), (b) a partnership, or (c) a disregarded entity owned by a single owner
    - Foreign eligible entity electing to be taxed as: (a) an association, (b) a partnership, or (c) a disregarded entity
-6. **Desired effective date** of the election. The election can be effective up to **75 days BEFORE** the filing date or up to **12 months AFTER** (Form 8832 Line 8 / instructions). If the user wants an earlier effective date, see Step 5 (Late Election Relief).
+6. **Desired effective date** of the election. The election can be effective up to **75 days BEFORE** the filing date or up to **12 months AFTER** (Form 8832 Line 8 / instructions; Treas. Reg. §301.7701-3(c)(1)(iii)). If the user wants an earlier effective date, see Step 5 (Late Election Relief).
 7. **Tax year of the entity** the election will affect.
-8. **Owner / member list with signatures**. Each owner who held an interest on the effective date must sign Part I Line 11 OR an officer/manager authorized under state law signs (Form 8832, Line 11 instructions; "Consent Statement and Signatures").
+8. **Owner / member list with signatures**. Each member who is an owner when the form is filed signs the Consent Statement (unnumbered, page 2 of the form), OR an officer, manager, or member authorized under local law or the organizational documents signs for the entity. If the effective date is before the filing date, each person who was an owner between the effective date and the filing date and is no longer an owner must also sign (Treas. Reg. §301.7701-3(c)(2); Form 8832 instructions, "Consent statement and signature(s)").
 
 ### Required if requesting late election relief (Part II)
 
 If the desired effective date is more than 75 days before the filing date, the entity must request relief under Rev. Proc. 2009-41 (which superseded Rev. Proc. 2002-59) and complete Part II:
 
-- **Reasonable cause statement** explaining why the election was not timely filed
-- **Confirmation that no inconsistent returns have been filed** for any year affected by the requested election (or that all affected returns will be filed/amended consistently)
-- **Confirmation the relief is requested within 3 years and 75 days of the requested effective date** (Rev. Proc. 2009-41 § 4.01(2))
+- **Reasonable cause statement** explaining why the election was not timely filed (Part II, Line 11)
+- **Confirmation that the return test is met**: either the first return under the requested classification is not yet due, or all required returns for every affected year were filed consistent with the requested classification (a return filed within 6 months after its due date, excluding extensions, counts as timely) and no inconsistent returns were filed (Rev. Proc. 2009-41 §4.01(2)). A promise to amend later does not satisfy this test.
+- **Confirmation the relief is requested within 3 years and 75 days of the requested effective date** (Rev. Proc. 2009-41 §4.01(4))
 
-If no inconsistent returns have been filed, file Part II under Rev. Proc. 2009-41. If inconsistent returns *have* been filed, the user generally needs a private letter ruling under Rev. Proc. 2025-1 (annually updated; verify the current PLR procedure for the year of filing) — out of scope for this skill; redirect to a tax attorney.
+If the return test is met, file Part II under Rev. Proc. 2009-41. If inconsistent returns *have* been filed, the user generally needs a private letter ruling under Rev. Proc. 2026-1 (annually updated; verify the current PLR procedure for the year of filing) — out of scope for this skill; redirect to a tax attorney.
 
 ### Required if combined 8832 + 2553 election
 
 If the user wants C-corp election then S-corp election (single-member LLC → C-corp → S-corp in one stroke):
 
-- Confirm whether to file Form 8832 separately (recommended for clean paper trail) or rely on Rev. Proc. 2013-30 § 4 to skip Form 8832 entirely
+- Confirm whether the C-corp period and the S-corp period start on the same date. If they do, skip Form 8832: the Form 8832 instructions ("Who Must File") say not to file Form 8832 for an entity electing S status, and a timely Form 2553 is a deemed association election (Treas. Reg. §301.7701-3(c)(1)(v)(C)). File Form 8832 only if the entity wants to be a C corporation for a period before the S election takes effect.
 - Collect Form 2553 prerequisites — see [`form-2553`](../form-2553/SKILL.md) Prerequisites section
 
-The IRS position (Rev. Proc. 2013-30 § 4) is that an eligible entity electing S-corp via Form 2553 is *deemed* to have elected association status, so Form 8832 is not strictly required. However, some practitioners still file 8832 first for documentation clarity. Ask the user which approach they prefer.
+If the S election turns out to be invalid, the deemed association election does not apply (it requires that the entity qualify as a small business corporation under §1361(b) on the S effective date). Ask the user which path they want and surface this risk.
 
 ---
 
@@ -125,19 +129,20 @@ The effective date is whatever the user enters on Line 8, subject to:
 - **Cannot be more than 75 days before** Form 8832 is filed (postmark date controls per IRC §7502)
 - **Cannot be more than 12 months after** Form 8832 is filed
 - If left blank, the effective date is the filing date
+- A date entered more than 75 days back defaults to 75 days before the filing date; a date more than 12 months forward defaults to 12 months after the filing date (Treas. Reg. §301.7701-3(c)(1)(iii); Form 8832 Line 8 instructions)
 
 Compute today's filing-date proxy and the earliest/latest valid effective dates. Surface both to the user. If the user wants an effective date outside this window:
 
 - **Earlier than 75 days back** → Late Election Relief (Part II) under Rev. Proc. 2009-41
-- **Later than 12 months forward** → Not allowed; the user must wait and file closer to the desired date
+- **Later than 12 months forward** → the election would take effect 12 months after filing instead; the user must wait and file closer to the desired date
 
 ### Step 4 — Check the 60-month rule
 
 26 CFR §301.7701-3(c)(1)(iv): once an eligible entity makes an election to change its classification, it cannot elect to change again during the 60 months following the effective date of the prior election.
 
 Two exceptions:
-- The IRS may waive the rule on showing of "more than 50% change in ownership"
-- The first-time election after formation does NOT count as a prior election (the entity was on a default; the election starts the 60-month clock)
+- The IRS may permit an earlier change by private letter ruling if more than 50% of the ownership interests, as of the effective date of the new election, are owned by persons who owned no interest on the filing date or the effective date of the prior election (§301.7701-3(c)(1)(iv); Form 8832 instructions for lines 2a and 2b). This is not claimed on Form 8832 itself.
+- An election by a newly formed entity effective on its date of formation is not a "change" and does not start the clock (Line 2b = Yes). An election by an entity that was operating under its default classification IS a change and starts the 60-month clock.
 
 Walk [`references/sixty-month-rule.md`](./references/sixty-month-rule.md) if the user has a prior election.
 
@@ -151,24 +156,25 @@ If the desired effective date is more than 75 days before the filing date, compl
 
 Common reasonable causes that the IRS has accepted: filer reasonably relied on a tax professional who failed to file, filer was unaware of the election requirement, change in tax law or regulations, intervening illness/death. See [`references/late-relief.md`](./references/late-relief.md).
 
-### Step 6 — Fill Part I header and Lines 1-9
+### Step 6 — Fill Part I header and Lines 1-10
 
 Walk [`references/line-by-line.md`](./references/line-by-line.md). High-level rules in **Line-by-line guidance** below.
 
-### Step 7 — Collect consents (Line 11)
+### Step 7 — Collect consents (Consent Statement, page 2)
 
-Each owner/member with an ownership interest on the effective date must sign. Alternatively, an officer/manager authorized under state law to sign on behalf of all owners may sign — but this is more easily challenged in audit. Default to collecting all owner signatures.
+Each member who is an owner when the form is filed must sign, plus (for a retroactive effective date) each former owner who held an interest between the effective date and the filing date. Alternatively, an officer, manager, or member authorized under local law or the organizational documents may sign for the entity and represents that authority under penalties of perjury (Treas. Reg. §301.7701-3(c)(2)). Default to collecting all owner signatures.
 
-For LLCs, member signatures are listed on Line 11. Use the entity's operating agreement to confirm which members had interests on the effective date.
+The Consent Statement has no line number; it sits below Line 10. Use the entity's operating agreement to confirm who the owners were on the filing date and since the effective date.
 
 ### Step 8 — Determine where to file
 
-Form 8832 is filed by mail to the IRS service center listed in the form instructions. The address depends on the entity's principal place of business. As of the 2013 revision (which is the current revision as of 2026-04-29), the addresses are:
+Form 8832 is filed by mail to the IRS service center for the entity's principal business, office, or agency. The Rev. December 2013 form is still the current revision as of 2026-10-06, but its printed "Where To File" table is out of date: the IRS inserted a "New Mailing Address" page at the front of the PDF and publishes the same list at [Where to file your taxes for Form 8832](https://www.irs.gov/filing/where-to-file-your-taxes-for-form-8832). Current addresses:
 
-- **Connecticut, Delaware, DC, Illinois, Indiana, Kentucky, Maine, Maryland, Massachusetts, Michigan, NH, NJ, NY, NC, Ohio, Pennsylvania, RI, SC, Tennessee, Vermont, Virginia, WV, Wisconsin, or any place outside the US**: Department of the Treasury, Internal Revenue Service Center, Kansas City, MO 64999
-- **All other states (Alabama, Alaska, Arizona, Arkansas, California, Colorado, Florida, Georgia, Hawaii, Idaho, Iowa, Kansas, Louisiana, Minnesota, Mississippi, Missouri, Montana, Nebraska, Nevada, New Mexico, North Dakota, Oklahoma, Oregon, South Dakota, Texas, Utah, Washington, Wyoming)**: Department of the Treasury, Internal Revenue Service Center, Ogden, UT 84201
+- **Connecticut, Delaware, District of Columbia, Georgia, Illinois, Indiana, Kentucky, Maine, Maryland, Massachusetts, Michigan, New Hampshire, New Jersey, New York, North Carolina, Ohio, Pennsylvania, Rhode Island, South Carolina, Vermont, Virginia, West Virginia, Wisconsin**: Department of the Treasury, Internal Revenue Service, Kansas City, MO 64999
+- **Alabama, Alaska, Arizona, Arkansas, California, Colorado, Florida, Hawaii, Idaho, Iowa, Kansas, Louisiana, Minnesota, Mississippi, Missouri, Montana, Nebraska, Nevada, New Mexico, North Dakota, Oklahoma, Oregon, South Dakota, Tennessee, Texas, Utah, Washington, Wyoming**: Department of the Treasury, Internal Revenue Service, Ogden, UT 84201
+- **A foreign country or U.S. possession**: Department of the Treasury, Internal Revenue Service, Ogden, UT 84201-0023
 
-**Verify these addresses against the current Form 8832 (front page, "Where to File" table) before mailing.** The IRS occasionally consolidates service centers; if the address has changed, the form's "Where to File" table is authoritative.
+**Verify these addresses against the first page of the current f8832.pdf and the IRS "Where to file" page before mailing.** Do not use the table printed inside the 2013 instructions (it still lists Cincinnati). Also attach a copy of Form 8832 to the entity's federal tax or information return for the year of the election (or, if the entity files none, to each direct or indirect owner's return), per Treas. Reg. §301.7701-3(c)(1)(ii). Do not sign that copy.
 
 Form 8832 cannot be e-filed as a standalone. It is paper only.
 
@@ -185,7 +191,7 @@ See **Output format** below.
 State the next forms / returns the entity will need. Most common chains:
 
 - **LLC → C-corp election (Form 8832 only)**: entity files Form 1120 each year going forward, owner reports W-2 + dividends
-- **LLC → C-corp → S-corp (Form 8832 + Form 2553)**: entity files Form 1120-S each year; see [`form-2553`](../form-2553/SKILL.md)
+- **LLC → S-corp (Form 2553 alone when the corporate classification and the S election start on the same date; Form 8832 first only if a C-corp period comes before the S election)**: entity files Form 1120-S each year; see [`form-2553`](../form-2553/SKILL.md)
 - **C-corp election → reverting to disregarded (Form 8832)**: entity files final Form 1120 for the short period ending on the effective date − 1; then sole proprietor files Schedule C going forward; see [`form-1120`](../../forms/form-1120/SKILL.md) (forthcoming) for the final-return mechanics
 
 Also flag: **deemed liquidation** under 26 CFR §301.7701-3(g). When an entity changes from disregarded/partnership to corporate (or vice versa), the IRS treats the transition as if a deemed liquidation/contribution occurred. There can be unrecognized gain on appreciated assets, basis adjustments, and Section 351 considerations. Recommend a CPA review *before* filing — once filed, the deemed transactions are baked in.
@@ -217,18 +223,19 @@ For the full reference, load [`references/line-by-line.md`](./references/line-by
 
 | Line | Field | What goes here |
 |------|-------|----------------|
-| 1 | Type of election | Box (a) Initial classification election OR Box (b) Change in current classification |
-| 2a | Has the entity filed an entity classification election within the last 60 months? | Yes / No. If Yes, the 60-month rule may block. |
-| 2b | If Yes to 2a, was the prior election the entity's first since formation? | Yes / No. If Yes, the 60-month rule does not apply (first election doesn't count) |
-| 3 | Does the entity have more than one owner? | Yes (eligible to elect partnership or association) / No (eligible to elect disregarded or association) |
-| 4 | If owner is a single individual, name + ID number | Owner SSN or EIN if entity-owner |
-| 5 | If parent corporation, name + EIN | For consolidated-return parent-subsidiary structures |
-| 6 | Type of entity (check exactly one) | (a) domestic eligible electing association, (b) domestic eligible electing partnership, (c) domestic eligible electing disregarded, (d) foreign eligible electing association, (e) foreign eligible electing partnership, (f) foreign eligible electing disregarded |
-| 7 | If foreign, country of organization | Required for boxes (d), (e), (f) |
-| 8 | Election effective date | MM/DD/YYYY. Must be within 75 days before / 12 months after filing date. If blank, effective date = filing date. |
-| 9 | Contact person + phone | Person the IRS calls if there's a question. Usually the filer or their tax pro. |
-| 10 | If late, attached statement under §301.9100-1 | Used only if relying on regulatory automatic relief, NOT Rev. Proc. 2009-41 (which uses Part II) |
-| 11 | Consent statement + signatures | Each owner signs; or officer/manager authorized under state law signs on behalf of all |
+| — | Top-of-form boxes | Address change; "Late classification relief sought under Revenue Procedure 2009-41" (check when Part II is used); "Relief for a late change of entity classification election sought under Revenue Procedure 2010-32" (foreign entities only) |
+| 1 | Type of election | Box 1a Initial classification by a newly-formed entity (skip 2a/2b) OR Box 1b Change in current classification (including a change from the default classification) |
+| 2a | Has the eligible entity previously filed an entity election that had an effective date within the last 60 months? | Yes → go to 2b. No → skip 2b, go to line 3. |
+| 2b | Was the prior election an initial classification election by a newly formed entity that was effective on the date of formation? | Yes → go to line 3 (the 60-month rule does not block). No → "Stop here"; the entity generally is not currently eligible |
+| 3 | Does the eligible entity have more than one owner? | Yes (eligible to elect partnership or association; skip line 4) / No (eligible to elect disregarded or association; go to line 4) |
+| 4a/4b | If only one owner: name and identifying number of owner | SSN, ITIN, or EIN; for tiered disregarded owners, the first owner up the chain that is not disregarded; "none" for a foreign owner with no U.S. number |
+| 5a/5b | If owned by one or more affiliated corporations that file a consolidated return: name and EIN of the parent corporation | For consolidated-return groups only |
+| 6 | Type of entity (check exactly one) | (a) domestic eligible electing association, (b) domestic eligible electing partnership, (c) domestic eligible with a single owner electing disregarded, (d) foreign eligible electing association, (e) foreign eligible electing partnership, (f) foreign eligible with a single owner electing disregarded |
+| 7 | If created or organized in a foreign jurisdiction, foreign country of organization | Required even if the entity is also organized under domestic law |
+| 8 | Election is to be effective beginning (month, day, year) | Must be within 75 days before / 12 months after filing date. If blank, effective date = filing date. |
+| 9 | Name and title of contact person whom the IRS may call | Usually the filer or their tax pro |
+| 10 | Contact person's telephone number | With area code |
+| — | Consent Statement and Signature(s) (unnumbered, below line 10) | Each owner at the time of filing signs (plus former owners for a retroactive date); or an authorized officer, manager, or member signs for the entity |
 
 ### Part II — Late Election Relief (only if needed)
 
@@ -236,10 +243,8 @@ Used to claim relief under Rev. Proc. 2009-41 when the desired effective date is
 
 | Line | Field | What goes here |
 |------|-------|----------------|
-| 11 (Part II) | Explanation | Reasonable-cause statement: why the election was not timely filed. Must include the entity's intent to be classified as elected from the desired effective date and the reason for the delay. |
-| 12 (Part II) | Statement of consistent returns | Signed declaration that no inconsistent returns have been filed for any affected year (or that all affected returns will be amended) |
-
-Both signed under penalties of perjury.
+| 11 | Explanation of why the election was not filed on time | Reasonable-cause statement: specific facts on why the election was not timely filed, the intent to be classified as elected from the desired effective date, and the reason for the delay. |
+| — | Part II declaration and signature(s) | Pre-printed declaration under penalties of perjury that the elements of Rev. Proc. 2009-41 §4.01 are satisfied (this covers the consistent-returns condition). Signed by an authorized representative of the entity and each affected person. Part II has no line 12. |
 
 ---
 
@@ -263,12 +268,12 @@ Before declaring the form ready, run these checks. Surface anything that fails �
 
 ### Consent checks
 
-- [ ] Every owner with an interest on the effective date has signed Line 11, OR
-- [ ] An officer/manager authorized under state law has signed and attached evidence of authority
+- [ ] Every owner at the time of filing has signed the Consent Statement (plus each former owner between a retroactive effective date and the filing date), OR
+- [ ] An officer, manager, or member authorized under local law or the organizational documents has signed for the entity (keep the authority evidence in the file; the form does not require attaching it)
 
 ### Cross-form checks
 
-- [ ] If the entity is also filing Form 2553, confirm whether 8832 is being filed separately (clean paper trail) or is being skipped under Rev. Proc. 2013-30 § 4
+- [ ] If the entity is also filing Form 2553 for the same effective date, Form 8832 should not be filed (Form 8832 instructions, "Who Must File"; Treas. Reg. §301.7701-3(c)(1)(v)(C))
 - [ ] If the election creates a deemed liquidation under §301.7701-3(g), confirm the user understands the tax consequences (recommend CPA review)
 - [ ] If reverting from corporate to disregarded, confirm the user knows Form 1120 short-period final return is required
 
@@ -278,7 +283,7 @@ Surface a warning, do not block, if any of these are true:
 
 - [ ] User picks Box 6(b) — domestic LLC electing partnership when it's already a default partnership (no-op election)
 - [ ] User picks Box 6(c) — disregarded when entity already has multiple members (would force them to dissolve to a single owner first)
-- [ ] User electing C-corp without a clear strategic reason (QSBS, retained earnings, foreign-investor compatibility) — flag that S-corp + Schedule C are usually better tax-wise for solo / small operations
+- [ ] User electing C-corp without a stated reason — recommend CPA review of the choice before mailing (the skill does not advise on which classification is better)
 - [ ] User has a prior C-corp election and is re-electing within 60 months — flag that the prior election starts the clock
 
 ---
@@ -311,12 +316,12 @@ Address change: ☐ check if different from prior IRS records
 2a. Prior election within last 60 months: ☐ Yes  ☐ No
 2b. Was prior election the first?         ☐ Yes  ☐ No  ☐ N/A
 3. More than one owner:                   ☐ Yes  ☐ No
-4. (If single individual owner)
-   Name: <name>
-   ID number: <SSN or EIN>
-5. (If parent corporation)
-   Name: <name>
-   EIN: <XX-XXXXXXX>
+4. (If only one owner)
+   4a Name: <name>
+   4b Identifying number: <SSN, ITIN, or EIN; "none" for a foreign owner without one>
+5. (If owned by members of an affiliated group filing a consolidated return)
+   5a Parent corporation name: <name>
+   5b Parent EIN: <XX-XXXXXXX>
 6. Type of entity (check ONE):
    ☐ (a) Domestic eligible — elect association (C-corp)
    ☐ (b) Domestic eligible — elect partnership
@@ -327,22 +332,23 @@ Address change: ☐ check if different from prior IRS records
 7. (If foreign) Country of organization: <country>
 8. Election effective date: MM/DD/YYYY
 9. Contact person: <name>
-   Phone: <XXX-XXX-XXXX>
-10. ☐ Attached statement under Reg §301.9100-1 (only if applicable)
-11. Consent Statement and Signatures
-    [Each owner signs and dates here, OR an authorized officer/manager signs on
-    behalf of all owners. Print name, title, and date next to each signature.]
+   Title: <title>
+10. Contact phone: <XXX-XXX-XXXX>
+Consent Statement and Signature(s) (unnumbered)
+    [Each owner at the time of filing signs and dates here (plus former owners
+    for a retroactive date), OR an authorized officer/manager/member signs for
+    the entity. Print name, title, and date next to each signature.]
 
 ## Part II — Late Election Relief (only if applicable)
-Lines 11–12: Reasonable-cause and consistent-returns statements
-[Attached as separate statement, signed under penalties of perjury]
+Top-of-form box "Late classification relief sought under Revenue Procedure 2009-41": ☒
+11. Explanation: <reasonable-cause statement>
+Part II declaration: signed by an authorized representative and each affected person
 
 ## Required attachments
-- [ ] Owner consent signatures (Line 11) — all collected
-- [ ] If Part II: reasonable-cause statement
-- [ ] If Part II: statement of consistent returns
-- [ ] If foreign: country of organization confirmation
-- [ ] If officer/manager signing: evidence of authority under state law
+- [ ] Consent Statement signatures — all collected
+- [ ] If Part II: Line 11 explanation (continuation sheet if needed)
+- [ ] If Part II: Part II declaration signed by the entity and each affected person
+- [ ] If officer/manager signing: evidence of authority kept in the file (not required to be attached)
 
 ## Validation summary
 - Eligibility: <pass / fail with reason>
@@ -352,12 +358,15 @@ Lines 11–12: Reasonable-cause and consistent-returns statements
 - Sanity: <list warnings raised>
 
 ## Filing instructions
-Mail to: <Kansas City service center | Ogden service center>
+Mail to: <Kansas City, MO 64999 | Ogden, UT 84201 | Ogden, UT 84201-0023 (foreign country or U.S. possession)>
+Copy: attach an unsigned copy to the entity's federal return for the election year
 Method: USPS Certified Mail with Return Receipt (IRC §7502 timely-mailing rule)
 Postmark deadline: <today + 0; the form has no statutory deadline, but the desired
                     effective date constrains how late it can be filed>
 
-Expected IRS acknowledgment: 60 days (CP277 acceptance) or rejection letter (CP278)
+Expected IRS acknowledgment: generally within 60 days (CP277 acceptance or CP278 denial).
+If nothing arrives within 60 days, call 1-800-829-0115 (number in the Form 8832
+instructions) or write to the service center by certified mail.
 
 ## Next steps after IRS acceptance
 - <File Form 1120 going forward (if elected C-corp)>
@@ -366,11 +375,11 @@ Expected IRS acknowledgment: 60 days (CP277 acceptance) or rejection letter (CP2
 - <Run §301.7701-3(g) deemed-liquidation analysis with a CPA>
 
 ## Sources cited in this draft
-- IRS Form 8832 (Rev. December 2013, current as of 2026-04-29)
+- IRS Form 8832 (Rev. December 2013, current as of 2026-10-06; mailing addresses per the IRS update page)
 - 26 CFR §301.7701-1, §301.7701-2, §301.7701-3 (entity classification regulations)
 - IRC §7701(a)(3) (definition of corporation)
 - Rev. Proc. 2009-41 (late entity classification election relief)
-- Rev. Proc. 2013-30 (combined 8832 + 2553 election; § 4)
+- Treas. Reg. §301.7701-3(c)(1)(v)(C) (timely Form 2553 is a deemed association election); Rev. Proc. 2013-30 §5.03 (late combined classification + S relief)
 - 26 CFR §301.7701-3(g) (deemed transactions on classification change)
 - 26 CFR §301.7701-3(c)(1)(iv) (60-month limitation)
 - 26 CFR §301.7701-2(b)(8) (foreign per-se corporations list)
@@ -403,7 +412,8 @@ End-to-end worked Form 8832 elections.
 
 Authoritative sources used by this skill. Always re-verify these against the IRS site for the year of filing.
 
-- [Form 8832 (Rev. December 2013)](https://www.irs.gov/pub/irs-pdf/f8832.pdf) — the form itself; instructions are printed on pages 3-6 of the PDF (no separate i8832 instructions PDF exists)
+- [Form 8832 (Rev. December 2013)](https://www.irs.gov/pub/irs-pdf/f8832.pdf) — the form itself; PDF page 1 is the IRS "New Mailing Address" update, the form is PDF pages 2-4 (form pages 1-3), and the instructions are PDF pages 5-8 (form pages 4-7). No separate i8832 instructions PDF exists
+- [Where to file your taxes for Form 8832](https://www.irs.gov/filing/where-to-file-your-taxes-for-form-8832) — current mailing addresses
 - [About Form 8832](https://www.irs.gov/forms-pubs/about-form-8832) — IRS landing page with revision history
 - 26 CFR §301.7701-1 (definitions); §301.7701-2 (business entities); §301.7701-3 (classification of certain business entities)
 - 26 CFR §301.7701-3(c)(1)(iv) — 60-month limitation
@@ -413,10 +423,11 @@ Authoritative sources used by this skill. Always re-verify these against the IRS
 - IRC §1361–1379 — Subchapter S (relevant for combined 8832 + 2553 elections)
 - IRC §1202 — QSBS (relevant for SMLLC-to-C-corp QSBS strategy)
 - [Rev. Proc. 2009-41](https://www.irs.gov/pub/irs-drop/rp-09-41.pdf) — late entity classification election relief (3 years + 75 days; reasonable cause)
-- [Rev. Proc. 2013-30](https://www.irs.gov/pub/irs-drop/rp-13-30.pdf) — combined late 8832 + 2553 election relief; § 4 deems Form 8832 filed when Form 2553 is filed for an eligible entity
+- [Rev. Proc. 2013-30](https://www.irs.gov/pub/irs-drop/rp-13-30.pdf) — late S election relief, including a late classification election intended to take effect with the S election (§5.03); §4.01(1) defines the "Deemed Entity Classification Election" under Treas. Reg. §301.7701-3(c)(1)(v)(C)
+- Rev. Proc. 2026-1 (Internal Revenue Bulletin 2026-1) — private letter ruling procedures and user fees (Appendix A); re-check the current year's Rev. Proc. 20XX-1
 - [Form 2553 (S-corp election)](https://www.irs.gov/pub/irs-pdf/f2553.pdf) — companion form for combined elections
 - [Form 1120 (C-corp annual return)](https://www.irs.gov/pub/irs-pdf/f1120.pdf) — downstream return after C-corp election
-- IRS CP277 (election accepted) / CP278 (election rejected) notices
+- IRS CP277 (election accepted; [Understanding your CP277 notice](https://www.irs.gov/individuals/understanding-your-cp277-notice)) / CP278 (denial of Form 8832; IRS Document 6209, Section 9)
 
 ## Disclaimer
 

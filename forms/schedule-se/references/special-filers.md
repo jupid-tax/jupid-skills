@@ -34,7 +34,7 @@ A filer can have K-1s from several partnerships. Sum all SE-eligible Box 14 Code
 
 A US citizen or resident working abroad can exclude up to **$130,000** (2025; verify 2026) of foreign earned income from regular income tax via Form 2555. **However:**
 
-> The Form 2555 exclusion does NOT reduce SE tax. — IRC §911(d)(4)
+> The Form 2555 exclusion does NOT reduce SE tax. — IRC §1402(a)(11)
 
 If the filer has foreign-earned SE income (e.g., a freelance consultant living in Berlin earning USD from US clients), the gross SE earnings flow to Schedule C → Schedule SE Line 2 *unreduced* by the Form 2555 exclusion. The filer pays SE tax on the full amount even though they pay no income tax on it.
 
@@ -44,7 +44,7 @@ US has totalization agreements with about 30 countries — full list at https://
 
 ### How to handle on Schedule SE
 
-If the filer has Form 2555 income but **no totalization certificate**: report SE income normally on Line 2 and pay SE tax. Note in the deliverable: "Form 2555 income included in SE base per IRC §911(d)(4)."
+If the filer has Form 2555 income but **no totalization certificate**: report SE income normally on Line 2 and pay SE tax. Note in the deliverable: "Form 2555 income included in SE base per IRC §1402(a)(11)."
 
 If the filer has a **totalization certificate**: exclude the covered SE income from Line 2. Note in the deliverable: "Foreign SE income excluded under [country] totalization agreement, certificate dated [date] retained in filer records."
 
@@ -66,7 +66,7 @@ Because FICA is withheld at the W-2 stage, statutory employee income is **not su
 
 If the filer has a Schedule C with only statutory-employee income, no Schedule SE is required for that Schedule C. If they have additional non-statutory SE income (a side gig), only that flows to Line 2.
 
-The agent should ask: "Is your Schedule C income from a Form W-2 with the 'Statutory employee' box checked?" If yes, exclude that Schedule C's net profit from Line 2.
+The agent should ask: "Is your Schedule C income from a Form W-2 with the 'Statutory employee' box checked?" If yes, exclude that Schedule C's net profit from Line 2, and if Schedule SE is filed for other SE income, include the statutory-employee Social Security wages and tips on Line 8a (Schedule SE instructions, Statutory Employee Income).
 
 ---
 
@@ -76,9 +76,9 @@ Notary public fees received for performing notarial acts are **exempt from SE ta
 
 ### How to handle
 
-On Schedule SE Line 2, enter the Schedule C net profit *minus* the notary fees portion. Most filers include a written explanation: "Schedule C Line 31 = $X,XXX. Notary public fees of $Y,YYY excluded from SE earnings under IRC §1402(c)(1). Net SE earnings = $X,XXX − $Y,YYY = $Z,ZZZ."
+Report the full Schedule C net profit on Line 2. Then, on the dotted line to the left of Line 3, enter "Exempt—Notary" and the net profit from notary services; subtract that amount from the total of Lines 1a, 1b, and 2 and enter the result on Line 3 (Schedule SE instructions, Income and Losses Not Included in Net Earnings From Self-Employment, item 2).
 
-The IRS form does not have a dedicated line for this — attach a statement.
+If notary fees are the user's only SE income, do not file Schedule SE: check box 3 on Schedule 2 (Form 1040), line 4, and enter "Exempt—Notary".
 
 ---
 
@@ -140,7 +140,7 @@ SE tax is federal. The filer's state of residence does not affect the Schedule S
 - IRC §1402(c)(1) — notary public exemption
 - IRC §1402(e) — ministers' Form 4361 exemption
 - IRC §1402(g) — religious sect Form 4029 exemption
-- IRC §911(d)(4) — Form 2555 does not reduce SE tax
+- IRC §1402(a)(11) — Form 2555 does not reduce SE tax
 - IRC §3121(d)(3) — statutory employees
 - Tax Court decisions on LLC manager-member SE treatment: Renkemeyer (2011), Castigliola (2017)
 - Pub 517 — Social Security and Other Information for Members of the Clergy

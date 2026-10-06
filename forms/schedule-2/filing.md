@@ -2,14 +2,14 @@
 
 How an agent equipped with browser tooling (Playwright, Puppeteer, Selenium, or a hosted browser like Browserbase) can take a completed Schedule 2 draft and file it as part of the Form 1040 return. Schedule 2 never files alone — it is always an attachment to Form 1040 / 1040-SR / 1040-NR.
 
-The agent must produce a complete `SKILL.md`-format draft *first*, must have all upstream forms (6251, 8962, Schedule SE, 8959, 8960, 5329, 4137, 8919, Schedule H, 5405, 8611, 965-A) in completed form, then pick a filing channel and execute.
+The agent must produce a complete `SKILL.md`-format draft *first*, must have all upstream forms (6251, 8962, Schedule SE, 8959, 8960, 5329, 4137, 8919, Schedule H, 8611, 8889, 4255, 965-A) in completed form, then pick a filing channel and execute.
 
 ---
 
 ## Channel decision tree
 
 ```
-User has AGI ≤ ~$84,000 and wants free guided software?
+User has AGI ≤ $89,000 (tax year 2025, per irs.gov/freefile) and wants free guided software?
   → IRS Free File (Free File Alliance partners)
     Browser automation: provider-specific.
     Most providers handle Schedule 2 automatically as the user enters
@@ -30,9 +30,10 @@ User wants to file on paper?
     Use Section 3.
 
 User wants to use IRS Direct File?
-  → As of early 2026, Direct File supports a limited subset of
-    Schedule 2 items (SE tax, basic AMT). Verify current scope.
-    See https://www.irs.gov/filing/irs-direct-file
+  → Not available: the IRS did not list Direct File among the 2026 filing-season
+    free options (Tax Tip 2026-08 lists Free File, Free File Fillable Forms,
+    MilTax, VITA/TCE), and https://www.irs.gov/filing/irs-direct-file returns
+    404 as of 2026-10-06. Route the user to another channel.
 ```
 
 ---
@@ -52,7 +53,7 @@ Agent must have:
 - The user's permission to log in / register on their behalf
 - Filer's full legal name, SSN, date of birth, mailing address, prior-year AGI (for IRS identity verification)
 - The completed Schedule 2 draft from `SKILL.md`
-- Every upstream form already drafted: 6251 (if Line 1), 8962 (if Line 2), Schedule SE (if Line 4), 4137 (if Line 5), 8919 (if Line 6), 5329 (if Line 8), Schedule H (if Line 9), 5405 (if Line 10), 8959 (if Line 11), 8960 (if Line 12), 965-A (if Line 13/20), 8611 (if Line 16), 8889 (if Line 17c or 17m)
+- Every upstream form already drafted: 8962 (if Line 1a), Schedule A (Form 8936) (if Line 1b/1c), 4255 (if Lines 1d–1f or 19), 6251 (if Line 2), Schedule SE (if Line 4), 4137 (if Line 5), 8919 (if Line 6), 5329 (if Line 8), Schedule H (if Line 9), 8959 (if Line 11), 8960 (if Line 12), 8611 (if Line 16), 8889 (if Line 17c or 17d), 965-A (if Line 20)
 - Form 1040 inputs (filing status, dependents, W-2s, etc.)
 - An email address the user controls
 - An IP address the user is willing to file from
@@ -74,7 +75,7 @@ The agent navigates and interacts deterministically. Stable selectors are listed
    4. Form 8960
    5. Form 5329
    6. Form 6251
-   7. Form 4137 / 8919 / Schedule H / 5405 / 8611 / 965-A / 8889 / 8611 as applicable
+   7. Form 4137 / 8919 / Schedule H / 8611 / 965-A / 8889 / 4255 as applicable
 8. **Add Schedule 2** via "Add a Form / Schedule" → search "Schedule 2"
 9. **Fill Schedule 2 from the draft** — field-by-field mapping:
 
@@ -82,34 +83,36 @@ The agent navigates and interacts deterministically. Stable selectors are listed
 |-----------------|------------------|-------------------|
 | Name(s) shown on return | "Name(s) shown on return" | Filer name |
 | SSN | "Your social security number" | Filer SSN |
-| 1 | "Alternative minimum tax. Attach Form 6251" | Part I Line 1 |
-| 2 | "Excess advance premium tax credit repayment. Attach Form 8962" | Part I Line 2 |
-| 3 | (auto-computed = Line 1 + Line 2) | (verify against draft) |
+| 1a | "Excess advance premium tax credit repayment. Attach Form 8962" | Part I Line 1a |
+| 1b–1y | Clean vehicle repayments, Form 4255 EPE items, other additions to tax | Part I Lines 1b–1y |
+| 1z | (auto-computed = Lines 1a–1y) | (verify) |
+| 2 | "Alternative minimum tax. Attach Form 6251" | Part I Line 2 |
+| 3 | (auto-computed = Line 1z + Line 2) | (verify against draft) |
 | 4 | "Self-employment tax. Attach Schedule SE" | Part II Line 4 |
 | 5 | "Social security and Medicare tax on unreported tip income. Attach Form 4137" | Part II Line 5 |
 | 6 | "Uncollected social security and Medicare tax on wages. Attach Form 8919" | Part II Line 6 |
 | 7 | (auto-computed = Line 5 + Line 6) | (verify) |
 | 8 | "Additional tax on IRAs or other tax-favored accounts. Attach Form 5329 if required" | Part II Line 8 |
 | 9 | "Household employment taxes. Attach Schedule H" | Part II Line 9 |
-| 10 | "Repayment of first-time homebuyer credit. Attach Form 5405 if required" | Part II Line 10 |
+| 10 | (reserved for future use — leave blank) | — |
 | 11 | "Additional Medicare Tax. Attach Form 8959" | Part II Line 11 |
 | 12 | "Net investment income tax. Attach Form 8960" | Part II Line 12 |
-| 13 | "Section 965 net tax liability from Form 965-A" | Part II Line 13 |
+| 13 | "Uncollected social security and Medicare or RRTA tax on tips or group-term life insurance from Form W-2, box 12" | Part II Line 13 |
 | 14 | "Interest on tax due on installment income from sale of certain residential lots and timeshares" | Part II Line 14 |
 | 15 | "Interest on the deferred tax on gain from certain installment sales over $150,000" | Part II Line 15 |
 | 16 | "Recapture of low-income housing credit. Attach Form 8611" | Part II Line 16 |
 | 17a | "Recapture of other credits. List type and amount" — text + numeric | Part II Line 17a |
-| 17b–17z | Per-subitem labels (HSA, ABLE, look-back, §72(p), etc.) | Part II Line 17 sub-items |
+| 17b–17z | Per-subitem labels (mortgage subsidy, HSA, MSA, §409A, golden parachute, look-back interest, Form 8621 interest, etc.) | Part II Line 17 sub-items |
 | 18 | (auto-computed = sum of 17a–17z) | (verify) |
-| 19 | (reserved — leave blank) | — |
+| 19 | "Recapture of net EPE from Form 4255, line 1d, column (l)" | Part II Line 19 |
 | 20 | "Section 965 net tax liability installment from Form 965-A" | Part II Line 20 |
-| 21 | (auto-computed = Lines 4 + 7 + 8 + 9 + 10 + 11 + 12 + 13 + 14 + 15 + 16 + 18) | (verify against draft) |
+| 21 | (auto-computed = Lines 4, 7 through 16, 18, and 19) | (verify against draft) |
 
    Capture a screenshot after every page for the user's records.
 
 10. **Cross-check Form 1040** — Line 17 should now show Schedule 2 Line 3, and Line 23 should show Schedule 2 Line 21. FFFF auto-pulls these. Verify against the draft.
 11. **Run FFFF's "Check Form" / "Verify"** — resolves math errors and missing required fields. Schedule 2 typically flags if an upstream form's amount doesn't match.
-12. **Re-verify auto-computed fields** (Lines 3, 7, 18, 21) against the draft. If a number disagrees, **stop**; one is wrong.
+12. **Re-verify auto-computed fields** (Lines 1z, 3, 7, 18, 21) against the draft. If a number disagrees, **stop**; one is wrong.
 13. **Save the return**.
 14. **Submit** when 1040 + all attachments are complete:
     - Click "E-file Now"
@@ -131,7 +134,7 @@ The agent navigates and interacts deterministically. Stable selectors are listed
 | Symptom | Likely cause | Fix |
 |---------|--------------|-----|
 | "Schedule 2 Line 4 does not match Schedule SE Line 12" | Schedule SE not posted, or draft mismatch | Verify Schedule SE; re-save |
-| "Form 6251 required because Line 1 has a value" | Line 1 entered without attaching 6251 | Add Form 6251, fill, save |
+| "Form 6251 required because Line 2 has a value" | Line 2 entered without attaching 6251 | Add Form 6251, fill, save |
 | "Form 8962 not attached" | APTC reported on 1095-A but no 8962 | Add Form 8962; complete reconciliation |
 | "Line 11 entered but Form 8959 missing" | Additional Medicare Tax without 8959 | Add Form 8959 |
 | "Identity verification failed" | Wrong prior-year AGI | Pull IRS transcript |
@@ -146,7 +149,7 @@ For users with paid tax software (TurboTax, H&R Block, FreeTaxUSA, TaxSlayer, Ta
 1. Sign in → start or resume a return
 2. Enter each *upstream* form's data via the software's wizard:
    - "Did you have self-employment income?" → triggers Schedule SE → posts to Schedule 2 Line 4
-   - "Did you receive Form 1095-A?" → triggers Form 8962 → posts to Schedule 2 Line 2 (if excess) or Schedule 3 Line 9 (if refundable PTC)
+   - "Did you receive Form 1095-A?" → triggers Form 8962 → posts to Schedule 2 Line 1a (if excess) or Schedule 3 Line 9 (if net PTC)
    - "Did you take an early IRA distribution?" → triggers Form 5329 → Schedule 2 Line 8
    - "Did your wages exceed $200,000?" → triggers Form 8959 → Schedule 2 Line 11
    - "Did you have investment income above the NIIT threshold?" → triggers Form 8960 → Schedule 2 Line 12
@@ -170,13 +173,13 @@ The IRS expects this stack from top to bottom:
 1. **Form 1040** (signed in ink)
 2. **Schedule 1, 2, 3** in numeric order (Schedule 2 is the second of the three)
 3. **Schedule SE** (if Line 4 > 0)
-4. **Form 6251** (if Line 1 > 0)
-5. **Form 8962** (if Line 2 > 0)
+4. **Form 6251** (if Line 2 > 0)
+5. **Form 8962** (if Line 1a > 0)
 6. **Form 8959** (if Line 11 > 0)
 7. **Form 8960** (if Line 12 > 0)
 8. **Form 5329** (if Line 8 > 0)
 9. **Schedule H** (if Line 9 > 0)
-10. **Other forms** (4137, 8919, 5405, 8611, 965-A, 8889) in attachment-sequence number order printed in the top-right corner of each form
+10. **Other forms** (4137, 8919, 8611, 965-A, 8889, 4255) in attachment-sequence number order printed in the top-right corner of each form
 11. **W-2 Copy B** stapled to the front of Form 1040 (lower-left)
 12. **1099s with federal withholding** also stapled
 
@@ -226,8 +229,8 @@ After filing (any channel), the user's return moves through:
 
 Schedule 2 lines are common audit triggers, especially:
 
-- Line 1 (AMT) — IRS verifies against Form 6251 worksheet
-- Line 2 (excess APTC) — IRS cross-checks against marketplace data (Form 1095-A)
+- Line 2 (AMT) — IRS verifies against Form 6251 worksheet
+- Line 1a (excess APTC) — IRS cross-checks against marketplace data (Form 1095-A)
 - Line 4 (SE tax) — IRS compares against Schedule C / F / K-1 SE income
 - Line 11 (Additional Medicare Tax) — IRS cross-checks against W-2 Medicare wages
 - Line 12 (NIIT) — IRS cross-checks against Schedule B/D investment income

@@ -42,7 +42,7 @@ Apply the same 20% / 80% land/building ratio used at purchase:
 | Building | 80% | $240,000 | $344,000 | $165,818 ($240K − $74,182) | $178,182 |
 | **Total** | 100% | $300,000 | $430,000 | $225,818 | **$204,182** |
 
-(Linda allocates the $20,000 selling expenses pro-rata: $4,000 to land reducing land sale to $86,000, $16,000 to building reducing building sale to $344,000.)
+(Linda allocates the $20,000 selling expenses pro-rata: $4,000 to land and $16,000 to building. The net figures above are for the gain math only. On the form, the gross price goes on Line 20 / column (d) ($360,000 building, $90,000 land) and the selling expenses are added to basis on Line 21 / column (f), because Line 21 and column (f) are "cost or other basis plus expense of sale" (2025 Form 4797).)
 
 ---
 
@@ -53,36 +53,37 @@ Apply the same 20% / 80% land/building ratio used at purchase:
 | Line | Field | Value |
 |------|-------|-------|
 | 19 | Description | Rental at 123 Maple St (building portion) |
-| 20 | Gross sales price | $344,000 |
-| 21 | Cost or other basis | $240,000 |
+| 20 | Gross sales price (80% × $450,000) | $360,000 |
+| 21 | Cost or other basis plus expense of sale ($240,000 + $16,000) | $256,000 |
 | 22 | Depreciation allowed or allowable | $74,182 |
-| 23 | Adjusted basis | $165,818 |
-| 24 | Total gain | **$178,182** |
+| 23 | Adjusted basis (21 − 22) | $181,818 |
+| 24 | Total gain (20 − 23) | **$178,182** |
 
-### §1250 recapture computation (Lines 26a-h)
+Line 1a (top of page 1): $450,000, the gross proceeds reported on Form 1099-S that are included on Lines 2 and 20.
 
-Because Linda used straight-line MACRS (the only allowed method for residential rental real estate placed in service after 1986), there is no excess-over-straight-line depreciation:
+### §1250 recapture computation (Lines 26a-g)
+
+Because Linda used straight-line MACRS (the only allowed method for residential rental real estate placed in service after 1986) and claimed no special depreciation allowance on the building, there is no excess-over-straight-line depreciation. The form says: if straight line depreciation was used, enter -0- on line 26g (except a corporation subject to §291):
 
 | Line | Field | Value |
 |------|-------|-------|
 | 26a | Additional depreciation after 1975 | $0 |
-| 26b | Applicable % × Line 26a | $0 |
-| 26c | Subtract Line 26b from Line 26a | $0 |
-| 26d | Additional depreciation 1969-1975 | $0 (post-1986 property) |
-| 26e | Applicable % × smaller of Line 24 or 26d | $0 |
-| 26f | §291 corporate addition | $0 (Linda is an individual, not a C-corp) |
-| 26g | **§1250 recapture** | **$0** |
-| 26h | Combine | $0 |
+| 26b | Applicable percentage × smaller of Line 24 or 26a | $0 |
+| 26c | Line 24 − Line 26a (residential rental: skip 26d and 26e) | $178,182 |
+| 26d | Additional depreciation after 1969 and before 1976 | skipped |
+| 26e | Smaller of Line 26c or 26d | skipped |
+| 26f | §291 amount (corporations only) | $0 (Linda is an individual, not a C-corp) |
+| 26g | **§1250 recapture** (26b + 26e + 26f) | **$0** |
 
 ### Part III rollup
 
 | Line | Field | Value |
 |------|-------|-------|
-| 30 | Column A total recapture | $0 |
-| 31 | Sum across columns | $0 |
-| 32 | To Part II Line 13 | **$0** |
+| 30 | Total gains, all columns (Line 24) | $178,182 |
+| 31 | Total recapture (25b, 26g, 27c, 28b, 29b) → Part II Line 13 | **$0** |
+| 32 | Line 30 − Line 31 → Part I Line 6 | **$178,182** |
 
-Residual gain after recapture (Line 24 − Line 32) = $178,182 − $0 = **$178,182** flows to Part I Line 6.
+Residual gain after recapture (Line 32) = $178,182 − $0 = **$178,182** flows to Part I Line 6.
 
 ---
 
@@ -95,10 +96,10 @@ Land is non-depreciable, so it does NOT go through Part III. Enter directly on P
 | (a) Description | Land at 123 Maple St |
 | (b) Date acquired | 06/01/2017 |
 | (c) Date sold | 12/15/2025 |
-| (d) Gross sales price | $86,000 |
+| (d) Gross sales price (20% × $450,000) | $90,000 |
 | (e) Depreciation | $0 |
-| (f) Cost basis | $60,000 |
-| (g) Gain or loss | **$26,000** |
+| (f) Cost or other basis plus expense of sale ($60,000 + $4,000) | $64,000 |
+| (g) Gain or loss ((d) + (e) − (f)) | **$26,000** |
 
 ---
 
@@ -119,8 +120,9 @@ Land is non-depreciable, so it does NOT go through Part III. Enter directly on P
 | Line | Field | Value |
 |------|-------|-------|
 | 10-12 | (no entries) | $0 |
-| 13 | Recapture from Part III Line 32 | $0 |
-| 18 | Total ordinary | **$0** |
+| 13 | Recapture from Part III Line 31 | $0 |
+| 17 | Combine Lines 10 through 16 | $0 |
+| 18b | To Schedule 1, Line 4 | **$0** |
 
 No ordinary income from this disposition.
 

@@ -17,18 +17,18 @@ description: >
 form: Form 941 (Employer's Quarterly Federal Tax Return)
 audience: [employer, scorp]
 tax_year: 2026
-last_verified: 2026-04-29
+last_verified: 2026-10-06
 official_form: https://www.irs.gov/pub/irs-pdf/f941.pdf
 official_instructions: https://www.irs.gov/pub/irs-pdf/i941.pdf
 ---
 
 # Form 941 — Employer's Quarterly Federal Tax Return
 
-This skill produces an audit-grade draft of Form 941 from a quarter's payroll data: gross wages, federal income tax withheld, employee and employer FICA, Additional Medicare withheld, sick/family leave (if any), and tax deposits already made. It walks through the form line by line, applies IRS rules, runs validation, and emits a deliverable an employer can transcribe to e-file software or paper.
+This skill produces an audit-grade draft of Form 941 from a quarter's payroll data: gross wages, federal income tax withheld, employee and employer FICA, Additional Medicare withheld, and tax deposits already made. The line map is verified against **Form 941 (Rev. March 2026)** and its instructions, which the IRS says apply to all four quarters of 2026; re-check the next revision at https://www.irs.gov/forms-pubs/about-form-941 before use. It walks through the form line by line, applies IRS rules, runs validation, and emits a deliverable an employer can transcribe to e-file software or paper.
 
-The math is mechanical once the inputs are correct. The judgment is in *which schedule attaches* (Schedule B for semi-weekly depositors), *whether deposits matched liability* (else Form 945-A), and *when to use 941-X* to fix a prior quarter rather than re-filing. This skill optimizes for the latter — the agent should ask, not guess.
+The math is mechanical once the inputs are correct. The judgment is in *which schedule attaches* (Schedule B for semi-weekly depositors), *whether deposits matched liability* (else failure-to-deposit penalty exposure), and *when to use 941-X* to fix a prior quarter rather than re-filing. This skill optimizes for the latter — the agent should ask, not guess.
 
-**Companion guide for end users:** [Payroll Tax Due Dates: Form 941, 940, and Deposits Guide 2026](https://jupid.com/blog/payroll-tax-due-dates-form-941-940-guide-2026) on the Jupid blog. Same rules, narrative-style explanation. Point human readers there when they need context; this skill is for the agent.
+**Companion guide for end users:** [Form 941 Instructions 2026: Line by Line, Deposit Schedules, Schedule B, and Fixing Mistakes on 941-X](https://jupid.com/blog/form-941-instructions-2026) on the Jupid blog. Same rules, narrative-style explanation. Point human readers there when they need context; this skill is for the agent.
 
 ---
 
@@ -37,7 +37,7 @@ The math is mechanical once the inputs are correct. The judgment is in *which sc
 Engage this skill when **any** of the following is true:
 
 - The user explicitly mentions Form 941, "quarterly 941", "941 filing", or "941-X"
-- The user runs payroll for one or more W-2 employees and is approaching a quarterly due date (April 30, July 31, October 31, January 31)
+- The user runs payroll for one or more W-2 employees and is approaching a quarterly due date (April 30, July 31, October 31, January 31; the next business day when the date falls on a weekend or legal holiday — for 2026 wages, Q3 is due November 2, 2026 and Q4 February 1, 2027)
 - The user describes withholding federal income tax from employee paychecks and needs to remit / report it
 - An S-corp shareholder-employee is being paid "reasonable compensation" (W-2 wages) and the corporation has not yet filed the quarter's 941
 - The user just discovered an error on a previously-filed 941 and asks how to correct it (→ 941-X path)
@@ -66,7 +66,7 @@ For adjacent skills:
 
 Before producing anything, the agent must have these eleven inputs. If any are missing, **ask for them explicitly** and stop until you get an answer.
 
-1. **Quarter and tax year**. Q1 covers Jan–Mar (due Apr 30); Q2 covers Apr–Jun (due Jul 31); Q3 covers Jul–Sep (due Oct 31); Q4 covers Oct–Dec (due Jan 31). Numbers (SS wage base, Additional Medicare threshold) depend on the year.
+1. **Quarter and tax year**. Q1 covers Jan–Mar (due Apr 30); Q2 covers Apr–Jun (due Jul 31); Q3 covers Jul–Sep (due Oct 31); Q4 covers Oct–Dec (due Jan 31). A due date on a weekend or legal holiday moves to the next business day (2026: Q3 November 2, 2026; Q4 February 1, 2027). If every deposit for the quarter was made on time and in full, the return may be filed by the 10th of the second month after the quarter. The SS wage base depends on the year.
 2. **Employer's legal name and EIN**. Used in the form header. Do not invent. Confirm with the user; an EIN typo can route the deposit to a different employer's account.
 3. **Trade name** (DBA) if different from legal name.
 4. **Employer's address**. Must match what's on file with the IRS.
@@ -74,8 +74,8 @@ Before producing anything, the agent must have these eleven inputs. If any are m
 6. **Total wages, tips, and other compensation** paid during the quarter (Line 2). Includes taxable fringes, bonuses, commissions, sick pay paid by employer.
 7. **Federal income tax withheld** from employee paychecks during the quarter (Line 3). Sum of all Form W-4-driven withholdings.
 8. **Wages subject to Social Security tax** (Line 5a) and **Medicare wages** (Line 5c) — these are usually different from Line 2 because:
-   - SS wages are capped at the annual wage base ($176,100 for 2025; verify 2026 against [SSA fact sheet](https://www.ssa.gov/oact/cola/cbb.html))
-   - Some pretax deductions (401(k), HSA, Section 125 cafeteria plan) reduce federal income tax wages but not FICA wages — or vice versa
+   - SS wages are capped at the annual wage base ($184,500 for 2026; $176,100 for 2025 — [SSA](https://www.ssa.gov/oact/cola/cbb.html); Instructions for Form 941 (Rev. March 2026), What's New)
+   - Elective 401(k)/403(b)/457(b) deferrals reduce federal income tax wages but not FICA wages; §125 cafeteria plan benefits (health, health FSA, HSA via payroll, dependent care) and §132(f) transit/parking reduce both
 9. **Wages subject to Additional Medicare Tax** (Line 5d) — wages paid to any employee exceeding $200,000 in the calendar year. The 0.9% additional withholding starts at $200K regardless of filing status (IRC §3101(b)(2)).
 10. **Total tax deposits made during the quarter** (Line 13) — federal tax deposits via EFTPS, broken down by deposit date and amount. Required for the depositor reconciliation and (if semi-weekly) Schedule B daily breakdown.
 11. **Deposit schedule status** — monthly or semi-weekly. Determined by the lookback period (July 1 of two years ago through June 30 of last year). If total taxes during lookback > $50,000, semi-weekly. Else monthly. New employers default to monthly until lookback data exists. See [`references/deposit-schedules.md`](./references/deposit-schedules.md).
@@ -85,15 +85,15 @@ For S-corp filers with shareholder-employees, additionally ask:
 - Whether reasonable compensation was assessed against IRS factors (industry, role, hours) — out of scope for this skill but worth a documentation reminder
 - Whether shareholder distributions (non-wage) were also paid — those don't appear on 941
 
-For employers with sick or family leave wages (rare post-2021):
-- Qualified sick leave wages paid (Line 5a(i)) — only if FFCRA / ARPA credits still apply (they expired Sept 30, 2021; carrying into a 2026 quarter is essentially nil unless a retroactive correction)
-- Confirm with the user whether they have any such wages — default to zero
+Qualified sick/family leave wages and COVID-era credits have no lines on the Rev. March 2026 Form 941 (they exist only on Form 941-X for the original 2020–2021 quarters). Do not ask for them on a 2026 return.
+
+OBBBA (P.L. 119-21) withholding changes to flag, not compute: employees may submit an updated Form W-4 to account for the new qualified tips and qualified overtime deductions; withhold per Pub. 15-T. Tips and overtime remain subject to Social Security and Medicare tax (Instructions for Form 941, Rev. March 2026, What's New; Notice 2025-62 for 2025 reporting relief).
 
 For 941-X corrections, additionally ask:
 - Which prior quarter is being corrected (year + quarter)
 - The error type: under-reported tax (owe more) or over-reported tax (claim refund / abatement)
 - Whether the error is administrative (transposition, misclassification) or substantive
-- Date the error was discovered (statute of limitations: generally 3 years from filed date or 2 years from paid date, whichever later — IRC §6511)
+- Date the error was discovered (period of limitations: overreported tax within 3 years of the date Form 941 was filed or 2 years from payment, whichever is later; underreported tax within 3 years of filing; Forms 941 for a calendar year count as filed on April 15 of the next year — Instructions for Form 941-X, Rev. April 2026)
 
 ---
 
@@ -119,7 +119,7 @@ Build the master payroll table for the quarter:
 
 The TOTALS row drives Lines 2, 3, 5a, 5c, 5d.
 
-Watch for SS wage base cap: any employee whose YTD SS wages reach $176,100 (2025; verify 2026) stops accruing SS wages mid-year. Their SS wages on Line 5a for that quarter equal the *remaining headroom*, not their gross wages.
+Watch for SS wage base cap: any employee whose YTD SS wages reach $184,500 (2026) stops accruing SS wages mid-year. Their SS wages on Line 5a for that quarter equal the *remaining headroom*, not their gross wages.
 
 ### Step 3 — Compute FICA on Line 5
 
@@ -156,43 +156,41 @@ For most small-employer 941s, Lines 7-9 are all zero. If the user doesn't mentio
 Line 10 = Line 6 + Line 7 + Line 8 + Line 9
 ```
 
-### Step 7 — Apply Lines 11a-11g credits (almost all expired)
+### Step 7 — Apply Line 11 (the only credit line on the 2026 form)
 
-Most credits on the 2025 / 2026 941 are residual lines for FFCRA / ARPA sick-leave and family-leave credits, which expired September 30, 2021. For a 2026-quarter filing these are usually zero unless the user is amending a prior quarter via 941-X.
+- **Line 11** — Qualified small business payroll tax credit for increasing research activities (Form 8974). Only applies if the user is a qualified small business that elected on Form 6765 to apply the §41 R&D credit against payroll tax. See [`references/r-and-d-payroll-credit.md`](./references/r-and-d-payroll-credit.md).
 
-- **Line 11a** — Qualified small business payroll tax credit for increasing research activities (Form 8974). Only applies if the user is a qualified small business that elected to apply the §41 R&D credit against payroll tax. See [`references/r&d-payroll-credit.md`](./references/r-and-d-payroll-credit.md).
-- **Line 11b–f** — COVID-era credits, generally zero.
-- **Line 11g** — Total nonrefundable credits = sum of 11a-11f (positive value reduces tax).
+The Rev. March 2026 form has no COVID-era credit lines (no 11b–11g, no 13b–13z).
 
 ```
-Line 12 = Line 10 − Line 11g
+Line 12 = Line 10 − Line 11   (not below zero)
 ```
 
-### Step 8 — Compute Line 13 (deposits and applied credits)
+### Step 8 — Compute Line 13 (deposits)
 
 ```
-Line 13a = Total deposits made this quarter (per EFTPS records)
-Line 13b–13z = Other refundable credits (mostly COVID-era, zero by default)
-Line 13g = sum
+Line 13 = Total deposits for the quarter, including any overpayment applied from a prior quarter and overpayments applied from Form 941-X, 941-X (PR), or 944-X filed in the current quarter
 ```
 
-The user must reconcile deposits to liability. Pull EFTPS confirmation numbers if possible. Each deposit needs a date and amount.
+The user must reconcile deposits to liability. Pull EFTPS (or IRS Direct Pay / business tax account) confirmation numbers if possible. Each deposit needs a date and amount.
 
-### Step 9 — Determine balance due / overpayment (Lines 14–15)
+### Step 9 — Determine balance due / overpayment (Lines 14–15e)
 
 ```
-If Line 12 > Line 13g:
-   Line 14 = Line 12 − Line 13g  (balance due — pay with return or by deposit)
-If Line 12 < Line 13g:
-   Line 15 = Line 13g − Line 12  (overpayment — apply to next return OR refund)
+If Line 12 > Line 13:
+   Line 14 = Line 12 − Line 13  (balance due — pay electronically: EFTPS, IRS Direct Pay, or business tax account)
+If Line 12 < Line 13:
+   Line 15a = Line 13 − Line 12  (overpayment)
+   Line 15b = apply to next return OR refund (no box = applied to next return)
+   Lines 15c–15e = routing number, account type, account number for a direct-deposit refund (new in Rev. March 2026, EO 14247)
 ```
 
-If Line 14 > $2,500 and the user is a monthly depositor, deposits should already have been made (else FTD penalty). If Line 14 > $100 in any deposit period for a semi-weekly depositor, FTD penalty risk.
+Never enter amounts on both Line 14 and Line 15a. Paying a balance with the return instead of depositing is allowed only under the $2,500 rule or the monthly depositor's accuracy-of-deposits rule (Pub. 15, section 11); otherwise an amount that should have been deposited draws a failure-to-deposit penalty.
 
 ### Step 10 — Determine which schedule attaches (Part 2)
 
 - **Line 16** — Pick a deposit schedule indicator:
-  - **Box 1**: Total quarter liability < $2,500 *and* prior quarter liability was < $2,500 *and* you didn't incur a $100K next-day deposit obligation. No deposit schedule entry needed; pay with return.
+  - **Box 1**: Line 12 on this return is less than $2,500 *or* Line 12 on the prior quarter's return was less than $2,500, *and* you didn't incur a $100K next-day deposit obligation during the quarter. No deposit schedule entry needed. Exception printed on the form: if the prior quarter was under $2,500 but this quarter's Line 12 is $100,000 or more, still provide the monthly schedule or Schedule B.
   - **Box 2**: Monthly depositor. Fill in the three monthly liability amounts on Line 16. Total must equal Line 12.
   - **Box 3**: Semi-weekly depositor. Attach **Schedule B (Form 941)** showing daily liability for each day of the quarter on which wages were paid.
 
@@ -211,7 +209,7 @@ See **Output format** below.
 State the next forms / actions:
 
 - **W-2 / W-3 reconciliation at year-end** — sum of all four quarters' Line 2 should equal sum of Box 1 wages on W-2s; sum of Line 3 should equal Box 2 on W-2s. Mismatches trigger CP207 / CP207L notices.
-- **Form 940 (FUTA)** — annual federal unemployment, due January 31. Separate from 941.
+- **Form 940 (FUTA)** — annual federal unemployment, due January 31 (February 1, 2027 for 2026 because January 31, 2027 is a Sunday). Separate from 941.
 - **Quarterly state withholding return** — state-specific (e.g., CA Form DE 9, NY NYS-45, IL IL-941). Out of scope.
 - **Schedule B** if semi-weekly depositor.
 - **941-X** if errors are discovered after filing.
@@ -239,6 +237,7 @@ For the full reference, load [`references/line-by-line.md`](./references/line-by
 - **Trade name**: DBA, if any.
 - **Address**: Must match IRS records. Address change → file Form 8822-B separately.
 - **Quarter check box**: 1, 2, 3, or 4. Match to filing quarter.
+- **Aggregate Return Filers Only** (new in Rev. March 2026): section 3504 agents, CPEOs, and other third parties filing aggregate returns check their type here. A business filing its own 941 leaves it blank.
 
 ### Part 1 — Quarter taxes (Lines 1–15)
 
@@ -247,10 +246,8 @@ For the full reference, load [`references/line-by-line.md`](./references/line-by
 | 1 | Number of employees on pay period including 12th of last month of quarter | Single date snapshot, not average |
 | 2 | Wages, tips, other compensation | Box 1-style federal income tax wages this quarter |
 | 3 | Federal income tax withheld | Per W-4 + supplemental withholding |
-| 4 | (checkbox) | Check if no wages, tips subject to SS/Medicare; skip 5a-5e |
-| 5a | Taxable SS wages | Up to wage base; column 2 = ×12.4% |
-| 5a(i) | Qualified sick leave wages | Default $0 (FFCRA expired) |
-| 5a(ii) | Qualified family leave wages | Default $0 |
+| 4 | (checkbox) | Check if no wages, tips subject to SS/Medicare; go to line 6 |
+| 5a | Taxable SS wages | Up to wage base ($184,500 for 2026); column 2 = ×12.4% |
 | 5b | Taxable SS tips | Tipped industries only |
 | 5c | Taxable Medicare wages | All Medicare wages, no cap; ×2.9% |
 | 5d | Wages subject to Additional Medicare | Wages > $200K to single employee YTD; ×0.9% |
@@ -261,15 +258,13 @@ For the full reference, load [`references/line-by-line.md`](./references/line-by
 | 8 | Sick pay third-party adjustment | Negative if carrier withheld |
 | 9 | Adjustment for tips, group-term life | Rare |
 | 10 | Total taxes after adjustments | 6 + 7 + 8 + 9 |
-| 11a | Qualified small business R&D payroll credit | Form 8974 |
-| 11b–f | COVID credits (residual) | Default $0 |
-| 11g | Total nonrefundable credits | Sum |
-| 12 | Total taxes after credits | 10 − 11g |
-| 13a | Total deposits | EFTPS sum |
-| 13b–z | Refundable COVID credits etc. | Default $0 |
-| 13g | Total deposits + refundable credits | Sum |
-| 14 | Balance due | If 12 > 13g |
-| 15 | Overpayment | If 13g > 12 |
+| 11 | Qualified small business R&D payroll credit | Form 8974 line 17 |
+| 12 | Total taxes after adjustments and nonrefundable credits | 10 − 11 |
+| 13 | Total deposits, incl. overpayments applied | EFTPS / Direct Pay / business tax account |
+| 14 | Balance due | If 12 > 13 |
+| 15a | Overpayment | If 13 > 12 |
+| 15b | Apply to next return or refund | Check one |
+| 15c–15e | Direct-deposit refund: routing number, account type, account number | New in Rev. March 2026 |
 
 ### Part 2 — Deposit schedule (Line 16)
 
@@ -306,9 +301,9 @@ Before declaring the form ready, run these checks. Surface anything that fails �
 - [ ] Line 5e = Line 5a col 2 + Line 5b col 2 + Line 5c col 2 + Line 5d col 2
 - [ ] Line 6 = Line 3 + Line 5e + Line 5f
 - [ ] Line 10 = Line 6 + Line 7 + Line 8 + Line 9
-- [ ] Line 12 = Line 10 − Line 11g
-- [ ] Line 13g = Line 13a + Line 13b + ... + Line 13z
-- [ ] Line 14 OR Line 15 (not both) populated
+- [ ] Line 12 = Line 10 − Line 11
+- [ ] Line 13 = deposits per EFTPS / Direct Pay records + overpayments applied
+- [ ] Line 14 OR Line 15a (not both) populated
 - [ ] If Box 2 (monthly): three monthly amounts on Line 16 sum to Line 12
 - [ ] If Box 3 (semi-weekly): Schedule B daily totals sum to Line 12
 
@@ -320,11 +315,11 @@ Surface a warning, do not block, if any of these are true:
 - [ ] Line 5c col 1 < Line 5a col 1 → Medicare wages should be ≥ SS wages (no SS cap on Medicare); check
 - [ ] Line 5d > 0 but no employee earned > $200K YTD → recheck threshold
 - [ ] Line 3 = 0 but Line 2 > 0 → either all employees claimed exempt on W-4 (rare) or withholding wasn't run; verify
-- [ ] Line 14 > 0 and Line 16 Box 2 (monthly): if Line 14 > $100, late deposits likely; FTD penalty risk
-- [ ] Line 14 > $2,500: at year-end this means deposits should have been ongoing; check EFTPS
+- [ ] Line 14 > 0 and Line 16 Box 2 (monthly): a shortfall above the accuracy-of-deposits tolerance (the greater of $100 or 2% of the amount due, Pub. 15 section 11) means late deposits; FTD penalty risk
+- [ ] Line 14 > 0 and Line 12 is $2,500 or more in both this and the prior quarter: the balance should have been deposited; check EFTPS
 - [ ] Total quarter wages (Line 2) is ~25% of expected annual payroll: confirm seasonality or missing pay periods
-- [ ] No FFCRA / ARPA credit lines populated for current 2026 quarters (those credits expired Sept 30, 2021; carrying into 2026 indicates a 941-X correction, not a current 941)
-- [ ] Schedule B daily amount > $100,000 → next-day deposit rule was triggered (became semi-weekly automatically)
+- [ ] The draft uses the Rev. March 2026 line set (no 5a(i)/5a(ii), 11a–11g, or 13a–13g lines)
+- [ ] Schedule B daily amount ≥ $100,000 → next-day deposit rule was triggered (a monthly depositor becomes semi-weekly)
 
 ### Cross-form checks
 
@@ -348,17 +343,16 @@ Trade name (if any):         <DBA or blank>
 EIN:                         XX-XXXXXXX
 Address:                     <street, city, state, ZIP>
 Quarter:                     [ ] 1  [ ] 2  [ ] 3  [ ] 4
+Aggregate Return Filers Only: (blank unless 3504 agent / CPEO / other third party)
 
 ## Part 1 — Quarter Taxes
 
  1. Employees on pay period including last 12th:   X
  2. Wages, tips, other compensation:               $X,XXX.XX
  3. Federal income tax withheld:                   $X,XXX.XX
- 4. [ ] Check if line 2 wages not subject to SS or Medicare
+ 4. [ ] Check if no wages, tips, and other compensation are subject to SS or Medicare tax
 
  5a. Taxable SS wages:           $X,XXX.XX × 0.124 = $X,XXX.XX
- 5a(i). Sick leave wages:        $0.00 × 0.062 = $0.00
- 5a(ii). Family leave wages:     $0.00 × 0.062 = $0.00
  5b. Taxable SS tips:            $0.00 × 0.124 = $0.00
  5c. Taxable Medicare wages:     $X,XXX.XX × 0.029 = $X,XXX.XX
  5d. Add'l Medicare wages:       $0.00 × 0.009 = $0.00
@@ -371,21 +365,18 @@ Quarter:                     [ ] 1  [ ] 2  [ ] 3  [ ] 4
  9.  Tips & group-term life adjustment:            $0.00
 10.  Total taxes after adjustments:                $X,XXX.XX
 
-11a. Qualified small business R&D credit (Form 8974): $0.00
-11b–f. (Residual COVID credit lines):              $0.00
-11g. Total nonrefundable credits:                  $0.00
-12.  Total taxes after credits:                    $X,XXX.XX
+11.  Qualified small business R&D credit (Form 8974): $0.00
+12.  Total taxes after adjustments and credits:    $X,XXX.XX
 
-13a. Total deposits this quarter:                  $X,XXX.XX
-13b–z. (Residual COVID refundable credits):        $0.00
-13g. Total:                                        $X,XXX.XX
+13.  Total deposits for this quarter:              $X,XXX.XX
 
-14.  Balance due (if 12 > 13g):                    $X,XXX.XX  OR
-15.  Overpayment (if 13g > 12):                    $X,XXX.XX
-     Apply to next return  [ ]   Refund  [ ]
+14.  Balance due (if 12 > 13):                     $X,XXX.XX  OR
+15a. Overpayment (if 13 > 12):                     $X,XXX.XX
+15b. Apply to next return  [ ]   Refund  [ ]
+15c–15e. Direct deposit: routing ____  type ____  account ____ (only if refund)
 
 ## Part 2 — Deposit Schedule (Line 16)
-[ ] Box 1: Liability < $2,500 and no $100K next-day rule
+[ ] Box 1: Line 12 < $2,500 this quarter OR prior quarter, and no $100K next-day obligation
 [ ] Box 2: Monthly depositor
        Month 1: $X,XXX.XX
        Month 2: $X,XXX.XX
@@ -408,8 +399,7 @@ Signature: __________
 
 ## Required attachments
 - [ ] Schedule B (Form 941) if Line 16 Box 3 (semi-weekly)
-- [ ] Form 8974 if Line 11a > 0
-- [ ] Form 945-A if month-to-day mismatch on Line 16
+- [ ] Form 8974 if Line 11 > 0
 
 ## Validation summary
 - Math: all checks passed | <list failures>
@@ -421,7 +411,7 @@ Signature: __________
 - IRS Instructions for Form 941, Rev. <month YYYY>
 - IRC §3101 (employee FICA), §3111 (employer FICA), §3101(b)(2) (Additional Medicare), §3402 (income tax withholding)
 - Pub. 15 (Employer's Tax Guide) for the tax year
-- SSA Annual Wage Base announcement for the tax year
+- SSA contribution and benefit base for the tax year ($184,500 for 2026)
 ```
 
 The draft is **not** the final filed form. The user still has to e-file via an authorized provider (IRS doesn't accept direct 941 e-files from the public — must go through an authorized e-file provider) or mail paper. The deliverable's value is that every line is computed and traceable.
@@ -435,7 +425,7 @@ Loaded on demand based on what the user's situation needs.
 - [`references/line-by-line.md`](./references/line-by-line.md) — Complete table of every Form 941 line with examples and edge cases
 - [`references/deposit-schedules.md`](./references/deposit-schedules.md) — Monthly vs. semi-weekly depositor rules, $100K next-day rule, Schedule B mechanics, lookback period calculation
 - [`references/941-x-corrections.md`](./references/941-x-corrections.md) — When to file 941-X, how to compute the correction, statute of limitations
-- [`references/r-and-d-payroll-credit.md`](./references/r-and-d-payroll-credit.md) — Qualified small business §41 R&D credit applied to payroll tax via Form 8974 (Line 11a)
+- [`references/r-and-d-payroll-credit.md`](./references/r-and-d-payroll-credit.md) — Qualified small business §41 R&D credit applied to payroll tax via Form 8974 (Line 11)
 - [`references/common-mistakes.md`](./references/common-mistakes.md) — Top filer mistakes with examples and fixes
 - [`filing.md`](./filing.md) — Browser-automation playbook: how an agent files via authorized IRS e-file provider, paid payroll software, or paper (loaded only when the user authorizes filing)
 
@@ -463,10 +453,12 @@ Authoritative sources used by this skill. Always re-verify these against the IRS
 - [Publication 15-A (Employer's Supplemental Tax Guide)](https://www.irs.gov/pub/irs-pdf/p15a.pdf) — fringe benefits, sick pay, supplemental wages
 - [Publication 15-B (Employer's Tax Guide to Fringe Benefits)](https://www.irs.gov/pub/irs-pdf/p15b.pdf) — taxable / nontaxable fringe rules
 - [Employment Taxes landing page](https://www.irs.gov/businesses/small-businesses-self-employed/employment-taxes) — IRS hub
-- [Companion blog: Payroll Tax Due Dates Guide 2026](https://jupid.com/blog/payroll-tax-due-dates-form-941-940-guide-2026) — Jupid's narrative companion for human readers
+- [Form 941 Instructions 2026: Line by Line, Deposit Schedules, Schedule B, and Fixing Mistakes on 941-X](https://jupid.com/blog/form-941-instructions-2026) — Jupid's narrative companion to this skill, written for human readers
+- [Payroll Tax Due Dates 2026: Form 941, Form 940, and Deposit Schedules](https://jupid.com/blog/payroll-tax-due-dates-form-941-940-guide-2026) — Jupid's 2026 deposit and filing calendar
 - IRC §3101 (FICA on employee), §3111 (FICA on employer), §3101(b)(2) (Additional Medicare), §3402 (income tax withholding), §3121(q) (tip notice and demand), §6302 (deposit rules), §6511 (statute of limitations on refund / correction)
-- SSA — annual contribution and benefit base ($176,100 for 2025; verify 2026 at https://www.ssa.gov/oact/cola/cbb.html)
+- SSA — annual contribution and benefit base ($184,500 for 2026; $176,100 for 2025; https://www.ssa.gov/oact/cola/cbb.html)
 - Notice 2021-24 (last year of FFCRA / ARPA leave-credit guidance)
+- IRS Fact Sheet 2025-07 — P.L. 119-21 §70605(d) bars allowing or refunding ERC claims for Q3/Q4 2021 filed after January 31, 2024
 
 ## Disclaimer
 

@@ -54,7 +54,7 @@ The wage base only applies to the 12.4% SS portion. Medicare's 2.9% has no cap (
 | 2023 | $160,200 | SSA Press Release Oct 2022 |
 | 2024 | $168,600 | SSA Press Release Oct 2023 |
 | 2025 | $176,100 | SSA Press Release Oct 2024 |
-| 2026 | (verify with SSA — typically announced October 2025) | — |
+| 2026 | $184,500 | SSA Contribution and Benefit Base page (announced Oct 2025) |
 
 Always check https://www.ssa.gov/oact/cola/cbb.html for the current year's figure. The Schedule SE form pre-prints Line 7 with the figure for that tax year.
 
@@ -128,7 +128,7 @@ This is rare but real for high earners with two simultaneous jobs (e.g., a consu
 
 ## Verify before filing
 
-- 2026 SS wage base (the figure on the 2026 Schedule SE Line 7)
-- 2026 SS quarter-of-coverage threshold (for credit accrual decisions)
+- 2026 SS wage base: $184,500 per SSA; confirm it matches Line 7 of the 2026 Schedule SE when that form is released
+- 2026 SS quarter-of-coverage threshold: $1,890 per SSA (https://www.ssa.gov/oact/cola/QC.html)
 - That the 0.9235 factor is unchanged (it has been stable since the 1990 SECA reforms; would only change with new legislation)
 - That the FICA rates (6.2% / 1.45%) are unchanged (also stable; legislative change would be major news)

@@ -75,8 +75,6 @@ The agent navigates and interacts deterministically. Selectors will differ per p
 | 4 | "Wages NOT subject to SS/Medicare" checkbox | Line 4 |
 | 5a col 1 | "Taxable Social Security Wages" | Line 5a col 1 |
 | 5a col 2 | (auto-computed, verify) | Line 5a col 2 |
-| 5a(i) | "Qualified sick leave wages" | $0 default |
-| 5a(ii) | "Qualified family leave wages" | $0 default |
 | 5b col 1 | "Taxable Social Security Tips" | Line 5b col 1 |
 | 5c col 1 | "Taxable Medicare Wages" | Line 5c col 1 |
 | 5d col 1 | "Wages subject to Additional Medicare" | Line 5d col 1 |
@@ -87,13 +85,14 @@ The agent navigates and interacts deterministically. Selectors will differ per p
 | 8 | "Sick pay third-party adjustment" | Line 8 |
 | 9 | "Tips/group-term life adjustment" | Line 9 |
 | 10 | (auto-computed) | (verify) |
-| 11a | "R&D Payroll Credit (Form 8974)" | Line 11a |
-| 11b–f | (residual COVID) | $0 default |
-| 11g | (auto-computed) | (verify) |
+| 11 | "R&D Payroll Credit (Form 8974)" | Line 11 |
 | 12 | (auto-computed) | (verify) |
-| 13a | "Total Deposits Made" | Line 13a |
+| 13 | "Total Deposits Made" | Line 13 |
 | 14 | "Balance Due" (auto) | (verify) |
-| 15 | "Overpayment" (auto) | (verify) |
+| 15a | "Overpayment" (auto) | (verify) |
+| 15b–15e | "Apply to next return / Refund" + direct-deposit routing, type, account | Lines 15b–15e (Rev. March 2026) |
+
+If the provider's screens still show 5a(i)/5a(ii), 11a–11g, or 13a–13g, it is using a pre-2026 revision: stop and confirm it files the Rev. March 2026 Form 941.
 
 7. **Pick deposit schedule (Line 16)**:
    - Box 1 / Box 2 / Box 3 radio
@@ -105,8 +104,8 @@ The agent navigates and interacts deterministically. Selectors will differ per p
 9. **Sign** with 94x Online Signature PIN (10-digit) OR by uploading Form 8453-EMP (PDF signature page). The provider integrates with the IRS PIN system.
 
 10. **Pay**:
-   - If balance due: choose EFW (provider debits bank), or pay separately via EFTPS, or include check by mail
-   - If overpayment: elect refund or apply-to-next-quarter
+   - If balance due: choose EFW (provider debits bank), or pay separately via EFTPS / IRS Direct Pay / business tax account (the 2026 instructions ask for electronic payment)
+   - If overpayment: elect refund (with direct-deposit details on lines 15c–15e) or apply-to-next-quarter
 
 11. **Submit**:
    - Provider runs validation (math, missing fields)
@@ -167,8 +166,7 @@ Order top-to-bottom:
 
 1. **Form 941** (signed by an authorized officer)
 2. **Schedule B (Form 941)** if Line 16 Box 3
-3. **Form 8974** if Line 11a > 0
-4. **Form 945-A** if monthly liability summary doesn't reconcile
+3. **Form 8974** if Line 11 > 0
 
 Do not staple. Use a single paperclip in the upper-left if needed. Each form printed full-size on letter paper, single-sided.
 
@@ -187,7 +185,9 @@ Do not hardcode addresses — they shift between years.
 
 ### If paying with the return
 
-- Use **Form 941-V (Payment Voucher)** — included on page 5 of the Form 941 PDF
+Only when allowed: Line 12 under $2,500 for the current or prior quarter (and no $100,000 day), or a monthly depositor's accuracy-of-deposits payment (Form 941-V, "Making Payments With Form 941"). Otherwise pay electronically; the 2026 instructions ask that balances be paid electronically (EO 14247).
+
+- Use **Form 941-V (Payment Voucher)** — the last page of the Form 941 PDF
 - Make check or money order payable to **"United States Treasury"**
 - Write on the check memo: EIN, "Form 941", and the quarter (e.g., "Q1 2026")
 - Do NOT staple check to the return
@@ -196,7 +196,7 @@ Do not hardcode addresses — they shift between years.
 ### Mailing best practices
 
 - Send via **USPS Certified Mail with Return Receipt** for proof of timely filing
-- Postmark by the quarter's due date (April 30, July 31, October 31, January 31). If the date falls on a weekend or federal holiday, the next business day applies.
+- Postmark by the quarter's due date (April 30, July 31, October 31, January 31). If the date falls on a weekend or legal holiday, the next business day applies (2026 wages: Q3 due November 2, 2026; Q4 due February 1, 2027).
 - Keep a complete photocopy of the entire return + check
 - Save the certified-mail receipt for at least 4 years (IRS retention recommendation)
 

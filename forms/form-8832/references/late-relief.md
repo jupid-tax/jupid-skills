@@ -2,7 +2,7 @@
 
 If the desired effective date is more than 75 days before the filing date, the entity needs late-election relief. This file covers Rev. Proc. 2009-41 — the automatic, free, no-PLR-required relief mechanism — and the boundary where the entity must instead seek a private letter ruling.
 
-Source: [Rev. Proc. 2009-41](https://www.irs.gov/pub/irs-drop/rp-09-41.pdf), which superseded Rev. Proc. 2002-59. As of 2026-04-29, Rev. Proc. 2009-41 remains in effect; verify before filing.
+Source: [Rev. Proc. 2009-41](https://www.irs.gov/pub/irs-drop/rp-09-41.pdf), which superseded Rev. Proc. 2002-59. As of 2026-10-06, Rev. Proc. 2009-41 remains in effect (Form 8832 Rev. 12-2013 cites it on the form); verify before filing.
 
 ---
 
@@ -10,32 +10,32 @@ Source: [Rev. Proc. 2009-41](https://www.irs.gov/pub/irs-drop/rp-09-41.pdf), whi
 
 All four requirements of § 4.01 must be satisfied:
 
-1. **The entity failed to obtain its desired classification solely because Form 8832 was not timely filed.** No other reason for the misclassification.
+1. **The entity failed to obtain its desired classification (at formation, when its classification became relevant, or as a change) solely because Form 8832 was not timely filed.** No other reason for the misclassification. A late *change* election is still subject to the 60-month limitation (§4.01(1)(b)).
 
 2. **One of two return-consistency conditions:**
    - **(a) Return not yet due**: The entity has not filed a federal tax or information return for the first year in which the election was intended because the due date for that return has not yet passed. *Or*
-   - **(b) Returns filed consistently**: The entity has timely filed all required federal tax returns and information returns consistent with its requested classification for all years the entity intended the requested classification to be in effect, AND no inconsistent tax or information returns have been filed by or with respect to the entity during any of the taxable years.
+   - **(b) Returns filed consistently**: The entity has timely filed all required federal tax returns and information returns consistent with its requested classification for all years the entity intended the requested classification to be in effect, AND no inconsistent tax or information returns have been filed by or with respect to the entity during any of the taxable years. A return filed within 6 months after its due date (excluding extensions) counts as timely for this test; for a change election, "consistent" includes reporting the §301.7701-3(g) deemed transactions; if the entity files no return, each affected person must meet the test (§4.01(2)(b)).
 
 3. **The entity has reasonable cause for the failure to timely file Form 8832.**
 
 4. **Three years and seventy-five days from the requested effective date have not passed.**
 
-If any one is false, Rev. Proc. 2009-41 is not available — go to private letter ruling under Rev. Proc. 2025-1 (or whichever annual update is current at filing time).
+If any one is false, Rev. Proc. 2009-41 is not available — go to private letter ruling under Rev. Proc. 2026-1 (or whichever annual update is current at filing time).
 
 ---
 
 ## How to file under Rev. Proc. 2009-41
 
-The entity files **Form 8832 with Part II completed**. No separate filing fee. The form is mailed to the same service center as a regular Form 8832 (Kansas City or Ogden, depending on principal place of business).
+The entity files **Form 8832 with Part II completed** within 3 years and 75 days of the requested effective date. No user fee applies (Rev. Proc. 2009-41 §3.01). The form is mailed to the same service center as a regular Form 8832 (Kansas City, MO 64999; Ogden, UT 84201; or Ogden, UT 84201-0023 for a foreign country or U.S. possession, depending on principal place of business).
 
-At the top of Form 8832, write: **"FILED PURSUANT TO REV. PROC. 2009-41"**
+At the top of Form 8832, check the box **"Late classification relief sought under Revenue Procedure 2009-41."** (Rev. Proc. 2009-41 §4.02 told filers to write "Filed Pursuant to Rev. Proc. 2009-41" at the top only until the form was revised; the Rev. 12-2013 form has the box, Part II, and the declaration.)
 
 Part II requires:
 
-- **Line 11 (Part II)**: Reasonable-cause statement
-- **Line 12 (Part II)**: Statement of consistent returns
+- **Line 11**: Explanation of why the election was not filed on time (the reasonable-cause statement)
+- **Part II declaration**: pre-printed declaration under penalties of perjury that the elements of Rev. Proc. 2009-41 §4.01 are satisfied (this covers the consistent-returns condition). Part II has no line 12.
 
-Both signed under penalties of perjury.
+Part II is signed by an authorized representative of the entity and each affected person; signers must have personal knowledge of the facts (Form 8832 instructions, Part II "Signatures").
 
 ---
 
@@ -85,7 +85,7 @@ If the entity does not have a defensible reason for the late filing, Rev. Proc. 
 
 ## Statement of consistent returns
 
-Line 12 (Part II) requires a signed declaration that one of the following is true:
+The Part II declaration (no separate line) represents that the §4.01 elements are met, including that one of the following is true:
 
 - **No returns yet filed** for the affected years (because the first return is not yet due), OR
 - **All returns filed consistent with the requested classification** for affected years; no inconsistent returns
@@ -101,13 +101,7 @@ Sample wording:
 > Signed: ____________  Date: __________
 > Print name and title: ____________"
 
-If inconsistent returns have been filed and the entity is willing to amend:
-
-- The entity must commit to file amended returns that are consistent with the requested classification for each affected year
-- This commitment is in addition to (not substitute for) the consistent-returns declaration
-- The IRS may withhold acceptance of the Form 8832 until amended returns are received
-
-If inconsistent returns have been filed and the entity is unwilling or unable to amend, Rev. Proc. 2009-41 relief is not available — PLR required.
+If inconsistent returns have been filed, Rev. Proc. 2009-41 relief is not available, whether or not the entity offers to amend: §4.01(2)(b) requires that no inconsistent returns have been filed. The entity needs a private letter ruling; Rev. Proc. 2009-41 §4.04 lists the representation (or explanation) the ruling request must include.
 
 ---
 
@@ -115,15 +109,15 @@ If inconsistent returns have been filed and the entity is unwilling or unable to
 
 [Rev. Proc. 2013-30](https://www.irs.gov/pub/irs-drop/rp-13-30.pdf) provides combined late-relief procedures for entities seeking S-corp election. Specifically:
 
-- An eligible entity that wants to be an S-corp (i.e., LLC → C-corp → S-corp) can file Form 2553 alone with late-relief language, and Form 8832 is **deemed filed** under § 4
-- This skips the Form 8832 entirely for the S-corp path — saves a form and avoids two-document coordination
+- An eligible entity that wants to be an S-corp whose corporate classification and S status were both intended to start on the same date files Form 2553 alone with the §5.02 statements and the §5.03 representations (including that it failed to qualify as a corporation solely because Form 8832 was not timely filed or deemed filed). The timely-filing deemed association election itself comes from Treas. Reg. §301.7701-3(c)(1)(v)(C); Rev. Proc. 2013-30 §4.01(1) calls it a "Deemed Entity Classification Election"
+- This skips Form 8832 entirely for the S-corp path. Relief must generally be requested within 3 years and 75 days of the intended effective date (§4.02(2))
 
 When to use Rev. Proc. 2013-30 vs. 2009-41:
 
 | Goal | Use |
 |------|-----|
 | Late C-corp election (entity stays C-corp) | Form 8832 + Part II under Rev. Proc. 2009-41 |
-| Late S-corp election for an LLC (combined 8832 + 2553) | Form 2553 alone with Rev. Proc. 2013-30 § 4 language; skip Form 8832 |
+| Late S-corp election for an LLC (combined 8832 + 2553) | Form 2553 alone with Rev. Proc. 2013-30 §§5.02–5.03 statements and representations; skip Form 8832 |
 | Late partnership election for a multi-member LLC | Form 8832 + Part II under Rev. Proc. 2009-41 |
 | Late disregarded election for a SMLLC reverting from C-corp | Form 8832 + Part II under Rev. Proc. 2009-41 |
 
@@ -131,11 +125,12 @@ When to use Rev. Proc. 2013-30 vs. 2009-41:
 
 ## When Rev. Proc. 2009-41 is NOT available — PLR path
 
-If any of the four § 4.01 requirements is unmet, the entity must seek a private letter ruling (PLR) under Rev. Proc. 2025-1 (or whichever annual update is current at filing time). PLR requirements:
+If any of the four § 4.01 requirements is unmet, the entity must seek a private letter ruling (PLR) under Rev. Proc. 2026-1 (or whichever annual update is current at filing time). PLR requirements:
 
-- Filing fee — typically several thousand dollars (verify the current fee schedule in Rev. Proc. 2025-1 Appendix A)
+- User fee — for a §301.9100-3 relief request, $14,500 standard; reduced fees of $3,450 (gross income under $400,000) or $9,775 (gross income $400,000 to under $10 million) with the required certification (Rev. Proc. 2026-1, Appendix A, ¶¶(A)(3)(c)(i) and (A)(4)). Re-check the fee schedule each January
 - Detailed factual statement
 - Legal arguments under §301.9100-1 / §301.9100-3 for extension of time
+- The representation in Rev. Proc. 2009-41 §4.04 (all returns filed timely or within 6 months of the due date as if the election had been in effect, none filed inconsistently), or an explanation of why it cannot be made
 - Several months of IRS review
 - Outcome is binding only on the requesting taxpayer
 
@@ -154,4 +149,4 @@ After filing Form 8832 with Part II under Rev. Proc. 2009-41, retain:
 - Any amended returns filed to maintain consistency
 - IRS CP277 (acceptance) or CP278 (denial) when received
 
-Retention period: at least 7 years after the last affected tax year, longer if any affected tax year remains open under §6501 statute of limitations.
+Retention period: keep these records as long as their contents may become material in the administration of any Internal Revenue law (Form 8832 instructions, Paperwork Reduction Act Notice). The election governs every later year until changed, so keep them for the life of the classification, and at least until every affected year is closed under §6501.

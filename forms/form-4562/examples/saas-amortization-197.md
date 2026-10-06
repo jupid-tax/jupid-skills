@@ -88,7 +88,7 @@ Part VI — Amortization
 44. Total (Line 42 + Line 43):                                             $7,466
 ```
 
-Line 44 = $7,466 → flows to **Form 1120-S Line 19** (or for a sole prop, Schedule C Line 27a; for a partnership, Form 1065 Line 20).
+Line 44 = $7,466 → flows to **Form 1120-S Line 20**, "Other deductions" (or for a sole prop, Schedule C Line 27b; for a partnership, Form 1065 Line 21), per the 2025 forms.
 
 ## Other Form 4562 entries for the acquisition
 
@@ -97,11 +97,11 @@ The $3,000 of tangible personal property (laptop, monitor) handled separately. I
 ### Part I (§179)
 
 ```
-1.  Maximum amount:                    $1,250,000
+1.  Maximum amount:                    $2,500,000
 2.  Total cost of §179 property:       $3,000
-3.  Threshold:                         $3,130,000
+3.  Threshold:                         $4,000,000
 4.  Reduction:                         $0
-5.  Dollar limit:                      $1,250,000
+5.  Dollar limit:                      $2,500,000
 6.  (a) Laptop / (b) $3,000 / (c) $3,000
 7.  Listed property §179:              $0
 8.  Total elected:                     $3,000
@@ -116,7 +116,7 @@ The $3,000 of tangible personal property (laptop, monitor) handled separately. I
 
 ```
 21. Listed property:        $0
-22. Total:                  $3,000  → Form 1120-S Line 14 (depreciation)
+22. Total:                  $0  (an S corporation leaves Line 12 out of Line 22; the $3,000 §179 passes through on Form 1120-S Schedule K Line 11 and each shareholder's K-1)
 ```
 
 ## Year 2026 Form 4562 — continuing amortization
@@ -162,7 +162,7 @@ If audited:
 ## Common §197 pitfalls
 
 1. **Self-created intangibles aren't §197**: BrightStack's own customer list (built up over years of marketing) isn't §197. Only acquired customer lists are.
-2. **Software developed in-house** isn't §197. It's §174 (5-year domestic R&E amortization, post-TCJA).
+2. **Software developed in-house** isn't §197. It's R&E: for tax years beginning after 2024, domestic software development costs are deductible currently under §174A or amortized by election (60+ months or 10 years); foreign costs are amortized over 15 years under §174.
 3. **Stock acquisitions** of a business don't trigger §197 amortization at the buyer level (the buyer acquired stock, not assets). §197 amortization only on asset purchases or §338 elections.
 4. **Self-rental of real property**: not §197.
 5. **Patents & copyrights bought separately from a business**: §167, not §197. Different mechanics.
@@ -176,4 +176,4 @@ If audited:
 - IRC §1060 (allocation of purchase price in applicable asset acquisitions)
 - Reg. §1.197-2 (§197 intangibles definitions)
 - IRS Pub. 535 (Business Expenses, including §197 amortization rules — note: Pub. 535 has been retired and content moved to Pub. 334 and other publications; verify current consolidation)
-- For S-corp tax return mechanics: Form 1120-S instructions, Line 19 (Other deductions, including amortization)
+- For S-corp tax return mechanics: Form 1120-S instructions, Line 20 (Other deductions, including amortization) and Schedule K Line 11 (§179 deduction)

@@ -58,7 +58,7 @@ Look at the 5 prior years (2020-2024):
 - 2024 loss: $8,000 original; not yet recaptured → $8,000 unrecaptured
 - Total non-recaptured §1231 losses in 5-year window: **$18,000**
 
-But wait — the 2021 loss is now **outside the 5-year window** as of 2026 (only 2021-2025 are within 5 years of 2025; the 5-year window for 2025 is 2020-2024 inclusive). So 2021's $10K unrecaptured loss IS still in the 5-year lookback for 2025. For 2026 returns, the 2021 loss falls off.
+The 2021 loss is still inside the window: the 5 preceding tax years for 2025 are 2020-2024. So 2021's $10K unrecaptured loss IS in the 5-year lookback for 2025. It stays in the window for 2026 returns (2021-2025) and falls off for 2027 returns.
 
 **2025 entries:**
 

@@ -1,11 +1,11 @@
-# Example — Spouse of US Resident Alien Filing MFJ
+# Example — Spouse of US Citizen Filing MFJ
 
 ## Facts
 
 - **Primary filer**: Marcus Thompson, US citizen, single-employer W-2 income $115,000 in 2025, lives in Austin, TX
 - **Applicant (W-7 subject)**: Sofia Hernandez Martinez, Marcus's wife since 2024 wedding in Mexico City; Mexican citizen; entered US August 2024 on a tourist visa, applied for adjustment of status (I-485 pending), no SSN, no work authorization yet
 - **Tax year**: 2025 (return being filed in early 2026)
-- **Why an ITIN is needed**: Marcus and Sofia want to file Married Filing Jointly to access the higher standard deduction ($30,000 for 2025 MFJ) and broader brackets. MFJ requires both filers to have a TIN. Sofia has no SSN and isn't currently SSN-eligible (her work authorization application is pending), so she needs an ITIN.
+- **Why an ITIN is needed**: Marcus and Sofia want to file Married Filing Jointly to access the higher standard deduction ($31,500 for 2025 MFJ after the One Big Beautiful Bill Act; 2025 Form 1040, line 12e margin) and broader brackets. MFJ requires both filers to have a TIN. Sofia has no SSN and isn't currently SSN-eligible (her work authorization application is pending), so she needs an ITIN.
 - **Identification documents Sofia has available**:
   - Original Mexican passport, valid through 2029
   - Mexican voter ID card (INE)
@@ -25,10 +25,11 @@ If Sofia's EAD comes through before the 2025 return is filed (e.g., in February 
 
 ### Step 2 — Reason code
 
-Reason code: **(d) — Spouse of US citizen or resident alien**
+Reason code: **(e) — Spouse of US citizen/resident alien**
 
 This requires:
-- Marcus's name and SSN listed on Form W-7 Line 6f (the "primary filer" reference)
+- Marcus's full name and SSN on the dotted line next to box e (not line 6f)
+- An allowable tax benefit: a spouse filing a joint return qualifies
 - Marriage relationship documented (marriage certificate may be requested by IRS but isn't always required at filing — keep it ready)
 - The W-7 attached to the joint Form 1040
 
@@ -44,7 +45,7 @@ Sofia's options:
 1. Mail original passport to IRS Austin → IRS holds 60 days, returns by mail. Risk: passport away from Sofia for 2-3 months. If she needs to travel internationally (e.g., to attend a family event in Mexico), this is a problem.
 2. **Mail certified copy** from issuing authority — Mexican consulate can issue a certified copy of her passport for ~$25-50. This is what most CPAs recommend for spouses without travel plans, but it requires a consulate visit and is slower than direct mail.
 3. **Use a Certifying Acceptance Agent (CAA)** — CAA reviews the original in person, certifies, sends certified copy to IRS. Sofia keeps the original passport. Cost: $100-300. **Best option for filers with limited time who want to keep passport.**
-4. **In-person at IRS Taxpayer Assistance Center (TAC)** — Sofia brings passport to a TAC; IRS reviews and returns it on the spot, then forwards the W-7. Free, but requires an advance appointment via 844-545-5640 (often 4-8 week wait).
+4. **In-person at IRS Taxpayer Assistance Center (TAC)** — Sofia brings passport to a TAC; IRS reviews and returns it on the spot, then forwards the W-7. Free, but requires an advance appointment via 844-545-5640 (it may take several weeks to get one).
 
 For this example: **Sofia uses a CAA** (Marcus's local enrolled agent in Austin who is a CAA). Cost ~$200 for the W-7 certification.
 
@@ -58,40 +59,41 @@ Form 1040 (2025) for Marcus and Sofia:
 
 - Filing status: Married Filing Jointly
 - Marcus: SSN 123-45-6789, primary filer
-- Sofia: SSN field reads **"ITIN APPLIED FOR"** (handwritten in the SSN box if paper, or per software's guidance if e-file — but with a W-7 pending, the return CANNOT be e-filed; must paper file)
+- Sofia: SSN field left **blank** (the IRS enters the ITIN when it is assigned; with a W-7 attached, the return CANNOT be e-filed; must paper file)
 - Income: Marcus's W-2 $115,000; Sofia $0
-- Standard deduction: $30,000 (MFJ 2025)
-- Taxable income: $85,000
+- Standard deduction: $31,500 (MFJ 2025, per 2025 Form 1040)
+- Taxable income: $83,500
 - §6013(g) election statement attached (treating Sofia as US tax resident for full year)
 
 ### Step 6 — Fill the W-7
 
 Key fields:
 
-- Top of form: check **box (d) — Spouse of US citizen/resident alien**
-- Also check renewal box: **No** (first-time application)
+- Application type: **Apply for a new ITIN** (first-time application)
+- Reason: check **box (e) — Spouse of U.S. citizen/resident alien**; on the dotted line: "Marcus Thompson, 123-45-6789"
 - Line 1a: Sofia Hernandez Martinez (as on Mexican passport)
-- Line 1b: same (no name change at marriage)
+- Line 1b: N/A (no name change at marriage)
 - Line 2 (mailing address): Marcus and Sofia's home address in Austin, TX
-- Line 3 (foreign address): mother's address in Mexico City (her last foreign address)
-- Line 4: Date of birth, place of birth (Mexico City, Mexico)
+- Line 3 (foreign address): "Mexico" — she relocated to the U.S. and has no permanent foreign residence, so the instructions call for the country name only (a full address would be required only for reason b)
+- Line 4: Date of birth, country of birth Mexico, city Mexico City
 - Line 5: Female
 - Line 6a: Mexico (citizenship)
-- Line 6b: Sofia's Mexican RFC (tax ID), if she has one
-- Line 6c: Tourist visa B-2, expired (or noted as adjusting status)
-- Line 6d: Mexican passport, country Mexico, number, expiration 2029
-- Line 6e: Date of entry to US (August 2024)
-- Line 6f: Primary filer "Marcus Thompson, SSN 123-45-6789, spouse"
+- Line 6b: Sofia's Mexican RFC (tax ID), if she has one; otherwise N/A
+- Line 6c: B-2, visa number, and the visa's expiration date as printed
+- Line 6d: Passport box; issued by Mexico; number; expiration 2029; date of entry into the United States: the full August 2024 date (MM/DD/YYYY)
+- Line 6e: No/Don't know (never had an ITIN or IRSN)
+- Line 6f: N/A
+- Line 6g: N/A
 - **Sign and date**
 
 ### Step 7 — Assemble the package
 
 Stack (top to bottom):
 
-1. Form W-7 (signed by Sofia, certified by CAA with CAA's signature, name, EIN/ITIN)
+1. Form W-7 (signed by Sofia; Acceptance Agent's Use ONLY block completed by the CAA: signature, name and title, company, EIN/PTIN, eight-digit office code)
 2. CAA's certified copy of Sofia's Mexican passport (the CAA takes the original briefly, makes a certified copy, returns the original to Sofia)
 3. CAA's "Certificate of Accuracy" (W-7 COA form)
-4. Form 1040 (joint, signed by both Marcus and Sofia, "ITIN applied for" in Sofia's SSN box)
+4. Form 1040 (joint, signed by both Marcus and Sofia, Sofia's SSN box left blank), with the W-7 attached to its front
 5. §6013(g) election statement
 6. W-2 stapled to front of 1040
 7. (Marriage certificate optional — keep ready in case IRS requests)
@@ -113,13 +115,13 @@ Use USPS Priority Mail with tracking, OR an IRS-authorized private courier (FedE
 
 ### Step 9 — Wait
 
-Processing time: 7-11 weeks during peak season (January-April). Marcus and Sofia mailed in early March 2026; expect ITIN by mid-May to early June.
+Processing time: 9-11 weeks for applications submitted January 15 through April 30 (7 weeks otherwise). The CAA mailed the package in early March 2026; expect a notice in May 2026.
 
-If 11 weeks pass without response, call 1-800-908-9982.
+If 11 weeks pass without response, call 800-829-1040.
 
 ### Step 10 — After ITIN is issued
 
-IRS sends CP-565 with Sofia's new ITIN. The IRS processes the 2025 return using the ITIN (assigns it as Sofia's TIN on the return).
+IRS sends CP565 with Sofia's new ITIN. The IRS processes the 2025 return using the ITIN (assigns it as Sofia's TIN on the return).
 
 If a refund is due, IRS issues it after processing. If tax is owed, IRS sends a balance-due notice (interest may accrue from April 15 if owed and not paid timely — Marcus should have paid an estimate of any balance due via Form 1040-V at the time of W-7/1040 filing, even though the return won't be processed until ITIN is issued).
 
@@ -128,20 +130,20 @@ If a refund is due, IRS issues it after processing. If tax is owed, IRS sends a 
 Once Sofia's I-485 is approved and SSA issues her SSN (likely 2026 or 2027), she should:
 1. Use her SSN on all future tax returns
 2. Write to IRS Austin to **rescind the ITIN** and consolidate the tax records under her SSN
-   - Send: copy of SSA SSN card, copy of CP-565 ITIN letter, written request to rescind
+   - Send: copy of SSA SSN card, copy of CP565 ITIN notice, written request to update the records (the CP565 page asks ITIN holders to tell the IRS when they get an SSN)
    - Address: same Austin ITIN Operation
 3. Update employer, banks, all records to her SSN going forward
 
 ## Validation checks
 
-- [x] Reason code (d) checked, exactly one
-- [x] Primary filer (Marcus) name and SSN listed on Line 6f
-- [x] Marriage relationship stated on Line 6f
+- [x] Reason code (e) checked, exactly one
+- [x] Marcus's name and SSN on the dotted line next to box e
+- [x] Lines 6e-6g answered (No / N/A), no blank sections
 - [x] Mailing address is Sofia's actual address (not CAA's office)
 - [x] CAA-certified copy of passport (originals not at risk in mail)
 - [x] Form 1040 attached, MFJ, signed by both spouses
 - [x] §6013(g) election statement attached
-- [x] Sofia's SSN field on 1040 reads "ITIN APPLIED FOR"
+- [x] Sofia's SSN field on 1040 left blank
 - [x] Mailed to ITIN Operation Austin (not regular 1040 address)
 
 ## Lessons
@@ -149,7 +151,7 @@ Once Sofia's I-485 is approved and SSA issues her SSN (likely 2026 or 2027), she
 1. **MFJ requires a TIN for both spouses** — without a TIN for the spouse, you must file MFS (less favorable bracket and standard deduction).
 2. **CAA is the operationally simplest path** for spouses who can't be without their passport for 2-3 months. Cost ($100-300) is usually worth the convenience.
 3. **Cannot e-file** when an ITIN is being applied for. Plan for paper filing.
-4. **Different mailing address**: ITIN Operation Austin ≠ regular 1040 Austin address. Sending to the wrong address loses 4-8 weeks.
+4. **Different mailing address**: ITIN Operation Austin ≠ regular 1040 Austin address. The W-7 instructions say not to use the return's mailing address.
 5. **§6013(g) election** is permanent (until revoked) — once Sofia is treated as a US tax resident, she's taxed on worldwide income for all subsequent years until the election is revoked.
 6. **Plan for SSN transition**: when Sofia gets her SSN, rescind the ITIN to avoid IRS confusion.
 7. **Pay estimated tax with the W-7 packet** if balance due — interest accrues from April 15 even if the return is in W-7 processing limbo.
@@ -159,8 +161,9 @@ Once Sofia's I-485 is approved and SSA issues her SSN (likely 2026 or 2027), she
 - IRC §6109 — TIN requirements
 - Treas. Reg. §301.6109-1(d)(3) — ITIN issuance
 - IRC §6013(g) — election to treat NRA spouse as resident
-- IRC §6013(a)(1) — joint return requires both spouses' TINs
+- IRC §6013(a)(1) — no joint return if either spouse is a nonresident alien at any time in the year, unless the §6013(g) election applies
 - Pub. 1915 — Understanding Your IRS ITIN
 - Pub. 519 — US Tax Guide for Aliens
-- Form W-7 instructions — reason code (d) requirements
+- Form W-7 instructions (Rev. December 2024) — reason code (e), line 3, line 6d requirements
+- 2025 Form 1040 — standard deduction $31,500 for MFJ
 - IRS ITIN Operation address — verify against current Pub. 1915

@@ -29,9 +29,9 @@ Filer is a C-corp (Form 1120)?
   → Same as 1120-S — FFFF does not support 1120. Paid software or paper.
 
 User wants IRS Direct File?
-  → As of early 2026, IRS Direct File does NOT support Schedule C with
-    depreciation (Line 13). Form 4562 is therefore unsupported. Redirect to
-    FFFF or paid software.
+  → IRS Direct File was not offered in the 2026 filing season (the IRS
+    filing-season release lists Free File, Free File Fillable Forms, MilTax,
+    and VITA/TCE). Redirect to FFFF or paid software.
 ```
 
 ---
@@ -74,9 +74,9 @@ The agent must have:
 | Identifying number | "Identifying number" | Header SSN/EIN |
 | Business or activity | "Business or activity to which this form relates" | Header activity |
 | **Part I §179** | | |
-| 1 | "Maximum amount" | Line 1 ($1,250,000 for 2025) |
+| 1 | "Maximum amount" | Line 1 ($2,500,000 for 2025) |
 | 2 | "Total cost of section 179 property" | Line 2 |
-| 3 | "Threshold cost of section 179 property" | Line 3 ($3,130,000 for 2025) |
+| 3 | "Threshold cost of section 179 property" | Line 3 ($4,000,000 for 2025) |
 | 4 | (auto-computed) | (verify equals draft Line 4) |
 | 5 | (auto-computed) | (verify) |
 | 6 | "(a) Description / (b) Cost / (c) Elected cost" — repeat row | Each Line 6 row |
@@ -94,22 +94,23 @@ The agent must have:
 | **Part III MACRS** | | |
 | 17 | "MACRS deductions for assets placed in service in tax years before [current]" | Line 17 |
 | 18 | "If you are electing to group any assets..." | Line 18 checkbox |
-| 19a–19i | One row per asset class with (b) month/yr, (c) basis, (d) recovery period, (e) convention, (f) method, (g) deduction | Each Line 19 row |
-| 20a–20d | ADS rows | Each Line 20 row |
+| 19a–19j | One row per asset class with (b) month/yr, (c) basis, (d) recovery period, (e) convention, (f) method, (g) deduction | Each Line 19 row |
+| 20a–20e | ADS rows | Each Line 20 row |
 | **Part IV Summary** | | |
 | 21 | "Listed property... from line 28" | Line 21 |
 | 22 | (auto-computed) | (verify) |
-| 23 | "For assets shown above and placed in service during the current year..." | Line 23 |
+| 23a–23b | "For assets shown in Part III that are placed in service during the current tax year, and have costs capitalized under section 263A..." | Lines 23a and 23b |
 | **Part V Listed Property** | | |
 | 24a | "Do you have evidence to support the business/investment use claimed?" Yes/No | 24a |
 | 24b | "If 'Yes,' is the evidence written?" Yes/No | 24b |
+| 24c | "Do you own, lease, or charter an aircraft?" Own/Lease/Charter checkboxes | 24c |
 | 25 | "Special depreciation allowance for qualified listed property" | Line 25 |
 | 26 | "Property used more than 50% in a qualified business use" — repeat per asset | Each row |
 | 27 | "Property used 50% or less in a qualified business use" — ADS only | Each row |
 | 28 | (auto-computed) | (verify, → Line 21) |
 | 29 | (auto-computed) | (verify, → Line 7) |
-| 30a–30c | "Total business / commuting / other personal miles driven during the year" per vehicle | Per vehicle |
-| 31–36 | Yes/No questions per vehicle | Per vehicle |
+| 30–33 | "Total business/investment / commuting / other personal / total miles driven during the year" per vehicle | Per vehicle |
+| 34–36 | Yes/No questions per vehicle | Per vehicle |
 | **Part VI Amortization** | | |
 | 42 | One row per current-year intangible: (a) description, (b) date begins, (c) cost, (d) IRC code, (e) period, (f) deduction | Each row |
 | 43 | "Amortization of costs that began before [current year]" | Line 43 |
@@ -207,9 +208,9 @@ If the user elects out of bonus depreciation under IRC §168(k)(7), the agent mu
 1. Identify the asset class for which the election applies (3-year, 5-year, 7-year, 10-year, 15-year, 20-year, or qualified improvement property — election is per class, applies to *all* assets in that class placed in service in the year)
 2. Prepare a written statement attached to the timely-filed return that says:
    - "Taxpayer [name, ID number] elects out of the additional first-year depreciation allowance under IRC §168(k)(7) for the following classes of property placed in service during tax year [year]: [list classes]."
-3. The election is irrevocable without IRS consent (Rev. Proc. requirement; verify current process).
+3. The election is irrevocable without IRS consent, obtained through a private letter ruling request (Reg. §1.168(k)-2(f)(5)). If the return was filed on time without the statement, the election can still be made on an amended return filed within 6 months of the due date (excluding extensions), marked "Filed pursuant to section 301.9100-2" (2025 Form 4562 instructions, Line 14).
 4. On Form 4562, do not enter bonus depreciation on Line 14 for property in the elected-out class.
-5. MACRS Section A applies normally to the assets.
+5. MACRS (Part III Section B, Lines 19a–19j) applies normally to the assets.
 
 ---
 

@@ -38,6 +38,8 @@ For MACRS straight-line property:
 
 Because MACRS requires straight-line for real property post-1986 (residential rental: 27.5-year SL; commercial: 39-year SL), there is no "excess" depreciation, so Line 26g recapture is generally $0.
 
+**Exception — bonus depreciation on §1250 property.** "Additional depreciation" (Line 26a) is actual depreciation, including any special depreciation allowance, in excess of straight-line (2025 Form 4797 instructions, Line 26a). Qualified improvement property and other 15-year or 20-year real-property components can take bonus depreciation (100% if acquired after January 19, 2025, under P.L. 119-21 §70301). If bonus was claimed on such a component, Line 26a is the bonus minus the straight-line depreciation that would have been allowed, and Line 26b recaptures it as ordinary income. Ask whether bonus was taken on any real-property component before entering $0. A §179 deduction on real property is §1245 recapture on Line 25 instead.
+
 ---
 
 ## Unrecaptured §1250 gain (the 25% rate)

@@ -9,8 +9,10 @@ The agent must produce a complete `SKILL.md`-format draft *first*, must have the
 ## Channel decision tree
 
 ```
-User has AGI ≤ ~$84,000 and wants free guided software?
+User has AGI ≤ $89,000 (2025 returns) and wants free guided software?
   → IRS Free File (Free File Alliance partners)
+    Threshold per irs.gov/filing/irs-free-file-do-your-taxes-for-free;
+    re-check each filing season.
     Browser automation: provider-specific.
     Most providers handle Form 8962 automatically once 1095-A data is
     entered. Skip detailed mapping here.
@@ -29,12 +31,11 @@ User wants to file on paper?
   → Print Form 1040 + Form 8962, sign, mail.
     Use Section 3.
 
-User wants to use IRS Direct File?
-  → Direct File supports Form 8962 in a growing set of states as of
-    early 2026. Confirm the user's state is supported and that their
-    1095-A scenario is in scope (single-policy, no allocation, no
-    year-of-marriage alternative).
-    See https://www.irs.gov/filing/irs-direct-file
+User asks for IRS Direct File?
+  → Not available: the IRS did not offer Direct File for the 2026
+    filing season (the irs.gov/filing/irs-direct-file page no longer
+    resolves as of 2026-10-06). Route to Free File, FFFF, paid
+    software, or paper.
 ```
 
 ---
@@ -43,7 +44,7 @@ User wants to use IRS Direct File?
 
 URL: https://www.irs.gov/e-file-providers/free-file-fillable-forms
 
-**Availability**: late January through mid-October each year.
+**Availability**: late January through mid-October each year (for 2025 returns, FFFF closes Oct. 15, 2026 per the FFFF page).
 
 **Account model**: each tax year is a separate FFFF account.
 
@@ -84,7 +85,7 @@ Agent must have:
 | 7 | "Applicable figure" | Part I Line 7 |
 | 8a | (auto-computed = 3 × 7) | (verify) |
 | 8b | (auto-computed = 8a / 12) | (verify) |
-| 9 | "Did you allocate policy amounts?" Yes/No radio | Line 9 |
+| 9 | Allocating policy amounts / alternative calculation for year of marriage? Yes/No | Line 9 |
 | 10 | "Annual or monthly calculation?" Yes (annual) / No (monthly) | Line 10 |
 | 11a–11f | Annual calculation columns (if Line 10 = Yes) | Line 11 |
 | 12a–23f | Monthly columns Jan–Dec (if Line 10 = No) | Lines 12–23 |
@@ -92,14 +93,14 @@ Agent must have:
 | 25 | (auto-computed) | (verify) |
 | 26 | (auto-computed if Line 24 ≥ Line 25) | (verify) |
 | 27 | (auto-computed if Line 24 < Line 25) | (verify) |
-| 28 | "Repayment limitation" | Line 28 (from Pub 974 Table 5) |
+| 28 | "Repayment limitation" | Line 28 (instructions Table 5; blank if Line 5 ≥ 400 or tax year 2026+) |
 | 29 | (auto-computed = lesser of 27 or 28) | (verify) |
-| 30–33 | Part IV allocation rows (if Line 9 = Yes) | Part IV |
-| 34–36 | Part V year-of-marriage (if applicable) | Part V |
+| 30–34 | Part IV allocation rows (if Line 9 = Yes) | Part IV |
+| 35–36 | Part V year-of-marriage (if applicable) | Part V |
 
    Capture screenshots after each section.
 
-9. **Cross-check the routing** — Form 8962 Line 26 should populate Schedule 3 Line 9; Form 8962 Line 29 should populate Schedule 2 Line 2. FFFF auto-pulls these. Verify against the draft.
+9. **Cross-check the routing** — Form 8962 Line 26 should populate Schedule 3 Line 9; Form 8962 Line 29 should populate Schedule 2 Line 1a. FFFF auto-pulls these. Verify against the draft.
 10. **Run FFFF's "Check Form" / "Verify"** — resolves math errors. Form 8962 commonly flags:
     - 1095-A monthly amounts don't match Column A/B/C totals
     - Tax family size doesn't match dependents on Form 1040
@@ -143,7 +144,7 @@ For users with paid tax software (TurboTax, H&R Block, FreeTaxUSA, TaxSlayer, Ta
 2. Complete W-2, Schedule C / SE, dependents, etc. so MAGI is substantially set
 3. Find the "Health insurance" or "Affordable Care Act" section (each provider names it differently)
 4. Enter Form 1095-A data — typically by typing each month's Column A, B, C into a 12-row table OR by uploading a PDF that gets OCR'd
-5. The software auto-computes Form 8962 and populates Schedule 2 Line 2 or Schedule 3 Line 9
+5. The software auto-computes Form 8962 and populates Schedule 2 Line 1a or Schedule 3 Line 9
 6. Find the "Form 8962 review" or "Premium Tax Credit summary" screen — verify each line against the draft. Override only with documented discrepancy.
 7. Continue through Form 1040 review
 8. Pay the software fee; e-file
@@ -161,7 +162,7 @@ When paper is the right answer (FFFF closed, complex return, identity-theft conc
 The IRS expects this stack from top to bottom:
 
 1. **Form 1040** (signed in ink)
-2. **Schedule 1, 2, 3** in numeric order (Schedule 2 if Line 2 > 0; Schedule 3 if Line 9 > 0)
+2. **Schedule 1, 2, 3** in numeric order (Schedule 2 if Line 1a > 0; Schedule 3 if Line 9 > 0)
 3. **Schedule SE** (if applicable)
 4. **Form 8962** — placed in attachment-sequence order (sequence number printed top-right)
 5. **Form 1095-A** — **NOT attached** to the return. Retain in records only.

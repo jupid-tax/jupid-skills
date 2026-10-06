@@ -1,17 +1,18 @@
 # Example: Employer Files 941-X to Add Misclassified Wages (Correcting Q2 2025)
 
-A complete walkthrough of Form 941-X for an employer who discovers in November 2025 that a "1099 contractor" paid $18,000 in Q2 2025 was actually a W-2 employee under common-law factors. The employer must add the wages to Q2 2025 retroactively and pay back-FICA + FIT.
+A complete walkthrough of Form 941-X (Rev. April 2026) for an employer who discovers in May 2026 that a "1099 contractor" paid $18,000 in Q2 2025 was actually a W-2 employee under common-law factors. The employer must add the wages to Q2 2025 retroactively and pay the tax at the IRC §3509 rates.
 
 ## The filer
 
 - **Business name**: Aspen Studio LLC
 - **EIN**: 91-XXXXXXX
 - **Entity**: Multi-member LLC, taxed as partnership
-- **Original Q2 2025 941**: Filed July 28, 2025; reported $42,000 wages, $5,800 FIT, $5,208 FICA
-- **Issue discovered**: November 14, 2025
-- **Worker reclassified**: Jordan Reyes, paid $18,000 across April 15 – June 30, 2025 as a "1099 contractor"
-- **Quarter being corrected**: Q2 2025
-- **Filing date for 941-X**: Late November 2025 (well within statute of limitations)
+- **Original Q2 2025 941**: Filed July 28, 2025; reported $42,000 wages, $5,800 FIT, $5,208 Social Security tax, $1,218 Medicare tax
+- **Worker reclassified**: Jordan Reyes, paid $18,000 in Q2 2025 (April 15 – June 30) and $18,000 in Q3 2025 (through September 30) as a "1099 contractor"
+- **2025 Form 1099-NEC for Jordan**: filed January 26, 2026, box 1 = $36,000
+- **Issue discovered**: May 11, 2026
+- **Quarter being corrected**: Q2 2025 (a separate 941-X corrects Q3 2025)
+- **Filing date for 941-X**: May 22, 2026
 
 ## The reclassification analysis
 
@@ -20,24 +21,23 @@ The CFO discovered during an internal review that Jordan worked exclusively for 
 The CFO consulted with a CPA who recommended:
 
 1. File 941-X for Q2 2025 to add Jordan's wages
-2. File 941-X for Q3 2025 (similar issue likely persisted)
-3. Issue corrected W-2 / W-2c for 2025
-4. The 1099-NEC originally issued to Jordan should not be filed (or if already filed, file a corrected 1099-NEC with $0 to nullify)
-5. Use **Section 3509 reduced rates** since this is a voluntary employer reclassification (not IRS reclassification — IRS reclassification triggers higher rates)
+2. File a separate 941-X for Q3 2025 (same issue)
+3. File a 2025 Form W-2 for Jordan (none was issued; the January 31 deadline has passed, so late-filing penalties may apply)
+4. File a corrected 1099-NEC so Jordan's income is not reported twice
+5. Use the **Section 3509 rates**: they apply whether the IRS or the employer makes the reclassification, as long as the employer did not intentionally disregard the withholding requirements and did not withhold income tax while skipping FICA (Instructions for Form 941-X, lines 19–22)
 
-### Section 3509 reduced rates
+### Section 3509 rates
 
-When the employer voluntarily reclassifies (not by IRS audit), and meets statutory requirements (no intentional disregard, prior 1099 was filed):
+The rate depends on whether the employer filed the required information returns (here, Form 1099-NEC) for the worker:
 
-| Tax | Standard combined rate | §3509 reduced rate |
-|-----|----------------------|---------------------|
-| FIT withholding | Variable (W-4 driven) | 1.5% of wages |
-| Employee SS | 6.2% | 20% × 6.2% = 1.24% |
-| Employee Medicare | 1.45% | 20% × 1.45% = 0.29% |
-| Employer SS | 6.2% (full) | 6.2% (full) |
-| Employer Medicare | 1.45% (full) | 1.45% (full) |
+| Tax | Information returns filed | Information returns NOT filed |
+|-----|---------------------------|-------------------------------|
+| Federal income tax withholding | 1.5% of wages | 3.0% of wages |
+| Social Security (6.2% employer + share of 6.2% employee) | 6.2% + 20% × 6.2% = 7.44% | 6.2% + 40% × 6.2% = 8.68% |
+| Medicare (1.45% employer + share of 1.45% employee) | 1.45% + 20% × 1.45% = 1.74% | 1.45% + 40% × 1.45% = 2.03% |
+| Additional Medicare Tax | 0.18% of wages over $200,000 | 0.36% |
 
-If the prior 1099-NEC was **not** filed (intentional disregard), §3509 reduced rates do NOT apply — full rates do. Aspen filed the 1099-NEC for Jordan in January 2026, so reduced rates apply.
+Aspen filed the 1099-NEC for Jordan on January 26, 2026, so the left column applies. §3509 rates are not available at all for intentional disregard; then the full rates apply. Source: Instructions for Form 941-X (Rev. April 2026), lines 19–22.
 
 ## The corrections to Q2 2025
 
@@ -54,179 +54,151 @@ Line 5e: $6,426.00
 Line 6: $12,226.00
 Line 7-9: $0
 Line 10: $12,226.00
-Line 11g: $0
+Line 11: $0
 Line 12: $12,226.00
-Line 13a: $12,226.00 (deposits matched)
+Line 13: $12,226.00 (deposits matched)
 Line 14: $0
 ```
 
 ### Corrected Q2 2025 amounts (with Jordan added)
 
-Adding Jordan's $18,000 wages with §3509 reduced rates:
+Adding Jordan's $18,000 wages with §3509 rates (information returns filed):
 
 | Item | Calculation | Amount |
 |------|-------------|--------|
-| Additional Line 2 wages | $18,000 | $18,000.00 |
-| Additional FIT withholding (Line 3) | $18,000 × 1.5% | $270.00 |
-| Additional SS wages (Line 5a col 1) | $18,000 | $18,000.00 |
-| Additional SS tax (Line 5a col 2) | $18,000 × (6.2% employer + 1.24% employee §3509) = $18,000 × 7.44% | $1,339.20 |
-| Additional Medicare wages (Line 5c col 1) | $18,000 | $18,000.00 |
-| Additional Medicare tax (Line 5c col 2) | $18,000 × (1.45% employer + 0.29% employee §3509) = $18,000 × 1.74% | $313.20 |
-| Total additional Line 5e | $1,339.20 + $313.20 | $1,652.40 |
-| Total additional Line 6 / Line 10 / Line 12 | $270.00 + $1,652.40 | $1,922.40 |
+| Line 6 wages (Form 941 line 2) | $42,000 → $60,000 | +$18,000.00 (no tax in column 4) |
+| Line 19 special addition to wages for federal income tax | $18,000 × 1.5% | $270.00 |
+| Line 20 special addition to wages for Social Security taxes | $18,000 × 7.44% | $1,339.20 |
+| Line 21 special addition to wages for Medicare taxes | $18,000 × 1.74% | $313.20 |
+| Line 23 subtotal / Line 27 total | $270.00 + $1,339.20 + $313.20 | $1,922.40 |
 
-Plus interest from the original due date (July 31, 2025) to the date 941-X is filed (~late November 2025) — about 4 months at the IRS short-term rate (~8% federal short-term + 3% per IRC §6621). If filed and paid before the IRS examines, this becomes interest-free under IRC §6205 — see "Interest-free adjustment" below.
+Interest-free treatment: the 941-X is filed by the due date of the Form 941 for the quarter in which the error was discovered (Q2 2026 return, due July 31, 2026) and the $1,922.40 is paid when filing, so no interest is charged (IRC §6205; Instructions for Form 941-X, "Underreported tax"). Had Aspen missed that window, interest would run from the original due date at the IRS underpayment rate (7% for every quarter of 2025, 7% for Q1 2026, 6% for Q2 2026; https://www.irs.gov/payments/quarterly-interest-rates).
 
 ## The completed Form 941-X draft
 
 ```markdown
-# Form 941-X — DRAFT for Q2 2025 (filed late November 2025)
+# Form 941-X (Rev. April 2026) — DRAFT correcting Q2 2025 (filed May 22, 2026)
 
 ## Header
 Employer name (legal):       Aspen Studio LLC
 EIN:                         91-XXXXXXX
 Address:                     789 Pine St, Denver, CO 80202
+Return you're correcting:    [X] 941  [ ] 941-SS
+Quarter you're correcting:   [ ] 1  [X] 2  [ ] 3  [ ] 4
+Calendar year:               2025
+Date you discovered errors:  05/11/2026
 
-## Part 1
-Quarter being corrected:     Q2 2025
-Date original 941 filed:     July 28, 2025
-Date error discovered:       November 14, 2025
-
-Question 1: This is a CORRECTION to a previously-filed 941
-Question 2 (path):
-  [X] Box 1 — Adjusted employment tax return (under-reported tax; pay with the form)
-  [ ] Box 2 — Claim (refund / abatement)
+## Part 1 — Select ONLY one process
+  [X] 1. Adjusted employment tax return (underreported tax; pay with the form)
+  [ ] 2. Claim (overreported tax only; refund / abatement)
 
 ## Part 2 — Certifications
+  [X] 3. I certify that I've filed or will file Forms W-2 or W-2c, as required.
+  Lines 4 and 5: skipped (correcting underreported amounts only)
 
-Question 3 — applies for under-reported tax:
-  [X] I certify that this 941-X reports under-reported tax and I have paid
-      (or will pay with this form) the additional tax owed.
+## Part 3 — Corrections for this quarter
+Columns: 1 = total corrected amount; 2 = amount originally reported; 3 = difference; 4 = tax correction
 
-Question 4 — applies for over-reported FICA (N/A here, this is under-reported)
+| Line | Col 1 | Col 2 | Col 3 | Col 4 |
+|------|-------|-------|-------|-------|
+| 6 Wages, tips, other compensation (941 line 2) | $60,000.00 | $42,000.00 | $18,000.00 | — (use col 3 for W-2s) |
+| 19 Special addition to wages for federal income tax | $18,000.00 | $0.00 | $18,000.00 | × 1.5% = $270.00 |
+| 20 Special addition to wages for social security taxes | $18,000.00 | $0.00 | $18,000.00 | × 7.44% = $1,339.20 |
+| 21 Special addition to wages for Medicare taxes | $18,000.00 | $0.00 | $18,000.00 | × 1.74% = $313.20 |
+| 23 Subtotal (column 4, lines 7–22) | | | | $1,922.40 |
+| 27 Total (lines 23 through 26c) | | | | $1,922.40 |
 
-Question 5 — applies for over-reported FIT withholding (N/A)
+Lines 7, 8, and 12 are left blank: the reclassified worker's wages go on lines 19–21 when §3509 rates are used.
 
-## Part 3 — Reason
+Line 27 is more than zero: pay $1,922.40 by the time the form is filed.
 
-Question 6 — Reason for correction:
-  [X] Reclassification of workers (Section 3509 rates apply)
+## Part 4 — Explain your corrections
+  [ ] 41. Corrections include both underreported and overreported amounts
+  [X] 42. Corrections involve reclassified workers
+  43. Explanation:
 
-## Part 4 — Detailed corrections
+  On May 11, 2026, an internal review found that Jordan Reyes — paid $18,000
+  from April 15 through June 30, 2025 as an independent contractor — was a
+  common-law employee under Treas. Reg. §31.3121(d)-1(c): Jordan worked only
+  for Aspen Studio LLC, used company equipment, followed company schedules,
+  was supervised daily, and had no independent business.
 
-Each line shows: Column 1 (corrected), Column 2 (originally reported), Column 3 (difference), Column 4 (tax).
+  Section 3509 rates apply: the reclassification is the employer's own, the
+  employer did not intentionally disregard the withholding requirements, no
+  income tax was withheld from the payments, and Form 1099-NEC reporting the
+  payments was filed on January 26, 2026. Rates used (information returns
+  filed): 1.5% federal income tax, 7.44% social security, 1.74% Medicare.
 
-| Line | Col 1 (corrected) | Col 2 (original) | Col 3 (diff) | Col 4 (tax adj) |
-|------|------------------|-----------------|--------------|----------------|
-| 6 (Line 2 wages) | $60,000.00 | $42,000.00 | $18,000.00 | (no tax in col 4 for line 6 — wages only) |
-| 7 (Line 3 FIT) | $6,070.00 | $5,800.00 | $270.00 | $270.00 |
-| 8 (Line 5a SS wages) | $60,000.00 | $42,000.00 | $18,000.00 | (use line 9 for tax) |
-| 9 (Line 5a SS tax) | (compute from 5a col 2 corrected) | (original) | | $1,339.20 (§3509 rate) |
-| 10 (Line 5c Medicare wages) | $60,000.00 | $42,000.00 | $18,000.00 | |
-| 11 (Line 5c Medicare tax) | (compute from 5c col 2 corrected) | (original) | | $313.20 (§3509 rate) |
+  Computation: $18,000 × 1.5% = $270.00; $18,000 × 7.44% = $1,339.20;
+  $18,000 × 1.74% = $313.20; total $1,922.40. Line 6 increases from
+  $42,000.00 to $60,000.00.
 
-(Note: actual 941-X line numbering differs slightly from 941. Use Form 941-X line numbers for the filing; the table above is conceptual.)
+  Q3 2025 is affected by the same issue; a separate Form 941-X for Q3 2025
+  is being filed with this one.
 
-## Part 5 — Total adjustment
-
-Line 23 (Total) — sum of all Column 4 amounts:
-  $270.00 + $1,339.20 + $313.20 = $1,922.40
-
-Sign indication: Positive (under-reported tax — owe more)
-
-## Part 6 — Detailed explanation (REQUIRED)
-
-  In November 2025, internal review identified that Jordan Reyes — paid $18,000
-  across April 15 through June 30, 2025 as a "1099 contractor" — was in fact
-  a common-law employee under IRS Reg. §31.3121(d)-1(c) factors. Jordan worked
-  exclusively for Aspen Studio LLC, used company equipment, followed company
-  schedules, and had no independent business.
-
-  The original 1099-NEC issued to Jordan in January 2026 will be corrected to
-  $0 (1099-NEC with corrected box checked). Jordan will be issued W-2 for the
-  full 2025 wages.
-
-  Section 3509 reduced rates apply because:
-  (a) Reclassification is voluntary by the employer, not IRS-initiated
-  (b) Original 1099-NEC was filed in good faith
-  (c) No intentional disregard
-
-  Computation of Q2 2025 corrections:
-   - Additional Line 2 wages: $18,000
-   - Additional Line 3 FIT (1.5% per §3509): $270.00
-   - Additional Line 5a SS (6.2% employer + 1.24% employee §3509 = 7.44%): $1,339.20
-   - Additional Line 5c Medicare (1.45% employer + 0.29% employee §3509 = 1.74%): $313.20
-   - Total Q2 correction: $1,922.40
-
-  Q3 2025 also affected (Jordan continued working through year-end);
-  separate 941-X for Q3 2025 will be filed concurrently.
-
-## Part 7 — Sign here
-
+## Part 5 — Sign here
 Title: Managing Member
 Phone: 720-555-0118
-Date: November 22, 2025
+Date: May 22, 2026
 Signature: __________
 
-## Required attachments
-- [X] Detailed explanation in Part 6
+## Required attachments / related filings
+- [X] Line 43 explanation (above)
 - [ ] Form 8974 — N/A
-- [ ] Q3 2025 941-X — separate filing, also being prepared
-- [ ] Form W-2 for Jordan — separate filing via SSA BSO before January 31, 2026
-- [ ] Corrected 1099-NEC ($0) for Jordan — separate filing
+- [ ] Q3 2025 941-X — separate form, filed together
+- [ ] 2025 Form W-2 / W-3 for Jordan — late; file now via SSA Business Services Online
+- [ ] Corrected 2025 Form 1099-NEC for Jordan
 
 ## Validation summary
 - Math: all checks passed
-  - $18,000 × 1.5% = $270 (FIT under §3509) ✓
-  - $18,000 × 7.44% = $1,339.20 (SS under §3509) ✓
-  - $18,000 × 1.74% = $313.20 (Medicare under §3509) ✓
-  - Sum = $1,922.40 ✓
+  - $18,000 × 1.5% = $270.00 ✓
+  - $18,000 × 7.44% = $1,339.20 ✓
+  - $18,000 × 1.74% = $313.20 ✓
+  - Line 23 = Line 27 = $1,922.40 ✓
 - Sanity:
-  - §3509 election certified — must show prior 1099 was filed (Aspen did file 1099-NEC in good faith)
-  - Statute of limitations: original Q2 941 deemed filed July 31, 2025 → 3 years to assess = July 31, 2028; ample window
-  - Interest-free adjustment available under IRC §6205 since employer self-discovered before IRS examination
-  - Q3 2025 941-X needed for the same worker — file concurrently
-  - W-2 must be issued (or W-2c if W-2 already issued at $0 wages); employee FICA cannot be retroactively withheld from already-paid wages, so the §3509 employee-share reduction is by law absorbed by the employer
+  - §3509 eligibility documented: no intentional disregard, no income tax withheld, 1099-NEC filed before discovery
+  - Period of limitations: Forms 941 for 2025 count as filed April 15, 2026, so the underreported-tax window for Q2 2025 runs to April 15, 2029 (Instructions for Form 941-X)
+  - Interest-free: filed by July 31, 2026 (due date of the Q2 2026 Form 941) with payment
+  - The employer cannot recover the §3509 tax from Jordan (Instructions for Form 941-X, lines 19–22)
 - Next steps:
-  - File 941-X for Q3 2025 (similar computation)
-  - File 2025 W-2 for Jordan via SSA BSO (Box 1 = sum of Q2+Q3 wages = $36,000 estimated)
-  - File 2025 W-2c if a W-2 was already issued (wasn't — Jordan got a 1099)
-  - File corrected 1099-NEC ($0) to nullify the original
-  - Pay the $1,922.40 (plus equivalent Q3 amount) via EFTPS at time of filing
-  - State unemployment / state withholding implications — consult CO state DOL
+  - File 941-X for Q3 2025 (same computation on that quarter's $18,000)
+  - File the 2025 W-2 for Jordan (Box 1 = $36,000 for Q2 + Q3)
+  - File the corrected 1099-NEC
+  - Pay the $1,922.40 (plus the Q3 amount) electronically when filing
+  - State unemployment / state withholding implications — consult the Colorado Department of Labor and Employment and Department of Revenue
   - Review remaining 1099 contractors for similar misclassification risk
-  - Update worker classification policy and onboarding to apply common-law test
 
 ## Sources cited in this draft
-- IRS Form 941-X (Rev. April 2025)
-- IRS Instructions for Form 941-X (Rev. April 2025)
-- IRC §3509 (reclassified worker reduced rates)
+- IRS Form 941-X (Rev. April 2026)
+- IRS Instructions for Form 941-X (Rev. April 2026), lines 6, 19–22, 27, 42, 43; "Underreported tax"; "Is There a Deadline for Filing Form 941-X?"
+- IRC §3509 (reclassified worker rates)
 - IRC §6205 (interest-free adjustment for employment taxes)
-- IRS Reg. §31.3121(d)-1(c) (common-law employee factors)
-- IRS Reg. §31.3509-1 (Section 3509 mechanics)
-- IRC §6511 (statute of limitations for refund claims — not applicable here, this is under-payment)
-- IRC §6501 (statute of limitations for IRS assessment — 3 years; window open)
-- Pub. 15-A (Employer's Supplemental Tax Guide), 2025 edition — worker classification
+- Treas. Reg. §31.3121(d)-1(c) (common-law employee factors)
+- IRC §6501 (assessment period), §6513(c)(1) (Forms 941 deemed filed April 15)
+- IRS quarterly interest rates (https://www.irs.gov/payments/quarterly-interest-rates)
+- Pub. 15-A (Employer's Supplemental Tax Guide) — worker classification
 ```
 
 ## Why each non-obvious choice
 
-**Why §3509 reduced rates and not full rates?** Aspen filed the 1099-NEC in good faith for Jordan. Under IRC §3509, when the employer voluntarily reclassifies (not IRS-reclassified) AND the prior 1099 was filed (no intentional disregard), the reduced rates apply. If Aspen had not filed the 1099-NEC, full FICA + FIT-table rates would apply, and the bill would be roughly 2.5× larger.
+**Why §3509 rates and not full rates?** Aspen didn't intentionally disregard the rules, withheld no income tax from Jordan, and filed the 1099-NEC, so the lowest §3509 rates apply. Full rates would be $18,000 × 15.3% = $2,754 of FICA plus income tax withholding the employer can no longer collect. Without the 1099-NEC, the §3509 rates would be 3.0% / 8.68% / 2.03% = $2,467.80.
 
-**Why is the employee FICA portion reduced (1.24% / 0.29%) rather than the full 6.2% / 1.45%?** Section 3509 grants the reclassifying employer a reduced *employee*-share rate to recognize that the employer can't realistically recover FICA from already-paid wages (the employee got the gross amount). The employer effectively absorbs the employee's share; §3509 reduces what they have to pay.
+**Why are the employee FICA rates reduced (20% of 6.2% and 1.45%)?** Section 3509 sets a reduced employee-share rate because the employer can't realistically recover FICA from wages already paid; the employer pays it and can't collect it from the worker.
 
-**Why use Box 1 (Adjustment) and not Box 2 (Claim)?** Box 1 is for under-reported tax (Aspen owes more). Box 2 is for over-reported tax (refund). This is unambiguously under-reported.
+**Why Part 1, line 1 (Adjustment) and not line 2 (Claim)?** Line 1 is required for underreported tax (Aspen owes more). Line 2 is only for overreported tax.
 
-**Why does the 1099-NEC need to be nullified?** If Jordan now has a W-2 for the same wages, an outstanding 1099-NEC would double-report income. Issue a corrected 1099-NEC marked "Corrected" with $0 in Box 1 to remove from IRS records. Otherwise, the IRS sees both a 1099 and a W-2 for Jordan and starts a CP2000 inquiry on Jordan's personal return.
+**Why lines 19–21 and not lines 7, 8, and 12?** The instructions put wage corrections for reclassified workers at §3509 rates on lines 19–22 (column 1 = the reclassified worker's wages only, column 2 = amounts previously reported for that worker). Lines 8 and 12 use the full rates.
 
-**Why isn't this filed electronically?** Form 941-X is paper-only (no e-file path). Mail with payment to the address listed in Form 941-X instructions for the filer's state. USPS Certified Mail recommended.
+**Why does the 1099-NEC need a correction?** If Jordan now has a W-2 for the same pay, an outstanding 1099-NEC double-reports the income and can trigger a CP2000 inquiry on Jordan's personal return.
 
-**What about Q1 2025?** The agent should ask: did Jordan also work in Q1 2025? If yes, separate Q1 2025 941-X also needed. The user confirmed Jordan started April 15, 2025, so Q1 is unaffected.
+**Can this be e-filed?** Yes. Form 941-X can be filed through Modernized e-File, and the IRS encourages it. On paper, a Colorado employer mails to Department of the Treasury, Internal Revenue Service, Ogden, UT 84201-0005 (Instructions for Form 941-X, Rev. April 2026, "Where Should You File Form 941-X?").
+
+**What about Q1 2025?** The agent should ask: did Jordan also work in Q1 2025? The user confirmed Jordan started April 15, 2025, so Q1 is unaffected.
 
 **Audit defense for the 941-X:**
 1. Worker classification analysis with common-law factors documented
 2. Engagement records showing Jordan's exclusive work, equipment, schedule
-3. Original 1099-NEC filing (proof for §3509 eligibility)
+3. Filed 1099-NEC (proof for the lower §3509 rates)
 4. CPA opinion supporting reclassification
-5. Corporate minute book entry recording the decision
+5. Internal memo recording the decision and discovery date
 6. Computations showing §3509 application

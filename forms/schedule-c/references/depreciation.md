@@ -8,7 +8,7 @@ Three ways to deduct the cost of business assets. The choice matters because it 
 
 If an item costs **$2,500 or less per item**, expense it immediately. No depreciation, no Form 4562, no Section 179. Just put it on the appropriate operating expense line:
 
-- Computer accessories under $2,500 → Line 18 or 27a
+- Computer accessories under $2,500 → Line 18 or 27b
 - A small printer at $400 → Line 18
 - A second monitor at $300 → Line 18
 - Hand tools under $2,500 each → Line 22
@@ -25,9 +25,9 @@ For items > $2,500 with useful life > 1 year, Section 179 lets the user deduct u
 
 | Tax year | Section 179 limit | Phase-out begins | Source |
 |----------|-------------------|------------------|--------|
-| 2024 | $1,160,000 | $2,890,000 | Rev. Proc. 2023-34 |
-| 2025 | $1,250,000 | $3,130,000 | Rev. Proc. 2024-40 |
-| 2026 | TBD (announced late 2025 by IRS) | TBD | Verify before filing |
+| 2024 | $1,220,000 | $3,050,000 | Rev. Proc. 2023-34 |
+| 2025 | $2,500,000 | $4,000,000 | P.L. 119-21 §70306 (replaced Rev. Proc. 2024-40's $1,250,000 / $3,130,000); 2025 Form 4562 instructions, Lines 1 and 3 |
+| 2026 | $2,560,000 | $4,090,000 | Rev. Proc. 2025-32 §3.24 |
 
 The limit is reduced dollar-for-dollar above the phase-out threshold (irrelevant for solo filers in practice). Solo filers almost never hit the limit.
 
@@ -36,7 +36,7 @@ The limit is reduced dollar-for-dollar above the phase-out threshold (irrelevant
 - Tangible personal property used >50% for business (computers, equipment, furniture, machinery)
 - Off-the-shelf software
 - Qualified improvement property (interior improvements to nonresidential buildings, post-2017)
-- Certain heavy SUVs (>6,000 lbs GVWR) — limited to $30,500 for 2025; check current year
+- Certain heavy SUVs (>6,000 lbs GVWR) — limited to $31,300 for 2025 (Rev. Proc. 2024-40) and $32,000 for 2026 (Rev. Proc. 2025-32)
 
 What does *not* qualify:
 - Real property (buildings, land)
@@ -72,11 +72,11 @@ Bonus depreciation lets the user deduct a percentage of the asset's cost in year
 | Year placed in service | Bonus rate (TCJA original) | OBBBA 2025 modification |
 |------------------------|----------------------------|-------------------------|
 | 2024 | 60% | n/a |
-| 2025 | 40% | OBBBA: 100% (verify) |
-| 2026 | 20% | OBBBA: 100% (verify) |
-| 2027 onward | 0% | OBBBA: TBD |
+| 2025 | 40% | 100% if acquired after Jan 19, 2025; 40% if acquired before Jan 20, 2025 |
+| 2026 | 20% | 100% if acquired after Jan 19, 2025 |
+| 2027 onward | 0% | 100% if acquired after Jan 19, 2025 (no end date) |
 
-OBBBA 2025 (One Big Beautiful Bill Act) made bonus depreciation permanent at 100% for assets placed in service after Jan 19, 2025. **Always verify the current-year rate at the IRS site or via a CPA before filing**; legislative changes happen mid-year.
+OBBBA 2025 (One Big Beautiful Bill Act, P.L. 119-21 §70301) made bonus depreciation permanent at 100% for qualified property **acquired** after January 19, 2025. The acquisition (binding-contract) date decides the rate, not the placed-in-service date; ask for it. For the first tax year ending after January 19, 2025, the taxpayer may elect 40% instead of 100% (2025 Form 4562 instructions, Line 14; 2025 Schedule C instructions, What's New). Re-verify the rate in each year's Form 4562 instructions.
 
 #### MACRS recovery periods
 
@@ -97,7 +97,7 @@ The IRS publishes detailed tables in [Pub 946](https://www.irs.gov/publications/
 
 The user bought a $4,000 laptop on July 1, 2025, used 100% for business.
 
-**Option A — §179**: deduct $4,000 in 2025 (well within $1.25M limit). Done.
+**Option A — §179**: deduct $4,000 in 2025 (well within the $2.5M limit). Done.
 
 **Option B — Bonus depreciation**: at 100% bonus (under OBBBA), deduct $4,000 in 2025. Same outcome.
 
@@ -118,8 +118,8 @@ For most solo filers, §179 or bonus (immediate full deduction) beats spreading 
 
 Vehicles are "listed property" (IRC §280F) with stricter rules:
 
-- **Heavy SUVs / pickups** (>6,000 lbs GVWR, less than 14,000 lbs GVWR): §179 capped at $30,500 for 2025 (IRC §179(b)(5)). Bonus depreciation can apply to the rest.
-- **Cars and light trucks** (≤6,000 lbs GVWR): annual depreciation caps under IRC §280F (luxury auto limits). For 2025, year 1 cap is around $20,400 with bonus depreciation, $12,400 without. Verify current year.
+- **Heavy SUVs / pickups** (>6,000 lbs GVWR, not more than 14,000 lbs GVWR): §179 capped at $31,300 for 2025 and $32,000 for 2026 (IRC §179(b)(5); Rev. Proc. 2024-40; Rev. Proc. 2025-32). Bonus depreciation can apply to the rest.
+- **Cars and light trucks** (≤6,000 lbs GVWR): annual depreciation caps under IRC §280F (luxury auto limits). For 2025, the year 1 cap is $20,200 with bonus depreciation and $12,200 without (Rev. Proc. 2025-16); for 2026, $20,300 and $12,300 (Rev. Proc. 2026-15).
 - **>50% business use required** in the first year and throughout the recovery period.
 
 If the user took §179 or bonus on a vehicle and it drops below 50% business use, recapture applies. This is a real audit risk for solo filers who later use the vehicle more for personal trips.
@@ -141,13 +141,13 @@ Counterintuitive cases where deferring depreciation is smarter:
 - **Loss year**: §179 is income-limited; deferring lets the user use depreciation in profitable years
 - **NOL carryforward eligibility**: a §179 deduction limited to zero income provides no current benefit and complicates carryforwards
 - **Future higher tax bracket**: if the user expects to move from 12% to 24% bracket, $1 of depreciation next year is worth twice as much
-- **AMT considerations**: §179 doesn't trigger AMT adjustments; bonus depreciation does (rarely matters for solo filers but verify)
+- **AMT considerations**: neither §179 nor bonus depreciation creates an AMT depreciation adjustment for the qualified property (2025 Form 4562 instructions, Line 14 caution); regular MACRS can (rarely matters for solo filers)
 
 ## Summary decision tree
 
 ```
 Cost ≤ $2,500/item? → Expense as operating cost, no Form 4562 needed
-                      (Lines 18, 22, or 27a)
+                      (Lines 18, 22, or 27b)
 
 Cost > $2,500/item:
   Useful life ≤ 1 year? → Expense as supplies (Line 22)

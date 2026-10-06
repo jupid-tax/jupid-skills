@@ -11,7 +11,7 @@ Multiply business miles × IRS rate. The rate bundles gas, depreciation, repairs
 | 2023 | 65.5 cents | Notice 2023-3 |
 | 2024 | 67 cents | Notice 2024-8 |
 | 2025 | 70 cents | Notice 2025-5 |
-| 2026 | TBD (announced ~Dec 2025) | Verify at https://www.irs.gov/tax-professionals/standard-mileage-rates |
+| 2026 | 72.5 cents (Jan 1 – Jun 30); 76 cents (Jul 1 – Dec 31) | Notice 2026-10; Announcement 2026-11 (I.R.B. 2026-29). Re-verify at https://www.irs.gov/tax-professionals/standard-mileage-rates |
 
 In addition to the per-mile rate, the user can also deduct (with standard mileage):
 - Parking fees while on business trips (not at the regular workplace)
@@ -32,7 +32,7 @@ What's *inside* the standard mileage rate (don't deduct separately):
 The user can use standard mileage only if **all** of:
 
 - They own or lease the vehicle (they're not depreciating it under MACRS already)
-- It's not used for hire (rideshare drivers can use it; delivery drivers can use it)
+- (Use for hire does not disqualify the vehicle: taxi, rideshare, and delivery drivers can elect the standard mileage rate; Pub. 463 (2025), chapter 4)
 - They didn't take §179 or bonus depreciation on the vehicle in any prior year (one-way door)
 - They're not operating five or more cars simultaneously (fleet — rare for solo)
 
@@ -104,11 +104,14 @@ Also, §179 and bonus on vehicles are subject to the IRC §280F luxury auto caps
 | Tax year | Year 1 cap with bonus | Year 1 cap without bonus | Year 2 | Year 3 | Year 4+ |
 |----------|------------------------|---------------------------|--------|--------|---------|
 | 2024 | $20,400 | $12,400 | $19,800 | $11,900 | $7,160 |
-| 2025 | (verify Rev. Proc. 2024-44 or successor) | | | | |
+| 2025 | $20,200 | $12,200 | $19,600 | $11,800 | $7,060 |
+| 2026 | $20,300 | $12,300 | $19,800 | $11,900 | $7,160 |
+
+Sources: Rev. Proc. 2025-16 (2025) and Rev. Proc. 2026-15 (2026), Tables 1 and 2; 2025 Form 4562 instructions, Table 2.
 
 The cap is reduced for vehicles used less than 100% for business (proportional).
 
-Heavy SUVs (>6,000 lbs GVWR, less than 14,000 lbs) escape the §280F caps but have their own §179 cap of $30,500 for 2025.
+Heavy SUVs (>6,000 lbs GVWR, not more than 14,000 lbs) escape the §280F caps but have their own §179 cap of $31,300 for 2025 and $32,000 for 2026.
 
 ## Recordkeeping — the audit Achilles heel
 
@@ -119,13 +122,13 @@ Vehicle deductions are the single most common audit trigger for Schedule C filer
 - **Business purpose** (one line: "Met with client X to discuss project Y")
 - **Miles** for the trip
 
-Apps that capture this automatically (Jupid, MileIQ, Hurdlr) are far better than a "I'll reconstruct it from my calendar at year-end" approach. Reconstruction logs are accepted but viewed skeptically.
+A mileage log app or a contemporaneous written log is far better than a "I'll reconstruct it from my calendar at year-end" approach. Reconstruction logs are accepted but viewed skeptically.
 
 Without a log, courts have allowed approximate deductions in some cases (Cohan rule), but the IRS often disallows the full Line 9 amount in audit. Don't claim Line 9 if there's no log.
 
 ## Part IV — Vehicle Information
 
-Required if Line 9 has a vehicle expense.
+Required if Line 9 has a vehicle expense and the business is not required to file Form 4562. If Form 4562 is required, the vehicle information goes on Form 4562 Part V instead (2025 Schedule C, Part IV heading).
 
 ### Line 43 — Date placed in service
 

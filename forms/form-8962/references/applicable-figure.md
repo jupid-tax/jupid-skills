@@ -4,13 +4,13 @@ The applicable figure is the percentage of household income the filer is "expect
 
 ## Year-aware tables
 
-The applicable figure table in IRC §36B(b)(3)(A) was modified by ARPA (Section 9661) for tax years 2021–2022, then extended by IRA (Section 12001) through 2025. For 2026+, the table reverts unless Congress extends.
+The applicable figure table in IRC §36B(b)(3)(A) was modified by ARPA (Section 9661) for tax years 2021–2022, then extended by IRA (Section 12001) through 2025 (§36B(b)(3)(A)(iii) applies to taxable years beginning before January 1, 2026). For 2026, the indexed statutory table applies (Rev. Proc. 2025-25); no extension had been enacted as of 2026-10-06.
 
-### 2025 table (under IRA extension — applicable to 2025 returns)
+### 2025 table (under IRA extension — applicable to 2025 returns; Rev. Proc. 2024-35; 2025 Form 8962 instructions Table 2)
 
 | Household income as % of FPL | Initial applicable figure | Final applicable figure |
 |------------------------------|---------------------------|--------------------------|
-| < 150% | 0.00 | 0.00 |
+| ≤ 150% | 0.00 | 0.00 |
 | 150% – 200% | 0.00 | 0.02 |
 | 200% – 250% | 0.02 | 0.04 |
 | 250% – 300% | 0.04 | 0.06 |
@@ -25,28 +25,24 @@ applicable_figure = initial + (% FPL − band_start) / (band_end − band_start)
 
 Round to four decimals (IRS form instruction).
 
-### Pre-IRA / pre-ARPA table (would apply to 2026+ if IRA not extended)
+### 2026 table (Rev. Proc. 2025-25, section 3.01 — applicable to 2026 returns)
 
 | Household income as % of FPL | Initial | Final |
 |------------------------------|---------|-------|
-| < 100% | not eligible | not eligible |
-| 100% – 133% | 0.0210 | 0.0210 |
-| 133% – 150% | 0.0312 | 0.0417 |
-| 150% – 200% | 0.0417 | 0.0658 |
-| 200% – 250% | 0.0658 | 0.0843 |
-| 250% – 300% | 0.0843 | 0.0980 |
-| 300% – 400% | 0.0980 | 0.0980 |
-| ≥ 400% | not eligible (cliff) | — |
+| < 100% | not an applicable taxpayer (§36B(c)(1)(A)) | — |
+| less than 133% | 0.0210 | 0.0210 |
+| at least 133% but less than 150% | 0.0314 | 0.0419 |
+| at least 150% but less than 200% | 0.0419 | 0.0660 |
+| at least 200% but less than 250% | 0.0660 | 0.0844 |
+| at least 250% but less than 300% | 0.0844 | 0.0996 |
+| at least 300% but not more than 400% | 0.0996 | 0.0996 |
+| > 400% | not an applicable taxpayer (no PTC; §36B(c)(1)(A)) | — |
 
-Pre-IRA values are also indexed annually for inflation per §36B(b)(3)(A)(ii). Verify the exact figures against the Form 8962 instructions for the tax year.
+The statutory base table is indexed annually under §36B(b)(3)(A)(ii); each year's Rev. Proc. publishes the values. Use the 2026 Form 8962 instructions Table 2 (with whole-percent steps) once released.
 
 ### 2026 status — verify before filing
 
-As of early 2026, the IRA extension expires after tax year 2025 unless renewed. Possible scenarios:
-
-- **Congress extends ARPA/IRA modifications** → 2025 table continues
-- **Congress lets IRA expire** → pre-IRA table returns; 400% FPL cliff resumes
-- **Congress passes a new modification** → new table applies
+The ARPA/IRA enhanced table and the removal of the 400% ceiling (§36B(b)(3)(A)(iii) and (c)(1)(E)) apply only to taxable years beginning before January 1, 2026. No extension had been enacted as of 2026-10-06. If Congress enacts one later, the IRS will post it at IRS.gov/Form8962.
 
 The agent must check the most recent IRS guidance (Pub 974 and Form 8962 instructions for the tax year being filed) before computing Line 7 for 2026 returns.
 
@@ -83,11 +79,11 @@ For % FPL ≥ 400%, applicable figure caps at 0.085.
 
 → Line 7 = 0.085
 
-### Example 4: 401% FPL, hypothetical pre-IRA table
+### Example 4: 401% FPL, 2026 rules
 
-For % FPL ≥ 400% under pre-IRA rules, filer is not eligible for PTC. Line 5 = 401% means no PTC; full APTC must be repaid (subject to repayment cap).
+For household income above 400% FPL in 2026, the filer is not an applicable taxpayer and gets no PTC. All APTC must be repaid, with no repayment cap (P.L. 119-21 §71305; IRS FS-2025-10, Q31).
 
-→ This is the "cliff" that ARPA / IRA suspended through 2025.
+→ This is the "cliff" that ARPA / IRA suspended for 2021 through 2025.
 
 ## How Line 7 lands on Form 8962
 
@@ -109,3 +105,4 @@ For each tax year, the authoritative source for the applicable figure is:
 - IRS **Pub 974**, year-specific edition
 - **Form 8962 Instructions** Table 2, year-specific edition
 - IRC §36B(b)(3)(A) for the statutory base (modified by ARPA / IRA through 2025)
+- Rev. Proc. 2024-35 (2025 table) and Rev. Proc. 2025-25 (2026 table): https://www.irs.gov/pub/irs-drop/rp-25-25.pdf
